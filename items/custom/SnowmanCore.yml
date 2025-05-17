@@ -1,0 +1,10 @@
+id: SnowmanCore
+display:
+  name: '&6Snowman Core'
+  material: REDSTONE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Can be used to give snowmen life!'

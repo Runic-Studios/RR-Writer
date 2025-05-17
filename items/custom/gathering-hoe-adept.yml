@@ -1,0 +1,21 @@
+id: 'gathering-hoe-adept'
+display:
+  name: '&aAdept Farming Hoe'
+  material: IRON_HOE
+  damage: 2
+type: 'dynamic' 
+lore:
+  - '&7Req Farming &f10'
+  - '' 
+  - '&2Gathering Luck I: &7You have a'
+  - '&f33% &7chance to receive'
+  - '&f2x &7more resources!'
+  - ''
+  - '&aUncommon'
+data:
+  dynamicFieldInitialValue: 150
+  dynamicLore: '&7/150'
+  maxDurability: 150
+  requiredLevelForUse: 10
+  bonusLootCeiling: 1
+  bonusLootChance: .33

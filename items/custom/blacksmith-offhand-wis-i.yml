@@ -1,0 +1,14 @@
+id: blacksmith-offhand-wis-i
+display:
+  name: Rose Vale Flail
+  material: STONE_SHOVEL
+type: offhand
+level: 10
+rarity: crafted
+stats:
+  wisdom:
+    min: 7
+    max: 7
+data:
+  requiredLevel: 0
+  experience: 1000

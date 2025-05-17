@@ -1,0 +1,10 @@
+id: bread
+display:
+  name: '&eBread'
+  material: BREAD
+type: 'generic' 
+tags:
+- consumable
+data:
+  requiredLevel: 0
+  experience: 80

@@ -1,0 +1,20 @@
+id: 'swift-white-stallion'
+display:
+  name: '&eSwift White Stallion'
+  material: SADDLE
+tags:
+- 'soulbound'
+type: 'generic' 
+lore:
+  - ''
+  - '&6Tier: &7Normal'
+  - '&6Speed: +&a40%'
+  - ''
+  - '&r&7&oA loyal and valiant steed!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-name: 'Swift White Stallion'
+  mount-type: 'HORSE'
+  horse-color: 'WHITE'
+  mount-speed: '0.4' # default speed 0.2

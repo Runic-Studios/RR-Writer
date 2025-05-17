@@ -1,0 +1,15 @@
+id: blacksmith-offhand-dex-v
+display:
+  name: Fey Flyssa
+  material: SHEARS
+  damage: 236
+type: offhand
+level: 50
+rarity: crafted
+stats:
+  dexterity:
+    min: 31
+    max: 33
+data:
+  requiredLevel: 40
+  experience: 17500

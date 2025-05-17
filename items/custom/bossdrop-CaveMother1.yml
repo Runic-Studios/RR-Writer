@@ -1,0 +1,14 @@
+id: bossdrop-CaveMother1
+display:
+  name: Eighth Eye
+  material: IRON_HELMET
+type: armor
+level: 6
+rarity: unique
+health: 25
+stats:
+  vitality:
+    min: 6
+    max: 8
+max-gem-slots: 1
+class: warrior

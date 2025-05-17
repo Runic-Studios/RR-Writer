@@ -1,0 +1,10 @@
+id: TrueIron
+display:
+  name: '&6True Iron'
+  material: IRON_BLOCK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The purest form of iron.'

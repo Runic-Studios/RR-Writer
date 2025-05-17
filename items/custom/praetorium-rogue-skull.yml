@@ -1,0 +1,8 @@
+id: praetorium-rogue-skull
+display:
+  name: '&eRogue Skull'
+  material: SKELETON_SKULL
+type: 'generic' 
+lore:
+- ''
+- '&7Currency of The Praetorium'

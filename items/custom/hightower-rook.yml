@@ -1,0 +1,10 @@
+id: hightower-rook
+display:
+  name: '&7Rook'
+  material: POLISHED_BLACKSTONE_BUTTON
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&eDoes a little dance with the king.'

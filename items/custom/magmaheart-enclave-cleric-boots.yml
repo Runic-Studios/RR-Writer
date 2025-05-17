@@ -1,0 +1,22 @@
+id: magmaheart-enclave-cleric-boots
+display:
+  name: 'Earth Elemental Boots'
+  material: GOLDEN_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 252
+stats:
+  wisdom:
+    min: 16
+    max: 16
+  vitality:
+    min: 8
+    max: 8
+  dexterity:
+    min: 4
+    max: 4
+max-gem-slots: 6
+class: cleric
+item-perks:
+  selfless: 1

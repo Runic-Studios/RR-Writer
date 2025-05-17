@@ -1,0 +1,8 @@
+id: thread
+display:
+  name: '&fThread'
+  material: STRING
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'

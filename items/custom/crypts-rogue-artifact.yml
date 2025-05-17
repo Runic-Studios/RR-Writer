@@ -1,0 +1,15 @@
+ability: test
+class: rogue
+damage:
+  max: 44
+  min: 41
+display:
+  damage: 4
+  material: WOODEN_SWORD
+  name: Nightshade
+id: crypts-rogue-artifact
+level: 35
+rarity: unique
+tags:
+- untradeable
+type: weapon

@@ -1,0 +1,22 @@
+id: praetorium-gilded-warrior-helm
+display:
+  name: Gilded Imperial Warrior Helmet
+  material: IRON_HELMET
+type: armor
+level: 60
+rarity: legendary
+health: 194
+stats:
+  strength:
+    min: 14
+    max: 14
+  vitality:
+    min: 7
+    max: 7
+  wisdom:
+    min: 3
+    max: 3
+max-gem-slots: 6
+class: warrior
+item-perks:
+  aegis: 1

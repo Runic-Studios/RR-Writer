@@ -1,0 +1,14 @@
+id: bossdrop-AngryStump2
+display:
+  name: Solitude
+  material: LEATHER_HELMET
+type: armor
+level: 5
+rarity: unique
+health: 20
+stats:
+  wisdom:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

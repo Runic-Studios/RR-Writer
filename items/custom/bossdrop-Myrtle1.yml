@@ -1,0 +1,14 @@
+id: bossdrop-Myrtle1
+display:
+  name: Divine Protection
+  material: GOLDEN_LEGGINGS
+type: armor
+level: 31
+rarity: unique
+health: 42
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

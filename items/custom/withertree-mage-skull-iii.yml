@@ -1,0 +1,17 @@
+id: withertree-mage-skull-iii
+display:
+  name: Major Guardian Skull
+  material: WITHER_SKELETON_SKULL
+type: armor
+level: 55
+rarity: unique
+health: 25
+stats:
+  strength:
+    min: 14
+    max: 15
+  intelligence:
+    min: 14
+    max: 15
+max-gem-slots: 0
+class: mage

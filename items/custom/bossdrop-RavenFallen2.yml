@@ -1,0 +1,14 @@
+id: bossdrop-RavenFallen2
+display:
+  name: Cursed Crown
+  material: CHAINMAIL_HELMET
+type: armor
+level: 6
+rarity: unique
+health: 15
+stats:
+  wisdom:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: archer

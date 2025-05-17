@@ -1,0 +1,13 @@
+id: iron-bar
+display:
+  name: '&fIron Bar &cI'
+  material: IRON_INGOT
+type: 'generic' 
+lore:
+- ''
+- '&7Quality: &cPoor'
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 80

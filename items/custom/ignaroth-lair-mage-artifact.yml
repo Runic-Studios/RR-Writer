@@ -1,0 +1,14 @@
+class: mage
+damage:
+  max: 68
+  min: 53
+display:
+  damage: 5
+  material: WOODEN_HOE
+  name: Infernum
+id: ignaroth-lair-mage-artifact
+level: 60
+rarity: legendary
+type: weapon
+item-perks:
+  infernal: 1

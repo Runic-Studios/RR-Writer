@@ -1,0 +1,14 @@
+id: bossdrop-GelatinousCube1
+display:
+  name: Merchant Vest
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 8
+rarity: unique
+health: 35
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

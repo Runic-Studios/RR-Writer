@@ -1,0 +1,11 @@
+id: EncodedLetter
+display:
+  name: '&6Encoded Letter'
+  material: PURPLE_DYE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Dear &kRogue&r&7.'
+  - '&7The lizard roams at 1320, 27, 2425.'

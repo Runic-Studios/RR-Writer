@@ -1,0 +1,10 @@
+id: Soulstone
+display:
+  name: '&6Soulstone'
+  material: ENDER_PEARL
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Lost to time...'

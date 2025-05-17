@@ -1,0 +1,10 @@
+id: earth-crystal-fragment
+display:
+  name: '&aEarth Crystal Fragment'
+  material: GREEN_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Traces of earth elements.'
+- ''
+- '&7Crafting Reagent'

@@ -1,0 +1,10 @@
+id: light-crystal
+display:
+  name: '&eLight Crystal'
+  material: WHITE_GLAZED_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Highly concentrated light elements.'
+- ''
+- '&7Crafting Reagent'

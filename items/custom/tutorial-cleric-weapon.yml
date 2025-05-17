@@ -1,0 +1,14 @@
+id: tutorial-cleric-weapon
+display:
+  name: Oaken Mace
+  material: WOODEN_SHOVEL
+  damage: 0
+tags:
+- 'untradeable'
+type: weapon
+level: 0
+rarity: common
+damage:
+  min: 4
+  max: 6
+class: cleric

@@ -1,0 +1,12 @@
+id: noman-mage-helm
+display:
+  name: Dark Mage Hood
+  material: DIAMOND_HELMET
+type: armor
+level: 60
+rarity: unique
+health: 110
+max-gem-slots: 6
+class: mage
+item-perks:
+  mechanization: 1

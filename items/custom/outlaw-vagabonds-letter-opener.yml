@@ -1,0 +1,17 @@
+id: outlaw-vagabonds-letter-opener
+display:
+  name: Vagabond's Letter Opener
+  material: STONE_SWORD
+tags:
+- 'soulbound'
+type: offhand
+level: 60
+rarity: legendary
+health: 0
+stats:
+  strength:
+    min: 9
+    max: 9
+  dexterity:
+    min: 5
+    max: 5

@@ -1,0 +1,22 @@
+id: magmaheart-enclave-cleric-leggings
+display:
+  name: Earth Elemental Platelegs
+  material: GOLDEN_LEGGINGS
+type: armor
+level: 60
+rarity: legendary
+health: 308
+stats:
+  wisdom:
+    min: 20
+    max: 20
+  vitality:
+    min: 10
+    max: 10
+  dexterity:
+    min: 5
+    max: 5
+max-gem-slots: 6
+class: cleric
+item-perks:
+  selfless: 1

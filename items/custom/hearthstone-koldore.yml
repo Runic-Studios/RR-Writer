@@ -1,0 +1,16 @@
+id: hearthstone-koldore
+display:
+  name: '&bHearthstone'
+  material: CLAY_BALL
+type: 'generic'
+tags:
+- soulbound
+lore:
+- ''
+- '&6&lRIGHT CLICK &aKoldore'
+- '&7Return to your hometown!'
+- ''
+- '&7Speak to an &eInnkeeper'
+- '&7to change your home!'
+data:
+  location: koldore

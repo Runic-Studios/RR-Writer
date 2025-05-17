@@ -1,0 +1,16 @@
+id: ignaroth-lair-offhand-vit-+2
+display:
+  name: '&eRunic Shield &6+2'
+  material: SHEARS
+  damage: 237
+tags:
+- 'untradeable'
+type: offhand
+level: 60
+rarity: unique
+stats:
+  vitality:
+    min: 30
+    max: 30
+item-perks:
+  ignaroth-vitality-3: 1

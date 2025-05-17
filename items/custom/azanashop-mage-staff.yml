@@ -1,0 +1,12 @@
+id: azanashop-mage-staff
+display:
+  name: Spruce Staff
+  material: WOODEN_HOE
+type: weapon
+level: 4
+rarity: common
+damage:
+  min: 5
+  max: 6
+max-gem-slots: 0
+class: mage

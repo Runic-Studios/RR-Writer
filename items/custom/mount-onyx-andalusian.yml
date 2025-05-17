@@ -1,0 +1,17 @@
+id: 'mount-onyx-andalusian'
+display:
+  name: '&eOnyx Andalusian'
+  material: SADDLE
+tags:
+- 'untradeable'
+type: generic
+lore:
+  - ''
+  - '&r&7Consume this item to unlock this mount!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-name: 'Onyx Andalusian'
+  mount-type: 'HORSE'
+  horse-color: 'BLACK'
+  mount-speed: '4'

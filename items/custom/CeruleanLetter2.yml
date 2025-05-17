@@ -1,0 +1,19 @@
+id: CeruleanLetter2
+display:
+  name: '&6Cerulean''s Letter #2'
+  material: PURPLE_DYE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7However, ever since Cynthia had passed away, guilt has slowly been piling up.'
+  - '&7I had failed to keep our promise.'
+  - '&7As each day passes I become more unstable.'
+  - '&7I do not wish to hurt those around me,'
+  - '&7nor do I wish to carry this immense pain that builds up day by day.'
+  - '&7That is why I have decided to disappear from this world,' 
+  - '&7so that I can be with Cynthia...'
+  - '&7However, before I go and meet her, I want to make sure she rests in peace.'
+  - '&7That she may never be disturbed.'
+  - '&7...'

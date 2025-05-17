@@ -1,0 +1,11 @@
+id: cut-ruby-ii
+display:
+  name: '&cCut Ruby II'
+  material: REDSTONE
+type: gem
+
+tier: 2
+main-stat: strength
+data:
+  requiredLevel: 10
+  experience: 1750

@@ -1,0 +1,14 @@
+id: 'mount-majestic-unicorn'
+display:
+  name: '&eMajestic Unicorn'
+  material: SADDLE
+tags:
+- 'untradeable'
+type: generic
+lore:
+  - ''
+  - '&r&7Consume this item to unlock this mount!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-id: MAJESTIC_UNICORN

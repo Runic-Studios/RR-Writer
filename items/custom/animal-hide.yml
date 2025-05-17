@@ -1,0 +1,8 @@
+id: animal-hide
+display:
+  name: '&fAnimal Hide'
+  material: LEATHER
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'

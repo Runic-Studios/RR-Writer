@@ -1,0 +1,18 @@
+id: blacksmith-sharpstone-ii
+display:
+  name: '&fSharpening Stone &eII'
+  material: FLINT
+type: 'generic' 
+tags:
+- consumable
+lore:
+- ''
+- '&eFor &f5 &eminutes, your basic attacks'
+- '&edeal &f4 &eadditional damage!'
+triggers:
+  right: 'item-consume'
+data:
+  duration: 300
+  damage-buff: 4
+  requiredLevel: 20
+  experience: 2000

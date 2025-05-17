@@ -1,0 +1,14 @@
+id: bossdrop-Queen1
+display:
+  name: Wayward
+  material: GOLDEN_CHESTPLATE
+type: armor
+level: 37
+rarity: unique
+health: 142
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

@@ -1,0 +1,14 @@
+id: bossdrop-ShreddedOwl2
+display:
+  name: Free Bird
+  material: LEATHER_LEGGINGS
+type: armor
+level: 19
+rarity: unique
+health: 55
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

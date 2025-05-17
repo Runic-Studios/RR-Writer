@@ -1,0 +1,8 @@
+id: tutorial-reagent-leather
+display:
+  name: '&6Mulehide'
+  material: LEATHER
+type: 'generic' 
+lore:
+  - ''
+  - '&7A rough smelly cloth of leather.'

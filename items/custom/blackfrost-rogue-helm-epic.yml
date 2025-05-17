@@ -1,0 +1,21 @@
+id: blackfrost-rogue-helm-epic
+display:
+  name: Soul Reaper Hood
+  material: LEATHER_HELMET
+type: armor
+level: 60
+rarity: epic
+health: 131
+stats:
+  strength:
+    min: 13
+    max: 13
+  intelligence:
+    min: 7
+    max: 7
+  dexterity:
+    min: 3
+    max: 3
+max-gem-slots: 4
+class: rogue
+

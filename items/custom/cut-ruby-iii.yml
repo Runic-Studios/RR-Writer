@@ -1,0 +1,11 @@
+id: cut-ruby-iii
+display:
+  name: '&cCut Ruby III'
+  material: REDSTONE
+type: gem
+
+tier: 3
+main-stat: strength
+data:
+  requiredLevel: 25
+  experience: 4000

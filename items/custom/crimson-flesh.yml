@@ -1,0 +1,10 @@
+id: crimson-flesh
+display:
+  name: '&cCrimson Flesh'
+  material: NETHER_WART_BLOCK
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+  - ''
+  - '&7A fragment of Ignaroth.'

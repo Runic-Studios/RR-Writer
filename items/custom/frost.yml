@@ -1,0 +1,10 @@
+id: frost
+display:
+  name: '&bFrost'
+  material: ICE
+type: 'generic' 
+lore:
+- ''
+- '&eRemnants of the slain lingers emitting a troubled chill.'
+- ''
+- '&7Crafting Reagent'

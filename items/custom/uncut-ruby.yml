@@ -1,0 +1,13 @@
+id: uncut-ruby
+display:
+  name: '&fUncut Ruby &cI'
+  material: REDSTONE_ORE
+type: 'generic' 
+lore:
+- ''
+- '&7Quality: &cPoor'
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 35

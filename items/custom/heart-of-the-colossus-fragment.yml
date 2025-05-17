@@ -1,0 +1,8 @@
+id: heart-of-the-colossus-fragment
+display:
+  name: '&cHeart of The Colossus Fragment'
+  material: CRYING_OBSIDIAN
+type: 'generic' 
+lore:
+  - ''
+  - '&7A fragment of the engine.'

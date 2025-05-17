@@ -1,0 +1,27 @@
+id: blacksmith-offhand-all-iii
+display:
+  name: Tidalwave Commander
+  material: SHEARS
+  damage: 235
+type: offhand
+level: 45
+rarity: crafted
+stats:
+  dexterity:
+    min: 1
+    max: 15
+  intelligence:
+    min: 1
+    max: 15
+  strength:
+    min: 1
+    max: 15
+  vitality:
+    min: 1
+    max: 15
+  wisdom:
+    min: 1
+    max: 15
+data:
+  requiredLevel: 55
+  experience: 7500

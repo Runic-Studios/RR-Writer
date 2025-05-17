@@ -1,0 +1,11 @@
+id: frostfin-tuna
+display:
+  name: '&fFrostfin Tuna'
+  material: BLUE_STAINED_GLASS
+type: 'generic'
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 55
+  experience: 520

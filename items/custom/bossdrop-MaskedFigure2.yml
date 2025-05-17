@@ -1,0 +1,14 @@
+id: bossdrop-MaskedFigure2
+display:
+  name: Desert Dress
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 35
+rarity: unique
+health: 82
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: archer

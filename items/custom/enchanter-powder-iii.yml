@@ -1,0 +1,18 @@
+id: enchanter-powder-iii
+display:
+  name: '&fBlackened Magic Powder'
+  material: GLOWSTONE_DUST
+type: 'generic'
+tags:
+- consumable
+lore:
+- '&eFor 60 seconds, your magicʔ attacks'
+- '&edeal 10 additional damage!'
+triggers:
+  right: 'item-consume'
+data:
+  experience: 2000
+  requiredLevel: 30
+  effect: 10
+  duration: 60
+  

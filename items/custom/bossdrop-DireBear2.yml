@@ -1,0 +1,14 @@
+id: bossdrop-DireBear2
+display:
+  name: Frost Fang Crown
+  material: GOLDEN_HELMET
+type: armor
+level: 22
+rarity: unique
+health: 62
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

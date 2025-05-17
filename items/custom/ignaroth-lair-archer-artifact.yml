@@ -1,0 +1,14 @@
+class: archer
+damage:
+  max: 92
+  min: 76
+display:
+  damage: 5
+  material: BOW
+  name: Scorpion
+id: ignaroth-lair-archer-artifact
+level: 60
+rarity: legendary
+type: weapon
+item-perks:
+  infernal: 1

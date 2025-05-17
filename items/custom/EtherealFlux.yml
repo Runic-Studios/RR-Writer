@@ -1,0 +1,10 @@
+id: EtherealFlux
+display:
+  name: '&6Ethereal Flux'
+  material: LILY_OF_THE_VALLEY
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Bring this to Morrowin!'

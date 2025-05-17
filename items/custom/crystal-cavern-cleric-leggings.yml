@@ -1,0 +1,19 @@
+id: crystal-cavern-cleric-leggings
+display:
+  name: Golden Crystal Leggings
+  material: GOLDEN_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 12
+rarity: common
+health: 29
+stats:
+  wisdom:
+    min: 3
+    max: 4
+  vitality:
+    min: 1
+    max: 2
+max-gem-slots: 0
+class: cleric

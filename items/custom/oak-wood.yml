@@ -1,0 +1,11 @@
+id: oak-wood
+display:
+  name: '&fOak Log'
+  material: OAK_LOG
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 24

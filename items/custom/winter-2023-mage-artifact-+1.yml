@@ -1,0 +1,16 @@
+class: mage
+damage:
+  max: 35
+  min: 35
+display:
+  damage: 12
+  material: WOODEN_HOE
+  name: '&9[&bWinter&9]&b Staff &e2023 &6+1'
+id: winter-2023-mage-artifact-+1
+level: 40
+rarity: unique
+tags:
+- untradeable
+type: weapon
+item-perks:
+  wintersedge2023: 1

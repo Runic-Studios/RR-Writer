@@ -1,0 +1,17 @@
+id: major-crafted-potion-mana
+display:
+  name: '&3Major Crafted Potion of Mana'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &3250✸ &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 250
+  color: aqua
+  requiredLevel: 40
+  experience: 6000

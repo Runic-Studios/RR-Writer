@@ -1,0 +1,15 @@
+id: greater-potion-healing
+display:
+  name: '&cGreater Potion of Healing'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &c225<3 &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 225
+  color: red

@@ -1,0 +1,10 @@
+id: hightower-knight
+display:
+  name: '&7Knight'
+  material: POLISHED_BLACKSTONE_BUTTON
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&eHippity Hoppity.'

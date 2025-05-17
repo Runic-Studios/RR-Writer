@@ -1,0 +1,11 @@
+id: spruce-wood
+display:
+  name: '&fSpruce Log'
+  material: SPRUCE_LOG
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 10
+  experience: 42

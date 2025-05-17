@@ -1,0 +1,12 @@
+id: noman-mage-chest
+display:
+  name: Heart of Noman
+  material: DIAMOND_CHESTPLATE
+type: armor
+level: 60
+rarity: unique
+health: 175
+max-gem-slots: 6
+class: mage
+item-perks:
+  mechanization: 2

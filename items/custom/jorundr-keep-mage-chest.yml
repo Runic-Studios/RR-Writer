@@ -1,0 +1,19 @@
+id: jorundr-keep-mage-chest
+display:
+  name: Thunderous Robes
+  material: DIAMOND_CHESTPLATE
+tags:
+- 'untradeable'
+type: armor
+level: 15
+rarity: uncommon
+health: 39
+stats:
+  intelligence:
+    min: 5
+    max: 6
+  wisdom:
+    min: 3
+    max: 4
+max-gem-slots: 1
+class: mage

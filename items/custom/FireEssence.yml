@@ -1,0 +1,10 @@
+id: FireEssence
+display:
+  name: '&6Essence of Fire'
+  material: MAGMA_CREAM
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7An ingredient of the Eternal Flame!'

@@ -1,0 +1,13 @@
+id: LumiteJournal
+display:
+  name: '&8Lumite Journal'
+  material: BOOK
+type: 'generic'
+lore:
+  - ''
+  - '&7There are a few of us who remain sane.'
+  - '&7Fighting against the darkness as it attempts'
+  - '&7to consume what little we have left.'
+  - '&7The voices in our heads, each night it screams louder.'
+  - '&7It thirsts for blood. It wants to kill.'
+  - '&7I can''t resist it much longer.'

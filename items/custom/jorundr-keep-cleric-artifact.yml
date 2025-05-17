@@ -1,0 +1,14 @@
+class: cleric
+damage:
+  max: 18
+  min: 16
+display:
+  damage: 11
+  material: WOODEN_SHOVEL
+  name: Runeforged Crusher
+id: jorundr-keep-cleric-artifact
+level: 15
+rarity: unique
+tags:
+- untradeable
+type: weapon

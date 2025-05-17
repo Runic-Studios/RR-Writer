@@ -1,0 +1,14 @@
+id: tutorial-mage-weapon
+display:
+  name: Oaken Branch
+  material: WOODEN_HOE
+  damage: 0
+tags:
+- 'untradeable'
+type: weapon
+level: 0
+rarity: common
+damage:
+  min: 4
+  max: 5
+class: mage

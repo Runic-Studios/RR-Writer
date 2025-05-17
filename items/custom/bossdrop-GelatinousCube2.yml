@@ -1,0 +1,14 @@
+id: bossdrop-GelatinousCube2
+display:
+  name: Alfred's Femur
+  material: CHAINMAIL_LEGGINGS
+type: armor
+level: 9
+rarity: unique
+health: 32
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: archer

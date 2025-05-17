@@ -1,0 +1,11 @@
+id: boswellia
+display:
+  name: '&aBoswellia'
+  material: FERN
+type: 'generic' 
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 40
+  experience: 202

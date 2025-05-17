@@ -1,0 +1,19 @@
+id: frozen-fortress-archer-leggings
+display:
+  name: Wintry Lord Leggings
+  material: CHAINMAIL_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 60
+rarity: rare
+health: 215
+stats:
+  dexterity:
+    min: 8
+    max: 9
+  vitality:
+    min: 5
+    max: 6
+max-gem-slots: 2
+class: archer

@@ -1,0 +1,21 @@
+id: blackfrost-cleric-boots-epic
+display:
+  name: 'Spirited Boots'
+  material: GOLDEN_BOOTS
+type: armor
+level: 60
+rarity: epic
+health: 208
+stats:
+  wisdom:
+    min: 13
+    max: 13
+  vitality:
+    min: 7
+    max: 7
+  dexterity:
+    min: 3
+    max: 3
+max-gem-slots: 4
+class: cleric
+

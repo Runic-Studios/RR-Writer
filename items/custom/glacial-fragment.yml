@@ -1,0 +1,10 @@
+id: glacial-fragment
+display:
+  name: '&bGlacial Fragment'
+  material: DIAMOND
+type: 'generic' 
+lore:
+- ''
+- '&EThe fragment of the Glacial Titan.'
+- ''
+- '&7Crafting Reagent'

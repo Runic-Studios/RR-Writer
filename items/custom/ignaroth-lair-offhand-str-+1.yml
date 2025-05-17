@@ -1,0 +1,15 @@
+id: ignaroth-lair-offhand-str-+1
+display:
+  name: '&eForsaken Dagger &6+1'
+  material: STONE_SWORD
+tags:
+- 'untradeable'
+type: offhand
+level: 60
+rarity: unique
+stats:
+  strength:
+    min: 30
+    max: 30
+item-perks:
+  ignaroth-strength-2: 1

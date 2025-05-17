@@ -1,0 +1,21 @@
+id: blackfrost-warrior-boots-epic
+display:
+  name: 'Cursed Keeper Boots'
+  material: IRON_BOOTS
+type: armor
+level: 60
+rarity: epic
+health: 299
+stats:
+  strength:
+    min: 13
+    max: 13
+  wisdom:
+    min: 7
+    max: 7
+  vitality:
+    min: 3
+    max: 3
+max-gem-slots: 4
+class: warrior
+

@@ -1,0 +1,25 @@
+id: admin-test-all
+display:
+  name: Stat test
+  material: LEATHER_HELMET
+tags:
+- 'untradeable'
+type: armor
+level: 60
+rarity: rare
+health: 1000000
+stats:
+  dexterity:
+    min: 10000
+    max: 10000
+  strength:
+    min: 10000
+    max: 10000
+  vitality:
+    min: 10000
+    max: 10000
+  intelligence:
+    min: 10000
+    max: 10000
+max-gem-slots: 0
+class: rogue

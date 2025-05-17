@@ -1,0 +1,11 @@
+id: MurkwoodBook1
+display:
+  name: '&6Lost Knight''s Passage'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7"No matter what happens, we''ll all be together"'
+  - '&7"My heart and soul will remain here."'

@@ -1,0 +1,18 @@
+id: FallenBook1
+display:
+  name: '&6Dawnshire Journal #1'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7"And so we went,"'
+  - '&7"the Dawnshire soldiers were holding the line, as mighty as ever."'
+  - '&7"But so were we, because we all knew what we were fighting for."' 
+  - '&7"There was no going back."'
+  - '&7"When people have a proper goal, that is when they are strong,"'
+  - '&7if many people think the same, that''s when they become unstoppable."'
+  - '&7"But, power eventually catches up to speed, and that''s what I fear will happen."'
+  - '&7"I wish we find a speedy end to this war."'
+  - '&7"Signed, &kgibber &kgibberish&r&6"'

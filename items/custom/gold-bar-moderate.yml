@@ -1,0 +1,13 @@
+id: gold-bar-moderate
+display:
+  name: '&eGold Bar &aII'
+  material: GOLD_INGOT
+type: 'generic' 
+lore:
+- ''
+- '&7Quality: &eModerate'
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 160

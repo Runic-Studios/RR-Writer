@@ -1,0 +1,22 @@
+id: ignaroth-lair-rogue-boots
+display:
+  name: Kindled Boots
+  material: LEATHER_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 270
+stats:
+  strength:
+    min: 19
+    max: 19
+  intelligence:
+    min: 10
+    max: 10
+  dexterity:
+    min: 5
+    max: 5
+max-gem-slots: 6
+class: rogue
+item-perks:
+  undying: 1

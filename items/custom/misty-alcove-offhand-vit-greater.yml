@@ -1,0 +1,13 @@
+id: misty-alcove-offhand-vit-greater
+display:
+  name: Septic Safeguard
+  material: SHEARS
+  damage: 237
+type: offhand
+level: 12
+rarity: uncommon
+health: 0
+stats:
+  vitality:
+    min: 8
+    max: 8

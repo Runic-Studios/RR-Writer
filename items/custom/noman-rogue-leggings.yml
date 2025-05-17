@@ -1,0 +1,12 @@
+id: noman-rogue-leggings
+display:
+  name: Primordial Leggings
+  material: LEATHER_LEGGINGS
+type: armor
+level: 60
+rarity: unique
+health: 180
+max-gem-slots: 6
+class: rogue
+item-perks:
+  mechanization: 1

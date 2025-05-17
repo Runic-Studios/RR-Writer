@@ -1,0 +1,22 @@
+id: magmaheart-enclave-cleric-helm
+display:
+  name: Earth Elemental Crown
+  material: GOLDEN_HELMET
+type: armor
+level: 60
+rarity: legendary
+health: 252
+stats:
+  wisdom:
+    min: 16
+    max: 16
+  vitality:
+    min: 8
+    max: 8
+  dexterity:
+    min: 4
+    max: 4
+max-gem-slots: 6
+class: cleric
+item-perks:
+  selfless: 1

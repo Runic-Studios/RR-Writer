@@ -1,0 +1,15 @@
+id: RemembranceNote3
+display:
+  name: '&6Ragged Note #3'
+  material: GRAY_DYE
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7Our little bubble was happy enough, before that discovery.'
+  - '&7Why and how in the world did we ever find that?'
+  - '&7That''s the reason I wanted to leave, and so I did.'
+  - '&7Most, if not everyone, shared the same sentiment.'
+  - '&7I was a bit happy because of that,'
+  - '&7yet I knew the gruesome times that were to come.'

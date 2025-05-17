@@ -1,0 +1,19 @@
+id: crypts-mage-helm
+display:
+  name: The Vizier's Hood
+  material: DIAMOND_HELMET
+tags:
+- 'untradeable'
+type: armor
+level: 35
+rarity: rare
+health: 56
+stats:
+  intelligence:
+    min: 7
+    max: 8
+  dexterity:
+    min: 4
+    max: 5
+max-gem-slots: 2
+class: mage

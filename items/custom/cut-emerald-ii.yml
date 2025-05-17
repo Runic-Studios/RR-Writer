@@ -1,0 +1,11 @@
+id: cut-emerald-ii
+display:
+  name: '&aCut Emerald II'
+  material: EMERALD
+type: gem
+
+tier: 2
+main-stat: wisdom
+data:
+  requiredLevel: 10
+  experience: 1750

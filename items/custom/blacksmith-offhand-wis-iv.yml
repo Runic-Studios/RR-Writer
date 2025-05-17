@@ -1,0 +1,14 @@
+id: blacksmith-offhand-wis-iv
+display:
+  name: Viridian Flutter
+  material: STONE_SHOVEL
+type: offhand
+level: 40
+rarity: crafted
+stats:
+  wisdom:
+    min: 24
+    max: 25
+data:
+  requiredLevel: 30
+  experience: 12500

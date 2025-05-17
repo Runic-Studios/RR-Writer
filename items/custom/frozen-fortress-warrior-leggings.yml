@@ -1,0 +1,19 @@
+id: frozen-fortress-warrior-leggings
+display:
+  name: Borealis' Wintry Leggings
+  material: IRON_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 60
+rarity: rare
+health: 282
+stats:
+  vitality:
+    min: 8
+    max: 9
+  wisdom:
+    min: 5
+    max: 6
+max-gem-slots: 2
+class: warrior

@@ -1,0 +1,17 @@
+id: withertree-rogue-skull-ii
+display:
+  name: Minor Guardian Skull
+  material: WITHER_SKELETON_SKULL
+type: armor
+level: 55
+rarity: epic
+health: 25
+stats:
+  strength:
+    min: 11
+    max: 12
+  intelligence:
+    min: 11
+    max: 12
+max-gem-slots: 0
+class: rogue

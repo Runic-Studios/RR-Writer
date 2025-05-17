@@ -1,0 +1,20 @@
+id: praetorium-mage-helm
+display:
+  name: 'Imperial Mage Hood'
+  material: DIAMOND_HELMET
+type: armor
+level: 60
+rarity: epic
+health: 119
+stats:
+  intelligence:
+    min: 8
+    max: 8
+  dexterity:
+    min: 6
+    max: 6
+  wisdom:
+    min: 2
+    max: 2
+max-gem-slots: 3
+class: mage

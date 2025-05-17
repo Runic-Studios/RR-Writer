@@ -1,0 +1,10 @@
+id: InkedRing
+display:
+  name: '&6Inked Ring'
+  material: DARK_OAK_BUTTON
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Is this even valuable?'

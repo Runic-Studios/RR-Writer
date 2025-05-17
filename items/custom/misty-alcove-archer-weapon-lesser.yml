@@ -1,0 +1,12 @@
+id: misty-alcove-archer-weapon-lesser
+display:
+  name: 'Frigid Bow'
+  material: BOW
+#  damage: 7
+type: weapon
+level: 12
+rarity: common
+damage:
+  min: 17
+  max: 18
+class: archer

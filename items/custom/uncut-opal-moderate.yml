@@ -1,0 +1,13 @@
+id: uncut-opal-moderate
+display:
+  name: '&fUncut Opal &eII'
+  material: NETHER_QUARTZ_ORE
+type: 'generic' 
+lore:
+- ''
+- '&7Quality: &eModerate'
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 20
+  experience: 142

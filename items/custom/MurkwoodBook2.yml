@@ -1,0 +1,12 @@
+id: MurkwoodBook2
+display:
+  name: '&6Lost Passage'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7"People follow my voice;"' 
+  - '&7"but they also follow their duties."'
+  - '&7"They follow their natural instinct that tells them..."'

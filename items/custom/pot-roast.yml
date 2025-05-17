@@ -1,0 +1,17 @@
+id: pot-roast
+display:
+  name: '&ePot Roast'
+  material: MUSHROOM_STEW
+type: 'generic'
+tags:
+- consumable
+lore:
+- ''
+- '&eRestores &c150❤ &eover 10s'
+triggers:
+  right: 'item-consume'
+data:
+  duration: 10
+  health-amount: 150
+  requiredLevel: 20
+  experience: 300

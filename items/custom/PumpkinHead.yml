@@ -1,0 +1,10 @@
+id: PumpkinHead
+display:
+  name: '&6Pumpkin'
+  material: PUMPKIN
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7This might be useful in October'

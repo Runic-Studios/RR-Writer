@@ -1,0 +1,18 @@
+id: blackfrost-archer-boots-epic
+display:
+  name: 'Phantom Stalker Boots'
+  material: CHAINMAIL_BOOTS
+type: armor
+level: 60
+rarity: epic
+health: 171
+stats:
+  strength:
+    min: 16
+    max: 16
+  dexterity:
+    min: 5
+    max: 7
+max-gem-slots: 4
+class: archer
+

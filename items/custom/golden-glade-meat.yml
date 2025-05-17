@@ -1,0 +1,8 @@
+id: golden-glade-meat
+display:
+  name: '&fRaw Glade Meat'
+  material: BEEF
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'

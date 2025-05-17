@@ -1,0 +1,22 @@
+id: ignaroth-lair-mage-boots
+display:
+  name: Infernal Boots
+  material: DIAMOND_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 234
+stats:
+  intelligence:
+    min: 19
+    max: 19
+  dexterity:
+    min: 10
+    max: 10
+  wisdom:
+    min: 5
+    max: 5
+max-gem-slots: 6
+class: mage
+item-perks:
+  undying: 1

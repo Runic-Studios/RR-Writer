@@ -1,0 +1,13 @@
+id: AbigailLetter
+display:
+  name: '&6Abigail''s Letter'
+  material: PURPLE_DYE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Greetings, Richard.'
+  - '&7With this letter I am requesting the potion that I was looking for.'
+  - '&7You know what I am talking about, give the potion to the person who gives you this letter.'
+  - '&7Abigail.'

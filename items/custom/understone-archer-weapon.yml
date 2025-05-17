@@ -1,0 +1,12 @@
+id: understone-archer-weapon
+display:
+  name: Wooden Shortbow
+  material: BOW
+  damage: 0
+type: weapon
+level: 49
+rarity: epic
+damage:
+  min: 58
+  max: 58
+class: archer

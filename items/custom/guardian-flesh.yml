@@ -1,0 +1,10 @@
+id: guardian-flesh
+display:
+  name: '&aGuardian Flesh'
+  material: ROTTEN_FLESH
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+- ''
+- '&7Was expecting something less... fleshy...'

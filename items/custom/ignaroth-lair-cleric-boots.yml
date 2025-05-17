@@ -1,0 +1,22 @@
+id: ignaroth-lair-cleric-boots
+display:
+  name: Scorching Boots
+  material: GOLDEN_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 365
+stats:
+  wisdom:
+    min: 19
+    max: 19
+  vitality:
+    min: 10
+    max: 10
+  dexterity:
+    min: 5
+    max: 5
+max-gem-slots: 6
+class: cleric
+item-perks:
+  undying: 1

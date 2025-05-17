@@ -1,0 +1,19 @@
+id: crypts-archer-helm
+display:
+  name: Ornamental Warden Helmet
+  material: CHAINMAIL_HELMET
+tags:
+- 'untradeable'
+type: armor
+level: 35
+rarity: rare
+health: 65
+stats:
+  dexterity:
+    min: 7
+    max: 8
+  strength:
+    min: 4
+    max: 5
+max-gem-slots: 2
+class: archer

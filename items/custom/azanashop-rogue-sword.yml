@@ -1,0 +1,12 @@
+id: azanashop-rogue-sword
+display:
+  name: Spruce Wood Sword
+  material: WOODEN_SWORD
+type: weapon
+level: 4
+rarity: common
+damage:
+  min: 6
+  max: 8
+max-gem-slots: 0
+class: rogue

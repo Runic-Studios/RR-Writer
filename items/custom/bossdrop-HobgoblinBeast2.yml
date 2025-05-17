@@ -1,0 +1,14 @@
+id: bossdrop-HobgoblinBeast2
+display:
+  name: Back Two Stubs
+  material: DIAMOND_LEGGINGS
+type: armor
+level: 51
+rarity: unique
+health: 153
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

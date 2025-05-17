@@ -1,0 +1,15 @@
+ability: test
+class: cleric
+damage:
+  max: 37
+  min: 34
+display:
+  damage: 4
+  material: WOODEN_SHOVEL
+  name: Gilded Impaler
+id: crypts-cleric-artifact
+level: 35
+rarity: unique
+tags:
+- untradeable
+type: weapon

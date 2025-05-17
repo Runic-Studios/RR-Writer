@@ -1,0 +1,8 @@
+id: tutorial-reagent-metal
+display:
+  name: '&fScrap of Metal'
+  material: FLINT
+type: 'generic' 
+lore:
+  - ''
+  - '&7Do you feel no shame?'

@@ -1,0 +1,22 @@
+id: praetorium-gilded-mage-boots
+display:
+  name: Gilded Imperial Mage Boots
+  material: DIAMOND_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 144
+stats:
+  intelligence:
+    min: 14
+    max: 14
+  dexterity:
+    min: 7
+    max: 7
+  wisdom:
+    min: 3
+    max: 3
+max-gem-slots: 6
+class: mage
+item-perks:
+  aegis: 1

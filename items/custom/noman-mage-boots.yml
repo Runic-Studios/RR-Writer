@@ -1,0 +1,12 @@
+id: noman-mage-boots
+display:
+  name: Dark Mage Boots
+  material: DIAMOND_BOOTS
+type: armor
+level: 60
+rarity: unique
+health: 110
+max-gem-slots: 6
+class: mage
+item-perks:
+  mechanization: 1

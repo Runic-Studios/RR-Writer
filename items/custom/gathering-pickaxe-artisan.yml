@@ -1,0 +1,23 @@
+id: 'gathering-pickaxe-artisan'
+display:
+  name: '&6Artisan Mining Pickaxe'
+  material: IRON_PICKAXE
+  damage: 5
+type: 'dynamic' 
+lore:
+  - '&7Req Mining &f60'
+  - '' 
+  - '&2Gathering Luck IV: &7You have a'
+  - '&f50% &7chance to receive'
+  - '&f2-4x &7more resources!'
+  - ''
+  - '&6Legendary'
+data:
+  dynamicFieldInitialValue: 1000
+  dynamicLore: '&7/1000'
+  maxDurability: 1000
+  requiredLevelForUse: 60
+  bonusLootCeiling: 3
+  bonusLootChance: .5
+  requiredLevel: 60
+  experience: 20000

@@ -1,0 +1,25 @@
+# For Boss drop testing purposes
+id: admin-test-warrior
+display:
+  name: Discord Admin
+  material: WOODEN_AXE
+tags:
+- 'untradeable'
+type: weapon
+level: 52
+rarity: unique
+damage:
+  min: 10000
+  max: 10000
+#stats:
+#  strength:
+#    min: 1
+#    max: 5
+#  intelligence:
+#    min: 1
+#    max: 1
+#  wisdom:
+#    min: 1
+#    max: 1
+max-gem-slots: 0
+class: warrior

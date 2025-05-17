@@ -1,0 +1,11 @@
+id: prawn
+display:
+  name: '&fPrawn'
+  material: MAGENTA_STAINED_GLASS
+type: 'generic'
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 8
+  experience: 75

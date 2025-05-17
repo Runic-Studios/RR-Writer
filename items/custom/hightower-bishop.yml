@@ -1,0 +1,10 @@
+id: hightower-bishop
+display:
+  name: '&7Bishop'
+  material: POLISHED_BLACKSTONE_BUTTON
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&eSeeks unsuspecting pieces from across the board.'

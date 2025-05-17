@@ -1,0 +1,20 @@
+id: praetorium-mage-leggings
+display:
+  name: 'Imperial Mage Trousers'
+  material: DIAMOND_LEGGINGS
+type: armor
+level: 60
+rarity: epic
+health: 164
+stats:
+  intelligence:
+    min: 14
+    max: 14
+  dexterity:
+    min: 7
+    max: 7
+  wisdom:
+    min: 3
+    max: 3
+max-gem-slots: 3
+class: mage

@@ -1,0 +1,16 @@
+class: cleric
+damage:
+  max: 22
+  min: 22
+display:
+  damage: 12
+  material: WOODEN_SHOVEL
+  name: '&9[&bWinter&9]&b Mace &e2023'
+id: winter-2023-cleric-artifact-+0
+level: 20
+rarity: unique
+tags:
+- untradeable
+type: weapon
+item-perks:
+  wintersedge2023: 1

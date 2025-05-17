@@ -1,0 +1,10 @@
+id: HoneyApple
+display:
+  name: '&eSweet Apple'
+  material: GOLDEN_APPLE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7An apple drenched in sweet nectar.'

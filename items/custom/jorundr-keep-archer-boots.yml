@@ -1,0 +1,19 @@
+id: jorundr-keep-archer-boots
+display:
+  name: Agile Stormguard Boots
+  material: CHAINMAIL_BOOTS
+tags:
+- 'untradeable'
+type: armor
+level: 15
+rarity: uncommon
+health: 27
+stats:
+  dexterity:
+    min: 5
+    max: 6
+  wisdom:
+    min: 3
+    max: 4
+max-gem-slots: 1
+class: archer

@@ -1,0 +1,21 @@
+id: 'chestnut-mare'
+display:
+  name: '&eChestnut Mare'
+  material: SADDLE
+tags:
+- 'soulbound'
+type: 'generic' 
+lore:
+  - ''
+  - '&6Tier: &7Normal'
+  - '&6Speed: +&740%'
+  - ''
+  - '&r&7&oA loyal and valiant steed!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-name: 'Chestnut Mare'
+  mount-type: 'HORSE'
+  horse-color: 'CHESTNUT'
+  mount-speed: '0.4'
+#  mount-particle: 'SOUL'

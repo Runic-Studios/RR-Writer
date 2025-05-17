@@ -1,0 +1,10 @@
+id: guardian-egg
+display:
+  name: '&aCrystal Egg'
+  material: TURTLE_EGG
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7How''d it get up here..?'

@@ -1,0 +1,25 @@
+# For Boss drop testing purposes
+id: admin-test
+display:
+  name: Admin
+  material: WOODEN_SWORD
+tags:
+- 'untradeable'
+type: weapon
+level: 52
+rarity: unique
+damage:
+  min: 1000000
+  max: 1000000
+#stats:
+#  strength:
+#    min: 1
+#    max: 5
+#  intelligence:
+#    min: 1
+#    max: 1
+#  wisdom:
+#    min: 1
+#    max: 1
+max-gem-slots: 0
+class: rogue

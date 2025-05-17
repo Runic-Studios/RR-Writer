@@ -1,0 +1,17 @@
+id: outlaw-fallen-soldiers-shield
+display:
+  name: Fallen Soldier's Shield
+  material: SHEARS
+  damage: 237
+tags:
+- 'soulbound'
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  vitality:
+    min: 15
+    max: 15
+  dexterity:
+    min: 5
+    max: 5

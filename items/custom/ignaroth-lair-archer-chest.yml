@@ -1,0 +1,19 @@
+id: ignaroth-lair-archer-chest
+display:
+  name: Firestorm Chestplate
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 60
+rarity: legendary
+health: 391
+stats:
+  intelligence:
+    min: 28
+    max: 28
+  dexterity:
+    min: 14
+    max: 14
+max-gem-slots: 6
+class: archer
+item-perks:
+  undying: 1

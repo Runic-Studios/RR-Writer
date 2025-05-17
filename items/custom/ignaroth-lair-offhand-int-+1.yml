@@ -1,0 +1,15 @@
+id: ignaroth-lair-offhand-int-+1
+display:
+  name: '&eEthereal Wand &6+1'
+  material: STONE_HOE
+tags:
+- 'untradeable'
+type: offhand
+level: 60
+rarity: unique
+stats:
+  intelligence:
+    min: 30
+    max: 30
+item-perks:
+  ignaroth-intelligence-2: 1

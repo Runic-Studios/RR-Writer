@@ -1,0 +1,10 @@
+id: sugar_cane
+display:
+  name: '&aSugar Cane'
+  material: SUGAR_CANE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Sweet succulent bundle of green.'

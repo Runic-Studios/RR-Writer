@@ -1,0 +1,12 @@
+id: noman-rogue-chest
+display:
+  name: Heart of Noman
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 60
+rarity: unique
+health: 205
+max-gem-slots: 6
+class: rogue
+item-perks:
+  mechanization: 2

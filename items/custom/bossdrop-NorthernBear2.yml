@@ -1,0 +1,14 @@
+id: bossdrop-NorthernBear2
+display:
+  name: Polar Paws
+  material: GOLDEN_BOOTS
+type: armor
+level: 14
+rarity: unique
+health: 40
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

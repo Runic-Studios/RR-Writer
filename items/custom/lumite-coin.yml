@@ -1,0 +1,8 @@
+id: lumite-coin
+display:
+  name: '&dLumite Coin'
+  material: NETHERITE_SCRAP
+type: 'generic'
+lore:
+- ''
+- '&7Currency of Misty Alcove'

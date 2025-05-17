@@ -1,0 +1,10 @@
+id: RawChicken
+display:
+  name: '&6Raw Chicken'
+  material: CHICKEN
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7A great way to get salmonella.'

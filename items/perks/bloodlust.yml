@@ -1,0 +1,9 @@
+max-stacks: 4
+extra-damage-per-missing-health-percent: 0.05 #ratio of damage increase for each of the below intervals
+per-missing-health-percent: 0.1 #ratio
+extra-damage-low-hp: 6.0
+low-hp-cutoff: 0.25 #ratio
+name: '&b&lBloodlust'
+lore:
+- '&7&oIncrease weapon damage by &r&e<bloodlust-extra-damage-per-missing-health-percent> &r&7&ofor every 10% missing health'
+- '&7&oIncrease weapon damage by an additional &r&e<bloodlust-extra-damage-low-hp> &r&7&owhile below 25% health'

@@ -1,0 +1,10 @@
+id: ink-sac
+display:
+  name: '&7Ink Sac'
+  material: INK_SAC
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7It reeks of squid.'

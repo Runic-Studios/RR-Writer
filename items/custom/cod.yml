@@ -1,0 +1,11 @@
+id: cod
+display:
+  name: '&fCod'
+  material: COD
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 45

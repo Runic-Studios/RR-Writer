@@ -1,0 +1,11 @@
+id: murkwood-eel
+display:
+  name: '&fMurkwood Eel'
+  material: GREEN_STAINED_GLASS
+type: 'generic'
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 25
+  experience: 232

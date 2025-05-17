@@ -1,0 +1,11 @@
+id: vampire-squid
+display:
+  name: '&fVampire Squid'
+  material: RED_STAINED_GLASS
+type: 'generic'
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 50
+  experience: 485

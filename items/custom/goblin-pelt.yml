@@ -1,0 +1,10 @@
+id: goblin-pelt
+display:
+  name: '&6Goblin Pelt'
+  material: RABBIT_FOOT
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Reeks of goblin filth.'

@@ -1,0 +1,10 @@
+id: earth-crystal
+display:
+  name: '&aEarth Crystal'
+  material: GREEN_GLAZED_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Highly concentrated earth elements.'
+- ''
+- '&7Crafting Reagent'

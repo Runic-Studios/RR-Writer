@@ -1,0 +1,10 @@
+id: bandit-apple
+display:
+  name: '&eStolen Fruit'
+  material: APPLE
+tags:
+- consumable
+type: 'generic' 
+lore:
+  - ''
+  - '&7It''s gone soft.'

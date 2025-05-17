@@ -1,0 +1,11 @@
+id: bottle
+display:
+  name: '&fGlass Bottle'
+  material: GLASS_BOTTLE
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 80

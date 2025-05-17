@@ -1,0 +1,14 @@
+id: bossdrop-UndeadViking1
+display:
+  name: Sunken Sailor
+  material: GOLDEN_BOOTS
+type: armor
+level: 11
+rarity: unique
+health: 30
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

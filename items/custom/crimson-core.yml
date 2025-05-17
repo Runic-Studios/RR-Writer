@@ -1,0 +1,10 @@
+id: crimson-core
+display:
+  name: '&cCrimson Core'
+  material: REDSTONE
+type: 'generic' 
+lore:
+- ''
+- '&EThe core of the Crimson Colossus.'
+- ''
+- '&7Crafting Reagent'

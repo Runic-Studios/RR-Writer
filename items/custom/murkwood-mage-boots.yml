@@ -1,0 +1,17 @@
+id: murkwood-mage-boots
+display:
+  name: Siltweave Boots
+  material: DIAMOND_BOOTS
+type: armor
+level: 25
+rarity: unique
+health: 44
+stats:
+  intelligence:
+    min: 4
+    max: 7
+  wisdom:
+    min: 3
+    max: 7
+max-gem-slots: 2
+class: mage

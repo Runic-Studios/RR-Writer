@@ -1,0 +1,8 @@
+id: heart-of-the-colossus
+display:
+  name: '&cHeart of The Colossus'
+  material: RESPAWN_ANCHOR
+type: 'generic' 
+lore:
+  - ''
+  - '&7The engine of the Colossus beats fiercely.'

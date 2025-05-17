@@ -1,0 +1,14 @@
+id: blacksmith-offhand-int-vii
+display:
+  name: '&dCrystallized &6Dark Sigil'
+  material: STONE_HOE
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  intelligence:
+    min: 50
+    max: 52
+data:
+  requiredLevel: 60
+  experience: 80000

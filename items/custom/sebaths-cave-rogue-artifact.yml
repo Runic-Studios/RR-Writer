@@ -1,0 +1,14 @@
+class: rogue
+damage:
+  max: 12
+  min: 11
+display:
+  damage: 11
+  material: WOODEN_SWORD
+  name: Scarlet Longsword
+id: sebaths-cave-rogue-artifact
+level: 5
+rarity: unique
+tags:
+- untradeable
+type: weapon

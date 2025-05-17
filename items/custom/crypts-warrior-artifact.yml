@@ -1,0 +1,15 @@
+ability: test
+class: warrior
+damage:
+  max: 37
+  min: 34
+display:
+  damage: 4
+  material: WOODEN_AXE
+  name: Sandfury
+id: crypts-warrior-artifact
+level: 35
+rarity: unique
+tags:
+- untradeable
+type: weapon

@@ -1,0 +1,22 @@
+id: ignaroth-lair-rogue-chest
+display:
+  name: Kindled Vest
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 60
+rarity: legendary
+health: 330
+stats:
+  intelligence:
+    min: 24
+    max: 24
+  strength:
+    min: 12
+    max: 12
+  dexterity:
+    min: 6
+    max: 6
+max-gem-slots: 6
+class: rogue
+item-perks:
+  undying: 1

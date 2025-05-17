@@ -1,0 +1,17 @@
+id: murkwood-mage-leggings
+display:
+  name: Siltweave Trousers
+  material: DIAMOND_LEGGINGS
+type: armor
+level: 25
+rarity: unique
+health: 61
+stats:
+  intelligence:
+    min: 5
+    max: 8
+  vitality:
+    min: 4
+    max: 7
+max-gem-slots: 2
+class: mage

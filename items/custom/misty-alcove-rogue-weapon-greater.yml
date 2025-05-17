@@ -1,0 +1,12 @@
+id: misty-alcove-rogue-weapon-greater
+display:
+  name: 'Shrouded Blade'
+  material: WOODEN_SWORD
+  damage: 7
+type: weapon
+level: 12
+rarity: uncommon
+damage:
+  min: 21
+  max: 23
+class: rogue

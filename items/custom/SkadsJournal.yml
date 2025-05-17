@@ -1,0 +1,10 @@
+id: SkadsJournal
+display:
+  name: '&6Skad''s Journal'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The mission report of Skad.'

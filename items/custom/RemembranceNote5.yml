@@ -1,0 +1,14 @@
+id: RemembranceNote5
+display:
+  name: '&6Ragged Note #5'
+  material: GRAY_DYE
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7As the moons went by,'
+  - '&7the few around me grew to be more annoyed, easily irritated,'
+  - '&7and I noticed the source of this unrest, was everyone else.'
+  - '&7For the first time, I didn''t feel the same I felt before.'
+  - '&7That selfless attitude of mine...'

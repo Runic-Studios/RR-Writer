@@ -1,0 +1,17 @@
+id: murkwood-rogue-helm
+display:
+  name: Marshstalker Hood
+  material: LEATHER_HELMET
+type: armor
+level: 25
+rarity: unique
+health: 53
+stats:
+  strength:
+    min: 4
+    max: 7
+  intelligence:
+    min: 3
+    max: 6
+max-gem-slots: 2
+class: rogue

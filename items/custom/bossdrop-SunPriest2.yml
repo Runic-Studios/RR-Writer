@@ -1,0 +1,14 @@
+id: bossdrop-SunPriest2
+display:
+  name: Vitamin D
+  material: DIAMOND_BOOTS
+type: armor
+level: 39
+rarity: unique
+health: 68
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

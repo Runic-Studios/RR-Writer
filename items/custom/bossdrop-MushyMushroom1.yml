@@ -1,0 +1,14 @@
+id: bossdrop-MushyMushroom1
+display:
+  name: Mushroom Cap
+  material: GOLDEN_HELMET
+type: armor
+level: 6
+rarity: unique
+health: 25
+stats:
+  wisdom:
+    min: 6
+    max: 8
+max-gem-slots: 1
+class: cleric

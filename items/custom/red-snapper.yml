@@ -1,0 +1,11 @@
+id: red-snapper
+display:
+  name: '&fRed Snapper'
+  material: ORANGE_STAINED_GLASS
+type: 'generic'
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 10
+  experience: 100

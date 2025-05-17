@@ -1,0 +1,10 @@
+id: RottingBone
+display:
+  name: '&6Rotting Bone'
+  material: BONE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7An ingredient of the Eternal Flame!'

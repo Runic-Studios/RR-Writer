@@ -1,0 +1,19 @@
+id: sunken-library-mage-leggings
+display:
+  name: Master Librarian Leggings
+  material: DIAMOND_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 25
+rarity: uncommon
+health: 54
+stats:
+  intelligence:
+    min: 6
+    max: 7
+  wisdom:
+    min: 4
+    max: 5
+max-gem-slots: 1
+class: mage

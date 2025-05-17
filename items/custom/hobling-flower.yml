@@ -1,0 +1,10 @@
+id: blue-orchid
+display:
+  name: '&bHobling Flower'
+  material: BLUE_ORCHID
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7A blue beautiful flower.'

@@ -1,0 +1,21 @@
+id: blackfrost-mage-helm-epic
+display:
+  name: Spectral Walker Hood
+  material: DIAMOND_HELMET
+type: armor
+level: 60
+rarity: epic
+health: 119
+stats:
+  intelligence:
+    min: 13
+    max: 13
+  dexterity:
+    min: 7
+    max: 7
+  wisdom:
+    min: 3
+    max: 3
+max-gem-slots: 4
+class: mage
+

@@ -1,0 +1,10 @@
+id: FrozenFish
+display:
+  name: '&6Frozen Fish'
+  material: SALMON
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7This can be eaten... or used as a weapon.'

@@ -1,0 +1,19 @@
+id: praetorium-gilded-archer-leggings
+display:
+  name: Gilded Imperial Archer Leggings
+  material: CHAINMAIL_LEGGINGS
+type: armor
+level: 60
+rarity: legendary
+health: 198
+stats:
+  strength:
+    min: 19
+    max: 19
+  dexterity:
+    min: 10
+    max: 10
+max-gem-slots: 6
+class: archer
+item-perks:
+  aegis: 1

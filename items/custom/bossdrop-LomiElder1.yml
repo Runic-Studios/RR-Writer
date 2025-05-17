@@ -1,0 +1,14 @@
+id: bossdrop-LomiElder1
+display:
+  name: Lomi Guard
+  material: DIAMOND_LEGGINGS
+type: armor
+level: 34
+rarity: unique
+health: 82
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

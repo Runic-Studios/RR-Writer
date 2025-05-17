@@ -1,0 +1,22 @@
+id: ignaroth-lair-cleric-leggings
+display:
+  name: Scorching Platelegs
+  material: GOLDEN_LEGGINGS
+type: armor
+level: 60
+rarity: legendary
+health: 446
+stats:
+  wisdom:
+    min: 24
+    max: 24
+  vitality:
+    min: 12
+    max: 12
+  dexterity:
+    min: 6
+    max: 6
+max-gem-slots: 6
+class: cleric
+item-perks:
+  undying: 1

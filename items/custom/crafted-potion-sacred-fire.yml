@@ -1,0 +1,21 @@
+id: greater-crafted-potion-sacred-fire
+display:
+  name: '&6Greater Crafted Potion of Sacred Fire'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eYour spells have a &f25% &echance to burn'
+- '&eenemies for an additional &f100 &emagicʔ'
+- '&edamage for &f25 &eminutes!'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 100
+  chance: 25
+  duration: 1500
+  color: orange
+  requiredLevel: 60
+  experience: 5000

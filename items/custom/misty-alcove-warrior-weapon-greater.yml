@@ -1,0 +1,12 @@
+id: misty-alcove-warrior-weapon-greater
+display:
+  name: 'Beheader'
+  material: WOODEN_AXE
+  damage: 7
+type: weapon
+level: 12
+rarity: uncommon
+damage:
+  min: 18
+  max: 20
+class: warrior

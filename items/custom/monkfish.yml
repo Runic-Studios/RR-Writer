@@ -1,0 +1,11 @@
+id: monkfish
+display:
+  name: '&fMonkfish'
+  material: GRAY_STAINED_GLASS
+type: 'generic' 
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 45
+  experience: 440

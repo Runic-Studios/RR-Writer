@@ -1,0 +1,22 @@
+id: ignaroth-lair-warrior-boots
+display:
+  name: Molten Boots
+  material: IRON_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 531
+stats:
+  vitality:
+    min: 19
+    max: 19
+  wisdom:
+    min: 10
+    max: 10
+  strength:
+    min: 5
+    max: 5
+max-gem-slots: 6
+class: warrior
+item-perks:
+  undying: 1

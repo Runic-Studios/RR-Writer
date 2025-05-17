@@ -1,0 +1,11 @@
+id: cut-diamond-iv
+display:
+  name: '&fCut Diamond IV'
+  material: DIAMOND
+type: gem
+
+tier: 4
+main-stat: vitality
+data:
+  requiredLevel: 40
+  experience: 15000

@@ -1,0 +1,14 @@
+id: bossdrop-ForestVessel1
+display:
+  name: Faint Whistle
+  material: CHAINMAIL_HELMET
+type: armor
+level: 6
+rarity: unique
+health: 25
+stats:
+  dexterity:
+    min: 6
+    max: 8
+max-gem-slots: 1
+class: archer

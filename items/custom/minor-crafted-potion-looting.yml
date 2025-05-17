@@ -1,0 +1,19 @@
+id: minor-crafted-potion-looting
+display:
+  name: '&dMinor Crafted Potion of Looting'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eGrants &f5% &echance of double'
+- '&eloot &efor &f10 &eminutes'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 5
+  duration: 600
+  color: fuchsia
+  requiredLevel: 30
+  experience: 2000

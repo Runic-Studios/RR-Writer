@@ -1,0 +1,10 @@
+id: StolenBook
+display:
+  name: '&6Stolen Book'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The book gives off a strange aura.'

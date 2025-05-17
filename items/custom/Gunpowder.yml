@@ -1,0 +1,10 @@
+id: Gunpowder
+display:
+  name: '&6Gunpowder'
+  material: GUNPOWDER
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The Shah of Naheen could use this!'

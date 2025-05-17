@@ -1,0 +1,24 @@
+id: admin-test-offhand-all
+display:
+  name: Hydrodynamic Sovereign
+  material: SHEARS
+  damage: 235
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  dexterity:
+    min: 100
+    max: 100
+  intelligence:
+    min: 100
+    max: 100
+  strength:
+    min: 100
+    max: 100
+  vitality:
+    min: 100
+    max: 100
+  wisdom:
+    min: 100
+    max: 100

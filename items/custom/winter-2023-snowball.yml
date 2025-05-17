@@ -1,0 +1,11 @@
+id: winter-2023-snowball
+display:
+  name: '&bSnowball'
+  material: SNOWBALL
+tags:
+type: 'generic' 
+lore:
+  - ''
+  - '&fIt does nothing but spread festive cheer!'
+  - ''
+  - '&cWarning: This item will be deleted on 2/28/2024'

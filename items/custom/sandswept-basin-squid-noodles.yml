@@ -1,0 +1,12 @@
+id: sandswept-basin-squid-noodles
+display:
+  name: '&6Cloudswimmer Noodles'
+  material: STRING
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Absolutely disgusting.'
+  - '&7Might be edible when cooked...?'
+  - '&7Some might say the flavor might take you to the clouds.'

@@ -1,0 +1,14 @@
+id: tutorial-warrior-weapon
+display:
+  name: Oaken Axe
+  material: WOODEN_AXE
+  damage: 0
+tags:
+- 'untradeable'
+type: weapon
+level: 0
+rarity: common
+damage:
+  min: 4
+  max: 6
+class: warrior

@@ -1,0 +1,10 @@
+id: SkellyArmBone
+display:
+  name: '&6Arm Bone'
+  material: BONE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7We''re "borrowing" it for Skelly, for now...'

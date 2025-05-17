@@ -1,0 +1,15 @@
+id: ignaroth-lair-offhand-wis-+0
+display:
+  name: '&eEthereal Flail'
+  material: STONE_SHOVEL
+tags:
+- 'untradeable'
+type: offhand
+level: 60
+rarity: unique
+stats:
+  wisdom:
+    min: 30
+    max: 30
+item-perks:
+  ignaroth-wisdom-1: 1

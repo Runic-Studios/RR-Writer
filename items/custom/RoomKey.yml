@@ -1,0 +1,10 @@
+id: RoomKey
+display:
+  name: '&6Room Key'
+  material: TRIPWIRE_HOOK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7It unlocks... things'

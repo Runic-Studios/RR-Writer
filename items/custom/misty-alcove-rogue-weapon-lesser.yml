@@ -1,0 +1,12 @@
+id: misty-alcove-rogue-weapon-lesser
+display:
+  name: 'Bronze Longsword'
+  material: WOODEN_SWORD
+#  damage: 7
+type: weapon
+level: 12
+rarity: common
+damage:
+  min: 18
+  max: 19
+class: rogue

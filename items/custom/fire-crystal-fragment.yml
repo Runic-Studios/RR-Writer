@@ -1,0 +1,10 @@
+id: fire-crystal-fragment
+display:
+  name: '&cFire Crystal Fragment'
+  material: RED_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Traces of fire elements.'
+- ''
+- '&7Crafting Reagent'

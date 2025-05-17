@@ -1,0 +1,14 @@
+id: bossdrop-GoatMother1
+display:
+  name: Goat Udders
+  material: IRON_LEGGINGS
+type: armor
+level: 34
+rarity: unique
+health: 130
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

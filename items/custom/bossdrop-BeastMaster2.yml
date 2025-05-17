@@ -1,0 +1,14 @@
+id: bossdrop-BeastMaster2
+display:
+  name: BeastMaster 64
+  material: IRON_CHESTPLATE
+type: armor
+level: 36
+rarity: unique
+health: 151
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

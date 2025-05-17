@@ -1,0 +1,22 @@
+id: ignaroth-lair-rogue-helm
+display:
+  name: Kindled Hood
+  material: LEATHER_HELMET
+type: armor
+level: 60
+rarity: legendary
+health: 270
+stats:
+  intelligence:
+    min: 19
+    max: 19
+  strength:
+    min: 10
+    max: 10
+  dexterity:
+    min: 5
+    max: 5
+max-gem-slots: 6
+class: rogue
+item-perks:
+  undying: 1

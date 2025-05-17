@@ -1,0 +1,14 @@
+id: bossdrop-LomiElder2
+display:
+  name: Dead of Night
+  material: IRON_BOOTS
+type: armor
+level: 35
+rarity: unique
+health: 74
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

@@ -1,0 +1,14 @@
+id: bossdrop-FlightlessFairy2
+display:
+  name: Fake Fairy Wings
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 12
+rarity: unique
+health: 52
+stats:
+  wisdom:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: archer

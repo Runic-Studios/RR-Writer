@@ -1,0 +1,10 @@
+id: wolf-meat
+display:
+  name: '&eWolf Meat'
+  material: COOKED_MUTTON
+tags:
+- consumable
+type: 'generic' 
+lore:
+  - ''
+  - '&7Fresh off the bone.'

@@ -1,0 +1,17 @@
+id: cooked-melon
+display:
+  name: '&eGrilled Melon'
+  material: MELON_SLICE
+type: 'generic'
+tags:
+- consumable
+lore:
+- ''
+- '&eRestores &c100<3 &eover 10s'
+triggers:
+  right: 'item-consume'
+data:
+  duration: 10
+  health-amount: 100
+  requiredLevel: 40
+  experience: 400

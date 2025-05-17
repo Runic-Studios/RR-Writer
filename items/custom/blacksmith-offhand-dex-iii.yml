@@ -1,0 +1,15 @@
+id: blacksmith-offhand-dex-iii
+display:
+  name: Snow White Cleaver
+  material: SHEARS
+  damage: 236
+type: offhand
+level: 30
+rarity: crafted
+stats:
+  dexterity:
+    min: 17
+    max: 18
+data:
+  requiredLevel: 20
+  experience: 5000

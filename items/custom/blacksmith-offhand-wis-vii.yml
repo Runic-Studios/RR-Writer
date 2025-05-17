@@ -1,0 +1,14 @@
+id: blacksmith-offhand-wis-vii
+display:
+  name: '&dCrystallized &6Warped Whip'
+  material: STONE_SHOVEL
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  wisdom:
+    min: 50
+    max: 52
+data:
+  requiredLevel: 60
+  experience: 80000

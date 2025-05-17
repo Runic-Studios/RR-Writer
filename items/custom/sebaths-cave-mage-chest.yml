@@ -1,0 +1,19 @@
+id: sebaths-cave-mage-chest
+display:
+  name: Stained Mage Robes
+  material: DIAMOND_CHESTPLATE
+tags:
+- 'untradeable'
+type: armor
+level: 5
+rarity: common
+health: 25
+stats:
+  intelligence:
+    min: 1
+    max: 2
+  dexterity:
+    min: 1
+    max: 2
+max-gem-slots: 0
+class: mage

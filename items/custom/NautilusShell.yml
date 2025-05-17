@@ -1,0 +1,10 @@
+id: NautilusShell
+display:
+  name: '&6Shell'
+  material: NAUTILUS_SHELL
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7I wonder what this is doing by a pond...'

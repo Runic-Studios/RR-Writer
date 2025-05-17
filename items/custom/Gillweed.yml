@@ -1,0 +1,10 @@
+id: Gillweed
+display:
+  name: '&aGillweed'
+  material: SEAGRASS
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7A Magical aquatic Plant!'

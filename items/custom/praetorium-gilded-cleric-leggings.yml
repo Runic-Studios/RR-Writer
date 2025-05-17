@@ -1,0 +1,22 @@
+id: praetorium-gilded-cleric-leggings
+display:
+  name: Gilded Imperial Cleric Platelegs
+  material: GOLDEN_LEGGINGS
+type: armor
+level: 60
+rarity: legendary
+health: 198
+stats:
+  wisdom:
+    min: 17
+    max: 17
+  vitality:
+    min: 8
+    max: 8
+  dexterity:
+    min: 4
+    max: 4
+max-gem-slots: 6
+class: cleric
+item-perks:
+  aegis: 1

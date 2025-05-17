@@ -1,0 +1,10 @@
+id: water-crystal
+display:
+  name: '&bWater Crystal'
+  material: BLUE_GLAZED_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Highly concentrated water elements.'
+- ''
+- '&7Crafting Reagent'

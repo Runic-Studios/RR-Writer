@@ -1,0 +1,17 @@
+id: murkwood-cleric-chest
+display:
+  name: Fenshield Chestplate
+  material: GOLDEN_CHESTPLATE
+type: armor
+level: 25
+rarity: unique
+health: 82
+stats:
+  wisdom:
+    min: 5
+    max: 8
+  intelligence:
+    min: 4
+    max: 8
+max-gem-slots: 2
+class: cleric

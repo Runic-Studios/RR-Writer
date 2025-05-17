@@ -1,0 +1,20 @@
+id: praetorium-rogue-chest
+display:
+  name: 'Imperial Rogue Vest'
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 60
+rarity: epic
+health: 136
+stats:
+  strength:
+    min: 14
+    max: 14
+  intelligence:
+    min: 7
+    max: 7
+  dexterity:
+    min: 3
+    max: 3
+max-gem-slots: 3
+class: rogue

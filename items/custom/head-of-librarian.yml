@@ -1,0 +1,14 @@
+id: head-of-librarian
+display:
+  name: '&eHead of the Librarian'
+  material: SKELETON_SKULL
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+  - '&7'
+  - '&7Bring this to the &aDungeon Merchant'
+  - '&7in &4Sunken Library &7to purchase'
+  - '&7exclusive dungeon loot!'
+  - '&7'
+  - '&eUnique'

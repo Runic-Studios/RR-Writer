@@ -1,0 +1,15 @@
+id: RemembranceNote2
+display:
+  name: '&6Ragged Note #2'
+  material: GRAY_DYE
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7Perhaps it was envy or jealousy, or maybe even thirst.' 
+  - '&7But to this day I have no clue as to why this happened.'
+  - '&7Perhaps it''s my fault the norm was maintained?'
+  - '&7Deep down I knew something like this would happen,' 
+  - '&7yet I didn''t do anything about it.'
+  - '&7I was too in love with that happiness everyone had that I wanted to keep it.'

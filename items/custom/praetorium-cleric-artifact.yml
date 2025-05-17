@@ -1,0 +1,14 @@
+class: cleric
+damage:
+  max: 61
+  min: 58
+display:
+  damage: 4
+  material: WOODEN_SHOVEL
+  name: Imperial Mace
+id: praetorium-cleric-artifact
+level: 60
+rarity: legendary
+type: weapon
+item-perks:
+  praetorium-cleric-weapon: 1

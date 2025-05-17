@@ -1,0 +1,19 @@
+id: 'gathering-hoe-apprentice'
+display:
+  name: '&7Apprentice Farming Hoe'
+  material: IRON_HOE
+  damage: 1
+type: 'dynamic' 
+lore:
+  - '&7Skill &fFarming'
+  - ''
+  - '&7Common'
+data:
+  dynamicFieldInitialValue: 75
+  dynamicLore: '&7/75'
+  experience: 0
+  maxDurability: 75
+  requiredLevel: 0
+  requiredLevelForUse: 0
+  bonusLootCeiling: 0
+  bonusLootChance: 0

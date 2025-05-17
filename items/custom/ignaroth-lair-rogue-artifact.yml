@@ -1,0 +1,14 @@
+class: rogue
+damage:
+  max: 88
+  min: 80
+display:
+  damage: 5
+  material: WOODEN_SWORD
+  name: Cataclysm
+id: ignaroth-lair-rogue-artifact
+level: 60
+rarity: legendary
+type: weapon
+item-perks:
+  infernal: 1

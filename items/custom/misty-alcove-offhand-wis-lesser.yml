@@ -1,0 +1,12 @@
+id: misty-alcove-offhand-wis-lesser
+display:
+  name: Flimsy Flail
+  material: STONE_SHOVEL
+type: offhand
+level: 12
+rarity: common
+health: 0
+stats:
+  wisdom:
+    min: 6
+    max: 6

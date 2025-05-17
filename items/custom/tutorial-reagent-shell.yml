@@ -1,0 +1,8 @@
+id: tutorial-reagent-shell
+display:
+  name: '&aSea Turtle Shell'
+  material: SCUTE
+type: 'generic' 
+lore:
+  - ''
+  - '&7This is why sea turtles are endangered.'

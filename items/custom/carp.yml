@@ -1,0 +1,11 @@
+id: carp
+display:
+  name: '&fCarp'
+  material: BROWN_STAINED_GLASS
+type: 'generic'
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 33
+  experience: 310

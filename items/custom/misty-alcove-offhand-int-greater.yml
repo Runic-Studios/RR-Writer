@@ -1,0 +1,12 @@
+id: misty-alcove-offhand-int-greater
+display:
+  name: Staff of Sorrow
+  material: STONE_HOE
+type: offhand
+level: 12
+rarity: uncommon
+health: 0
+stats:
+  intelligence:
+    min: 8
+    max: 8

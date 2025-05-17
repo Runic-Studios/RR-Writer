@@ -1,0 +1,10 @@
+id: cindered-oak
+display:
+  name: '&7Cindered Oak'
+  material: CRIMSON_STEM
+type: 'generic' 
+lore:
+- ''
+- '&ECindered remains of the fallen.'
+- ''
+- '&7Crafting Reagent'

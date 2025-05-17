@@ -1,0 +1,10 @@
+id: IcyCore
+display:
+  name: '&6Icy Core'
+  material: IRON_NUGGET
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The Core of an Animated Body of Ice'

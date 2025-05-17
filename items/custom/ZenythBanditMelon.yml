@@ -1,0 +1,10 @@
+id: ZenythBanditMelon
+display:
+  name: '&6Melon'
+  material: MELON
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Summertime treat.'

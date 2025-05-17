@@ -1,0 +1,10 @@
+id: water-crystal-fragment
+display:
+  name: '&bWater Crystal Fragment'
+  material: BLUE_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Traces of water elements.'
+- ''
+- '&7Crafting Reagent'

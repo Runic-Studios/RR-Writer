@@ -1,0 +1,8 @@
+id: praetorium-mage-skull
+display:
+  name: '&eMage Skull'
+  material: SKELETON_SKULL
+type: 'generic' 
+lore:
+- ''
+- '&7Currency of The Praetorium'

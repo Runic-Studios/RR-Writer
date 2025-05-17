@@ -1,0 +1,12 @@
+id: misty-alcove-warrior-weapon-lesser
+display:
+  name: 'Bronze Battleaxe'
+  material: WOODEN_AXE
+#  damage: 7
+type: weapon
+level: 12
+rarity: common
+damage:
+  min: 15
+  max: 16
+class: warrior

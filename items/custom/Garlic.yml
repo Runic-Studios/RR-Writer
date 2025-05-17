@@ -1,0 +1,10 @@
+id: Garlic
+display:
+  name: '&6Garlic'
+  material: AZURE_BLUET
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7A pain to peel.'

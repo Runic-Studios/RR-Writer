@@ -1,0 +1,10 @@
+id: cooked-potato
+display:
+  name: '&eBaked Potato'
+  material: BAKED_POTATO
+type: 'generic' 
+tags:
+- consumable
+data:
+  requiredLevel: 20
+  experience: 200

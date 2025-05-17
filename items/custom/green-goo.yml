@@ -1,0 +1,10 @@
+id: green-goo
+display:
+  name: '&aGreen Goo'
+  material: SLIME_BALL
+type: 'generic' 
+lore:
+- ''
+- '&ESlimy substance.'
+- ''
+- '&7Crafting Reagent'

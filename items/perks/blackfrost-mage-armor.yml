@@ -1,0 +1,5 @@
+max-stacks: 4
+damage-percent: 0.075 #ratio
+name: '&b&lSpellguard''s Surge'
+lore:
+- '&7&oDeal &r&e<blackfrost-mage-armor-damage-percent> &r&7&omore damage while shielded'

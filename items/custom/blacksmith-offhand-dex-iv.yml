@@ -1,0 +1,15 @@
+id: blacksmith-offhand-dex-iv
+display:
+  name: Olive Blade
+  material: SHEARS
+  damage: 236
+type: offhand
+level: 40
+rarity: crafted
+stats:
+  dexterity:
+    min: 24
+    max: 25
+data:
+  requiredLevel: 30
+  experience: 12500

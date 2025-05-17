@@ -1,0 +1,14 @@
+id: blacksmith-offhand-int-vi
+display:
+  name: Dark Sigil
+  material: STONE_HOE
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  intelligence:
+    min: 39
+    max: 41
+data:
+  requiredLevel: 50
+  experience: 30000

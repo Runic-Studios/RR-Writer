@@ -1,0 +1,19 @@
+id: jorundr-keep-rogue-leggings
+display:
+  name: Wise Follower's Pants
+  material: LEATHER_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 15
+rarity: uncommon
+health: 40
+stats:
+  strength:
+    min: 5
+    max: 6
+  wisdom:
+    min: 3
+    max: 4
+max-gem-slots: 1
+class: rogue

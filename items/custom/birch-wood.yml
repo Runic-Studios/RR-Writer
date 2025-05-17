@@ -1,0 +1,11 @@
+id: birch-wood
+display:
+  name: '&fElder Log'
+  material: BIRCH_LOG
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 20
+  experience: 76

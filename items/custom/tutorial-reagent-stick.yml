@@ -1,0 +1,10 @@
+id: tutorial-reagent-stick
+display:
+  name: '&6Stick'
+  material: STICK
+tags:
+- soulbound
+type: 'generic' 
+lore:
+  - ''
+  - '&7It is a stick.'

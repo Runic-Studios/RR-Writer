@@ -1,0 +1,14 @@
+class: rogue
+damage:
+  max: 21
+  min: 19
+display:
+  damage: 12
+  material: WOODEN_SWORD
+  name: Lost Runeblade
+id: jorundr-keep-rogue-artifact
+level: 15
+rarity: unique
+tags:
+- untradeable
+type: weapon

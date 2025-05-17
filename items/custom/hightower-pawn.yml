@@ -1,0 +1,10 @@
+id: hightower-pawn
+display:
+  name: '&7Pawn'
+  material: POLISHED_BLACKSTONE_BUTTON
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&eThe first to experience death.'

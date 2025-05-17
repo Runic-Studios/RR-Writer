@@ -1,0 +1,11 @@
+id: cut-emerald-iv
+display:
+  name: '&aCut Emerald IV'
+  material: EMERALD
+type: gem
+
+tier: 4
+main-stat: wisdom
+data:
+  requiredLevel: 40
+  experience: 15000

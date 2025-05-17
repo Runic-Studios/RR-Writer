@@ -1,0 +1,14 @@
+id: bossdrop-DireBear1
+display:
+  name: Dire Fate
+  material: LEATHER_BOOTS
+type: armor
+level: 21
+rarity: unique
+health: 57
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

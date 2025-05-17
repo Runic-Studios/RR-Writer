@@ -1,0 +1,20 @@
+id: praetorium-cleric-helm
+display:
+  name: 'Imperial Cleric Crown'
+  material: GOLDEN_HELMET
+type: armor
+level: 60
+rarity: epic
+health: 134
+stats:
+  wisdom:
+    min: 8
+    max: 8
+  vitality:
+    min: 6
+    max: 6
+  dexterity:
+    min: 2
+    max: 2
+max-gem-slots: 3
+class: cleric

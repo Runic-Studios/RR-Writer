@@ -1,0 +1,20 @@
+id: greater-crafted-potion-slaying
+display:
+  name: '&2Greater Crafted Potion of Slaying'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eIncreases spellʔ and weapon⚔'
+- '&edamage vs. monsters by &f20%'
+- '&efor &f25 &eminutes'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 20
+  duration: 1500
+  color: green
+  requiredLevel: 60
+  experience: 9000

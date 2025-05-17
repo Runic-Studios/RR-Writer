@@ -1,0 +1,14 @@
+id: bossdrop-Togrund1
+display:
+  name: Heart's Descent
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 14
+rarity: unique
+health: 60
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

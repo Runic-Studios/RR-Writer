@@ -1,0 +1,14 @@
+id: bossdrop-FrostfolkSpirit2
+display:
+  name: Corruption
+  material: CHAINMAIL_BOOTS
+type: armor
+level: 14
+rarity: unique
+health: 43
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: archer

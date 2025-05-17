@@ -1,0 +1,12 @@
+id: noman-cleric-leggings
+display:
+  name: Greater Flame Platelegs
+  material: GOLDEN_LEGGINGS
+type: armor
+level: 60
+rarity: unique
+health: 200
+max-gem-slots: 6
+class: cleric
+item-perks:
+  mechanization: 1

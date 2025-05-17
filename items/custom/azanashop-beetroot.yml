@@ -1,0 +1,10 @@
+id: azanashop-beetroot
+display:
+  name: '&eForest Beet Root'
+  material: BEETROOT
+tags:
+- consumable
+type: 'generic' 
+lore:
+  - ''
+  - '&7Fresh from Silkwood Forest.'

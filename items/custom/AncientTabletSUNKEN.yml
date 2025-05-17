@@ -1,0 +1,12 @@
+id: AncientTablet
+display:
+  name: '&6Ancient Tablet'
+  material: NETHER_BRICK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7ᛒᚩᚹ ᛞᚩᚹᚾ, ᚪᛋ ᛁ ᚻᚪᚠᛖ ᚳᚩᛘᛖ ᛏᚩ ᛋᚪᚠᛖ ᛁᚩᚢ.'
+  - '&7ᛒᚩᚹ ᛞᚩᚹᚾ, ᛏᚩ ᛘᛁ ᛋᚪᚳᚱᛖᛞ ᚠᛁᚱᛖ'
+  - '&7ᛒᚩᚹ ᛞᚩᚹᚾ, ᛏᚩ ᛘᛖ'

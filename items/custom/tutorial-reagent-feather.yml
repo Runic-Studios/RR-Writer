@@ -1,0 +1,8 @@
+id: tutorial-reagent-feather
+display:
+  name: '&fSeagull Feather'
+  material: FEATHER
+type: 'generic' 
+lore:
+  - ''
+  - '&7The first thought that came to mind was violence.'

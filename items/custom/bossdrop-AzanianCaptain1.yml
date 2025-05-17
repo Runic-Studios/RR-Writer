@@ -1,0 +1,14 @@
+id: bossdrop-AzanianCaptain1
+display:
+  name: Tricorne
+  material: LEATHER_HELMET
+type: armor
+level: 6
+rarity: unique
+health: 25
+stats:
+  strength:
+    min: 6
+    max: 8
+max-gem-slots: 1
+class: rogue

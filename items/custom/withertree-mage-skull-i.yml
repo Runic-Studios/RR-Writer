@@ -1,0 +1,17 @@
+id: withertree-mage-skull-i
+display:
+  name: Lesser Guardian Skull
+  material: WITHER_SKELETON_SKULL
+type: armor
+level: 55
+rarity: rare
+health: 25
+stats:
+  strength:
+    min: 7
+    max: 8
+  intelligence:
+    min: 7
+    max: 8
+max-gem-slots: 0
+class: mage

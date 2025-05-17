@@ -1,0 +1,15 @@
+id: FrozenHeart
+display:
+  name: '&dFrozen Heart'
+  material: IRON_NUGGET
+type: 'generic' 
+lore:
+- ''
+- '&7You can use this to enter the Frozen Fortress.'
+- ''
+- '&7"I''ll lose my mind, my feelings and conscience. Everything will be frozen.'
+- '&7The thing about ice, is it can always melt."'
+- ''
+- '&7    - Unknown'
+- ''
+- '&6Dungeon Item'

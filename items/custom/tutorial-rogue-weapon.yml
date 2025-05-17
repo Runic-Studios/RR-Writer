@@ -1,0 +1,14 @@
+id: tutorial-rogue-weapon
+display:
+  name: Oaken Sparring Sword
+  material: WOODEN_SWORD
+  damage: 0
+tags:
+- 'untradeable'
+type: weapon
+level: 0
+rarity: common
+damage:
+  min: 5
+  max: 7
+class: rogue

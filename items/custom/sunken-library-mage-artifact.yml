@@ -1,0 +1,15 @@
+ability: fire-pulse
+class: mage
+damage:
+  max: 25
+  min: 23
+display:
+  damage: 2
+  material: WOODEN_HOE
+  name: Ancient Arcane Rod
+id: sunken-library-mage-artifact
+level: 25
+rarity: unique
+tags:
+- untradeable
+type: weapon

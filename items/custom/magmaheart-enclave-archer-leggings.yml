@@ -1,0 +1,19 @@
+id: magmaheart-enclave-archer-leggings
+display:
+  name: Light Elemental Leggings
+  material: CHAINMAIL_LEGGINGS
+type: armor
+level: 60
+rarity: legendary
+health: 253
+stats:
+  strength:
+    min: 23
+    max: 23
+  dexterity:
+    min: 12
+    max: 12
+max-gem-slots: 6
+class: archer
+item-perks:
+  focus: 1

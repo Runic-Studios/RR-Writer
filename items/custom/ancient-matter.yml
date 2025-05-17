@@ -1,0 +1,10 @@
+id: ancient-matter
+display:
+  name: '&cAncient Matter'
+  material: NETHER_BRICK
+type: 'generic' 
+lore:
+- ''
+- '&EAncient material from those who guard the keep.'
+- ''
+- '&7Crafting Reagent'

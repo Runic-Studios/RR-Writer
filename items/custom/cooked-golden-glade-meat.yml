@@ -1,0 +1,10 @@
+id: cooked-golden-glade-meat
+display:
+  name: '&eCooked Glade Meat'
+  material: COOKED_MUTTON
+type: 'generic' 
+tags:
+- consumable
+data:
+  requiredLevel: 40
+  experience: 400

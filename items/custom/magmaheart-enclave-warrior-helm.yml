@@ -1,0 +1,22 @@
+id: magmaheart-enclave-warrior-helm
+display:
+  name: Void Elemental Helmet
+  material: IRON_HELMET
+type: armor
+level: 60
+rarity: legendary
+health: 362
+stats:
+  vitality:
+    min: 16
+    max: 16
+  wisdom:
+    min: 8
+    max: 8
+  strength:
+    min: 4
+    max: 4
+max-gem-slots: 6
+class: warrior
+item-perks:
+  stoneskin: 1

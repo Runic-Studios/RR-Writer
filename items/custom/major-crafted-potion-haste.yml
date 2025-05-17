@@ -1,0 +1,19 @@
+id: major-crafted-potion-haste
+display:
+  name: '&aMajor Crafted Potion of Haste'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eIncreases mining speed by &f20%'
+- '&efor &f60 &eminutes'
+triggers:
+  right: 'item-consume'
+data:
+  multiplier: 0
+  duration: 3600
+  color: lime
+  requiredLevel: 40
+  experience: 7500

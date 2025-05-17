@@ -1,0 +1,8 @@
+id: charcoal
+display:
+  name: '&7Charcoal'
+  material: CHARCOAL
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'

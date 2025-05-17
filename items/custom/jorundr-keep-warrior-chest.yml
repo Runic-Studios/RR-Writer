@@ -1,0 +1,19 @@
+id: jorundr-keep-warrior-chest
+display:
+  name: Thunder Iron Chestplate
+  material: IRON_CHESTPLATE
+tags:
+- 'untradeable'
+type: armor
+level: 15
+rarity: uncommon
+health: 54
+stats:
+  vitality:
+    min: 5
+    max: 6
+  wisdom:
+    min: 3
+    max: 4
+max-gem-slots: 1
+class: warrior

@@ -1,0 +1,11 @@
+id: cut-ruby-i
+display:
+  name: '&cCut Ruby I'
+  material: REDSTONE
+type: gem
+
+tier: 1
+main-stat: strength
+data:
+  requiredLevel: 0
+  experience: 750

@@ -1,0 +1,22 @@
+id: magmaheart-enclave-rogue-chest
+display:
+  name: Fire Elemental Vest
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 60
+rarity: legendary
+health: 193
+stats:
+  strength:
+    min: 20
+    max: 20
+  intelligence:
+    min: 10
+    max: 10
+  dexterity:
+    min: 5
+    max: 5
+max-gem-slots: 6
+class: rogue
+item-perks:
+  ravenous: 1

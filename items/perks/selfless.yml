@@ -1,0 +1,7 @@
+max-stacks: 5
+incoming-healing-percent-reduction: 0.07 #ratio
+outgoing-healing-percent-increase: 0.07 #ratio
+name: '&b&lSelfless'
+lore:
+- '&7&oThe healing you grant is increased by &r&e<selfless-incoming-healing-percent-reduction>'
+- '&7&oThe healing you receive is reduced by &r&e<selfless-outgoing-healing-percent-increase>'

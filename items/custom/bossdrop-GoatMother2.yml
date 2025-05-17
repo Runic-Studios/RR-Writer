@@ -1,0 +1,14 @@
+id: bossdrop-GoatMother2
+display:
+  name: Woolly Warmth
+  material: CHAINMAIL_BOOTS
+type: armor
+level: 33
+rarity: unique
+health: 68
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: archer

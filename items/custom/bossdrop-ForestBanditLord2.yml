@@ -1,0 +1,14 @@
+id: bossdrop-ForestBanditLord2
+display:
+  name: Cherry Blossom
+  material: GOLDEN_CHESTPLATE
+type: armor
+level: 25
+rarity: unique
+health: 102
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

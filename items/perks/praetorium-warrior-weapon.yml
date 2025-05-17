@@ -1,0 +1,5 @@
+damage-received-increase-percent: 0.1 #ratio
+duration: 3 #in seconds
+name: '&b&lCatalyst'
+lore:
+- '&7&oYour basic attacks make the enemy vulnerable, increasing all damage they receive by 10% for 3 seconds'

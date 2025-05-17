@@ -1,0 +1,10 @@
+id: black-matter
+display:
+  name: '&7Black Matter'
+  material: OBSIDIAN
+type: 'generic' 
+lore:
+  - ''
+  - '&EHighly concetrated material.'
+  - ''
+  - '&7Crafting Reagent'

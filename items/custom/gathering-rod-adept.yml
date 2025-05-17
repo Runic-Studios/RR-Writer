@@ -1,0 +1,21 @@
+id: 'gathering-rod-adept'
+display:
+  name: '&aAdept Fishing Rod'
+  material: FISHING_ROD
+  damage: 2
+type: 'dynamic' 
+lore:
+  - '&7Req Fishing &f10'
+  - '' 
+  - '&2Gathering Luck I: &7You have a'
+  - '&f33% &7chance to receive'
+  - '&f2x &7more resources!'
+  - ''
+  - '&aUncommon'
+data:
+  dynamicFieldInitialValue: 50
+  dynamicLore: '&7/50'
+  maxDurability: 50
+  requiredLevelForUse: 10
+  bonusLootCeiling: 1
+  bonusLootChance: .33

@@ -1,0 +1,10 @@
+id: PraetoriumPlans
+display:
+  name: '&6War Plans'
+  material: PAPER
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7invadere novum mundum'

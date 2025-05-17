@@ -1,0 +1,11 @@
+id: cut-diamond-iii
+display:
+  name: '&fCut Diamond III'
+  material: DIAMOND
+type: gem
+
+tier: 3
+main-stat: vitality
+data:
+  requiredLevel: 25
+  experience: 4000

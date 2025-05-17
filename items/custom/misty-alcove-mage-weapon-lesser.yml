@@ -1,0 +1,12 @@
+id: misty-alcove-mage-weapon-lesser
+display:
+  name: 'Birch Branch'
+  material: WOODEN_HOE
+  damage: 7
+type: weapon
+level: 12
+rarity: common
+damage:
+  min: 13
+  max: 14
+class: mage

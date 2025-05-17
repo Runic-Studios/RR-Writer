@@ -1,0 +1,17 @@
+id: 'lightbrown-steed'
+display:
+  name: '&eLightbrown Steed'
+  material: SADDLE
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+  - ''
+  - '&6Tier: &7Normal'
+  - '&6Speed: +&725%'
+  - ''
+  - '&r&7&oA loyal and valiant steed!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-id: LIGHTBROWN_STEED

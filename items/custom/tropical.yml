@@ -1,0 +1,11 @@
+id: tropical
+display:
+  name: '&fTropical Fish'
+  material: TROPICAL_FISH
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 35
+  experience: 333

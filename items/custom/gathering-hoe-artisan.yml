@@ -1,0 +1,23 @@
+id: 'gathering-hoe-artisan'
+display:
+  name: '&6Artisan Farming Hoe'
+  material: IRON_HOE
+  damage: 5
+type: 'dynamic' 
+lore:
+  - '&7Req Farming &f60'
+  - '' 
+  - '&2Gathering Luck IV: &7You have a'
+  - '&f50% &7chance to receive'
+  - '&f2-4x &7more resources!'
+  - ''
+  - '&6Legendary'
+data:
+  dynamicFieldInitialValue: 1500
+  dynamicLore: '&7/1500'
+  maxDurability: 1500
+  requiredLevelForUse: 60
+  bonusLootCeiling: 3
+  bonusLootChance: .5
+  requiredLevel: 60
+  experience: 20000

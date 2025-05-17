@@ -1,0 +1,11 @@
+id: cut-ruby-iv
+display:
+  name: '&cCut Ruby IV'
+  material: REDSTONE
+type: gem
+
+tier: 4
+main-stat: strength
+data:
+  requiredLevel: 40
+  experience: 15000

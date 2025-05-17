@@ -1,0 +1,15 @@
+id: minor-potion-healing
+display:
+  name: '&cMinor Potion of Healing'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &c75<3 &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 75
+  color: red

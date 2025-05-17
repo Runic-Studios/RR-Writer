@@ -1,0 +1,10 @@
+id: crystal-corpus
+display:
+  name: '&FCrystal Corpus'
+  material: QUARTZ
+type: 'generic' 
+lore:
+- ''
+- '&EThe corpus of the Crystal Warden.'
+- ''
+- '&7Crafting Reagent'

@@ -1,0 +1,19 @@
+id: azure-mist-archer-helm
+display:
+  name: Starstreaming Eye
+  material: CHAINMAIL_HELMET
+tags:
+- 'untradeable'
+type: armor
+level: 45
+rarity: rare
+health: 110
+stats:
+  intelligence:
+    min: 7
+    max: 9
+  dexterity:
+    min: 1
+    max: 3
+max-gem-slots: 2
+class: archer

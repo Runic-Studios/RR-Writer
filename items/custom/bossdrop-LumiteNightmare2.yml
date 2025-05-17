@@ -1,0 +1,14 @@
+id: bossdrop-LumiteNightmare2
+display:
+  name: Silent Scream
+  material: IRON_HELMET
+type: armor
+level: 14
+rarity: unique
+health: 75
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

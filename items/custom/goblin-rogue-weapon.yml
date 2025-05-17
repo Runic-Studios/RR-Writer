@@ -1,0 +1,14 @@
+id: goblin-rogue-weapon
+display:
+  name: Disposable Short Sword
+  material: WOODEN_SWORD
+  damage: 7
+tags:
+- 'untradeable'
+type: weapon
+level: 25
+rarity: common
+class: rogue
+damage:
+  min: 40
+  max: 40

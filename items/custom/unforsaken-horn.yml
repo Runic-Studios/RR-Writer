@@ -1,0 +1,8 @@
+id: forsaken-horn
+display:
+  name: '&eForsaken Horn'
+  material: POINTED_DRIPSTONE
+type: 'generic' 
+lore:
+  - ''
+  - '&7Torn off the skull of the forsaken.'

@@ -1,0 +1,5 @@
+max-stacks: 2
+damage-percent-per-stack: 0.5 #ratio
+name: '&b&lWinter''s Edge'
+lore:
+- '&7&oDeal &r&e<wintersedge2023-damage-percent> &r&7&omore damage to Winter 2023 Elites and Bosses'

@@ -1,0 +1,11 @@
+id: oasis-drifter
+display:
+  name: '&fOasis Drifter'
+  material: PURPLE_STAINED_GLASS
+type: 'generic'
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 35
+  experience: 333

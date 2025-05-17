@@ -1,0 +1,22 @@
+id: ignaroth-lair-cleric-chest
+display:
+  name: Scorching Chestplate
+  material: GOLDEN_CHESTPLATE
+type: armor
+level: 60
+rarity: legendary
+health: 446
+stats:
+  intelligence:
+    min: 24
+    max: 24
+  wisdom:
+    min: 12
+    max: 12
+  dexterity:
+    min: 6
+    max: 6
+max-gem-slots: 6
+class: cleric
+item-perks:
+  undying: 1

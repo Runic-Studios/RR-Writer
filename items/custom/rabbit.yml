@@ -1,0 +1,8 @@
+id: rabbit
+display:
+  name: '&fRaw Rabbit'
+  material: RABBIT
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'

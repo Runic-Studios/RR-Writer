@@ -1,0 +1,22 @@
+id: praetorium-gilded-rogue-boots
+display:
+  name: Gilded Imperial Rogue Boots
+  material: LEATHER_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 135
+stats:
+  strength:
+    min: 14
+    max: 14
+  intelligence:
+    min: 7
+    max: 7
+  dexterity:
+    min: 3
+    max: 3
+max-gem-slots: 6
+class: rogue
+item-perks:
+  aegis: 1

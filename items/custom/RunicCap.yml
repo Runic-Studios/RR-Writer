@@ -1,0 +1,11 @@
+id: RunicCap
+display:
+  name: '&dRunic Cap'
+  material: RED_MUSHROOM
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7As soon as you catch a whiff of it,'
+  - '&7you feel dizzy.'

@@ -1,0 +1,17 @@
+id: quest-journal
+tags:
+- 'soulbound'
+display:
+  name: '&6Quest Journal'
+  material: BOOK
+type: 'generic' 
+#triggers: # Actions that the RR plugins can perform on click this item
+#  right: 'potion-consume'
+#  left-shift: 'special-potion-action'
+lore:
+- ''
+- '&6&lRIGHT CLICK'
+- '&7To view your quests!'
+- ''
+- '&eIf compass, &6&lLEFT CLICK'
+- '&7To track your quest!'

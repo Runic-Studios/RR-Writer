@@ -1,0 +1,21 @@
+id: 'gray-stallion'
+display:
+  name: '&eGray Stallion'
+  material: SADDLE
+tags:
+- 'soulbound'
+type: 'generic' 
+lore:
+  - ''
+  - '&6Tier: &7Normal'
+  - '&6Speed: +&740%'
+  - ''
+  - '&r&7&oA loyal and valiant steed!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-name: 'Gray Stallion'
+  mount-type: 'HORSE'
+  horse-color: 'GRAY'
+  mount-speed: '0.4'
+#  mount-particle: 'SOUL'

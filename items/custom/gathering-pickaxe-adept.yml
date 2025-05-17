@@ -1,0 +1,21 @@
+id: 'gathering-pickaxe-adept'
+display:
+  name: '&aAdept Mining Pickaxe'
+  material: IRON_PICKAXE
+  damage: 2
+type: 'dynamic' 
+lore:
+  - '&7Req Mining &f10'
+  - '' 
+  - '&2Gathering Luck I: &7You have a'
+  - '&f33% &7chance to receive'
+  - '&f2x &7more resources!'
+  - ''
+  - '&aUncommon'
+data:
+  dynamicFieldInitialValue: 100
+  dynamicLore: '&7/100'
+  maxDurability: 100
+  requiredLevelForUse: 10
+  bonusLootCeiling: 1
+  bonusLootChance: .33

@@ -1,0 +1,10 @@
+id: eye-of-the-harvester
+display:
+  name: '&cEye of the Harvester'
+  material: SPIDER_EYE
+type: 'generic' 
+lore:
+- ''
+- '&EThe eye watches all.'
+- ''
+- '&7Crafting Reagent'

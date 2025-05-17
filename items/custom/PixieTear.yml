@@ -1,0 +1,10 @@
+id: PixieTear
+display:
+  name: '&6Pixie Tear'
+  material: GHAST_TEAR
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The Tear of a Pixie'

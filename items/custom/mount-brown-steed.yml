@@ -1,0 +1,14 @@
+id: 'mount-brown-steed'
+display:
+  name: '&eBrown Steed'
+  material: SADDLE
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+  - ''
+  - '&r&7Consume this item to unlock this mount!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-id: BROWN_STEED

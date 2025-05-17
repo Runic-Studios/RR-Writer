@@ -1,0 +1,11 @@
+id: angelfish
+display:
+  name: '&fAngelfish'
+  material: WHITE_STAINED_GLASS
+type: 'generic'
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 30
+  experience: 283

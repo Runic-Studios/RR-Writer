@@ -1,0 +1,11 @@
+id: shrimp
+display:
+  name: '&fShrimp'
+  material: PINK_STAINED_GLASS
+type: 'generic'
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 14
+  experience: 132

@@ -1,0 +1,14 @@
+id: blacksmith-offhand-str-v
+display:
+  name: Sand Cut Kunai
+  material: STONE_SWORD
+type: offhand
+level: 50
+rarity: crafted
+stats:
+  strength:
+    min: 31
+    max: 33
+data:
+  requiredLevel: 40
+  experience: 17500

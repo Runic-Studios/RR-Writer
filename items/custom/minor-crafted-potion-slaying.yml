@@ -1,0 +1,20 @@
+id: minor-crafted-potion-slaying
+display:
+  name: '&2Minor Crafted Potion of Slaying'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eIncreases spellʔ and weapon⚔'
+- '&edamage vs. monsters by &f8%'
+- '&efor &f15 &eminutes'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 8
+  duration: 900
+  color: green
+  requiredLevel: 25
+  experience: 4000

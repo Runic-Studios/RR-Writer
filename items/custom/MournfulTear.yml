@@ -1,0 +1,10 @@
+id: MournfulTear
+display:
+  name: '&6Mournful Tear'
+  material: GHAST_TEAR
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7I should return this to the Captain!'

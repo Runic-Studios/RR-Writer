@@ -1,0 +1,5 @@
+heal-reduced-percent: 0.45 #ratio
+name: '&b&lPurity'
+lore:
+- '&7&oDrinking a potion cleanses all crowd control effects'
+- '&7&oBut you receive 45% reduced healing'

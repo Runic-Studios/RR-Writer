@@ -1,0 +1,10 @@
+id: MythicalIngredient
+display:
+  name: '&6Mythical Ingredient'
+  material: RED_TULIP
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7A mythical illusive flower that hums with magical energy.'

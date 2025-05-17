@@ -1,0 +1,11 @@
+id: sandswept-basin-monster-spike
+display:
+  name: '&6Droughtwyrm Spike'
+  material: END_ROD
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The spike from an aquatic beast.'
+  - '&7The magical properties still resonate within...'

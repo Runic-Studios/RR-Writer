@@ -1,0 +1,10 @@
+id: tutorial-reagent-hide
+display:
+  name: '&6Animal Hide'
+  material: LEATHER
+tags:
+- soulbound
+type: 'generic' 
+lore:
+  - ''
+  - '&7It is leather.'

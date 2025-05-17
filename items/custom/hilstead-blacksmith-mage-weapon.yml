@@ -1,0 +1,13 @@
+id: hilstead-blacksmith-mage-weapon
+display:
+  name: Stormguard Relic
+  material: WOODEN_HOE
+  damage: 7
+type: weapon
+level: 15
+rarity: common
+damage:
+  min: 10
+  max: 12
+max-gem-slots: 0
+class: mage

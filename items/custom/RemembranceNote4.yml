@@ -1,0 +1,15 @@
+id: RemembranceNote4
+display:
+  name: '&6Ragged Note #4'
+  material: GRAY_DYE
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7“How is everyone doing?”'
+  - '&7Is something that I asked myself on the daily,' 
+  - '&7but I didn''t dare find out.'
+  - '&7Everything must be fine and thriving.'
+  - '&7As the days passed by I grew accustomed to the new life,'
+  - '&7it wasn’t all too bad… at first.'

@@ -1,0 +1,8 @@
+id: praetorium-silver-medal
+display:
+  name: '&fSilver Medal'
+  material: IRON_NUGGET
+type: 'generic' 
+lore:
+- ''
+- '&7Currency of The Praetorium'

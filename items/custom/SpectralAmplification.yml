@@ -1,0 +1,10 @@
+id: SpectralAmplification
+display:
+  name: '&6Spectral Amplification'
+  material: DRAGON_BREATH
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Beware! To enhance the undead.'

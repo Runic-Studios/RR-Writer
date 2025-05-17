@@ -1,0 +1,10 @@
+id: black-frost
+display:
+  name: '&1Black Frost'
+  material: BLUE_ICE
+type: 'generic' 
+lore:
+- ''
+- '&9Screams of agony.'
+- ''
+- '&7Crafting Reagent'

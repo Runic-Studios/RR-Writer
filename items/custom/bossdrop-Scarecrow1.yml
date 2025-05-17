@@ -1,0 +1,14 @@
+id: bossdrop-Scarecrow1
+display:
+  name: Vengeful Vest
+  material: IRON_CHESTPLATE
+type: armor
+level: 7
+rarity: unique
+health: 35
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

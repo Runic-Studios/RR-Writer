@@ -1,0 +1,14 @@
+id: bossdrop-BeastMaster1
+display:
+  name: Red Cap
+  material: LEATHER_HELMET
+type: armor
+level: 35
+rarity: unique
+health: 90
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

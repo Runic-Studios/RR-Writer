@@ -1,0 +1,13 @@
+id: uncut-sapphire-moderate
+display:
+  name: '&fUncut Sapphire &eII'
+  material: LAPIS_ORE
+type: 'generic' 
+lore:
+- ''
+- '&7Quality: &eModerate'
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 20
+  experience: 142

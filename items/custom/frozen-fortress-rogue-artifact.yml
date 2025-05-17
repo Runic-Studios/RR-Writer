@@ -1,0 +1,15 @@
+ability: test
+class: rogue
+damage:
+  max: 65
+  min: 62
+display:
+  damage: 6
+  material: WOODEN_SWORD
+  name: Blade of the Betrayer
+id: frozen-fortress-rogue-artifact
+level: 60
+rarity: unique
+tags:
+- untradeable
+type: weapon

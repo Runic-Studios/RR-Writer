@@ -1,0 +1,10 @@
+id: cooked-carrot
+display:
+  name: '&eRoasted Carrot'
+  material: CARROT
+type: 'generic' 
+tags:
+- consumable
+data:
+  requiredLevel: 10
+  experience: 80

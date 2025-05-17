@@ -1,0 +1,11 @@
+id: cut-sapphire-iv
+display:
+  name: '&3Cut Sapphire IV'
+  material: LAPIS_LAZULI
+type: gem
+
+tier: 4
+main-stat: intelligence
+data:
+  requiredLevel: 40
+  experience: 15000

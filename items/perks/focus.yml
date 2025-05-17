@@ -1,0 +1,5 @@
+max-stacks: 5
+increase-damage-percent: 0.1 #ratio
+name: '&b&lFocus'
+lore:
+- '&7&oWhile at full health, you deal &r&e<focus-increase-damage-percent> &r&7&oextra damage'

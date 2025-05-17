@@ -1,0 +1,22 @@
+id: blackfrost-warrior-leggings
+display:
+  name: Frostforged Legplates
+  material: IRON_LEGGINGS
+type: armor
+level: 60
+rarity: legendary
+health: 443
+stats:
+  strength:
+    min: 16
+    max: 22
+  wisdom:
+    min: 8
+    max: 11
+  vitality:
+    min: 3
+    max: 6
+max-gem-slots: 6
+class: warrior
+item-perks:
+  bloodlust: 1

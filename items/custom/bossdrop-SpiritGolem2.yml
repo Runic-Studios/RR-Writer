@@ -1,0 +1,14 @@
+id: bossdrop-SpiritGolem2
+display:
+  name: Pair of Torment
+  material: DIAMOND_BOOTS
+type: armor
+level: 22
+rarity: unique
+health: 38
+stats:
+  wisdom:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

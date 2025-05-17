@@ -1,0 +1,14 @@
+id: bossdrop-PileOfFlesh2
+display:
+  name: Rotten Flesh
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 42
+rarity: unique
+health: 147
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

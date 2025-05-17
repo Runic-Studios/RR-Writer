@@ -1,0 +1,11 @@
+id: lavender
+display:
+  name: '&dLavender'
+  material: PINK_TULIP
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 30
+  experience: 142

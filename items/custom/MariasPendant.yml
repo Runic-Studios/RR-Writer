@@ -1,0 +1,10 @@
+id: MariasPendant
+display:
+  name: '&6Maria''s Pendant'
+  material: OAK_BUTTON
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7I should return this to Maria!'

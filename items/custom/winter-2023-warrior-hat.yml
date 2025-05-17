@@ -1,0 +1,15 @@
+id: winter-2023-warrior-hat
+display:
+  name: '&9[&bWinter&9]&b Hat &e2023'
+  material: CARVED_PUMPKIN
+tags:
+- untradeable
+type: armor
+level: 1
+health: 25
+rarity: unique
+stats:
+max-gem-slots: 0
+class: warrior
+item-perks:
+  wintersedge2023: 1

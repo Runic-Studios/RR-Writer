@@ -1,0 +1,15 @@
+id: misty-alcove-major-potion-mana
+display:
+  name: '&3Major Potion of Mana'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &3125✸ &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 125
+  color: aqua

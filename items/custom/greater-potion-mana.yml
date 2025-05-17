@@ -1,0 +1,15 @@
+id: greater-potion-mana
+display:
+  name: '&3Greater Potion of Mana'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &3225✸ &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 225
+  color: aqua

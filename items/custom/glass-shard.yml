@@ -1,0 +1,8 @@
+id: glass-shard
+display:
+  name: '&fGlass Shard'
+  material: GHAST_TEAR
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'

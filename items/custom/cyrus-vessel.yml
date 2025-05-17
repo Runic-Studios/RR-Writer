@@ -1,0 +1,8 @@
+id: cyrus-vessel
+display:
+  name: '&6Cyrus Vessel'
+  material: TOTEM_OF_UNDYING
+type: 'generic' 
+lore:
+  - ''
+  - '&7The overseer of the Forsaken.'

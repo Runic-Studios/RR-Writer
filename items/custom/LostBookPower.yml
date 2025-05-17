@@ -1,0 +1,10 @@
+id: LostBookPower
+display:
+  name: '&6Lost Book of Power'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7I shouldn''t look...'

@@ -1,0 +1,22 @@
+id: praetorium-gilded-rogue-chest
+display:
+  name: Gilded Imperial Rogue Vest
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 60
+rarity: legendary
+health: 165
+stats:
+  strength:
+    min: 17
+    max: 17
+  intelligence:
+    min: 8
+    max: 8
+  dexterity:
+    min: 4
+    max: 4
+max-gem-slots: 6
+class: rogue
+item-perks:
+  aegis: 1

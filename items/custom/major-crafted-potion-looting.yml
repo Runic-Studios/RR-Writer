@@ -1,0 +1,19 @@
+id: major-crafted-potion-looting
+display:
+  name: '&dMajor Crafted Potion of Looting'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eGrants &f10% &echance of double'
+- '&eloot &efor &f5 &eminutes'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 10
+  duration: 300
+  color: fuchsia
+  requiredLevel: 40
+  experience: 5500

@@ -1,0 +1,17 @@
+id: murkwood-archer-boots
+display:
+  name: Vineclad Boots
+  material: CHAINMAIL_BOOTS
+type: armor
+level: 25
+rarity: unique
+health: 53
+stats:
+  dexterity:
+    min: 4
+    max: 7
+  strength:
+    min: 3
+    max: 6
+max-gem-slots: 2
+class: archer

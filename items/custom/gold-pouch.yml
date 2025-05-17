@@ -1,0 +1,18 @@
+id: gold-pouch
+display:
+  name: '&6Gold Pouch'
+  material: SHEARS
+  damage: 234
+type: 'dynamic'
+lore:
+- ''
+- '&6&lLEFT CLICK &7Empty Pouch'
+- '&6&lRIGHT CLICK &7Fill Pouch'
+- ''
+- '&7A pouch that holds &f256 &7coins'
+triggers:
+  left: 'empty-pouch'
+  right: 'fill-pouch'
+data:
+  dynamicLore: 'c'
+  maxCoins: 256

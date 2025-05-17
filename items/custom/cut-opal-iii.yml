@@ -1,0 +1,11 @@
+id: cut-opal-iii
+display:
+  name: '&eCut Opal III'
+  material: QUARTZ
+type: gem
+
+tier: 3
+main-stat: dexterity
+data:
+  requiredLevel: 25
+  experience: 4000

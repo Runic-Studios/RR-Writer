@@ -1,0 +1,15 @@
+id: tracking-compass
+display:
+  name: '&6Tracking Compass'
+  material: COMPASS
+type: 'generic'
+tags:
+- soulbound
+lore:
+- ''
+- '&eLearn the location of a player!'
+- '&7This item is reusable.'
+triggers:
+  right: 'item-use'
+data:
+  cooldown: 30

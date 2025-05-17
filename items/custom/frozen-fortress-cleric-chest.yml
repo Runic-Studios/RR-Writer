@@ -1,0 +1,19 @@
+id: frozen-fortress-cleric-chest
+display:
+  name: Eldrid's Personal Chestplate
+  material: GOLDEN_CHESTPLATE
+tags:
+- 'untradeable'
+type: armor
+level: 60
+rarity: rare
+health: 245
+stats:
+  wisdom:
+    min: 8
+    max: 9
+  vitality:
+    min: 5
+    max: 6
+max-gem-slots: 2
+class: cleric

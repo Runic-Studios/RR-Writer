@@ -1,0 +1,17 @@
+id: lesser-crafted-potion-healing
+display:
+  name: '&cLesser Crafted Potion of Healing'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &c125<3 &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 125
+  color: red
+  requiredLevel: 0
+  experience: 400 

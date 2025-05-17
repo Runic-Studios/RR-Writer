@@ -1,0 +1,19 @@
+id: frozen-fortress-mage-helm
+display:
+  name: Magical Frostlord Hood
+  material: DIAMOND_HELMET
+tags:
+- 'untradeable'
+type: armor
+level: 60
+rarity: rare
+health: 139
+stats:
+  intelligence:
+    min: 8
+    max: 9
+  vitality:
+    min: 5
+    max: 6
+max-gem-slots: 2
+class: mage

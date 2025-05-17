@@ -1,0 +1,15 @@
+id: SandraLetter
+display:
+  name: '&6Sandra''s Letter'
+  material: GRAY_DYE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7My love, on my travels I was given information about your good friend Taleeb.'
+  - '&7I fear our success brings only ill thoughts to his head.'
+  - '&7They say he is plotting to sabotage the business we have worked so hard to build up.'
+  - '&7Do not worry my love, I promise to protect this will with my life! I shall see you in the morning.'
+  - '&7Love Sandra'
+  

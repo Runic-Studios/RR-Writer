@@ -1,0 +1,14 @@
+id: bossdrop-BabyDragon1 
+display:
+  name: Dragon Molt
+  material: DIAMOND_HELMET
+type: armor
+level: 6
+rarity: unique
+health: 25
+stats:
+  intelligence:
+    min: 6
+    max: 8
+max-gem-slots: 1
+class: mage

@@ -1,0 +1,10 @@
+id: KoldorianPickaxe
+display:
+  name: '&6Koldorian Pickaxe'
+  material: GOLDEN_PICKAXE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Given to those trusted by the people of Koldore.'

@@ -1,0 +1,10 @@
+id: tutorial-reagent-thread
+display:
+  name: '&6Thread'
+  material: STRING
+tags:
+- soulbound
+type: 'generic' 
+lore:
+  - ''
+  - '&7It is thread.'

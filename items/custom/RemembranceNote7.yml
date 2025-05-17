@@ -1,0 +1,15 @@
+id: RemembranceNote7
+display:
+  name: '&6Ragged Note #7'
+  material: GRAY_DYE
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7I know everyone has to think the same way I do,'
+  - '&7they have to be, how could anyone be sane without everyone else?'
+  - '&7I feel something unlike anything before,'
+  - '&7after all this time cooped up in my small home.'
+  - '&7I feel like my wishes are eating me up.'
+  - '&7I have to do something, for everyone''s sake, and also for myself.'

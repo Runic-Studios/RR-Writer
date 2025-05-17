@@ -1,0 +1,10 @@
+id: PolishedRing
+display:
+  name: '&6Polished Ring'
+  material: BIRCH_BUTTON
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7An item to be treasured!'

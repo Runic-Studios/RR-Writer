@@ -1,0 +1,17 @@
+id: ambrosia-stew
+display:
+  name: '&eAmbrosia Stew'
+  material: RABBIT_STEW
+type: 'generic'
+tags:
+- consumable
+lore:
+- ''
+- '&eRestores &c200❤ &eover 10s'
+triggers:
+  right: 'item-consume'
+data:
+  duration: 10
+  health-amount: 200
+  requiredLevel: 40
+  experience: 800

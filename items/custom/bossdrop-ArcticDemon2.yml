@@ -1,0 +1,14 @@
+id: bossdrop-ArcticDemon2
+display:
+  name: Frozen Heart
+  material: DIAMOND_CHESTPLATE
+type: armor
+level: 51
+rarity: unique
+health: 158
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

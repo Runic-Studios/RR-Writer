@@ -1,0 +1,15 @@
+ability: scorched-blade
+class: rogue
+damage:
+  max: 32
+  min: 30
+display:
+  damage: 2
+  material: WOODEN_SWORD
+  name: Wolfspine
+id: sunken-library-rogue-artifact
+level: 25
+rarity: unique
+tags:
+- untradeable
+type: weapon

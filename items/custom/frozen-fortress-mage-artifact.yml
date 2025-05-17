@@ -1,0 +1,15 @@
+ability: test
+class: mage
+damage:
+  max: 49
+  min: 46
+display:
+  damage: 6
+  material: WOODEN_HOE
+  name: Permafrost
+id: frozen-fortress-mage-artifact
+level: 60
+rarity: unique
+tags:
+- untradeable
+type: weapon

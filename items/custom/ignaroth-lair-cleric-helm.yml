@@ -1,0 +1,22 @@
+id: ignaroth-lair-cleric-helm
+display:
+  name: Scorching Crown
+  material: GOLDEN_HELMET
+type: armor
+level: 60
+rarity: legendary
+health: 365
+stats:
+  intelligence:
+    min: 19
+    max: 19
+  wisdom:
+    min: 10
+    max: 10
+  dexterity:
+    min: 5
+    max: 5
+max-gem-slots: 6
+class: cleric
+item-perks:
+  undying: 1

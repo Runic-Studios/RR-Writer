@@ -1,0 +1,14 @@
+id: CeruleanLetter3
+display:
+  name: '&6Cerulean''s Letter #3'
+  material: PURPLE_DYE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Thus, this will my final act, my good friend.'
+  - '&7I hope you find happiness. I hope good fortune finds you.'
+  - '&7I hope you find someone you love.'
+  - '&7Well then, goodbye my friend.'
+  - '&7Your amazingly flamboyant companion, Cerulean.'

@@ -1,0 +1,14 @@
+id: bossdrop-ShreddedOwl1
+display:
+  name: Avian Eminence
+  material: CHAINMAIL_HELMET
+type: armor
+level: 21
+rarity: unique
+health: 40
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: archer

@@ -1,0 +1,10 @@
+id: PrimitiveRune
+display:
+  name: '&6Primitive Rune'
+  material: IRON_NUGGET
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7An ingredient of the Eternal Flame!'

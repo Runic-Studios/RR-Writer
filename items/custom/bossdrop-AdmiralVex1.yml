@@ -1,0 +1,14 @@
+id: bossdrop-AdmiralVex1
+display:
+  name: Serrated Ribcage
+  material: DIAMOND_CHESTPLATE
+type: armor
+level: 24
+rarity: unique
+health: 75
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

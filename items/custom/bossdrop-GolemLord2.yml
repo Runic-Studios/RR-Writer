@@ -1,0 +1,14 @@
+id: bossdrop-GolemLord2
+display:
+  name: Two Ton Tunic
+  material: DIAMOND_CHESTPLATE
+type: armor
+level: 31
+rarity: unique
+health: 88
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

@@ -1,0 +1,11 @@
+id: manafish
+display:
+  name: '&fManafish'
+  material: LIGHT_BLUE_STAINED_GLASS
+type: 'generic'
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 20
+  experience: 186

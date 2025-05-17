@@ -1,0 +1,14 @@
+id: bossdrop-RatKing2
+display:
+  name: Chunk of Cheese
+  material: GOLDEN_CHESTPLATE
+type: armor
+level: 5
+rarity: unique
+health: 44
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

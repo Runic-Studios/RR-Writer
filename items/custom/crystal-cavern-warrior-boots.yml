@@ -1,0 +1,19 @@
+id: crystal-cavern-warrior-boots
+display:
+  name: Codex's War-Boots
+  material: IRON_BOOTS
+tags:
+- 'untradeable'
+type: armor
+level: 12
+rarity: common
+health: 26
+stats:
+  vitality:
+    min: 3
+    max: 4
+  strength: 
+    min: 1
+    max: 2
+max-gem-slots: 0
+class: warrior

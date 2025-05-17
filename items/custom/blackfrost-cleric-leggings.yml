@@ -1,0 +1,22 @@
+id: blackfrost-cleric-leggings
+display:
+  name: Frostweave Leggings
+  material: GOLDEN_LEGGINGS
+type: armor
+level: 60
+rarity: legendary
+health: 308
+stats:
+  wisdom:
+    min: 16
+    max: 22
+  vitality:
+    min: 8
+    max: 11
+  dexterity:
+    min: 3
+    max: 6
+max-gem-slots: 6
+class: cleric
+item-perks:
+  blackfrost-cleric-armor: 1

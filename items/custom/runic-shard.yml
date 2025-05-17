@@ -1,0 +1,8 @@
+id: runic-shard
+display:
+  name: '&dRunic Shard'
+  material: AMETHYST_SHARD
+type: 'generic' 
+lore:
+  - ''
+  - '&7You can hear faint voices.'

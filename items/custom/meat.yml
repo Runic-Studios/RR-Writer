@@ -1,0 +1,8 @@
+id: meat
+display:
+  name: '&fRaw Meat'
+  material: MUTTON
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'

@@ -1,0 +1,10 @@
+id: LostBookKnowledge
+display:
+  name: '&6Lost Book of Knowledge'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7I shouldn''t look...'

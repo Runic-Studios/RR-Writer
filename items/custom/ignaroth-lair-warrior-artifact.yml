@@ -1,0 +1,14 @@
+class: warrior
+damage:
+  max: 75
+  min: 68
+display:
+  damage: 5
+  material: WOODEN_AXE
+  name: Warmonger
+id: ignaroth-lair-warrior-artifact
+level: 60
+rarity: legendary
+type: weapon
+item-perks:
+  infernal: 1

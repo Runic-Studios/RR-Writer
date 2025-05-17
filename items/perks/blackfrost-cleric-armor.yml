@@ -1,0 +1,7 @@
+max-stacks: 4
+damage-percent: 0.1 #ratio
+range: 3 #in blocks, will work with decimals as well
+name: '&b&lOverheal'
+lore:
+- '&7&oIf your healing exceeds the max health of the recipiant:'
+- '&r&e<blackfrost-cleric-armor-damage-percent> &r&7&oof the excess healing is dealt as magicʔ damage to all enemies in a 3 block radius'

@@ -1,0 +1,12 @@
+id: noman-archer-leggings
+display:
+  name: Mecha Steel Leggings
+  material: CHAINMAIL_LEGGINGS
+type: armor
+level: 60
+rarity: unique
+health: 170
+max-gem-slots: 6
+class: archer
+item-perks:
+  mechanization: 1

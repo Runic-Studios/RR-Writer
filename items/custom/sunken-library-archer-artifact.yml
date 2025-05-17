@@ -1,0 +1,15 @@
+ability: blazing-rings
+class: archer
+damage:
+  max: 31
+  min: 29
+display:
+  damage: 2
+  material: BOW
+  name: Skeletal Shortbow
+id: sunken-library-archer-artifact
+level: 25
+rarity: unique
+tags:
+- untradeable
+type: weapon

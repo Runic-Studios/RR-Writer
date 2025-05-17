@@ -1,0 +1,10 @@
+id: token-of-valor
+display:
+  name: '&6Token of Valor'
+  material: NETHER_STAR
+type: 'generic' 
+lore:
+- ''
+- '&7A badge of honor and pride!'
+- ''
+- '&6Legendary'

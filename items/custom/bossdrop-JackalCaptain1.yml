@@ -1,0 +1,14 @@
+id: bossdrop-JackalCaptain1
+display:
+  name: Pirate Blouse
+  material: DIAMOND_CHESTPLATE
+type: armor
+level: 11
+rarity: unique
+health: 42
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

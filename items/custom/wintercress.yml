@@ -1,0 +1,11 @@
+id: wintercress
+display:
+  name: '&BWintercress'
+  material: BLUE_ORCHID
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 20
+  experience: 90

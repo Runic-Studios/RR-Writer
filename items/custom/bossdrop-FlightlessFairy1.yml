@@ -1,0 +1,14 @@
+id: bossdrop-FlightlessFairy1
+display:
+  name: Paper Bag
+  material: LEATHER_HELMET
+type: armor
+level: 11
+rarity: unique
+health: 30
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

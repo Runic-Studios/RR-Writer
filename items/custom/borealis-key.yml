@@ -1,0 +1,10 @@
+id: borealis-key
+display:
+  name: '&6Borealis'' Key'
+  material: PRISMARINE_SHARD
+type: 'generic' 
+lore:
+  - ''
+  - '&7I can use this to enter the next room!'
+  - ''
+  - '&6Dungeon Item'

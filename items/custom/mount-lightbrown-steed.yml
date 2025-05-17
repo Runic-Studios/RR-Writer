@@ -1,0 +1,14 @@
+id: 'mount-lightbrown-steed'
+display:
+  name: '&eLightbrown Steed'
+  material: SADDLE
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+  - ''
+  - '&r&7Consume this item to unlock this mount!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-id: LIGHTBROWN_STEED

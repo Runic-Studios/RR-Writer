@@ -1,0 +1,17 @@
+id: greater-crafted-potion-mana
+display:
+  name: '&3Greater Crafted Potion of Mana'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &3400✸ &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 400
+  color: aqua
+  requiredLevel: 60
+  experience: 8500

@@ -1,0 +1,22 @@
+id: blackfrost-rogue-boots
+display:
+  name: 'Frostguard Boots'
+  material: LEATHER_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 158
+stats:
+  strength:
+    min: 12
+    max: 18
+  intelligence:
+    min: 6
+    max: 9
+  dexterity:
+    min: 2
+    max: 5
+max-gem-slots: 6
+class: rogue
+item-perks:
+  blackfrost-rogue-armor: 1

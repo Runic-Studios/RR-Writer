@@ -1,0 +1,18 @@
+id: FallenBook4
+display:
+  name: '&6Dawnshire Journal #4'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7"My name is Marcus Merula,"'
+  - '&7"and I killed thousands of comrades and friends by sending them to this war."'
+  - '&7"My hands are bloody, and my conscience is muddled."'
+  - '&7"But if there is one person that should be saved..."'
+  - '&7"That is you, Charlie. Live, and let the people live."'
+  - '&7"Love as it''s your last day. And strengthen yourself,"'
+  - '&7"as you are a man and you are duty bound to protect those dear to you."'
+  - '&7"Someone will need your help, and you will have to protect them, I am sure of it."'
+  - '&7"This is my last entry. Goodbye, and farewell."'

@@ -1,0 +1,19 @@
+id: crypts-archer-leggings
+display:
+  name: Lightweight Warden Leggings
+  material: CHAINMAIL_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 35
+rarity: rare
+health: 92
+stats:
+  dexterity:
+    min: 7
+    max: 8
+  strength:
+    min: 4
+    max: 5
+max-gem-slots: 2
+class: archer

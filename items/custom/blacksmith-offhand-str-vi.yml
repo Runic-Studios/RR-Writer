@@ -1,0 +1,14 @@
+id: blacksmith-offhand-str-vi
+display:
+  name: Midnight Mameluke
+  material: STONE_SWORD
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  strength:
+    min: 39
+    max: 41
+data:
+  requiredLevel: 50
+  experience: 30000

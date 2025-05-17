@@ -1,0 +1,15 @@
+id: blacksmith-offhand-vit-vi
+display:
+  name: Sabled Stronghold
+  material: SHEARS
+  damage: 237
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  vitality:
+    min: 39
+    max: 41
+data:
+  requiredLevel: 50
+  experience: 30000

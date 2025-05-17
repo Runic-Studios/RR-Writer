@@ -1,0 +1,10 @@
+id: azanashop-carrot
+display:
+  name: '&eDirty Carrot'
+  material: CARROT
+tags:
+- consumable
+type: 'generic' 
+lore:
+  - ''
+  - '&7A crunchy snack.'

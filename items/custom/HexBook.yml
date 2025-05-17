@@ -1,0 +1,10 @@
+id: HexBook
+display:
+  name: '&6Codex Hexaganus'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The book hums quietly.'

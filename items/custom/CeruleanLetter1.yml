@@ -1,0 +1,17 @@
+id: CeruleanLetter1
+display:
+  name: '&6Cerulean''s Letter #1'
+  material: PURPLE_DYE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7My dear friend, Royverin'
+  - '&7I am writing a letter to you,'
+  - '&7as part of my final goodbye.'
+  - '&7As you know better than anyone,'
+  - '&7I would walk through the deepest depths of hell for my love..'
+  - '&7My time in this world has been a pleasant journey,'
+  - '&7and I am grateful that you were part of it.'
+  - '&7...'

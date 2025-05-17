@@ -1,0 +1,19 @@
+id: crypts-mage-chest
+display:
+  name: Pharaonic Robes
+  material: DIAMOND_CHESTPLATE
+tags:
+- 'untradeable'
+type: armor
+level: 35
+rarity: rare
+health: 94
+stats:
+  intelligence:
+    min: 7
+    max: 8
+  dexterity:
+    min: 4
+    max: 5
+max-gem-slots: 2
+class: mage

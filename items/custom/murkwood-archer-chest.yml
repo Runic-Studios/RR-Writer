@@ -1,0 +1,17 @@
+id: murkwood-archer-chest
+display:
+  name: Vineclad Chestplate
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 25
+rarity: unique
+health: 82
+stats:
+  dexterity:
+    min: 5
+    max: 8
+  strength:
+    min: 4
+    max: 7
+max-gem-slots: 2
+class: archer

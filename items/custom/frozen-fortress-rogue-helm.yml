@@ -1,0 +1,19 @@
+id: frozen-fortress-rogue-helm
+display:
+  name: Elite Arctic Soldier's Hood
+  material: LEATHER_HELMET
+tags:
+- 'untradeable'
+type: armor
+level: 60
+rarity: rare
+health: 168
+stats:
+  strength:
+    min: 8
+    max: 9
+  vitality:
+    min: 5
+    max: 6
+max-gem-slots: 2
+class: rogue

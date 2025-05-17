@@ -1,0 +1,14 @@
+id: blacksmith-offhand-int-ii
+display:
+  name: Sapphiric Staff
+  material: STONE_HOE
+type: offhand
+level: 20
+rarity: crafted
+stats:
+  intelligence:
+    min: 12
+    max: 12
+data:
+  requiredLevel: 10
+  experience: 2250

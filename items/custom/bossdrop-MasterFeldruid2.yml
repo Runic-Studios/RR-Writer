@@ -1,0 +1,14 @@
+id: bossdrop-MasterFeldruid2
+display:
+  name: Sequestered Roots
+  material: DIAMOND_BOOTS
+type: armor
+level: 29
+rarity: unique
+health: 50
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

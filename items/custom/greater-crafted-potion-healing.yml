@@ -1,0 +1,17 @@
+id: greater-crafted-potion-healing
+display:
+  name: '&cGreater Crafted Potion of Healing'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &c825<3 &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 825
+  color: red
+  requiredLevel: 60
+  experience: 8000

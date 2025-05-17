@@ -1,0 +1,22 @@
+id: magmaheart-enclave-rogue-boots
+display:
+  name: 'Fire Elemental Boots'
+  material: LEATHER_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 158
+stats:
+  strength:
+    min: 16
+    max: 16
+  intelligence:
+    min: 8
+    max: 8
+  dexterity:
+    min: 4
+    max: 4
+max-gem-slots: 6
+class: rogue
+item-perks:
+  ravenous: 1

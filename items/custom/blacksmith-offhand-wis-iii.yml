@@ -1,0 +1,14 @@
+id: blacksmith-offhand-wis-iii
+display:
+  name: Arctic Flail
+  material: STONE_SHOVEL
+type: offhand
+level: 30
+rarity: crafted
+stats:
+  wisdom:
+    min: 17
+    max: 18
+data:
+  requiredLevel: 20
+  experience: 5000

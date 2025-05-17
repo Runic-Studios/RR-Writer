@@ -1,0 +1,14 @@
+id: bossdrop-HauntingNecromancer1
+display:
+  name: Undying
+  material: LEATHER_LEGGINGS
+type: armor
+level: 25
+rarity: unique
+health: 68
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

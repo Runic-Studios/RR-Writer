@@ -1,0 +1,19 @@
+id: jorundr-keep-archer-leggings
+display:
+  name: Stormguard Sniper Leggings
+  material: CHAINMAIL_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 15
+rarity: uncommon
+health: 38
+stats:
+  dexterity:
+    min: 5
+    max: 6
+  wisdom:
+    min: 3
+    max: 4
+max-gem-slots: 1
+class: archer

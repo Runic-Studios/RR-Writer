@@ -1,0 +1,16 @@
+class: archer
+damage:
+  max: 62
+  min: 59
+display:
+  damage: 14
+  material: BOW
+  name: '&9[&bWinter&9]&b Bow &e2023 &6+2'
+id: winter-2023-archer-artifact-+2
+level: 60
+rarity: unique
+tags:
+- untradeable
+type: weapon
+item-perks:
+  wintersedge2023: 1

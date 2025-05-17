@@ -1,0 +1,12 @@
+id: noman-cleric-chest
+display:
+  name: Heart of Noman
+  material: GOLDEN_CHESTPLATE
+type: armor
+level: 60
+rarity: unique
+health: 225
+max-gem-slots: 6
+class: cleric
+item-perks:
+  mechanization: 2

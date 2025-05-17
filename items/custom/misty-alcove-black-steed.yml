@@ -1,0 +1,17 @@
+id: misty-alcove-black-steed
+display:
+  name: '&eBlack Steed'
+  material: SADDLE
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+  - ''
+  - '&6Tier: &7Normal'
+  - '&6Speed: +&740%'
+  - ''
+  - '&r&7&oA loyal and valiant steed!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-id: BLACK_STEED

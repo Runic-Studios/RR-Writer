@@ -1,0 +1,8 @@
+id: ambrosia-root
+display:
+  name: '&fAmbrosia Root'
+  material: GOLDEN_CARROT
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'

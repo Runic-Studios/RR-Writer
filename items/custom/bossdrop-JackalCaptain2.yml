@@ -1,0 +1,14 @@
+id: bossdrop-JackalCaptain2
+display:
+  name: Black Boots
+  material: IRON_BOOTS
+type: armor
+level: 12
+rarity: unique
+health: 34
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

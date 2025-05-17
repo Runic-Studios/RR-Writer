@@ -1,0 +1,20 @@
+id: praetorium-rogue-boots
+display:
+  name: 'Imperial Rogue Boots'
+  material: LEATHER_BOOTS
+type: armor
+level: 60
+rarity: epic
+health: 112
+stats:
+  strength:
+    min: 8
+    max: 8
+  intelligence:
+    min: 6
+    max: 6
+  dexterity:
+    min: 2
+    max: 2
+max-gem-slots: 3
+class: rogue

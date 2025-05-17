@@ -1,0 +1,14 @@
+id: blacksmith-offhand-wis-vi
+display:
+  name: Warped Whip
+  material: STONE_SHOVEL
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  wisdom:
+    min: 39
+    max: 41
+data:
+  requiredLevel: 50
+  experience: 30000

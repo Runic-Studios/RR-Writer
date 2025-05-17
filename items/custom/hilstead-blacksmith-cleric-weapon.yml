@@ -1,0 +1,13 @@
+id: hilstead-blacksmith-cleric-weapon
+display:
+  name: Raider's Mace
+  material: WOODEN_SHOVEL
+  damage: 7
+type: weapon
+level: 15
+rarity: common
+damage:
+  min: 9
+  max: 13
+max-gem-slots: 0
+class: cleric

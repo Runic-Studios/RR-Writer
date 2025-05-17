@@ -1,0 +1,18 @@
+id: blackfrost-archer-chest-epic
+display:
+  name: Phantom Stalker Chestplate
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 60
+rarity: epic
+health: 209
+stats:
+  strength:
+    min: 19
+    max: 19
+  dexterity:
+    min: 8
+    max: 8
+max-gem-slots: 4
+class: archer
+

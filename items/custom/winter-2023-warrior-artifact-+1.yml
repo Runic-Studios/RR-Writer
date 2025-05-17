@@ -1,0 +1,16 @@
+class: warrior
+damage:
+  max: 40
+  min: 40
+display:
+  damage: 13
+  material: WOODEN_AXE
+  name: '&9[&bWinter&9]&b Axe &e2023 &6+1'
+id: winter-2023-warrior-artifact-+1
+level: 40
+rarity: unique
+tags:
+- untradeable
+type: weapon
+item-perks:
+  wintersedge2023: 1

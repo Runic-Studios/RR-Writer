@@ -1,0 +1,19 @@
+id: blackfrost-archer-chest
+display:
+  name: Frostbound Vest
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 60
+rarity: legendary
+health: 253
+stats:
+  strength:
+    min: 19
+    max: 25
+  dexterity:
+    min: 8
+    max: 14
+max-gem-slots: 6
+class: archer
+item-perks:
+  blackfrost-archer-armor: 1

@@ -1,0 +1,10 @@
+id: Grass
+display:
+  name: '&aGrass'
+  material: GRASS
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Hefty piles of green stuff.'

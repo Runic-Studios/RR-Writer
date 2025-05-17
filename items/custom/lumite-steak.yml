@@ -1,0 +1,10 @@
+id: lumite-steak
+display:
+  name: '&eBlackened Steak'
+  material: COOKED_BEEF
+tags:
+- consumable
+type: 'generic' 
+lore:
+  - ''
+  - '&7Burnt on the outside and raw on the inside.'

@@ -1,0 +1,14 @@
+class: warrior
+damage:
+  max: 10
+  min: 9
+display:
+  damage: 11
+  material: WOODEN_AXE
+  name: Corruption
+id: sebaths-cave-warrior-artifact
+level: 5
+rarity: unique
+tags:
+- untradeable
+type: weapon

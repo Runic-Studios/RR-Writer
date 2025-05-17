@@ -1,0 +1,12 @@
+id: noman-rogue-boots
+display:
+  name: Primordial Tabi
+  material: LEATHER_BOOTS
+type: armor
+level: 60
+rarity: unique
+health: 130
+max-gem-slots: 6
+class: rogue
+item-perks:
+  mechanization: 1

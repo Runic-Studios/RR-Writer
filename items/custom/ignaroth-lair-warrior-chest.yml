@@ -1,0 +1,22 @@
+id: ignaroth-lair-warrior-chest
+display:
+  name: Molten Breastplate
+  material: IRON_CHESTPLATE
+type: armor
+level: 60
+rarity: legendary
+health: 649
+stats:
+  strength:
+    min: 24
+    max: 24
+  intelligence:
+    min: 12
+    max: 12
+  dexterity:
+    min: 6
+    max: 6
+max-gem-slots: 6
+class: warrior
+item-perks:
+  undying: 1

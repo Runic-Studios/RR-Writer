@@ -1,0 +1,11 @@
+id: sandswept-basin-monster-meat
+display:
+  name: '&6Droughtwyrm Chops'
+  material: PORKCHOP
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Oddly seems appetizing.'
+  - '&7Although you might want to remove the spikes...'

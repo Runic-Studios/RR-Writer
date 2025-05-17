@@ -1,0 +1,21 @@
+id: JorundrLetter2
+display:
+  name: '&6&kJorundr&r&6''s Letter'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7...'
+  - '&7I don''t know where or how these &orunes &r&7came to be.'
+  - '&7I just know how to use them.'
+  - '&7Runewielder, you and I aren''t so different.'
+  - '&7You came in here in search for truth and spoils of conquest.'
+  - '&7I also wanted to know the truth.'
+  - '&7About my father, about the Stormguard.'
+  - '&7My father, and his faction.' 
+  - '&7They all fought to defend the vikings of the old age.'
+  - '&7And what did they receive?'
+  - '&7They became the hunted by our own kin.'
+  - '&7Some escaped, but most died in a terrible fire.'

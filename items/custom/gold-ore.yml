@@ -1,0 +1,13 @@
+id: gold-ore
+display:
+  name: '&fGold Ore &cI'
+  material: GOLD_ORE
+type: 'generic' 
+lore:
+- ''
+- '&7Quality: &cPoor'
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 35

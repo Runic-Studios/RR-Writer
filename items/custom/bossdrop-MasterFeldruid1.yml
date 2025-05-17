@@ -1,0 +1,14 @@
+id: bossdrop-MasterFeldruid1
+display:
+  name: Obscurity of the Stoic
+  material: GOLDEN_CHESTPLATE
+type: armor
+level: 32
+rarity: unique
+health: 109
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

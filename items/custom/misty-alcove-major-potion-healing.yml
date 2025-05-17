@@ -1,0 +1,15 @@
+id: misty-alcove-major-potion-healing
+display:
+  name: '&cMajor Potion of Healing'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &c125<3 &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 125
+  color: red

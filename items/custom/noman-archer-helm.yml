@@ -1,0 +1,12 @@
+id: noman-archer-helm
+display:
+  name: Mecha Steel Helmet
+  material: CHAINMAIL_HELMET
+type: armor
+level: 60
+rarity: unique
+health: 120
+max-gem-slots: 6
+class: archer
+item-perks:
+  mechanization: 1

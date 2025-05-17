@@ -1,0 +1,10 @@
+id: wardens-key
+display:
+  name: '&fWarden''s Dungeon Key'
+  material: PRISMARINE_CRYSTALS
+type: 'generic' 
+lore:
+  - ''
+  - '&7I can use this to enter the next room!'
+  - ''
+  - '&6Dungeon Item'

@@ -1,0 +1,20 @@
+id: JorundrBook3
+display:
+  name: '&6General&r&6''s Journal'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7"Entry number &k123"'
+  - ''
+  - '&7"I still can''t believe it. Frigg actually killed &kJorundr&r&7"'
+  - '&7"I just can''t put the pieces together,"'
+  - '&7it doesn''t make sense, nothing does."'
+  - '&7"My men say the same, there''s just no way."' 
+  - '&7"We do want to piece together the puzzle."'
+  - '&7"Although it may not be worth it in the end."'
+  - '&7"All I know is we must protect our lord who protected us to the very end."'
+  - '&7"As well as his innocence."'
+  - '&7"I just wish Frigg got what she wanted. And what she deserved."'

@@ -1,0 +1,11 @@
+id: 'brown-steed'
+display:
+  name: '&eBrown Steed'
+  material: SADDLE
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+  - ''
+  - '&EThis item is &COUTDATED &Eand will be &CREMOVED'
+  - '&ERefund for 1250 Coins at Azana -818.5, 35, 170'

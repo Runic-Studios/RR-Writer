@@ -1,0 +1,11 @@
+id: snowdrop
+display:
+  name: '&fSnowdrop'
+  material: WHITE_TULIP
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 15
+  experience: 67

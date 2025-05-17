@@ -1,0 +1,14 @@
+id: bossdrop-GuardianOfTheFruit1
+display:
+  name: Sandcut Armor Plating
+  material: IRON_CHESTPLATE
+type: armor
+level: 39
+rarity: unique
+health: 175
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

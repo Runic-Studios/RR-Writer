@@ -1,0 +1,19 @@
+id: crypts-warrior-helm
+display:
+  name: Vizier's Guardian Helmet
+  material: IRON_HELMET
+tags:
+- 'untradeable'
+type: armor
+level: 35
+rarity: rare
+health: 87
+stats:
+  vitality:
+    min: 7
+    max: 8
+  dexterity:
+    min: 4
+    max: 5
+max-gem-slots: 2
+class: warrior

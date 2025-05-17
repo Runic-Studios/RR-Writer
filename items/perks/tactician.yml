@@ -1,0 +1,6 @@
+speed-percent-increase: 0.25 #ratio
+damage-taken-percent-increase: 1.0 #ratio (100%)
+name: '&b&lTactician'
+lore:
+- '&7&oIncrease movement speed by 25%'
+- '&7&oReceive 100% more damage to health'

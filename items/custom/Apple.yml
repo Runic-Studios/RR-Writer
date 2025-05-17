@@ -1,0 +1,10 @@
+id: Apple
+display:
+  name: '&eApple'
+  material: APPLE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7It gives off a sweet fragrance.'

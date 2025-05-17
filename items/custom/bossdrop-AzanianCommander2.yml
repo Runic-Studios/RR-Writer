@@ -1,0 +1,14 @@
+id: bossdrop-AzanianCommander2
+display:
+  name: Feint Heart
+  material: GOLDEN_CHESTPLATE
+type: armor
+level: 16
+rarity: unique
+health: 54
+stats:
+  wisdom:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

@@ -1,0 +1,8 @@
+id: sacred-flame
+display:
+  name: '&fSacred Flame'
+  material: NETHER_WART
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'

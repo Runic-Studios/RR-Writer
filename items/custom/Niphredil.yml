@@ -1,0 +1,10 @@
+id: Niphredil
+display:
+  name: '&fNiphredil'
+  material: WHITE_TULIP
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Powerful terrestrial plant that harbors the essence of nature.'

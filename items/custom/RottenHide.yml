@@ -1,0 +1,10 @@
+id: RottenHide
+display:
+  name: '&6Rotten Hide'
+  material: LEATHER
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7It reeks of rotten meat.'

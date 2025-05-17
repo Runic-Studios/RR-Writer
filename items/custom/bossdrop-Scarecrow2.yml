@@ -1,0 +1,14 @@
+id: bossdrop-Scarecrow2
+display:
+  name: Straw Pants
+  material: DIAMOND_LEGGINGS
+type: armor
+level: 5
+rarity: unique
+health: 25
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

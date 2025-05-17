@@ -1,0 +1,23 @@
+id: 'gathering-axe-master'
+display:
+  name: '&dMaster Woodcutting Axe'
+  material: IRON_AXE
+  damage: 4
+type: 'dynamic' 
+lore:
+  - '&7Req Woodcutting &f40'
+  - '' 
+  - '&2Gathering Luck III: &7You have a'
+  - '&f50% &7chance to receive'
+  - '&f2-3x &7more resources!'
+  - ''
+  - '&dEpic'
+data:
+  dynamicFieldInitialValue: 400
+  dynamicLore: '&7/400'
+  maxDurability: 400
+  requiredLevelForUse: 40
+  bonusLootCeiling: 2
+  bonusLootChance: .5
+  requiredLevel: 40
+  experience: 8500

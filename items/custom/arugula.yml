@@ -1,0 +1,11 @@
+id: arugula
+display:
+  name: '&aArugula'
+  material: GRASS
+type: 'generic' 
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 40
+  experience: 202

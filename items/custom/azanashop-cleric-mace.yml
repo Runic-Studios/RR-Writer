@@ -1,0 +1,12 @@
+id: azanashop-cleric-mace
+display:
+  name: Spruce Hammer
+  material: WOODEN_SHOVEL
+type: weapon
+level: 4
+rarity: common
+damage:
+  min: 5
+  max: 6
+max-gem-slots: 0
+class: cleric

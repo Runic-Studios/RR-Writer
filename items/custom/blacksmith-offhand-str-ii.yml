@@ -1,0 +1,14 @@
+id: blacksmith-offhand-str-ii
+display:
+  name: Cobalt Blade
+  material: STONE_SWORD
+type: offhand
+level: 20
+rarity: crafted
+stats:
+  strength:
+    min: 12
+    max: 12
+data:
+  requiredLevel: 10
+  experience: 2250

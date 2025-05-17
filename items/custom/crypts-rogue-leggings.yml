@@ -1,0 +1,19 @@
+id: crypts-rogue-leggings
+display:
+  name: Zealot's Leather Kilt 
+  material: LEATHER_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 35
+rarity: rare
+health: 101
+stats:
+  strength:
+    min: 7
+    max: 8
+  dexterity:
+    min: 4
+    max: 5
+max-gem-slots: 2
+class: rogue

@@ -1,0 +1,11 @@
+id: cut-ruby-v
+display:
+  name: '&cCut Ruby V'
+  material: REDSTONE
+type: gem
+
+tier: 5
+main-stat: strength
+data:
+  requiredLevel: 50
+  experience: 35000

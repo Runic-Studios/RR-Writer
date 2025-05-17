@@ -1,0 +1,10 @@
+id: RhaliksAxe
+display:
+  name: '&6Rhalik''s Axe'
+  material: IRON_AXE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The sturdy axe of a dwarf!'

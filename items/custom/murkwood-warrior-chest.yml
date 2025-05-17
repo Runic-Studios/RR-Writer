@@ -1,0 +1,17 @@
+id: murkwood-warrior-chest
+display:
+  name: Muckplate Breastplate
+  material: IRON_CHESTPLATE
+type: armor
+level: 25
+rarity: unique
+health: 108
+stats:
+  vitality:
+    min: 5
+    max: 8
+  strength:
+    min: 4
+    max: 7
+max-gem-slots: 2
+class: warrior

@@ -1,0 +1,22 @@
+id: JorundrLetter1
+display:
+  name: '&6&kJorundr&r&6''s Letter'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7It all started with those Alar, they found this realm.'
+  - '&7I don''t know where they came from.'
+  - '&7Us vikings remained here, in the North. Living as one pack.'
+  - '&7Until those Alar came, many of our kin chose to leave,'
+  - '&7for a "better" life.'
+  - '&7But also because of the forsaken runic power my ancestors found.'
+  - '&7Tensions rose, all sides needed to adapt to the new realm,'
+  - '&7everyone had to get stronger.'
+  - '&7But before all of that, the Stormguard.'
+  - '&7The faction my father led, we had the powers of magic.'
+  - '&7They come naturally, somehow. As if it''s pure instinct.'
+  - '&7I was only a child when my father died valiantly, so he couldn''t teach me much.'
+  - '&7...'

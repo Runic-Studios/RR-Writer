@@ -1,0 +1,19 @@
+id: jorundr-keep-rogue-boots
+display:
+  name: The Warden's Agile Boots
+  material: LEATHER_BOOTS
+tags:
+- 'untradeable'
+type: armor
+level: 15
+rarity: uncommon
+health: 29
+stats:
+  strength:
+    min: 5
+    max: 6
+  wisdom:
+    min: 3
+    max: 4
+max-gem-slots: 1
+class: rogue

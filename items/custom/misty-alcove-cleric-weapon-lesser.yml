@@ -1,0 +1,12 @@
+id: misty-alcove-cleric-weapon-lesser
+display:
+  name: 'Frozen Mallet'
+  material: WOODEN_SHOVEL
+#  damage: 7
+type: weapon
+level: 12
+rarity: common
+damage:
+  min: 15
+  max: 16
+class: cleric

@@ -1,0 +1,10 @@
+id: PyreCatalyst
+display:
+  name: '&6Pyre Catalyst'
+  material: BLAZE_POWDER
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7To start a great fire!'

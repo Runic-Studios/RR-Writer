@@ -1,0 +1,19 @@
+id: 'gathering-pickaxe-apprentice'
+display:
+  name: '&7Apprentice Mining Pickaxe'
+  material: IRON_PICKAXE
+  damage: 1
+type: 'dynamic' 
+lore:
+  - '&7Skill &fMining'
+  - ''
+  - '&7Common'
+data:
+  dynamicFieldInitialValue: 50
+  dynamicLore: '&7/50'
+  experience: 0
+  maxDurability: 50
+  requiredLevel: 0
+  requiredLevelForUse: 0
+  bonusLootCeiling: 0
+  bonusLootChance: 0

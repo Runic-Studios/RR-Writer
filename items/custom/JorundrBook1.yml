@@ -1,0 +1,19 @@
+id: JorundrBook1
+display:
+  name: '&6Keeper&r&6''s Journal'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7"There''s no mistaking it, His Highness doesn''t remember anything."'
+  - '&7"It is my duty to guard his dearest treasures."'
+  - '&7"but I doubt there was anything more valuable than her."'
+  - '&7"This Keep was born due to both of them, after all."'
+  - '&7"This whole family was created because of them, and now she''s gone."'
+  - '&7"It is my duty to guard the treasures, so I will guard my memories,"'
+  - '&7"as well as the memories of those around me."'
+  - '&7"Those are the most valuable riches, no doubt."'
+  - '&7"Although to protect the innocent, I must never"'
+  - '&7"tell him about his memories."'

@@ -1,0 +1,14 @@
+id: bossdrop-Monkey2
+display:
+  name: Monkey Feet
+  material: DIAMOND_BOOTS
+type: armor
+level: 9
+rarity: unique
+health: 27
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

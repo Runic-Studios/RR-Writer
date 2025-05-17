@@ -1,0 +1,18 @@
+id: shadowmeld-potion
+display:
+  name: '&fShadowmeld Potion'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eAfter standing still for 5s,'
+- '&eyou turn invisible for 30s!'
+- '&eDealing damage ends the'
+- '&eeffect early.'
+triggers:
+  right: 'item-consume'
+data:
+  duration: 30
+  color: black

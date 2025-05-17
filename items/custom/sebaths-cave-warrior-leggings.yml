@@ -1,0 +1,19 @@
+id: sebaths-cave-warrior-leggings
+display:
+  name: Life-giving Leggings
+  material: IRON_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 5
+rarity: common
+health: 20
+stats:
+  vitality:
+    min: 1
+    max: 2
+  strength:
+    min: 1
+    max: 2
+max-gem-slots: 0
+class: warrior

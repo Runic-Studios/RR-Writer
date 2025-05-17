@@ -1,0 +1,12 @@
+id: noman-rogue-helm
+display:
+  name: Primordial Hood
+  material: LEATHER_HELMET
+type: armor
+level: 60
+rarity: unique
+health: 130
+max-gem-slots: 6
+class: rogue
+item-perks:
+  mechanization: 1

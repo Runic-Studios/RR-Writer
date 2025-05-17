@@ -1,0 +1,11 @@
+id: pufferfish
+display:
+  name: '&fPufferfish'
+  material: PUFFERFISH
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 40
+  experience: 387

@@ -1,0 +1,19 @@
+id: frozen-fortress-archer-helm
+display:
+  name: Fortress Sniper Helmet
+  material: CHAINMAIL_HELMET
+tags:
+- 'untradeable'
+type: armor
+level: 60
+rarity: rare
+health: 153
+stats:
+  dexterity:
+    min: 8
+    max: 9
+  vitality:
+    min: 5
+    max: 6
+max-gem-slots: 2
+class: archer

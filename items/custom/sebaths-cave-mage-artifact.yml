@@ -1,0 +1,14 @@
+class: mage
+damage:
+  max: 8
+  min: 7
+display:
+  damage: 10
+  material: WOODEN_HOE
+  name: Bloodmoon
+id: sebaths-cave-mage-artifact
+level: 5
+rarity: unique
+tags:
+- untradeable
+type: weapon

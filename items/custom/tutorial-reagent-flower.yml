@@ -1,0 +1,8 @@
+id: tutorial-reagent-flower
+display:
+  name: '&bCornflower'
+  material: AZURE_BLUET
+type: 'generic' 
+lore:
+  - ''
+  - '&7A flower pulled from it''s roots to wilt.'

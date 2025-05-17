@@ -1,0 +1,19 @@
+id: frozen-fortress-mage-leggings
+display:
+  name: Xalakyte's Silk Leggings
+  material: DIAMOND_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 60
+rarity: rare
+health: 194
+stats:
+  intelligence:
+    min: 8
+    max: 9
+  vitality:
+    min: 5
+    max: 6
+max-gem-slots: 2
+class: mage

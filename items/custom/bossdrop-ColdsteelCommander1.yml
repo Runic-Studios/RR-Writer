@@ -1,0 +1,14 @@
+id: bossdrop-ColdsteelCommander1
+display:
+  name: Glacial Mantle
+  material: GOLDEN_HELMET
+type: armor
+level: 20
+rarity: unique
+health: 60
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

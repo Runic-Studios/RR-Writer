@@ -1,0 +1,10 @@
+id: crystal-fragment
+display:
+  name: '&7Crystal Fragment'
+  material: GRAY_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Does not contain traces of any type of elements.'
+- ''
+- '&7Crafting Reagent'

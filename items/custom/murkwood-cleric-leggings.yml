@@ -1,0 +1,17 @@
+id: murkwood-cleric-leggings
+display:
+  name: Fenshield Platelegs
+  material: GOLDEN_LEGGINGS
+type: armor
+level: 25
+rarity: unique
+health: 72
+stats:
+  wisdom:
+    min: 5
+    max: 8
+  strength:
+    min: 4
+    max: 7
+max-gem-slots: 2
+class: cleric

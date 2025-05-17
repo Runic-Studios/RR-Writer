@@ -1,0 +1,10 @@
+id: honey-garlic-chicken
+display:
+  name: '&eHoney Garlic Chicken'
+  material: COOKED_CHICKEN
+tags:
+- consumable
+type: 'generic' 
+lore:
+  - ''
+  - '&7Sweet and savory with a hint of garlic.'

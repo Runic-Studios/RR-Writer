@@ -1,0 +1,14 @@
+id: blacksmith-offhand-str-vii
+display:
+  name: '&dCrystallized &6Midnight Mameluke'
+  material: STONE_SWORD
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  strength:
+    min: 50
+    max: 52
+data:
+  requiredLevel: 60
+  experience: 80000

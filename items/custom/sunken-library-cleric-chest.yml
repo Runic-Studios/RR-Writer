@@ -1,0 +1,19 @@
+id: sunken-library-cleric-chest
+display:
+  name: Fire Forged Chestplate
+  material: GOLDEN_CHESTPLATE
+tags:
+- 'untradeable'
+type: armor
+level: 25
+rarity: uncommon
+health: 68
+stats:
+  wisdom:
+    min: 6
+    max: 7
+  intelligence:
+    min: 3
+    max: 4
+max-gem-slots: 1
+class: cleric

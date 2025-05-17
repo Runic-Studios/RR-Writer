@@ -1,0 +1,22 @@
+id: ignaroth-lair-mage-chest
+display:
+  name: Infernal Robes
+  material: DIAMOND_CHESTPLATE
+type: armor
+level: 60
+rarity: legendary
+health: 286
+stats:
+  dexterity:
+    min: 24
+    max: 24
+  intelligence:
+    min: 12
+    max: 12
+  wisdom:
+    min: 6
+    max: 6
+max-gem-slots: 6
+class: mage
+item-perks:
+  undying: 1

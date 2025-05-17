@@ -1,0 +1,21 @@
+id: blackfrost-warrior-leggings-epic
+display:
+  name: Cursed Keeper Platelegs
+  material: IRON_LEGGINGS
+type: armor
+level: 60
+rarity: epic
+health: 366
+stats:
+  strength:
+    min: 17
+    max: 17
+  wisdom:
+    min: 8
+    max: 8
+  vitality:
+    min: 4
+    max: 4
+max-gem-slots: 4
+class: warrior
+

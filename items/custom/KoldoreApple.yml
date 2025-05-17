@@ -1,0 +1,10 @@
+id: KoldoreApple
+display:
+  name: '&eApple'
+  material: APPLE
+tags:
+- consumable
+type: 'generic' 
+lore:
+  - ''
+  - '&7Looks yummy!'

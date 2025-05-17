@@ -1,0 +1,11 @@
+id: cut-emerald-i
+display:
+  name: '&aCut Emerald I'
+  material: EMERALD
+type: gem
+
+tier: 1
+main-stat: wisdom
+data:
+  requiredLevel: 0
+  experience: 750

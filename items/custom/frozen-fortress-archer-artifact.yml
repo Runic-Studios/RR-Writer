@@ -1,0 +1,15 @@
+ability: test
+class: archer
+damage:
+  max: 62
+  min: 59
+display:
+  damage: 6
+  material: BOW
+  name: Winter's Howl
+id: frozen-fortress-archer-artifact
+level: 60
+rarity: unique
+tags:
+- untradeable
+type: weapon

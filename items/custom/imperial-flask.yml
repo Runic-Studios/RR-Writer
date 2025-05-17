@@ -1,0 +1,11 @@
+id: imperial-flask
+display:
+  name: '&bImperial Flask'
+  material: GLASS_BOTTLE
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 40
+  experience: 2000

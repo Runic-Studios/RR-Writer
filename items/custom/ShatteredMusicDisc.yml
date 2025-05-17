@@ -1,0 +1,8 @@
+id: ShatteredMusicDisc
+display:
+  name: '&7Shattered Music Disc'
+  material: MUSIC_DISC_11
+type: 'generic' 
+lore:
+  - ''
+  - '&7Broken into a million pieces.'

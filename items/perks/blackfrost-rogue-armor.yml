@@ -1,0 +1,6 @@
+max-stacks: 4
+attack-speed-percent: 0.15 #ratio
+duration: 3 #in seconds
+name: '&b&lAgility'
+lore:
+- '&7&oGain &r&e<blackfrost-rogue-armor-attack-speed-percent> &r&7&oattack speed for 3 seconds after casting &r&aDash'

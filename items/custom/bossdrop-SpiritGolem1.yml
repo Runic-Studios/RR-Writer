@@ -1,0 +1,14 @@
+id: bossdrop-SpiritGolem1
+display:
+  name: Obelisk of the Fallen
+  material: IRON_CHESTPLATE
+type: armor
+level: 18
+rarity: unique
+health: 75
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

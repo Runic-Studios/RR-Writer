@@ -1,0 +1,22 @@
+id: ignaroth-lair-rogue-leggings
+display:
+  name: Kindled Leggings
+  material: LEATHER_LEGGINGS
+type: armor
+level: 60
+rarity: legendary
+health: 330
+stats:
+  strength:
+    min: 24
+    max: 24
+  intelligence:
+    min: 12
+    max: 12
+  dexterity:
+    min: 6
+    max: 6
+max-gem-slots: 6
+class: rogue
+item-perks:
+  undying: 1

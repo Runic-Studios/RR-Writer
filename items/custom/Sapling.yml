@@ -1,0 +1,10 @@
+id: Sapling
+display:
+  name: '&ASapling'
+  material: OAK_SAPLING
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The Sapling of the Angry Stump'

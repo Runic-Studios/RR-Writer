@@ -1,0 +1,19 @@
+id: blackfrost-archer-helm
+display:
+  name: Frostbound Hood
+  material: CHAINMAIL_HELMET
+type: armor
+level: 60
+rarity: legendary
+health: 207
+stats:
+  strength:
+    min: 15
+    max: 21
+  dexterity:
+    min: 5
+    max: 11
+max-gem-slots: 6
+class: archer
+item-perks:
+  blackfrost-archer-armor: 1

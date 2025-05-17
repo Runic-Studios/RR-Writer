@@ -1,0 +1,10 @@
+id: void-crystal-fragment
+display:
+  name: '&dVoid Crystal Fragment'
+  material: PURPLE_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Traces of void elements.'
+- ''
+- '&7Crafting Reagent'

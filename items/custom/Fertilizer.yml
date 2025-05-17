@@ -1,0 +1,10 @@
+id: Fertilizer
+display:
+  name: '&6Fertilizer'
+  material: COCOA_BEANS
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Ew.'

@@ -1,0 +1,15 @@
+ability: test
+class: mage
+damage:
+  max: 33
+  min: 30
+display:
+  damage: 4
+  material: WOODEN_HOE
+  name: Prophet's Cane
+id: crypts-mage-artifact
+level: 35
+rarity: unique
+tags:
+- untradeable
+type: weapon

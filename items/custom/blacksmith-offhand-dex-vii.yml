@@ -1,0 +1,15 @@
+id: blacksmith-offhand-dex-vii
+display:
+  name: '&dCrystallized &6Phoenix Dagger'
+  material: SHEARS
+  damage: 236
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  dexterity:
+    min: 50
+    max: 52
+data:
+  requiredLevel: 60
+  experience: 80000

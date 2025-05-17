@@ -1,0 +1,10 @@
+id: undead-bread
+display:
+  name: '&eMoldy Bread'
+  material: BREAD
+tags:
+- consumable
+type: 'generic' 
+lore:
+  - ''
+  - '&7There''s more mold than bread.'

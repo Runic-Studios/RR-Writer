@@ -1,0 +1,19 @@
+id: jorundr-keep-cleric-leggings
+display:
+  name: Golden Mana-Imbued Leggings
+  material: GOLDEN_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 15
+rarity: uncommon
+health: 38
+stats:
+  wisdom:
+    min: 5
+    max: 6
+  vitality:
+    min: 3
+    max: 4
+max-gem-slots: 1
+class: cleric

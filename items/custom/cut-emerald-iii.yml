@@ -1,0 +1,11 @@
+id: cut-emerald-iii
+display:
+  name: '&aCut Emerald III'
+  material: EMERALD
+type: gem
+
+tier: 3
+main-stat: wisdom
+data:
+  requiredLevel: 25
+  experience: 4000

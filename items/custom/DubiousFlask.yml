@@ -1,0 +1,10 @@
+id: DubiousFlask
+display:
+  name: '&6Flask of Dubious Fluids'
+  material: DRAGON_BREATH
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7I bet it''s not honey!'

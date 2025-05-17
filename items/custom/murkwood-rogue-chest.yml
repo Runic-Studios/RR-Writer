@@ -1,0 +1,17 @@
+id: murkwood-rogue-chest
+display:
+  name: Marshstalker Chestplate
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 25
+rarity: unique
+health: 84
+stats:
+  strength:
+    min: 5
+    max: 8
+  dexterity:
+    min: 4
+    max: 7
+max-gem-slots: 2
+class: rogue

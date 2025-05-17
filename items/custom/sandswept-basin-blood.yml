@@ -1,0 +1,12 @@
+id: sandswept-basin-blood
+display:
+  name: '&cMaelstrom Blood'
+  material: NETHER_WART_BLOCK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Blood from the Hydromancer''s avowed'
+  - '&7It reeks. But research must be done with it.'
+  - '&7What happened in this sand-swept realm?'

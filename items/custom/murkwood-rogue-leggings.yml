@@ -1,0 +1,17 @@
+id: murkwood-rogue-leggings
+display:
+  name: Marshstalker Leggings
+  material: LEATHER_LEGGINGS
+type: armor
+level: 25
+rarity: unique
+health: 73
+stats:
+  strength:
+    min: 5
+    max: 8
+  intelligence:
+    min: 4
+    max: 7
+max-gem-slots: 2
+class: rogue

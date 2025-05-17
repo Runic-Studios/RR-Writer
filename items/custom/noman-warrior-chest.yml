@@ -1,0 +1,12 @@
+id: noman-warrior-chest
+display:
+  name: Heart of Noman
+  material: IRON_CHESTPLATE
+type: armor
+level: 60
+rarity: unique
+health: 245
+max-gem-slots: 6
+class: warrior
+item-perks:
+  mechanization: 2

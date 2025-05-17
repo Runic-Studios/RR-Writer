@@ -1,0 +1,10 @@
+attack-constant: 0.0
+attack-multiplier: 0.25
+reduced-speed-percent: 0.2 #ratio
+cooldown: 3 #seconds
+name: '&b&lToxin'
+lore:
+- '&7&oBasic attacks poison the enemy, dealing (&f0.25x &eSTR&7&o) bonus damage per second'
+- '&7&oThe enemy also recives -20% movement speed'
+- '&7&oThis effect last 3 seconds'
+- '&7&o(3s cooldown)'

@@ -1,0 +1,19 @@
+id: magmaheart-enclave-archer-helm
+display:
+  name: Light Elemental Helmet
+  material: CHAINMAIL_HELMET
+type: armor
+level: 60
+rarity: legendary
+health: 207
+stats:
+  strength:
+    min: 19
+    max: 19
+  dexterity:
+    min: 9
+    max: 9
+max-gem-slots: 6
+class: archer
+item-perks:
+  focus: 1

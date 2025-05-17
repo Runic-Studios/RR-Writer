@@ -1,0 +1,15 @@
+id: FallenBook2
+display:
+  name: '&6Dawnshire Journal #2'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7"Have you ever felt that exciting momentum,"'
+  - '&7"alongside your companions, only for it to be erased in a second?"'
+  - '&7"This is what I felt today."'
+  - '&7"Many people said they wish to a fast end to this revolution,"' 
+  - '&7"but it''s not going to happen, I already know."'
+  - '&7"All I can do is watch as they siege with the revolutionary sentiment at an all time high."'

@@ -1,0 +1,15 @@
+id: blacksmith-offhand-dex-vi
+display:
+  name: Phoenix Dagger
+  material: SHEARS
+  damage: 236
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  dexterity:
+    min: 39
+    max: 41
+data:
+  requiredLevel: 50
+  experience: 30000

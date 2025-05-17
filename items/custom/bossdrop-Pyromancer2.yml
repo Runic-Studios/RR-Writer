@@ -1,0 +1,14 @@
+id: bossdrop-Pyromancer2
+display:
+  name: Second Wind
+  material: CHAINMAIL_LEGGINGS
+type: armor
+level: 59
+rarity: unique
+health: 192
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: archer

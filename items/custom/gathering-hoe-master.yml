@@ -1,0 +1,23 @@
+id: 'gathering-hoe-master'
+display:
+  name: '&dMaster Farming Hoe'
+  material: IRON_HOE
+  damage: 4
+type: 'dynamic' 
+lore:
+  - '&7Req Farming &f40'
+  - '' 
+  - '&2Gathering Luck III: &7You have a'
+  - '&f50% &7chance to receive'
+  - '&f2-3x &7more resources!'
+  - ''
+  - '&dEpic'
+data:
+  dynamicFieldInitialValue: 600
+  dynamicLore: '&7/600'
+  maxDurability: 600
+  requiredLevelForUse: 40
+  bonusLootCeiling: 2
+  bonusLootChance: .5
+  requiredLevel: 40
+  experience: 8500

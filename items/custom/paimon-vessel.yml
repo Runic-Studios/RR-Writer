@@ -1,0 +1,8 @@
+id: paimon-vessel
+display:
+  name: '&6Paimon Vessel'
+  material: TOTEM_OF_UNDYING
+type: 'generic' 
+lore:
+  - ''
+  - '&7Shackled by cursed artifacts to bind his unlimited power.'

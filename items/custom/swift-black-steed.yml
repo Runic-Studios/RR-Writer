@@ -1,0 +1,20 @@
+id: 'swift-black-steed' #DO NOT DELETE OR UPDATE THIS ITEM
+display:
+  name: '&eSwift Black Steed'
+  material: SADDLE
+tags:
+- 'soulbound'
+type: generic
+lore:
+  - ''
+  - '&6Tier: &7Normal'
+  - '&6Speed: +&a40%'
+  - ''
+  - '&r&7&oA loyal and valiant steed!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-name: 'Swift Black Steed'
+  mount-type: 'HORSE'
+  horse-color: 'BLACK'
+  mount-speed: '4'

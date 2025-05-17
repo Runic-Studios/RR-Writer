@@ -1,0 +1,14 @@
+id: tutorial-warrior-chest
+display:
+  name: Turtle Armor
+  material: IRON_CHESTPLATE
+type: armor
+level: 0
+rarity: common
+health: 25
+stats:
+  vitality:
+    min: 4
+    max: 4
+max-gem-slots: 1
+class: warrior

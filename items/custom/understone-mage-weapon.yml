@@ -1,0 +1,12 @@
+id: understone-mage-weapon
+display:
+  name: Wooden Staff
+  material: WOODEN_HOE
+  damage: 0
+type: weapon
+level: 49
+rarity: epic
+damage:
+  min: 43
+  max: 43
+class: mage

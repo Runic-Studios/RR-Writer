@@ -1,0 +1,21 @@
+id: blackfrost-rogue-leggings-epic
+display:
+  name: Soul Reaper Leggings
+  material: LEATHER_LEGGINGS
+type: armor
+level: 60
+rarity: epic
+health: 160
+stats:
+  strength:
+    min: 17
+    max: 17
+  intelligence:
+    min: 8
+    max: 8
+  dexterity:
+    min: 4
+    max: 4
+max-gem-slots: 4
+class: rogue
+

@@ -1,0 +1,14 @@
+id: bossdrop-Skally1
+display:
+  name: Horror Harvest
+  material: DIAMOND_BOOTS
+type: armor
+level: 3
+rarity: unique
+health: 22
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: mage

@@ -1,0 +1,10 @@
+attack-constant: 50.0
+attack-multiplier: 1.25
+spell-constant: 25.0
+spell-multiplier: 0.625
+cooldown: 8 #seconds
+name: '&b&lInfernal'
+lore:
+- '&7&oNormal attacks deal (50 + &f1.25x &eSTR&7&o) bonus damage'
+- '&7&oSpells deal (25 + &f0.625x &eINT&7&o) bonus damage'
+- '&7&o(8 second cooldown)'

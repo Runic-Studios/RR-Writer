@@ -1,0 +1,20 @@
+id: teleport-scroll-outlaw-guild
+display:
+  name: '&fTeleport Scroll: Outlaw Guild'
+  material: PURPLE_DYE
+type: 'generic'
+tags:
+- consumable
+lore:
+- ''
+- '&eTravel to Dead Man''s Rest!'
+triggers:
+  right: 'teleport-scroll'
+data:
+  warmup: 5
+  world: Alterra
+  x: -6.5
+  y: 31
+  z: -530.5
+  yaw: 180
+  pitch: 0

@@ -1,0 +1,10 @@
+id: TNT
+display:
+  name: '&6Boomton''s Explosives'
+  material: TNT
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Time to wake Lundret!'

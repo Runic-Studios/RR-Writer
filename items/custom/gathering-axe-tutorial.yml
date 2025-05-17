@@ -1,0 +1,21 @@
+id: 'gathering-axe-tutorial'
+display:
+  name: '&7Apprentice Woodcutting Axe'
+  material: IRON_AXE
+  damage: 1
+tags:
+- 'untradeable'
+type: 'dynamic' 
+lore:
+  - '&7Skill &fWoodcutting'
+  - ''
+  - '&7Common'
+data:
+  dynamicFieldInitialValue: 4
+  dynamicLore: '&7/4'
+  experience: 0
+  maxDurability: 4
+  requiredLevel: 0
+  requiredLevelForUse: 0
+  bonusLootCeiling: 0
+  bonusLootChance: 0

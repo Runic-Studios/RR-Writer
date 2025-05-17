@@ -1,0 +1,5 @@
+max-stacks: 5
+attack-speed-percent: 0.07 #ratio
+name: '&b&lFrenzy'
+lore:
+- '&7&oGain &r&e<frenzy-atkspd> &r&7&oattack speed'

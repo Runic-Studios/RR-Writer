@@ -1,0 +1,10 @@
+id: blue-frost
+display:
+  name: '&9Blue Frost'
+  material: PACKED_ICE
+type: 'generic' 
+lore:
+- ''
+- '&bFaint whispers can be heard.'
+- ''
+- '&7Crafting Reagent'

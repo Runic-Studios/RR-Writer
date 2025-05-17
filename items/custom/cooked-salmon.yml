@@ -1,0 +1,10 @@
+id: cooked-salmon
+display:
+  name: '&eCooked Salmon'
+  material: COOKED_SALMON
+type: 'generic' 
+tags:
+- consumable
+data:
+  requiredLevel: 0
+  experience: 80

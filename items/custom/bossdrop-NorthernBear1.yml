@@ -1,0 +1,14 @@
+id: bossdrop-NorthernBear1
+display:
+  name: Fur Coat
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 16
+rarity: unique
+health: 92
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

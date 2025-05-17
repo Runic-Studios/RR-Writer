@@ -1,0 +1,11 @@
+id: cut-opal-iv
+display:
+  name: '&eCut Opal IV'
+  material: QUARTZ
+type: gem
+
+tier: 4
+main-stat: dexterity
+data:
+  requiredLevel: 40
+  experience: 15000

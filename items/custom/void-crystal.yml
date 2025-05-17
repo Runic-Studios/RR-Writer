@@ -1,0 +1,10 @@
+id: void-crystal
+display:
+  name: '&dVoid Crystal'
+  material: PURPLE_GLAZED_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Highly concentrated void elements.'
+- ''
+- '&7Crafting Reagent'

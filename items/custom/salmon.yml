@@ -1,0 +1,11 @@
+id: salmon
+display:
+  name: '&fSalmon'
+  material: SALMON
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 45

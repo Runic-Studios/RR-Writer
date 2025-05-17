@@ -1,0 +1,14 @@
+id: blacksmith-offhand-int-i
+display:
+  name: Rosewood Branch
+  material: STONE_HOE
+type: offhand
+level: 10
+rarity: crafted
+stats:
+  intelligence:
+    min: 7
+    max: 7
+data:
+  requiredLevel: 0
+  experience: 1000

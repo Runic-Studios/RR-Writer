@@ -1,0 +1,14 @@
+class: mage
+damage:
+  max: 15
+  min: 13
+display:
+  damage: 11
+  material: WOODEN_HOE
+  name: Runeforged Scepter
+id: jorundr-keep-mage-artifact
+level: 15
+rarity: unique
+tags:
+- untradeable
+type: weapon

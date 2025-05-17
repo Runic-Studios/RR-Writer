@@ -1,0 +1,10 @@
+id: jade-gemstone
+display:
+  name: '&aJade Gemstone'
+  material: EMERALD
+type: 'generic' 
+lore:
+- ''
+- '&EThe gemstone of the Jade Giant.'
+- ''
+- '&7Crafting Reagent'

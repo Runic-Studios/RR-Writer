@@ -1,0 +1,10 @@
+id: ancient-core
+display:
+  name: '&eAncient Core'
+  material: NETHER_STAR
+type: 'generic' 
+lore:
+- ''
+- '&EThe core of the Ancient.'
+- ''
+- '&7Crafting Reagent'

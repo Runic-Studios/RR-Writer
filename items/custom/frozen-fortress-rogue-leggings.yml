@@ -1,0 +1,19 @@
+id: frozen-fortress-rogue-leggings
+display:
+  name: Fierce Elite's Leggings
+  material: LEATHER_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 60
+rarity: rare
+health: 235
+stats:
+  strength:
+    min: 8
+    max: 9
+  vitality:
+    min: 5
+    max: 6
+max-gem-slots: 2
+class: rogue

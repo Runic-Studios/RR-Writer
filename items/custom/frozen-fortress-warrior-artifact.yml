@@ -1,0 +1,15 @@
+id: frozen-fortress-warrior-artifact
+display:
+  name: Frost's Edge
+  material: WOODEN_AXE
+  damage: 6
+tags:
+- 'untradeable'
+# Artifact specific
+type: weapon
+level: 60
+rarity: unique
+damage:
+  min: 52
+  max: 55
+class: warrior

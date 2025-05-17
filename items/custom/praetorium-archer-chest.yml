@@ -1,0 +1,17 @@
+id: praetorium-archer-chest
+display:
+  name: 'Imperial Archer Chestplate'
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 60
+rarity: epic
+health: 164
+stats:
+  strength:
+    min: 16
+    max: 16
+  dexterity:
+    min: 8
+    max: 8
+max-gem-slots: 3
+class: archer

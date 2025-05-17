@@ -1,0 +1,15 @@
+ability: test
+class: archer
+damage:
+  max: 42
+  min: 39
+display:
+  damage: 4
+  material: BOW
+  name: Triumph
+id: crypts-archer-artifact
+level: 35
+rarity: unique
+tags:
+- untradeable
+type: weapon

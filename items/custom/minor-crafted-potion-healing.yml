@@ -1,0 +1,17 @@
+id: minor-crafted-potion-healing
+display:
+  name: '&cMinor Crafted Potion of Healing'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &c275<3 &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 275
+  color: red
+  requiredLevel: 20
+  experience: 2250 

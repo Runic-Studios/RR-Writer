@@ -1,0 +1,11 @@
+id: MurkwoodBook3
+display:
+  name: '&6Lost Passage'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7"...to follow their duties."'
+  - '&7"Their desire... it grew to unfathomable levels."'

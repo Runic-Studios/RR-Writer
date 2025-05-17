@@ -1,0 +1,11 @@
+id: cut-sapphire-iii
+display:
+  name: '&3Cut Sapphire III'
+  material: LAPIS_LAZULI
+type: gem
+
+tier: 3
+main-stat: intelligence
+data:
+  requiredLevel: 25
+  experience: 4000

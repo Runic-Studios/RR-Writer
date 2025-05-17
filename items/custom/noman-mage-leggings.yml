@@ -1,0 +1,12 @@
+id: noman-mage-leggings
+display:
+  name: Dark Mage Trousers
+  material: DIAMOND_LEGGINGS
+type: armor
+level: 60
+rarity: unique
+health: 155
+max-gem-slots: 6
+class: mage
+item-perks:
+  mechanization: 1

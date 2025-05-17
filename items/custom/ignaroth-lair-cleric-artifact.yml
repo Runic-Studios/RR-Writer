@@ -1,0 +1,14 @@
+class: cleric
+damage:
+  max: 80
+  min: 64
+display:
+  damage: 5
+  material: WOODEN_SHOVEL
+  name: Dawnbringer
+id: ignaroth-lair-cleric-artifact
+level: 60
+rarity: legendary
+type: weapon
+item-perks:
+  infernal: 1

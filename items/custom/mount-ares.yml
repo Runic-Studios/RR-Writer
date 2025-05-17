@@ -1,0 +1,14 @@
+id: 'mount-ares'
+display:
+  name: '&eAres'
+  material: SADDLE
+tags:
+- 'untradeable'
+type: generic
+lore:
+  - ''
+  - '&r&7Consume this item to unlock this mount!'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-id: ARES

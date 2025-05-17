@@ -1,0 +1,14 @@
+id: bossdrop-AdmiralVex2
+display:
+  name: Captain's Curse
+  material: IRON_HELMET
+type: armor
+level: 27
+rarity: unique
+health: 64
+stats:
+  wisdom:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

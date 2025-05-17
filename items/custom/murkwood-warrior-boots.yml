@@ -1,0 +1,17 @@
+id: murkwood-warrior-boots
+display:
+  name: Muckplate Boots
+  material: IRON_BOOTS
+type: armor
+level: 25
+rarity: unique
+health: 70
+stats:
+  vitality:
+    min: 4
+    max: 7
+  strength:
+    min: 3
+    max: 6
+max-gem-slots: 2
+class: warrior

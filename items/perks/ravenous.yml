@@ -1,0 +1,7 @@
+max-stacks: 5
+health-percent-threshold: 0.5 #ratio
+health-percent-per-stack: 0.006 #ratio
+name: '&b&lRavenous'
+lore:
+- '&7&oWhile below 50% health:'
+- '&7&oBasic attacks against monsters heal you for &r&e<ravenous-health-restored> &r&7&omaximum health'

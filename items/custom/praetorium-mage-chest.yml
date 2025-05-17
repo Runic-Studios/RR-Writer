@@ -1,0 +1,20 @@
+id: praetorium-mage-chest
+display:
+  name: 'Imperial Mage Robes'
+  material: DIAMOND_CHESTPLATE
+type: armor
+level: 60
+rarity: epic
+health: 164
+stats:
+  intelligence:
+    min: 14
+    max: 14
+  dexterity:
+    min: 7
+    max: 7
+  wisdom:
+    min: 3
+    max: 3
+max-gem-slots: 3
+class: mage

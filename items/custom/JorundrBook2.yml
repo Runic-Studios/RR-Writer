@@ -1,0 +1,19 @@
+id: JorundrBook2
+display:
+  name: '&6Warden&r&6''s Journal'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7"For &kFrigg&r&7"'
+  - ''
+  - '&7"Why did you have to do that? There must be a reason, right?"'
+  - '&7"I knew you like no other, we were almost inseparable. I know you wouldn''t do that."'
+  - '&7"You must''ve done it for him. Somehow, going out of the Keep to then turn him in."'
+  - '&7"Yet he''s still here, with us. With no memories. What became of you?"'
+  - '&7"Are you mad? Do you regret what you did?"'
+  - '&7"Why did you have to kill him? He''s not the same man he was, because of you."'
+  - '&7"I can only talk to this book because you''re not here anymore."'
+  - '&7"Farewell, my old friend."'

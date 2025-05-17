@@ -1,0 +1,19 @@
+id: crypts-warrior-leggings
+display:
+  name: Vizier's Guardian Leggings
+  material: IRON_LEGGINGS
+tags:
+- 'untradeable'
+type: armor
+level: 35
+rarity: rare
+health: 121
+stats:
+  vitality:
+    min: 7
+    max: 8
+  dexterity:
+    min: 4
+    max: 5
+max-gem-slots: 2
+class: warrior

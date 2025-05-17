@@ -1,0 +1,11 @@
+id: lava-eel
+display:
+  name: '&fLava Eel'
+  material: LIME_STAINED_GLASS
+type: 'generic'
+lore: 
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 43
+  experience: 419

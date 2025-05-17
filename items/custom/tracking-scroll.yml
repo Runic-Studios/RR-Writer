@@ -1,0 +1,14 @@
+id: tracking-scroll
+display:
+  name: '&fTracking Scroll'
+  material: PURPLE_DYE
+type: 'generic'
+tags:
+- consumable
+lore:
+- ''
+- '&eLearn the location of a player!'
+triggers:
+  right: 'item-consume'
+data:
+  cooldown: 30

@@ -1,0 +1,14 @@
+id: bossdrop-Pharindar1
+display:
+  name: Frigid Footwear
+  material: IRON_BOOTS
+type: armor
+level: 22
+rarity: unique
+health: 52
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

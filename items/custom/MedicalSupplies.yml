@@ -1,0 +1,10 @@
+id: MedicalSupplies
+display:
+  name: '&6Medical Supplies'
+  material: CHEST
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7I wonder why they don''t just use healing magic...'

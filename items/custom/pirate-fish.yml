@@ -1,0 +1,10 @@
+id: pirate-fish
+display:
+  name: '&eFish Snack'
+  material: COOKED_SALMON
+tags:
+- consumable
+type: 'generic' 
+lore:
+  - ''
+  - '&7Yummy snack for a hungry pirate.'

@@ -1,0 +1,8 @@
+id: coin
+display:
+  name: '&6Gold Coin'
+  material: GOLD_NUGGET
+type: 'generic' 
+lore:
+- ''
+- '&7Currency of Alterra'

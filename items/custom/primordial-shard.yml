@@ -1,0 +1,8 @@
+id: primordial-shard
+display:
+  name: '&ePrimordial Shard'
+  material: ECHO_SHARD
+type: 'generic' 
+lore:
+- ''
+- '&cThis item does not have a use at the moment.'

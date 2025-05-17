@@ -1,0 +1,16 @@
+id: outlaw-cursed-blackwood-twig
+display:
+  name: Cursed Blackwood Twig
+  material: STONE_HOE
+tags:
+- 'soulbound'
+type: offhand
+level: 60
+rarity: legendary
+stats:
+  intelligence:
+    min: 20
+    max: 20
+  dexterity:
+    min: 5
+    max: 5

@@ -1,0 +1,10 @@
+id: AshleyDoll
+display:
+  name: '&6Ashley''s Doll'
+  material: TOTEM_OF_UNDYING
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Ashley''s lost doll.'

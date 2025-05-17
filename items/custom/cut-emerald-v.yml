@@ -1,0 +1,11 @@
+id: cut-emerald-v
+display:
+  name: '&aCut Emerald V'
+  material: EMERALD
+type: gem
+
+tier: 5
+main-stat: wisdom
+data:
+  requiredLevel: 50
+  experience: 35000

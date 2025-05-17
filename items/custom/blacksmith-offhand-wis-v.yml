@@ -1,0 +1,14 @@
+id: blacksmith-offhand-wis-v
+display:
+  name: Accursed Flail
+  material: STONE_SHOVEL
+type: offhand
+level: 50
+rarity: crafted
+stats:
+  wisdom:
+    min: 31
+    max: 33
+data:
+  requiredLevel: 40
+  experience: 17500

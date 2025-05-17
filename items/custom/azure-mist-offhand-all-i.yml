@@ -1,0 +1,26 @@
+id: azure-mist-offhand-all-i
+display:
+  name: Azure Embrace
+  material: SHEARS
+  damage: 235
+tags:
+- 'untradeable'
+type: offhand
+level: 45
+rarity: unique
+stats:
+  dexterity:
+    min: 1
+    max: 10
+  intelligence:
+    min: 1
+    max: 10
+  strength:
+    min: 1
+    max: 10
+  vitality:
+    min: 1
+    max: 10
+  wisdom:
+    min: 1
+    max: 10

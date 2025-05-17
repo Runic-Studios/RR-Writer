@@ -1,0 +1,17 @@
+id: withertree-mage-skull-iv
+display:
+  name: Greater Guardian Skull
+  material: WITHER_SKELETON_SKULL
+type: armor
+level: 55
+rarity: legendary
+health: 25
+max-gem-slots: 0
+stats:
+  strength:
+    min: 19
+    max: 21
+  intelligence:
+    min: 19
+    max: 21
+class: mage

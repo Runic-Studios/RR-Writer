@@ -1,0 +1,14 @@
+id: azanashop-cleric-helmet
+display:
+  name: Gilded Helmet
+  material: GOLDEN_HELMET
+type: armor
+level: 4
+rarity: common
+health: 14
+stats:
+  wisdom:
+    min: 0
+    max: 0
+max-gem-slots: 0
+class: cleric

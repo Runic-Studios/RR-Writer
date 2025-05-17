@@ -1,0 +1,19 @@
+id: jorundr-keep-mage-boots
+display:
+  name: Sparkling Magic Boots
+  material: DIAMOND_BOOTS
+tags:
+- 'untradeable'
+type: armor
+level: 15
+rarity: uncommon
+health: 24
+stats:
+  intelligence:
+    min: 5
+    max: 6
+  wisdom:
+    min: 3
+    max: 4
+max-gem-slots: 1
+class: mage

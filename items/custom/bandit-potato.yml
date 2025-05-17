@@ -1,0 +1,10 @@
+id: bandit-potato
+display:
+  name: '&eStolen Starch'
+  material: BAKED_POTATO
+tags:
+- consumable
+type: 'generic' 
+lore:
+  - ''
+  - '&7It doesn''t taste like anything.'

@@ -1,0 +1,15 @@
+id: RemembranceNote6
+display:
+  name: '&6Ragged Note #6'
+  material: GRAY_DYE
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7I loved our old place,'
+  - '&7everyone was so kind to each other,' 
+  - '&7everyone knew each other and we supported ourselves,'
+  - '&7that''s the only reason we could survive in the harsh colds,'
+  - '&7right now and in the past.'
+  - '&7Once again I ask myself, why?'

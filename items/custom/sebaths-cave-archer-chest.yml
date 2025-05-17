@@ -1,0 +1,19 @@
+id: sebaths-cave-archer-chest
+display:
+  name: Vigorous Orc Chainmail
+  material: CHAINMAIL_CHESTPLATE
+tags:
+- 'untradeable'
+type: armor
+level: 5
+rarity: common
+health: 27
+stats:
+  dexterity:
+    min: 1
+    max: 2
+  strength:
+    min: 1
+    max: 2
+max-gem-slots: 0
+class: archer

@@ -1,0 +1,10 @@
+id: azure-soul
+display:
+  name: '&bAzure Soul'
+  material: PHANTOM_MEMBRANE
+type: 'generic' 
+lore:
+- ''
+- '&EThe soul of the creatures that once dwelled in the Azure Sea'
+- ''
+- '&7Crafting Reagent'

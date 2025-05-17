@@ -1,0 +1,9 @@
+attack-constant: 0.0
+attack-multiplier: 0.25
+reduced-healing-percent: 0.2 #ratio
+cooldown: 3 #seconds
+name: '&b&lVenom'
+lore:
+- '&7&oBasic attacks poison the enemy, dealing (&f0.25x &eSTR&7&o) bonus damage per second'
+- '&7&oThe enemy also receives -20% healing'
+- '&7&o(3s cooldown)'

@@ -1,0 +1,11 @@
+id: cut-opal-v
+display:
+  name: '&eCut Opal V'
+  material: QUARTZ
+type: gem
+
+tier: 5
+main-stat: dexterity
+data:
+  requiredLevel: 50
+  experience: 35000

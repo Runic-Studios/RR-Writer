@@ -1,0 +1,13 @@
+id: misty-alcove-offhand-dex-lesser
+display:
+  name: Blunt Blade
+  material: SHEARS
+  damage: 236
+type: offhand
+level: 12
+rarity: common
+health: 0
+stats:
+  dexterity:
+    min: 6
+    max: 6

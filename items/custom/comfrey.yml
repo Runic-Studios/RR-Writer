@@ -1,0 +1,11 @@
+id: comfrey
+display:
+  name: '&dComfrey'
+  material: ALLIUM
+type: 'generic' 
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 26

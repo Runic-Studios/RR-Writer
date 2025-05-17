@@ -1,0 +1,11 @@
+id: CoreofCorruption
+display:
+  name: '&cCore of Corruption'
+  material: MAGMA_CREAM
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Radiating and vibrating with chaotic energy.'
+  - '&7May be useful to the Redbrand.'

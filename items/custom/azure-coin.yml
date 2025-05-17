@@ -1,0 +1,13 @@
+id: azure-coin
+display:
+  name: '&bAzure Coin'
+  material: NAUTILUS_SHELL
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+- ''
+- '&ECurrency majorly used by the elves who reside in Azuremist Peak.'
+- '&EIt resonates with a certain aura...'
+- ''
+- '&7Currency of Azuremist Peak'

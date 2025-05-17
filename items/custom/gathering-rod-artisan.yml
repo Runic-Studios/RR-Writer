@@ -1,0 +1,23 @@
+id: 'gathering-rod-artisan'
+display:
+  name: '&6Artisan Fishing Rod'
+  material: FISHING_ROD
+  damage: 5
+type: 'dynamic' 
+lore:
+  - '&7Req Fishing &f60'
+  - '' 
+  - '&2Gathering Luck IV: &7You have a'
+  - '&f50% &7chance to receive'
+  - '&f2-4x &7more resources!'
+  - ''
+  - '&6Legendary'
+data:
+  dynamicFieldInitialValue: 500
+  dynamicLore: '&7/500'
+  maxDurability: 500
+  requiredLevelForUse: 60
+  bonusLootCeiling: 3
+  bonusLootChance: .5
+  requiredLevel: 60
+  experience: 20000

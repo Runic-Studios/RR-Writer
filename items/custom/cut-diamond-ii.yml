@@ -1,0 +1,11 @@
+id: cut-diamond-ii
+display:
+  name: '&fCut Diamond II'
+  material: DIAMOND
+type: gem
+
+tier: 2
+main-stat: vitality
+data:
+  requiredLevel: 10
+  experience: 1750

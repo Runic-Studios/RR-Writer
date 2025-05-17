@@ -1,0 +1,22 @@
+id: magmaheart-enclave-mage-helm
+display:
+  name: Water Elemental Hood
+  material: DIAMOND_HELMET
+type: armor
+level: 60
+rarity: legendary
+health: 144
+stats:
+  intelligence:
+    min: 16
+    max: 16
+  dexterity:
+    min: 8
+    max: 8
+  wisdom:
+    min: 4
+    max: 4
+max-gem-slots: 6
+class: mage
+item-perks:
+  manawell: 1

@@ -1,0 +1,10 @@
+id: hightower-queen
+display:
+  name: '&7Queen'
+  material: POLISHED_BLACKSTONE_BUTTON
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&eVery aggressive.'

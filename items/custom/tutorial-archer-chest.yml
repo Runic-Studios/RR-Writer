@@ -1,0 +1,14 @@
+id: tutorial-archer-chest
+display:
+  name: Metal Hauberk
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 0
+rarity: common
+health: 25
+stats:
+  strength:
+    min: 4
+    max: 4
+max-gem-slots: 1
+class: archer

@@ -1,0 +1,12 @@
+id: weak-offhand-dex
+display:
+  name: Brittle Blade
+  material: SHEARS
+  damage: 236
+type: offhand
+level: 6
+rarity: common
+stats:
+  dexterity:
+    min: 7
+    max: 7

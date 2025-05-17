@@ -1,0 +1,17 @@
+id: murkwood-cleric-helm
+display:
+  name: Fenshield Crown
+  material: GOLDEN_HELMET
+type: armor
+level: 25
+rarity: unique
+health: 53
+stats:
+  wisdom:
+    min: 4
+    max: 7
+  strength:
+    min: 3
+    max: 6
+max-gem-slots: 2
+class: cleric

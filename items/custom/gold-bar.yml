@@ -1,0 +1,13 @@
+id: gold-bar
+display:
+  name: '&eGold Bar &cI'
+  material: GOLD_INGOT
+type: 'generic' 
+lore:
+- ''
+- '&7Quality: &cPoor'
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 80

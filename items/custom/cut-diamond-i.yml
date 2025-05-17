@@ -1,0 +1,11 @@
+id: cut-diamond-i
+display:
+  name: '&fCut Diamond I'
+  material: DIAMOND
+type: gem
+
+tier: 1
+main-stat: vitality
+data:
+  requiredLevel: 0
+  experience: 750

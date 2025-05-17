@@ -1,0 +1,14 @@
+class: archer
+damage:
+  max: 20
+  min: 18
+display:
+  damage: 13
+  material: BOW
+  name: Runeforged Piercer
+id: jorundr-keep-archer-artifact
+level: 15
+rarity: unique
+tags:
+- untradeable
+type: weapon

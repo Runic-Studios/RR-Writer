@@ -1,0 +1,17 @@
+id: minor-crafted-potion-mana
+display:
+  name: '&3Minor Crafted Potion of Mana'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &3125✸ &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 125
+  color: aqua
+  requiredLevel: 20
+  experience: 2500

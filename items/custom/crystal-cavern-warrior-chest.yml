@@ -1,0 +1,19 @@
+id: crystal-cavern-warrior-chest
+display:
+  name: Hailstone Breastplate
+  material: IRON_CHESTPLATE
+tags:
+- 'untradeable'
+type: armor
+level: 12
+rarity: common
+health: 42
+stats:
+  vitality:
+    min: 3
+    max: 4
+  strength: 
+    min: 1
+    max: 2
+max-gem-slots: 0
+class: warrior

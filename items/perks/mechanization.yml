@@ -1,0 +1,8 @@
+max-stacks: 5
+cooldown-reduction-percent-per-stack: 0.02 #ratio
+mana-drain-per-stack: 1
+interval: 5 # In seconds
+name: '&b&lMechanization'
+lore:
+- '&7&oWhile in combat, every 5 seconds decrease spell cooldowns by &r&e<mechanization-cooldown-reduction-percent-per-stack>'
+- '&7&oWhile in combat, every second lose &r&e<mechanization-mana-drain-per-stack> &r&7&omana'

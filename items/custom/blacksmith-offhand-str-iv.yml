@@ -1,0 +1,14 @@
+id: blacksmith-offhand-str-iv
+display:
+  name: Jade Knife
+  material: STONE_SWORD
+type: offhand
+level: 40
+rarity: crafted
+stats:
+  strength:
+    min: 24
+    max: 25
+data:
+  requiredLevel: 30
+  experience: 12500

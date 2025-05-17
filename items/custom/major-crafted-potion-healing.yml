@@ -1,0 +1,17 @@
+id: major-crafted-potion-healing
+display:
+  name: '&cMajor Crafted Potion of Healing'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &c500<3 &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 500
+  color: red
+  requiredLevel: 40
+  experience: 5500

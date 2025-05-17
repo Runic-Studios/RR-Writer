@@ -1,0 +1,12 @@
+id: understone-rogue-weapon
+display:
+  name: Wooden Sword
+  material: WOODEN_SWORD
+  damage: 0
+type: weapon
+level: 49
+rarity: epic
+damage:
+  min: 59
+  max: 59
+class: rogue

@@ -1,0 +1,19 @@
+id: 'gathering-rod-apprentice'
+display:
+  name: '&7Apprentice Fishing Rod'
+  material: FISHING_ROD
+  damage: 1
+type: 'dynamic' 
+lore:
+  - '&7Skill &fFishing'
+  - ''
+  - '&7Common'
+data:
+  dynamicFieldInitialValue: 25
+  dynamicLore: '&7/25'
+  experience: 0
+  maxDurability: 25
+  requiredLevel: 0
+  requiredLevelForUse: 0
+  bonusLootCeiling: 0
+  bonusLootChance: 0

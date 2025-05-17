@@ -1,0 +1,12 @@
+id: misty-alcove-archer-weapon-greater
+display:
+  name: 'Cursed Shortbow'
+  material: BOW
+  damage: 7
+type: weapon
+level: 12
+rarity: uncommon
+damage:
+  min: 20
+  max: 22
+class: archer

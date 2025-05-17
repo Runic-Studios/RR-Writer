@@ -1,0 +1,17 @@
+id: 'mount-winter-2023'
+display:
+  name: '&9[&bWinter&9] &bSteed &e2023'
+  material: SADDLE
+tags:
+- 'untradeable'
+type: generic
+lore:
+  - ''
+  - '&r&7Consume this item to unlock this mount!'
+  - ''
+  - '&cWarning: This &litem &r&cwill be deleted on 2/28/2024'
+  - '&cThe mount unlocked from this &litem &r&cwill remain'
+triggers:
+  right: 'summon-mount'
+data:
+  mount-id: WINTER_2023

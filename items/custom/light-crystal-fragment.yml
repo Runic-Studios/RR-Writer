@@ -1,0 +1,10 @@
+id: light-crystal-fragment
+display:
+  name: '&eLight Crystal Fragment'
+  material: WHITE_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Traces of light elements.'
+- ''
+- '&7Crafting Reagent'

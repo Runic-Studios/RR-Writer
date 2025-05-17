@@ -1,0 +1,14 @@
+class: archer
+damage:
+  max: 12
+  min: 11
+display:
+  damage: 12
+  material: BOW
+  name: Sanguine Longbow
+id: sebaths-cave-archer-artifact
+level: 5
+rarity: unique
+tags:
+- untradeable
+type: weapon

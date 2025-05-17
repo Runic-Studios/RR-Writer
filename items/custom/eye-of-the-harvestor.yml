@@ -1,0 +1,13 @@
+id: eye-of-the-harvestor
+display:
+  name: '&cEye of the Harvester'
+  material: SPIDER_EYE
+type: 'generic' 
+lore:
+- ''
+- '&EThe eye watches all.'
+- ''
+- '&EThis item is &COUTDATED &Eand will be &CREMOVED'
+- '&EConvert item to &CUPDATED &Eversion at -818.5, 35, 172'
+- ''
+- '&7Crafting Reagent'

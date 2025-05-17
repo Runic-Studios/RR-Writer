@@ -1,0 +1,10 @@
+id: living-log
+display:
+  name: '&3Living Log'
+  material: WARPED_STEM
+type: 'generic' 
+lore:
+- ''
+- '&EHas essence of the creature that guards the forest.'
+- ''
+- '&7Crafting Reagent'

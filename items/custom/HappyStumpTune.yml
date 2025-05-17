@@ -1,0 +1,8 @@
+id: HappyStumpTune
+display:
+  name: '&aGreen Music Disc'
+  material: MUSIC_DISC_CAT
+type: 'generic' 
+lore:
+  - ''
+  - '&7Angry Stump''s tune.'

@@ -1,0 +1,19 @@
+id: ignaroth-lair-archer-helm
+display:
+  name: Firestorm Helmet
+  material: CHAINMAIL_HELMET
+type: armor
+level: 60
+rarity: legendary
+health: 320
+stats:
+  intelligence:
+    min: 23
+    max: 23
+  dexterity:
+    min: 11
+    max: 11
+max-gem-slots: 6
+class: archer
+item-perks:
+  undying: 1

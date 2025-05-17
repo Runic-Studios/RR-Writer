@@ -1,0 +1,14 @@
+id: bossdrop-ArcticDemon1
+display:
+  name: Frost Fear Hood
+  material: LEATHER_HELMET
+type: armor
+level: 52
+rarity: unique
+health: 110
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: rogue

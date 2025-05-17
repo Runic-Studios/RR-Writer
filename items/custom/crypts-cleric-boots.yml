@@ -1,0 +1,19 @@
+id: crypts-cleric-boots
+display:
+  name: Gilded Ritual Boots
+  material: GOLDEN_BOOTS
+tags:
+- 'untradeable'
+type: armor
+level: 35
+rarity: rare
+health: 65
+stats:
+  wisdom:
+    min: 7
+    max: 8
+  dexterity:
+    min: 4
+    max: 5
+max-gem-slots: 2
+class: cleric

@@ -1,0 +1,16 @@
+class: rogue
+damage:
+  max: 65
+  min: 62
+display:
+  damage: 13
+  material: WOODEN_SWORD
+  name: '&9[&bWinter&9]&b Blade &e2023 &6+2'
+id: winter-2023-rogue-artifact-+2
+level: 60
+rarity: unique
+tags:
+- untradeable
+type: weapon
+item-perks:
+  wintersedge2023: 1

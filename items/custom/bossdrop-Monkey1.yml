@@ -1,0 +1,14 @@
+id: bossdrop-Monkey1
+display:
+  name: Jumpin' Jack Flash
+  material: GOLDEN_LEGGINGS
+type: armor
+level: 8
+rarity: unique
+health: 38
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

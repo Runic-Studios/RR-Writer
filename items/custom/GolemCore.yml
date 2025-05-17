@@ -1,0 +1,10 @@
+id: GolemCore
+display:
+  name: '&aMagic Core'
+  material: EMERALD
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7There is a faint mysterious source of energy inside the core.'

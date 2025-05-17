@@ -1,0 +1,10 @@
+id: MagicSnowball
+display:
+  name: '&6Snowball'
+  material: SNOWBALL
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7It''s just a bit of snow rolled into a ball'

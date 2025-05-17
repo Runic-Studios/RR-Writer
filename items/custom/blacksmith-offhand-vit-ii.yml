@@ -1,0 +1,15 @@
+id: blacksmith-offhand-vit-ii
+display:
+  name: Cerulean Shield
+  material: SHEARS
+  damage: 237
+type: offhand
+level: 20
+rarity: crafted
+stats:
+  vitality:
+    min: 12
+    max: 12
+data:
+  requiredLevel: 10
+  experience: 2250

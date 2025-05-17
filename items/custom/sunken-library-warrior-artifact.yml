@@ -1,0 +1,15 @@
+ability: flaming-shield
+class: warrior
+damage:
+  max: 28
+  min: 26
+display:
+  damage: 2
+  material: WOODEN_AXE
+  name: Deathbringer
+id: sunken-library-warrior-artifact
+level: 25
+rarity: unique
+tags:
+- untradeable
+type: weapon

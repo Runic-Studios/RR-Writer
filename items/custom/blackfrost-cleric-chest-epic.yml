@@ -1,0 +1,21 @@
+id: blackfrost-cleric-chest-epic
+display:
+  name: Spirited Chestplate
+  material: GOLDEN_CHESTPLATE
+type: armor
+level: 60
+rarity: epic
+health: 255
+stats:
+  wisdom:
+    min: 17
+    max: 17
+  vitality:
+    min: 8
+    max: 8
+  dexterity:
+    min: 4
+    max: 4
+max-gem-slots: 4
+class: cleric
+

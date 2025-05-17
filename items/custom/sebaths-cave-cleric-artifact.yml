@@ -1,0 +1,14 @@
+class: cleric
+damage:
+  max: 10
+  min: 9
+display:
+  damage: 10
+  material: WOODEN_SHOVEL
+  name: Crimson Maul
+id: sebaths-cave-cleric-artifact
+level: 5
+rarity: unique
+tags:
+- untradeable
+type: weapon

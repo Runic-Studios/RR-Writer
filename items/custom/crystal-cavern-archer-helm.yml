@@ -1,0 +1,19 @@
+id: crystal-cavern-archer-helm
+display:
+  name: Ice Chain Crown
+  material: CHAINMAIL_HELMET
+tags:
+- 'untradeable'
+type: armor
+level: 12
+rarity: common
+health: 21
+stats:
+  dexterity:
+    min: 3
+    max: 4
+  vitality:
+    min: 1
+    max: 2
+max-gem-slots: 0
+class: archer

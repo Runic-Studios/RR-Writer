@@ -1,0 +1,11 @@
+id: cut-sapphire-v
+display:
+  name: '&3Cut Sapphire V'
+  material: LAPIS_LAZULI
+type: gem
+
+tier: 5
+main-stat: intelligence
+data:
+  requiredLevel: 50
+  experience: 35000

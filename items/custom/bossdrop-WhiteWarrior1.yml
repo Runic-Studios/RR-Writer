@@ -1,0 +1,14 @@
+id: bossdrop-WhiteWarrior1
+display:
+  name: Snowstorm
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 16
+rarity: unique
+health: 62
+stats:
+  strength:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: archer

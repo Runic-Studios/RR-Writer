@@ -1,0 +1,11 @@
+id: valerian
+display:
+  name: '&eValerian'
+  material: AZURE_BLUET
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 15
+  experience: 67

@@ -1,0 +1,10 @@
+id: MerchantSupplies
+display:
+  name: '&6Merchant''s Supplies'
+  material: BARREL
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The supplies of the merchant, quite sticky!'

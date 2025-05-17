@@ -1,0 +1,11 @@
+id: cut-opal-i
+display:
+  name: '&eCut Opal I'
+  material: QUARTZ
+type: gem
+
+tier: 1
+main-stat: dexterity
+data:
+  requiredLevel: 0
+  experience: 750

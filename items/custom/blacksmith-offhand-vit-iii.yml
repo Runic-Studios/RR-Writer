@@ -1,0 +1,15 @@
+id: blacksmith-offhand-vit-iii
+display:
+  name: Glacial Gatekeep
+  material: SHEARS
+  damage: 237
+type: offhand
+level: 30
+rarity: crafted
+stats:
+  vitality:
+    min: 17
+    max: 18
+data:
+  requiredLevel: 20
+  experience: 5000

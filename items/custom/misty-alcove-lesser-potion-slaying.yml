@@ -1,0 +1,18 @@
+id: misty-alcove-lesser-potion-slaying
+display:
+  name: '&2Lesser Potion of Slaying'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eIncreases spellʔ and weapon⚔'
+- '&edamage vs. monsters by &f5%'
+- '&efor &f5 &eminutes'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 5
+  duration: 300
+  color: green

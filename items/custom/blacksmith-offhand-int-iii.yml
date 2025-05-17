@@ -1,0 +1,14 @@
+id: blacksmith-offhand-int-iii
+display:
+  name: Wintry Wand
+  material: STONE_HOE
+type: offhand
+level: 30
+rarity: crafted
+stats:
+  intelligence:
+    min: 17
+    max: 18
+data:
+  requiredLevel: 20
+  experience: 5000

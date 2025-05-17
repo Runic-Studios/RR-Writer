@@ -1,0 +1,12 @@
+id: noman-archer-chest
+display:
+  name: Heart of Noman
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 60
+rarity: unique
+health: 190
+max-gem-slots: 6
+class: archer
+item-perks:
+  mechanization: 2

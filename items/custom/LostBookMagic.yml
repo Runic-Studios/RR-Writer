@@ -1,0 +1,10 @@
+id: LostBookMagic
+display:
+  name: '&6Lost Book of Magic'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7I shouldn''t look...'

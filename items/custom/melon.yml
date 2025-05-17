@@ -1,0 +1,11 @@
+id: melon
+display:
+  name: '&fMelon'
+  material: MELON_SLICE
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 40
+  experience: 162

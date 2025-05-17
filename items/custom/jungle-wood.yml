@@ -1,0 +1,11 @@
+id: jungle-wood
+display:
+  name: '&fJungle Log'
+  material: JUNGLE_LOG
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 60
+  experience: 402

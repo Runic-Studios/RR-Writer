@@ -1,0 +1,22 @@
+id: blackfrost-rogue-chest
+display:
+  name: Frostguard Assassin's Tunic
+  material: LEATHER_CHESTPLATE
+type: armor
+level: 60
+rarity: legendary
+health: 193
+stats:
+  strength:
+    min: 16
+    max: 22
+  intelligence:
+    min: 8
+    max: 11
+  dexterity:
+    min: 3
+    max: 6
+max-gem-slots: 6
+class: rogue
+item-perks:
+  blackfrost-rogue-armor: 1

@@ -1,0 +1,11 @@
+id: chain-link
+display:
+  name: '&fChain Link'
+  material: IRON_BARS
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 90

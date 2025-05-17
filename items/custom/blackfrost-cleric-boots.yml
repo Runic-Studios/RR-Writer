@@ -1,0 +1,22 @@
+id: blackfrost-cleric-boots
+display:
+  name: 'Frostweave Boots'
+  material: GOLDEN_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 252
+stats:
+  wisdom:
+    min: 12
+    max: 18
+  vitality:
+    min: 6
+    max: 9
+  dexterity:
+    min: 2
+    max: 5
+max-gem-slots: 6
+class: cleric
+item-perks:
+  blackfrost-cleric-armor: 1

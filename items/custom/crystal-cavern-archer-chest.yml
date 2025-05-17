@@ -1,0 +1,19 @@
+id: crystal-cavern-archer-chest
+display:
+  name: Chilly Chainmail
+  material: CHAINMAIL_CHESTPLATE
+tags:
+- 'untradeable'
+type: armor
+level: 12
+rarity: common
+health: 34
+stats:
+  dexterity:
+    min: 3
+    max: 4
+  vitality:
+    min: 1
+    max: 2
+max-gem-slots: 0
+class: archer

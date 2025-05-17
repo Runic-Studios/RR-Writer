@@ -1,0 +1,12 @@
+id: sandswept-basin-squid-ink
+display:
+  name: '&6Shimmering Ink'
+  material: INK_SAC
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7Ink from the aquatic squids.'
+  - '&7Glitters very strangely...'
+  - '&7Could be used for writing incantations and scrolls.'

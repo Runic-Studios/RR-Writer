@@ -1,0 +1,16 @@
+id: ignaroth-lair-offhand-dex-+3
+display:
+  name: '&eForsaken Blade &6+3'
+  material: SHEARS
+  damage: 236
+tags:
+- 'untradeable'
+type: offhand
+level: 60
+rarity: unique
+stats:
+  dexterity:
+    min: 30
+    max: 30
+item-perks:
+  ignaroth-dexterity-4: 1

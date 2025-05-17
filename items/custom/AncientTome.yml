@@ -1,0 +1,10 @@
+id: AncientTome
+display:
+  name: '&6Ancient Tome'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7What dark secrets lie within...'

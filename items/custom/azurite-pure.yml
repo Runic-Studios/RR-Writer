@@ -1,0 +1,13 @@
+id: azurite-pure
+display:
+  name: '&bTempestuous Azurite &bIV'
+  material: CONDUIT
+type: 'generic' 
+lore:
+- ''
+- '&b&oThe raging winds and fierce tides of the Azure Lands will live on'
+- '&b&oWe''re missing you, Sirenna'
+- ''
+- '&7Quality: &3&k|&bPure&3&k|'
+- ''
+- '&7Crafting Reagent'

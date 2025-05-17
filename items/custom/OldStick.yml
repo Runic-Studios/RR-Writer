@@ -1,0 +1,10 @@
+id: OldStick
+display:
+  name: '&6Old Stick'
+  material: STICK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7For how many hundreds of years has this tree survived?'

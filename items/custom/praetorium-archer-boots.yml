@@ -1,0 +1,17 @@
+id: praetorium-archer-boots
+display:
+  name: 'Imperial Archer Boots'
+  material: CHAINMAIL_BOOTS
+type: armor
+level: 60
+rarity: epic
+health: 134
+stats:
+  strength:
+    min: 13
+    max: 13
+  dexterity:
+    min: 7
+    max: 7
+max-gem-slots: 3
+class: archer

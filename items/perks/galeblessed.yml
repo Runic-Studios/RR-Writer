@@ -1,0 +1,8 @@
+max-stacks: 5
+speed-duration: 5 # In seconds
+cooldown: 30 # In seconds
+speed-per-stack: 0.10 # Percentage float
+name: '&b&lGaleblessed'
+lore:
+- '&7&oUpon entering combat, you gain &r<galeblessed-speed>'
+- '&7&omovement speed for 5s (30s CD)'

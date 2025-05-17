@@ -1,0 +1,11 @@
+id: cut-diamond-v
+display:
+  name: '&fCut Diamond V'
+  material: DIAMOND
+type: gem
+
+tier: 5
+main-stat: vitality
+data:
+  requiredLevel: 50
+  experience: 35000

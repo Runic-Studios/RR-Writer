@@ -1,0 +1,15 @@
+id: blacksmith-offhand-dex-ii
+display:
+  name: Celtic Serrated Dagger
+  material: SHEARS
+  damage: 236
+type: offhand
+level: 20
+rarity: crafted
+stats:
+  dexterity:
+    min: 12
+    max: 12
+data:
+  requiredLevel: 10
+  experience: 2250

@@ -1,0 +1,20 @@
+id: praetorium-warrior-leggings
+display:
+  name: 'Imperial Warrior Platelegs'
+  material: IRON_LEGGINGS
+type: armor
+level: 60
+rarity: epic
+health: 196
+stats:
+  strength:
+    min: 14
+    max: 14
+  vitality:
+    min: 7
+    max: 7
+  wisdom:
+    min: 3
+    max: 3
+max-gem-slots: 3
+class: warrior

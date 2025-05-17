@@ -1,0 +1,14 @@
+id: azanashop-mage-helmet
+display:
+  name: Spider Silk Hood
+  material: DIAMOND_HELMET
+type: armor
+level: 4
+rarity: common
+health: 11
+stats:
+  intelligence:
+    min: 0
+    max: 0
+max-gem-slots: 0
+class: mage

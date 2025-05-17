@@ -1,0 +1,19 @@
+id: FallenBook3
+display:
+  name: '&6Dawnshire Journal #3'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7"To whomever this may concern."'
+  - '&7"Dawnshire Port has surely fallen by now."'
+  - '&7"I led my comrades to a war we couldn''t win,"'
+  - '&7"yet we all thought it was possible."'
+  - '&7"The reason this war even started?"'
+  - '&7"That''s because of the corrupt government."'
+  - '&7"We are not livestock, we should be allowed to live peacefully,"'
+  - '&7"and not breaking our backs for those at the top."'
+  - '&7"We just wanted better lives, and we got silenced because of it."'
+  - '&7"And if there''s something I am good at, is that the people follow my voice."'

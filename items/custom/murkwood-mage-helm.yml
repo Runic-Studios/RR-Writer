@@ -1,0 +1,17 @@
+id: murkwood-mage-helm
+display:
+  name: Siltweave Hood
+  material: DIAMOND_HELMET
+type: armor
+level: 25
+rarity: unique
+health: 44
+stats:
+  intelligence:
+    min: 4
+    max: 7
+  vitality:
+    min: 3
+    max: 6
+max-gem-slots: 2
+class: mage

@@ -1,0 +1,17 @@
+id: outlaw-remorse
+display:
+  name: Remorse
+  material: STONE_SHOVEL
+tags:
+- 'soulbound'
+type: offhand
+level: 60
+rarity: legendary
+health: 0
+stats:
+  wisdom:
+    min: 15
+    max: 15
+  dexterity:
+    min: 5
+    max: 5

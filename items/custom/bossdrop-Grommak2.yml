@@ -1,0 +1,14 @@
+id: bossdrop-Grommak2
+display:
+  name: Tainted Mitre
+  material: GOLDEN_HELMET
+type: armor
+level: 54
+rarity: unique
+health: 112
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: cleric

@@ -1,0 +1,14 @@
+id: blacksmith-offhand-int-iv
+display:
+  name: Sage Scepter
+  material: STONE_HOE
+type: offhand
+level: 40
+rarity: crafted
+stats:
+  intelligence:
+    min: 24
+    max: 25
+data:
+  requiredLevel: 30
+  experience: 12500

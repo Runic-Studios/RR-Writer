@@ -1,0 +1,17 @@
+id: murkwood-cleric-boots
+display:
+  name: Fenshield Boots
+  material: GOLDEN_BOOTS
+type: armor
+level: 25
+rarity: unique
+health: 53
+stats:
+  wisdom:
+    min: 4
+    max: 7
+  intelligence:
+    min: 3
+    max: 6
+max-gem-slots: 2
+class: cleric

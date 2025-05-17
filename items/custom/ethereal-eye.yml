@@ -1,0 +1,8 @@
+id: ethereal-eye
+display:
+  name: '&aEthereal Eye'
+  material: ENDER_EYE
+type: 'generic' 
+lore:
+  - ''
+  - '&7The screams echo.'

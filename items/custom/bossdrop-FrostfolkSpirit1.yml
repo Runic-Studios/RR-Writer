@@ -1,0 +1,14 @@
+id: bossdrop-FrostfolkSpirit1
+display:
+  name: Wilted Warmth
+  material: IRON_LEGGINGS
+type: armor
+level: 15
+rarity: unique
+health: 57
+stats:
+  dexterity:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

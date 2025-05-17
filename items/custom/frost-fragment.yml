@@ -1,0 +1,10 @@
+id: frost-fragment
+display:
+  name: '&bFrost Fragment'
+  material: GHAST_TEAR
+type: 'generic' 
+lore:
+- ''
+- '&eIt feels lifeless.'
+- ''
+- '&7Crafting Reagent'

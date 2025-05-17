@@ -1,0 +1,14 @@
+id: bossdrop-GrandToxicSlime2
+display:
+  name: Gluttony
+  material: IRON_LEGGINGS
+type: armor
+level: 54
+rarity: unique
+health: 219
+stats:
+  vitality:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: warrior

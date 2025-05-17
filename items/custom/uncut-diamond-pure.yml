@@ -1,0 +1,13 @@
+id: uncut-diamond-pure
+display:
+  name: '&fUncut Diamond &bIV'
+  material: DIAMOND_ORE
+type: 'generic' 
+lore:
+- ''
+- '&7Quality: &3&k|&bPure&3&k|'
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 60
+  experience: 2147

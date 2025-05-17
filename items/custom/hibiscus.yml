@@ -1,0 +1,11 @@
+id: hibiscus
+display:
+  name: '&cHibiscus'
+  material: RED_TULIP
+type: 'generic' 
+lore:
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 30
+  experience: 142

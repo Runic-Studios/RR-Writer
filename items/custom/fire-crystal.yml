@@ -1,0 +1,10 @@
+id: fire-crystal
+display:
+  name: '&cFire Crystal'
+  material: RED_GLAZED_TERRACOTTA
+type: 'generic' 
+lore:
+- ''
+- '&6Highly concentrated fire elements.'
+- ''
+- '&7Crafting Reagent'

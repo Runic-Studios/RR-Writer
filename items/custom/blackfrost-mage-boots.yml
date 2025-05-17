@@ -1,0 +1,22 @@
+id: blackfrost-mage-boots
+display:
+  name: 'Frostborn Boots'
+  material: DIAMOND_BOOTS
+type: armor
+level: 60
+rarity: legendary
+health: 144
+stats:
+  intelligence:
+    min: 12
+    max: 18
+  dexterity:
+    min: 6
+    max: 9
+  wisdom:
+    min: 2
+    max: 5
+max-gem-slots: 6
+class: mage
+item-perks:
+  blackfrost-mage-armor: 1

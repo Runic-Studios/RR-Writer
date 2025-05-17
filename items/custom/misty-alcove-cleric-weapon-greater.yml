@@ -1,0 +1,12 @@
+id: misty-alcove-cleric-weapon-greater
+display:
+  name: 'Corrupted Mace'
+  material: WOODEN_SHOVEL
+  damage: 7
+type: weapon
+level: 12
+rarity: uncommon
+damage:
+  min: 18
+  max: 20
+class: cleric

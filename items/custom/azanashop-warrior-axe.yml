@@ -1,0 +1,12 @@
+id: azanashop-warrior-axe
+display:
+  name: Spruce Wooden Axe
+  material: WOODEN_AXE
+type: weapon
+level: 4
+rarity: common
+damage:
+  min: 5
+  max: 7
+max-gem-slots: 0
+class: warrior

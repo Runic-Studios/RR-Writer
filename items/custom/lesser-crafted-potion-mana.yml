@@ -1,0 +1,17 @@
+id: lesser-crafted-potion-mana
+display:
+  name: '&3Lesser Crafted Potion of Mana'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eRestores &375✸ &eon use'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 75
+  color: aqua
+  requiredLevel: 0
+  experience: 450 

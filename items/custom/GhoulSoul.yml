@@ -1,0 +1,11 @@
+id: GhoulSoul
+display:
+  name: '&6Soul of a Ghoul'
+  material: FERMENTED_SPIDER_EYE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7The screeching echoes through the mine.'
+  - '&7Sounds like someone young...'

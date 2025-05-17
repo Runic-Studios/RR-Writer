@@ -1,0 +1,10 @@
+id: Trinity7
+display:
+  name: '&6Trinity Vol.7'
+  material: BOOK
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7A very important piece of literature'

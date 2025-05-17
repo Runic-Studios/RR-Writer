@@ -1,0 +1,14 @@
+id: head-of-ignaroth
+display:
+  name: '&eHead of Ignaroth'
+  material: SKELETON_SKULL
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+  - '&7'
+  - '&7Bring this to the &aDungeon Merchant'
+  - '&7in &4Ignaroth''s Realm &7to purchase'
+  - '&7exclusive dungeon loot!'
+  - '&7'
+  - '&eUnique'

@@ -1,0 +1,11 @@
+id: heart-of-the-storm
+display:
+  name: '&bHeart of the Storm'
+  material: HEART_OF_THE_SEA
+type: 'generic' 
+lore:
+- ''
+- '&EThe still beating heart of Maelstrom.'
+- '&ECurrents, waves, flows and billows...'
+- ''
+- '&7Crafting Reagent'

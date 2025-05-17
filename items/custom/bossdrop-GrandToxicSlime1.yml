@@ -1,0 +1,14 @@
+id: bossdrop-GrandToxicSlime1
+display:
+  name: Unsatiable Hunger
+  material: CHAINMAIL_CHESTPLATE
+type: armor
+level: 56
+rarity: unique
+health: 170
+stats:
+  intelligence:
+    min: 19
+    max: 21
+max-gem-slots: 0
+class: archer

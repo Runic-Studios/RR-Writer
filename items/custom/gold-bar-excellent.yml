@@ -1,0 +1,13 @@
+id: gold-bar-excellent
+display:
+  name: '&eGold Bar &aIII'
+  material: GOLD_INGOT
+type: 'generic' 
+lore:
+- ''
+- '&7Quality: &aExcellent'
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 0
+  experience: 320

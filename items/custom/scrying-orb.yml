@@ -1,0 +1,13 @@
+id: scrying-orb
+display:
+  name: 'Scrying Orb'
+  material: ENDER_EYE
+type: 'generic'
+tags:
+- consumable
+lore:
+- ''
+- '&eLearn the combat stats'
+- '&eof a player!'
+triggers:
+  right: 'item-consume'

@@ -1,0 +1,13 @@
+id: gold-ore-pure
+display:
+  name: '&fGold Ore &bIV'
+  material: GOLD_ORE
+type: 'generic' 
+lore:
+- ''
+- '&7Quality: &3&k|&bPure&3&k|'
+- ''
+- '&7Crafting Reagent'
+data:
+  requiredLevel: 60
+  experience: 2147

@@ -1,0 +1,14 @@
+id: head-of-sebath
+display:
+  name: '&eHead of Sebath'
+  material: SKELETON_SKULL
+tags:
+- 'untradeable'
+type: 'generic' 
+lore:
+  - '&7'
+  - '&7Bring this to the &aDungeon Merchant'
+  - '&7in &4Sebath''s Cave &7to purchase'
+  - '&7exclusive dungeon loot!'
+  - '&7'
+  - '&eUnique'

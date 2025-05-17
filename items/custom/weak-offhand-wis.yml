@@ -1,0 +1,14 @@
+id: weak-offhand-wis
+display:
+  name: Tainted Flail
+  material: STONE_SHOVEL
+tags:
+- 'untradeable'
+type: offhand
+level: 6
+rarity: common
+health: 0
+stats:
+  wisdom:
+    min: 4
+    max: 4

@@ -1,0 +1,17 @@
+id: rune
+tags:
+- 'soulbound'
+display:
+  name: '&dAncient Runestone'
+  material: POPPED_CHORUS_FRUIT
+type: 'generic' 
+#triggers: # Actions that the RR plugins can perform on click this item
+#  right: 'potion-consume'
+#  left-shift: 'special-potion-action'
+lore:
+- ''
+- '&6&lRIGHT CLICK &aSkill Tree'
+- '&7Open your skill tree!'
+- ''
+- '&6&lLEFT CLICK &aMount'
+- '&7Ride your favorite mount!'

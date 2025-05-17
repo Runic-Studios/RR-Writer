@@ -1,0 +1,10 @@
+id: stonehaven-obsidian
+display:
+  name: '&5Obsidian'
+  material: OBSIDIAN
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7When two liquids love each other very much...'

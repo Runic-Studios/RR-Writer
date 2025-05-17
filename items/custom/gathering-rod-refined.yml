@@ -1,0 +1,23 @@
+id: 'gathering-rod-refined'
+display:
+  name: '&bRefined Fishing Rod'
+  material: FISHING_ROD
+  damage: 3
+type: 'dynamic' 
+lore:
+  - '&7Req Fishing &f25'
+  - '' 
+  - '&2Gathering Luck II: &7You have a'
+  - '&f33% &7chance to receive'
+  - '&f2-3x &7more resources!'
+  - ''
+  - '&bRare'
+data:
+  dynamicFieldInitialValue: 100
+  dynamicLore: '&7/100'
+  maxDurability: 100
+  requiredLevelForUse: 25
+  bonusLootCeiling: 2
+  bonusLootChance: .33
+  requiredLevel: 25
+  experience: 4000

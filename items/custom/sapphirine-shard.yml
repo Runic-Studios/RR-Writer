@@ -1,0 +1,10 @@
+id: sapphirine-shard
+display:
+  name: '&9Sapphirine Shard'
+  material: LAPIS_LAZULI
+type: 'generic' 
+lore:
+- ''
+- '&EThe shard of the Sapphirine Behemoth.'
+- ''
+- '&7Crafting Reagent'

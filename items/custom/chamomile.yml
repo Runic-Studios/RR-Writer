@@ -1,0 +1,11 @@
+id: chamomile
+display:
+  name: '&eChamomile'
+  material: OXEYE_DAISY
+type: 'generic' 
+lore:
+  - ''
+  - '&7Crafting Reagent'
+data:
+  requiredLevel: 20
+  experience: 90

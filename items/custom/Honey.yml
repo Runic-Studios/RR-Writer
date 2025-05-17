@@ -1,0 +1,10 @@
+id: Honey
+display:
+  name: '&6Honey'
+  material: HONEYCOMB
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7According to all known laws of aviation...'

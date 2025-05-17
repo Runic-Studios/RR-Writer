@@ -1,0 +1,20 @@
+id: lesser-crafted-potion-slaying
+display:
+  name: '&2Lesser Crafted Potion of Slaying'
+  material: POTION
+type: 'generic'
+tags:
+- potion
+lore:
+- ''
+- '&eIncreases spellʔ and weapon⚔'
+- '&edamage vs. monsters by &f5%'
+- '&efor &f10 &eminutes'
+triggers:
+  right: 'item-consume'
+data:
+  amount: 5
+  duration: 600
+  color: green
+  requiredLevel: 10
+  experience: 1000

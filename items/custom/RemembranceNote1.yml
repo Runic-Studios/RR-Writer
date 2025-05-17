@@ -1,0 +1,13 @@
+id: RemembranceNote1
+display:
+  name: '&6Ragged Note #1'
+  material: GRAY_DYE
+tags:
+- 'quest-item'
+type: 'generic'
+lore:
+  - ''
+  - '&7Why did it come down to this? I do not know,'
+  - '&7it was for the better of everyone.'
+  - '&7Why did I become the villain of the story?'
+  - '&7It''s as if people will never be able to agree or understand each other.'

@@ -1,0 +1,10 @@
+id: SealedEnvelope
+display:
+  name: '&6Sealed Envelope'
+  material: PURPLE_DYE
+tags:
+- 'quest-item'
+type: 'generic' 
+lore:
+  - ''
+  - '&7There are two letters in this envelope.'

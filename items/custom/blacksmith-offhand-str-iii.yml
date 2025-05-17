@@ -1,0 +1,14 @@
+id: blacksmith-offhand-str-iii
+display:
+  name: Frost Edged Dirk
+  material: STONE_SWORD
+type: offhand
+level: 30
+rarity: crafted
+stats:
+  strength:
+    min: 17
+    max: 18
+data:
+  requiredLevel: 20
+  experience: 5000
