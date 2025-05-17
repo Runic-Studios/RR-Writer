@@ -4,14 +4,14 @@ display:
   material: POTION
 type: 'generic'
 tags:
-- potion
+  - potion
 lore:
-- ''
-- '&eRestores &c275<3 &eon use'
+  - ''
+  - '&eRestores &c275<3 &eon use'
 triggers:
   right: 'item-consume'
-data:
+extra:
   amount: 275
   color: red
   requiredLevel: 20
-  experience: 2250 
+  experience: 2250

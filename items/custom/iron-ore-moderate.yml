@@ -2,12 +2,12 @@ id: iron-ore-moderate
 display:
   name: '&fIron Ore &eII'
   material: IRON_ORE
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Quality: &eModerate'
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Quality: &eModerate'
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 20
   experience: 142

@@ -4,13 +4,13 @@ display:
   material: PURPLE_DYE
 type: 'generic'
 tags:
-- consumable
+  - consumable
 lore:
-- ''
-- '&eTravel to Dead Man''s Rest!'
+  - ''
+  - '&eTravel to Dead Man''s Rest!'
 triggers:
   right: 'teleport-scroll'
-data:
+extra:
   warmup: 5
   world: Alterra
   x: -6.5

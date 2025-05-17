@@ -3,14 +3,14 @@ display:
   name: '&eWhite Stallion'
   material: SADDLE
 tags:
-- 'untradeable'
-type: 'generic' 
+  - 'untradeable'
+type: 'generic'
 lore:
   - ''
   - '&r&7Consume this item to unlock this mount!'
 triggers:
   right: 'summon-mount'
-data:
+extra:
   mount-name: 'White Stallion'
   mount-type: 'HORSE'
   horse-color: 'WHITE'

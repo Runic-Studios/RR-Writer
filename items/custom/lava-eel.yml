@@ -3,9 +3,9 @@ display:
   name: '&fLava Eel'
   material: LIME_STAINED_GLASS
 type: 'generic'
-lore: 
+lore:
   - ''
   - '&7Crafting Reagent'
-data:
+extra:
   requiredLevel: 43
   experience: 419

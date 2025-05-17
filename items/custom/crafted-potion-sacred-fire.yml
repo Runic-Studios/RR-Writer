@@ -4,15 +4,15 @@ display:
   material: POTION
 type: 'generic'
 tags:
-- potion
+  - potion
 lore:
-- ''
-- '&eYour spells have a &f25% &echance to burn'
-- '&eenemies for an additional &f100 &emagicʔ'
-- '&edamage for &f25 &eminutes!'
+  - ''
+  - '&eYour spells have a &f25% &echance to burn'
+  - '&eenemies for an additional &f100 &emagicʔ'
+  - '&edamage for &f25 &eminutes!'
 triggers:
   right: 'item-consume'
-data:
+extra:
   amount: 100
   chance: 25
   duration: 1500

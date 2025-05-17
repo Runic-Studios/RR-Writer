@@ -4,12 +4,12 @@ display:
   material: POTION
 type: 'generic'
 tags:
-- potion
+  - potion
 lore:
-- ''
-- '&eRestores &3225✸ &eon use'
+  - ''
+  - '&eRestores &3225✸ &eon use'
 triggers:
   right: 'item-consume'
-data:
+extra:
   amount: 225
   color: aqua

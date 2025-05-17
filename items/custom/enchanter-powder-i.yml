@@ -4,15 +4,15 @@ display:
   material: GLOWSTONE_DUST
 type: 'generic'
 tags:
-- consumable
+  - consumable
 lore:
-- '&eFor 60 seconds, your magicʔ attacks'
-- '&edeal 6 additional damage!'
+  - '&eFor 60 seconds, your magicʔ attacks'
+  - '&edeal 6 additional damage!'
 triggers:
   right: 'item-consume'
-data:
+extra:
   experience: 350
   requiredLevel: 0
   effect: 6
   duration: 60
-  
+

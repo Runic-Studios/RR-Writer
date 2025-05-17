@@ -2,12 +2,12 @@ id: iron-bar-moderate
 display:
   name: '&fIron Bar &aII'
   material: IRON_INGOT
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Quality: &eModerate'
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Quality: &eModerate'
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 0
   experience: 160

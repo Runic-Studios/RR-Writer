@@ -2,10 +2,10 @@ id: wheat
 display:
   name: '&fWheat'
   material: WHEAT
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 0
   experience: 12

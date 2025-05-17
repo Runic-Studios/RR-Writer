@@ -2,9 +2,9 @@ id: cooked-meat
 display:
   name: '&eCooked Meat'
   material: COOKED_MUTTON
-type: 'generic' 
+type: 'generic'
 tags:
-- consumable
-data:
+  - consumable
+extra:
   requiredLevel: 5
   experience: 120

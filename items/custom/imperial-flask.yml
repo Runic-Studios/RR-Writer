@@ -2,10 +2,10 @@ id: imperial-flask
 display:
   name: '&bImperial Flask'
   material: GLASS_BOTTLE
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 40
   experience: 2000

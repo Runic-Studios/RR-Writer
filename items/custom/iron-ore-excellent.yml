@@ -2,12 +2,12 @@ id: iron-ore-excellent
 display:
   name: '&fIron Ore &aIII'
   material: IRON_ORE
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Quality: &aExcellent'
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Quality: &aExcellent'
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 40
   experience: 512

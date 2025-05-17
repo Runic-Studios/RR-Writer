@@ -2,12 +2,12 @@ id: uncut-opal-pure
 display:
   name: '&fUncut Opal &bIV'
   material: NETHER_QUARTZ_ORE
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Quality: &3&k|&bPure&3&k|'
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Quality: &3&k|&bPure&3&k|'
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 60
   experience: 2147

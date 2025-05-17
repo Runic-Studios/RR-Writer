@@ -3,13 +3,13 @@ display:
   name: '&eBlack Steed'
   material: SADDLE
 tags:
-- 'untradeable'
-type: 'generic' 
+  - 'untradeable'
+type: 'generic'
 lore:
   - ''
   - '&r&7Consume this item to unlock this mount!'
 triggers:
   right: 'summon-mount'
-data:
+extra:
   mount-id: BLACK_STEED
 

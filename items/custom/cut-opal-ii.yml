@@ -6,6 +6,6 @@ type: gem
 
 tier: 2
 main-stat: dexterity
-data:
+extra:
   requiredLevel: 10
   experience: 1750

@@ -6,6 +6,6 @@ type: gem
 
 tier: 2
 main-stat: intelligence
-data:
+extra:
   requiredLevel: 10
   experience: 1750

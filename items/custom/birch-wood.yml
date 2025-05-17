@@ -2,10 +2,10 @@ id: birch-wood
 display:
   name: '&fElder Log'
   material: BIRCH_LOG
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 20
   experience: 76

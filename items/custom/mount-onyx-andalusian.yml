@@ -3,14 +3,14 @@ display:
   name: '&eOnyx Andalusian'
   material: SADDLE
 tags:
-- 'untradeable'
+  - 'untradeable'
 type: generic
 lore:
   - ''
   - '&r&7Consume this item to unlock this mount!'
 triggers:
   right: 'summon-mount'
-data:
+extra:
   mount-name: 'Onyx Andalusian'
   mount-type: 'HORSE'
   horse-color: 'BLACK'

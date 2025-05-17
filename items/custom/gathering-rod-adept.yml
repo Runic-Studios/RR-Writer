@@ -3,16 +3,16 @@ display:
   name: '&aAdept Fishing Rod'
   material: FISHING_ROD
   damage: 2
-type: 'dynamic' 
+type: 'dynamic'
 lore:
   - '&7Req Fishing &f10'
-  - '' 
+  - ''
   - '&2Gathering Luck I: &7You have a'
   - '&f33% &7chance to receive'
   - '&f2x &7more resources!'
   - ''
   - '&aUncommon'
-data:
+extra:
   dynamicFieldInitialValue: 50
   dynamicLore: '&7/50'
   maxDurability: 50

@@ -9,6 +9,6 @@ stats:
   wisdom:
     min: 24
     max: 25
-data:
+extra:
   requiredLevel: 30
   experience: 12500

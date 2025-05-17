@@ -3,7 +3,7 @@ display:
   name: '&eSwift Black Steed'
   material: SADDLE
 tags:
-- 'soulbound'
+  - 'soulbound'
 type: generic
 lore:
   - ''
@@ -13,7 +13,7 @@ lore:
   - '&r&7&oA loyal and valiant steed!'
 triggers:
   right: 'summon-mount'
-data:
+extra:
   mount-name: 'Swift Black Steed'
   mount-type: 'HORSE'
   horse-color: 'BLACK'

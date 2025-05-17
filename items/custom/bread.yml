@@ -2,9 +2,9 @@ id: bread
 display:
   name: '&eBread'
   material: BREAD
-type: 'generic' 
+type: 'generic'
 tags:
-- consumable
-data:
+  - consumable
+extra:
   requiredLevel: 0
   experience: 80

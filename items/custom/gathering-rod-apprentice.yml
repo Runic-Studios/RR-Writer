@@ -3,12 +3,12 @@ display:
   name: '&7Apprentice Fishing Rod'
   material: FISHING_ROD
   damage: 1
-type: 'dynamic' 
+type: 'dynamic'
 lore:
   - '&7Skill &fFishing'
   - ''
   - '&7Common'
-data:
+extra:
   dynamicFieldInitialValue: 25
   dynamicLore: '&7/25'
   experience: 0

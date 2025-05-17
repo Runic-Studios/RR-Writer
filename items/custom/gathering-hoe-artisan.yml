@@ -3,16 +3,16 @@ display:
   name: '&6Artisan Farming Hoe'
   material: IRON_HOE
   damage: 5
-type: 'dynamic' 
+type: 'dynamic'
 lore:
   - '&7Req Farming &f60'
-  - '' 
+  - ''
   - '&2Gathering Luck IV: &7You have a'
   - '&f50% &7chance to receive'
   - '&f2-4x &7more resources!'
   - ''
   - '&6Legendary'
-data:
+extra:
   dynamicFieldInitialValue: 1500
   dynamicLore: '&7/1500'
   maxDurability: 1500

@@ -3,8 +3,8 @@ display:
   name: '&eGray Stallion'
   material: SADDLE
 tags:
-- 'soulbound'
-type: 'generic' 
+  - 'soulbound'
+type: 'generic'
 lore:
   - ''
   - '&6Tier: &7Normal'
@@ -13,7 +13,7 @@ lore:
   - '&r&7&oA loyal and valiant steed!'
 triggers:
   right: 'summon-mount'
-data:
+extra:
   mount-name: 'Gray Stallion'
   mount-type: 'HORSE'
   horse-color: 'GRAY'

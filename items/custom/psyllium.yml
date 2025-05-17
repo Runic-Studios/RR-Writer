@@ -2,10 +2,10 @@ id: psyllium
 display:
   name: '&ePsyllium'
   material: DANDELION
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 5
   experience: 30

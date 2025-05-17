@@ -2,9 +2,9 @@ id: cooked-carrot
 display:
   name: '&eRoasted Carrot'
   material: CARROT
-type: 'generic' 
+type: 'generic'
 tags:
-- consumable
-data:
+  - consumable
+extra:
   requiredLevel: 10
   experience: 80

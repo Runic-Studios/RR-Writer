@@ -2,10 +2,10 @@ id: dark-oak-wood
 display:
   name: '&fDark Oak Log'
   material: DARK_OAK_LOG
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 30
   experience: 144

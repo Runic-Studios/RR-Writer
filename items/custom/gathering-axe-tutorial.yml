@@ -4,13 +4,13 @@ display:
   material: IRON_AXE
   damage: 1
 tags:
-- 'untradeable'
-type: 'dynamic' 
+  - 'untradeable'
+type: 'dynamic'
 lore:
   - '&7Skill &fWoodcutting'
   - ''
   - '&7Common'
-data:
+extra:
   dynamicFieldInitialValue: 4
   dynamicLore: '&7/4'
   experience: 0

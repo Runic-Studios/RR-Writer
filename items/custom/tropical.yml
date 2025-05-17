@@ -2,10 +2,10 @@ id: tropical
 display:
   name: '&fTropical Fish'
   material: TROPICAL_FISH
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 35
   experience: 333
