@@ -1,7 +1,7 @@
 id: arugula
 display:
   name: '&aArugula'
-  material: GRASS
+  material: TALL_GRASS
 type: 'generic'
 lore:
   - ''

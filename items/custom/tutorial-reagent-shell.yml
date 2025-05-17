@@ -1,7 +1,7 @@
 id: tutorial-reagent-shell
 display:
   name: '&aSea Turtle Shell'
-  material: SCUTE
+  material: TURTLE_SCUTE
 type: 'generic' 
 lore:
   - ''

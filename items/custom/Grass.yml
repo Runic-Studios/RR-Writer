@@ -1,7 +1,7 @@
 id: Grass
 display:
   name: '&aGrass'
-  material: GRASS
+  material: TALL_GRASS
 tags:
 - 'quest-item'
 type: 'generic' 
