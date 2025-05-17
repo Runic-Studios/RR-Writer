@@ -52,7 +52,7 @@ pipeline {
         stage('Update Deployment') {
             steps {
                 container('agent-base') {
-                    updateManifest('dev', 'Realm-Paper', 'aritfact-manifest.yaml', env.ARTIFACT_NAME, env.GIT_COMMIT.take(7), 'artifacts.rr-writer.tag')
+                    updateManifest('dev', 'Realm-Paper', 'artifact-manifest.yaml', env.ARTIFACT_NAME, env.GIT_COMMIT.take(7), 'artifacts.rr-writer.tag')
                 }
             }
         }
