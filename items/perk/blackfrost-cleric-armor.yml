@@ -1,6 +1,7 @@
+id: blackfrost-cleric-armor
 max-stacks: 4
-damage-percent: 0.1 #ratio
-range: 3 #in blocks, will work with decimals as well
+damage-percent: 0.1
+range: 3
 name: '&b&lOverheal'
 lore:
 - '&7&oIf your healing exceeds the max health of the recipiant:'

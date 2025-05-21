@@ -1,7 +1,8 @@
+id: galeblessed
 max-stacks: 5
-speed-duration: 5 # In seconds
-cooldown: 30 # In seconds
-speed-per-stack: 0.10 # Percentage float
+speed-duration: 5
+cooldown: 30
+speed-per-stack: 0.10
 name: '&b&lGaleblessed'
 lore:
 - '&7&oUpon entering combat, you gain &r<galeblessed-speed>'

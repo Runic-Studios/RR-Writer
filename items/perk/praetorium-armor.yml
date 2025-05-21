@@ -1,6 +1,7 @@
+id: praetorium-armor
 max-stacks: 4
-max-health-percent: 0.1 #ratio
-cooldown: 120 #seconds
+max-health-percent: 0.1
+cooldown: 120
 name: '&b&lplaceholder'
 lore:
 - '&7&oInstead of taking damage, gain a shield equal to &r&e<praetorium-armor-max-health>&r&7&o of your max health'

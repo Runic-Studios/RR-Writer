@@ -1,8 +1,9 @@
+id: infernal
 attack-constant: 50.0
 attack-multiplier: 1.25
 spell-constant: 25.0
 spell-multiplier: 0.625
-cooldown: 8 #seconds
+cooldown: 8
 name: '&b&lInfernal'
 lore:
 - '&7&oNormal attacks deal (50 + &f1.25x &eSTR&7&o) bonus damage'

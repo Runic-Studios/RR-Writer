@@ -1,4 +1,5 @@
-heal-reduced-percent: 0.45 #ratio
+id: purity
+heal-reduced-percent: 0.45
 name: '&b&lPurity'
 lore:
 - '&7&oDrinking a potion cleanses all crowd control effects'

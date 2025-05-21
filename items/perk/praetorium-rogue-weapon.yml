@@ -1,7 +1,8 @@
+id: praetorium-rogue-weapon
 attack-constant: 0.0
 attack-multiplier: 0.25
-reduced-healing-percent: 0.2 #ratio
-cooldown: 3 #seconds
+reduced-healing-percent: 0.2
+cooldown: 3
 name: '&b&lVenom'
 lore:
 - '&7&oBasic attacks poison the enemy, dealing (&f0.25x &eSTR&7&o) bonus damage per second'

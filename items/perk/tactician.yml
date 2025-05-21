@@ -1,5 +1,6 @@
-speed-percent-increase: 0.25 #ratio
-damage-taken-percent-increase: 1.0 #ratio (100%)
+id: tactician
+speed-percent-increase: 0.25
+damage-taken-percent-increase: 1.0
 name: '&b&lTactician'
 lore:
 - '&7&oIncrease movement speed by 25%'

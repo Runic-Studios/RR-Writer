@@ -1,5 +1,6 @@
+id: frenzy
 max-stacks: 5
-attack-speed-percent: 0.07 #ratio
+attack-speed-percent: 0.07
 name: '&b&lFrenzy'
 lore:
 - '&7&oGain &r&e<frenzy-atkspd> &r&7&oattack speed'

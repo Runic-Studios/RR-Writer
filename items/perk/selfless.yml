@@ -1,6 +1,7 @@
+id: selfless
 max-stacks: 5
-incoming-healing-percent-reduction: 0.07 #ratio
-outgoing-healing-percent-increase: 0.07 #ratio
+incoming-healing-percent-reduction: 0.07
+outgoing-healing-percent-increase: 0.07
 name: '&b&lSelfless'
 lore:
 - '&7&oThe healing you grant is increased by &r&e<selfless-incoming-healing-percent-reduction>'

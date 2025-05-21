@@ -1,7 +1,7 @@
-#hard-coded name: manawell
+id: manawell
 max-stacks: 5
-spell-damage-per-missing-mana-percent: 0.01 #ratio of spell damage increase for each of the below intervals
-per-missing-mana-percent: 0.1 #ratio of missing mana %
+spell-damage-per-missing-mana-percent: 0.01
+per-missing-mana-percent: 0.1
 name: '&b&lManawell'
 lore:
 - '&7&oIncrease your spell damage by &r&e<manawell-spell-damage-per-missing-mana-percent> &r&7&ofor every 10% of your missing mana'

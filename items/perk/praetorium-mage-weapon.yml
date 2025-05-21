@@ -1,4 +1,5 @@
-cooldown-reduction-percent: 0.01 #ratio
+id: praetorium-mage-weapon
+cooldown-reduction-percent: 0.01
 name: '&b&lArcane Momentum'
 lore:
 - '&7&oWhen a basic attack hits an enemy, reduce all active cooldowns by 1%'

@@ -1,5 +1,6 @@
+id: blackfrost-archer-armor
 max-stacks: 4
-damage-percent: 0.1 #ratio
+damage-percent: 0.1
 name: '&b&lOpportunist'
 lore:
 - '&7&oDeal &r&e<blackfrost-archer-armor-damage-percent> &r&7&omore damage to enemies that are rooted, stunned, or airborne'

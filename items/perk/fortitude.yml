@@ -1,5 +1,6 @@
+id: fortitude
 max-stacks: 5
-shield-capacity-percent-per-stack: 0.25 #ratio
+shield-capacity-percent-per-stack: 0.25
 name: '&b&lFortitude'
 lore:
 - '&7&oIncrease maximum shield capacity by &r&e<fortitude-shield-capacity-percent-per-stack>'

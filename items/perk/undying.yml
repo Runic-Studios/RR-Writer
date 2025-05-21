@@ -1,6 +1,7 @@
+id: undying
 max-stacks: 2
-cooldown: 300 # In seconds
-health-percent-per-stack: 0.1 #ratio
+cooldown: 300
+health-percent-per-stack: 0.1
 name: '&b&lUndying'
 lore:
 - '&7&oUpon dying, revive with &r&e<undying-health-restored> &r&7&ohealth'
