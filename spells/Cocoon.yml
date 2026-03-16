@@ -1,0 +1,11 @@
+attribute: Dexterity
+attribute-base-value: 5
+attribute-multiplier: 0.04
+cooldown: 12
+duration: 3
+distance: 6
+mana: 20
+max-stacks: 3
+physical-damage: 40
+physical-damage-per-level: 2.5
+stack-duration: 20

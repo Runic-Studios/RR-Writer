@@ -1,0 +1,6 @@
+cooldown: 15
+duration: 3
+mana: 25
+physical-damage: 40
+physical-damage-per-level: 5
+trident-speed: 2.0

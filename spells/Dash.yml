@@ -1,0 +1,9 @@
+cooldown: 10
+duration: 1.00 # Before mobs can damage them again
+launch-multiplier: 2.00
+mana: 15
+percent: 0.75 # 75% reduced damage
+physical-damage: 5
+physical-damage-per-level: 1
+radius: 1.5
+vertical-power: 0.2

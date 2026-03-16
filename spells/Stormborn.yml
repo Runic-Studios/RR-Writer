@@ -1,0 +1,4 @@
+magic-damage: 5
+magic-damage-per-level: 0.5
+max-targets: 2 # additional 
+radius: 4

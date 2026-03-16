@@ -1,0 +1,7 @@
+cooldown: 14
+distance: 3
+duration: 5
+silence-duration: 2.0
+mana: 25
+physical-damage: 25
+physical-damage-per-level: 2.5

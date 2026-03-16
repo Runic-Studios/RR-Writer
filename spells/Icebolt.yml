@@ -1,0 +1,10 @@
+cooldown: 8
+distance: 8
+duration: 10
+empowered-damage: 30
+empowered-damage-per-level: 3.5
+magic-damage: 25
+magic-damage-per-level: 0.5
+mana: 30
+slow-duration: 3
+radius: 4

@@ -1,0 +1,6 @@
+cooldown: 10
+duration: 2
+knockback-multiplier: 1
+mana: 20
+physical-damage: 10
+physical-damage-per-level: 1.5

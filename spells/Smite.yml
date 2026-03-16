@@ -1,0 +1,8 @@
+cooldown: 10
+distance: 6
+duration: 2
+magic-damage: 5
+magic-damage-per-level: 2.5
+knockback: 2.0
+mana: 20
+radius: 3

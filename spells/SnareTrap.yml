@@ -1,0 +1,8 @@
+cooldown: 10
+mana: 25
+radius: 2
+stun-duration: 1.5
+trap-duration: 4
+warmup: 1.5
+physical-damage: 15
+physical-damage-per-level: 1

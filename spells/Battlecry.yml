@@ -1,0 +1,10 @@
+mana: 20
+cooldown: 8
+duration: 2
+attribute: Dexterity
+attribute-base-value: 5
+attribute-multiplier: 0.2
+magic-damage: 5
+magic-damage-per-level: 1
+attack-radius: 4
+radius: 5

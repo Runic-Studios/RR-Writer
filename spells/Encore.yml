@@ -1,0 +1,5 @@
+cooldown: 5
+cooldown-reduction: 2
+magic-damage: 20
+magic-damage-per-level: 0.5
+radius: 3

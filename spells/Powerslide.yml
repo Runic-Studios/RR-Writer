@@ -1,0 +1,7 @@
+mana: 20
+cooldown: 16
+distance: 6
+magic-damage: 25
+magic-damage-per-level: 2
+duration: 1
+cooldown-reduction: 4

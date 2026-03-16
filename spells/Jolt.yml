@@ -1,0 +1,10 @@
+mana: 30
+cooldown: 18
+distance: 10
+magic-damage: 10
+magic-damage-per-level: 1.5
+duration: 6
+radius: 5
+damage-interval: 2
+dissipate-duration: 4
+warmup: 1

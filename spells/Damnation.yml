@@ -1,0 +1,10 @@
+cooldown: 20
+duration: 5 
+radius: 2.5 # base radius
+radius-per-souls: 0.5
+mana: 50
+magic-damage: 20
+magic-damage-per-level: 0.0 # don't delete this
+magic-damage-per-souls: 10.0
+multiplier: 0.1
+warmup: 1

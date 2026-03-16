@@ -1,0 +1,6 @@
+cooldown: 8
+blind-duration: 2
+physical-damage: 10
+physical-damage-per-level: 2
+speed-duration: 2
+warmup: 1.5

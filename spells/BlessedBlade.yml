@@ -1,0 +1,8 @@
+duration: 4
+heal: 10
+heal-per-level: 0.25
+magic-damage: 10
+magic-damage-per-level: 0.25
+max-charges: 3
+max-targets: 2
+radius: 4

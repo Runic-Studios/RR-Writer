@@ -1,0 +1,8 @@
+cooldown: 10
+distance: -1
+heal: 20
+heal-per-level: 1.5
+magic-damage: 5
+magic-damage-per-level: 1.25
+mana: 15
+radius: 4

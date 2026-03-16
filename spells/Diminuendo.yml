@@ -1,0 +1,6 @@
+attack-speed-reduction: 0.85
+cooldown: 16
+duration: 6
+mana: 20
+mob-damage-reduction: 0.3
+radius: 5

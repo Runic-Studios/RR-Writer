@@ -1,0 +1,6 @@
+cooldown: 20
+duration: 7
+mana: 40
+max-stacks: 5
+percent: 0.2
+stack-duration: 3

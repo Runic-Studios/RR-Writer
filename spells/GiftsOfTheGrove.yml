@@ -1,0 +1,5 @@
+attribute: Wisdom
+attribute-base-value: 10
+attribute-multiplier: 0.2
+percent: 3.0
+duration: 1

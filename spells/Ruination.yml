@@ -1,0 +1,7 @@
+effect-cooldown: 20
+duration: 3
+magic-damage: 10
+magic-damage-per-level: 2
+percent: 0.25
+radius: 5
+required-souls: 5

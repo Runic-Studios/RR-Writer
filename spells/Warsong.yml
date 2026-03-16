@@ -1,0 +1,7 @@
+attribute: Intelligence
+attribute-base-value: 10
+attribute-multiplier: 0.15
+cooldown: 12
+duration: 5
+mana: 20
+radius: 6

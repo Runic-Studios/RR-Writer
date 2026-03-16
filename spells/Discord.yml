@@ -1,0 +1,7 @@
+cooldown: 16
+magic-damage: 20
+magic-damage-per-level: 1.5
+mana: 30
+radius: 5
+stun-duration: 2
+warmup: 2

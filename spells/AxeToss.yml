@@ -1,0 +1,5 @@
+cooldown: 10
+mana: 20
+physical-damage: 30
+physical-damage-per-level: 3
+slow-duration: 3

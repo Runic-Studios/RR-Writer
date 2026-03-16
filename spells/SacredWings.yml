@@ -1,0 +1,10 @@
+ally-shield: 20
+ally-shield-per-level: 1.0
+cooldown: 30
+duration: 8.0
+radius: 4.0
+shield: 50
+shield-per-level: 2.0
+sweep-cooldown: 2.0
+knockback: 1.5
+mana: 40

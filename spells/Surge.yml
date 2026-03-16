@@ -1,0 +1,6 @@
+cooldown: 20
+mana: 50
+launch-multiplier: 0.1
+speed-multiplier: 3.0
+vertical-power: 0.0
+duration: 0.5
