@@ -2,9 +2,9 @@ id: cooked-potato
 display:
   name: '&eBaked Potato'
   material: BAKED_POTATO
-type: 'generic' 
+type: 'generic'
 tags:
-- consumable
-data:
+  - consumable
+extra:
   requiredLevel: 20
   experience: 200

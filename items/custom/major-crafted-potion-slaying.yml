@@ -4,15 +4,15 @@ display:
   material: POTION
 type: 'generic'
 tags:
-- potion
+  - potion
 lore:
-- ''
-- '&eIncreases spellʔ and weapon⚔'
-- '&edamage vs. monsters by &f12%'
-- '&efor &f15 &eminutes'
+  - ''
+  - '&eIncreases spellʔ and weapon⚔'
+  - '&edamage vs. monsters by &f12%'
+  - '&efor &f15 &eminutes'
 triggers:
   right: 'item-consume'
-data:
+extra:
   amount: 12
   duration: 900
   color: green

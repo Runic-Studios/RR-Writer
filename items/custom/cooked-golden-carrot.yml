@@ -2,9 +2,9 @@ id: cooked-golden-carrot
 display:
   name: '&eGolden Carrot'
   material: GOLDEN_CARROT
-type: 'generic' 
+type: 'generic'
 tags:
-- consumable
-data:
+  - consumable
+extra:
   requiredLevel: 40
   experience: 400

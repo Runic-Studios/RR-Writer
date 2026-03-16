@@ -1,0 +1,8 @@
+id: praetorium-cleric-weapon
+max-health-percent: 0.1
+cooldown: 30
+name: '&b&lSoul Strike'
+lore:
+- '&7&oBasic attacks deal an additional 10% of your max health physical⚔ damage'
+- '&7&oWhen used, you lose 10% of your max health'
+- '&7&o(30s cooldown)'

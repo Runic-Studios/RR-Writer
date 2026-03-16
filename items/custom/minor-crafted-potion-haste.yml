@@ -4,14 +4,14 @@ display:
   material: POTION
 type: 'generic'
 tags:
-- potion
+  - potion
 lore:
-- ''
-- '&eIncreases mining speed by &f20%'
-- '&efor &f15 &eminutes'
+  - ''
+  - '&eIncreases mining speed by &f20%'
+  - '&efor &f15 &eminutes'
 triggers:
   right: 'item-consume'
-data:
+extra:
   multiplier: 0
   duration: 900
   color: lime

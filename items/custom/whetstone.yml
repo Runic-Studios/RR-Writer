@@ -2,15 +2,15 @@ id: whetstone
 display:
   name: '&fWhetstone'
   material: FLINT
-type: 'generic' 
+type: 'generic'
 tags:
-- consumable
+  - consumable
 lore:
-- ''
-- '&eFor 3 minutes, your basic attacks'
-- '&edeal 3 additional damage!'
+  - ''
+  - '&eFor 3 minutes, your basic attacks'
+  - '&edeal 3 additional damage!'
 triggers:
   right: 'item-consume'
-data:
+extra:
   duration: 180
   damage-buff: 3

@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_NAME = 'rr-writer'
+        ARTIFACT_NAME = 'rr-writer'
         PROJECT_NAME = 'RR Writer'
         REGISTRY = 'registry.runicrealms.com'
         REGISTRY_PROJECT = 'library'

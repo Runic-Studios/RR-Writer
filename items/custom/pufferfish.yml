@@ -2,10 +2,10 @@ id: pufferfish
 display:
   name: '&fPufferfish'
   material: PUFFERFISH
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 40
   experience: 387

@@ -4,13 +4,13 @@ display:
   material: MUSHROOM_STEW
 type: 'generic'
 tags:
-- consumable
+  - consumable
 lore:
-- ''
-- '&eRestores &c150❤ &eover 10s'
+  - ''
+  - '&eRestores &c150❤ &eover 10s'
 triggers:
   right: 'item-consume'
-data:
+extra:
   duration: 10
   health-amount: 150
   requiredLevel: 20

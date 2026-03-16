@@ -1,0 +1,8 @@
+id: stoneskin
+max-stacks: 5
+incoming-damage-percent-reduction: 0.07
+outgoing-damage-percent-reduction: 0.09
+name: '&b&lStone Skin'
+lore:
+- '&7&oIncoming damage from monsters reduced by &r&e<stoneskin-incoming-damage-percent-reduction>'
+- '&7&oDamage dealt to monsters is reduced by &r&e<stoneskin-outgoing-damage-percent-reduction>'

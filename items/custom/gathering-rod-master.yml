@@ -3,16 +3,16 @@ display:
   name: '&dMaster Fishing Rod'
   material: FISHING_ROD
   damage: 4
-type: 'dynamic' 
+type: 'dynamic'
 lore:
   - '&7Req Fishing &f40'
-  - '' 
+  - ''
   - '&2Gathering Luck III: &7You have a'
   - '&f50% &7chance to receive'
   - '&f2-3x &7more resources!'
   - ''
   - '&dEpic'
-data:
+extra:
   dynamicFieldInitialValue: 200
   dynamicLore: '&7/200'
   maxDurability: 200

@@ -2,10 +2,10 @@ id: potato
 display:
   name: '&fPotato'
   material: POTATO
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 20
   experience: 36

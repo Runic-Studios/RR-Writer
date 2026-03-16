@@ -4,13 +4,13 @@ display:
   material: CLAY_BALL
 type: 'generic'
 tags:
-- soulbound
+  - soulbound
 lore:
-- ''
-- '&6&lRIGHT CLICK &aNaheen'
-- '&7Return to your hometown!'
-- ''
-- '&7Speak to an &eInnkeeper'
-- '&7to change your home!'
-data:
+  - ''
+  - '&6&lRIGHT CLICK &aNaheen'
+  - '&7Return to your hometown!'
+  - ''
+  - '&7Speak to an &eInnkeeper'
+  - '&7to change your home!'
+extra:
   location: naheen

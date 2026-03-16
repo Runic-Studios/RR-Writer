@@ -4,12 +4,12 @@ display:
   material: COMPASS
 type: 'generic'
 tags:
-- soulbound
+  - soulbound
 lore:
-- ''
-- '&eLearn the location of a player!'
-- '&7This item is reusable.'
+  - ''
+  - '&eLearn the location of a player!'
+  - '&7This item is reusable.'
 triggers:
   right: 'item-use'
-data:
+extra:
   cooldown: 30

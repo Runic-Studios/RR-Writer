@@ -3,8 +3,8 @@ display:
   name: '&eBlack Steed'
   material: SADDLE
 tags:
-- 'untradeable'
-type: 'generic' 
+  - 'untradeable'
+type: 'generic'
 lore:
   - ''
   - '&6Tier: &7Normal'
@@ -13,5 +13,5 @@ lore:
   - '&r&7&oA loyal and valiant steed!'
 triggers:
   right: 'summon-mount'
-data:
+extra:
   mount-id: BLACK_STEED

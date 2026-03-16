@@ -2,10 +2,10 @@ id: petunia
 display:
   name: '&cPetunia'
   material: POPPY
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 0
   experience: 26

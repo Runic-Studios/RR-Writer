@@ -4,11 +4,11 @@ display:
   material: PURPLE_DYE
 type: 'generic'
 tags:
-- consumable
+  - consumable
 lore:
-- ''
-- '&eLearn the location of a player!'
+  - ''
+  - '&eLearn the location of a player!'
 triggers:
   right: 'item-consume'
-data:
+extra:
   cooldown: 30

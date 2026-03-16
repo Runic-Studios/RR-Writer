@@ -9,6 +9,6 @@ stats:
   intelligence:
     min: 31
     max: 33
-data:
+extra:
   requiredLevel: 40
   experience: 17500

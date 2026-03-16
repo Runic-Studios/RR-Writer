@@ -3,12 +3,12 @@ display:
   name: '&7Apprentice Farming Hoe'
   material: IRON_HOE
   damage: 1
-type: 'dynamic' 
+type: 'dynamic'
 lore:
   - '&7Skill &fFarming'
   - ''
   - '&7Common'
-data:
+extra:
   dynamicFieldInitialValue: 75
   dynamicLore: '&7/75'
   experience: 0

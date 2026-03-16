@@ -1,0 +1,8 @@
+id: aegis
+max-stacks: 4
+cooldown: 120
+shield-percent-per-stack: 0.10
+name: '&b&lAegis'
+lore:
+- '&7&oGenerate a &r&e<aegis-shield-percent-per-stack> &r&7&ohealth shield when damaged'
+- '&7&o(120s cooldown)'

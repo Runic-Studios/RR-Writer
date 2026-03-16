@@ -3,16 +3,16 @@ display:
   name: '&bRefined Woodcutting Axe'
   material: IRON_AXE
   damage: 3
-type: 'dynamic' 
+type: 'dynamic'
 lore:
   - '&7Req Woodcutting &f25'
-  - '' 
+  - ''
   - '&2Gathering Luck II: &7You have a'
   - '&f33% &7chance to receive'
   - '&f2-3x &7more resources!'
   - ''
   - '&bRare'
-data:
+extra:
   dynamicFieldInitialValue: 200
   dynamicLore: '&7/200'
   maxDurability: 200

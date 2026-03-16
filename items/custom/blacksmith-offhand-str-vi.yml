@@ -9,6 +9,6 @@ stats:
   strength:
     min: 39
     max: 41
-data:
+extra:
   requiredLevel: 50
   experience: 30000

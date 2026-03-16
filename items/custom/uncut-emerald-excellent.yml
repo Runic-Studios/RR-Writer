@@ -2,12 +2,12 @@ id: uncut-emerald-excellent
 display:
   name: '&fUncut Emerald &aIII'
   material: EMERALD_ORE
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Quality: &aExcellent'
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Quality: &aExcellent'
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 40
   experience: 512

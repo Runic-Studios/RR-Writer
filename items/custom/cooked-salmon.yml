@@ -2,9 +2,9 @@ id: cooked-salmon
 display:
   name: '&eCooked Salmon'
   material: COOKED_SALMON
-type: 'generic' 
+type: 'generic'
 tags:
-- consumable
-data:
+  - consumable
+extra:
   requiredLevel: 0
   experience: 80

@@ -2,10 +2,10 @@ id: turmeric
 display:
   name: '&6Turmeric'
   material: ORANGE_TULIP
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 5
   experience: 30

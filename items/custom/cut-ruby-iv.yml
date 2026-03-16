@@ -6,6 +6,6 @@ type: gem
 
 tier: 4
 main-stat: strength
-data:
+extra:
   requiredLevel: 40
   experience: 15000

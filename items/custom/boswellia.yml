@@ -2,10 +2,10 @@ id: boswellia
 display:
   name: '&aBoswellia'
   material: FERN
-type: 'generic' 
+type: 'generic'
 lore:
   - ''
   - '&7Crafting Reagent'
-data:
+extra:
   requiredLevel: 40
   experience: 202

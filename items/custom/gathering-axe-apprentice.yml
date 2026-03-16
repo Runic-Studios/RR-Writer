@@ -3,12 +3,12 @@ display:
   name: '&7Apprentice Woodcutting Axe'
   material: IRON_AXE
   damage: 1
-type: 'dynamic' 
+type: 'dynamic'
 lore:
   - '&7Skill &fWoodcutting'
   - ''
   - '&7Common'
-data:
+extra:
   dynamicFieldInitialValue: 50
   dynamicLore: '&7/50'
   experience: 0

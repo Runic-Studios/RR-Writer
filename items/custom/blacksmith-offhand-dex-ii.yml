@@ -10,6 +10,6 @@ stats:
   dexterity:
     min: 12
     max: 12
-data:
+extra:
   requiredLevel: 10
   experience: 2250

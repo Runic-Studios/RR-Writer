@@ -3,7 +3,7 @@ display:
   name: '&9[&bWinter&9] &bSteed &e2023'
   material: SADDLE
 tags:
-- 'untradeable'
+  - 'untradeable'
 type: generic
 lore:
   - ''
@@ -13,5 +13,5 @@ lore:
   - '&cThe mount unlocked from this &litem &r&cwill remain'
 triggers:
   right: 'summon-mount'
-data:
+extra:
   mount-id: WINTER_2023

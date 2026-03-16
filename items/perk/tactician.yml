@@ -1,0 +1,7 @@
+id: tactician
+speed-percent-increase: 0.25
+damage-taken-percent-increase: 1.0
+name: '&b&lTactician'
+lore:
+- '&7&oIncrease movement speed by 25%'
+- '&7&oReceive 100% more damage to health'

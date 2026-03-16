@@ -2,9 +2,9 @@ id: cooked-cod
 display:
   name: '&eCooked Cod'
   material: COOKED_COD
-type: 'generic' 
+type: 'generic'
 tags:
-- consumable
-data:
+  - consumable
+extra:
   requiredLevel: 10
   experience: 120

@@ -2,10 +2,10 @@ id: acacia-wood
 display:
   name: '&fAcacia Log'
   material: ACACIA_LOG
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 40
   experience: 268

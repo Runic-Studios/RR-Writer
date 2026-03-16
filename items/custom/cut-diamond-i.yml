@@ -6,6 +6,6 @@ type: gem
 
 tier: 1
 main-stat: vitality
-data:
+extra:
   requiredLevel: 0
   experience: 750

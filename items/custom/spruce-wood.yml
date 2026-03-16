@@ -2,10 +2,10 @@ id: spruce-wood
 display:
   name: '&fSpruce Log'
   material: SPRUCE_LOG
-type: 'generic' 
+type: 'generic'
 lore:
-- ''
-- '&7Crafting Reagent'
-data:
+  - ''
+  - '&7Crafting Reagent'
+extra:
   requiredLevel: 10
   experience: 42

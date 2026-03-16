@@ -4,14 +4,14 @@ display:
   material: POTION
 type: 'generic'
 tags:
-- potion
+  - potion
 lore:
-- ''
-- '&eGrants &f10% &echance of double'
-- '&eloot &efor &f5 &eminutes'
+  - ''
+  - '&eGrants &f10% &echance of double'
+  - '&eloot &efor &f5 &eminutes'
 triggers:
   right: 'item-consume'
-data:
+extra:
   amount: 10
   duration: 300
   color: fuchsia

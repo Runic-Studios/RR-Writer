@@ -6,6 +6,6 @@ type: 'generic'
 lore:
   - ''
   - '&7Crafting Reagent'
-data:
+extra:
   requiredLevel: 35
   experience: 333
