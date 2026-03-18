@@ -1,0 +1,24 @@
+relocations:
+  - type: directory
+    source: items
+    target: plugins/Game/items
+
+  - type: directory
+    source: spells
+    target: plugins/Game/spells
+
+  - type: directory
+    source: mobs
+    target: plugins/MythicMobs/mobs
+
+  - type: directory
+    source: model-blueprints
+    target: plugins/ModelEngine/blueprints
+
+  - type: file
+    source: holograms.yml
+    target: plugins/FancyHolograms.yml
+
+  - type: zip
+    source: spawners-compressed.zip
+    target: plugins/MythicMobs/spawners
