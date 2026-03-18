@@ -123,12 +123,12 @@ autoAttackPharDeath-Tick:
 autoAttackPharDeath-Hit:
   Skills:
   - effect:particlesphere{particle=largeexplosion;amount=4;radius=1}
-  - effect:particlesphere{{p=reddust;color=#000000;amount=4;radius=1}
+  - effect:particlesphere{p=reddust;color=#000000;amount=4;radius=1}
   #- command{c="runicdamage <caster.uuid> <target.name> 100"} @PlayersNearOrigin{r=3}     
 autoAttackPharDeath-End:
   Skills:
   - effect:particlesphere{particle=largeexplosion;amount=4;radius=1} 
-  - effect:particlesphere{{p=reddust;color=#000000;amount=4;radius=1}
+  - effect:particlesphere{p=reddust;color=#000000;amount=4;radius=1}
   - command{c="runicdamage <caster.uuid> <target.name> 75"} @PlayersNearOrigin{r=5}
 
 # Attack chosen ^^

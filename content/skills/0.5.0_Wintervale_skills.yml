@@ -76,7 +76,7 @@ ArcticRoseIceBolt:
 ArcticRoseIceBolt_Tick:
   Skills:
   - effect:particles{p=snowballpoof;c=#A8FFFF;a=2;speed=0;hS=0.2;vS=0.2} @Origin
-  - effect:particles{p=snowshovel;c=#A8FFFF;a=2;speed=0;hS=0.2;vS=0.2} @Origin
+  - effect:particles{p=item_snowball;c=#A8FFFF;a=2;speed=0;hS=0.2;vS=0.2} @Origin
 ArcticRoseIceBolt_Hit:
   Skills:
   - command{c="runicdamage <caster.uuid> <target.name> 25"} @PlayersNearOrigin{r=2}

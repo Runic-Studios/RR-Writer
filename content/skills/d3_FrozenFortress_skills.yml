@@ -816,7 +816,7 @@ SnowHail:
 
 SnowHail-Tick:
   Skills:
-  - effect:particlering{p=snow_shovel;r=5;hs=5;vs=1;a=30;s=1;y=3}	
+  - effect:particlering{p=item_snowball;r=5;hs=5;vs=1;a=30;s=1;y=3}	
 
 SnowHail-Hit:
   Skills:
@@ -855,7 +855,7 @@ TargetedBlizzard:
 
 TargetedBlizzard-Tick:
   Skills:
-  - effect:particlering{p=snow_shovel;r=5;a=50;hs=3;vs=5;y=5}	
+  - effect:particlering{p=item_snowball;r=5;a=50;hs=3;vs=5;y=5}	
   - potion{t=SLOW;l=2;p=false;i=false} @PIR{r=8}	
   #- potion{t=SPEED;l=2;p=false} @MIR{t=ExiledFrostLord;r=8}
 
@@ -875,7 +875,7 @@ CrystalSummoningXalakytePhase3:
 
 LargeBlizzard:
   Skills:
-  - effect:particlering{p=snow_shovel;r=15;a=300;hs=10;vs=5;y=5}	
+  - effect:particlering{p=item_snowball;r=15;a=300;hs=10;vs=5;y=5}	
   - potion{t=SLOW;l=2;p=false;i=false} @PIR{r=30}	
   #- potion{t=SPEED;l=2;p=false} @MIR{t=ExiledFrostLord;r=30}
 

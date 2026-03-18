@@ -1,8 +1,8 @@
 underground-timer-start:
   Skills:
   - sound{s=block.grass.break}
-  - blockmask{m=coparse_dirt;r=11;d=12000;n=.1}
-  - blockmask{m=coparse_dirt;r=10;d=12000;n=.5}
+  - blockmask{m=coarse_dirt;r=11;d=12000;n=.1}
+  - blockmask{m=coarse_dirt;r=10;d=12000;n=.5}
   - blockmask{m=rooted_dirt;r=9;d=12000;n=0.1}
   - blockmask{m=rooted_dirt;r=8;d=12000;n=0.75}
   - blockmask{m=dirt;r=7;d=12000;n=0.1}

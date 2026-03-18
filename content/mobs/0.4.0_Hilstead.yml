@@ -49,7 +49,7 @@ WhiteWarriorMarker:
     HasGravity: true
     Marker: true
   Skills:
-  - effect:particlesphere{p=snow_shovel;amount=5;radius=5} @self ~onTimer:4
+  - effect:particlesphere{p=item_snowball;amount=5;radius=5} @self ~onTimer:4
   - sound{s=block.snow.hit} @self ~onTimer:20
   - sound{s=block.snow.hit} @self ~onSpawn
   - skill{s=WhiteWarriorMarker} @self ~onSpawn
@@ -62,7 +62,7 @@ WhiteWarriorMarker4:
     HasGravity: true
     Marker: true
   Skills:
-  - effect:particlesphere{p=snow_shovel;amount=5;radius=5} @self ~onTimer:4
+  - effect:particlesphere{p=item_snowball;amount=5;radius=5} @self ~onTimer:4
   - sound{s=block.snow.hit} @self ~onTimer:20
   - sound{s=block.snow.hit} @self ~onSpawn
   - skill{s=WhiteWarriorMarker4} @self ~onSpawn
@@ -75,7 +75,7 @@ WhiteWarriorMarker2:
     HasGravity: true
     Marker: true
   Skills:
-  - effect:particlesphere{p=snow_shovel;amount=5;radius=5} @self ~onTimer:4
+  - effect:particlesphere{p=item_snowball;amount=5;radius=5} @self ~onTimer:4
   - sound{s=block.snow.hit} @self ~onTimer:20
   - sound{s=block.snow.hit} @self ~onSpawn
   - skill{s=WhiteWarriorMarker2} @self ~onSpawn  
@@ -96,7 +96,7 @@ WhiteWarriorMarker3:
   Skills:
   - potion{t=SLOW;d=40;l=3} @PIR{r=3} ~onTimer:4
   - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=3} ~onTimer:4
-  - effect:particlesphere{p=snow_shovel;amount=5;radius=5} @self ~onTimer:4
+  - effect:particlesphere{p=item_snowball;amount=5;radius=5} @self ~onTimer:4
   - sound{s=block.snow.hit} @self ~onTimer:20
   - skill{s=WhiteWarriorMarker3} @self ~onSpawn
   - remove{delay=240} 

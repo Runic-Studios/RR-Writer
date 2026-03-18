@@ -342,7 +342,7 @@ JumpWave:
   - runaigoalselector{goal=meleeattack}
   - runaigoalselector{goal=float}
   - delay 20
-  - effect:particles{p=snow_shovel;a=10;y=0.1;hs=0.5;vs=0.5}
+  - effect:particles{p=item_snowball;a=10;y=0.1;hs=0.5;vs=0.5}
 
 JumpWave-Hit:
   Skills:

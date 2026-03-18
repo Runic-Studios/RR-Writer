@@ -54,7 +54,7 @@ HoblingCutscene:
   - potion{t=SLOW;d=40;l=10} @self ~onSpawn
   - jump{v=0.4;delay=20} @self ~onSpawn
   - jump{v=0.4;delay=30} @self ~onSpawn
-  - effect:firework{t=3;d=1;f=true;tr=true} @self ~onInteract
+  - effect:firework{t=BURST;d=1;f=true;tr=true} @self ~onInteract
   - remove{delay=1200} @self ~onSpawn
   AIGoalSelectors:
   - 0 clear

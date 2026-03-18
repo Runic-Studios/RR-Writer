@@ -47,19 +47,19 @@ WhiteWarriorself2:
   Skills:
   - potion{t=SLOW;d=40;l=1;hasParticles=false}
   - sound{s=block.snow.break}
-  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5}
+  - effect:particlesphere{p=item_snowball;amount=4;radius=2;yOffset=.5}
   - delay 4
   - sound{s=block.snow.break}
-  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5}
+  - effect:particlesphere{p=item_snowball;amount=4;radius=2;yOffset=.5}
   - delay 4
   - sound{s=block.snow.break}
-  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5}
+  - effect:particlesphere{p=item_snowball;amount=4;radius=2;yOffset=.5}
   - delay 4
   - sound{s=block.snow.break}
-  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5}
+  - effect:particlesphere{p=item_snowball;amount=4;radius=2;yOffset=.5}
   - delay 4
   - sound{s=block.snow.break}
-  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5}
+  - effect:particlesphere{p=item_snowball;amount=4;radius=2;yOffset=.5}
   - delay 4
   - jump{v=2}
   - delay 2
@@ -110,13 +110,13 @@ WhiteWarriorMarker3Death:
   Skills:
   - potion{t=SLOW;d=40;l=1} @PIR{r=4}
   - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
-  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5} @origin  
+  - effect:particlesphere{p=item_snowball;amount=4;radius=2;yOffset=.5} @origin  
 WhiteWarrior-Tick:
   Skills:
-  - effect:particlesphere{p=snow_shovel;amount=2;radius=3;yOffset=.5} @origin
+  - effect:particlesphere{p=item_snowball;amount=2;radius=3;yOffset=.5} @origin
 WhiteWarrior-Tick2:
   Skills:
-  - effect:particlesphere{p=snow_shovel;amount=2;radius=1;yOffset=.5} @origin
+  - effect:particlesphere{p=item_snowball;amount=2;radius=1;yOffset=.5} @origin
 
 WhiteWarrior-Hit:
   Skills:
@@ -129,7 +129,7 @@ WhiteWarrior-End:
   Skills:
   - potion{t=SLOW;d=40;l=1} @PIR{r=4}
   - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=4}
-  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5} @origin
+  - effect:particlesphere{p=item_snowball;amount=4;radius=2;yOffset=.5} @origin
   - sound{s=block.snow.break}
   - remove @self
 
@@ -157,31 +157,31 @@ BearCharge:
   - incombat{}
   Skills:
   - potion{t=SLOW;d=60;l=100;p=false}
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - effect:sound{s=entity.polar_bear.warning;volume=1.0;pitch=0.5} @self
   #- runaigoalselector{g=lookatplayers}
   - delay 5
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - delay 5
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - delay 5
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - delay 5
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - effect:sound{s=entity.polar_bear.warning;volume=1.0;pitch=0.5} @self
   - delay 5
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - delay 5
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - delay 5
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - delay 5
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - delay 5
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - effect:sound{s=entity.polar_bear.warning;volume=1.0;pitch=0.5} @self
   - delay 5
-  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:particles{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5}
   - delay 5
   - setvariable{var=caster.active;value=1}
   - sudoskill{s=BearPull} @target
@@ -195,7 +195,7 @@ BearKnockUp:
   - playerwithin{d=4}
   - variableEquals{var=caster.active;value=1} 
   Skills:
-  - effect:particlering{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5;r=3} @self
+  - effect:particlering{p=item_snowball;a=20;y=0.1;hs=0.8;vs=0.5;r=3} @self
   - command{c="runicdamage <caster.uuid> <target.name> 15"}
   - effect:sound{s=entity.puffer_fish.flop;volume=2.0;pitch=1} @self
   - throw{v=0;vy=10}
@@ -211,7 +211,7 @@ BearPassiveKnockback:
   - variableEquals{var=caster.active;value=0} 
   Cooldown: 4
   Skills:
-  - particles{p=snow_shovel;a=5;y=1;hs=0.5;vs=0.5}
+  - particles{p=item_snowball;a=5;y=1;hs=0.5;vs=0.5}
   - throw{v=2;vy=1}
   
 DarkAura:
