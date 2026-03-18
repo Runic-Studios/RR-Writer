@@ -516,7 +516,6 @@ WhaleGuts1:
   Type: BABY_ZOMBIE
   Display: '&6Whale Guts'
   Health: 1
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true
@@ -530,7 +529,6 @@ WhaleGuts2:
   Type: BABY_ZOMBIE
   Display: '&6Whale Guts'
   Health: 1
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true
@@ -545,7 +543,6 @@ WhaleGuts3:
   Type: BABY_ZOMBIE
   Display: '&6Whale Guts'
   Health: 1
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true
