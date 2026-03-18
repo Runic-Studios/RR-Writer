@@ -1,0 +1,386 @@
+zenyth-altar:
+  Cooldown: 24
+  Skills:
+  - command{c="questtrigger party <target.name> altarambushstart"} @PIR{r=20}
+  - summon{t=ZenythSoldier-altar} @Ring{r=8;p=8}
+  - setvariable{var=caster.active;value=1} 
+  - summon{t=zenyth-altar-timer}
+  - delay 400
+  - setvariable{var=caster.active;value=0} 
+  - command{c="questtrigger party <target.name> altarambushend"} @PIR{r=20}
+  #- message{m="&aSuccess!"} @PIR{r=20}
+  - remove @MIR{t=zenyth-altar-timer,ZenythSoldier-altar;r=32}
+zenyth-altar-remove:
+  Conditions:
+  - playernotwithin 12
+  - variableEquals{var=caster.active;value=1} 
+  Skills:
+  - message{m="&cYou have left the Altar!"} @PIR{r=20}
+  - remove @MIR{t=zenyth-altar-timer,ZenythSoldier-altar;r=32}
+  - remove
+
+zenyth-altar-timer-remove:
+  Skills:
+  - sethealth{a=20}
+  - delay 20
+  - sethealth{a=19}
+  - delay 20
+  - sethealth{a=18}
+  - delay 20
+  - sethealth{a=17}
+  - delay 20
+  - sethealth{a=16}
+  - delay 20
+  - sethealth{a=15}
+  - delay 20
+  - sethealth{a=14}
+  - delay 20
+  - sethealth{a=13}
+  - delay 20
+  - sethealth{a=12}
+  - delay 20
+  - sethealth{a=11}
+  - delay 20
+  - sethealth{a=10}
+  - delay 20
+  - sethealth{a=9}
+  - delay 20
+  - sethealth{a=8}
+  - delay 20
+  - sethealth{a=7}
+  - delay 20
+  - sethealth{a=6}
+  - delay 20
+  - sethealth{a=5}
+  - delay 20
+  - sethealth{a=4}
+  - delay 20
+  - sethealth{a=3}
+  - delay 20
+  - sethealth{a=2}
+  - delay 20
+  - sethealth{a=1}
+  - delay 20
+  - remove
+
+SaltBandit:
+  Cooldown: 10
+  Skills:
+  - delay 80
+  - randomskill{s=SaltBanditPlant,SaltBanditToss} 
+SaltBanditPlant:
+  Conditions:
+  - playerwithin 6
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - cast{skillName="Salt Bash";duration=40;onCast=SaltBanditPlantCast;showCastBar=true}
+  - delay 20
+  - potion{t=SLOW;d=40;l=10;hasParticles=false} 
+SaltBanditPlantCast:
+  Skills:
+  - summon{t=SaltBag;r=2} 
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - delay 20
+  - summon{t=SaltBag;r=2} 
+  - potion{t=SLOW;d=20;l=10;hasParticles=false} 
+SaltBanditToss:
+  Conditions:
+  - playernotwithin 6
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - cast{skillName="Salt Throw";duration=40;onCast=SaltBanditTossCast;showCastBar=true}
+  - delay 20
+  - potion{t=SLOW;d=40;l=10;hasParticles=false} 
+SaltBanditTossCast:
+  Skills:  
+  - summon{t=SaltBagToss} 
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - delay 20
+  - potion{t=SLOW;d=60;l=10;hasParticles=false} 
+  - delay 20
+  - summon{t=SaltBagToss} 
+SaltBag:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 30"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=2} @PIR{r=4}
+  - potion{t=BLINDNESS;d=40;l=2} @PIR{r=4}
+  - effect:particlesphere{p=reddust;c=#FFFFFF;amount=15;radius=4;yOffset=.5} 
+  - effect:particlesphere{p=reddust;c=#FFFFFF;amount=5;radius=2;yOffset=.5} 
+  - sound{s=block.glass.break}
+  - remove
+SaltBagToss:
+  Skills:
+  - delay 20
+  - jump{velocity=0.5} @self
+  - delay 10
+  - leap{velocity=350} @NearestPlayer{r=20}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=2} @PIR{r=4}
+  - potion{t=BLINDNESS;d=40;l=2} @PIR{r=4}
+  - effect:particlesphere{p=reddust;c=#FFFFFF;amount=15;radius=4;yOffset=.5} 
+  - effect:particlesphere{p=reddust;c=#FFFFFF;amount=5;radius=2;yOffset=.5} 
+  - sound{s=block.glass.break}
+  - remove
+
+SandAura:
+  Skills:
+  - delay 40
+  - effect:particlering{p=reddust;color=#FFF8DC;a=10;vS=0;hS=0;radius=1}
+  - sound{s=entity.horse.step} @self
+  - delay 20
+  - effect:particlering{p=reddust;color=#FFF8DC;a=10;vS=0;hS=0;radius=2}
+  - sound{s=entity.horse.step} @self
+  - delay 20
+  - effect:particlering{p=reddust;color=#FFF8DC;a=10;vS=0;hS=0;radius=3}
+  - sound{s=entity.horse.step} @self
+  - delay 20
+  - effect:particlering{p=reddust;color=#FFF8DC;a=25;vs=0.5;hs=0.5;s=0;y=0;points=20;radius=1}
+  - effect:particlering{p=reddust;color=#FFF8DC;a=25;vs=0.5;hs=0.5;s=0;y=0;points=20;radius=2}
+  - effect:particlering{p=reddust;color=#FFF8DC;a=25;vs=0.5;hs=0.5;s=0;y=0;points=20;radius=3}
+  - effect:sound{s=entity.blaze.shoot;v=0.8;p=0.01} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PlayersInRadius{r=3}
+
+##################################
+
+SummonHealingTotem:
+ Conditions:
+ - incombat{} true
+ - stance dragon false
+ Skills:
+ - sendtitle{title="&4&kooo&r&l&cSolar Blessing&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=25}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+ - delay 20
+ - sendtitle{title="&4&kooo&r&l&cSolar Blessing&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=25}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+ - delay 20
+ - summon{type=HealingTotem;amount=1;yr=0;os=true;radius=0} @self
+
+SolarBlessingAffect:
+ Skills:
+ - command{c="runicdamage <caster.uuid> <target.name> 22"} @PIR{r=5}
+ - effect:particlering{p=reddust;color=#fff68f;radius=4;amount=80;hS=1;vS=0.1;y=0.1}
+ #- effect:particlering{p=reddust;c=#00AA00;r=2;a=30;hs=1;vs=1} @selflocation
+ - signal{s=heal} @MIR{r=5;t=GuardianOfTheFruit}
+
+GOFHeal:
+ Skills:
+ - effect:particles{p=HAPPY_VILLAGER;amount=10;vSpread=1;hSpread=.5;Speed=0;yOffset=0} @self
+ - effect:sound{s=entity.experience_orb.pickup;volume=1.0;pitch=0.5} @self
+ - heal{amount=14} @self
+ #- command{c="runicdamage <caster.uuid> <target.name> 0"} @self
+
+DespawnSolarBlessing:
+  Skills:
+  - delay 400
+  - remove
+
+Switcharoo:
+  Skills:
+  - doppleganger @NearestPlayer
+  #- sudoskill{s=MirrorMe} @target
+  - delay 120
+  - disguise{t=player;player=CallMePetro;skin=CallMePetro}
+
+MirrorMe:
+  Skills:
+  - disguise{t=player;player=CallMePetro;skin=CallMePetro}
+  - delay 120
+  - undisguise
+
+BecomePig:
+  Skills:
+  - disguise{type=pig} @self
+  - delay 1200
+  - undisguise @self
+
+RevertToSelf:
+  Skills:
+  - undisguise @self
+
+MirrorTarget:
+  Skills:
+  - delay 200
+  - skill{s=MirrorTargetSelect} @target
+
+MirrorTargetSelect:
+  Conditions:
+  - incombat{}
+  Skills:
+  - doppleganger
+
+SunRay:
+  Conditions:
+  - incombat{}
+  - stance dragon false
+  Skills:
+  - potion{t=SLOW;d=40;l=100;p=false}
+  - effect:particles{p=mobSpell;a=40;hs=1;vs=1;c=#FFFF00}
+  - effect:sound{s=entity.enderman.scream;v=2} @self
+  - delay 40
+  - effect:sound{s=entity.ender_dragon.shoot;v=2} @self
+  - projectile{ot=SunRay-Tick;oh=SunRay-Hit;v=30;hr=2;vr=2;i=1} @PIR{r=30}
+
+SunRay-Tick:
+  Skills:
+  - effect:particles{p=mobSpell;a=100;hs=1;vs=1;c=#FFFF00} @origin
+  - effect:sound{s=entity.ender_dragon.flap;v=1} @origin
+
+SunRay-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PlayersNearOrigin{r=3}
+
+BecomeDragon:
+  Conditions:
+  - stance dragon
+  Skills:
+  - jump{v=3}
+  - delay 8
+  - velocity{vx=0;vy=0;vz=0}
+  - disguise{type=ender_dragon}
+  - setgravity{g=false}
+  - delay 40
+  - velocity{vx=0;vy=-0.1;vz=0}
+  - delay 360
+  - setgravity{g=true}
+  - leap{v=200} @target
+  - delay 40
+  - doppleganger @target
+
+DragonFireball:
+  Conditions:
+  - incombat{}
+  - stance dragon
+  Skills:
+  - shootfireball{small=false;i=false;v=1.5;ps=true;ft=100;damage=65}
+  - projectile{ot=DragonFireball-Tick;oh=DragonFireball-Hit;v=30;i=1;hr=1;vr=1}
+
+DragonFireball-Tick:
+  Skills:
+  - effect:particles{p=end_rod;a=1} @origin
+
+DragonFireball-Hit:
+  #TargetConditions:
+  #- crouching{}
+  Skills:
+  - sudoskill{s=DragonFireballReturn} @target
+
+DragonFireballReturn:
+  Skills:
+  - shootfireball{small=false;i=false;v=1.5;ps=true;ft=100} @forward{f=10}
+  - projectile{ot=DragonFireball-Tick;oh=DragonFireballReturn-Hit;v=30;i=1;hr=4;vr=4;hnp=true} @forward{f=10}
+
+DragonFireballReturn-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"}
+
+ZenythBanditSlash:
+  Cooldown: 5
+  Conditions:
+  - playerwithin{d=10} true
+  Skills:
+  - playanimation{a=0;audience=world} @self
+  - slash{y=1.2;foffset=1.5;FromOrigin=true;w=6;h=30;mpd=true;a=45;radius=2;
+      oP=[ - e:p{p=SPARK} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 40"} ];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+
+ZenythBanditSandThrow:
+  Cooldown: 10
+  Conditions:
+  Skills:
+  - cast{skillName="Sand Throw";duration=40;onCast=ZenythBanditSandThrowCast;showCastBar=true}
+  - delay 20
+ZenythBanditSandThrowCast:
+  Skills:
+  - playanimation{a=3;audience=world}
+  - projectile{onTick=ZenythBanditSandThrow-Tick;onHit=ZenythBanditSandThrow-Hit;v=10;i=1;hR=1;vR=1;mr=7;yo=2} @target
+  - projectile{onTick=ZenythBanditSandThrow-Tick;onHit=ZenythBanditSandThrow-Hit;v=10;i=1;hR=1;vR=1;mr=7;yo=2;hO=10} @target
+  - projectile{onTick=ZenythBanditSandThrow-Tick;onHit=ZenythBanditSandThrow-Hit;v=10;i=1;hR=1;vR=1;mr=7;yo=2;hO=20} @target
+  - projectile{onTick=ZenythBanditSandThrow-Tick;onHit=ZenythBanditSandThrow-Hit;v=10;i=1;hR=1;vR=1;mr=7;yo=2;hO=340} @target
+  - projectile{onTick=ZenythBanditSandThrow-Tick;onHit=ZenythBanditSandThrow-Hit;v=10;i=1;hR=1;vR=1;mr=7;yo=2;hO=350} @target
+ZenythBanditSandThrow-Tick:
+  Skills:
+  - effect:particles{p=ash;amount=10;speed=0;hS=0.1;vS=0.1}
+ZenythBanditSandThrow-Hit:
+  Conditions:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @target{conditions=[  - crouching false ]}
+  - potion{type=BLINDNESS;duration=40} @target{conditions=[  - crouching false ]}
+
+ZenythBanditElite:
+  Skills:
+  - sound{s=block.sand.break;p=0.5;v=3} 
+  - message{cooldown=60;m="&e[&6✸&e] &c&lExiled Captain &e&lhas spawned!"} @PIR{r=32}
+  - cast{skillName="Despawn";duration=3000;onCast=ZenythBanditElite-despawn;showCastBar=true}
+ZenythBanditElite-despawn:
+  Skills:
+  - sound{s=block.sand.break;p=0.5;v=3} 
+  - message{cooldown=60;m="&e[&6✸&e] &c&lExiled Captain &e&lhas despawned!"} @PIR{r=32}
+  - remove
+
+ZenythBanditCrossbolt:
+  Conditions:
+  Cooldown: 12
+  Skills:
+  - cast{skillName="Cross Bolt";duration=40;showCastBar=true}
+  - delay 10
+  - setvariable{var=caster.status;value=1}
+  - delay 25
+  - setvariable{var=caster.status;value=0}
+  - delay 5
+  - setvariable{var=caster.status;value=2}
+  - cast{skillName="&4VULNERABLE";duration=15;onCast=ZenythBanditCrossboltCast2;showCastBar=true} @target
+  - delay 15
+  - setvariable{var=caster.status;value=0}
+
+ZenythBanditCrossboltCast2:
+  Conditions:
+  Cooldown:
+  Skills:
+  - delay 20
+  - playanimation{a=3} @self
+  - delay 5
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - skill{s=ZenythBanditCrossboltCast3}
+  
+ZenythBanditCrossboltCast3:
+  Conditions:
+  - variableEquals{var=caster.interrupt;value=0} 
+  Skills:
+  - projectile{ot=ZenythBanditCrossbolt-Tick;oh=ZenythBanditCrossbolt-Hit;v=25;hr=1;vr=1;i=1;g=1;vO=1} @PIR{r=15}
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  
+ZenythBanditCrossbolt-Tick:
+  Skills:
+  - effect:particles{particle=item_crack;material=coal_block;a=1;d=5;v=0;yo=0} @origin
+  
+ZenythBanditCrossbolt-Hit:
+  Conditions:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 80"}
+  - throw{vy=2}
+  - delay 2
+  - pull{v=8} 
+  - potion{t=SLOW;d=40;l=3}
+  - effect:sound{s=entity.fishing_bobber.retrieve}
+
+ZenythBanditCrossbolt-Interrupt:
+  Conditions:
+  - variableEquals{var=caster.status;value=2} 
+  Cooldown:
+  Skills:
+  - setvariable{var=caster.interrupt;value=1}
+  - command{c="runicgive exp <trigger.name> 400 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger
+  - disengage @target
+  - delay 80
+  - setvariable{var=caster.interrupt;value=0}
+
+ZenythBanditCrossbolt-Knockback:
+  Conditions:
+  - variableEquals{var=caster.status;value=1} 
+  Cooldown:
+  Skills:
+  - throw{velocity=15;velocityY=5} @PIR{r=10}

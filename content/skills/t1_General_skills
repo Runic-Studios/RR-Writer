@@ -1,0 +1,30 @@
+#This file contains common skills to be used or copied by many mobs
+
+general-threat-reset-64:
+  TargetConditions:
+  - distance{d=>15}
+  Cooldown: 12
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=64}
+
+general-threat-reset-128:
+  TargetConditions:
+  - distance{d=>15}
+  Cooldown: 12
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128}
+
+general-leash-check-16:
+  TargetConditions:
+  - distance{d=>16}
+  Skills:
+  - delay 200
+  - skills{s=general-leash-remove-16} @PIR{r=64}
+
+general-leash-remove-16:
+  TargetConditions:
+  - distance{d=>16}
+  Skills:
+  - remove{} @self

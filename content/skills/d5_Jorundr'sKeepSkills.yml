@@ -1,0 +1,628 @@
+OdinJump:
+    Skills:
+    - randomskill{s=OdinSlam,OdinShock}
+OdinSlam:
+    Conditions:
+    - incombat{}
+    - playerwithin 5
+    Cooldown: 12
+    Skills:
+    - potion{type=SLOW;duration=40;level=2;hasParticles=false} 
+    - sound{s=block.snow.break;v=2} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=2;radius=1;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=2;radius=1;yOffset=.5} 
+    - delay 10
+    - sound{s=block.snow.break;v=2;p=0.9} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=3;radius=2;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=3;radius=2;yOffset=.5} 
+    - delay 10
+    - sound{s=block.snow.break;v=2;p=0.8} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=4;radius=3;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=4;radius=3;yOffset=.5}  
+    - delay 10
+    - sound{s=block.snow.break;v=2;p=0.7} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=5;radius=4;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=5;radius=4;yOffset=.5} 
+    - delay 10
+    - summon{type=OdinAOE;amount=2;radius=10;os=true} 
+    - potion{type=SLOW;duration=40;level=3;hasParticles=false} 
+    - sound{s=block.snow.break;v=2;p=0.6} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=10;radius=5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=10;radius=5} 
+    - delay 10
+    - sound{s=block.snow.break;v=2;p=0.5} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=10;radius=6} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=10;radius=6} 
+    - delay 10
+    - potion{type=SLOW;duration=80;level=3} @PIR{r=5}
+    - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+    - summon{type=OdinAOE;amount=1;radius=2;os=true} 
+    - summon{type=OdinAOE;amount=4;radius=6;os=true} 
+    - delay 20
+    - potion{type=SLOW;duration=40;level=1;hasParticles=false} 
+OdinShock:
+    Conditions:
+    - incombat{}
+    - playernotwithin 5
+    Cooldown: 12
+    Skills:
+    - potion{type=SLOW;duration=60;level=2;hasParticles=false} 
+    - sound{s=block.snow.break;v=2;p=0.5} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=5;radius=4;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=5;radius=4;yOffset=.5} 
+    - delay 10
+    - sound{s=block.snow.break;v=2;p=0.666}
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=4;radius=3;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=4;radius=3;yOffset=.5} 
+    - delay 10
+    - sound{s=block.snow.break;v=2;p=0.832}
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=3;radius=2;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=3;radius=2;yOffset=.5}  
+    - delay 10
+    - sound{s=block.snow.break;v=2} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=2;radius=1;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=2;radius=1;yOffset=.5} 
+    - delay 10
+    - sound{s=block.glass.break}
+    - jump{v=1.4} 
+    - delay 10
+    - setgravity{g=false}
+    - delay 5
+    - sound{s=block.snow.break;v=2} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=10;radius=4;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=10;radius=4;yOffset=.5}
+    - summon{type=OdinShock;amount=1;radius=5;os=true} 
+    - delay 5
+    - sound{s=block.snow.break;v=2} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=15;radius=4;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=15;radius=4;yOffset=.5}
+    - summon{type=OdinShock;amount=1;radius=5;os=true} 
+    - setgravity{g=true}
+OdinShockSkill:
+    Skills:
+    - setgravity{g=false}
+    - delay 10
+    - setgravity{g=true}
+    - leap{velocity=800} @NearestPlayer{r=50}
+OdinShockSkill-death:
+    Skills:
+    - summon{type=OdinAOE} 
+    - summon{type=OdinAOE;a=2;r=5} 
+    - summon{type=OdinShockAOE}
+    - remove    
+
+OdinShockAOESkill:
+    Skill:
+    - potion{type=SLOW;duration=80;level=3} @PIR{r=5}
+    - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=5}
+    - remove  
+OdinCharge:
+    Conditions:
+    - incombat{}
+    Cooldown: 12
+    Skills:
+    - potion{type=SLOW;duration=60;level=2;hasParticles=false} 
+    - sound{s=block.snow.break;v=2} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=4;radius=1;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=4;radius=1;yOffset=.5} 
+    - delay 10
+    - sound{s=block.snow.break;v=2} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=4;radius=1;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=4;radius=1;yOffset=.5} 
+    - delay 10
+    - sound{s=block.snow.break;v=2} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=4;radius=1;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=4;radius=1;yOffset=.5}  
+    - delay 10
+    - sound{s=block.snow.break;v=2} 
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=4;radius=1;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#A8FFFF;amount=4;radius=1;yOffset=.5} 
+    - delay 10
+    - jump{v=0.5}
+    - delay 2
+    - leap{velocity=1000} @target
+    - summon{type=OdinAOE;amount=1;radius=0;os=true} 
+    - delay 2
+    - summon{type=OdinAOE;amount=1;radius=0;os=true} 
+    - delay 2
+    - summon{type=OdinAOE;amount=1;radius=0;os=true} 
+    - delay 2
+    - summon{type=OdinAOE;amount=1;radius=0;os=true} 
+    - delay 2
+    - summon{type=OdinAOE;amount=1;radius=0;os=true} 
+    - delay 2
+    - summon{type=OdinAOE;amount=1;radius=0;os=true} 
+    - delay 2
+OdinErupt:
+    Conditions:
+    - incombat{}
+    Cooldown: 30
+    Skills:
+    - summon{type=OdinAOEMarker;amount=1;radius=0;os=true} 
+OdinErupt2:
+    Conditions:
+    - incombat{}
+    Cooldown: 30
+    Skills:
+    - summon{type=OdinAOEMarker;amount=1;radius=0;os=true} 
+OdinAOEMarkerSkill:
+    Skills:
+    - sound{s=block.glass.break;p=0.5}
+    - effect:particlesphere{p=block_crack;material=ice;amount=12;radius=1;yOffset=.5} 
+    - delay 15
+    - sound{s=block.glass.break;p=0.75}
+    - effect:particlesphere{p=block_crack;material=ice;amount=36;radius=3;yOffset=.5} 
+    - delay 15
+    - effect:particlesphere{p=block_crack;material=ice;amount=96;radius=5;yOffset=.5} 
+    - summon{type=OdinAOE;amount=1;radius=0;os=true} 
+    - remove
+OdinRise3:
+    Cooldown: 1000
+    Conditions:
+    - incombat{}
+    Skills:
+    - randomskill{s=OdinWarden,OdinGeneral,OdinKeeper}
+OdinRise2:
+    Cooldown: 1000
+    Conditions:
+    - incombat{}
+    Skills:
+    - randomskill{s=OdinWarden,OdinGeneral,OdinKeeper}
+OdinRise1:
+    Cooldown: 1000
+    Conditions:
+    - incombat{}
+    Skills:
+    - randomskill{s=OdinWarden,OdinGeneral,OdinKeeper}
+OdinWarden:
+    Cooldown: 1000
+    Skills:
+    - message{m="&bJorundr<&co> &6Rise my fallen Warden."} @PIR{r=24}
+    - delay 40
+    - summon{type=UndeadWarden;amount=1;radius=3;os=true} 
+OdinGeneral:
+    Cooldown: 1000
+    Skills:
+    - message{m="&bJorundr<&co> &6Rise my fallen General."} @PIR{r=24}
+    - delay 40
+    - summon{type=UndeadGeneral;amount=1;radius=3;os=true} 
+OdinKeeper:
+    Cooldown: 1000
+    Skills:
+    - message{m="&bJorundr<&co> &6Rise my fallen Keeper."} @PIR{r=24}
+    - delay 40
+    - summon{type=UndeadKeeper;amount=1;radius=3;os=true} 
+OdinAOESkill:
+    Skills:
+    - sound{s=block.glass.break}
+    - effect:blockmask{m=blue_ice;r=5;d=240}
+    - delay 10
+    - skill{s=OdinAOEDmg} 
+    - delay 10
+    - effect:blockmask{m=blue_ice;r=5;d=220}
+    - delay 20
+    - effect:blockmask{m=blue_ice;r=5;d=200}
+    - delay 20
+    - effect:blockmask{m=blue_ice;r=5;d=180}
+    - delay 20
+    - effect:blockmask{m=blue_ice;r=5;d=160}
+    - delay 20
+    - effect:blockmask{m=blue_ice;r=5;d=140}
+    - delay 20
+    - effect:blockmask{m=blue_ice;r=5;d=120}
+    - delay 20
+    - effect:blockmask{m=blue_ice;r=5;d=100}
+    - delay 20
+    - effect:blockmask{m=blue_ice;r=5;d=80}
+    - delay 20
+    - effect:blockmask{m=blue_ice;r=5;d=60}
+    - delay 20
+    - effect:blockmask{m=blue_ice;r=5;d=40}
+    - delay 20
+    - effect:blockmask{m=blue_ice;r=5;d=20}
+    - delay 20
+    - remove
+OdinAOESKillCheck:
+    Skills:
+    - effect:blockmask{m=blue_ice;r=5;d=240;n=.5}
+    - delay 10
+    - skill{s=OdinAOESKillCheck} 
+OdinAOEDmg:
+    Skills:
+    - delay 10
+    - potion{type=SLOW;duration=10;level=1} @PIR{r=5}
+    - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=5}
+    - delay 10
+    - skill{s=OdinAOEDmged}
+OdinAOEDmged:
+    Skills:
+    - potion{type=SLOW;duration=10;level=1} @PIR{r=5}
+    - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=5}
+    - delay 10
+    - skill{s=OdinAOEDmged}
+OdinTick:
+    Conditions:
+    - playernotwithin 5
+    Skills:
+    - potion{type=SLOW;duration=40;level=2} @PIR{r=50}
+    - effect:particles{p=reddust;c=#FFFFFF;a=1;hs=0.1;vs=0.1;y=0.6} @PIR{r=50}
+    - effect:particles{p=reddust;c=#A8FFFF;a=1;hs=0.1;vs=0.1;y=0.6} @PIR{r=50}
+    - effect:blockmask{m=blue_ice;r=2;d=40} @PIR{r=50}
+    - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=50}
+    - delay 10
+    - effect:particles{p=reddust;c=#FFFFFF;a=1;hs=0.1;vs=0.1;y=0.6} @PIR{r=50}
+    - effect:particles{p=reddust;c=#A8FFFF;a=1;hs=0.1;vs=0.1;y=0.6} @PIR{r=50}
+    - effect:blockmask{m=blue_ice;r=2;d=40} @PIR{r=50}
+    - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=50}
+    - delay 10
+    - effect:particles{p=reddust;c=#FFFFFF;a=1;hs=0.1;vs=0.1;y=0.6} @PIR{r=50}
+    - effect:particles{p=reddust;c=#A8FFFF;a=1;hs=0.1;vs=0.1;y=0.6} @PIR{r=50}
+    - effect:blockmask{m=blue_ice;r=2;d=40} @PIR{r=50}
+    - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=50}
+    - delay 10
+    - effect:particles{p=reddust;c=#FFFFFF;a=1;hs=0.1;vs=0.1;y=0.6} @PIR{r=50}
+    - effect:particles{p=reddust;c=#A8FFFF;a=1;hs=0.1;vs=0.1;y=0.6} @PIR{r=50}
+    - effect:blockmask{m=blue_ice;r=2;d=40} @PIR{r=50}
+    - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=50}
+    - delay 10
+    - effect:particles{p=reddust;c=#FFFFFF;a=1;hs=0.1;vs=0.1;y=0.6} @PIR{r=50}
+    - effect:particles{p=reddust;c=#A8FFFF;a=1;hs=0.1;vs=0.1;y=0.6} @PIR{r=50}
+    - effect:blockmask{m=blue_ice;r=2;d=40} @PIR{r=50}
+    - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=50}
+
+TheWardenStun:
+    Skills:
+    - aura{auraName=TheWardenStun;onTick=TheWardenStun-Tick;interval=1;duration=40} @self
+TheWardenStun-Tick:
+    Skills:
+    - velocity{vx=0;vy=0;vz=0} @PIR{r=1}
+    
+TheWardenPrisonerSwarm:    
+    Conditions:
+    - varinrange{var=caster.mobsNear;value=>1}
+    Skills:
+    - skill{s=TheWardenStun} 
+ResetPrisonerCount:
+    Skills:
+    - setvariable{var=caster.mobsNear;value=0}
+AddPrisonerCount:
+    Conditions:
+    - incombat{} true
+    Skills:
+    - variableadd{var=caster.mobsNear;amount=1}
+NearbyPrisonerMechanics:
+    Conditions:
+    - incombat{} true
+    Skills:
+    - skill{s=ResetPrisonerCount}
+    - skill{s=AddPrisonerCount} @MIR{t=TheWardenUndeadPrisoners;r=3}
+    - skill{s=TheWardenPrisonerSwarm}
+
+TheWardenAntiCheese:
+    Conditions:
+    - playernotwithin 4
+    Skills:
+    - summon{type=TheWardenAntiCheese;amount=1;radius=0;os=true} @target
+TheWardenAntiCheeseSkill:
+    Skills:
+    - effect:particlesphere{particle=reddust;color=#B6B6B6;amount=10;radius=1} @self
+    - delay 40
+    - effect:particlesphere{particle=reddust;color=#B6B6B6;amount=30;radius=3} @self
+    - delay 40
+    - effect:particlesphere{particle=reddust;color=#B6B6B6;amount=50;radius=5} @self
+    - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+    - velocity{v=200} @PIR{r=5}
+    - delay 2
+    - remove
+    
+TheWardenUndeadPrisonerLeap:
+    Cooldown: 3
+    Skills:
+    - jump{v=0.4}
+    - delay 2
+    - leap{v=300} @target
+TheWardenDisarm:
+    Skills:
+#    - variablesubtract{var=caster.number;amount=1}
+#    - sound{s=block.metal_pressure_plate.click_on}
+    - sound{s=block.glass.break}
+    - remove
+TheWardenDisarmed:
+    Conditions:
+    - variableEquals{var=caster.number;value=0}
+    Skills:
+    - sound{s=block.glass.break}
+    - remove
+TheWardenUndeadPrisoners:
+    Conditions:
+    - playerwithin 32
+    - incombat{}
+    Skills:
+    - summon{type=TheWardenUndeadPrisoners;amount=3;radius=5;os=true} 
+TheWardenChain:
+    Cooldown: 18
+    Conditions:
+    - incombat{}
+    Skills:
+    - potion{type=SLOW;duration=100;level=10;hasParticles=false} 
+    - delay 40
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+    - delay 4
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+    - delay 4
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+    - delay 4
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+    - delay 4
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+    - delay 4
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+
+TheUndeadWardenChain:
+    Cooldown: 24
+    Conditions:
+    - incombat{}
+    Skills:
+    - potion{type=SLOW;duration=100;level=10;hasParticles=false} 
+    - delay 40
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+    - delay 4
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+    - delay 4
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+    - delay 4
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+    - delay 4
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+    - delay 4
+    - effect:particles{particle=reddust;color=#B6B6B6;amount=10;hS=1;vS=1} 
+    - summon{type=TheWardenChain;amount=1;radius=0;os=true} 
+
+TheWardenChain-message:
+    Cooldown: 4
+    Skills:
+    - message{m="&7Right click the chains to break free!"} @PIR{r=12}
+TheWardenChainToss:
+    Skills:
+    - jump{v=0.3} 
+    - delay 10
+    - jump{v=0.3} 
+    - delay 10
+    - jump{v=0.3} 
+    - delay 10
+    - jump{v=0.3} 
+    - delay 10
+    - jump{velocity=0.5} 
+    - delay 10
+    - leap{velocity=350} @NearestPlayer{r=20}
+    - delay 10
+    - remove
+TheWardenChainTrap:
+    Conditions:
+    - playerwithin 1
+    Skills:
+    - signal{s=message} @MIR{t=TheWarden,UndeadWarden;r=24} 
+    - summon{type=TheWardenPrison;amount=1;radius=0;os=true} @PIR{r=1}
+    - remove
+TheWardenChainNoOne:
+    Conditions:
+    - playernotwithin 2
+    Skills:
+    - remove
+
+TheUndeadGeneralCheckWithin:
+    Conditions:
+    - playerwithin 5
+    - varinrange{var=caster.number;value=<10}
+    Skills:
+    - variableadd{var=caster.number;amount=1}
+TheUndeadGeneralCheckNotWithin:
+    Conditions:
+    - playernotwithin 5
+    - varinrange{var=caster.number;value=>0}
+    Skills:
+    - variablesubtract{var=caster.number;amount=4}
+
+TheGeneralCheckWithin:
+    Conditions:
+    - playerwithin 5
+    - varinrange{var=caster.number;value=<10}
+    Skills:
+    - variableadd{var=caster.number;amount=1}
+    - skill{s=TheGeneralCheckWithinmsg}
+TheGeneralCheckWithinmsg:
+    Cooldown: 12
+    Skills:
+    - message{m="&7The General's Aura gets stronger"} @PIR{r=12}
+TheGeneralCheckNotWithin:
+    Conditions:
+    - playernotwithin 5
+    - varinrange{var=caster.number;value=>0}
+    Skills:
+    - variablesubtract{var=caster.number;amount=3}
+    - skill{s=TheGeneralCheckNotWithinmsg}
+TheGeneralCheckNotWithinmsg:
+    Cooldown: 12
+    Skills:
+    - message{m="&7The General's Aura strength fades"} @PIR{r=12}
+TheGeneralAura3:
+    Conditions:
+    - varinrange{var=caster.number;value=>7} castinstead TheGeneralAura1
+    - varinrange{var=caster.number;value=>4} 
+    Skills:
+    - potion{t=SLOW;d=40;l=1;hasParticles=false} @self
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=8;radius=4;yOffset=.5} @self
+    - effect:particlesphere{p=reddust;c=#FFD9D9;amount=8;radius=4;yOffset=.5} @self
+    - potion{type=SLOW;duration=40;level=1;hasParticles=false} @self
+    - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+    - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=4}
+TheGeneralAura1:
+    Conditions:
+    Skills:
+    - potion{t=SLOW;d=40;l=1;hasParticles=false} @self
+    - effect:particlesphere{p=reddust;c=#FFFFFF;amount=12;radius=4;yOffset=.5} 
+    - effect:particlesphere{p=reddust;c=#FFD9D9;amount=12;radius=4;yOffset=.5} 
+    - potion{type=SLOW;duration=40;level=1;hasParticles=false} @self
+    - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+    - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+TheGeneralSICSkill:
+    Skills:
+    - leap{v=300} @RLNTE{a=1;r=5;s=1;minr=3}
+    - delay 20
+    - jump{velocity=0.4} @self
+    - delay 2
+    - leap{v=250} @target
+    - delay 5
+    - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=4}
+TheGeneralTICSkill:
+    Conditions:
+    - playernotwithin 4
+    Skills:
+#    - leap{v=300} @RLNTE{a=1;r=5;s=1;minr=3}
+#    - delay 20
+#    - potion{type=SLOW;duration=10;level=10} 
+    - equip{i=AIR:0}
+    - sound{s=entity.dragon_fireball.explode;v=2}
+    - projectile{onTick=TheGeneralProjectileTick;onHit=TheGeneralProjectileHit;i=1;v=30;mr=30} @target
+TheGeneralTICSpeed:
+    Conditions:
+    - playerwithin 4
+    Skills:
+    - equip{i=IRON_SWORD:0}
+    - potion{type=SPEED;duration=40;level=9;hasParticles=false} 
+TheGeneralProjectileTick:
+    Skills:
+    - effect:particles{particle=smoke_normal;a=5} @Origin
+TheGeneralProjectileHit:
+    Skills:
+    - command{c="runicdamage <caster.uuid> <target.name> 20"}
+TheGeneralSTICSummon:
+    Cooldown: 1000
+    Skills:
+    - summon{type=TheGeneralSIC;amount=1;radius=2;os=true} 
+    - summon{type=TheGeneralTIC;amount=1;radius=2;os=true} 
+UndeadGeneralSTICSummon:
+    Cooldown: 1000
+    Skills:
+    - summon{type=UndeadGeneralSIC;amount=1;radius=2;os=true} 
+    - summon{type=UndeadGeneralTIC;amount=1;radius=2;os=true} 
+TheKeeperSkill:
+    Cooldown: 24
+    Conditions:
+    - incombat{}
+    Skills:
+    - potion{type=SLOW;duration=200;level=10;hasParticles=false} 
+    - summon{type=TheKeeperChest;amount=1;radius=2;os=true} 
+TheKeeperChest:
+    Skills:
+    - effect:blockmask{m=chest;r=0;d=260;onlyair=true}
+    - skill{s=TheKeeperChestCheck}
+    - delay 40
+    - sound{s=block.chest.open}
+    - delay 40
+    - skill{s=TheKeeperChestSpawn}
+    - delay 160
+    - sound{s=block.chest.close}
+    - delay 20
+    - remove 
+TheKeeperChestCheck:
+    Skills:
+    - effect:blockmask{m=chest;r=0;d=260;onlyair=true}
+    - delay 1
+    - skill{s=TheKeeperChestCheck}
+TheKeeperChestSpawn:
+    Skills:
+    - summon{type=TheKeeperGold;amount=1;radius=2;os=true}
+    - delay 40
+    - skill{s=TheKeeperChestSpawn}
+TheKeeperGoldonSpawn:
+    Skills:
+    - potion{type=SLOW;duration=20;level=10;hasParticles=false} @self
+    - delay 20
+    - jump{velocity=0.5} @self
+    - delay 10
+    - leap{velocity=350} @NearestPlayer{r=20}
+    - delay 40
+    - skill{s=TheKeeperGoldPassive}
+TheKeeperGoldPassive:
+    Skills:
+    - jump{velocity=0.6}
+    - delay 10
+    - potion{type=SLOW;duration=40;level=1} @PIR{r=3}
+    - sound{s=block.stone.break}
+    - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+    - effect:particlesphere{particle=block_crack;material=gold_block;amount=40;radius=3} @self
+    - delay 15
+    - skill{s=TheKeeperGoldPassive}
+TheKeeperProjectile:
+    Conditions:
+    - incombat{}
+    - playernotwithin 6
+    Skills:
+    - potion{type=SLOW;duration=40;level=10;hasParticles=false} @self
+    - delay 40
+    - sound{s=entity.dragon_fireball.explode;v=2}
+    - projectile{onTick=TheKeeperProjectileTick;onHit=TheKeeperProjectileHit;i=1;v=32;mr=30} @target
+TheKeeperProjectileTick:
+    Skills:
+    - effect:particles{particle=block_crack;material=gold_block;a=5} @Origin
+TheKeeperProjectileHit:
+    Skills:
+    - command{c="runicdamage <caster.uuid> <target.name> 25"}
+    - potion{type=SLOW;duration=60;level=2} 
+TheKeeperGoldCoinSpawn:
+    Cooldown: 4
+    Skills:
+    - jump{v=0.2} 
+    - sound{s=block.glass.break}
+    - summon{type=TheKeeperGoldCoin;amount=3;radius=3;os=true}
+TheKeeperGoldCoin:
+    Skills:
+    - jump{v=0.3}
+    - throw{v=20} 
+    - delay 20
+    - skill{s=TheKeeperGoldCoinCheck} 
+TheKeeperGoldCoinCheck:
+    Skills:
+    - delay 2
+    - skill{s=TheKeeperGoldCoinPassive} 
+    - skill{s=TheKeeperGoldCoinCheck} 
+TheKeeperGoldCoinPassive:
+    Conditions:
+    - playerwithin 2
+    Skills:
+    - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+    - sound{s=random.pop}
+    - delay 2
+    - remove 
+TheKeeperAntiCheese:
+    Conditions:
+    - playernotwithin 3
+    Skills:
+    - summon{type=TheKeeperAntiCheese;amount=1;radius=0;os=true} @target
+TheKeeperAntiCheeseSkill:
+    Skills:
+    - effect:particlesphere{particle=block_crack;material=gold_block;amount=10;radius=1} @self
+    - sound{s=block.stone.break}
+    - delay 40
+    - effect:particlesphere{particle=block_crack;material=gold_block;amount=30;radius=3} @self
+    - sound{s=block.stone.break}
+    - delay 40
+    - effect:particlesphere{particle=block_crack;material=gold_block;amount=50;radius=5} @self
+    - sound{s=block.stone.break}
+    - potion{type=SLOW;duration=60;level=2} @PIR{r=5}
+    - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+    - velocity{v=200} @PIR{r=5}
+    - delay 2
+    - remove

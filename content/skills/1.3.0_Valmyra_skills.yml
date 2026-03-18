@@ -1,0 +1,1227 @@
+valmyra-threat:
+  TargetConditions:
+  - distance{d=>25}
+  Cooldown: 15
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=50}
+
+locket-threat:
+  TargetConditions:
+  - distance{d=>25}
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=50}
+
+CinderedSap:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=CinderedSap-visual} <50%
+  - skill{s=CinderedSap-auto1} >50%
+  - skill{s=CinderedSap-auto2} <50%
+  - skill{s=CinderedSap-elite-auto1} >50%
+  - skill{s=CinderedSap-elite-auto2} <50%
+
+CinderedSap-elite-setname:
+  Conditions:
+  - variableEquals{var=caster.elite;value=1}
+  Skills:
+  - setname{name='&e[&6☠&e] &4&lInfernal Cindered Sap'}
+
+
+CinderedSap-auto1:
+  Conditions:
+  - variableEquals{var=caster.elite;value=0}
+  Cooldown: 10
+  Skills:
+  - randomskill{s=CinderedSap-right,CinderedSap-left}
+CinderedSap-auto2:
+  Conditions:
+  - variableEquals{var=caster.elite;value=0}
+  Cooldown: 8
+  Skills:
+  - randomskill{s=CinderedSap-right,CinderedSap-left,CinderedSap-both}
+
+CinderedSap-elite-auto1:
+  Conditions:
+  - variableEquals{var=caster.elite;value=1}
+  Cooldown: 7
+  Skills:
+  - randomskill{s=CinderedSap-right,CinderedSap-left}
+CinderedSap-elite-auto2:
+  Conditions:
+  - variableEquals{var=caster.elite;value=1}
+  Cooldown: 4
+  Skills:
+  - randomskill{s=CinderedSap-right,CinderedSap-left,CinderedSap-both}
+
+CinderedSap-visual:
+  Cooldown: 9999
+  Skills:
+  - potion{t=SPEED;d=80;l=1;hasParticles=false}
+  - sound{s=block.fire.ambient}
+  - effect:particlesphere{p=flame;amount=24;radius=3;yOffset=.75} @self
+  - ignite{d=80} @PIR{r=3}
+
+
+CinderedSap-elite-visual:
+  Conditions:
+  - variableEquals{var=caster.elite;value=1}
+  Skills:
+  - potion{t=SPEED;d=20;l=1;hasParticles=false} .15
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.75} @self
+
+CinderedSap-drop:
+  Skills:
+  - randomskill{s=CinderedSap-drop1,CinderedSap-drop2}
+CinderedSap-drop1:
+  Conditions:
+  - variableEquals{var=caster.elite;value=0}
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .4
+CinderedSap-drop2:
+  Conditions:
+  - variableEquals{var=caster.elite;value=1}
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+CinderedSap-both:
+  Conditions:
+  - incombat{}
+  - playerwithin 12
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - delay 20
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - equip{i=AIR:HAND}
+  - equip{i=AIR:OFFHAND}
+  - summon{t=CinderedSap-b;a=2;r=2}
+  - delay 60
+  - remove @MIR{t=CinderedSap-b;r=64}
+  - equip{i=IRON_SWORD:HAND}
+  - equip{i=IRON_SWORD:OFFHAND}
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+
+CinderedSap-b:
+  Skills:
+  - potion{t=INVISIBILITY;d=9999;l=1;hasParticles=false}
+CinderedSap-bsk:
+  Skills:
+  - delay 18
+  - jump{v=.25}
+  - delay 2
+  - leap{v=400} @NearestPlayer{r=24}
+  - delay 18
+  - jump{v=.25}
+  - delay 2
+  - leap{v=400} @NearestPlayer{r=24}
+  - delay 15
+  - leap{v=400} @MIR{t=CinderedSap;r=64}
+
+CinderedSpawn-remove:
+  Skills:
+  - sound{s=block.fire.extinguish} 
+  - signal{s=heal} @MIR{t=CinderedSap;r=64}
+  - remove
+CinderedSap-heal:
+  Skills:
+  - heal{a=500}
+  - effect:sound{s=entity.experience_orb.pickup;v=2;p=0.5}
+  - summon{t=CinderedSap-grass;a=3;r=2}
+  - sound{s=block.grass.break} 
+CinderedSap-left:
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=10;l=1;hasParticles=false}
+  - delay 10
+  - equip{i=AIR:OFFHAND}
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - summon{t=CinderedSap-l} 
+  - delay 20
+  - signal{s=skill} @MIR{t=CinderedSap-l;r=48}
+  - equip{i=IRON_SWORD:OFFHAND}
+  
+CinderedSap-l:
+  Skills:
+  - potion{t=INVISIBILITY;d=9999;l=1;hasParticles=false}
+  - jump{v=.25}
+  - delay 2
+  - leap{v=250} @NearestPlayer{r=250}
+
+CinderedSpawn:
+  Skills:
+  - delay 40
+  - skill{s=CinderedSpawn} 
+  - skill{s=CinderedSap-proj} 
+CinderedSap-proj:
+  Conditions:
+  - playernotwithin 3
+  - playerwithin 64
+  Skills:
+  - missile{ot=CinderedSap-projtick;oh=CinderedSap-projhit;v=16;i=1;hr=2;vr=2;md=200;hnp=false;mr=60} @NearestPlayer{r=64}
+
+CinderedSap-projtick:
+  Skills:
+  - effect:particles{p=flame;a=1} @origin
+
+CinderedSap-projhit:
+  Skills:
+  - ignite{d=40} 
+  - potion{type=SLOW;duration=40;level=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} 
+
+CinderedSap-lsk:
+  Skills:
+  - summon{t=CinderedSpawn}
+  - remove
+
+CinderedSap-right:
+  Conditions:
+  - incombat{}
+  - playerwithin 24
+  Skills:
+  - potion{t=SLOW;d=10;l=1;hasParticles=false}
+  - delay 10
+  - equip{i=AIR:HAND}
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - summon{t=CinderedSap-r} 
+  - delay 10
+  - signal{s=skill} @MIR{t=CinderedSap-r;r=48} 
+  - delay 10
+  - jump{v=.25}
+  - delay 2
+  - leap{v=250} @MIR{t=CinderedSap-r;r=48} 
+  - delay 10
+  - remove @MIR{t=CinderedSap-r;r=48} 
+  - equip{i=IRON_SWORD:HAND}
+  - skill{s=CinderedSap-rskill} @PIR{r=7}
+CinderedSap-rskill:
+  Skills:
+  - effect:particlesphere{p=flame;amount=48;radius=7;yOffset=.5} @self
+  - sound{s=entity.dragon_fireball.explode;v=2} @self
+  - ignite{d=80} 
+  - command{c="runicdamage <caster.uuid> <target.name> 200"}
+  - throw{vy=10}
+  - potion{t=SLOW;d=80;l=2}
+  
+CinderedSap-r:
+  Skills:
+  - potion{t=INVISIBILITY;d=9999;l=1;hasParticles=false}
+  - jump{v=.25}
+  - delay 2
+  - leap{v=250} @NearestPlayer{r=250}
+CinderedSap-rsk:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=3}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=3}
+
+
+
+
+Infernal-elite-skill:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - jump{v=.25}
+  - delay 2
+  - setAI{ai=false}
+  - delay 5
+  - sound{s=entity.blaze.shoot;v=2}
+  - summon{t=Infernal-elite-spawn}
+  - delay 2
+  - setAI{ai=true}
+  - delay 40
+  - jump{v=.25}
+  - delay 2
+  - setAI{ai=false}
+  - delay 5
+  - sound{s=entity.blaze.shoot;v=2}
+  - summon{t=Infernal-elite-spawn}
+  - delay 2
+  - setAI{ai=true}
+  - delay 40
+  - jump{v=1.25}
+  - delay 5
+  - setAI{ai=false}
+  - delay 5
+  - sound{s=entity.blaze.shoot;v=2}
+  - summon{t=Infernal-elite-spawn}
+  - delay 2
+  - sound{s=entity.blaze.shoot;v=2}
+  - summon{t=Infernal-elite-spawn}
+  - delay 2
+  - sound{s=entity.blaze.shoot;v=2}
+  - summon{t=Infernal-elite-spawn}
+  - delay 5
+  - setAI{ai=true}
+Infernal-elite-spawn:
+  Skills:
+  - setAI{ai=false}
+  - delay 5
+  - setAI{ai=true}
+  - leap{v=400} @NearestPlayer{r=64}
+  - delay 20
+  - skill{s=Infernal-elite-spawn-cast} 
+  - delay 80
+  - skill{s=Infernal-elite-spawn-cast} 
+  - delay 40
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=1;yOffset=0.25}
+  - remove
+Infernal-elite-spawn-cast:
+  Cooldown: 12
+  Skills:
+  - leap{v=300} @NearestPlayer{r=64}
+  - effect:particlesphere{particle=soul_fire_flame;amount=20;radius=4} @self
+  - ignite{d=80} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - delay 5
+  - effect:particlesphere{particle=soul_fire_flame;amount=16;radius=3} @self
+  - ignite{d=80} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - delay 5
+  - effect:particlesphere{particle=soul_fire_flame;amount=12;radius=2} @self
+  - ignite{d=80} @PIR{r=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=2}
+
+Infernal-elite-spawn-passive:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;a=3;r=2;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+
+Infernal-elite:
+  Skills:
+  - sound{s=entity.blaze.shoot;v=2}
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=2;yOffset=0.5}
+  - message{cooldown=60;m="&e[&6✸&e] &c&lInfernal Commander &e&lhas been challenged!"} @PIR{r=32}
+  - cast{skillName="Despawn";duration=3000;onCast=Infernal-elite-despawn;showCastBar=true}
+Infernal-elite-despawn:
+  Skills:
+  - sound{s=entity.blaze.shoot;v=2}
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=2;yOffset=0.5}
+  - message{cooldown=60;m="&e[&6✸&e] &c&lInfernal Commander &e&lhas despawned!"} @PIR{r=32}
+  - remove
+
+Pyromancer-projectile:
+  Skills:
+  - effect:particlesphere{p=flame;amount=4;radius=2;yOffset=0.25}
+  - setAI{ai=false}
+  - delay 80
+  - remove
+Pyromancer-fire:
+  Skills:
+  - setAI{ai=true}
+  - leap{v=100} @NearestPlayer{r=32}
+Pyromancer-remove:
+  Skills:
+  - sound{s=entity.generic.explode;v=1}
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1}
+  - effect:particlesphere{p=block_crack;material=snow;amount=12;radius=4;yOffset=.5}
+  - remove
+Pyromancer-cutscene1:
+  Cooldown: 9999
+  Skills:
+  - remove @MIR{t=MysticWintryWolf3,MysticWintryWolf4,MysticWintryWolf5,Pyromancer-projectile;r=32}
+  - summon{t=MysticWintryWolf3} @Location{c=1725.5,77,2002.5}
+  - effect:sound{s=entity.ghast.shoot;v=2}
+  - jump{v=1.25}
+  - delay 10
+  - setAI{ai=false}
+  - delay 20
+  - summon{t=Pyromancer-projectile;r=1} @Location{c=1713.5,87,2002.5}
+  - delay 10
+  - signal{s=cutscene4} @MIR{t=MysticWintryWolf3;r=64}
+  - delay 5
+  - signal{s=fire} @MIR{t=Pyromancer-projectile;r=64}
+  - delay 10
+  - setAI{ai=true}
+  
+Pyromancer-cutscene2:
+  Cooldown: 9999
+  Skills:
+  - remove @MIR{t=MysticWintryWolf3,MysticWintryWolf4,MysticWintryWolf5,Pyromancer-projectile;r=32}
+  - summon{t=MysticWintryWolf4} @Location{c=1725.5,77,2002.5}
+  - effect:sound{s=entity.ghast.shoot;v=2}
+  - jump{v=1.25}
+  - delay 10
+  - setAI{ai=false}
+  - delay 20
+  - summon{t=Pyromancer-projectile;r=1} @Location{c=1713.5,87,2002.5}
+  - delay 10
+  - signal{s=cutscene4} @MIR{t=MysticWintryWolf4;r=64}
+  - delay 5
+  - signal{s=fire} @MIR{t=Pyromancer-projectile;r=64}
+  - delay 10
+  - setAI{ai=true}
+
+Pyromancer-cutscene3:
+  Cooldown: 9999
+  Skills:
+  - remove @MIR{t=MysticWintryWolf3,MysticWintryWolf4,MysticWintryWolf5,Pyromancer-projectile;r=32}
+  - summon{t=MysticWintryWolf5} @Location{c=1725.5,77,2002.5}
+  - effect:sound{s=entity.ghast.shoot;v=2}
+  - jump{v=1.25}
+  - delay 10
+  - setAI{ai=false}
+  - delay 20
+  - summon{t=Pyromancer-projectile;r=1} @Location{c=1713.5,87,2002.5}
+  - delay 10
+  - signal{s=cutscene5} @MIR{t=MysticWintryWolf5;r=64}
+  - delay 5
+  - signal{s=fire} @MIR{t=Pyromancer-projectile;r=64}
+  - delay 10
+  - setAI{ai=true}
+
+MysticWintryWolf3:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=snow;amount=5;radius=1;yOffset=.5}
+  - sound{s=entity.wolf.growl}
+  - sound{s=block.snow.break}
+  - delay 80
+  - effect:particlesphere{p=block_crack;material=snow;amount=5;radius=1;yOffset=.5}
+  - sound{s=block.snow.break}
+  - remove
+MysticWintryWolf4:
+  Skills:
+  - jump{v=1}
+  - delay 10
+  - leap{v=400} @MIR{t=Pyromancer-projectile;r=64}
+  - delay 4
+  - signal{s=remove} @MIR{t=Pyromancer-projectile;r=64}
+  - sound{s=entity.wolf.hurt}
+  - damage{a=2666;i=true}
+  - delay 20
+  - effect:particlesphere{p=block_crack;material=snow;amount=5;radius=1;yOffset=.5}
+  - sound{s=block.snow.break}
+  - remove
+MysticWintryWolf5:
+  Skills:
+  - jump{v=1}
+  - delay 10
+  - leap{v=400} @MIR{t=Pyromancer-projectile;r=64}
+  - delay 4
+  - signal{s=remove} @MIR{t=Pyromancer-projectile;r=64}
+  - sound{s=entity.wolf.death}
+  - suicide
+
+MysticWintryWolf2:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=snow;amount=5;radius=1;yOffset=.5}
+  - sound{s=entity.wolf.pant}
+  - sound{s=block.snow.break}
+  - delay 20
+  - sound{s=entity.wolf.howl}
+  - pull{v=10} @MIR{t=InfernalGrunt,InfernalArcher;r=32}
+  - delay 20
+  - jump{v=1}
+  - sound{s=entity.wolf.growl}
+  - effect:particlesphere{p=block_crack;material=snow;amount=15;radius=5;yOffset=.5}
+  - sound{s=block.snow.break}  
+  - damage{a=250;i=true} @MIR{t=InfernalGrunt,InfernalArcher;r=32}
+  - delay 10
+  - effect:particlesphere{p=block_crack;material=snow;amount=15;radius=5;yOffset=.5}
+  - sound{s=block.snow.break}  
+  - damage{a=250;i=true} @MIR{t=InfernalGrunt,InfernalArcher;r=32}
+  - delay 10
+  - effect:particlesphere{p=block_crack;material=snow;amount=15;radius=5;yOffset=.5}
+  - sound{s=block.snow.break}  
+  - damage{a=250;i=true} @MIR{t=InfernalGrunt,InfernalArcher;r=32}
+  - delay 10
+  - effect:particlesphere{p=block_crack;material=snow;amount=15;radius=5;yOffset=.5}
+  - sound{s=block.snow.break}  
+  - damage{a=250;i=true} @MIR{t=InfernalGrunt,InfernalArcher;r=32}
+  - delay 40
+  - effect:particlesphere{p=block_crack;material=snow;amount=5;radius=1;yOffset=.5}
+  - sound{s=block.snow.break}  
+  - remove
+MysticWintryWolf:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=snow;amount=5;radius=1;yOffset=.5}
+  - sound{s=entity.wolf.pant}
+  - sound{s=block.snow.break}
+  - delay 80
+  - effect:particlesphere{p=block_crack;material=snow;amount=5;radius=1;yOffset=.5}
+  - sound{s=block.snow.break}
+  - remove
+
+AncientGolem-rupture:
+  Skills:
+  - skill{s=AncientGolem-rupture80} <80%
+  - skill{s=AncientGolem-rupture60} <60%
+  - skill{s=AncientGolem-rupture40} <40%
+  - skill{s=AncientGolem-rupture20} <20%
+AncientGolem-rupture80:
+  Conditions:
+  - incombat{}
+  Cooldown: 99999
+  Skills:
+  - potion{t=SLOW;d=100;l=1;hasParticles=false}
+  - delay 20
+  - cast{skillName="Crimson Crescent";duration=60;onCast=AncientGolem-rupturecast;showCastBar=true} @self
+  - delay 50
+  - setAI{ai=false}
+  - setvariable{var=caster.active;value=0}
+AncientGolem-rupture60:
+  Conditions:
+  - incombat{}
+  Cooldown: 99999
+  Skills:
+  - potion{t=SLOW;d=100;l=1;hasParticles=false}
+  - delay 20
+  - cast{skillName="Crescent Crater";duration=60;onCast=AncientGolem-rupturecast;showCastBar=true} @self
+  - delay 50
+  - setAI{ai=false}
+  - setvariable{var=caster.active;value=0}
+AncientGolem-rupture40:
+  Conditions:
+  - incombat{}
+  Cooldown: 99999
+  Skills:
+  - potion{t=SLOW;d=100;l=1;hasParticles=false}
+  - delay 20
+  - cast{skillName="Crescent Crater";duration=60;onCast=AncientGolem-rupturecast;showCastBar=true} @self
+  - delay 50
+  - setAI{ai=false}
+  - setvariable{var=caster.active;value=0}
+AncientGolem-rupture20:
+  Conditions:
+  - incombat{}
+  Cooldown: 99999
+  Skills:
+  - potion{t=SLOW;d=100;l=1;hasParticles=false}
+  - delay 20
+  - cast{skillName="Crescent Crater";duration=60;onCast=AncientGolem-rupturecast;showCastBar=true} @self
+  - delay 50
+  - setAI{ai=false}
+  - setvariable{var=caster.active;value=0}
+
+AncientGolem-rupturecast:
+  Skills:
+  - summon{t=AncientGolem-rupture1} @Forward{f=5;y=0.0}
+  - delay 20
+  - summon{t=AncientGolem-rupture2} @Forward{f=11;y=0.0}
+  - delay 20
+  - summon{t=AncientGolem-rupture3} @Forward{f=18;y=0.0}
+  - delay 20
+  - summon{t=AncientGolem-rupture4} @Forward{f=27;y=0.0}
+  - delay 20
+  - setAI{ai=true}
+  - setvariable{var=caster.active;value=1}
+
+AncientGolem-spawn:
+  Skills:
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=0.25}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=2}
+  - delay 4
+  - signal{s=throw} @MIR{t=AncientGolem;r=2} 
+  - skill{s=AncientGolem-spawn}
+
+AncientGolem-spawn2:
+  Skills:
+  - delay 800
+  - skill{s=AncientGolemSpawn-damage} .9
+  - summon{t=AncientGolem-spawn2}
+  - remove
+
+AncientGolem-spawn3:
+  Skills:
+  - delay 200
+  - summon{t=AncientRemnant}
+  - remove
+
+AncientGolemSpawn-summon:
+  Skills:
+  - sound{s=block.stone.break}
+  - summon{t=AncientRemnant}
+  - remove
+AncientGolem-throw:
+  Skills:
+  - potion{t=SLOW;d=60;l=3;hasParticles=false}
+  - delay 20
+  - signal{s=jump} @MIR{t=AncientGolem-spawn;r=2} 
+  - delay 20
+  - signal{s=leap} @MIR{t=AncientGolem-spawn;r=3} 
+AncientGolemSpawn-jump:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.iron_golem.attack;v=2}
+  - jump{v=1.2}
+AncientGolemSpawn-damage:
+  Skills:
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1}
+  - throw{vy=6} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=5}
+  - remove
+
+AncientGolemSpawn-leap:
+  Conditions:
+  - playernotwithin 8 castinstead AncientGolemSpawn-leap2
+  - playerwithin 8
+  Skills:
+  - sound{s=entity.iron_golem.attack;v=2;p=0.75}
+  - leap{v=250} @NearestPlayer{r=32}
+  - delay 40
+  - skill{s=AncientGolemSpawn-damage}
+AncientGolemSpawn-leap2:
+  Skills:
+  - sound{s=entity.iron_golem.attack;v=2;p=0.75}
+  - leap{v=400} @NearestPlayer{r=32}
+  - delay 40
+  - skill{s=AncientGolemSpawn-damage}
+
+AncientGolem-rupture1:
+  Skills:
+  - summon{t=AncientGolem-spawn;a=1;r=3;os=true}
+  - effect:blockmask{m=nether_bricks;r=5;d=25}
+  - sound{s=block.stone.break;p=1}
+  - throw{vy=8} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 240"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+AncientGolem-rupture2:
+  Skills:
+  - summon{t=AncientGolem-spawn;a=2;r=6;os=true}
+  - effect:blockmask{m=nether_bricks;r=8;d=25}
+  - sound{s=block.stone.break;p=1}
+  - throw{vy=12} @PIR{r=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 60"} @PIR{r=8}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=8}
+AncientGolem-rupture3:
+  Skills:
+  - summon{t=AncientGolem-spawn;a=2;r=9;os=true}
+  - effect:blockmask{m=nether_bricks;r=11;d=25}
+  - sound{s=block.stone.break;v=2;p=0.75}
+  - throw{vy=16} @PIR{r=11}
+  - command{c="runicdamage <caster.uuid> <target.name> 120"} @PIR{r=11}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=11}
+AncientGolem-rupture4:
+  Skills:
+  - summon{t=AncientGolem-spawn;a=3;r=12;os=true}
+  - effect:blockmask{m=nether_bricks;r=14;d=25}
+  - sound{s=block.stone.break;v=3;p=0.5}
+  - throw{vy=20} @PIR{r=14}
+  - command{c="runicdamage <caster.uuid> <target.name> 240"} @PIR{r=14}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=14}
+
+AncientGolem-Knockup:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  - incombat{}
+  TargetConditions:
+  - distance{d=<2}
+  Cooldown: 4
+  Skills:
+  - throw{vy=8}
+  - sound{s=entity.iron_golem.attack} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 200"}
+  - potion{t=SLOW;d=40;l=1}
+
+
+GrandAncientGolem-Start:
+  Cooldown: 9999
+  Skills:
+  - summon{t=GrandAncientOrb} @Location{c=1608.5,72,2107.5}
+
+GrandAncientGolem-Rage:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.ender_dragon.growl;v=2} 
+  - signal{s=rage} @MIR{t=GrandAncientGolem-chaos,GrandAncientGolem-order;r=128}
+GrandAncientGolemChaos-death:
+  Cooldown: 9999
+  Skills:
+  #- sound{s=entity.ender_dragon.flap;v=2}
+  #- potion{type=SLOW;duration=400;level=10} @PIR{r=64}
+  #- throw{vy=20} @PIR{r=64}
+  - signal{s=death} @MIR{t=GrandAncientGolem-order;r=128}
+GrandAncientGolemChaos-rise:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.enderman.scream;v=2}
+  - potion{type=BLINDNESS;duration=240;level=10} @PIR{r=64}
+  - ignite{ticks=400} @PIR{r=64}
+  - signal{s=order} @MIR{t=GrandAncientGolemOrder-marker;r=128}
+  - leap{v=500} @NearestPlayer{r=64}
+  - potion{type=SPEED;duration=9999;level=10;hasParticles=false}
+  - skill{s=GrandAncientGolemChaos-rise2}
+  - skill{s=GrandAncientGolemChaos-rise3}
+GrandAncientGolemChaos-rise2:
+  Condition:
+  - incombat{}
+  Skills:
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=2}
+  - delay 2
+  - skill{s=GrandAncientGolemChaos-rise2}
+GrandAncientGolemChaos-rise3:
+  Skills:
+  - sound{s=block.campfire.crackle}
+  - delay 20
+  - skill{s=GrandAncientGolemChaos-rise3}
+
+GrandAncientGolemOrder-death:
+  Cooldown: 9999
+  Skills:
+  #- sound{s=entity.enderman.scream;v=2}
+  #- potion{type=BLINDNESS;duration=240;level=10} @PIR{r=64}
+  #- ignite{ticks=400} @PIR{r=64}
+  - signal{s=death} @MIR{t=GrandAncientGolem-chaos;r=128}
+GrandAncientGolemOrder-rise:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.ender_dragon.flap;v=2}
+  - potion{type=SLOW;duration=400;level=10} @PIR{r=64}
+  - throw{vy=20} @PIR{r=64}
+  - signal{s=chaos} @MIR{t=GrandAncientGolemChaos-marker;r=128}
+  - leap{v=500} @NearestPlayer{r=64}
+  - potion{type=SPEED;duration=9999;level=10;hasParticles=false}
+  - skill{s=GrandAncientGolemOrder-rise2}
+  - skill{s=GrandAncientGolemChaos-rise3}
+GrandAncientGolemOrder-rise2:
+  Skills:
+  - effect:particlesphere{p=cloud;amount=4;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=2}
+  - delay 2
+  - skill{s=GrandAncientGolemOrder-rise2}
+
+GrandAncientGolemChaos-spawn:
+  Skills:
+  - summon{t=GrandAncientGolemChaos-spawn;r=3;a=3}
+
+GrandAncientGolemOrder-spawn:
+  Skills:
+  - summon{t=GrandAncientGolemOrder-spawn;r=3;a=3}
+GrandAncientGolemChaosSpawn-skill:
+  Conditions: 
+  - playerwithin 8
+  - playernotwithin 2
+  Cooldown: 2
+  Skills:
+  - jump{v=.5)
+  - delay 2
+  - effect:particlesphere{p=flame;amount=4;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=2}
+  - leap{v=250} @target
+GrandAncientGolemOrderSpawn-skill:
+  Conditions: 
+  - playerwithin 24
+  - playernotwithin 4
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - potion{t=SLOW;d=120;l=10;hasParticles=false} @self
+  - cast{skillName="Spark";duration=80;onCast=GrandAncientGolemOrderSpawn-skillcast;showCastBar=true} @self
+GrandAncientGolemOrderSpawn-skillcast:
+  Skills:
+  - summon{t=GrandAncientGolemOrderSpawn-marker} @target
+GrandAncientGolemOrderSpawn-marker:
+  Skills:
+  - effect:particlesphere{p=fireworks_spark;amount=2;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=2}
+  - delay 10
+  - effect:particlesphere{p=fireworks_spark;amount=10;radius=2;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=2}
+  - remove
+GrandAncientGolemOrderSpawn-skill2:
+  Conditions: 
+  - playerwithin 4
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - potion{t=SLOW;d=80;l=3;hasParticles=false} @self
+  - cast{skillName="Repulse";duration=40;onCast=GrandAncientGolemOrderSpawn-skill2cast;showCastBar=true} @self
+GrandAncientGolemOrderSpawn-skill2cast:
+  Skills:
+  - effect:particlesphere{p=fireworks_spark;amount=2;radius=4;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=4}
+  - velocity{v=250} @PIR{r=4}
+
+GrandAncientGolem-Shoulder:
+  Cooldown: 9999
+  Skills:
+  - summon{t=GrandAncientGolem-chaos} @Location{c=1608.5,72,2098.5}
+  - summon{t=GrandAncientGolem-order} @Location{c=1603.5,71,2117.5}  
+GrandAncientGolemChaos-start:
+  Skills:
+  - sound{s=entity.dragon_fireball.explode}
+  - effect:particles{p=explosion_large;amount=4} @self
+  - jump{v=1.6}
+  - delay 40
+  - sound{s=entity.dragon_fireball.explode}
+  - effect:particles{p=explosion_large;amount=4} @self
+  - delay 20
+  - summon{t=GrandAncientGolemChaos-marker} @NearestPlayer{r=64}
+  - delay 60
+  - signal{s=order} @MIR{t=GrandAncientGolem-order;r=128}
+GrandAncientGolem-chaos:
+  Skills:
+  - sound{s=entity.dragon_fireball.explode}
+  - effect:particles{p=explosion_large;amount=4} @self
+  - jump{v=1.6}
+  - delay 40
+  - sound{s=entity.dragon_fireball.explode}
+  - effect:particles{p=explosion_large;amount=4} @self
+  - delay 20
+  - summon{t=GrandAncientGolemChaos-marker} @NearestPlayer{r=64}
+  - delay 80
+  - signal{s=order} @MIR{t=GrandAncientGolem-order;r=128}
+GrandAncientGolem-order:
+  Skills:
+  - sound{s=entity.ender_dragon.flap;v=2}
+  - jump{v=1.6}
+  - delay 40
+  - effect:particles{p=explosion_large;amount=4} @self
+  - delay 20
+  - summon{t=GrandAncientGolemOrder-marker} @NearestPlayer{r=64}
+  - delay 80
+  - signal{s=chaos} @MIR{t=GrandAncientGolem-chaos;r=128}
+
+GrandAncientGolemChaos-marker:
+  Skills:
+  - delay 20
+  - ignite{ticks=120} @PIR{r=5}
+  - potion{type=BLINDNESS;duration=120;level=10} @PIR{r=5}
+  - potion{t=SLOW;d=120;l=2} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=5}
+  - sound{s=entity.dragon_fireball.explode}
+  - effect:blockmask{m=crimson_planks;r=5;d=800} @self
+  - delay 400
+  - summon{t=GrandAncientGolemChaos-spawn} 0.15 @self
+  - remove{delay=400} @self
+GrandAncientGolemChaos-marker2:
+  Skills:
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - delay 40 
+  - skill{s=GrandAncientGolemChaos-marker2} 
+GrandAncientGolemOrder-marker:
+  Skills:
+  - delay 20
+  - throw{vy=16} @PIR{r=5}
+  - potion{t=SLOW;d=120;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"}
+  - sound{s=entity.ender_dragon.flap}
+  - effect:blockmask{m=smooth_quartz;r=5;d=800}
+  - delay 40
+  - skill{s=GrandAncientGolemOrder-marker2} @self
+  - delay 400
+  - summon{t=GrandAncientGolemOrder-spawn} 0.15 @self
+  - remove{delay=400} @self
+GrandAncientGolemOrder-marker2:
+  Skills:
+  - potion{t=SLOW;d=80;l=2} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - delay 40 
+  - skill{s=GrandAncientGolemChaos-marker2} 
+GrandAncientGolem-Rupture:
+  Conditions:
+  - incombat{}
+  Skills:
+  - summon{t=GrandAncientGolem-marker;r=24;os=true}
+GrandAncientGolem-marker:
+  Skills:
+  - sound{s=block.campfire.crackle}
+  - delay 20
+  - sound{s=entity.dragon_fireball.explode}
+  - effect:particles{p=explosion_large;amount=4}
+  - throw{vy=8} @PIR{r=4}
+  - sound{s=entity.iron_golem.attack}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=3} @PIR{r=4}
+  - remove
+
+GrandAncientOrb:
+  Skills:
+  - skill{s=GrandAncientOrb2}
+  - skill{s=GrandAncientOrb3}
+GrandAncientOrb2:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  Skills:
+  - effect:particlesphere{p=reddust;color=#F39C12;amount=32;radius=5;yOffset=.5}
+GrandAncientOrb3:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - effect:particlesphere{p=reddust;amount=48;radius=5;yOffset=.5}
+GrandAncientOrb4:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Cooldown: 2
+  Skills:
+  - sound{s=entity.experience_orb.pickup;volume=2;pitch=0.5}
+  - effect:particlesphere{p=reddust;color=#ABEBC6;amount=250;radius=7;yOffset=.5}
+  - effect:particlesphere{p=reddust;color=#ABEBC6;amount=8;radius=1;yOffset=.5} @MIR{t=GrandAncientGolem-spawn;r=128}
+  - heal{a=2500;i=true} @MIR{t=GrandAncientGolem-spawn;r=128}
+  - delay 20
+  - sound{s=entity.experience_orb.pickup;volume=1;pitch=0.5}
+  - effect:particlesphere{p=reddust;color=#ABEBC6;amount=125;radius=7;yOffset=.5}
+  - effect:particlesphere{p=reddust;color=#ABEBC6;amount=4;radius=1;yOffset=.5} @MIR{t=GrandAncientGolem-spawn;r=128}
+  - heal{a=2500;i=true} @MIR{t=GrandAncientGolem-spawn;r=128}
+
+GrandAncientOrb-damaged:
+  Cooldown: 12
+  Skills:
+  - setvariable{var=caster.active;value=0}
+  - delay 240
+  - setvariable{var=caster.active;value=1}
+GrandAncientGolem-spawn:
+  Conditions:
+  - playerwithin 64
+  Skills:
+  - missile{ot=GrandAncientGolemSpawn-tick;oh=GrandAncientGolemSpawn-hit;v=12;i=1;hr=2;vr=2;md=200;hnp=false;mr=60;sB=false} @target
+
+GrandAncientGolemSpawn-tick:
+  Skills:
+  - effect:particles{p=reddust;a=1} @origin
+
+GrandAncientGolemSpawn-hit:
+  Skills:
+  - potion{type=SLOW;duration=40;level=10}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} 
+  - pull{v=3} 
+
+GrandAncientGolem-Knockup:
+  Conditions:
+  - incombat{}
+  TargetConditions:
+  - distance{d=<2}
+  Cooldown: 4
+  Skills:
+  - throw{vy=10}
+  - sound{s=entity.iron_golem.attack} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 200"}
+  - potion{t=SLOW;d=40;l=1}
+
+AncientGolem-Knockup2:
+  Conditions:
+  - playerwithin 8
+  - incombat{}
+  Cooldown: 20
+  Skills:
+  - sound{s=block.campfire.crackle}
+  - potion{t=SLOW;d=80;l=3;hasParticles=false} @self
+  - setvariable{var=caster.fire;value=1} 
+  - delay 60
+  - effect:particlesphere{p=flame;amount=48;radius=6}
+  - setvariable{var=caster.fire;value=0} 
+  - sound{s=entity.dragon_fireball.explode} 
+  - throw{vy=12} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=6}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=6}
+AncientGolem-Firetick:
+  Conditions:
+  - variableEquals{var=caster.fire;value=1}
+  Skills:
+  - effect:particlesphere{p=flame;amount=4;radius=2;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=2}
+
+GrandAncientGolem-Firetick:
+  Conditions:
+  - variableEquals{var=caster.fire;value=1}
+  Skills:
+  - effect:particlesphere{p=flame;amount=4;radius=2;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+
+GrandAncientGolem-Knockup2:
+  Conditions:
+  - playerwithin 8
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - sound{s=block.campfire.crackle}
+  - potion{t=SLOW;d=80;l=3;hasParticles=false} @self
+  - setvariable{var=caster.fire;value=1} 
+  - delay 60
+  - effect:particlesphere{p=flame;amount=48;radius=7}
+  - setvariable{var=caster.fire;value=0} 
+  - sound{s=entity.dragon_fireball.explode} 
+  - throw{vy=16} @PIR{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=7}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=7}
+
+GrandAncientGolem-Prison:
+  Cooldown: 9999
+  Skills:
+  - summon{t=GrandAncientOrb} @Location{c=1608.5,72,2107.5}
+  - delay 80
+  - potion{t=SLOW;d=120;l=3;hasParticles=false} @self
+  - cast{skillName="Blood Bind";duration=80;onCast=GrandAncientGolem-Prisoncast;showCastBar=true} @self
+GrandAncientGolem-Prisoncast:
+  Skills:
+  - summon{t=GrandAncientGolem-spawn;r=2;os=true} @target
+
+GrandAncientGolem-Prison2:
+  Cooldown: 9999
+  Skills:
+  - summon{t=GrandAncientOrb} @Location{c=1608.5,72,2107.5}
+  - delay 80
+  - potion{t=SLOW;d=120;l=3;hasParticles=false} @self
+  - cast{skillName="Blood Bind";duration=80;onCast=GrandAncientGolem-Prison2cast;showCastBar=true} @self
+GrandAncientGolem-Prison2cast:
+  Skills:
+  - summon{t=GrandAncientGolem-spawn;r=2;os=true} @self
+
+GrandAncientGolem-spawn-despawn:
+  Skills:
+  - cast{skillName="Despawn";duration=1200;onCast=GrandAncientGolem-spawn-despawncast;showCastBar=true}
+GrandAncientGolem-spawn-despawncast:
+  Skills:
+  - remove
+
+passiveSkill_cinders:
+ Conditions:
+ - incombat{} true
+ Skills:
+ - heal{amount=50} @self
+ - effect:sound{s=entity.experience_orb.pickup;volume=0.1;pitch=0.5} @PlayersInRadius{r=18}
+ - effect:particles{p=HAPPY_VILLAGER;amount=3;vSpread=1;hSpread=.5;Speed=0;yOffset=0} @self
+
+startCinderStorm:
+ Conditions:
+ - incombat{} true
+ Skills:
+ - sendtitle{title="&4&kooo&r&l&cCinder Storm&r&4&kooo";subtitle="&e&l3";d=20}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5}
+ - delay 20
+ - sendtitle{title="&4&kooo&r&l&cCinder Storm&r&4&kooo";subtitle="&e&l2";d=20}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5}
+ - delay 20
+ - sendtitle{title="&4&kooo&r&l&cCinder Storm&r&4&kooo";subtitle="&e&l1";d=20}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5}
+ - delay 20
+ - skill{s=cinderStorm} @self
+
+cinderStorm:
+ Skills:
+ - remove @MIR{r=30;t=ThePyromancer-spawn}
+ - delay 1
+ - summon{type=ThePyromancer-spawn;amount=3;yr=0;os=true;radius=4}
+ - effect:sound{s=entity.blaze.death;volume=0.25;p=0.5} @PIR{r=20}
+ - effect:particles{p=portal;a=100;hs=5;vs=3}
+
+FlamingRings:
+  Skills:
+  - effect:particlering{p=flame;r=3;a=12;hs=0.4;vs=0;y=0.1} #@self
+  - effect:sound{s=entity.ghast.shoot;v=2} @PIR{r=20}
+  - skill{s=CheckIfAirborne} @PlayersInRing{min=2.5;max=3.5}
+  - delay 5
+  - effect:particlering{p=flame;r=4;a=16;hs=0.4;vs=0;y=0.1} #@self
+  - effect:sound{s=entity.ghast.shoot;v=2} @PIR{r=20}
+  - skill{s=CheckIfAirborne} @PlayersInRing{min=3.5;max=4.5}
+  - delay 5
+  - effect:particlering{p=flame;r=5;a=24;hs=0.4;vs=0;y=0.1} #@self
+  - effect:sound{s=entity.ghast.shoot;v=2} @PIR{r=20}
+  - skill{s=CheckIfAirborne} @PlayersInRing{min=4.5;max=5.5}
+  - delay 5
+  - effect:particlering{p=flame;r=6;a=48;points=24;hs=0.4;vs=0;y=0.1} #@self
+  - effect:sound{s=entity.ghast.shoot;v=2} @PIR{r=20}
+  - skill{s=CheckIfAirborne} @PlayersInRing{min=5.5;max=6.5}
+  - delay 5
+  - effect:particlering{p=flame;r=7;a=48;points=24;hs=0.4;vs=0;y=0.1} #@self
+  - effect:sound{s=entity.ghast.shoot;v=2} @PIR{r=20}
+  - skill{s=CheckIfAirborne} @PlayersInRing{min=6.5;max=7.5}
+  - delay 5
+  - effect:particlering{p=flame;r=8;a=48;points=24;hs=0.4;vs=0;y=0.1} #@self
+  - effect:sound{s=entity.ghast.shoot;v=2} @PIR{r=20}
+  - skill{s=CheckIfAirborne} @PlayersInRing{min=7.5;max=8.5}
+  - delay 5
+  - effect:particlering{p=flame;r=9;a=48;points=24;hs=0.4;vs=0;y=0.1} #@self
+  - effect:sound{s=entity.ghast.shoot;v=2} @PIR{r=20}
+  - skill{s=CheckIfAirborne} @PlayersInRing{min=8.5;max=9.5}
+  - delay 5
+  - effect:particlering{p=flame;r=10;a=48;points=24;hs=0.4;vs=0;y=0.1} #@self
+  - effect:sound{s=entity.ghast.shoot;v=2} @PIR{r=20}
+  - skill{s=CheckIfAirborne} @PlayersInRing{min=9.5;max=10.5}
+
+CheckIfAirborne:
+  Conditions:
+  - altitude{a=>0.1} false
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+
+FloatingBarrage:
+  #Change this skill to use projectiles instead to control damage
+  Skills:
+  - jump{v=2} @self
+  - particles{p=flame;a=10;hs=0.5;vs=0.3} @self
+  - delay 1
+  - particles{p=flame;a=10;hs=0.5;vs=0.3} @self
+  - delay 1
+  - particles{p=flame;a=10;hs=0.5;vs=0.3} @self
+  - delay 1
+  - particles{p=flame;a=10;hs=0.5;vs=0.3} @self
+  - velocity{vx=0;vy=0.1;vz=0} @self
+  - delay 1
+  - setgravity{g=false} @self
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - skill{s=PhoenixFireball} @target
+  - delay 5
+  - setgravity{g=true} @self
+
+PyromancerTimer:
+  Conditions:
+  - incombat{} true
+  Skills:
+  - skill{s=FlamingRings} @self
+  #- delay 120
+  #- skill{s=FloatingBarrage} @target
+
+FlyTest:
+  Skills:
+  - jump{v=2}
+  - delay 3
+  - velocity{vx=0;vy=0.1;vz=0}
+  - delay 1
+  - setgravity{g=false}
+  - delay 80
+  - setgravity{g=true}
+
+FireArrow:
+  Conditions:
+  - incombat{}
+  - playerwithin 6 castinstead FireArrowNon
+  - playernotwithin 6
+  Cooldown: 4
+  Skills:
+  - equip{item=FireBow:0}
+  - potion{type=SLOW;duration=40;level=3;hasParticles=false} @self
+  - delay 20
+  - sound{s=entity.blaze.shoot} @self
+  - projectile{onTick=FireArrow-Tick;onHit=FireArrow-Hit;mr=20;v=10;i=1;hR=1;vR=1;sfo=1.5} @target
+FireArrow-Tick:
+  Skills:
+  - effect:particles{p=flame;amount=3;speed=0;hS=0.1;vS=0.1} @origin
+FireArrow-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 120"}
+FireArrowNon:
+  Skills:
+  - equip{item=iron_sword:0}
+
+FireElemental:
+  Conditions:
+  - incombat{}
+  - playerwithin 20
+  - playernotwithin 6
+  Cooldown: 12
+  Skills:
+  - jump{v=.8} @self
+  - delay 20
+  - leap{v=300} @target
+  - effect:particlesphere{particle=flame;amount=20;radius=4} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=4}
+  - delay 5
+  - effect:particlesphere{particle=flame;amount=16;radius=3} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=3}
+  - delay 5
+  - effect:particlesphere{particle=flame;amount=12;radius=2} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=2}
+
+FireGruntAuraSmall:
+  Conditions:
+  - playerwithin 8
+  Cooldown: 8
+  Skills:
+  - delay 40
+  - effect:particlering{p=flame;a=20;vS=0;hS=0;radius=1}
+  - sound{s=entity.horse.step} @self
+  - delay 10
+  - effect:particlering{p=flame;a=20;vS=0;hS=0;radius=2}
+  - sound{s=entity.horse.step} @self
+  - delay 10
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - effect:particlering{p=flame;a=20;vS=0;hS=0;radius=3}
+  - sound{s=entity.horse.step} @self
+  - delay 10
+  - effect:particlering{p=flame;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=flame;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=flame;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:sound{s=entity.blaze.shoot;v=0.8;p=0.01} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PlayersInRadius{r=3}
+  
+ScorchingBurst:
+  Condition: 
+  - incombat{} true 
+  Skills:
+  - aura{i=1;d=70;oT=ScorchingBurstProjectile} @Self
+
+ScorchingBurstProjectile:
+  Skills:
+  - projectile{i=1;oT=ScorchingBurstTick;oH=ScorchingBurstHit;mr=20;sE=false;v=20} @target
+
+ScorchingBurstTick:
+  Skills:
+  - effect:sound{s=block.fire.ambient;volume=1.0;pitch=0.5}
+  - effect:particles{particle=flame;a=20;s=0.05;hs=0.1;vs=0.1} @origin
+
+ScorchingBurstHit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} 
+  - ignite{t=60}
+  
+ScorchingHatred:
+  Condition: 
+  - incombat{} true 
+  Skills:
+  - jump{velocity=1.50}
+  - effect:sound{s=entity.blaze.death;volume=1.0;pitch=0.5}
+  - delay 18
+  - setAI{ai=false} @self
+  - delay 10
+  - effect:sound{s=entity.wither.spawn;volume=1.0;pitch=0.5}
+  - effect:particlering{particle=flame;radius=2;points=32;amount=20;hS=1;vS=0;repeat=11;repeatInterval=10} @self
+  - skill{s=ScorchingHatredProjectile;repeat=8;repeatInterval=10}
+  - delay 130
+  - setAI{ai=true} @self
+  
+ScorchingHatredProjectile:
+  Skills:
+  - projectile{onTick=ScorchingHatredProjectileTick;onHit=ScorchingHatredProjectileHit;v=13;i=1;hR=1;vR=1;StopAtBlock=false;HitNonPlayers=true;g=-0.15;vO=-0.3} @target
+  - effect:sound{s=entity.blaze.shoot;volume=1.0;pitch=0.5}
+  - projectile{onTick=ScorchingHatredProjectileTick;onHit=ScorchingHatredProjectileHit;v=13;i=1;hR=1;vR=1;StopAtBlock=false;HitNonPlayers=true;g=-0.15;HorizontalOffset=16;vO=-0.5} @target
+  - effect:sound{s=entity.blaze.shoot;volume=1.0;pitch=0.5}
+  - projectile{onTick=ScorchingHatredProjectileTick;onHit=ScorchingHatredProjectileHit;v=13;i=1;hR=1;vR=1;StopAtBlock=false;HitNonPlayers=true;g=-0.15;HorizontalOffset=-16;vO=-0.5} @target
+  - effect:sound{s=entity.blaze.shoot;volume=1.0;pitch=0.5} 
+  - projectile{onTick=ScorchingHatredProjectileTick;onHit=ScorchingHatredProjectileHit;v=13;i=1;hR=1;vR=1;StopAtBlock=false;HitNonPlayers=true;g=-0.15;HorizontalOffset=32;vO=-0.5} @target
+  - effect:sound{s=entity.blaze.shoot;volume=1.0;pitch=0.5}
+  - projectile{onTick=ScorchingHatredProjectileTick;onHit=ScorchingHatredProjectileHit;v=13;i=1;hR=1;vR=1;StopAtBlock=false;HitNonPlayers=true;g=-0.15;HorizontalOffset=-32;vO=-0.5} @target
+  - effect:sound{s=entity.blaze.shoot;volume=1.0;pitch=0.5}
+   
+ScorchingHatredProjectileTick:
+  Skills:
+  - effect:particles{p=flame;amount=1;speed=0;hR=0.2;vR=0.2} @origin 
+  - effect:sound{s=block.campfire.crackle;volume=1.0;pitch=0.5}
+ScorchingHatredProjectileHit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 160"} 
+  - effect:sound{s=entity.entity.blaze.hurt;v=1;p=2}

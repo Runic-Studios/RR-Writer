@@ -1,0 +1,170 @@
+coldsteel-peak-boss-passive:
+  Skills:
+  - potion{t=SPEED;d=20;l=2;hasParticles=false}
+  - effect:blockmask{m=ice;r=1;d=20}
+coldsteel-peak-boss-skill:
+  Conditions:
+  - incombat{}
+  - onblock{m=SNOW_BLOCK} true
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=20;l=3;hasParticles=false}
+  - delay 20
+  - potion{t=SLOW;d=80;l=10;hasParticles=false}
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - sound{s=block.snow.break}
+  - delay 10
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - sound{s=block.snow.break}
+  - delay 10
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - sound{s=block.snow.break}
+  - delay 10
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - sound{s=block.snow.break}
+  - equip{i=SNOWBALL:HAND}
+  - delay 10
+  - skill{s=coldsteel-peak-boss-skill-check}
+  - delay 10
+  - sound{s=block.snow.hit;p=1.5}
+  - equip{i=AIR:HAND}
+  - projectile{onTick=coldsteel-peak-boss-proj-tick;onHit=coldsteel-peak-boss-proj-hit;oe=coldsteel-peak-boss-proj-end;v=8;i=1;hR=1;vR=1;v=20} @target
+  - delay 5
+  - equip{i=SNOWBALL:OFFHAND}
+  - delay 5
+  - sound{s=block.snow.hit;p=1.5}
+  - equip{i=AIR:OFFHAND}
+  - sound{s=block.snow.break}
+  - projectile{onTick=coldsteel-peak-boss-proj-tick;onHit=coldsteel-peak-boss-proj-hit;oe=coldsteel-peak-boss-proj-end;v=8;i=1;hR=1;vR=1;v=20} @target
+  - delay 5
+  - equip{i=SNOWBALL:HAND}
+  - delay 5
+  - sound{s=block.snow.hit;p=1.5}
+  - equip{i=AIR:HAND}
+  - sound{s=block.snow.break}
+  - projectile{onTick=coldsteel-peak-boss-proj-tick;onHit=coldsteel-peak-boss-proj-hit;oe=coldsteel-peak-boss-proj-end;v=8;i=1;hR=1;vR=1;v=20} @target
+  - delay 5
+  - equip{i=SNOWBALL:OFFHAND}
+  - delay 5
+  - sound{s=block.snow.hit;p=1.5}
+  - equip{i=AIR:OFFHAND}
+  - sound{s=block.snow.break}
+  - projectile{onTick=coldsteel-peak-boss-proj-tick;onHit=coldsteel-peak-boss-proj-hit;oe=coldsteel-peak-boss-proj-end;v=8;i=1;hR=1;vR=1;v=20} @target
+coldsteel-peak-boss-skill-check:
+  Skills:
+  - randomskill{s=coldsteel-peak-boss-skill-within,coldsteel-peak-boss-skill-notwithin}
+coldsteel-peak-boss-skill-within:
+  Conditions:
+  - playerwithin 5
+  Skills:
+  - leap{v=250} @Forward{f=-5;y=4}
+coldsteel-peak-boss-skill-notwithin:
+  Conditions:
+  - playernotwithin 5
+  Skills:
+  - leap{v=250} @Forward{f=5;y=2.5}
+
+coldsteel-peak-boss-proj-tick:
+  Skills:
+  - effect:particles{p=snowballpoof;c=#A8FFFF;a=1;speed=0;hS=0.2;vS=0.2} @Origin
+coldsteel-peak-boss-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PlayersNearOrigin{r=2}
+  #- potion{type=SLOW;duration=60;lvl=2} @PlayersNearOrigin{r=5}
+  - effect:blockmask{m=ice;r=1;d=20} @PlayersNearOrigin{r=2}
+coldsteel-peak-boss-proj-end:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5} 
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - effect:particlesphere{p=reddust;r=5;c=#FFFFFF;a=10;hs=0.1;vs=0.1} @Origin
+  - effect:particlesphere{p=reddust;r=5;c=#A8FFFF;a=10;hs=0.1;vs=0.1} @Origin
+
+coldsteel-peak-warrior:
+  Conditions:
+  - incombat{}
+  - onblock{m=SNOW_BLOCK} true
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=20;l=3;hasParticles=false}
+  - delay 20
+  - potion{t=SLOW;d=40;l=10;hasParticles=false}
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - sound{s=block.snow.break}
+  - delay 20
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - sound{s=block.snow.break}
+  - equip{i=SNOWBALL:HAND}
+  - delay 40
+  - sound{s=block.snow.hit;p=1.5}
+  - equip{i=IRON_SWORD:HAND}
+  - projectile{onTick=coldsteel-peak-warrior-proj-tick;onHit=coldsteel-peak-warrior-proj-hit;v=8;i=1;hR=1;vR=1;v=25} @target
+coldsteel-peak-warrior-proj-tick:
+  Skills:
+  - effect:particles{p=snowballpoof;c=#A8FFFF;a=1;speed=0;hS=0.2;vS=0.2} @Origin
+coldsteel-peak-warrior-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PlayersNearOrigin{r=2}
+  - potion{type=SLOW;duration=60;lvl=2} @PlayersNearOrigin{r=5}
+  - effect:particlesphere{p=reddust;r=5;c=#FFFFFF;a=5;hs=0.1;vs=0.1} @Origin
+  - effect:particlesphere{p=reddust;r=5;c=#A8FFFF;a=5;hs=0.1;vs=0.1} @Origin
+  - effect:blockmask{m=ice;r=1;d=20} @PlayersNearOrigin{r=2}
+
+coldsteel-peak-cleric:
+  Conditions:
+  - incombat{}
+  Cooldown: 24
+  Skills:
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - equip{i=STONE_SWORD:HAND}
+  - delay 20
+  - sound{s=block.honey_block.break}
+  - heal{a=1;i=true}
+  - damage{a=1;i=true}
+  - delay 40
+  - potion{t=SPEED;d=160;l=2;hasParticles=false}
+  - delay 200
+  - equip{i=AIR:HAND}
+coldsteel-peak-rogue-r:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - summon{t=coldsteel-peak-rogue-sword}
+  - equip{i=AIR:HAND}
+  - delay 25
+  - jump{v=.25}
+  - delay 2
+  - leap{v=400} @MIR{t=coldsteel-peak-rogue-sword;r=12}
+coldsteel-peak-rogue-l:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - summon{t=coldsteel-peak-rogue-sword}
+  - equip{i=AIR:OFFHAND}
+  - delay 25
+  - jump{v=.25}
+  - delay 2
+  - leap{v=400} @MIR{t=coldsteel-peak-rogue-sword;r=12}
+
+coldsteel-peak-rogue-sword:
+  Skills:
+  - potion{t=INVISIBILITY;d=9999;l=1;hasParticles=false}
+  - jump{v=.5}
+  - delay 2
+  - leap{v=250} @NearestPlayer{r=250}
+  - delay 5
+  - skill{s=coldsteel-peak-rogue-sword-skill}
+  - delay 35
+  - remove
+coldsteel-peak-rogue-sword-skill:
+  Skills:
+  - skill{s=coldsteel-peak-rogue-sword-skill2}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 4
+  - skill{s=coldsteel-peak-rogue-sword-skill}
+coldsteel-peak-rogue-sword-skill2:
+  Conditions:
+  - playerwithin 1
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=3}  

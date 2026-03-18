@@ -1,0 +1,216 @@
+goldengladevillager-cutscene:
+  Skills:
+  - potion{t=SLOW;d=20;l=10;hasParticles=false}
+  - delay 10
+  - jump{v=0.4}
+  - delay 10
+  - jump{v=0.4}
+  - delay 100
+  - jump{v=0.4}
+  - delay 10
+  - jump{v=0.4}
+  - delay 10
+  - jump{v=0.4}
+  - delay 10
+  - jump{v=0.4}
+
+gladeBandit-quest:
+  Cooldown: 9999
+  Skills:
+  - skill{s=gladeBandit-quest1}
+
+gladeBandit-quest1:
+  Skills:
+  - setvariable{var=caster.alive;value=0}
+  - signal{s=alive} @MIR{t=gladeBandit,gladeBanditRider;r=20}
+  - delay 10
+  - skill{s=gladeBandit-questtrigger}
+  - delay 10
+  - skill{s=gladeBandit-quest1}
+
+gladeBandit-quest-alive:
+  Skills:
+  - setvariable{var=caster.alive;value=1}
+  
+gladeBandit-questtrigger:
+  Conditions:
+  - variableEquals{var=caster.alive;value=0}   
+  Skills:
+  - command{c="questtrigger player <target.name> goldenvillagertrigger1"} @PIR{r=20} 
+  - remove @self
+
+gladeBullHurt:
+  Cooldown: 5
+  Skills:
+  - sound{s=entity.cow.hurt;volume=3;0.1} @self 
+
+gladeBullChargeStart:
+  Skills:
+  - onDamaged{auraName=kbResist;d=50;onHit=kbResistGladeBull} @self 
+  - potion{type=SLOW;duration=80;level=2;hasParticles=false} @self
+  - cast{
+        skillName="&aMighty Charge";
+        duration=40;
+        onCast=gladeBullCharge;
+        cancelOnMove=false;
+        showCastBar=true
+      } @target
+kbResistGladeBull:
+  Skills:
+  - particles{p=flame;amount=10;hS=0.4;
+  - velocity{m=set;x=0;y=0;z=0} @self
+
+
+gladeBullCharge:
+  Cooldown: 10
+  Skills:
+  - throw{velocity=15;velocityY=2} @PlayersInRadius{r=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=2}
+  - effect:explosion @self
+  - leap{velocity=300} @target
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=2}
+  - delay 2
+  - throw{velocity=15;velocityY=2} @PlayersInRadius{r=2}
+
+gladeRabbitBurrow:
+  Skills:
+  - potion{type=SLOW;duration=30;level=10;hasParticles=false} @self
+  - particles{p=block_crack;m=DIRT;amount=10;hS=0.4;repeat=15;repeatInterval=2} @self
+  - delay 30
+  - potion{type=INVISIBILITY;duration=120;level=2;hasParticles=false} @self
+  - delay 90
+  - potion{type=SLOW;duration=30;level=10;hasParticles=false} @self
+  - particles{p=block_crack;m=DIRT;amount=10;hS=0.4;repeat=15;repeatInterval=2} @self
+  - delay 30
+
+crossbowStart:
+  Conditions:
+  - mounted true
+  - incombat true
+  Skills:
+  - sound{s=item.crossbow.loading_start;p=0.3} @self
+  - delay 15
+  - sound{s=item.crossbow.loading_middle;p=0.3} @self
+  - delay 25
+  - sound{s=item.crossbow.loading_end} @self
+  - delay 20
+  - sound{s=item.crossbow.hit } @self
+  - skill{s=crossbowShot} @target
+
+crossbowShot:
+  Skills:
+  - projectile{bulletType=ARROW;onTick=crossbowShot-Tick;onHit=crossbowShot-Hit;v=14;i=1;hR=1;vR=1;hnp=false;tyo=1}
+crossbowShot-Tick:
+  Skills:
+  - effect:particles{p=CAMPFIRE_COSY_SMOKE;amount=3;speed=0;hS=0.1;vS=0.1} @origin
+crossbowShot-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 175"}
+  
+riderIsDead:
+  Skills:
+  - potion{type=SPEED;duration=110;level=2;p=false} @self
+  - runaigoalselector{goal=clear}
+  - runaigoalselector{goal=fleeplayers}
+  - runaigoalselector{goal=randomstroll}
+  - delay 40
+  - remove @self
+  
+gladeCrossbowStart:
+  Skills:  
+  - sound{s=item.armor.equip_leather} @self
+  - equip{item=crossbow:0} @self
+  - sound{s=item.crossbow.loading_start;p=0.3} @self
+  - delay 15
+  - sound{s=item.crossbow.loading_middle;p=0.3} @self
+  - delay 25
+  - sound{s=item.crossbow.loading_end} @self
+  - delay 20
+  - sound{s=item.crossbow.hit } @self
+  - skill{s=crossbowShotExplo} @target
+  - delay 30
+  - sound{s=item.armor.equip_leather} @self
+  - equip{item=iron_sword:0}
+
+crossbowShotExplo:
+  Skills:
+  - projectile{bulletType=ARROW;onTick=crossbowShotExplo-Tick;onHit=crossbowShotExplo-Hit;v=14;i=1;hR=1;vR=1;hnp=false;tyo=1}
+crossbowShotExplo-Tick:
+  Skills:
+  - effect:particles{p=CAMPFIRE_COSY_SMOKE;amount=3;speed=0;hS=0.1;vS=0.1} @origin
+crossbowShotExplo-Hit:
+  Skills:
+  - effect:explosion
+  - command{c="runicdamage <caster.uuid> <target.name> 275"} @PlayersNearOrigin{r=3}
+
+gladecheckNight:
+  Conditions:
+  - night{} true
+  Skills:
+  - setname{name=&e[&642&e] &cMidnight Corpse;delay=2} @self
+  - sound{s=entity.ravager.roar;p=2} @self 0.5 
+  - sound{s=entity.ravager.roar;p=0.1} @self
+  - heal{a=50} @self
+  - effect:particles{p=SMOKE_NORMAL;amount=20;hS=1;vS=1;repeat=5;repeatI=15;useEyeLocation=true} @self
+  - potion{type=SPEED;duration=100;level=1;hasParticles=false} @self
+  - delay 30
+  - sound{s=entity.ravager.roar;p=2} @self 0.3 
+  - delay 30
+  - sound{s=entity.ravager.roar;p=2} @self 0.3 
+  - delay 30
+  - sound{s=entity.ravager.roar;p=2} @self 0.3 
+
+gladecheckNight2:
+  Conditions:
+  - night{} true
+  Skills:
+  - setname{name=&e[&642&e] &cMidnight Rider;delay=2} @self
+  - skill{s=gladeKnight}
+  - sound{s=entity.ravager.roar;p=2} @self 0.5 
+  - sound{s=entity.ravager.roar;p=0.1} @self
+  - heal{a=50} @self
+  - effect:particles{p=SMOKE_NORMAL;amount=20;hS=1;vS=1;repeat=5;repeatI=15;useEyeLocation=true} @self
+  - delay 30
+  - sound{s=entity.ravager.roar;p=2} @self 0.3 
+  - delay 30
+  - sound{s=entity.ravager.roar;p=2} @self 0.3 
+  - delay 30
+  - sound{s=entity.ravager.roar;p=2} @self 0.3 
+  
+gladeKnight:
+  Cooldown: 99999
+  Skills:
+  - equip{item=carved_pumpkin:4} @self
+  - mount{type=gladeZombieMount}
+
+checkDoorGlade:
+  Conditions:
+  - mobsInRadius{types=goldenglade-crypts-damage;amount=0;radius=100} true
+  - mobsInRadius{types=goldenglade-crypts-health;amount=0;radius=100} true
+  - mobsInRadius{types=goldenglade-crypts-speed;amount=0;radius=100} true
+  Skills:
+  - message{m="no mobs with in 100b"} @PIR{r=50}
+
+StartWalking1:
+  Cooldown: 9999
+  Skills:  
+  - summon{type=gladeVillager;amount=1;radius=0} @self
+  - teleportY{y=10} @self
+  - potion{type=INVISIBILITY;duration=9999;level=1} @self
+  - setname{name="."} @self
+gladeVillageCheck:
+  Conditions:
+  - mobsInRadius{t=gladeVillager;amount=1;radius=7} true
+  Skills:
+  - message{m="good"} @PIR{r=100}
+  #- effect:firework
+  - remove @MIR{t=gladeVillager;r=100}
+  - remove @self
+
+villageDmgCheck:
+  TriggerConditions:
+  - entitytype{t=PLAYER} true
+  Skills:
+  - CancelEvent
+

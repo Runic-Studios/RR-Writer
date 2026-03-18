@@ -1,0 +1,348 @@
+hightower-pawn-elite:
+  Skills:
+  - sound{s=block.grass.break;p=0.5;v=3} 
+  - blockmask{m=dirt;d=40;r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - message{cooldown=60;m="&e[&6✸&e] &c&lPromoted Pawn &e&lhas been challenged!"} @PIR{r=32}
+  - cast{skillName="Despawn";duration=3000;onCast=hightower-pawn-elite-despawn;showCastBar=true}
+hightower-pawn-elite-despawn:
+  Skills:
+  - sound{s=block.grass.break;p=0.5;v=3} 
+  - blockmask{m=dirt;d=40;r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - message{cooldown=60;m="&e[&6✸&e] &c&lPromoted Pawn &e&lhas despawned!"} @PIR{r=32}
+  - remove
+
+hightower-pawn-elite-skill:
+  Conditions: 
+  - incombat{}
+  Skills:
+  - randomskill{skills=hightower-pawn-elite-knight-promo,hightower-pawn-elite-rook-promo,hightower-pawn-elite-bishop-promo}
+hightower-pawn-elite-knight-promo:
+  Conditions:
+  - playerwithin 5
+  Cooldown: 5
+  Skills:
+  - jump{v=1}
+  - delay 20
+  - throw{vy=10} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=4}
+  - sound{s=block.grass.break;p=0.5} 
+  - blockmask{m=dirt;d=40;r=4}
+hightower-pawn-elite-rook-promo:
+  Conditions:
+  - playernotwithin 5
+  Cooldown: 5
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - jump{v=.2}
+  - delay 2
+  - leap{v=250} @target
+  - delay 25
+  - throw{vy=8} @PIR{r=6}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=6}
+  - sound{s=block.grass.break} 
+  - blockmask{m=dirt;d=40;r=6}
+hightower-pawn-elite-bishop-promo:
+  Conditions:
+  - playernotwithin 3
+  Cooldown: 5
+  Skills:
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=45}
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=135}
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=225}
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=315}
+  - sound{s=entity.arrow.shoot}
+  - delay 20
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=45}
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=135}
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=225}
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=315}
+  - sound{s=entity.arrow.shoot}
+hightower-pawn-elite-pawnbishop-tick:
+  Skills:
+  - effect:particles{p=reddust;color=#000000;a=1}
+hightower-pawn-elite-pawnbishop-hit:
+  Skills:
+  - potion{t=SLOW;d=80;l=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}
+
+
+hightower-queen4:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - delay 120
+  - randomskill{s=hightower-queenne,hightower-queennw,hightower-queensw,hightower-queense}  
+hightower-queenne:
+  Cooldown: 16
+  Skills:
+  - summon{t=queen-flame} @Location{c=238.5,79,188.5}
+hightower-queennw:
+  Cooldown: 16
+  Skills:
+  - summon{t=queen-flame} @Location{c=226.5,79,188.5}
+hightower-queensw:
+  Cooldown: 16
+  Skills:
+  - summon{t=queen-flame} @Location{c=226.5,79,200.5}
+hightower-queense:
+  Cooldown: 16
+  Skills:
+  - summon{t=queen-flame} @Location{c=238.5,79,200.5}
+
+queen-flame:
+  Skills:
+  - effect:particlesphere{p=flame;amount=8;radius=2;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=2}
+  - ignite{d=40} @PIR{r=2}
+  - delay 20
+  - effect:particlesphere{p=flame;amount=8;radius=2;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=2}
+  - ignite{d=40} @PIR{r=2}
+  - delay 20
+  - effect:particlesphere{p=flame;amount=80;radius=8;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=8}
+  - ignite{d=80} @PIR{r=8}
+  - delay 10
+  - effect:particlesphere{p=flame;amount=80;radius=8;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=8}
+  - ignite{d=80} @PIR{r=8}
+  - delay 10
+  - effect:particlesphere{p=flame;amount=80;radius=8;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=8}
+  - ignite{d=80} @PIR{r=8}
+  - delay 10
+  - effect:particlesphere{p=flame;amount=80;radius=8;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=8}
+  - ignite{d=80} @PIR{r=8}
+  - remove
+
+hightower-queen3:
+  Cooldown: 9999
+  Skills:
+  - summon{t=hightower-spawn} @Location{c=223.5,78,197.5}
+  - summon{t=hightower-spawn} @Location{c=223.5,78,191.5}
+  - summon{t=hightower-spawn} @Location{c=229.5,78,185.5}
+  - summon{t=hightower-spawn} @Location{c=235.5,78,185.5}
+  - summon{t=hightower-spawn} @Location{c=241.5,78,191.5}
+  - summon{t=hightower-spawn} @Location{c=241.5,78,197.5}
+  - summon{t=hightower-spawn} @Location{c=235.5,78,203.5}
+  - summon{t=hightower-spawn} @Location{c=229.5,78,203.5}
+
+hightower-queen2:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - delay 120
+  - potion{t=SLOW;d=60;l=10;hasParticles=false} 
+  - randomskill{s=hightower-queenn,hightower-queene,hightower-queens,hightower-queenw}
+hightower-queenn:
+  Cooldown: 20
+  Skills:
+  - teleport{sh=0;sv=0} @Location{c=232.5,78,189.5}
+  - delay 20
+  - jump{v=1}
+  - delay 20
+  - sound{s=block.stone.break;p=0.5;v=2} 
+  - throw{vy=12} @PIR{r=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=8}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=8}
+  - blockmask{m=polished_blackstone;d=40;r=8}
+hightower-queene:
+  Cooldown: 20
+  Skills:
+  - teleport{sh=0;sv=0} @Location{c=237.5,78,194.5}
+  - delay 20
+  - jump{v=1}
+  - delay 20
+  - sound{s=block.stone.break;p=0.5;v=2} 
+  - throw{vy=12} @PIR{r=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=8}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=8}
+  - blockmask{m=polished_blackstone;d=40;r=8}
+hightower-queens:
+  Cooldown: 20
+  Skills:
+  - teleport{sh=0;sv=0} @Location{c=232.5,78,199.5}
+  - delay 20
+  - jump{v=1}
+  - delay 20
+  - sound{s=block.stone.break;p=0.5;v=2} 
+  - throw{vy=12} @PIR{r=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=8}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=8}
+  - blockmask{m=polished_blackstone;d=40;r=8}
+hightower-queenw:
+  Cooldown: 20
+  Skills:
+  - teleport{sh=0;sv=0} @Location{c=227.5,78,194.5}
+  - delay 20
+  - jump{v=1}
+  - delay 20
+  - sound{s=block.stone.break;p=0.5;v=2} 
+  - throw{vy=12} @PIR{r=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=8}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=8}
+  - blockmask{m=polished_blackstone;d=40;r=8}
+
+
+hightower-queen:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - delay 80
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - cast{skillName="Clockwork";duration=40;onCast=hightower-queencast;showCastBar=true} @self
+hightower-queencast:
+  Skills:
+  - potion{t=SLOW;d=20;l=2} 
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=0}
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=90}
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=180}
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=270}
+  - sound{s=entity.arrow.shoot}
+  - delay 10
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=30}
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=120}
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=210}
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=300}
+  - sound{s=entity.arrow.shoot}
+  - delay 10
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=60}
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=150}
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=240}
+  - projectile{ot=queen-tick;oh=queen-hit;v=12;i=1;ho=330}
+  - sound{s=entity.arrow.shoot}
+queen-tick:
+  Skills:
+  - effect:particles{p=reddust;color=#FFFFFF;a=1}
+queen-hit:
+  Skills:
+  - potion{t=SLOW;d=40;l=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}
+
+hightower-rook:
+  Conditions:
+  - incombat{}
+  Cooldown: 5
+  Skills:
+  - delay 40
+  - jump{v=.2}
+  - delay 2
+  - leap{v=250} @target
+  - delay 15
+  - sound{s=block.stone.break} 
+  - potion{t=SLOW;d=80;l=3} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}
+  - blockmask{m=polished_blackstone;d=40;r=4}
+hightower-bishop:
+  Conditions:
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - delay 40
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=45}
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=135}
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=225}
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=315}
+  - sound{s=entity.arrow.shoot}
+  - delay 10
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=45}
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=135}
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=225}
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=315}
+  - sound{s=entity.arrow.shoot}
+  - delay 10
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=45}
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=135}
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=225}
+  - projectile{ot=bishop-tick;oh=bishop-hit;v=16;i=1;ho=315}
+  - sound{s=entity.arrow.shoot}
+bishop-tick:
+  Skills:
+  - effect:particles{p=reddust;color=#FFFFFF;a=1}
+bishop-hit:
+  Skills:
+  - potion{t=SLOW;d=80;l=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"}
+
+hightower-knight:
+  Conditions:
+  - incombat{}
+  Cooldown: 5
+  Skills:
+  - delay 20
+  - jump{velocity=0.4}
+  - delay 30
+  - jump{velocity=0.4}
+  - delay 30
+  - jump{velocity=1}
+  - delay 25
+  - sound{s=block.stone.break;p=0.5;v=2} 
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - blockmask{m=polished_blackstone;d=40;r=5}
+
+hightower-pawn:
+  Conditions: 
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - delay 240
+  - randomskill{s=knight-promo,rook-promo,bishop-promo}
+knight-promo:
+  Cooldown: 24
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - cast{skillName="Knight Form";duration=20;onCast=knight-promocast;showCastBar=true} @self
+knight-promocast:
+  Skills:
+  - jump{v=1}
+  - delay 20
+  - throw{vy=10} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=5}
+  - sound{s=block.grass.break;p=0.5} 
+  - blockmask{m=dirt;d=40;r=5}
+rook-promo:
+  Cooldown: 24
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - cast{skillName="Rook Form";duration=20;onCast=rook-promocast;showCastBar=true} @self
+rook-promocast:
+  Skills:
+  - jump{v=.2}
+  - delay 2
+  - leap{v=400} @target
+  - delay 15
+  - throw{vy=8} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}
+  - sound{s=block.grass.break} 
+  - blockmask{m=dirt;d=40;r=4}
+bishop-promo:
+  Cooldown: 24
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - cast{skillName="Bishop Form";duration=20;onCast=bishop-promocast;showCastBar=true} @self
+bishop-promocast:
+  Skills:
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=45}
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=135}
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=225}
+  - projectile{ot=pawnbishop-tick;oh=pawnbishop-hit;v=16;i=1;ho=315}
+  - sound{s=entity.arrow.shoot}
+pawnbishop-tick:
+  Skills:
+  - effect:particles{p=reddust;color=#000000;a=1}
+pawnbishop-hit:
+  Skills:
+  - potion{t=SLOW;d=80;l=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}

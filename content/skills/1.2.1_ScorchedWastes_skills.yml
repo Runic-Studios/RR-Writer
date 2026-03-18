@@ -1,0 +1,284 @@
+ToxicSlime-jump:
+  Conditions:
+  - incombat{}
+  Cooldown: 2
+  Skills:
+  - jump{v=0.45}
+
+SkullHunter:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=SkullHunterBash} 
+  - skill{s=SkullHunterAxe} 
+  - skill{s=SkullHunter-within} 
+  - skill{s=SkullHunter-notwithin} 
+SkullHunter-within:
+  Conditions:
+  - playerwithin 4
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.bash;amount=1}	
+  - variablesubtract{var=caster.axe;amount=1}
+SkullHunter-notwithin:
+  Conditions:
+  - playernotwithin 6
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.axe;amount=1}	 
+  - variablesubtract{var=caster.bash;amount=1}
+SkullHunterBash:
+  Conditions:
+  - varinrange{var=caster.bash;value=>5}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=30;l=1;hasParticles=false} @self
+  - cast{skillName="Skull Crusher";duration=30;onCast=SkullHunterBashcast;showCastBar=true} @target
+SkullHunterBashcast:
+  Skills:
+  - potion{t=SLOW;d=30;l=10;hasParticles=false} @self
+  - summon{t=SkullHunter-marker} @Forward{f=2;y=0}
+  - setvariable{var=caster.bash;value=0}
+  - setvariable{var=caster.axe;value=0}
+SkullHunter-marker:
+  Skills:
+  - sound{s=item.axe.strip} 
+  - potion{t=SLOW;d=80;l=10} @PIR{r=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=2}
+  - effect:blockmask{m=coal_block;r=2;d=20}
+  - remove
+
+SkullHunterAxe:
+  Conditions:
+  - varinrange{var=caster.axe;value=>8}
+  Cooldown: 12
+  Skills:
+  - cast{skillName="Roped Axe";duration=30;onCast=SkullHunterAxecast;showCastBar=true} @target
+SkullHunterAxecast:
+  Skills:
+  - equip{i=AIR:OFFHAND}
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - projectile{ot=SkullHunterAxe-Tick;oh=SkullHunterAxe-Hit;v=16;hr=1;vr=1;i=1} @target
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - setvariable{var=caster.bash;value=0}
+  - setvariable{var=caster.axe;value=0}
+  - delay 20
+  - equip{i=GOLDEN_AXE:OFFHAND}
+  
+SkullHunterAxe-Tick:
+  Skills:
+  - effect:particles{particle=item_crack;material=coal_block;a=1;d=5;v=0;yo=0} @origin
+  
+SkullHunterAxe-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 80"}
+  - throw{vy=2}
+  - delay 2
+  - pull{v=8} 
+  - potion{t=SLOW;d=40;l=3}
+  - effect:sound{s=entity.fishing_bobber.retrieve}
+
+
+
+SkullWalker:
+  Cooldown: 8
+  Skills:
+  - sound{s=entity.skeleton.hurt}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @target
+  - potion{t=SLOW;d=40;l=1} @target
+  - summon{t=SkullWalker-spawn;r=2} @target
+SkullWalker-spawn:
+  Skills:
+  - delay 40
+  - sound{s=entity.skeleton.ambient} 
+  - potion{t=SLOW;d=80;l=3} @PIR{r=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=2}
+  - effect:particlesphere{p=block_crack;material=bone_block;amount=4;radius=2;yOffset=.5} 
+  - remove
+  
+LizardSoldier:
+  Skills:
+  - skill{s=LizardSoldierDash}
+  - skill{s=LizardSoldierSmash} 
+  - skill{s=LizardSoldiercheckwithin}
+  - skill{s=LizardSoldierchecknotwithin}
+LizardSoldierchecknotwithin:
+  Conditions:
+  - playernotwithin 5
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.dash;amount=1}	 
+  - variablesubtract{var=caster.smash;amount=1}
+LizardSoldiercheckwithin:
+  Conditions:
+  - playerwithin 5
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.smash;amount=1}	
+  - variablesubtract{var=caster.dash;amount=1}
+LizardSoldierDash:
+  Conditions:
+  - varinrange{var=caster.dash;value=>5}
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=30;l=1;hasParticles=false} @self
+  - cast{skillName="Lunge";duration=20;onCast=LizardSoldierDashCast;showCastBar=true} @target
+LizardSoldierEliteDash:
+  Conditions:
+  - varinrange{var=caster.dash;value=>5}
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - potion{t=SLOW;d=30;l=1;hasParticles=false} @self
+  - cast{skillName="Lunge";duration=20;onCast=LizardSoldierDashEliteCast;showCastBar=true} @target
+LizardSoldierDashCast:
+  Skills:
+  - jump{v=.8)
+  - delay 2
+  - leap{v=250} @target
+  - potion{t=slow;d=20;l=2;hasParticles=false} @self
+  - delay 20
+  - potion{t=slow;d=20;l=10;hasParticles=false} @self
+  - cast{skillName="Smash";duration=20;onCast=LizardSoldierSmashCast;showCastBar=true} @target
+  - delay 20
+  - potion{t=slow;d=20;l=2;hasParticles=false} @self
+  - setvariable{var=caster.dash;value=0}
+  - setvariable{var=caster.smash;value=0}
+LizardSoldierDashEliteCast:
+  Skills:
+  - jump{v=.8)
+  - delay 2
+  - leap{v=250} @target
+  - potion{t=slow;d=20;l=2;hasParticles=false} @self
+  - delay 20
+  - potion{t=slow;d=20;l=10;hasParticles=false} @self
+  - cast{skillName="Smash";duration=20;onCast=LizardSoldierSmashCast;showCastBar=true} @target
+  - delay 20
+  - potion{t=slow;d=20;l=2;hasParticles=false} @self
+  - setvariable{var=caster.dash;value=0}
+  - setvariable{var=caster.smash;value=0}  
+LizardSoldierSmash:
+  Conditions:
+  - varinrange{var=caster.smash;value=>5}
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=slow;d=20;l=2;hasParticles=false} @self
+  - delay 20
+  - potion{t=slow;d=20;l=10;hasParticles=false} @self
+  - cast{skillName="Smash";duration=20;onCast=LizardSoldierSmashCast;showCastBar=true} @target
+  - delay 20
+  - potion{t=slow;d=20;l=2;hasParticles=false} @self
+LizardSoldierEliteSmash:
+  Conditions:
+  - varinrange{var=caster.smash;value=>5}
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - potion{t=slow;d=20;l=2;hasParticles=false} @self
+  - delay 20
+  - potion{t=slow;d=20;l=10;hasParticles=false} @self
+  - cast{skillName="Smash";duration=20;onCast=LizardSoldierSmashEliteCast;showCastBar=true} @target
+  - delay 20
+  - potion{t=slow;d=20;l=2;hasParticles=false} @self
+LizardSoldierSmashCast:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=dirt;a=15;r=4;yOffset=.5}
+  - sound{s=block.stone.break}
+  - command{c="runicdamage <caster.uuid> <target.name> 120"} @PIR{r=5}
+  - potion{type=BLINDNESS;duration=40;level=3} @PIR{r=5}
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=5}
+  - throw{vy=8} @PIR{r=5}
+  - setvariable{var=caster.smash;value=0}
+  - setvariable{var=caster.dash;value=0}
+LizardSoldierSmashEliteCast:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=dirt;a=15;r=4;yOffset=.5}
+  - sound{s=block.stone.break}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=5}
+  - potion{type=BLINDNESS;duration=40;level=3} @PIR{r=5}
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=5}
+  - throw{vy=8} @PIR{r=5}
+  - setvariable{var=caster.smash;value=0}
+  - setvariable{var=caster.dash;value=0}
+  
+ShootSlimeball:
+  Conditions:
+  - incombat{} true
+  - playerwithin{d=5} false
+  Skills:
+  - projectile{ot=ShootSlimeball-Tick;oh=ShootSlimeball-Hit;v=40;hr=2;vr=2;i=1}
+  - sound{s=block.slime_block.break} @self
+ShootSlimeball-Tick:
+  Skills:
+  - effect:particles{p=slime;a=15;hs=0.5;vs=0.5} @origin
+ShootSlimeball-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+  - velocity{vx=0;vy=1;vz=0}
+
+SlimePassiveAura:
+  Conditions:
+  - incombat{} true
+  - playerwithin{d=5}
+  Skills:
+  - effect:particlering{p=slime;a=30;r=5;y=0.01}
+  - command{c="runicdamage <caster.uuid> <target.name> 6"} @PIR{r=5}
+
+GrandSlimePassiveAura:
+  Conditions:
+  - incombat{} true
+  - playerwithin{d=12}
+  Skills:
+  - effect:particlesphere{p=slime;a=300;r=12;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=12}
+
+ReflectSlimeball:
+  Conditions:
+  - incombat{} true
+  - playerwithin{d=12} false
+  Skills:
+  - projectile{ot=ReflectSlimeball-Tick;oh=ReflectSlimeball-Hit;v=40;hr=2;vr=2;i=1}
+  - sound{s=block.slime_block.break} @self
+ReflectSlimeball-Tick:
+  Skills:
+  - effect:particles{p=slime;a=20;hs=0.5;vs=0.5} @origin
+ReflectSlimeball-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 60"}
+  - velocity{vx=0;vy=1.5;vz=0}
+
+LizardArcherArrow:
+  Conditions:
+  - incombat{}
+  - playerwithin 6 castinstead LizardArcherArrow-Non
+  - playernotwithin 6
+  Skills:
+  - equip{item=OrcBow:0}
+  - potion{type=SLOW;duration=40;level=3;hasParticles=false} @self
+  - delay 20
+  - projectile{onTick=LizardArcherArrow-Tick;onHit=LizardArcherArrow-Hit;v=10;i=1;hR=1;vR=1;sfo=1.5}
+  - sound{s=block.slime_block.break} @self
+LizardArcherArrow-Tick:
+  Skills:
+  - effect:particles{p=reddust;color=#7CFC00;amount=1;speed=0;hS=0.1;vS=0.1} @origin
+LizardArcherArrow-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+LizardArcherArrow-Non:
+  Skills:
+  - equip{item=iron_sword:0}
+
+PassiveHostility:
+  Conditions:
+  - targetwithin 2
+  - stance Null
+  Skills:
+  - setstance{s=Attack} @Self
+  - potion{t=SLOW;d=10;lvl=2;hasParticles=false} @Self
+  - delay 3
+  - command{c="runicdamage <caster.uuid> <target.name> 3"} @Target
+  - delay 17
+  - setstance{s=Null} @Self

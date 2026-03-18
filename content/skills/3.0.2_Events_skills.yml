@@ -1,0 +1,573 @@
+giant-event-boss-teleport:
+  Conditions:
+  - variableEquals{var=caster.teleport;value=1}
+  Skills:
+  - teleport @Location{c=2074.5,60,-2326.5}
+giant-event-boss-skill:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.teleport;value=0}  
+  - delay 20
+  - jump{v=2}
+  - delay 40
+  - potion{t=SLOW;d=240;l=3} @PIR{r=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 750"} @PIR{r=8}
+  - throw{vy=12} @PIR{r=8}
+  - sound{s=block.sand.break;p=.5;v=2} 
+  - delay 40
+  - setvariable{var=caster.teleport;value=1}  
+
+giant-event-start-cannonball-spawn:
+  Skills:
+  - summon{t=giant-event-cannonball-spawn}
+  - delay 400
+  - skill{s=giant-event-start-cannonball-spawn}
+
+giant-event-cannonball-fire-death:
+  Conditions:
+  - onground{} true
+  Cooldown: 20
+  Skills:
+  - delay 20
+  - summon{t=giant-event-cannonball-damage}
+  - remove
+
+giant-event-boss-wave:
+  Skills:
+  - skill{s=giant-event-boss-wave-1}
+  - skill{s=giant-event-boss-wave-2} <98%
+  - skill{s=giant-event-boss-wave-3} <96%
+  - skill{s=giant-event-boss-wave-4} <94%
+  - skill{s=giant-event-boss-wave-5} <92%
+  - skill{s=giant-event-boss-wave-6} <90%
+  - skill{s=giant-event-boss-wave-7} <88%
+  - skill{s=giant-event-boss-wave-8} <86%
+  - skill{s=giant-event-boss-wave-9} <84%
+  - skill{s=giant-event-boss-wave-10} <82%
+  - skill{s=giant-event-boss-wave-11} <80%
+  - skill{s=giant-event-boss-wave-12} <78%
+  - skill{s=giant-event-boss-wave-13} <76%
+  - skill{s=giant-event-boss-wave-14} <74%
+  - skill{s=giant-event-boss-wave-15} <72%
+  - skill{s=giant-event-boss-wave-16} <70%
+  - skill{s=giant-event-boss-wave-17} <68%
+  - skill{s=giant-event-boss-wave-18} <66%
+  - skill{s=giant-event-boss-wave-19} <64%
+  - skill{s=giant-event-boss-wave-20} <62%
+  - skill{s=giant-event-boss-wave-21} <60%
+  - skill{s=giant-event-boss-wave-22} <58%
+  - skill{s=giant-event-boss-wave-23} <56%
+  - skill{s=giant-event-boss-wave-24} <54%
+  - skill{s=giant-event-boss-wave-25} <52%
+  - skill{s=giant-event-boss-wave-26} <50%
+  - skill{s=giant-event-boss-wave-27} <48%
+  - skill{s=giant-event-boss-wave-28} <46%
+  - skill{s=giant-event-boss-wave-29} <44%
+  - skill{s=giant-event-boss-wave-30} <42%
+  - skill{s=giant-event-boss-wave-31} <40%
+  - skill{s=giant-event-boss-wave-32} <38%
+  - skill{s=giant-event-boss-wave-33} <36%
+  - skill{s=giant-event-boss-wave-34} <34%
+  - skill{s=giant-event-boss-wave-35} <32%
+  - skill{s=giant-event-boss-wave-36} <30%
+  - skill{s=giant-event-boss-wave-37} <28%
+  - skill{s=giant-event-boss-wave-38} <26%
+  - skill{s=giant-event-boss-wave-39} <24%
+  - skill{s=giant-event-boss-wave-40} <22%
+  - skill{s=giant-event-boss-wave-41} <20%
+  - skill{s=giant-event-boss-wave-42} <18%
+  - skill{s=giant-event-boss-wave-43} <16%
+  - skill{s=giant-event-boss-wave-44} <14%
+  - skill{s=giant-event-boss-wave-45} <12%
+  - skill{s=giant-event-boss-wave-46} <10%
+  - skill{s=giant-event-boss-wave-47} <8%
+  - skill{s=giant-event-boss-wave-48} <6%
+  - skill{s=giant-event-boss-wave-49} <4%
+  - skill{s=giant-event-boss-wave-50} <2%
+
+giant-event-boss-wave-1:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=12;r=15;os=true}
+giant-event-boss-wave-2:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=12;r=15;os=true}
+giant-event-boss-wave-3:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=12;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=4;r=8;os=true}
+giant-event-boss-wave-4:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=12;r=15;os=true}
+giant-event-boss-wave-5:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=12;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=4;r=8;os=true}
+  - summon{t=giant-event-boss-spawn-3;a=1;r=5;os=true}
+giant-event-boss-wave-6:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=12;r=15;os=true}
+giant-event-boss-wave-7:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=12;r=15;os=true}
+giant-event-boss-wave-8:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=12;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=4;r=8;os=true}
+giant-event-boss-wave-9:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=12;r=15;os=true}
+giant-event-boss-wave-10:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=12;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=4;r=8;os=true}
+  - summon{t=giant-event-boss-spawn-3;a=1;r=5;os=true}
+  - summon{t=giant-event-boss-spawn-4;a=1;r=5;os=true} @Location{c=2130.5,90,-2328.5}
+giant-event-boss-wave-11:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=14;r=15;os=true}
+giant-event-boss-wave-12:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=14;r=15;os=true}
+giant-event-boss-wave-13:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=14;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=5;r=8;os=true}
+giant-event-boss-wave-14:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=14;r=15;os=true}
+giant-event-boss-wave-15:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=14;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=5;r=8;os=true}
+  - summon{t=giant-event-boss-spawn-3;a=2;r=5;os=true}
+giant-event-boss-wave-16:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=14;r=15;os=true}
+giant-event-boss-wave-17:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=14;r=15;os=true}
+giant-event-boss-wave-18:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=14;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=5;r=8;os=true}
+giant-event-boss-wave-19:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=14;r=15;os=true}
+giant-event-boss-wave-20:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=14;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=5;r=8;os=true}
+  - summon{t=giant-event-boss-spawn-3;a=2;r=5;os=true}
+  - summon{t=giant-event-boss-spawn-4;a=1;r=5;os=true} @Location{c=2130.5,90,-2328.5}
+giant-event-boss-wave-21:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=16;r=15;os=true}
+giant-event-boss-wave-22:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=16;r=15;os=true}
+giant-event-boss-wave-23:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=16;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=6;r=8;os=true}
+giant-event-boss-wave-24:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=16;r=15;os=true}
+giant-event-boss-wave-25:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=16;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=6;r=8;os=true}
+  - summon{t=giant-event-boss-spawn-3;a=3;r=5;os=true}
+giant-event-boss-wave-26:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=16;r=15;os=true}
+giant-event-boss-wave-27:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=16;r=15;os=true}
+giant-event-boss-wave-28:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=16;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=6;r=8;os=true}
+giant-event-boss-wave-29:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=16;r=15;os=true}
+giant-event-boss-wave-30:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=16;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=6;r=8;os=true}
+  - summon{t=giant-event-boss-spawn-3;a=3;r=5;os=true}
+  - summon{t=giant-event-boss-spawn-4;a=1;r=5;os=true} @Location{c=2130.5,90,-2328.5}
+giant-event-boss-wave-31:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=18;r=15;os=true}
+giant-event-boss-wave-32:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=18;r=15;os=true}
+giant-event-boss-wave-33:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=18;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=7;r=8;os=true}
+giant-event-boss-wave-34:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=18;r=15;os=true}
+giant-event-boss-wave-35:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=18;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=7;r=8;os=true}
+  - summon{t=giant-event-boss-spawn-3;a=4;r=5;os=true}
+giant-event-boss-wave-36:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=18;r=15;os=true}
+giant-event-boss-wave-37:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=18;r=15;os=true}
+giant-event-boss-wave-38:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=18;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=7;r=8;os=true}
+giant-event-boss-wave-39:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=18;r=15;os=true}
+giant-event-boss-wave-40:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=18;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=7;r=8;os=true}
+  - summon{t=giant-event-boss-spawn-3;a=4;r=5;os=true}
+  - summon{t=giant-event-boss-spawn-4;a=2;r=5;os=true} @Location{c=2130.5,90,-2328.5}
+giant-event-boss-wave-41:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=20;r=15;os=true}
+giant-event-boss-wave-42:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=20;r=15;os=true}
+giant-event-boss-wave-43:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=20;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=8;r=8;os=true}
+giant-event-boss-wave-44:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=20;r=15;os=true}
+giant-event-boss-wave-45:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=20;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=8;r=8;os=true}
+  - summon{t=giant-event-boss-spawn-3;a=5;r=5;os=true}
+giant-event-boss-wave-46:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=20;r=15;os=true}
+giant-event-boss-wave-47:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=20;r=15;os=true}
+giant-event-boss-wave-48:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=20;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=8;r=8;os=true}
+giant-event-boss-wave-49:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=20;r=15;os=true}
+giant-event-boss-wave-50:
+  Cooldown: 9999
+  Skills:
+  - summon{t=giant-event-boss-spawn-1;a=20;r=15;os=true}
+  - summon{t=giant-event-boss-spawn-2-5;a=8;r=8;os=true}
+  - summon{t=giant-event-boss-spawn-3;a=5;r=5;os=true}
+  - summon{t=giant-event-boss-spawn-4;a=2;r=5;os=true} @Location{c=2130.5,90,-2328.5}
+
+giant-event-cannonball-despawn:
+  Skills:
+  - cast{skillName="Despawn";duration=1200;onCast=giant-event-cannonball-despawncast;showCastBar=true}
+giant-event-cannonball-despawncast:
+  Skills:
+  - sound{s=entity.magma_cube.squish_small} 
+  - remove
+giant-event-cannonball-faulty-despawn:
+  Skills:
+  - cast{skillName="&cDespawn";duration=400;onCast=giant-event-cannonball-faulty-despawncast;showCastBar=true}
+giant-event-cannonball-faulty-despawncast:
+  Skills:
+  - sound{s=entity.magma_cube.squish_small} 
+  - remove
+
+giant-event-cannonball:
+  Cooldown: 60
+  Skills:
+  - sound{s=entity.magma_cube.squish_small}
+  - randomskill{s=giant-event-cannonball-teleport-1,giant-event-cannonball-teleport-2}
+giant-event-cannonball-teleport-1:
+  Skills:
+  - teleport @Location{c=2109.5,79.5,-2332.5}
+giant-event-cannonball-teleport-2:
+  Skills:
+  - teleport @Location{c=2109.5,79.5,-2327.5}
+giant-event-cannonball2:
+  Cooldown: 60
+  Skills:
+  - sound{s=entity.magma_cube.squish_small}
+  - randomskill{s=giant-event-cannonball2-teleport-1}
+giant-event-cannonball2-teleport-1:
+  Skills:
+  - teleport @Location{c=2110.5,79.5,-2330}
+
+giant-event-cannonball3:
+  Cooldown: 60
+  Skills:
+  - sound{s=entity.magma_cube.squish_small}
+  - randomskill{s=giant-event-cannonball2-teleport-1}
+  - message{m="&eA large cannon ball acquired, all Cannons are loaded!"} @PIR{r=128}
+  - delay 40
+  - signal{s=cannon2} @MIR{t=giant-event-cannon1,giant-event-cannon2,giant-event-cannon3,giant-event-cannon4,giant-event-cannon5;r=24} ~onTimer:20
+  - remove
+
+giant-event-cannonball3-teleport-1:
+  Skills:
+  - teleport @Location{c=2110.5,79.5,-2330}
+
+giant-event-cannonball-faulty:
+  Skills:
+  - sound{s=entity.generic.explode;v=1}
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @trigger
+  - remove
+
+giant-event-cannon-fire:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  Cooldown: 8
+  Skills:
+  - setvariable{var=caster.active;value=1}
+  - remove @MIR{t=giant-event-cannonball;r=3}
+  - sound{s=block.stone_button.click_on}
+  - delay 40
+  - sound{s=entity.generic.explode;v=1} 
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1} 
+  - summon{t=giant-event-cannonball-marker} @Forward{f=0.25;y=0}
+  - summon{t=giant-event-cannonball-fire} @Forward{f=0.1;y=0} 
+  - delay 20
+  - skill{s=giant-event-cannon-remove}
+
+giant-event-cannon-fire2:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  Cooldown: 20
+  Skills:
+  - setvariable{var=caster.active;value=1}
+  - remove @MIR{t=giant-event-cannonball2;r=3}
+  - sound{s=block.stone_button.click_on}
+  - delay 40
+  - sound{s=entity.generic.explode;v=1} 
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1} 
+  - summon{t=giant-event-cannonball-marker} @Forward{f=0.25;y=0}
+  - summon{t=giant-event-cannonball-fire} @Forward{f=0.1;y=0} 
+  - delay 10
+  - sound{s=entity.generic.explode;v=1} 
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1} 
+  - summon{t=giant-event-cannonball-marker} @Forward{f=0.25;y=0}
+  - summon{t=giant-event-cannonball-fire} @Forward{f=0.1;y=0} 
+  - delay 10
+  - sound{s=entity.generic.explode;v=1} 
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1} 
+  - summon{t=giant-event-cannonball-marker} @Forward{f=0.25;y=0}
+  - summon{t=giant-event-cannonball-fire} @Forward{f=0.1;y=0} 
+  - delay 10
+  - sound{s=entity.generic.explode;v=1} 
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1} 
+  - summon{t=giant-event-cannonball-marker} @Forward{f=0.25;y=0}
+  - summon{t=giant-event-cannonball-fire} @Forward{f=0.1;y=0} 
+  - delay 20
+  - skill{s=giant-event-cannon-remove}
+
+giant-event-cannon-remove:
+  Skills:
+  - skill{s=giant-event-cannon-remove1}
+  - skill{s=giant-event-cannon-remove2}
+  - skill{s=giant-event-cannon-remove3}
+  - skill{s=giant-event-cannon-remove4}
+  - skill{s=giant-event-cannon-remove5}
+giant-event-cannon-remove1:
+  Conditions:
+  - variableEquals{var=caster.cannon;value=1}
+  Skills:
+  - summon{t=giant-event-cannon1} @Location{c=2104.5,82,-2311.5}
+  - remove
+giant-event-cannon-remove2:
+  Conditions:
+  - variableEquals{var=caster.cannon;value=2}
+  Skills:
+  - summon{t=giant-event-cannon2} @Location{c=2104.5,82,-2319.5}
+  - remove
+giant-event-cannon-remove3:
+  Conditions:
+  - variableEquals{var=caster.cannon;value=3}
+  Skills:
+  - summon{t=giant-event-cannon3} @Location{c=2104.5,82,-2340.5}
+  - remove
+giant-event-cannon-remove4:
+  Conditions:
+  - variableEquals{var=caster.cannon;value=4}
+  Skills:
+  - summon{t=giant-event-cannon4} @Location{c=2104.5,82,-2348.5}
+  - remove
+giant-event-cannon-remove5:
+  Conditions:
+  - variableEquals{var=caster.cannon;value=5}
+  Skills:
+  - summon{t=giant-event-cannon5} @Location{c=2103.5,80,-2330}
+  - remove
+
+giant-event-boss-spawn-1-convert:
+  Cooldown: 9999
+  Skills:
+  - sound{s=item.armor.equip_iron}
+  - randomskill{s=giant-event-boss-spawn-1-convert1,giant-event-boss-spawn-1-convert2,giant-event-boss-spawn-1-convert3,giant-event-boss-spawn-1-convert4,giant-event-boss-spawn-1-convert5}
+giant-event-boss-spawn-1-convert1:
+  Conditions:
+  - health{h=<500}
+  Skills:
+  - summon{t=giant-event-boss-spawn-2-1}
+  - remove
+giant-event-boss-spawn-1-convert2:
+  Conditions:
+  - health{h=>500}
+  - health{h=<1000}
+  Skills:
+  - summon{t=giant-event-boss-spawn-2-2}
+  - remove
+giant-event-boss-spawn-1-convert3:
+  Conditions:
+  - health{h=>1000}
+  - health{h=<1500}
+  Skills:
+  - summon{t=giant-event-boss-spawn-2-3}
+  - remove
+giant-event-boss-spawn-1-convert4:
+  Conditions:
+  - health{h=>1500}
+  - health{h=<2000}
+  Skills:
+  - summon{t=giant-event-boss-spawn-2-4}
+  - remove
+giant-event-boss-spawn-1-convert5:
+  Conditions:
+  - health{h=>2000}
+  Skills:
+  - summon{t=giant-event-boss-spawn-2-5}
+  - remove
+
+giant-event-boss-spawn-1-damage:
+  Skills:
+  - damage{a=2000;i=true}
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+
+
+giant-event-boss-spawn-4:
+  Skills:
+  - sound{s=entity.ghast.shoot;v=4} 
+  - skill{s=frost-event-setup-enemy-5-proj}
+  - delay 10
+  - sound{s=entity.ghast.shoot;v=4} 
+  - skill{s=frost-event-setup-enemy-5-proj}
+  - delay 30
+  - sound{s=entity.ghast.shoot;v=4} 
+  - skill{s=frost-event-setup-enemy-5-proj}
+  - delay 10
+  - sound{s=entity.ghast.shoot;v=4} 
+  - skill{s=frost-event-setup-enemy-5-proj}
+  - delay 110
+  - skill{s=giant-event-boss-spawn-4}
+
+giant-event-boss-spawn-4-proj:
+  Skills:
+  - projectile{ot=giant-event-boss-spawn-4-proj-proj-tick;oh=giant-event-boss-spawn-4-proj-hit;oe=giant-event-boss-spawn-4-proj-end;i=1;v=15;mr=256;ac=.75} @NearestPlayer{r=64}
+frost-event-setup-enemy-5-proj-tick:
+  Skills:
+  - effect:particlesphere{p=smoke_normal;amount=1;radius=1}
+  - effect:particlesphere{p=flame;amount=1;radius=1} 
+giant-event-boss-spawn-4-proj-hit:
+  Skills:
+  - sound{s=block.fire.extinguish;v=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"}
+  - ignite{d=120}
+  - potion{t=SLOW;d=80;l=3}
+giant-event-boss-spawn-4-proj-end:
+  Skills:
+  - sound{s=block.fire.extinguish;v=1}
+  - effect:particlesphere{p=flame;amount=20;radius=5;yOffset=.5} 
+  - effect:particlesphere{p=smoke_normal;amount=20;radius=5;yOffset=.5}
+  - summon{t=giant-event-boss-spawn-4-proj-dmg}
+giant-event-boss-spawn-4-proj-dmg:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=5}
+  - ignite{d=120} @PIR{r=5}
+  - potion{t=SLOW;d=120;l=1} @PIR{r=5}
+  - remove
+
+giant-event-boss-spawn-5:
+  Conditions:
+  - onground{} true
+  Skills:
+  - sound{s=entity.slime.squish}
+  - potion{t=SLOW;d=160;l=10} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - remove
+
+giant-event-boss-spawn-3:
+  Conditions:
+  - playerwithin 8
+  Skills:
+  - potion{t=SLOW;d=80;l=10;hasParticles=false}
+  - sound{s=entity.iron_golem.hurt;v=2;p=0.5}
+  - delay 80
+  - effect:particlesphere{p=block_crack;material=sand;radius=5;amount=25}
+  - sound{s=entity.iron_golem.hurt;v=2}
+  - potion{t=SLOW;d=240;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=5}
+  - throw{vy=12} @PIR{r=5}
+  - sound{s=block.sand.break;p=.5;v=2} 

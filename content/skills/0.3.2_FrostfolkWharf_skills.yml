@@ -1,0 +1,272 @@
+Frostfolk:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=FrostfolkSpirit}
+  - skill{s=Frostfolk-passive}
+  - skill{s=Frostfolk-passive} <40%
+Frostfolk-passive:
+  Skills:
+  - summon{t=Frostfolk-marker5;r=24;a=2}
+FrostfolkSpirit:
+  Cooldown: 8
+  Skills:
+  - skill{s=Frostfolk-melee}
+  - skill{s=Frostfolk-range}
+Frostfolk-melee:
+  Conditions:
+  - playerwithin 5
+  Cooldown: 20
+  Skills:
+  - potion{t=SLOW;d=120;l=3;hasParticles=false}
+  - cast{skillName="Frigid Fear";duration=40;onCast=Frostfolk-meleecast;showCastBar=true} @self
+  - sound{s=block.snow.break;v=2}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+  - delay 20
+  - sound{s=block.snow.break;v=2}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+  - delay 20
+  - sound{s=block.snow.break;v=2}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+Frostfolk-meleecast:
+  Skills:
+  - summon{t=Frostfolk-marker8} @self
+  - delay 60
+  - summon{t=Frostfolk-marker6} @Ring{r=12;p=8}
+Frostfolk-range:
+  Conditions:
+  - playernotwithin 5
+  Cooldown: 20
+  Skills:
+  - potion{t=SLOW;d=120;l=3;hasParticles=false} @self
+  - cast{skillName="Fleeting Warmth";duration=40;onCast=Frostfolk-rangecast;showCastBar=true} @self
+  - sound{s=block.snow.break;v=2}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+  - delay 20
+  - sound{s=block.snow.break;v=2}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+  - delay 20
+  - sound{s=block.snow.break;v=2}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+Frostfolk-rangecast:
+  Skills:
+  - summon{t=Frostfolk-marker3} @Forward{f=2;y=0}
+  - delay 20
+  - summon{t=Frostfolk-marker4} @Forward{f=5;y=0}
+  - delay 15
+  - summon{t=Frostfolk-marker5} @Forward{f=9;y=0}
+  - delay 10
+  - summon{t=Frostfolk-marker6} @Forward{f=14;y=0}
+  - delay 5
+  - summon{t=Frostfolk-marker7} @Forward{f=20;y=0}
+
+Frostfolk-marker3:
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @PIR{r=3}
+  - sound{s=block.glass.break} 
+  - blockmask{m=packed_ice;r=3;d=40;n=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=3}
+  - delay 10
+  - skill{s=Frostfolk-marker3cast}
+  - delay 30
+  - remove 
+Frostfolk-marker3cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=5}
+  - delay 10
+  - skill{s=Frostfolk-marker3cast}
+
+Frostfolk-marker4:
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - sound{s=block.glass.break} 
+  - blockmask{m=packed_ice;r=4;d=40;n=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - delay 10
+  - skill{s=Frostfolk-marker4cast}
+  - delay 30
+  - remove 
+Frostfolk-marker4cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=4}
+  - delay 10
+  - skill{s=Frostfolk-marker4cast}
+
+Frostfolk-marker5:
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - sound{s=block.glass.break} 
+  - blockmask{m=packed_ice;r=5;d=40;n=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=5}
+  - delay 10
+  - skill{s=Frostfolk-marker5cast}
+  - delay 30
+  - remove 
+Frostfolk-marker5cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=5}
+  - delay 10
+  - skill{s=Frostfolk-marker5cast}
+
+Frostfolk-marker6:
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @PIR{r=6}
+  - sound{s=block.glass.break} 
+  - blockmask{m=packed_ice;r=6;d=40;n=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=6}
+  - delay 10
+  - skill{s=Frostfolk-marker6cast}
+  - delay 30
+  - remove 
+Frostfolk-marker6cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=6}
+  - delay 10
+  - skill{s=Frostfolk-marker6cast}
+
+Frostfolk-marker7:
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @PIR{r=7}
+  - sound{s=block.glass.break} 
+  - blockmask{m=packed_ice;r=7;d=40;n=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=7}
+  - delay 10
+  - skill{s=Frostfolk-marker7cast}
+  - delay 30
+  - remove 
+Frostfolk-marker7cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=7}
+  - delay 10
+  - skill{s=Frostfolk-marker7cast}
+
+Frostfolk-marker8:
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @PIR{r=8}
+  - sound{s=block.glass.break} 
+  - blockmask{m=packed_ice;r=8;d=40;n=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=8}
+  - delay 10
+  - skill{s=Frostfolk-marker8cast}
+  - delay 30
+  - remove 
+Frostfolk-marker8cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 12"} @PIR{r=8}
+  - delay 10
+  - skill{s=Frostfolk-marker8cast}
+
+
+
+
+FrostfolkFisherman:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=FrostfolkFisherman-within}
+  - skill{s=FrostfolkFisherman-notwithin}
+  - skill{s=FrostfolkFisherman-sorrow}
+FrostfolkFisherman-notwithin:
+  Conditions:
+  - playernotwithin 6
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+FrostfolkFisherman-within:
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+FrostfolkFisherman-sorrow:
+  Conditions:
+  - varinrange{var=caster.cast;value=>3}
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=80;l=2;hasParticles=false} 
+  - delay 20
+  - cast{skillName="Bitter Cold";duration=40;onCast=FrostfolkFisherman-sorrowcast;showCastBar=true} @self
+  - sound{s=block.snow.break}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+  - delay 20
+  - sound{s=block.snow.break}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+  - delay 20
+  - sound{s=block.snow.break}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+FrostfolkFisherman-sorrowcast:
+  Skills:
+  - summon{t=Frostfolk-marker;r=2;os=true} @self
+Frostfolk-marker:
+  Skills:
+  - potion{t=SLOW;d=40;l=2} @PIR{r=5}
+  - sound{s=block.glass.break} 
+  - blockmask{m=packed_ice;r=5;d=40;n=1}
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=5}
+  - skill{s=Frostfolk-markercast}
+  - delay 30
+  - remove 
+Frostfolk-markercast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 4"} @PIR{r=5}
+  - delay 10
+  - skill{s=Frostfolk-markercast}
+
+FrostfolkMaiden:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=FrostfolkMaiden-within}
+  - skill{s=FrostfolkMaiden-notwithin}
+  - skill{s=FrostfolkMaiden-sorrow}
+FrostfolkMaiden-notwithin:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+FrostfolkMaiden-within:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+FrostfolkMaiden-sorrow:
+  Conditions:
+  - varinrange{var=caster.cast;value=>6}
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 20 
+  - cast{skillName="Bitter Cold";duration=40;onCast=FrostfolkMaiden-sorrowcast;showCastBar=true} @self
+  - sound{s=block.snow.break}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+  - delay 20
+  - sound{s=block.snow.break}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+  - delay 20
+  - sound{s=block.snow.break}
+  - effect:particles{particle=block_crack;m=snow_block;a=5}
+
+FrostfolkMaiden-sorrowcast:
+  Conditions:
+  - playerwithin 24
+  Skills:
+  - summon{t=Frostfolk-marker2;r=2;os=true} @target
+Frostfolk-marker2:
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - sound{s=block.glass.break} 
+  - blockmask{m=packed_ice;r=4;d=40;n=1}
+  - delay 10
+  - skill{s=Frostfolk-marker2cast}
+  - delay 30
+  - remove 
+Frostfolk-marker2cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=4}
+  - delay 10
+  - skill{s=Frostfolk-marker2cast}

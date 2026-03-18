@@ -1,0 +1,362 @@
+stonehaven-anvil-threat:
+  Conditions:
+  - health{h=>25}
+  Cooldown: 9999
+  Skills:
+  - skill{s=stonehaven-anvil-threat1}
+stonehaven-anvil-threat1:
+  Skills:
+  - randomskill{skills=stonehaven-anvil-threat2,stonehaven-anvil-threat3}
+stonehaven-anvil-threat2:
+  Skills:
+  - randomskill{skills=stonehaven-anvil-threat-add1,stonehaven-anvil-threat-add1,stonehaven-anvil-threat-add2,stonehaven-anvil-threat-add2,stonehaven-anvil-threat-add3,stonehaven-anvil-threat-add3,stonehaven-anvil-threat-add4,stonehaven-anvil-threat-add4,stonehaven-anvil-threat-sub1,stonehaven-anvil-threat-sub2,stonehaven-anvil-threat-sub3,stonehaven-anvil-threat-sub4}
+  - delay 80
+  - randomskill{skills=stonehaven-anvil-threat-add1,stonehaven-anvil-threat-add1,stonehaven-anvil-threat-add2,stonehaven-anvil-threat-add2,stonehaven-anvil-threat-add3,stonehaven-anvil-threat-add3,stonehaven-anvil-threat-add4,stonehaven-anvil-threat-add4,stonehaven-anvil-threat-sub1,stonehaven-anvil-threat-sub2,stonehaven-anvil-threat-sub3,stonehaven-anvil-threat-sub4}
+  - delay 80
+  - randomskill{skills=stonehaven-anvil-threat-add1,stonehaven-anvil-threat-add1,stonehaven-anvil-threat-add2,stonehaven-anvil-threat-add2,stonehaven-anvil-threat-add3,stonehaven-anvil-threat-add3,stonehaven-anvil-threat-add4,stonehaven-anvil-threat-add4,stonehaven-anvil-threat-sub1,stonehaven-anvil-threat-sub2,stonehaven-anvil-threat-sub3,stonehaven-anvil-threat-sub4}
+  - delay 80
+  - skill{s=stonehaven-anvil-threat1}
+stonehaven-anvil-threat3:
+  Skills:  
+  - randomskill{skills=stonehaven-anvil-threat-add1,stonehaven-anvil-threat-add2,stonehaven-anvil-threat-add3,stonehaven-anvil-threat-add4,stonehaven-anvil-threat-sub1,stonehaven-anvil-threat-sub1,stonehaven-anvil-threat-sub2,stonehaven-anvil-threat-sub2,stonehaven-anvil-threat-sub3,stonehaven-anvil-threat-sub3,stonehaven-anvil-threat-sub4,stonehaven-anvil-threat-sub4}
+  - delay 80
+  - randomskill{skills=stonehaven-anvil-threat-add1,stonehaven-anvil-threat-add2,stonehaven-anvil-threat-add3,stonehaven-anvil-threat-add4,stonehaven-anvil-threat-sub1,stonehaven-anvil-threat-sub1,stonehaven-anvil-threat-sub2,stonehaven-anvil-threat-sub2,stonehaven-anvil-threat-sub3,stonehaven-anvil-threat-sub3,stonehaven-anvil-threat-sub4,stonehaven-anvil-threat-sub4}
+  - delay 80
+  - randomskill{skills=stonehaven-anvil-threat-add1,stonehaven-anvil-threat-add2,stonehaven-anvil-threat-add3,stonehaven-anvil-threat-add4,stonehaven-anvil-threat-sub1,stonehaven-anvil-threat-sub1,stonehaven-anvil-threat-sub2,stonehaven-anvil-threat-sub2,stonehaven-anvil-threat-sub3,stonehaven-anvil-threat-sub3,stonehaven-anvil-threat-sub4,stonehaven-anvil-threat-sub4}
+  - delay 80
+  - skill{s=stonehaven-anvil-threat1}
+
+stonehaven-anvil-threat-add1:
+  Cooldown: 24
+  Skills:
+  - summon{t=stonehaven-anvil-add} @Location{c=5016.5,86,15115.5}
+stonehaven-anvil-threat-add2:
+  Cooldown: 24
+  Skills:
+  - summon{t=stonehaven-anvil-add} @Location{c=5043,86,15142}
+stonehaven-anvil-threat-add3:
+  Cooldown: 24
+  Skills:
+  - summon{t=stonehaven-anvil-add} @Location{c=5016.5,86,15169.5}
+stonehaven-anvil-threat-add4:
+  Cooldown: 24
+  Skills:
+  - summon{t=stonehaven-anvil-add} @Location{c=4989,86,15142}
+
+stonehaven-anvil-threat-sub1:
+  Cooldown: 24
+  Skills:
+  - summon{t=stonehaven-anvil-sub} @Location{c=5016.5,86,15115.5}
+stonehaven-anvil-threat-sub2:
+  Cooldown: 24
+  Skills:
+  - summon{t=stonehaven-anvil-sub} @Location{c=5043,86,15142}
+stonehaven-anvil-threat-sub3:
+  Cooldown: 24
+  Skills:
+  - summon{t=stonehaven-anvil-sub} @Location{c=5016.5,86,15169.5}
+stonehaven-anvil-threat-sub4:
+  Cooldown: 24
+  Skills:
+  - summon{t=stonehaven-anvil-sub} @Location{c=4989,86,15142}
+
+stonehaven-anvil-add:
+  Skills:
+  - heal{a=25;i=true}
+  - message{m="&6Living Fire Anima warmed The Living Forge!"} @PIR{r=40}
+  - remove @MIR{t=stonehaven-anvil-add,stonehaven-anvil-sub;r=40}
+  - sound{s=entity.blaze.shoot;v=4}
+stonehaven-anvil-sub:
+  Skills:
+  #- damage{a=25;i=true}
+  - command{c="damage <caster.uuid> 25"} @self
+  - message{m="&3Heat-Seeking Anima cooled The Living Forge!"} @PIR{r=40}
+  - remove @MIR{t=stonehaven-anvil-add,stonehaven-anvil-sub;r=40}
+  - sound{s=block.lava.extinguish;v=4}
+
+stonehaven-anvil-variable:
+  Skills:
+  - setvariable{var=caster.on;v=0}
+  - setvariable{var=caster.active;v=0} 
+  - setvariable{var=caster.high;v=1}
+  - setvariable{var=caster.low;v=1}
+  - setvariable{var=caster.perfect;v=1}
+  - setvariable{var=caster.success;v=0}
+  - summon{t=stonehaven-anvil-temperature} @Location{c=5016.5,88,15142.5}
+  - remove @MIR{t=stonehaven-anvil-add,stonehaven-anvil-sub,stonehaven-anvil,stonehaven-anvil-temperature,stonehaven-anvil-meter;r=40}
+
+stonehaven-anvil-start:
+  Cooldown: 9999
+  Skills:
+  - sethealth{a=50}
+  - setvariable{var=caster.active;v=1}
+  - summon{t=stonehaven-anvil-meter}
+
+stonehaven-anvil-switch:
+  Cooldown: 2
+  Skills:
+  - sound{s=block.lever.click;v=4}
+  - randomskill{skills=stonehaven-anvil-on,stonehaven-anvil-off}
+stonehaven-anvil-on:
+  Conditions:
+  - variableEquals{var=caster.on;value=1}
+  Skills:
+  - message{m="&7The Living Forge is &boff&7!"} @PIR{r=40}
+  - setvariable{var=caster.on;v=0}
+stonehaven-anvil-off:
+  Conditions:
+  - variableEquals{var=caster.on;value=0}
+  Skills:
+  - message{m="&7The Living Forge is &con&7!"} @PIR{r=40}
+  - setvariable{var=caster.on;v=1}
+
+stonehaven-anvil-temp:
+  Skills:
+  - randomskill{skills=stonehaven-anvil-temp-on,stonehaven-anvil-temp-off}
+stonehaven-anvil-temp-on:
+  Conditions:
+  - variableEquals{var=caster.on;value=1}
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - skill{s=stonehaven-anvil-temp-on-sound}
+  - heal{a=2;i=true}
+stonehaven-anvil-temp-off:
+  Conditions:
+  - variableEquals{var=caster.on;value=0}
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  #- damage{a=2;i=true}
+  - command{c="damage <caster.uuid> 2"} @self
+stonehaven-anvil-temp-on-sound:
+  Cooldown: 8
+  Skills:
+  - sound{s=block.blastfurnace.fire_crackle;v=4}
+
+stonehaven-anvil-meter-check:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - skill{s=stonehaven-anvil-meter-success-add}
+  - skill{s=stonehaven-anvil-meter-fail}
+stonehaven-anvil-meter-success-add:
+  Conditions:
+  - health{h=<60}
+  - health{h=>40}
+  Skills:
+  - skill{s=stonehaven-anvil-meter-success}
+  - signal{s=minor-success} @MIR{t=stonehaven-anvil-meter;r=40}
+  - variableadd{var=caster.success;amount=1}
+  - setvariable{var=caster.high;v=1}
+  - setvariable{var=caster.low;v=1}
+
+stonehaven-anvil-meter-success:
+  Conditions:
+  - varinrange{var=caster.success;value=>6}
+  Skills:
+  - signal{s=success} @MIR{t=stonehaven-anvil-meter;r=40}
+  - setvariable{var=caster.success;v=0}
+stonehaven-anvil-meter-fail:
+  Skills:
+  - skill{s=stonehaven-anvil-meter-high}
+  - skill{s=stonehaven-anvil-meter-low}
+  - skill{s=stonehaven-anvil-meter-perfect}
+  - skill{s=stonehaven-anvil-meter-fail-high}
+
+stonehaven-anvil-meter-perfect:
+  Conditions:
+  - health{h=<60}
+  - health{h=>40}
+  - variableEquals{var=caster.perfect;value=1}
+  Skills:
+  - message{m="&aThe Living Forge temperature is perfect!"} @PIR{r=40}
+  - setvariable{var=caster.perfect;v=0}
+  - setvariable{var=caster.high;v=1}
+  - setvariable{var=caster.low;v=1}
+stonehaven-anvil-meter-high:
+  Conditions:
+  - health{h=>60}
+  - variableEquals{var=caster.high;value=1}
+  Skills:
+  - message{m="&cThe Living Forge is too hot!"} @PIR{r=40}
+  - setvariable{var=caster.high;v=0}
+  - setvariable{var=caster.low;v=1}
+  - setvariable{var=caster.perfect;v=1}
+  - setvariable{var=caster.success;v=0}
+stonehaven-anvil-meter-low:
+  Conditions:
+  - health{h=<40}
+  - variableEquals{var=caster.low;value=1}
+  Skills:
+  - message{m="&bThe Living Forge is too cold!"} @PIR{r=40}
+  - setvariable{var=caster.low;v=0}
+  - setvariable{var=caster.high;v=1}
+  - setvariable{var=caster.perfect;v=1}
+  - setvariable{var=caster.success;v=0}
+
+stonehaven-anvil-meter-fail-high:
+  Conditions:
+  - health{h=100}
+  Skills:
+  - message{m="&c&lThe weapon shattered from the heat!"} @PIR{r=40}
+  - sound{s=block.anvil.break;v=4}
+  - remove @MIR{t=stonehaven-anvil-add,stonehaven-anvil-sub,stonehaven-anvil,stonehaven-anvil-temperature,stonehaven-anvil-meter;r=40}
+  - remove
+stonehaven-anvil-meter-fail-low:
+  Skills:
+  - message{m="&b&lThe weapon shattered from the cold!"} @PIR{r=40}
+  - sound{s=block.anvil.break;v=4}
+  - remove @MIR{t=stonehaven-anvil-add,stonehaven-anvil-sub,stonehaven-anvil,stonehaven-anvil-temperature,stonehaven-anvil-meter;r=40}
+  - remove
+
+stonehaven-anvil-meter-increase:
+  Skills:
+  - sound{s=block.anvil.use;v=4}
+  - heal{a=15;i=true}
+stonehaven-anvil-meter-minor-increase:
+  Skills:
+  - sound{s=block.anvil.hit;v=4}
+  - heal{a=1;i=true}
+  
+stonehaven-anvil-meter-complete:
+  Conditions:
+  - health{h=100} 
+  Skills:
+  - delay 40
+  - command{c="questtrigger player <target.name> livingforgecomplete"} @PIR{r=40}
+  - message{m="&aComplete!"} @PIR{r=40}
+  - sound{s=entity.experience_orb.pickup;volume=4;pitch=0.5} @self
+  - remove @MIR{t=stonehaven-anvil;r=40}
+  - remove @MIR{t=stonehaven-anvil-temperature;r=40}
+  - remove 
+
+stonehaven-water:
+  Skills:
+  - leap{v=10} @MIR{t=stonehaven-lava;r=8}
+  - delay 2
+  - summon{t=stonehaven-obsidian}
+  - sound{s=block.lava.extinguish} 
+  - remove @MIR{t=stonehaven-lava;r=4}
+  - remove
+stonehaven-obsidian:
+  Skills:
+  - command{c="ri drop stonehaven-obsidian <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - sound{s=block.stone.break} 
+stonehaven-lava-despawn:
+  Cooldown: 20
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+#  - message{m="&cDespawn cast"} @PIR{r=32}
+  - delay 400
+  - sound{s=item.bucket.empty}
+  - remove
+stonehaven-lava-timer:
+  Skills:
+  - setvariable{var=caster.active;v=1}
+  - signal{s=active} @MIR{t=stonehaven-lava-marker;r=1}
+  - delay 20
+  - skill{s=stonehaven-lava-despawn}
+  - skill{s=stonehaven-lava-timer}
+stonehaven-lava-spawn:
+  Skills:
+  - skill{s=stonehaven-lava-timer} 
+  - setvariable{var=caster.active;v=0}
+  - remove @MIR{t=stonehaven-lava-marker;r=24}
+  - summon{t=stonehaven-lava-marker}
+
+stonehaven-water-despawn:
+  Cooldown: 20
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+#  - message{m="&bDespawn cast"} @PIR{r=32}
+  - delay 400
+  - sound{s=item.bucket.empty}
+  - remove
+stonehaven-water-timer:
+  Skills:
+  - setvariable{var=caster.active;v=1}
+  - signal{s=active} @MIR{t=stonehaven-water-marker;r=1}
+  - delay 20
+  - skill{s=stonehaven-water-despawn}
+  - skill{s=stonehaven-water-timer}
+stonehaven-water-spawn:
+  Skills:
+  - skill{s=stonehaven-water-timer} 
+  - setvariable{var=caster.active;v=0}
+  - remove @MIR{t=stonehaven-water-marker;r=24}
+  - summon{t=stonehaven-water-marker}
+
+stonehaven-pirate-boss-main:
+  Skills:
+  - randomskill{skills=stonehaven-pirate-boss-leap 1; fallbackskill=stonehaven-pirate-boss-pull-projectile}
+
+stonehaven-pirate-boss-leap:
+  Cooldown: 10
+  TargetConditions:
+    - distance{d=1to4} false
+  Skills:
+  - velocity{m=set;vx=0;vy=0.8;vz=0} @self
+  - delay 15
+  - leap{v=200}
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=4}
+  - velocity{m=set;vx=0;vy=0.6;vz=0} @PIR{r=4}
+
+stonehaven-pirate-boss-pull:
+  Skills:
+  - pull{v=8.5;to=false} 
+  #- message{m="&cPull done"}
+
+stonehaven-pirate-boss-pull-projectile:
+  Cooldown: 8
+  TargetConditions:
+    - distance{d=1to3} false
+  Skills:
+  #- message{m="&cPull cast"}
+  - projectile{ot=stonehaven-pirate-boss-pull-projectile-tick;oh=stonehaven-pirate-boss-pull-projectile-hit;v=20;i=1;hr=0.5;vr=0.5;syo=1.5}
+  - effect:sound{s=entity.arrow.shoot} @targetlocation
+stonehaven-pirate-boss-pull-projectile-tick:
+  Skills:
+  - effect:particles{p=spell_instant;a=1} @origin
+stonehaven-pirate-boss-pull-projectile-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}
+  - skill{s=stonehaven-pirate-boss-pull} @target
+
+stonehaven-pirate-leap:
+  Skills:
+  - randomskill{s=stonehaven-pirate-leap-teleport1,stonehaven-pirate-leap-teleport2,stonehaven-pirate-leap-teleport3}
+  - delay 5
+  - leap{v=700} @Location{c=-483,31,2170}
+  #- message{m="&cLeap"} @PIR{r=10}
+stonehaven-pirate-leap-teleport1:
+  Skills:
+  - teleport @Location{c=-499.5,26.5,2182.5}  
+stonehaven-pirate-leap-teleport2:
+  Skills:
+  - teleport @Location{c=-502,27.5,2181.5}  
+stonehaven-pirate-leap-teleport3:
+  Skills:
+  - teleport @Location{c=-493.5,28.5,2188.5}  
+
+stonehaven-pirate-water:
+  Conditions:
+  - inblock WATER true
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.active;value=0}
+  - damage{a=1}
+  - sound{s=entity.player.hurt_drown}
+  - delay 10
+  - damage{a=1}
+  - sound{s=entity.player.hurt_drown}
+  - delay 10
+  - sound{s=entity.player.hurt_drown}
+  - suicide
+stonehaven-pirate-death:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}  
+  Skills:
+  - summon{t=stonehaven-pirate-boss}
+  - command{c="questtrigger player <target.name> pirate"} @trigger

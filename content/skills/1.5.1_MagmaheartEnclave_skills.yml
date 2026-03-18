@@ -1,0 +1,2070 @@
+golem-conjured-center-summon:
+  Skills:
+  - heal{a=100;i=true}
+  - delay 40
+  - heal{a=100;i=true}
+  - delay 40
+  - heal{a=100;i=true}
+  - delay 40
+  - heal{a=100;i=true}
+  - delay 40
+  - heal{a=100;i=true}
+  - delay 80
+  - remove
+
+golem-grunt:
+  Conditions:
+  - playerwithin 3
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - delay 20
+  - sound{s=block.stone.break}
+  - effect:particlering{p=block_crack;m=stone;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=stone;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}  
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=2}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=2}
+
+golem-conjured-floor-skill1:
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}
+  - varinrange{var=caster.damaged;value=>19}  
+  Cooldown: 20
+  Skills:
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage1} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4;yOffset=1}
+  - effect:particlesphere{p=flame;amount=10;radius=1;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=10;radius=4;yOffset=0.75}
+  - delay 40
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage2} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=15;radius=3;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=15;radius=4;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=15;radius=5;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=15;radius=6;yOffset=1}
+  - effect:particlesphere{p=flame;amount=20;radius=3;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=20;radius=6;yOffset=0.75}
+  - delay 40
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage3} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=18;radius=5;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=18;radius=6;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=18;radius=7;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=18;radius=8;yOffset=1}
+  - effect:particlesphere{p=flame;amount=30;radius=5;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=30;radius=8;yOffset=0.75}
+  - delay 40
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage4} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=21;radius=7;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=21;radius=8;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=21;radius=9;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=21;radius=10;yOffset=1}
+  - effect:particlesphere{p=flame;amount=40;radius=7;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=40;radius=10;yOffset=0.75}
+  - delay 40
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage5} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=24;radius=9;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=24;radius=10;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=24;radius=11;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=24;radius=12;yOffset=1}
+  - effect:particlesphere{p=flame;amount=50;radius=9;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=50;radius=12;yOffset=0.75}
+  - delay 40
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage6} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=27;radius=12;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=27;radius=13;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=27;radius=14;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=27;radius=15;yOffset=1}
+  - effect:particlesphere{p=flame;amount=60;radius=12;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=60;radius=15;yOffset=0.75}
+  - delay 40
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage7} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=30;radius=14;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=30;radius=15;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=30;radius=16;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=30;radius=17;yOffset=1}
+  - effect:particlesphere{p=flame;amount=70;radius=14;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=70;radius=17;yOffset=0.75}
+  - delay 40
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage8} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=33;radius=16;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=33;radius=17;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=33;radius=18;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=33;radius=19;yOffset=1}
+  - effect:particlesphere{p=flame;amount=80;radius=16;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=80;radius=19;yOffset=0.75}
+  - delay 40
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage9} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=36;radius=18;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=36;radius=19;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=36;radius=20;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=36;radius=21;yOffset=1}
+  - effect:particlesphere{p=flame;amount=90;radius=18;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=90;radius=21;yOffset=0.75}
+  - delay 40
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage10} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=39;radius=20;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=39;radius=21;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=39;radius=22;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=39;radius=23;yOffset=1}
+  - effect:particlesphere{p=flame;amount=100;radius=20;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=100;radius=23;yOffset=0.75}
+  - delay 40
+  - sound{s=item.firecharge.use;v=2}
+  - skill{s=golem-conjured-floor-skill1-damage11} @PIR{r=50}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=42;radius=22;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=42;radius=23;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=42;radius=24;yOffset=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=42;radius=25;yOffset=1}
+  - effect:particlesphere{p=flame;amount=110;radius=22;yOffset=0.75}
+  - effect:particlesphere{p=flame;amount=110;radius=25;yOffset=0.75}
+golem-conjured-floor-skill1-damage1:
+  TargetConditions:
+  - distance{d=>1} true
+  - distance{d=<4} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+golem-conjured-floor-skill1-damage2:
+  TargetConditions:
+  - distance{d=>3} true
+  - distance{d=<6} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+golem-conjured-floor-skill1-damage3:
+  TargetConditions:
+  - distance{d=>5} true
+  - distance{d=<8} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+golem-conjured-floor-skill1-damage4:
+  TargetConditions:
+  - distance{d=>7} true
+  - distance{d=<10} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+golem-conjured-floor-skill1-damage5:
+  TargetConditions:
+  - distance{d=>9} true
+  - distance{d=<12} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+golem-conjured-floor-skill1-damage6:
+  TargetConditions:
+  - distance{d=>11} true
+  - distance{d=<14} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+golem-conjured-floor-skill1-damage7:
+  TargetConditions:
+  - distance{d=>13} true
+  - distance{d=<16} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+golem-conjured-floor-skill1-damage8:
+  TargetConditions:
+  - distance{d=>15} true
+  - distance{d=<18} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+golem-conjured-floor-skill1-damage9:
+  TargetConditions:
+  - distance{d=>17} true
+  - distance{d=<20} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+golem-conjured-floor-skill1-damage10:
+  TargetConditions:
+  - distance{d=>19} true
+  - distance{d=<22} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+golem-conjured-floor-skill1-damage11:
+  TargetConditions:
+  - distance{d=>21} true
+  - distance{d=<25} true
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-floor-skill1-damage}
+  
+golem-conjured-floor-skill1-damage:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} #This is the main damage source - nerfing by 5x
+  - ignite{d=40}
+
+
+
+golem-conjured-floor-skill2:
+  Conditions:
+  - variableEquals{var=caster.floor;value=2}
+  - varinrange{var=caster.damaged;value=>19}  
+  Cooldown: 20
+  Skills:
+  - skill{s=golem-conjured-floor-skill2-summon} @PIR{r=50}
+  - sound{s=ambient.underwater.enter;v=2}
+golem-conjured-floor-skill2-summon:
+  TargetConditions:
+  - distance{d=>3}
+  Skills:
+  - summon{t=golem-conjured-floor-skill2-add;r=1;os=true} 
+
+
+
+golem-conjured-floor-skill2-add:
+  Skills:
+  - potion{t=INVISIBILITY;d=240;l=1;hasParticles=false}
+  - delay 10
+  - skill{s=golem-conjured-floor-skill2-add-pull}
+  - delay 390
+  - remove
+golem-conjured-floor-skill2-add-pull:
+  Skills:
+  - blockmask{m=deepslate_lapis_ore;d=20;r=3;n=.5}
+  - sudoSkill{s=golem-conjured-floor-skill2-add-pull-cast} @PIR{r=4}
+  - signal{s=wave} @MIR{t=golem-conjured;r=2}
+  - delay 20
+  - skill{s=golem-conjured-floor-skill2-add-pull}
+golem-conjured-floor-skill2-add-pull-cast:
+  Skills:
+  - sound{s=ambient.underwater.exit}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"}
+  - leap{v=200} @MIR{t=golem-conjured;r=50}
+
+
+
+
+golem-conjured-floor-skill3:
+  Conditions:
+  - variableEquals{var=caster.floor;value=3}
+  - varinrange{var=caster.damaged;value=>19}  
+  Cooldown: 20
+  Skills:
+  - summon{t=golem-conjured-floor-skill3-marker;a=1;r=8;os=true} @Location{c=-463,192,532}
+golem-conjured-floor-skill3-marker:
+  Skills:
+  - potion{t=SLOW;d=80;l=10} @PIR{r=3}
+  - sound{s=block.grass.break;v=2}
+  - effect:blockmask{m=oak_leaves;r=3;d=60}
+  - effect:blockmask{m=flowering_azalea_leaves;r=3;d=60;n=0.1}
+  - delay 80
+  - skill{s=golem-conjured-floor-skill3-marker-summon2}
+  - potion{t=SLOW;d=80;l=10} @PIR{r=5}
+  - sound{s=block.grass.break;v=2}
+  - effect:blockmask{m=oak_leaves;r=5;d=60}
+  - effect:blockmask{m=flowering_azalea_leaves;r=5;d=60;n=0.25}
+  - delay 80  
+  - skill{s=golem-conjured-floor-skill3-marker-summon3}
+  - potion{t=SLOW;d=80;l=10} @PIR{r=7}
+  - sound{s=block.grass.break;v=2}
+  - effect:blockmask{m=oak_leaves;r=7;d=60}
+  - effect:blockmask{m=flowering_azalea_leaves;r=7;d=60;n=0.3}
+  - delay 80  
+  - skill{s=golem-conjured-floor-skill3-marker-summon4}
+  - potion{t=SLOW;d=80;l=10} @PIR{r=9}
+  - sound{s=block.grass.break;v=2}
+  - effect:blockmask{m=oak_leaves;r=9;d=60}
+  - effect:blockmask{m=flowering_azalea_leaves;r=9;d=60;n=0.45}
+  - delay 80  
+  - skill{s=golem-conjured-floor-skill3-marker-summon5}
+  - potion{t=SLOW;d=80;l=10} @PIR{r=11}
+  - sound{s=block.grass.break;v=2}
+  - effect:blockmask{m=oak_leaves;r=11;d=60}
+  - effect:blockmask{m=flowering_azalea_leaves;r=11;d=60;n=0.6}
+  - remove
+golem-conjured-floor-skill3-marker-summon2:
+  Skills:
+  - summon{t=golem-conjured-floor-skill3-add;r=2;a=1;os=true}
+golem-conjured-floor-skill3-marker-summon3:
+  Skills:
+  - summon{t=golem-conjured-floor-skill3-add;r=4;a=2;os=true}
+golem-conjured-floor-skill3-marker-summon4:
+  Skills:
+  - summon{t=golem-conjured-floor-skill3-add;r=6;a=3;os=true}
+golem-conjured-floor-skill3-marker-summon5:
+  Skills:
+  - summon{t=golem-conjured-floor-skill3-add;r=8;a=4;os=true}
+golem-conjured-floor-skill3-marker-summon6:
+  Skills:
+  - summon{t=golem-conjured-floor-skill3-add;r=10;a=5;os=true}
+golem-conjured-floor-skill3-add:
+  Skills:
+  - delay 240
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.5}
+  - remove
+
+
+golem-conjured-floor-skill4:
+  Conditions:
+  - variableEquals{var=caster.floor;value=4}
+  - varinrange{var=caster.damaged;value=>19}  
+  Cooldown: 20
+  Skills:
+  - sound{s=entity.enderman.teleport;v=2}
+  - skill{s=golem-conjured-floor-skill4-cast}
+golem-conjured-floor-skill4-cast:
+  Skills:
+  - randomskill{s=golem-conjured-floor-skill4-cast1,golem-conjured-floor-skill4-cast2,golem-conjured-floor-skill4-cast3,golem-conjured-floor-skill4-cast4}
+golem-conjured-floor-skill4-cast1:
+  Skills:
+  - summon{t=golem-conjured-floor-skill4-marker} @Location{c=-463,214,515}
+  - summon{t=golem-conjured-floor-skill4-marker} @Location{c=-446,214,532}
+  - delay 80
+  - summon{t=golem-conjured-floor-skill4-marker-damage} @Location{c=-455,210,524}
+golem-conjured-floor-skill4-cast2:
+  Skills:
+  - summon{t=golem-conjured-floor-skill4-marker} @Location{c=-446,214,532}
+  - summon{t=golem-conjured-floor-skill4-marker} @Location{c=-463,214,549}
+  - delay 80
+  - summon{t=golem-conjured-floor-skill4-marker-damage} @Location{c=-455,210,540}
+golem-conjured-floor-skill4-cast3:
+  Skills:
+  - summon{t=golem-conjured-floor-skill4-marker} @Location{c=-463,214,549}
+  - summon{t=golem-conjured-floor-skill4-marker} @Location{c=-480,214,532}
+  - delay 80
+  - summon{t=golem-conjured-floor-skill4-marker-damage} @Location{c=-471,210,540}
+golem-conjured-floor-skill4-cast4:
+  Skills:
+  - summon{t=golem-conjured-floor-skill4-marker} @Location{c=-480,214,532}
+  - summon{t=golem-conjured-floor-skill4-marker} @Location{c=-463,214,515}
+  - delay 80
+  - summon{t=golem-conjured-floor-skill4-marker-damage} @Location{c=-471,210,524}
+
+golem-conjured-floor-skill4-marker:
+  Skills:
+  - blockmask{m=purple_concrete;d=400;r=4;n=.75}
+  - delay 400
+  - remove
+golem-conjured-floor-skill4-marker-damage:
+  Skills:
+  - skill{s=golem-conjured-floor-skill4-marker-damage-visual}
+  - pull{v=10} @PIR{r=12}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=12}
+  - delay 20
+  - skill{s=golem-conjured-floor-skill4-marker-damage}
+golem-conjured-floor-skill4-marker-damage-visual:
+  Cooldown: 25
+  Skills:
+  - sound{s=entity.enderman.teleport;v=1}
+  - blockmask{m=purple_concrete;d=320;r=12;n=.75}
+  - delay 320
+  - remove
+
+golem-conjured-floor-skill5:
+  Conditions:
+  - variableEquals{var=caster.floor;value=5}  
+  - varinrange{var=caster.damaged;value=>19}
+  Cooldown: 20
+  Skills:
+  - skill{s=golem-conjured-floor-skill5-sudo;repeat=10;repeatInterval=20} @target
+golem-conjured-floor-skill5-sudo:
+  TargetConditions:
+  - distance{d=<50}
+  Skills:
+  - sudoSkill{s=golem-conjured-floor-skill5-sudo-cast} @target
+golem-conjured-floor-skill5-sudo-cast:
+  Skills:
+  - potion{t=GLOWING;c=WHITE;d=40;l=1;hasParticles=false} @self
+  - delay 20
+  - blockmask{m=white_terracotta;d=20;r=3;n=.5}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1} @self
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2} @self
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3} @self
+  - skill{s=golem-conjured-floor-skill5-sudo-cast-blind} @PIR{r=50} 
+golem-conjured-floor-skill5-sudo-cast-blind:
+  TargetConditions:
+  - distance{d=>4}
+  Skills:
+  - effect:particlesphere{p=enchantment_table;amount=2;radius=1;yOffset=0.5}
+  - potion{t=BLINDNESS;d=40;l=1;hasParticles=false}
+  - potion{t=SLOW;d=40;l=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}
+  
+
+
+
+golem-conjured-outside-leash:
+  Conditions:
+  - outside{} true
+  Skills:
+  - teleport @Location{c=-482.5,154,532.5}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=32}
+
+golem-conjured-floor-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - randomskill{s=golem-conjured-floor-skill1,golem-conjured-floor-skill2,golem-conjured-floor-skill3,golem-conjured-floor-skill4,golem-conjured-floor-skill5}
+  - randomskill{s=golem-conjured-floor-summon1,golem-conjured-floor-summon2,golem-conjured-floor-summon3,golem-conjured-floor-summon4,golem-conjured-floor-summon5}
+golem-conjured-floor-summon1:
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}
+  - varinrange{var=caster.damaged;value=>0}  
+  Cooldown: 100
+  Skills:
+  - signal{s=enrage} @MIR{t=golem-conjured-fire;r=100}
+  - summon{t=golem-conjured-fire} @Location{c=-481.5,154,527.5}
+  - summon{t=golem-conjured-fire} @Location{c=-481.5,154,537.5}
+golem-conjured-floor-summon2:
+  Conditions:
+  - variableEquals{var=caster.floor;value=2}
+  - varinrange{var=caster.damaged;value=>0}  
+  Cooldown: 100
+  Skills:
+  - signal{s=enrage} @MIR{t=golem-conjured-water;r=100}
+  - summon{t=golem-conjured-water} @Location{c=-477.5,174,527.5}
+  - summon{t=golem-conjured-water} @Location{c=-477.5,174,537.5}
+golem-conjured-floor-summon3:
+  Conditions:
+  - variableEquals{var=caster.floor;value=3}
+  - varinrange{var=caster.damaged;value=>0}  
+  Cooldown: 100
+  Skills:
+  - signal{s=enrage} @MIR{t=golem-conjured-earth;r=100}
+  - summon{t=golem-conjured-earth} @Location{c=-477.5,192,527.5}
+  - summon{t=golem-conjured-earth} @Location{c=-477.5,192,537.5}
+golem-conjured-floor-summon4:
+  Conditions:
+  - variableEquals{var=caster.floor;value=4}
+  - varinrange{var=caster.damaged;value=>0}  
+  Cooldown: 100
+  Skills:
+  - signal{s=enrage} @MIR{t=golem-conjured-void;r=100}
+  - summon{t=golem-conjured-void} @Location{c=-475.5,210,527.5}
+  - summon{t=golem-conjured-void} @Location{c=-475.5,210,537.5}
+golem-conjured-floor-summon5:
+  Conditions:
+  - variableEquals{var=caster.floor;value=5}  
+  - varinrange{var=caster.damaged;value=>0}
+  Cooldown: 100
+  Skills:
+  - signal{s=enrage} @MIR{t=golem-conjured-light;r=100}
+  - summon{t=golem-conjured-light} @Location{c=-477.5,228,527.5}
+  - summon{t=golem-conjured-light} @Location{c=-477.5,228,537.5}
+
+golem-conjured-variable:
+  Skills:
+  - setvariable{var=caster.tracking;v=0}
+  - setvariable{var=caster.audio2;v=1}
+  - setvariable{var=caster.audio3;v=1}
+  - setvariable{var=caster.audio4;v=1}
+  - setvariable{var=caster.leg;v=2}
+  - setvariable{var=caster.active;v=1}
+  - setvariable{var=caster.damaged;v=0}
+  - setvariable{var=caster.floor;v=1}
+  - setvariable{var=caster.add;v=1}
+  - setvariable{var=caster.cast;v=0}
+  - delay 160
+  - setvariable{var=caster.cast;v=1}
+
+golem-conjured-leash:
+  TargetConditions:
+  - distance{d=>15}
+  - variableEquals{var=caster.enrage;value=0}  
+  Cooldown: 12
+  Skills:
+  - signal{s=leash}
+
+golem-conjured-leash-teleport:
+  Skills:
+  - sound{s=entity.warden.dig;v=4;p=0.5} @self
+  - delay 40
+  - teleport @MIR{t=golem-conjured;r=100}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=32}
+  
+
+golem-conjured-fire-enrage:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.enrage;v=1}
+  - potion{t=SPEED;d=200;l=3;hasParticles=false}
+  - skill{s=golem-conjured-fire-enrage-visual}
+  - delay 800
+  - remove
+golem-conjured-fire-enrage-visual:
+  Skills:
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=0.75}
+  - delay 10
+  - skill{s=golem-conjured-fire-enrage-visual}
+
+golem-conjured-water-enrage:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.enrage;v=1}
+  - potion{t=SPEED;d=200;l=3;hasParticles=false}
+  - skill{s=golem-conjured-water-enrage-visual}
+  - delay 800
+  - remove
+golem-conjured-water-enrage-visual:
+  Skills:
+  - effect:particlesphere{p=falling_dripstone_water;amount=2;radius=1;yOffset=0.75}
+  - delay 10
+  - skill{s=golem-conjured-water-enrage-visual}
+
+golem-conjured-earth-enrage:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.enrage;v=1}
+  - potion{t=SPEED;d=200;l=3;hasParticles=false}
+  - skill{s=golem-conjured-earth-enrage-visual}
+  - delay 800
+  - remove
+golem-conjured-earth-enrage-visual:
+  Skills:
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.75}
+  - delay 10
+  - skill{s=golem-conjured-earth-enrage-visual}
+
+golem-conjured-void-enrage:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.enrage;v=1}
+  - potion{t=SPEED;d=200;l=3;hasParticles=false}
+  - skill{s=golem-conjured-void-enrage-visual}
+  - delay 800
+  - remove
+golem-conjured-void-enrage-visual:
+  Skills:
+  - effect:particlesphere{p=dragon_breath;amount=2;radius=1;yOffset=0.75}
+  - delay 10
+  - skill{s=golem-conjured-void-enrage-visual}
+
+golem-conjured-light-enrage:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.enrage;v=1}
+  - potion{t=SPEED;d=200;l=3;hasParticles=false}
+  - skill{s=golem-conjured-light-enrage-visual}
+  - delay 800
+  - remove
+golem-conjured-light-enrage-visual:
+  Skills:
+  - effect:particlesphere{p=enchantment_table;amount=2;radius=1;yOffset=0.75}
+  - delay 10
+  - skill{s=golem-conjured-light-enrage-visual}
+
+
+golem-conjured-damaged:
+  Skills:
+  - skill{s=golem-conjured-damaged-audio1}
+  - skill{s=golem-conjured-damaged-add}
+  - skill{s=golem-conjured-floor}
+golem-conjured-floor:
+  Conditions:
+  - varinrange{var=caster.damaged;value=>40}
+  Skills:
+  - potion{t=SLOW;d=240;l=2;hasParticles=false}
+  - sound{s=block.beacon.activate;v=2}
+  - setvariable{var=caster.damaged;v=0}
+  - setvariable{var=caster.audio2;v=1}
+  - setvariable{var=caster.audio3;v=1}
+  - setvariable{var=caster.audio4;v=1}
+  - randomskill{s=golem-conjured-floor-set-add,golem-conjured-floor-set-sub}
+  - randomskill{s=golem-conjured-floor-sub,golem-conjured-floor-add}
+  - skill{s=golem-conjured-floor-change}
+
+golem-conjured-floor-change:
+  Skills:
+  - randomskill{s=golem-conjured-floor-change1,golem-conjured-floor-change2,golem-conjured-floor-change3,golem-conjured-floor-change4,golem-conjured-floor-change5}
+golem-conjured-floor-change1:
+  Conditions:
+  - variableEquals{var=caster.floor;value=1}  
+  Skills:
+  - skill{s=golem-conjured-leg-teleport-reset}
+  - teleport @Location{c=-482.5,154,532.5}
+golem-conjured-floor-change2:
+  Conditions:
+  - variableEquals{var=caster.floor;value=2}  
+  Skills:
+  - skill{s=golem-conjured-leg-teleport-reset}
+  - teleport @Location{c=-478.5,174,532.5}
+golem-conjured-floor-change3:
+  Conditions:
+  - variableEquals{var=caster.floor;value=3}  
+  Skills:
+  - skill{s=golem-conjured-leg-teleport-reset}
+  - teleport @Location{c=-478.5,192,532.5}
+golem-conjured-floor-change4:
+  Conditions:
+  - variableEquals{var=caster.floor;value=4}  
+  Skills:
+  - skill{s=golem-conjured-leg-teleport-reset}
+  - teleport @Location{c=-476.5,210,532.5}
+golem-conjured-floor-change5:
+  Conditions:
+  - variableEquals{var=caster.floor;value=5}  
+  Skills:
+  - skill{s=golem-conjured-leg-teleport-reset}
+  - teleport @Location{c=-478.5,228,532.5}
+
+golem-conjured-floor-set-add:
+  Conditions:
+  - varinrange{var=caster.floor;value=>4}
+  - variableEquals{var=caster.add;value=1}  
+  Skills:
+  - setvariable{var=caster.add;value=0}
+golem-conjured-floor-set-sub:
+  Conditions:
+  - varinrange{var=caster.floor;value=<2}
+  - variableEquals{var=caster.add;value=0}  
+  Skills:
+  - setvariable{var=caster.add;value=1}
+
+golem-conjured-floor-sub:
+  Conditions:
+  - variableEquals{var=caster.add;value=1}  
+  Skills:
+  - variableadd{var=caster.floor;amount=1}
+golem-conjured-floor-add:
+  Conditions:
+  - variableEquals{var=caster.add;value=0}
+  Skills:  
+  - variablesubtract{var=caster.floor;amount=1}
+
+
+
+
+golem-conjured-damaged-add:
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.damaged;amount=1}  
+
+golem-conjured-damaged-audio1:
+  Conditions:
+  - varinrange{var=caster.damaged;value=>29} castinstead golem-conjured-damaged-audio4
+  - varinrange{var=caster.damaged;value=>19} castinstead golem-conjured-damaged-audio3
+  - varinrange{var=caster.damaged;value=>9} castinstead golem-conjured-damaged-audio2
+  Skills:
+golem-conjured-damaged-audio2:
+  Conditions:
+  - variableEquals{var=caster.audio2;value=1}
+  Skills:
+  - setvariable{var=caster.audio2;v=0}
+  - sound{s=block.beacon.activate;v=2;p=0.5} 
+golem-conjured-damaged-audio3:
+  Conditions:
+  - variableEquals{var=caster.audio3;value=1}
+  Skills:
+  - setvariable{var=caster.audio3;v=0}
+  - sound{s=block.beacon.activate;v=2;p=0.65} 
+golem-conjured-damaged-audio4:
+  Conditions:
+  - variableEquals{var=caster.audio4;value=1}
+  Skills:
+  - setvariable{var=caster.audio4;v=0}
+  - sound{s=block.beacon.activate;v=2;p=0.8} 
+
+
+golem-conjured-leg-inactive:
+  Conditions:
+  - variableEquals{var=caster.leg;value=0}
+  Cooldown: 9
+  Skills:
+  - setvariable{var=caster.active;v=0}
+  - delay 160
+  - skill{s=golem-conjured-leg-inactive-reset}
+golem-conjured-leg-inactive-reset:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  Skills:
+  - sound{s=entity.wither.break_block}
+  - effect:particlesphere{p=block_crack;m=iron_block;amount=1;radius=1} @MIR{t=golem-conjured-leg1,golem-conjured-leg2,golem-conjured-leg3,golem-conjured-leg4,golem-conjured-leg5,golem-conjured-leg-visual;r=100}
+  - remove @MIR{t=golem-conjured-leg1,golem-conjured-leg2,golem-conjured-leg3,golem-conjured-leg4,golem-conjured-leg5,golem-conjured-leg-visual;r=100}
+  - setvariable{var=caster.leg;v=2}
+  - setvariable{var=caster.active;v=1}
+
+golem-conjured-leg-teleport-reset:
+  Skills:
+  - remove @MIR{t=golem-conjured-floor-skill2-add,golem-conjured-floor-skill3-marker;r=100}
+  - signal{s=enrage} @MIR{t=golem-conjured-fire,golem-conjured-water,golem-conjured-earth,golem-conjured-void,golem-conjured-light;r=100}
+  - sound{s=entity.wither.break_block}
+  - effect:particlesphere{p=block_crack;m=iron_block;amount=1;radius=1} @MIR{t=golem-conjured-leg1,golem-conjured-leg2,golem-conjured-leg3,golem-conjured-leg4,golem-conjured-leg5,golem-conjured-leg-visual;r=100}
+  - remove @MIR{t=golem-conjured-leg1,golem-conjured-leg2,golem-conjured-leg3,golem-conjured-leg4,golem-conjured-leg5,golem-conjured-leg-visual;r=100}
+  - setvariable{var=caster.leg;v=2}
+  - setvariable{var=caster.active;v=1}
+
+
+golem-conjured-leg-interact:
+  Cooldown: 1
+  Skills:
+  - effect:particlesphere{p=block_crack;m=iron_block;amount=3;radius=1}
+  - sound{s=entity.iron_golem.hurt}
+  - signal{s=remove} @MIR{t=golem-conjured-leg-visual;r=1} .25
+
+golem-conjured-leg-stomp:
+  Conditions:
+  - incombat{}
+  - onground{}
+  - varinrange{var=caster.leg;value=>0}
+  - variableEquals{var=caster.cast;value=1}
+  Cooldown: 4
+  Skills:
+  - setvariable{var=caster.tracking;v=1}
+  - effect:particlesphere{p=end_rod;amount=2;radius=1;yOffset=0.5} @target
+  - delay 5
+  - effect:particlesphere{p=end_rod;amount=2;radius=1;yOffset=0.5} @target
+  - delay 5
+  - effect:particlesphere{p=end_rod;amount=2;radius=1;yOffset=0.5} @target
+  - sound{s=entity.iron_golem.death;v=2}
+  - skill{s=golem-conjured-leg-stomp-cast} @target
+  - setAI{ai=false} 
+  - teleport @Forward{f=0;y=-1}
+  - delay 5
+  - effect:particlesphere{p=end_rod;amount=2;radius=1;yOffset=0.5} @target
+  - delay 5
+  - effect:particlesphere{p=end_rod;amount=2;radius=1;yOffset=0.5} @target
+  - setvariable{var=caster.tracking;v=0}
+  - delay 30
+  - setAI{ai=true} 
+  - teleport @Forward{f=0;y=1}
+  
+golem-conjured-leg-remove:
+  Skills:
+  - setvariable{var=target.active;v=1} @MIR{t=golem-conjured;r=256}
+  - variableadd{var=target.leg;amount=1} @MIR{t=golem-conjured;r=256}
+  - variableadd{var=target.damaged;amount=1} @MIR{t=golem-conjured;r=256}
+  - remove
+  
+golem-conjured-hurt:
+  Skills:
+  - playanimation{a=1;audience=World} @Self
+
+golem-conjured-leg-visual-remove:
+  Skills:
+  - delay 2
+  - effect:particlesphere{p=block_crack;m=iron_block;amount=2;radius=1}
+  - signal{s=hurt} @MIR{t=golem-conjured;r=50}
+  - signal{s=remove} @MIR{t=golem-conjured-leg-visual;r=1}
+  - signal{s=remove} @MIR{t=golem-conjured-leg1,golem-conjured-leg2,golem-conjured-leg3,golem-conjured-leg4,golem-conjured-leg5;r=1}
+  - sound{s=entity.iron_golem.attack}
+  - remove
+
+golem-conjured-leg-stomp-cast:
+  TargetConditions:
+  - outside false
+  - distance{d=<50}
+  Skills:
+  - skill{s=golem-conjured-leg-stomp-cast1}
+  - skill{s=golem-conjured-leg-stomp-cast2}
+  - skill{s=golem-conjured-leg-stomp-cast3}
+  - skill{s=golem-conjured-leg-stomp-cast4}
+  - skill{s=golem-conjured-leg-stomp-cast5}
+golem-conjured-leg-stomp-cast1:
+  TargetConditions:
+  - heightbelow{h=173} true
+  - heightabove{h=154} true
+  Skills:
+  - delay 10
+  - variablesubtract{var=caster.leg;amount=1} @self
+  - command{c="mm m spawn -t golem-conjured-leg1 1 <target.l.w>,<target.l.x>,172,<target.l.z>"}
+
+golem-conjured-leg-stomp-cast2:
+  TargetConditions:
+  - heightbelow{h=191} true
+  - heightabove{h=174} true
+  Skills:
+  - delay 10
+  - variablesubtract{var=caster.leg;amount=1} @self
+  - command{c="mm m spawn -t golem-conjured-leg2 1 <target.l.w>,<target.l.x>,190,<target.l.z>"}
+
+golem-conjured-leg-stomp-cast3:
+  TargetConditions:
+  - heightbelow{h=209} true
+  - heightabove{h=192} true
+  Skills:
+  - delay 10
+  - variablesubtract{var=caster.leg;amount=1} @self
+  - command{c="mm m spawn -t golem-conjured-leg3 1 <target.l.w>,<target.l.x>,208,<target.l.z>"}
+
+golem-conjured-leg-stomp-cast4:
+  TargetConditions:
+  - heightbelow{h=227} true
+  - heightabove{h=210} true
+  Skills:
+  - delay 10
+  - variablesubtract{var=caster.leg;amount=1} @self
+  - command{c="mm m spawn -t golem-conjured-leg4 1 <target.l.w>,<target.l.x>,226,<target.l.z>"}
+
+golem-conjured-leg-stomp-cast5:
+  TargetConditions:
+  - heightbelow{h=240} true
+  - heightabove{h=228} true
+  Skills:
+  - delay 10
+  - variablesubtract{var=caster.leg;amount=1} @self
+  - command{c="mm m spawn -t golem-conjured-leg5 1 <target.l.w>,<target.l.x>,239,<target.l.z>"}
+
+golem-conjured-leg1:
+  Skills:
+  - summon{t=golem-conjured-leg-visual}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-1}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-2}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-3}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-4}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-5}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-6}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-7}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-8}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-9}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-10}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-11}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-12}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-13}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-14}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-15}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-16}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-17}
+  - delay 1
+  - summon{t=golem-conjured-leg-aoe} @Forward{f=0;y=-18}
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-18}
+
+golem-conjured-leg2:
+  Skills:
+  - summon{t=golem-conjured-leg-visual}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-1}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-2}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-3}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-4}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-5}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-6}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-7}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-8}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-9}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-10}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-11}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-12}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-13}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-14}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-15}
+  - delay 1
+  - summon{t=golem-conjured-leg-aoe} @Forward{f=0;y=-16}
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-16}
+
+golem-conjured-leg3:
+  Skills:
+  - summon{t=golem-conjured-leg-visual}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-1}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-2}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-3}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-4}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-5}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-6}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-7}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-8}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-9}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-10}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-11}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-12}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-13}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-14}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-15}
+  - delay 1
+  - summon{t=golem-conjured-leg-aoe} @Forward{f=0;y=-16}
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-16}
+
+golem-conjured-leg4:
+  Skills:
+  - summon{t=golem-conjured-leg-visual}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-1}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-2}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-3}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-4}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-5}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-6}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-7}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-8}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-9}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-10}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-11}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-12}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-13}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-14}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-15}
+  - delay 1
+  - summon{t=golem-conjured-leg-aoe} @Forward{f=0;y=-16}
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-16}
+
+golem-conjured-leg5:
+  Skills:
+  - summon{t=golem-conjured-leg-visual}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-1}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-2}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-3}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-4}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-5}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-6}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-7}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-8}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-9}
+  - delay 1
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-10}
+  - delay 1
+  - summon{t=golem-conjured-leg-aoe} @Forward{f=0;y=-11}
+  - summon{t=golem-conjured-leg-visual} @Forward{f=0;y=-11}
+
+golem-conjured-leg-aoe:
+  Skills:
+  - sound{s=entity.wither.break_block;v=2;p=0.5}
+  - effect:particlering{p=block_crack;m=iron_block;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=iron_block;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=iron_block;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;m=iron_block;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - throw{vy=8} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 650"} @PIR{r=4} #buffed from 500 -> 650
+  - remove
+
+golem-center:
+  Skills:
+  - delay 20
+  - setvariable{var=caster.fire;v=0}
+  - setvariable{var=caster.water;v=0}
+  - setvariable{var=caster.earth;v=0}
+  - setvariable{var=caster.void;v=0}
+  - setvariable{var=caster.light;v=0}
+
+golem-center-success:
+  Conditions:
+  - variableEquals{var=caster.fire;value=1}
+  - variableEquals{var=caster.water;value=1}
+  - variableEquals{var=caster.earth;value=1}
+  - variableEquals{var=caster.void;value=1}
+  - variableEquals{var=caster.light;value=1}
+  Cooldown: 9999
+  Skills:
+  - summon{t=golem-conjured-center-summon}
+  - sound{s=block.enchantment_table.use} 
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @MIR{t=golem-elemental-wisp-fire;r=256}
+  - remove @MIR{t=golem-elemental-wisp-fire;r=256}
+  - delay 40
+  - sound{s=block.enchantment_table.use} 
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @MIR{t=golem-elemental-wisp-water;r=256}
+  - remove @MIR{t=golem-elemental-wisp-water;r=256}
+  - delay 40
+  - sound{s=block.enchantment_table.use} 
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @MIR{t=golem-elemental-wisp-earth;r=256}
+  - remove @MIR{t=golem-elemental-wisp-earth;r=256}
+  - delay 40
+  - sound{s=block.enchantment_table.use} 
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @MIR{t=golem-elemental-wisp-void;r=256}
+  - remove @MIR{t=golem-elemental-wisp-void;r=256}
+  - delay 40
+  - sound{s=block.enchantment_table.use} 
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @MIR{t=golem-elemental-wisp-light;r=256}
+  - remove @MIR{t=golem-elemental-wisp-light;r=256}
+  - delay 80
+  - sound{s=block.beacon.activate}
+  - summon{t=golem-conjured} @Location{c=-482,154,532}
+  - remove
+
+golem-center-fire:
+  Skills:
+  #- message{m="fire"} @PIR{r=32}
+  - setvariable{var=caster.fire;v=1}
+  - skill{s=naheen-center-success}
+golem-center-water:
+  Skills:
+  #- message{m="water"} @PIR{r=32}
+  - setvariable{var=caster.water;v=1}
+  - skill{s=naheen-center-success}
+golem-center-earth:
+  Skills:
+  #- message{m="earth"} @PIR{r=32}
+  - setvariable{var=caster.earth;v=1}
+  - skill{s=golem-center-success}
+golem-center-void:
+  Skills:
+  #- message{m="void"} @PIR{r=32}
+  - setvariable{var=caster.void;v=1}
+  - skill{s=naheen-center-success}
+golem-center-light:
+  Skills:
+  #- message{m="light"} @PIR{r=32}
+  - setvariable{var=caster.light;v=1}
+  - skill{s=golem-center-success}
+
+
+
+golem-elemental-fire-proj:
+  TargetConditions:
+  - distance{d=>4}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} @self
+  - delay 20
+  - sound{s=block.enchantment_table.use}
+  - projectile{ot=golem-elemental-fire-proj-tick;oh=golem-elemental-fire-proj-hit;i=1;v=15;mr=30} @target
+golem-elemental-fire-proj-tick:
+  Skills:
+  - effect:particlesphere{p=flame;amount=1;radius=1} @Origin
+golem-elemental-fire-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+  - ignite{d=80}
+
+golem-elemental-water-proj:
+  TargetConditions:
+  - distance{d=>4}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} @self
+  - delay 20
+  - sound{s=block.enchantment_table.use}
+  - projectile{ot=golem-elemental-water-proj-tick;oh=golem-elemental-water-proj-hit;i=1;v=15;mr=30} @target
+golem-elemental-water-proj-tick:
+  Skills:
+  - effect:particlesphere{p=falling_dripstone_water;amount=1;radius=1} @Origin
+golem-elemental-water-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+  - throw{vy=-15}
+
+golem-elemental-earth-proj:
+  TargetConditions:
+  - distance{d=>4}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} @self
+  - delay 20
+  - sound{s=block.enchantment_table.use}
+  - projectile{ot=golem-elemental-earth-proj-tick;oh=golem-elemental-earth-proj-hit;i=1;v=15;mr=30} @target
+golem-elemental-earth-proj-tick:
+  Skills:
+  - effect:particles{p=block_crack;m=dirt;a=1} @Origin
+golem-elemental-earth-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+  - potion{t=SLOW;d=80;l=3}
+
+golem-elemental-void-proj:
+  TargetConditions:
+  - distance{d=>4}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} @self
+  - delay 20
+  - sound{s=block.enchantment_table.use}
+  - projectile{ot=golem-elemental-void-proj-tick;oh=golem-elemental-void-proj-hit;i=1;v=15;mr=30} @target
+golem-elemental-void-proj-tick:
+  Skills:
+  - effect:particlesphere{p=dragon_breath;amount=1;radius=1} @Origin
+golem-elemental-void-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+  - pull{v=2.5}
+  - delay 10
+  - pull{v=2.5}
+  - delay 10
+  - pull{v=2.5}
+
+golem-elemental-light-proj:
+  TargetConditions:
+  - distance{d=>4}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} @self
+  - delay 20
+  - sound{s=block.enchantment_table.use}
+  - projectile{ot=golem-elemental-light-proj-tick;oh=golem-elemental-light-proj-hit;i=1;v=15;mr=30} @target
+golem-elemental-light-proj-tick:
+  Skills:
+  - effect:particlesphere{p=enchantment_table;amount=1;radius=1} @Origin
+golem-elemental-light-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+  - potion{t=BLINDNESS;d=40;l=1}
+
+
+
+
+golem-fire-aoe-effect:
+  Skills:
+  - ignite{d=200}
+golem-water-aoe-effect:
+  Skills:
+  - sudoSkill{s=golem-void-aoe-effect-drown}
+golem-void-aoe-effect-drown:
+  Skills:
+  - jump{v=-1;repeat=8;repeatInterval=20} @self
+
+golem-earth-aoe-effect:
+  Skills:
+  - potion{t=SLOW;d=200;l=3}
+
+golem-void-aoe-effect:
+  Skills:
+  - throw{vy=12}
+  - sudoSkill{s=golem-void-aoe-effect-pull}
+golem-void-aoe-effect-pull:
+  Skills:
+  - delay 20
+  - leap{v=400} @MIR{t=golem-void,golem-conjured-void;r=32} 
+
+golem-light-aoe-effect:
+  Skills:
+  - heal{a=500;i=true} @self
+  - sound{s=entity.experience_orb.pickup;v=2;p=0.5} @self
+  - effect:particles{p=HAPPY_VILLAGER;amount=25;vSpread=1;hSpread=1;Speed=0.00000001;yOffset=0} @self
+  - heal{a=500;i=true} @MIR{t=golem-elemental-light;r=5}  
+  - effect:particles{p=HAPPY_VILLAGER;amount=25;vSpread=1;hSpread=1;Speed=0.00000001;yOffset=0} @MIR{t=golem-elemental-light;r=5} 
+ 
+
+golem-fire-aoe:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 20
+  - sound{s=entity.iron_golem.damage;p=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - delay 10
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 10
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - delay 10
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - delay 10
+  - sound{s=entity.iron_golem.damage;p=0.5}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - skill{s=golem-fire-aoe-effect} @PIR{r=5}
+
+golem-water-aoe:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 20
+  - sound{s=entity.iron_golem.damage;p=1}
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - delay 10
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 10
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - delay 10
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - delay 10
+  - sound{s=entity.iron_golem.damage;p=0.5}
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=falling_dripstone_water;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - skill{s=golem-water-aoe-effect} @PIR{r=5}
+
+golem-earth-aoe:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 20
+  - sound{s=entity.iron_golem.damage;p=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - delay 10
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 10
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - delay 10
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - delay 10
+  - sound{s=entity.iron_golem.damage;p=0.5}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - skill{s=golem-earth-aoe-effect} @PIR{r=5}
+
+golem-void-aoe:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 12
+  Skills:
+  - sound{s=entity.iron_golem.damage;p=1}
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - delay 10
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 10
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - delay 10
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - delay 10
+  - sound{s=entity.iron_golem.damage;p=0.5}
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=dragon_breath;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - skill{s=golem-void-aoe-effect} @PIR{r=5}
+
+golem-light-aoe:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 20
+  - sound{s=entity.iron_golem.damage;p=1}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - delay 10
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 10
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - delay 10
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - delay 10
+  - sound{s=entity.iron_golem.damage;p=0.5}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=enchantment_table;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=5}
+  - skill{s=golem-light-aoe-effect} @PIR{r=5}
+
+
+golem-gem-leash:
+  TargetConditions:
+  - distance{d=>12}
+  Cooldown: 12
+  Skills:
+  - signal{s=leash}
+
+golem-gem-fire-leash-teleport:
+  Skills:
+  - sound{s=entity.warden.dig;v=4;p=0.5} @self
+  - delay 40
+  - teleport @MIR{t=golem-gem-fire;r=100}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=32}
+golem-gem-water-leash-teleport:
+  Skills:
+  - sound{s=entity.warden.dig;v=4;p=0.5} @self
+  - delay 40
+  - teleport @MIR{t=golem-gem-water;r=100}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=32}
+golem-gem-earth-leash-teleport:
+  Skills:
+  - sound{s=entity.warden.dig;v=4;p=0.5} @self
+  - delay 40
+  - teleport @MIR{t=golem-gem-earth;r=100}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=32}
+golem-gem-void-leash-teleport:
+  Skills:
+  - sound{s=entity.warden.dig;v=4;p=0.5} @self
+  - delay 40
+  - teleport @MIR{t=golem-gem-void;r=100}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=32}
+golem-gem-light-leash-teleport:
+  Skills:
+  - sound{s=entity.warden.dig;v=4;p=0.5} @self
+  - delay 40
+  - teleport @MIR{t=golem-gem-light;r=100}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=32}
+
+
+golem-grunt-remove:
+  Skills:
+  - delay 800
+  - sound{s=block.stone.break}
+  - effect:particlering{p=block_crack;m=stone;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1;yOffset=1}
+  - effect:particlering{p=block_crack;m=stone;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2;yOffset=1}  
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=2}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=2}
+  - remove
+
+
+golem-fire-visual:
+  Skills:
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=0.75}
+golem-water-visual:
+  Skills:
+  - effect:particlesphere{p=falling_dripstone_water;amount=2;radius=1;yOffset=0.75}
+golem-earth-visual:
+  Skills:
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.75}
+golem-void-visual:
+  Skills:
+  - effect:particlesphere{p=dragon_breath;amount=2;radius=1;yOffset=0.75}
+golem-light-visual:
+  Skills:
+  - effect:particlesphere{p=enchantment_table;amount=2;radius=1;yOffset=0.75}
+
+golem-elemental-fire-visual:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=0.5}
+golem-elemental-water-visual:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - effect:particlesphere{p=falling_dripstone_water;amount=1;radius=1;yOffset=0.5}
+golem-elemental-earth-visual:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - effect:particlesphere{p=block_crack;m=dirt;amount=1;radius=1;yOffset=0.5}
+golem-elemental-void-visual:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - effect:particlesphere{p=dragon_breath;amount=1;radius=1;yOffset=0.5}
+golem-elemental-light-visual:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - effect:particlesphere{p=enchantment_table;amount=1;radius=1;yOffset=0.5}
+
+golem-gem-wave:
+  Skills:
+  - skill{s=golem-gem-wave9} >90%
+  - skill{s=golem-gem-wave8} >80%
+  - skill{s=golem-gem-wave7} >70%
+  - skill{s=golem-gem-wave6} >60%
+  - skill{s=golem-gem-wave5} >50%
+  - skill{s=golem-gem-wave4} >40%
+  - skill{s=golem-gem-wave3} >30%
+  - skill{s=golem-gem-wave2} >20%
+  - skill{s=golem-gem-wave1} >10%
+
+golem-gem-wave1:
+  Cooldown: 9999
+  Skills:
+  - skill{s=golem-gem-wave-audio}
+  - skill{s=golem-gem-summon-elemental}
+golem-gem-wave2:
+  Cooldown: 9999
+  Skills:
+  - skill{s=golem-gem-wave-audio}
+  - skill{s=golem-gem-summon-elemental}
+golem-gem-wave3:
+  Cooldown: 9999
+  Skills:
+  - skill{s=golem-gem-wave-audio}
+  - skill{s=golem-gem-summon-elemental}
+golem-gem-wave4:
+  Cooldown: 9999
+  Skills:
+  - skill{s=golem-gem-wave-audio}
+  - skill{s=golem-gem-summon-golem}
+golem-gem-wave5:
+  Cooldown: 9999
+  Skills:
+  - skill{s=golem-gem-wave-audio}
+  - skill{s=golem-gem-summon-elemental}
+  - skill{s=golem-gem-summon-elemental}
+golem-gem-wave6:
+  Cooldown: 9999
+  Skills:
+  - skill{s=golem-gem-wave-audio}
+  - skill{s=golem-gem-summon-elemental}
+  - skill{s=golem-gem-summon-golem}
+golem-gem-wave7:
+  Cooldown: 9999
+  Skills:
+  - skill{s=golem-gem-wave-audio}
+  - skill{s=golem-gem-summon-elemental}
+  - skill{s=golem-gem-summon-elemental}
+golem-gem-wave8:
+  Cooldown: 9999
+  Skills:
+  - skill{s=golem-gem-wave-audio}
+  - skill{s=golem-gem-summon-elemental}
+  - skill{s=golem-gem-summon-golem}
+golem-gem-wave9:
+  Cooldown: 9999
+  Skills:
+  - skill{s=golem-gem-wave-audio}
+  - skill{s=golem-gem-summon-golem}
+  - skill{s=golem-gem-summon-golem}
+
+
+golem-gem-wave-audio:
+  Skills:
+  - randomskill{s=golem-gem-wave-audio1,golem-gem-wave-audio2,golem-gem-wave-audio3,golem-gem-wave-audio4,golem-gem-wave-audio5}
+golem-gem-wave-audio1:
+  Conditions:
+  - variableEquals{var=caster.type;value=1}
+  Skills:
+  - sound{s=item.firecharge.use;v=2}
+golem-gem-wave-audio2:
+  Conditions:
+  - variableEquals{var=caster.type;value=2}
+  Skills:
+  - sound{s=ambient.underwater.exit;v=2}
+golem-gem-wave-audio3:
+  Conditions:
+  - variableEquals{var=caster.type;value=3}
+  Skills:
+  - sound{s=block.grass.break;v=2}
+golem-gem-wave-audio4:
+  Conditions:
+  - variableEquals{var=caster.type;value=4}
+  Skills:
+  - sound{s=entity.enderman.teleport;v=2}
+golem-gem-wave-audio5:
+  Conditions:
+  - variableEquals{var=caster.type;value=5}
+  Skills:
+  - sound{s=entity.ender_dragon.flap;v=2}
+
+
+golem-gem-summon-golem:
+  Skills:
+  - randomskill{s=golem-gem-summon-golem1,golem-gem-summon-golem2,golem-gem-summon-golem3,golem-gem-summon-golem4,golem-gem-summon-golem5}
+golem-gem-summon-golem1:
+  Conditions:
+  - variableEquals{var=caster.type;value=1}
+  Skills:
+  - summon{t=golem-fire;r=5;a=1;os=true}
+golem-gem-summon-golem2:
+  Conditions:
+  - variableEquals{var=caster.type;value=2}
+  Skills:
+  - summon{t=golem-water;r=5;a=1;os=true}
+golem-gem-summon-golem3:
+  Conditions:
+  - variableEquals{var=caster.type;value=3}
+  Skills:
+  - summon{t=golem-earth;r=5;a=1;os=true}
+golem-gem-summon-golem4:
+  Conditions:
+  - variableEquals{var=caster.type;value=4}
+  Skills:
+  - summon{t=golem-void;r=5;a=1;os=true}
+golem-gem-summon-golem5:
+  Conditions:
+  - variableEquals{var=caster.type;value=5}
+  Skills:
+  - summon{t=golem-light;r=5;a=1;os=true}
+
+
+golem-gem-summon-elemental:
+  Skills:
+  - randomskill{s=golem-gem-summon-elemental1,golem-gem-summon-elemental2,golem-gem-summon-elemental3,golem-gem-summon-elemental4,golem-gem-summon-elemental5}
+golem-gem-summon-elemental1:
+  Conditions:
+  - variableEquals{var=caster.type;value=1}
+  Skills:
+  - summon{t=golem-elemental-fire;r=8;a=2;os=true}
+golem-gem-summon-elemental2:
+  Conditions:
+  - variableEquals{var=caster.type;value=2}
+  Skills:
+  - summon{t=golem-elemental-water;r=8;a=2;os=true}
+golem-gem-summon-elemental3:
+  Conditions:
+  - variableEquals{var=caster.type;value=3}
+  Skills:
+  - summon{t=golem-elemental-earth;r=8;a=2;os=true}
+golem-gem-summon-elemental4:
+  Conditions:
+  - variableEquals{var=caster.type;value=4}
+  Skills:
+  - summon{t=golem-elemental-void;r=8;a=2;os=true}
+golem-gem-summon-elemental5:
+  Conditions:
+  - variableEquals{var=caster.type;value=5}
+  Skills:
+  - summon{t=golem-elemental-light;r=8;a=2;os=true}
+
+golem-gem-break:
+  Conditions:
+  - health{h=250}
+  Skills:
+  - command{c="ri drop-range 55 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 55 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 55 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - skill{s=golem-gem-break-drop}
+  - sound{s=block.stone.break}
+  - skill{s=golem-gem-break-despawn}
+  - remove
+
+golem-gem-break-despawn:
+  Skills:
+  - randomskill{s=golem-gem-break-despawn1,golem-gem-break-despawn2,golem-gem-break-despawn3,golem-gem-break-despawn4,golem-gem-break-despawn5}
+golem-gem-break-despawn1:
+  Conditions:
+  - variableEquals{var=caster.type;value=1}
+  Skills:
+  - signal{s=despawn} @MIR{t=golem-fire,golem-elemental-fire;r=100}
+golem-gem-break-despawn2:
+  Conditions:
+  - variableEquals{var=caster.type;value=2}
+  Skills:
+  - signal{s=despawn} @MIR{t=golem-water,golem-elemental-water;r=100}
+golem-gem-break-despawn3:
+  Conditions:
+  - variableEquals{var=caster.type;value=3}
+  Skills:
+  - signal{s=despawn} @MIR{t=golem-earth,golem-elemental-earth;r=100}
+golem-gem-break-despawn4:
+  Conditions:
+  - variableEquals{var=caster.type;value=4}
+  Skills:
+  - signal{s=despawn} @MIR{t=golem-void,golem-elemental-void;r=100}
+golem-gem-break-despawn5:
+  Conditions:
+  - variableEquals{var=caster.type;value=5}
+  Skills:
+  - signal{s=despawn} @MIR{t=golem-light,golem-elemental-light;r=100}
+
+golem-despawn:
+  Cooldown: 9999
+  Skills:
+  - cast{skillName="Despawn";duration=2400;showCastBar=true}
+  - delay 2400
+  - sound{s=block.stone.break}
+  - effect:particlesphere{p=block_crack;m=stone;amount=2;radius=1;yOffset=0.5}
+  - remove
+
+
+golem-gem-break-drop:
+  Skills:
+  - randomskill{s=golem-gem-break-drop1,golem-gem-break-drop2,golem-gem-break-drop3,golem-gem-break-drop4,golem-gem-break-drop5}
+golem-gem-break-drop1:
+  Conditions:
+  - variableEquals{var=caster.type;value=1}
+  Skills:
+  - summon{t=golem-elemental-wisp-fire} .2
+  - command{c="ri drop fire-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop fire-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop fire-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}  
+  - command{c="ri drop fire-crystal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .1
+golem-gem-break-drop2:
+  Conditions:
+  - variableEquals{var=caster.type;value=2}
+  Skills:
+  - summon{t=golem-elemental-wisp-water} .2
+  - command{c="ri drop water-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop water-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop water-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop water-crystal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .1
+golem-gem-break-drop3:
+  Conditions:
+  - variableEquals{var=caster.type;value=3}
+  Skills:
+  - summon{t=golem-elemental-wisp-earth} .2
+  - command{c="ri drop earth-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop earth-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop earth-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop earth-crystal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .1
+golem-gem-break-drop4:
+  Conditions:
+  - variableEquals{var=caster.type;value=4}
+  Skills:
+  - summon{t=golem-elemental-wisp-void} .2
+  - command{c="ri drop void-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop void-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop void-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop void-crystal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .1
+golem-gem-break-drop5:
+  Conditions:
+  - variableEquals{var=caster.type;value=5}
+  Skills:
+  - summon{t=golem-elemental-wisp-light} .2
+  - command{c="ri drop light-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop light-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop light-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - command{c="ri drop light-crystal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .1
+
+
+golem-gem-interact:
+  Cooldown: 8
+  Skills:
+  - skill{s=golem-gem-accuracy}
+  - randomskill{s=golem-gem-interact-reset-add,golem-gem-interact-reset-add2,golem-gem-interact-reset-sub,golem-gem-interact-reset-sub2}
+  - setvariable{var=caster.active;value=0}
+  - delay 160
+  - setvariable{var=caster.active;value=1}
+  - sound{s=block.amethyst_block.place}
+
+golem-gem-interact-reset-add:
+  Skills:
+  - setvariable{var=caster.time;value=1}
+  - setvariable{var=caster.add;value=1}  
+golem-gem-interact-reset-add2:
+  Skills:
+  - setvariable{var=caster.time;value=3}
+  - setvariable{var=caster.add;value=1}  
+golem-gem-interact-reset-sub:
+  Skills:
+  - setvariable{var=caster.time;value=9}
+  - setvariable{var=caster.add;value=0}  
+golem-gem-interact-reset-sub2:
+  Skills:
+  - setvariable{var=caster.time;value=7}
+  - setvariable{var=caster.add;value=0}  
+
+golem-gem-accuracy:
+  Skills:
+  - randomskill{s=golem-gem-accuracy1,golem-gem-accuracy2,golem-gem-accuracy3,golem-gem-accuracy4}
+
+golem-gem-accuracy1:
+  Conditions:
+  - variableEquals{var=caster.accuracy;value=1}
+  Skills:
+  #- sound{s=block.note_block.pling;p=0.5}
+  - sound{s=block.amethyst_block.break;p=.5}
+  - setname{name='&cMiss!'}
+  - summon{t=golem-grunt;a=2;r=12;os=true}
+golem-gem-accuracy2:
+  Conditions:
+  - variableEquals{var=caster.accuracy;value=2}    
+  Skills:
+  #- sound{s=block.note_block.pling;p=0.75}
+  - sound{s=block.amethyst_block.break;p=.75}
+  - setname{name='&eOkay!'}
+  - heal{a=5;i=true}
+  - summon{t=golem-grunt;a=2;r=12;os=true}
+  - skill{s=golem-gem-accuracy-visual}
+golem-gem-accuracy3:
+  Conditions:
+  - variableEquals{var=caster.accuracy;value=3}    
+  Skills:
+  #- sound{s=block.note_block.pling;p=1.0}
+  - sound{s=block.amethyst_block.break;p=1}
+  - setname{name='&aGood!'}
+  - heal{a=10;i=true}
+  - summon{t=golem-grunt;a=3;r=12;os=true}
+  - skill{s=golem-gem-accuracy-visual}
+  - skill{s=golem-gem-accuracy-visual}
+golem-gem-accuracy4:
+  Conditions:
+  - variableEquals{var=caster.accuracy;value=4}    
+  Skills:
+  #- sound{s=block.note_block.pling;p=1.5}
+  - sound{s=block.amethyst_block.break;p=1.5}
+  - setname{name='&2Perfect!'}
+  - heal{a=25;i=true}
+  - summon{t=golem-grunt;a=4;r=12;os=true}
+  - skill{s=golem-gem-accuracy-visual}
+  - skill{s=golem-gem-accuracy-visual}
+  - skill{s=golem-gem-accuracy-visual}
+
+golem-gem-accuracy-visual:
+  Skills:
+  - randomskill{s=golem-gem-accuracy-visual1,golem-gem-accuracy-visual2,golem-gem-accuracy-visual3,golem-gem-accuracy-visual4,golem-gem-accuracy-visual5}
+golem-gem-accuracy-visual1:
+  Conditions:
+  - variableEquals{var=caster.type;value=1}
+  Skills:
+  - effect:particlesphere{p=block_crack;m=red_glazed_terracotta;amount=1;radius=1;yOffset=0.25}
+golem-gem-accuracy-visual2:
+  Conditions:
+  - variableEquals{var=caster.type;value=2}
+  Skills:
+  - effect:particlesphere{p=block_crack;m=blue_glazed_terracotta;amount=1;radius=1;yOffset=0.25}
+golem-gem-accuracy-visual3:
+  Conditions:
+  - variableEquals{var=caster.type;value=3}
+  Skills:
+  - effect:particlesphere{p=block_crack;m=green_glazed_terracotta;amount=1;radius=1;yOffset=0.25}
+golem-gem-accuracy-visual4:
+  Conditions:
+  - variableEquals{var=caster.type;value=4}
+  Skills:
+  - effect:particlesphere{p=block_crack;m=purple_glazed_terracotta;amount=1;radius=1;yOffset=0.25}
+golem-gem-accuracy-visual5:
+  Conditions:
+  - variableEquals{var=caster.type;value=5}
+  Skills:
+  - effect:particlesphere{p=block_crack;m=white_glazed_terracotta;amount=1;radius=1;yOffset=0.25}
+    
+
+
+golem-gem-tick:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}    
+  Skills:
+  - randomskill{s=golem-gem-time-set-add,golem-gem-time-set-sub}
+  - randomskill{s=golem-gem-time-add,golem-gem-time-sub}
+  - skill{s=golem-gem-time}
+golem-gem-time:
+  Skills:
+  - randomskill{s=golem-gem-time1,golem-gem-time2,golem-gem-time3,golem-gem-time4,,golem-gem-time5,,golem-gem-time6,,golem-gem-time7,,golem-gem-time8,,golem-gem-time9}
+
+golem-gem-time-set-add:
+  Conditions:
+  - varinrange{var=caster.time;value=>8}
+  - variableEquals{var=caster.add;value=1}  
+  Skills:
+  - setvariable{var=caster.add;value=0}
+golem-gem-time-set-sub:
+  Conditions:
+  - varinrange{var=caster.time;value=<2}
+  - variableEquals{var=caster.add;value=0}  
+  Skills:
+  - setvariable{var=caster.add;value=1}
+
+golem-gem-time-sub:
+  Conditions:
+  - variableEquals{var=caster.add;value=1}  
+  Skills:
+  - variableadd{var=caster.time;amount=1}
+golem-gem-time-add:
+  Conditions:
+  - variableEquals{var=caster.add;value=0}
+  Skills:  
+  - variablesubtract{var=caster.time;amount=1}
+
+
+golem-gem-time1:
+  Conditions:
+  - variableEquals{var=caster.time;value=1}  
+  Skills:
+  - setname{name='&e[&c|&7||||||||&e]'}
+  - setvariable{var=caster.accuracy;value=1}
+
+
+golem-gem-time2:
+  Conditions:
+  - variableEquals{var=caster.time;value=2}  
+  Skills:
+  - setname{name='&e[&7|&c|&7|||||||&e]'}
+  - setvariable{var=caster.accuracy;value=1}
+
+
+golem-gem-time3:
+  Conditions:
+  - variableEquals{var=caster.time;value=3}  
+  Skills:
+  - setname{name='&e[&7||&e|&7||||||&e]'}
+  - setvariable{var=caster.accuracy;value=2}
+
+
+golem-gem-time4:
+  Conditions:
+  - variableEquals{var=caster.time;value=4}  
+  Skills:
+  - setname{name='&e[&7|||&a|&7|||||&e]'}
+  - setvariable{var=caster.accuracy;value=3}
+
+
+golem-gem-time5:
+  Conditions:
+  - variableEquals{var=caster.time;value=5}  
+  Skills:
+  - setname{name='&e[&7||||&2|&7||||&e]'}
+  - setvariable{var=caster.accuracy;value=4}
+
+
+golem-gem-time6:
+  Conditions:
+  - variableEquals{var=caster.time;value=6}  
+  Skills:
+  - setname{name='&e[&7|||||&a|&7|||&e]'}
+  - setvariable{var=caster.accuracy;value=3}
+
+
+golem-gem-time7:
+  Conditions:
+  - variableEquals{var=caster.time;value=7}  
+  Skills:
+  - setname{name='&e[&7||||||&e|&7||&e]'}
+  - setvariable{var=caster.accuracy;value=2}
+
+
+golem-gem-time8:
+  Conditions:
+  - variableEquals{var=caster.time;value=8}  
+  Skills:
+  - setname{name='&e[&7|||||||&c|&7|&e]'}
+  - setvariable{var=caster.accuracy;value=1}
+
+
+golem-gem-time9:
+  Conditions:
+  - variableEquals{var=caster.time;value=9}  
+  Skills:
+  - setname{name='&e[&7||||||||&c|&7&e]'}
+  - setvariable{var=caster.accuracy;value=1}
+
+
+
+golem-elemental-wisp-fire:
+  Cooldown: 1
+  Skills:
+  - randomskill{s=golem-elemental-wisp-fire-connect,golem-elemental-wisp-fire-disconnect}
+
+golem-elemental-wisp-fire-connect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=0}
+  Skills:
+  - sound{s=block.fire.ambient}
+  - message{m="&cYou guide the Fire Elemental Wisp."} @trigger
+  - setvariable{var=caster.follow;value=1}
+golem-elemental-wisp-fire-disconnect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - sound{s=block.fire.extinguish}
+  - message{m="&cYou abandon the Fire Elemental Wisp."} @trigger
+  - setvariable{var=caster.follow;value=0}
+
+golem-elemental-wisp-water:
+  Cooldown: 1
+  Skills:
+  - randomskill{s=golem-elemental-wisp-water-connect,golem-elemental-wisp-water-disconnect}
+
+golem-elemental-wisp-water-connect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=0}
+  Skills:
+  - sound{s=block.fire.ambient}
+  - message{m="&bYou guide the Water Elemental Wisp."} @trigger
+  - setvariable{var=caster.follow;value=1}
+golem-elemental-wisp-water-disconnect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - sound{s=block.fire.extinguish}
+  - message{m="&bYou abandon the Water Elemental Wisp."} @trigger
+  - setvariable{var=caster.follow;value=0}
+
+golem-elemental-wisp-earth:
+  Cooldown: 1
+  Skills:
+  - randomskill{s=golem-elemental-wisp-earth-connect,golem-elemental-wisp-earth-disconnect}
+
+golem-elemental-wisp-earth-connect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=0}
+  Skills:
+  - sound{s=block.fire.ambient}
+  - message{m="&aYou guide the Earth Elemental Wisp."} @trigger
+  - setvariable{var=caster.follow;value=1}
+golem-elemental-wisp-earth-disconnect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - sound{s=block.fire.extinguish}
+  - message{m="&aYou abandon the Earth Elemental Wisp."} @trigger
+  - setvariable{var=caster.follow;value=0}
+
+golem-elemental-wisp-void:
+  Cooldown: 1
+  Skills:
+  - randomskill{s=golem-elemental-wisp-void-connect,golem-elemental-wisp-void-disconnect}
+
+golem-elemental-wisp-void-connect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=0}
+  Skills:
+  - sound{s=block.fire.ambient}
+  - message{m="&dYou guide the Void Elemental Wisp."} @trigger
+  - setvariable{var=caster.follow;value=1}
+golem-elemental-wisp-void-disconnect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - sound{s=block.fire.extinguish}
+  - message{m="&dYou abandon the Void Elemental Wisp."} @trigger
+  - setvariable{var=caster.follow;value=0}
+
+golem-elemental-wisp-light:
+  Cooldown: 1
+  Skills:
+  - randomskill{s=golem-elemental-wisp-light-connect,golem-elemental-wisp-light-disconnect}
+
+golem-elemental-wisp-light-connect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=0}
+  Skills:
+  - sound{s=block.fire.ambient}
+  - message{m="&eYou guide the Light Elemental Wisp."} @trigger
+  - setvariable{var=caster.follow;value=1}
+golem-elemental-wisp-light-disconnect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - sound{s=block.fire.extinguish}
+  - message{m="&eYou abandon the Light Elemental Wisp."} @trigger
+  - setvariable{var=caster.follow;value=0}
+
+
+golem-elemental-wisp-unfollow:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  - playernotwithin 20
+  Skills:
+  - setvariable{var=caster.follow;value=0}
+
+golem-elemental-wisp-follow:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - skill{s=golem-elemental-wisp-visual}
+  - skill{s=golem-elemental-wisp-follow-leap}
+golem-elemental-wisp-follow-leap:
+  Conditions:
+  - playernotwithin 3
+  Skills:
+  - leap{v=75} @NearestPlayer{r=20}
+
+golem-conjured-threat:
+  TargetConditions:
+  - distance{d=>15}
+  - variableEquals{var=caster.tracking;value=0}  
+  Cooldown: 12
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=50}
+
+golem-threat:
+  TargetConditions:
+  - distance{d=>15}
+  Cooldown: 12
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=50}
+
+golem-threat-outside:
+  TargetConditions:
+  - outside{} true
+  Cooldown: 12
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=50}

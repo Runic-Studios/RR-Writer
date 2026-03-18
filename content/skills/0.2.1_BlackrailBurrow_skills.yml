@@ -1,0 +1,170 @@
+CursedMinecarton:
+  Conditions:
+  - varinrange{var=caster.cart;value=>5}
+  Skills:
+  - setAI{ai=true}
+  - setvariable{var=caster.ai;value=1}
+CursedMinecartcheckwithin:
+  Conditions:
+  - playerwithin 6
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.cart;amount=1}	   
+CursedMinecartchecknotwithin:
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - setvariable{var=caster.cart;value=0}  
+CursedMinecart:
+  Conditions:
+  - playerwithin 2
+#  - variableEquals{var=caster.ai;value=1}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=2}
+  - velocity{v=250} @PIR{r=2}
+  - potion{t=SLOW;duration=40;l=1} @PIR{r=2}
+#  - remove
+MoveThroughMinecart:
+  Skills:
+  - runaigoalselector{goal=gotolocation -1789,60,16}
+  - delay 200
+  - runaigoalselector{goal=clear}
+  - delay 1
+  - runaigoalselector{goal=gotolocation -1801,60,1}
+  - delay 200
+  - runaigoalselector{goal=clear}
+  - delay 1
+  - runaigoalselector{goal=gotolocation -1789,60,16}
+  - delay 200
+  - runaigoalselector{goal=clear}
+  - delay 1
+  - runaigoalselector{goal=gotolocation -1801,60,1}
+  - delay 200
+  - runaigoalselector{goal=clear}
+  - delay 1
+  - remove @self
+  
+UndeadMinerTNTcheckwithin:
+  Conditions:
+  - playerwithin 6
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.tnt;amount=1}	 
+UndeadMinerTNTchecknotwithin:
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - setvariable{var=caster.tnt;value=0}
+UndeadMinerTNT:
+  Conditions:
+  - varinrange{var=caster.tnt;value=>8}
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - setvariable{var=caster.tnt;value=0}
+  - delay 60
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - cast{skillName="Dynamite";duration=40;onCast=UndeadMinerTNTCast;showCastBar=true} @self
+  - delay 20
+  - potion{t=SLOW;d=40;l=10;hasParticles=false} 
+  - delay 40
+  - potion{t=SPEED;d=20;l=1;hasParticles=false} 
+UndeadMinerTNTCast:
+  Skills:
+  - summon{t=UndeadMinerTNT} 
+UndeadMinerTNTIgnite:
+  Skills:
+  - delay 20
+  - sound{s=entity.tnt.primed;v=2} 
+  - delay 40
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - remove
+UndeadMinerTNTDeath:
+  Skills:
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+
+bashMinor:
+  Cooldown: 15
+  Conditions:
+  - incombat{} true
+  Skills:
+  - potion{type=SLOW;duration=60;level=3;hasParticles=false} @self
+  - delay 60
+  - skill{s=bashHitMinor} @self
+  - effect:sound{s=block.anvil.place;v=1;p=0.5} @self
+  - effect:particles{p=crit;amount=20;hSpread=1;vSpread=1;speed=0;so=0} @self
+bashWarn:
+  Cooldown: 15
+  Conditions:
+  - incombat{} true
+  Skills:
+  - sendtitle{title="&4&kooo&r&l&cBash&r&4&kooo";subtitle="&e&l3";d=20} 
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cBash&r&4&kooo";subtitle="&e&l2";d=20}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cBash&r&4&kooo";subtitle="&e&l1";d=20}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - skill{s=bashAbility} @self
+bashAbility:
+  Skills:
+  - leap{velocity=200} @target
+  - delay 20
+  - skill{s=bashHit}
+bashHit:
+  Conditions:
+  - playerwithin{d=5} true
+  Skills:
+  - effect:sound{s=block.anvil.place;v=1;p=0.5} @PIR{r=25}
+  - effect:particles{p=crit;amount=20;hSpread=1;vSpread=1;speed=0;so=0}
+  - command{c="runicdamage <caster.uuid> <target.name> 12"}  @PIR{r=5}
+  - throw{velocity=3;velocityY=0} @PIR{r=5}
+  - skill{s=RunicStun} @PIR{r=5}
+bashHitMinor:
+  Conditions:
+  - playerwithin{d=5} true
+  Skills:
+  - effect:sound{s=block.anvil.place;v=1;p=0.5} @PIR{r=25}
+  - effect:particles{p=crit;amount=20;hSpread=1;vSpread=1;speed=0;so=0}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"}  @PIR{r=5}
+  - skill{s=RunicStun} @PIR{r=4}
+SoldierSummonsElites:
+  Skills:
+  - message{m="&cARISE AND DEFEND ME!"} @PIR{r=25}
+  - summon{mob=UndeadMinerElite;amount=2;noise=5;os=true;r=4}
+  - effect:particles{p=spell_witch;amount=20;hSpread=1;vSpread=1;speed=0;so=0}
+VerminStatus:
+  TargetConditions:
+  Skills:
+  - potion{type=BLINDNESS;duration=80;level=2} @PIR{r=3}
+  - potion{type=SLOW;duration=80;level=2} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 4"}  @PIR{r=3}
+CorruptVermin:
+  Conditions:
+  - incombat{} true
+  Skills:
+  - sendtitle{title="&4&kooo&r&l&cCorruption&r&4&kooo";subtitle="&e&l3";d=20}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cCorruption&r&4&kooo";subtitle="&e&l2";d=20}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cCorruption&r&4&kooo";subtitle="&e&l1";d=20}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  #- effect:particlering{p=spell_instant;c=#FF5554;r=8;a=300;p=20;hs=7;vs=2;y=-1} @self -> goes sideways
+  #- effect:particlering{p=reddust;c=#00AA00;r=8;a=300;p=20;hs=7;vs=2;y=-1} @self -> goes up
+  - effect:particlering{p=reddust;c=#00AA00;r=8;a=300;hs=7;vs=2} @self
+  - summon{mob=UndeadVermin;a=1;noise=5;os=true} @MIR{t=Vermin;r=15}
+  - delay 1
+  - remove @MIR{type=Vermin;r=16}
+  - effect:particlering{p=reddust;c=#00AA00;r=8;a=120;hs=7;vs=2} @self
+  - effect:sound{s=entity.witch.death}
+  - effect:sound{s=entity.zombie_villager.converted}

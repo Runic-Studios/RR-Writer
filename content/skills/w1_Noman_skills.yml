@@ -1,0 +1,502 @@
+Noman-knockup:
+  TargetConditions:
+  - distance{d=<2}
+  Conditions:
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - throw{vy=8}
+  - sound{s=entity.iron_golem.attack} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 400"}
+  - potion{t=SLOW;d=40;l=1}
+
+Noman-passive:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - teleport @Location{c=2168.5,28,892.5}
+
+Noman-typec-passive:
+  Conditions:
+  - blocktype{type=lava} true
+  Cooldown: 2
+  Skills:
+  - leap{v=400} @target
+
+Noman-sentry1:
+  Cooldown: 9999
+  Skills:
+  - summon{t=Noman-typed;r=25;a=10}
+Noman-sentry2:
+  Cooldown: 9999
+  Skills:
+  - summon{t=Noman-typed;r=25;a=15}
+Noman-sentry3:
+  Cooldown: 9999
+  Skills:
+  - summon{t=Noman-typed;r=25;a=25}
+Noman-sentry4:
+  Cooldown: 9999
+  Skills:
+  - summon{t=Noman-typed;r=25;a=25}
+
+Noman-typed-visual:
+  Conditions:
+  - variableEquals{var=caster.visual;value=1}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=1}
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=.5} @self 
+  - ignite{d=120} @PIR{r=1}
+  - delay 2
+  - skill{s=Noman-typed-visual}
+
+Noman-typed:
+  Skills:
+  - effect:particlesphere{p=smoke_normal;amount=1;radius=1;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=2}
+Noman-typed-assault:
+  Skills:
+  - leap{v=1000} @NearestPlayer{r=128}
+  - setvariable{var=caster.visual;value=1}
+  - skill{s=Noman-typed-visual}
+  - delay 10
+  - setvariable{var=caster.visual;value=0}
+
+Noman-typed-transform:
+  Skills:
+  - delay 800
+  - skill{s=Noman-typed-transform1} <50%
+  - skill{s=Noman-typed-transform2} >50%
+Noman-typed-transform1:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=5}
+  - effect:particlesphere{p=flame;amount=25;radius=5;yOffset=.5} @self 
+  - ignite{d=120} @PIR{r=5}
+  - remove
+Noman-typed-transform2:
+  Skills:
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=.5} @self 
+  - summon{t=Noman-typec-variant}
+  - remove @self
+
+Noman-typed-spawn:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=3}
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=3;yOffset=.5} @self
+  - effect:particlesphere{p=flame;amount=5;radius=3;yOffset=.5} @self 
+  - ignite{d=120} @PIR{r=3}
+  - equip{i=WITHER_SKELETON_SKULL:4} @self
+  - potion{t=INVISIBILITY;d=9999;l=1;hasParticles=false} @self
+  - skill{s=Noman-typed-transform} @self
+
+Noman-ageofcreation:
+  Cooldown: 9999
+  Skills:
+  - jump{velocity=4} 
+  - delay 10
+  - setAI{ai=false} 
+  - delay 20
+  - summon{t=Noman-typec;r=32;a=5}
+  - delay 10
+  - summon{t=Noman-typeb;r=24;a=1}
+  - summon{t=Noman-typec;r=32;a=5}
+  - delay 10
+  - summon{t=Noman-typec;r=32;a=5}
+  - delay 10
+  - summon{t=Noman-typeb;r=24;a=1}
+  - summon{t=Noman-typec;r=32;a=5}
+  - delay 80
+  - setAI{ai=true}
+Noman-ai:
+  Skills:
+  - setAI{ai=false}
+  - delay 40
+  - setAI{ai=true}
+
+Noman-typeb-return:
+  Cooldown: 60
+  Skills:
+  - leap{v=4000} @MIR{t=Noman;r=512}
+
+Noman-typeb-visual:
+  Conditions:
+  - variableEquals{var=caster.visual;value=1}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=5}
+  - effect:particlesphere{p=smoke_normal;amount=20;radius=5;yOffset=.5} @self
+  - effect:particlesphere{p=flame;amount=20;radius=5;yOffset=.5} @self 
+  - ignite{d=120} @PIR{r=5}
+  - potion{t=SLOW;d=120;l=1} @PIR{r=5}
+  - delay 2
+  - skill{s=Noman-typeb-visual}
+
+Noman-typeb:
+  Skills:
+  - delay 80
+  - leap{v=1000}
+  - setvariable{var=caster.visual;value=1}
+  - skill{s=Noman-typeb-visual}
+  - delay 10
+  - jump{v=1} @self
+  - delay 10
+  - setvariable{var=caster.visual;value=0}
+  - delay 30
+  - skill{s=Noman-typeb-projectile}
+  - delay 2
+  - skill{s=Noman-typeb-projectile}
+  - delay 2
+  - skill{s=Noman-typeb-projectile}
+  - delay 2
+  - skill{s=Noman-typeb-projectile}
+  - delay 2
+  - skill{s=Noman-typeb-projectile}
+  - delay 2
+  - skill{s=Noman-typeb-projectile}
+  - delay 2
+  - skill{s=Noman-typeb-projectile}
+  - delay 2
+  - skill{s=Noman-typeb-projectile}
+  - delay 2
+  - skill{s=Noman-typeb-projectile}
+  - delay 2
+  - skill{s=Noman-typeb-projectile}
+Noman-typeb-passive:
+  Skills:
+  - delay 80
+  - projectile{ot=Noman-typeb-projectile-tick;oh=Noman-typeb-projectile-hit;oe=Noman-typeb-projectile-end;i=1;v=25;mr=256}
+
+Noman-typeb-projectile:
+  Skills:
+  - projectile{ot=Noman-typeb-projectile-tick;oh=Noman-typeb-projectile-hit;oe=Noman-typeb-projectile-end;i=1;v=15;mr=256;ac=.75}
+Noman-typeb-projectile-tick:
+  Skills:
+  - effect:particlesphere{p=smoke_normal;amount=1;radius=1}
+  - effect:particlesphere{p=flame;amount=1;radius=1} 
+Noman-typeb-projectile-hit:
+  Skills:
+  - sound{s=block.fire.extinguish;v=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"}
+  - ignite{d=120}
+  - potion{t=SLOW;d=200;l=3}
+Noman-typeb-projectile-end:
+  Skills:
+  - sound{s=block.fire.extinguish;v=1}
+  - effect:particlesphere{p=flame;amount=20;radius=5;yOffset=.5} 
+  - effect:particlesphere{p=smoke_normal;amount=20;radius=5;yOffset=.5}
+  - effect:blockmask{m=coal_block;r=5;d=20}
+  - summon{t=Noman-typeb-projectile-damage}
+
+Noman-typeb-projectile-damage:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=5}
+  - ignite{d=120} @PIR{r=5}
+  - potion{t=SLOW;d=120;l=1} @PIR{r=5}
+  - remove
+
+Noman-flamethrower:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - delay 200
+  - potion{t=SLOW;d=200;l=3;hasParticles=false}
+  - setvariable{var=caster.flamethrower;value=1}
+  - skill{s=Noman-flamethrower-active}
+  - delay 120
+  - setvariable{var=caster.flamethrower;value=0}
+  - delay 40
+  - summon{t=Noman-overheat} @Forward{f=-8;y=0}  
+  - setAI{ai=false}
+  - delay 40
+  - setAI{ai=true}
+Noman-flamethrower-active:
+  Conditions:
+  - variableEquals{var=caster.flamethrower;value=1}
+  Skills:
+  - summon{t=Noman-flamethrower1} @Forward{f=3;y=0.5}
+  - summon{t=Noman-flamethrower2} @Forward{f=8;y=0.5}
+  - summon{t=Noman-flamethrower3} @Forward{f=13;y=0.5}
+  - summon{t=Noman-flamethrower4} @Forward{f=23;y=0.5}
+  - delay 5
+  - skill{s=Noman-flamethrower-active}
+Noman-flamethrower1:
+  Skills:
+#  - effect:particlesphere{p=smoke_normal;amount=3;radius=3} 
+  - effect:particlesphere{p=flame;amount=3;radius=3} 
+  - ignite{d=80} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=3}
+  - remove
+Noman-flamethrower2:
+  Skills:
+#  - effect:particlesphere{p=smoke_normal;amount=6;radius=5} 
+  - effect:particlesphere{p=flame;amount=6;radius=5} 
+  - ignite{d=80} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - remove
+Noman-flamethrower3:
+  Skills:
+#  - effect:particlesphere{p=smoke_normal;amount=10;radius=7} 
+  - effect:particlesphere{p=flame;amount=10;radius=7} 
+  - ignite{d=80} @PIR{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=7}
+  - remove
+Noman-flamethrower4:
+  Skills:
+#  - effect:particlesphere{p=smoke_normal;amount=14;radius=9} 
+  - effect:particlesphere{p=flame;amount=14;radius=9} 
+  - ignite{d=80} @PIR{r=9}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=9}
+  - remove
+Noman-flamethrower5:
+  Skills:
+#  - effect:particlesphere{p=smoke_normal;amount=14;radius=9} 
+  - effect:particlesphere{p=flame;amount=14;radius=12} 
+  - ignite{d=80} @PIR{r=12}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=12}
+  - remove
+
+Noman-overheat:
+  Skills:
+  - sound{s=entity.dragon_fireball.explode;v=1} 
+  - effect:blockmask{m=coal_block;r=8;d=40}
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=8}
+  - throw{v=12;vy=12} @PIR{r=8}
+  - remove
+
+Noman-missileeffect:
+  Condition:
+  - incombat{}
+  Skills:
+  - effect:particlesphere{p=flame;amount=3;radius=3;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=2}
+  - delay 4
+  - skill{s=Noman-missileeffect}
+Noman-missileeffect2:
+  Condition:
+  - incombat{}
+  Skills:
+  - effect:particlesphere{p=flame;amount=5;radius=5;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=2}
+  - delay 4
+  - skill{s=Noman-missileeffect}
+
+Noman-launcher:
+  Conditions:
+  - incombat{}
+  Cooldown: 32
+  Skills:
+  - skill{s=Noman-launcher1} >25%
+  - skill{s=Noman-launcher2} <25%
+Noman-launcher1:
+  Skills:
+  - delay 400
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - delay 20
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missile} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missile} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missile} @Forward{f=-.25;y=0.5}
+  - delay 20
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missile} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missile} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missile} @Forward{f=-.25;y=0.5}
+  - delay 20
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missile} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missile} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missile} @Forward{f=-.25;y=0.5}
+
+
+Noman-launcher2:
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - delay 20
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 20
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 20
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+  - delay 5
+  - summon{t=Noman-missiletype2} @Forward{f=-.25;y=0.5}
+
+Noman-missile:
+  Skills:
+  - delay 4
+  - jump{v=3} 
+  - sound{s=entity.dragon_fireball.explode;v=1} 
+  - delay 30
+  - sethealth{a=1}
+  - skill{s=Noman-missileeffect}
+  - randomskill{s=Noman-missile1,Noman-missile2,Noman-missile3}
+  - delay 80
+  - suicide
+Noman-missile-noaudio:
+  Skills:
+  - delay 4
+  - jump{v=3} 
+  - delay 30
+  - sethealth{a=1}
+  - skill{s=Noman-missileeffect}
+  - randomskill{s=Noman-missile1,Noman-missile2,Noman-missile3}
+  - delay 80
+  - suicide
+Noman-missiletype2:
+  Skills:
+  - delay 4
+  - jump{v=3} 
+  - sound{s=entity.dragon_fireball.explode;v=2} 
+  - delay 30
+  - sethealth{a=1}
+  - skill{s=Noman-missileeffect2}
+  - randomskill{s=Noman-missile1,Noman-missile2,Noman-missile3}
+  - delay 80
+  - suicide
+Noman-missile1:
+  Skills:
+  - leap{v=250} @RLNTE{a=1;r=5;s=1;minr=3}  
+Noman-missile2:
+  Skills:
+  - leap{v=500} @RLNTE{a=1;r=5;s=1;minr=3}  
+Noman-missile3:
+  Skills:
+  - leap{v=750} @RLNTE{a=1;r=5;s=1;minr=3}  
+
+Noman-missileboom:
+  Skills:
+  - sound{s=entity.generic.explode;v=1}
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1}
+  - effect:blockmask{m=nether_bricks;r=5;d=10}
+  - effect:particlesphere{p=flame;amount=12;radius=5;yOffset=.5} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 1000"} @PIR{r=5}
+  - remove
+Noman-missileboom2:
+  Skills:
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1}
+  - effect:blockmask{m=nether_bricks;r=8;d=10}
+  - effect:particlesphere{p=flame;amount=20;radius=8;yOffset=.5} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 2500"} @PIR{r=8}
+  - remove
+
+Noman-guarenteearcher:
+  Skills:
+  - randomskill{s=Noman-archer-boots,Noman-archer-leggings,Noman-archer-helmet}
+Noman-archer:
+  Skills:
+  - randomskill{s=Noman-archer-boots,Noman-archer-chestplate,Noman-archer-leggings,Noman-archer-helmet}
+Noman-archer-boots:
+  Skills:
+  - command{c="ri drop noman-archer-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-archer-chestplate:
+  Skills:
+  - command{c="ri drop noman-archer-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-archer-leggings:
+  Skills:
+  - command{c="ri drop noman-archer-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-archer-helmet:
+  Skills:
+  - command{c="ri drop noman-archer-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+Noman-guarenteecleric:
+  Skills:
+  - randomskill{s=Noman-cleric-boots,Noman-cleric-leggings,Noman-cleric-helmet}
+Noman-cleric:
+  Skills:
+  - randomskill{s=Noman-cleric-boots,Noman-cleric-chestplate,Noman-cleric-leggings,Noman-cleric-helmet}
+Noman-cleric-boots:
+  Skills:
+  - command{c="ri drop noman-cleric-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-cleric-chestplate:
+  Skills:
+  - command{c="ri drop noman-cleric-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-cleric-leggings:
+  Skills:
+  - command{c="ri drop noman-cleric-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-cleric-helmet:
+  Skills:
+  - command{c="ri drop noman-cleric-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+Noman-guarenteemage:
+  Skills:
+  - randomskill{s=Noman-mage-boots,Noman-mage-leggings,Noman-mage-helmet}
+Noman-mage:
+  Skills:
+  - randomskill{s=Noman-mage-boots,Noman-mage-chestplate,Noman-mage-leggings,Noman-mage-helmet}
+Noman-mage-boots:
+  Skills:
+  - command{c="ri drop noman-mage-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-mage-chestplate:
+  Skills:
+  - command{c="ri drop noman-mage-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-mage-leggings:
+  Skills:
+  - command{c="ri drop noman-mage-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-mage-helmet:
+  Skills:
+  - command{c="ri drop noman-mage-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+Noman-guarenteerogue:
+  Skills:
+  - randomskill{s=Noman-rogue-boots,Noman-rogue-leggings,Noman-rogue-helmet}
+Noman-rogue:
+  Skills:
+  - randomskill{s=Noman-rogue-boots,Noman-rogue-chestplate,Noman-rogue-leggings,Noman-rogue-helmet}
+Noman-rogue-boots:
+  Skills:
+  - command{c="ri drop noman-rogue-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-rogue-chestplate:
+  Skills:
+  - command{c="ri drop noman-rogue-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-rogue-leggings:
+  Skills:
+  - command{c="ri drop noman-rogue-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-rogue-helmet:
+  Skills:
+  - command{c="ri drop noman-rogue-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+Noman-guarenteewarrior:
+  Skills:
+  - randomskill{s=Noman-warrior-boots,Noman-warrior-leggings,Noman-warrior-helmet}
+Noman-warrior:
+  Skills:
+  - randomskill{s=Noman-warrior-boots,Noman-warrior-chestplate,Noman-warrior-leggings,Noman-warrior-helmet}
+Noman-warrior-boots:
+  Skills:
+  - command{c="ri drop noman-warrior-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-warrior-chestplate:
+  Skills:
+  - command{c="ri drop noman-warrior-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-warrior-leggings:
+  Skills:
+  - command{c="ri drop noman-warrior-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Noman-warrior-helmet:
+  Skills:
+  - command{c="ri drop noman-warrior-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}

@@ -1,0 +1,66 @@
+Bugchecknotwithin:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.sting;amount=1}	 
+  - setvariable{var=caster.burst;value=0}
+  - skill{s=Bugchecknotwithin2} 
+Bugchecknotwithin2:
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - potion{t=slow;d=20;l=1;hasParticles=false} @self
+Bugcheckwithin:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - variableadd{var=caster.burst;amount=1}	
+  - setvariable{var=caster.sting;value=0}
+Sting:
+  Conditions:
+  - varinrange{var=caster.sting;value=>3}
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - setvariable{var=caster.sting;value=0}
+  - potion{t=slow;d=20;l=2;hasParticles=false} @self
+  - cast{skillName="Vomit";duration=20;onCast=StingCast;showCastBar=true} @target
+StingCast:
+  Skills:
+  - projectile{onTick=Sting-Tick;onHit=Sting-Hit;v=6;i=1;hR=1;vR=1} @target
+Sting-Tick:
+  Skills:
+  - effect:particles{p=reddust;color=#FFFF00;amount=5;speed=0;hS=0.1;vS=0.1} @origin
+Sting-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 60"}
+  - potion{type=SLOWNESS;duration=100;lvl=1}
+
+Burst:
+  Conditions:
+  - varinrange{var=caster.burst;value=>8}
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - setvariable{var=caster.burst;value=0}
+  - potion{t=slow;d=20;l=2;hasParticles=false} @self
+  - cast{skillName="Combust";duration=20;onCast=BurstCast;showCastBar=true} @target
+BurstCast:
+  Skills:
+  - effect:particlesphere{p=reddust;c=#FFFF00;amount=15;radius=4;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=4}
+  - potion{t=SLOW;duration=40;l=2} @PIR{r=4}
+  - delay 5
+  - effect:particlesphere{p=reddust;c=#FFFF00;amount=15;radius=4;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=4}
+  - potion{t=SLOW;duration=40;l=2} @PIR{r=4}
+  - delay 5
+  - effect:particlesphere{p=reddust;c=#FFFF00;amount=15;radius=4;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=4}
+  - potion{t=SLOW;duration=40;l=2} @PIR{r=4}
+  - delay 5
+  - effect:particlesphere{p=reddust;c=#FFFF00;amount=15;radius=4;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=4}
+  - potion{t=SLOW;duration=40;l=2} @PIR{r=4}

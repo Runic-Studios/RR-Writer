@@ -1,0 +1,508 @@
+frost-event-countdown-timer-damage:
+  Conditions:
+  - variableEquals{var=caster.pause;value=0}
+  Skills:
+  - damage{a=1;i=true} @self ~onTimer:20
+frost-event-countdown-wave-pause:
+  Skills:
+  - message{m="&dThe Wave Countdown has been &lpaused&r&d!"} @PIR{r=64}
+  - setvariable{var=caster.pause;value=1}
+frost-event-countdown-wave-unpause:
+  Skills:
+  - message{m="&dThe Wave Countdown has been &lunpaused&r&d!"} @PIR{r=64}
+  - setvariable{var=caster.pause;value=0}
+
+frost-event-countdown-timer:
+  Skills:
+  - summon{t=frost-event-countdown-timer}
+  - damage{a=1;i=true}
+  - variableadd{var=caster.wave;amount=1}
+  - skill{s=frost-event-wave}
+frost-event-countdown-timer-remove:
+  Conditions:
+  - health{h=<1}
+  Skills:
+  - signal{s=countdown} @MIR{t=frost-event-timer;r=32}
+  - remove
+frost-event-countdown-wave-skip:
+  Skills:
+  - message{m="&dThe Wave Countdown has been &lskipped&r&d!"} @PIR{r=64}
+  - signal{s=countdown} @MIR{t=frost-event-timer;r=32}
+  - remove
+frost-event-countdown-wave-clear-and-skip:
+  Skills:
+  - remove @MIR{t=frost-event-enemy-1,frost-event-enemy-2,frost-event-enemy-3,frost-event-enemy-4,frost-event-enemy-5,frost-event-enemy-6,frost-event-enemy-7;r=128} ~onSpawn
+  - message{m="&dThe current Wave has been &lcleared &r&dand &lskipped&r&d!"} @PIR{r=64}
+  - signal{s=countdown} @MIR{t=frost-event-timer;r=32}
+  - remove
+
+frost-event-countdown-wave-delay-10:
+  Skills:
+  - message{m="&dThe Wave Countdown has been delayed by &l10 &r&dseconds!"} @PIR{r=64}
+  - heal{a=10;i=true}
+frost-event-countdown-wave-delay-25:
+  Skills:
+  - message{m="&dThe Wave Countdown has been delayed by &l25 &r&dseconds!"} @PIR{r=64}
+  - heal{a=25;i=true}
+frost-event-countdown-wave-delay-60:
+  Skills:
+  - message{m="&dThe Wave Countdown has been delayed by &l60 &r&dseconds!"} @PIR{r=64}
+  - heal{a=60;i=true}
+
+frost-event-timer:
+  Conditions:
+  - health{h=<1}
+  Cooldown: 9999
+  Skills:
+  - message{m="&c&lFinal Wave!"} @PIR{r=64}
+  - remove @MIR{t=frost-event-countdown-timer;r=32}
+  - remove
+
+frost-event-wave:
+  Skills:
+  - sound{s=entity.ender_dragon.growl;v=4}
+  - message{m="&cWave &4&l<caster.var.wave> &r&chas arrived, defend Mister Frost!"} @PIR{r=64}
+  - randomskill{skills=frost-event-wave-1,frost-event-wave-2,frost-event-wave-3,frost-event-wave-4,frost-event-wave-5,frost-event-wave-6,frost-event-wave-7,frost-event-wave-8,frost-event-wave-9,frost-event-wave-10,frost-event-wave-11,frost-event-wave-12,frost-event-wave-13,frost-event-wave-14,frost-event-wave-15,frost-event-wave-16,frost-event-wave-17,frost-event-wave-18,frost-event-wave-19,frost-event-wave-20,frost-event-wave-21,frost-event-wave-22,frost-event-wave-23,frost-event-wave-24,frost-event-wave-25,frost-event-wave-26,frost-event-wave-27,frost-event-wave-28,frost-event-wave-29,frost-event-wave-30}
+
+frost-event-wave-1:
+  Conditions:
+  - variableEquals{var=caster.wave;value=1}
+  Skills:
+  - summon{t=frost-event-enemy-1;a=4;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-2:
+  Conditions:
+  - variableEquals{var=caster.wave;value=2}
+  Skills:
+  - summon{t=frost-event-enemy-1;a=2;r=4;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=5;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-3:
+  Conditions:
+  - variableEquals{var=caster.wave;value=3}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-1;a=2;r=1;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=3;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-4:
+  Conditions:
+  - variableEquals{var=caster.wave;value=4}
+  Skills:
+  #- summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-1;a=2;r=1;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=3;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-5:
+  Conditions:
+  - variableEquals{var=caster.wave;value=5}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  #- summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=1;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-1;a=3;r=1;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=4;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+
+frost-event-wave-6:
+  Conditions:
+  - variableEquals{var=caster.wave;value=6}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-1;a=3;r=1;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=4;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-7:
+  Conditions:
+  - variableEquals{var=caster.wave;value=7}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  #- summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=1;r=0;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=6;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-8:
+  Conditions:
+  - variableEquals{var=caster.wave;value=8}
+  Skills:
+  #- summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=1;r=0;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=4;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-9:
+  Conditions:
+  - variableEquals{var=caster.wave;value=9}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=1;r=0;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=4;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-10:
+  Conditions:
+  - variableEquals{var=caster.wave;value=10}
+  Skills:
+  #- summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=2;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=1;r=0;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=4;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+
+frost-event-wave-11:
+  Conditions:
+  - variableEquals{var=caster.wave;value=11}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  #- summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=1;r=0;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=7;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-12:
+  Conditions:
+  - variableEquals{var=caster.wave;value=12}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=1;r=0;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=5;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-13:
+  Conditions:
+  - variableEquals{var=caster.wave;value=13}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  #- summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=2;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=7;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-14:
+  Conditions:
+  - variableEquals{var=caster.wave;value=14}
+  Skills:
+  #- summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=2;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=7;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-15:
+  Conditions:
+  - variableEquals{var=caster.wave;value=15}
+  Skills:
+  - summon{t=frost-event-enemy-5;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=2;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=2;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=5;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+
+frost-event-wave-16:
+  Conditions:
+  - variableEquals{var=caster.wave;value=16}
+  Skills:
+  #- summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=2;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=5;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-17:
+  Conditions:
+  - variableEquals{var=caster.wave;value=17}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  #- summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=2;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-18:
+  Conditions:
+  - variableEquals{var=caster.wave;value=18}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=2;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=5;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-19:
+  Conditions:
+  - variableEquals{var=caster.wave;value=19}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  #- summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=2;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-20:
+  Conditions:
+  - variableEquals{var=caster.wave;value=20}
+  Skills:
+  - summon{t=frost-event-enemy-5;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=2;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-6;a=2;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=5;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+
+frost-event-wave-21:
+  Conditions:
+  - variableEquals{var=caster.wave;value=21}
+  Skills:
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=3;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-22:
+  Conditions:
+  - variableEquals{var=caster.wave;value=22}
+  Skills:
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=1;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=3;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-23:
+  Conditions:
+  - variableEquals{var=caster.wave;value=23}
+  Skills:
+  - summon{t=frost-event-enemy-5;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=3;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-24:
+  Conditions:
+  - variableEquals{var=caster.wave;value=24}
+  Skills:
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=1;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=3;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-25:
+  Conditions:
+  - variableEquals{var=caster.wave;value=25}
+  Skills:
+  - summon{t=frost-event-enemy-5;a=2;r=5;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=3;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=3;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-1;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+
+
+frost-event-wave-26:
+  Conditions:
+  - variableEquals{var=caster.wave;value=26}
+  Skills:
+  - summon{t=frost-event-enemy-5;a=1;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=1;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=3;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-6;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-27:
+  Conditions:
+  - variableEquals{var=caster.wave;value=27}
+  Skills:
+  - summon{t=frost-event-enemy-5;a=1;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=1;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-5;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=3;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-6;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-28:
+  Conditions:
+  - variableEquals{var=caster.wave;value=28}
+  Skills:
+  - summon{t=frost-event-enemy-5;a=1;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=2;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=3;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-6;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-29:
+  Conditions:
+  - variableEquals{var=caster.wave;value=29}
+  Skills:
+  - summon{t=frost-event-enemy-5;a=1;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=2;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-5;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=3;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-6;a=8;r=4;os=true} @Location{c=1514.5,23,-1147.5}
+frost-event-wave-30:
+  Conditions:
+  - variableEquals{var=caster.wave;value=30}
+  Skills:
+  - summon{t=frost-event-enemy-5;a=3;r=5;os=true} @Location{c=1584,23,-1148}
+  - summon{t=frost-event-enemy-4;os=true} @Ring{p=4;r=5} #@Location{c=1564.5,23,-1147.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1124.5}
+  - summon{t=frost-event-enemy-2} @Location{c=1564.5,23,-1170.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,31,-1152.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1572.5,29,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1142.5}
+  - summon{t=frost-event-enemy-3} @Location{c=1556.5,31,-1152.5}
+  - summon{t=frost-event-enemy-6;a=3;r=2;os=true} @Location{c=1602.5,23,-1147.5}
+  - summon{t=frost-event-enemy-7;a=1;r=0;os=true} @Location{c=1514.5,23,-1147.5}
+
+
+frost-event-setup-enemy-1:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - potion{t=SPEED;d=24000;l=4;hasParticles=false} 
+frost-event-setup-enemy-6:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - potion{t=SPEED;d=24000;l=5;hasParticles=false} 
+
+frost-event-setup-enemy-2:
+  Skills:
+  - sound{s=entity.generic.explode;v=1}
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 750"} @PIR{r=5}
+  - suicide
+frost-event-setup-enemy-5:
+  Skills:
+  - jump{v=1.25}
+  - delay 40
+  - skill{s=frost-event-setup-enemy-5-proj}
+  - delay 40
+  - skill{s=frost-event-setup-enemy-5-proj}
+  - delay 120
+  - skill{s=frost-event-setup-enemy-5}
+
+frost-event-setup-enemy-5-proj:
+  Skills:
+  - projectile{ot=frost-event-setup-enemy-5-proj-tick;oh=frost-event-setup-enemy-5-proj-hit;oe=frost-event-setup-enemy-5-proj-end;i=1;v=15;mr=256;ac=.75} @NearestPlayer{r=64}
+frost-event-setup-enemy-5-proj-tick:
+  Skills:
+  - effect:particlesphere{p=smoke_normal;amount=1;radius=1}
+  - effect:particlesphere{p=flame;amount=1;radius=1} 
+frost-event-setup-enemy-5-proj-hit:
+  Skills:
+  - sound{s=block.fire.extinguish;v=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}
+  - ignite{d=120}
+  - potion{t=SLOW;d=80;l=3}
+frost-event-setup-enemy-5-proj-end:
+  Skills:
+  - sound{s=block.fire.extinguish;v=1}
+  - effect:particlesphere{p=flame;amount=20;radius=5;yOffset=.5} 
+  - effect:particlesphere{p=smoke_normal;amount=20;radius=5;yOffset=.5}
+  - summon{t=frost-event-enemy-5-proj-dmg}
+frost-event-enemy-5-proj-dmg:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - ignite{d=120} @PIR{r=3}
+  - potion{t=SLOW;d=120;l=1} @PIR{r=3}
+  - remove
+  
+frost-event-enemy-7:
+  Skills:
+  - effect:particlesphere{p=flame;amount=25;radius=8;yOffset=0.5}
+  - delay 20  
+  - effect:particlesphere{p=flame;amount=25;radius=8;yOffset=0.5}
+  - delay 20  
+  - effect:particlesphere{p=flame;amount=25;radius=8;yOffset=0.5}
+  - delay 20  
+  - effect:particlesphere{p=flame;amount=25;radius=8;yOffset=0.5}
+  - delay 20  
+  - effect:particlesphere{p=soul_fire_flame;amount=100;radius=10;yOffset=0.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=10}
+  - ignite{d=120} @PIR{r=12}

@@ -1,0 +1,274 @@
+DaleCitizen-drowning-message:
+  Skills:
+  - randomskill{s=DaleCitizen-drowning-message1,DaleCitizen-drowning-message2,DaleCitizen-drowning-message3,DaleCitizen-drowning-message4,DaleCitizen-drowning-message5,DaleCitizen-drowning-message6,DaleCitizen-drowning-message7,DaleCitizen-drowning-message8}
+  - delay 80
+  - skill{s=DaleCitizen-drowning-message}
+DaleCitizen-drowning-message1:
+  Cooldown: 10
+  Skills:
+  - setname{name="&eI'm drowning!"}
+DaleCitizen-drowning-message2:
+  Cooldown: 10
+  Skills:
+  - setname{name="&e*Glub glub*"}
+DaleCitizen-drowning-message3:
+  Cooldown: 10
+  Skills:
+  - setname{name="&eI can't swim!"}
+DaleCitizen-drowning-message4:
+  Cooldown: 10
+  Skills:
+  - setname{name="&eI don't have much longer!"}
+DaleCitizen-drowning-message5:
+  Cooldown: 10
+  Skills:
+  - setname{name="&e*unintelligible screaming*"}
+DaleCitizen-drowning-message6:
+  Cooldown: 10
+  Skills:
+  - setname{name="&eI was never taught how to swim!"}
+DaleCitizen-drowning-message7:
+  Cooldown: 10
+  Skills:
+  - setname{name="&eThe water is so salty!"}
+DaleCitizen-drowning-message8:
+  Cooldown: 10
+  Skills:
+  - setname{name="&eWe're so close to the shore!"}
+
+DaleCitizen-drowning:
+  Skills:
+  - jump{v=0.102}
+  - sound{s=entity.player.hurt_drown}
+  - command{c="damage <caster.uuid> 1"}
+  - heal{a=1;i=true}
+
+tutorial_boss2:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - delay 80
+  - jump{v=1}
+  - delay 20
+  - throw{vy=12} @PIR{r=6}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=6}
+  - sound{s=block.grass.break;p=.5} 
+  - blockmask{m=dirt;d=40;r=6}  
+
+tutorial_boss:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - delay 80
+  - potion{type=SLOW;duration=60;level=2;hasParticles=false} 
+  - sound{s=block.grass.break}
+  - delay 10
+  - sound{s=block.grass.break}
+  - delay 10
+  - sound{s=block.grass.break}
+  - delay 10
+  - sound{s=block.grass.break}
+  - delay 10
+  - jump{v=0.5}
+  - delay 2
+  - leap{velocity=400} @target
+  - summon{t=tutorial_boss-marker;a=1;os=true} 
+  - delay 2
+  - summon{t=tutorial_boss-marker;a=1;os=true} 
+  - delay 2
+  - summon{t=tutorial_boss-marker;a=1;os=true} 
+  - delay 2
+  - summon{t=tutorial_boss-marker;a=1;os=true} 
+  - delay 20
+  - potion{t=SPEED;d=80;l=2;hasParticles=false}
+
+tutorial_boss-marker:
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=5}
+  - sound{s=block.grass.break;p=.5} 
+  - blockmask{m=dirt;d=40;r=5}
+  - remove
+
+tutorial_parrot:
+  Cooldown: 8
+  Skills:
+  - sound{s=entity.parrot.ambient} @self
+  - leap{v=250} @NearestPlayer{r=12}
+
+# rework
+
+TutorialCatapult:
+  Skills:
+  - projectile{ot=TutorialCatapult-Tick;oe=TutorialCatapult-End;oh=TutorialCatapult-End;v=18;i=1;mr=70;md=100}
+  - delay 100
+  - remove @self
+
+TutorialCatapult-Tick:
+  Skills:
+  - effect:particles{p=explosion_large;a=1} @origin
+
+TutorialCatapult-End:
+  Skills:
+  - explosion{} @origin
+
+TutorialCutsceneTP:
+  Skills:
+  - aura{auraName=TutorialStun;onTick=TutorialStun-Tick;interval=1;duration=140}
+  - potion{t=SLOW;d=40;p=false;i=false;l=10}
+  - teleportto{location=-2188,42,1751;yaw=56;pitch=34}
+  - remove self
+  #- delay 20
+  #- potion{t=SLOW;d=20;p=false;i=false;l=10}
+
+#TutorialStun:
+  #Skills:
+  #- aura{auraName=TutorialStun;onTick=TutorialStun-Tick;interval=1;duration=60}
+
+TutorialStun-Tick:
+  Skills:
+  - velocity{vx=0;vy=0;vz=0}
+
+CatapultSoundEffect:
+  Skills:
+  - effect:sound{s=entity.firework_rocket.launch}
+  - delay 20
+  - effect:sound{s=entity.firework_rocket.large_blast}
+
+DaleAzanianSoldier1:
+  Conditions:
+  - playerwithin 8
+  Cooldown: 1
+  Skills:
+  - signal{s=jump} @MIR{t=DaleCitizen1;r=2}
+  - signal{s=jump} @MIR{t=DaleCitizen2;r=2}
+
+pbscheck:
+  Skills:
+  - skill{s=pbsplayerwithin}
+  - skill{s=pbsplayernotwithin1}
+  - skill{s=pbsplayernotwithin2}
+
+pbsplayerwithin:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - potion{t=SLOW;d=10;level=1;hasParticles=false}  
+pbsplayernotwithin1:
+  Conditions:
+  - playernotwithin 8
+  Skills:
+  - potion{t=SPEED;d=10;level=1;hasParticles=false}  
+pbsplayernotwithin2:
+  Conditions:
+  - playernotwithin 16
+  Skills:
+  - remove
+
+pbs1message:
+  Cooldown: 12
+  Skills:
+  - randomskill{skills=pbsaa,pbsab,pbsac}
+  
+pbnpca:
+  Conditions:
+  - playerwithin 4
+  Cooldown: 16
+  Skills:
+  - randomskill{skills=pbnpcaa,pbnpcab,pbnpcac,pbnpcad}
+  - heal{a=1000}
+
+pbnpcaa:
+  Cooldown: 15
+  Skills:
+  - message{m="&eWillowdale Citizen<&co>&6 Help me! Anyone! Please! I don't want to die!"} @PIR{r=20}
+pbnpcab:
+  Cooldown: 15
+  Skills:
+  - message{m="&eWillowdale Citizen<&co>&6 Why are you doing this?!"} @PIR{r=12}
+pbnpcac:
+  Conditions:
+  - playerwithin 6
+  Cooldown: 15
+  Skills:
+  - message{m="&eWillowdale Citizen<&co>&6 Run away! Save yourselves!"} @PIR{r=12}
+pbnpcad:
+  Conditions:
+  - playerwithin 6
+  Cooldown: 15
+  Skills:
+  - message{m="&eWillowdale Citizen<&co>&6 Make sure you stay alive, please!"} @PIR{r=12}
+  
+pbsaa:
+  Cooldown: 8
+  Skills:
+  - message{m="&4Azanian Soldier<&co>&6 Forgive me, I have people waiting for me too."}
+pbsab:
+  Cooldown: 8
+  Skills:
+  - message{m="&4Azanian Soldier<&co>&6 Please don't blame me for this, I have no other &6choice."}
+pbsac:
+  Cooldown: 8
+  Skills:
+  - message{m="&4Azanian Soldier<&co>&6 In the name of the High Lord Malum, you need &6to die. I am sorry."}
+  
+pbsb:
+  Cooldown: 6
+  Skills:
+  - randomskill{skills=pbsba,pbsbb,pbsbc}
+pbsba:
+  Cooldown: 8
+  Skills:
+  - message{m="&4Azanian Soldier<&co>&6 Come back here!"} PIR{r=12}
+pbsbb:
+  Cooldown: 8
+  Skills:
+  - message{m="&4Azanian Soldier<&co>&6 Please! Don't make this harder for us!"} PIR{r=8}
+pbsbc:
+  Cooldown: 8
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - message{m="&4Azanian Soldier<&co>&6 I'm sorry it had to come down to this, but please just accept your end!"} PIR{r=8}
+
+WheatGiver:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - suicide
+
+RunicStun:
+  Skills:
+  #- message{m="&dStun Applied"} @PIR{r=20}
+  - aura{auraName=RunicStun;onTick=RunicStun-Tick;interval=1;duration=60} #@target
+
+RunicStun-Tick:
+  Skills:
+  #- sendtitle{title="";subtitle="&dStunned";d=1} #@self
+  - actionmessage{m="&4&lSTUNNED"}
+  - velocity{vx=0;vy=0;vz=0} #@self
+
+RunicStun2s:
+  Skills:
+  - aura{auraName=RunicStun2s;onTick=RunicStun-Tick;interval=1;duration=40} #@target
+
+RunicStun4s:
+  Skills:
+  - aura{auraName=RunicStun4s;onTick=RunicStun-Tick;interval=1;duration=80} #@target
+
+Root:
+  Skills:
+  - aura{auraName=Root;onTick=Root-Tick;interval=1;duration=60}
+  - potion{t=SLOW;d=60;l=100;p=false;i=false}
+
+Root-Tick:
+  Skills:
+  - actionmessage{m="&2&lROOTED"}
+
+Root1s:
+  Skills:
+  - aura{auraName=Root;onTick=Root-Tick;interval=1;duration=20}
+  - potion{t=SLOW;d=20;l=100;p=false;i=false}

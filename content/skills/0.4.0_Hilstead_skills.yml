@@ -1,0 +1,314 @@
+WhiteWarriortarget:
+  Skills:
+  - randomskill{s=WhiteWarriortarget1,WhiteWarriortarget2} @target
+
+WhiteWarriortarget1:
+  Conditions:
+  - incombat{}
+  - playerwithin 32
+  Skills:
+  - potion{t=SLOW;d=120;l=1;hasParticles=false} @self
+  - cast{skillName="Snow Fall";duration=40;onCast=WhiteWarriortargetcast;showCastBar=true} @target
+WhiteWarriortargetcast:
+  Skills:
+  - summon{t=WhiteWarriorMarker2;r=1;os=true} @PIR{r=32}
+  - delay 10
+  - summon{t=WhiteWarriorMarker2;r=1;os=true} @PIR{r=32}
+  - delay 10
+  - summon{t=WhiteWarriorMarker2;r=1;os=true} @PIR{r=32}
+  - delay 10
+  - summon{t=WhiteWarriorMarker2;r=1;os=true} @PIR{r=32}
+  - delay 10
+  - summon{t=WhiteWarriorMarker2;r=1;os=true} @PIR{r=32}
+  - delay 10
+  - summon{t=WhiteWarriorMarker2;r=1;os=true} @PIR{r=32}
+WhiteWarriortarget2:
+  Conditions:
+  - incombat{}
+  - playerwithin 32
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false} @self
+  - cast{skillName="Snow Storm";duration=20;onCast=WhiteWarriortargetcast2;showCastBar=true} @target
+WhiteWarriortargetcast2:
+  Skills:
+  - potion{t=SLOW;d=120;l=1;hasParticles=false} @self
+  - summon{t=WhiteWarriorMarker2;r=12;a=4;os=true} @target
+  - delay 20
+  - summon{t=WhiteWarriorMarker2;r=12;a=4;os=true} @target
+  - delay 20
+  - summon{t=WhiteWarriorMarker2;r=12;a=4;os=true} @target
+
+WhiteWarriorself:
+  Skills:
+  - summon{t=WhiteWarriorMarker;r=32;a=8;os=true}  
+
+WhiteWarriorself2:
+  Cooldown: 32
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - sound{s=block.snow.break}
+  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5}
+  - delay 4
+  - sound{s=block.snow.break}
+  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5}
+  - delay 4
+  - sound{s=block.snow.break}
+  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5}
+  - delay 4
+  - sound{s=block.snow.break}
+  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5}
+  - delay 4
+  - sound{s=block.snow.break}
+  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5}
+  - delay 4
+  - jump{v=2}
+  - delay 2
+  - leap{v=400} @target
+  - delay 10
+  - jump{v=1.6}
+  - delay 20
+  - setAI{ai=false}
+  - summon{t=WhiteWarriorMarker3;r=32;a=3}  
+  - delay 20
+  - summon{t=WhiteWarriorMarker3;r=32;a=3}  
+  - delay 20
+  - summon{t=WhiteWarriorMarker3;r=32;a=3}  
+  - delay 20
+  - summon{t=WhiteWarriorMarker3;r=32;a=3}  
+  - delay 20
+  - setAI{ai=true}
+
+WhiteWarriorMarker:
+  Skills:
+  - delay 40
+  - projectile{ot=WhiteWarrior-Tick;oh=WhiteWarrior-Hit;oe=WhiteWarrior-End;v=8;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=16;g=1} @self
+  - delay 15
+  - summon{t=WhiteWarriorMarker4}
+  - remove
+WhiteWarriorMarker4:
+  Skills:
+  - projectile{ot=WhiteWarrior-Tick;oh=WhiteWarrior-Hit;oe=WhiteWarrior-End;v=8;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=8;g=1} @self
+  - delay 20
+  - remove
+
+WhiteWarriorMarker2:
+  Skills:
+  - projectile{ot=WhiteWarrior-Tick;oh=WhiteWarrior-Hit;oe=WhiteWarrior-End;v=8;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=16;g=1.5} @self
+  - delay 20
+  - remove
+WhiteWarriorMarker3:
+  Skills:
+  - setAI{ai=false}
+  - delay 40
+  - projectile{ot=WhiteWarrior-Tick2;oh=WhiteWarrior-Hit2;v=12;i=1;hr=1;vr=1;syo=2.5} @NearestPlayer{r=24}
+  - delay 40
+  - setAI{ai=true}
+  - delay 60
+  - skill{s=WhiteWarriorMarker3Death}
+  - remove
+WhiteWarriorMarker3Death:
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5} @origin  
+WhiteWarrior-Tick:
+  Skills:
+  - effect:particlesphere{p=snow_shovel;amount=2;radius=3;yOffset=.5} @origin
+WhiteWarrior-Tick2:
+  Skills:
+  - effect:particlesphere{p=snow_shovel;amount=2;radius=1;yOffset=.5} @origin
+
+WhiteWarrior-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 20"}
+WhiteWarrior-Hit2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+
+WhiteWarrior-End:
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=4}
+  - effect:particlesphere{p=snow_shovel;amount=4;radius=2;yOffset=.5} @origin
+  - sound{s=block.snow.break}
+  - remove @self
+
+WhiteHorror:
+  Cooldown: 20
+  Conditions:
+  - incombat{}
+  - playerwithin 12
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false}
+  - potion{t=SLOW;d=60;l=1;hasParticles=false} @MIR{t=WhiteHorror;r=16} 
+  - potion{t=BLINDNESS;d=80;l=1} @target
+  - potion{t=SLOW;d=80;l=1} @target
+  - delay 60
+  - sound{s=entity.enderman.scream} @self
+  - potion{t=SPEED;d=80;l=3;hasParticles=false}
+
+DrownedIce:
+  Skills:
+  - potion{t=SLOW;l=1;force=true;p=false;d=20} @PIR{r=6}
+  - effect:blockmask{m=packed_ice;r=6;n=0;d=60}
+
+BearCharge:
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=60;l=100;p=false}
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:sound{s=entity.polar_bear.warning;volume=1.0;pitch=0.5} @self
+  #- runaigoalselector{g=lookatplayers}
+  - delay 5
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - delay 5
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - delay 5
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - delay 5
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:sound{s=entity.polar_bear.warning;volume=1.0;pitch=0.5} @self
+  - delay 5
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - delay 5
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - delay 5
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - delay 5
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - delay 5
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - effect:sound{s=entity.polar_bear.warning;volume=1.0;pitch=0.5} @self
+  - delay 5
+  - effect:particles{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5}
+  - delay 5
+  - setvariable{var=caster.active;value=1}
+  - sudoskill{s=BearPull} @target
+  - delay 20
+  #- runaigoalselector{g=clear}
+  - setvariable{var=caster.active;value=0}
+
+BearKnockUp:
+  Cooldown: 4
+  Conditions:
+  - playerwithin{d=4}
+  - variableEquals{var=caster.active;value=1} 
+  Skills:
+  - effect:particlering{p=snow_shovel;a=20;y=0.1;hs=0.8;vs=0.5;r=3} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 15"}
+  - effect:sound{s=entity.puffer_fish.flop;volume=2.0;pitch=1} @self
+  - throw{v=0;vy=10}
+  - setstance{s=default} @self
+
+BearPull:
+  Skills:
+  - pull{v=10} @MIR{r=20;t=NorthernBear}
+
+BearPassiveKnockback:
+  Conditions:
+  - stance default
+  - variableEquals{var=caster.active;value=0} 
+  Cooldown: 4
+  Skills:
+  - particles{p=snow_shovel;a=5;y=1;hs=0.5;vs=0.5}
+  - throw{v=2;vy=1}
+  
+DarkAura:
+  Conditions:
+  - playerwithin{d=8}
+  Skills:
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=7}
+  - effect:particlesphere{particle=dragon_breath;amount=300;radius=7} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=7}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  
+LeapWack:
+  Skills:
+  - leap{velocity=220} @target
+  - delay 20
+  - skill{s=LeapWackHit} @self
+ 
+LeapWackHit:
+  Conditions:
+  - targetwithin{d=4} true
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 60"}
+  - sound{s=block.anvil.land} @self

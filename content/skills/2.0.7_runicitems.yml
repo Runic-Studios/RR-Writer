@@ -1,0 +1,348 @@
+#heart-of-the-colossus-fragment
+heart-of-the-colossus-fragment1:
+  Skills:
+  - command{c="ri drop black-frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+heart-of-the-colossus-fragment2:
+  Skills:
+  - command{c="ri drop black-frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"} 
+heart-of-the-colossus-fragment3:
+  Skills:
+  - command{c="ri drop black-frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} 
+
+#black-frost
+black-frost2:
+  Skills:
+  - command{c="ri drop black-frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"} 
+black-frost3:
+  Skills:
+  - command{c="ri drop black-frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} 
+black-frost4:
+  Skills:
+  - command{c="ri drop black-frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"} 
+
+#crimson-core
+crimson-core1:
+  Skills:
+  - command{c="ri drop crimson-core <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+crimson-core2:
+  Skills:
+  - command{c="ri drop crimson-core <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+crimson-core3:
+  Skills:
+  - command{c="ri drop crimson-core <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+
+#sapphirine-shard
+sapphirine-shard1:
+  Skills:
+  - command{c="ri drop sapphirine-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+sapphirine-shard2:
+  Skills:
+  - command{c="ri drop sapphirine-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+sapphirine-shard3:
+  Skills:
+  - command{c="ri drop sapphirine-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+
+#sapphirine-shard
+glacial-fragment1:
+  Skills:
+  - command{c="ri drop glacial-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+glacial-fragment2:
+  Skills:
+  - command{c="ri drop glacial-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+glacial-fragment3:
+  Skills:
+  - command{c="ri drop glacial-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+
+#sapphirine-shard
+jade-gemstone1:
+  Skills:
+  - command{c="ri drop jade-gemstone <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+jade-gemstone2:
+  Skills:
+  - command{c="ri drop jade-gemstone <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+jade-gemstone3:
+  Skills:
+  - command{c="ri drop jade-gemstone <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+
+#sapphirine-shard
+crystal-corpus1:
+  Skills:
+  - command{c="ri drop crystal-corpus <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+crystal-corpus2:
+  Skills:
+  - command{c="ri drop crystal-corpus <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+crystal-corpus3:
+  Skills:
+  - command{c="ri drop crystal-corpus <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} 
+
+
+
+
+
+#glass-shard
+gs0:
+  Skills:
+gs1:
+  Skills:
+  - command{c="ri drop glass-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+gs2:
+  Skills:
+  - command{c="ri drop glass-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+gs3:
+  Skills:
+  - command{c="ri drop glass-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+gs4:
+  Skills:
+  - command{c="ri drop glass-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+
+#ancient_matter
+am0:
+  Skills:
+am1:
+  Skills:
+  - command{c="ri drop ancient-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+am2:
+  Skills:
+  - command{c="ri drop ancient-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+am3:
+  Skills:
+  - command{c="ri drop ancient-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+am4:
+  Skills:
+  - command{c="ri drop ancient-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+am5:
+  Skills:
+  - command{c="ri drop ancient-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"}
+am6:
+  Skills:
+  - command{c="ri drop ancient-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 6"}
+am7:
+  Skills:
+  - command{c="ri drop ancient-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 7"}
+
+
+#ancient_matter
+co0:
+  Skills:
+co1:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+co2:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+co3:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+co4:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+co5:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"}
+co6:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 6"}
+co7:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 7"}
+co8:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 8"}
+co9:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 9"}
+co10:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 10"}
+co11:
+  Skills:
+  - command{c="ri drop cindered-oak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 11"}
+
+#azure-soul
+as1:
+  Skills:
+  - command{c="ri drop azure-soul <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+as2:
+  Skills:
+  - command{c="ri drop azure-soul <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"} 
+as3:
+  Skills:
+  - command{c="ri drop azure-soul <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+as4:
+  Skills:
+  - command{c="ri drop azure-soul <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+as5:
+  Skills:
+  - command{c="ri drop azure-soul <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"}
+
+#green_goo
+gg1:
+  Skills:
+  - command{c="ri drop green-goo <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+gg2:
+  Skills:
+  - command{c="ri drop green-goo <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+gg3:
+  Skills:
+  - command{c="ri drop green-goo <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+gg4:
+  Skills:
+  - command{c="ri drop green-goo <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+
+#gelatinous_jelly
+gj1:
+  Skills:
+  - command{c="ri drop glutinous-jelly <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+gj2:
+  Skills:
+  - command{c="ri drop glutinous-jelly <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+gj3:
+  Skills:
+  - command{c="ri drop glutinous-jelly <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+gj4:
+  Skills:
+  - command{c="ri drop glutinous-jelly <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+
+#sacred_sludge
+ss1:
+  Skills:
+  - command{c="ri drop sacred-sludge <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+ss2:
+  Skills:
+  - command{c="ri drop sacred-sludge <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+ss3:
+  Skills:
+  - command{c="ri drop sacred-sludge <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+ss4:
+  Skills:
+  - command{c="ri drop sacred-sludge <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+
+#iron-ore
+io1:
+  Skills:
+  - command{c="ri drop iron-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+io5:
+  Skills:
+  - command{c="ri drop iron-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"}
+io6:
+  Skills:
+  - command{c="ri drop iron-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 6"}
+io7:
+  Skills:
+  - command{c="ri drop iron-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 7"}
+io8:
+  Skills:
+  - command{c="ri drop iron-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 8"}
+io9:
+  Skills:
+  - command{c="ri drop iron-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 9"}
+io10:
+  Skills:
+  - command{c="ri drop iron-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 10"}
+io11:
+  Skills:
+  - command{c="ri drop iron-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 11"}
+io12:
+  Skills:
+  - command{c="ri drop iron-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 12"}
+
+#gold-ore
+go1:
+  Skills:
+  - command{c="ri drop gold-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+go5:
+  Skills:
+  - command{c="ri drop gold-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"}
+go6:
+  Skills:
+  - command{c="ri drop gold-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 6"}
+go7:
+  Skills:
+  - command{c="ri drop gold-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 7"}
+go8:
+  Skills:
+  - command{c="ri drop gold-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 8"}
+go9:
+  Skills:
+  - command{c="ri drop gold-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 9"}
+go10:
+  Skills:
+  - command{c="ri drop gold-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 10"}
+go11:
+  Skills:
+  - command{c="ri drop gold-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 11"}
+go12:
+  Skills:
+  - command{c="ri drop gold-ore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 12"}
+
+#Coin
+g1:
+  Skills:
+  - command{c="ri drop coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+g2:
+  Skills:
+  - command{c="ri drop coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+g3:
+  Skills:
+  - command{c="ri drop coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+g4:
+  Skills:
+  - command{c="ri drop coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+
+#AnimalHide
+ah0:
+  Skills:
+ah1:
+  Skills:
+  - command{c="ri drop animal-hide <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+ah2:
+  Skills:
+  - command{c="ri drop animal-hide <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+ah3:
+  Skills:
+  - command{c="ri drop animal-hide <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+ah4:
+  Skills:
+  - command{c="ri drop animal-hide <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+
+#Thread
+t1:
+  Skills:
+  - command{c="ri drop thread <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+t2:
+  Skills:
+  - command{c="ri drop thread <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+t3:
+  Skills:
+  - command{c="ri drop thread <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+t4:
+  Skills:
+  - command{c="ri drop thread <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+
+#MagicSnowball
+ms1:
+  Skills:
+  - command{c="ri drop MagicSnowball <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+ms2:
+  Skills:
+  - command{c="ri drop MagicSnowball <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+ms3:
+  Skills:
+  - command{c="ri drop MagicSnowball <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+ms4:
+  Skills:
+  - command{c="ri drop MagicSnowball <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}
+
+#SilverKey
+sk1:
+  Skills:
+  - command{c="ri drop SilverKey <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+sk2:
+  Skills:
+  - command{c="ri drop SilverKey <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"}
+sk3:
+  Skills:
+  - command{c="ri drop SilverKey <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+sk4:
+  Skills:
+  - command{c="ri drop SilverKey <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"}

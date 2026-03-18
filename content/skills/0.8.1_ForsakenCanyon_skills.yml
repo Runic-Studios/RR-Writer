@@ -1,0 +1,215 @@
+GoatMother-start:
+  Conditions:
+  - playernotwithin 8
+  Skills:
+  - leap{v=200} 
+GoatMother-bite:
+  Conditions:
+  - incombat{}
+  Skills:
+  - leap{v=200} @target
+  - delay 10
+  - skill{s=GoatMother-bite2}
+  - delay 30
+  - leap{v=200} @target
+GoatMother-bite2:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - sound{s=entity.generic.explode}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - potion{t=BLINDNESS;d=80;l=1} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=5}
+GoatMother-droplet:
+  Conditions:
+  - incombat{}
+  Skills:
+  - jump{v=0.6}
+  - delay 20
+  - summon{t=GoatMother-spawn}
+
+GoatMother-marker:
+  Skills:
+  - sound{s=entity.generic.explode}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}  
+  - blockmask{m=smooth_quartz;d=40;r=5}
+  - remove{delay=40}
+  - delay 10
+  - skill{s=GoatMother-marker2}
+GoatMother-marker2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=5}  
+  - delay 10
+  - skill{s=GoatMother-marker2}
+
+BecomeFlying:
+  Skills:
+  - jump{v=1}
+  - delay 2
+  - velocity{vx=0;vy=0.05;vz=0}
+  - setgravity{g=false}
+
+PhoenixFireball:
+  Conditions:
+  - incombat{} true
+  Skills:
+  - projectile{ot=FireballTick;oh=FireballHit20;v=20;i=1}
+  - effect:sound{s=item.firecharge.use;v=2} @self
+FireballTick:
+  Skills:
+#  - effect:itemspray{i=fire_charge;a=1;d=0;v=0} @origin
+
+Deserter:
+  Skills:
+  - skill{s=DeserterDash-within}
+  - skill{s=DeserterDash-notwithin}
+  - skill{s=DeserterDash}
+DeserterDash-within:
+  Conditions:
+  - playernotwithin 2
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.lunge;amount=1}	 
+DeserterDash-notwithin:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - setvariable{var=caster.lunge;value=0}
+DeserterDash:
+  Conditions:
+  - incombat{}
+  - playernotwithin 4
+  - varinrange{var=caster.lunge;value=>3}
+  Cooldown: 12
+  Skills:
+  - potion{type=SLOW;duration=20;level=1;hasParticles=false} @self
+  - cast{skillName="Critical Strike";duration=30;onCast=DeserterDashCast;showCastBar=true} @target
+  - delay 20
+DeserterDashCast:
+  Skills:
+  - jump{v=.2} @self
+  - delay 2
+  - leap{v=250} @target
+  - effect:smoke @origin
+  - setvariable{var=caster.lunge;value=0}
+  
+FireballHit20:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 8"}
+PhoenixAOE:
+  Conditions:
+  - incombat{} true
+  Skills:
+  - projectile{ot=PhoenixAOETick;oh=PhoenixAOEHit;v=16;i=1}
+  - effect:sound{s=entity.blaze.shoot} @self
+  - projectile{ot=PhoenixAOETick;oh=PhoenixAOEHit;v=16;i=1;ho=60}
+  - projectile{ot=PhoenixAOETick;oh=PhoenixAOEHit;v=16;i=1;ho=120}
+  - projectile{ot=PhoenixAOETick;oh=PhoenixAOEHit;v=16;i=1;ho=180}
+  - projectile{ot=PhoenixAOETick;oh=PhoenixAOEHit;v=16;i=1;ho=240}
+  - projectile{ot=PhoenixAOETick;oh=PhoenixAOEHit;v=16;i=1;ho=300}
+  - projectile{ot=PhoenixAOETick;oh=PhoenixAOEHit;v=16;i=1;ho=360}
+
+PhoenixAOETick:
+  Skills:
+  - effect:particles{p=flame;a=1} @origin
+PhoenixAOEHit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 20"}
+
+SummonGolems:
+  Conditions:
+  - incombat{}
+  - mobsinchunk{a=<20}
+  Skills:
+  - summon{t=StoneGolemCanyon;a=5;r=7}
+  - effect:sound{s=entity.zombie_villager.converted} @self
+
+CripplingStones:
+  Conditions:
+  - incombat{} true
+  TargetConditions:
+  - onblock STONE
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 20"}
+  - potion{t=SLOW;d=10;l=1;p=false;force=true}
+  - particles{p=block_crack;m=stone;a=5;y=0.1;hs=0.5;vs=0.5}
+
+Stonestorm:
+  Skills:
+  - projectile{ot=StoneStormSummon;t=METEOR;i=1;d=4;hfs=10;sb=false}
+  - message{m="METEOR"} @PIR{r=10}
+
+StoneStormSummon:
+  - summon{t=FallingStone;a=1;yr=1;yu=true} @origin
+  - message{m="METEOR SUMMON"} @PIR{r=30}
+
+StoneHit:
+  Conditions:
+  - playerwithin{d=2}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+  - particles{p=block_crack;m=stone;a=20;y=1.5;hs=0.5;vs=0.5}
+  - remove @self
+
+StoneDeath:
+  Skills:
+  - delay 100
+  - remove
+
+GolemMeteor:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - delay 120
+  - effect:sound{s=entity.firework_rocket.launch;v=0.8;p=0.01} @self
+  - effect:particles{p=flame;amount=20;hSpread=1;vSpread=1;speed=0;so=0} @Self
+  - projectile{type=METEOR;onTick=GolemMeteor-Tick;onEnd=GolemMeteor-Hit;onHit=GolemMeteor-Hit;v=25;i=10;hR=1;vR=1;mr=100;g=1.5;hfs=20;d=20} @RLNTE{amount=10;radius=5;spacing=2;minradius=0}
+
+GolemMeteorTarget:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - delay 120
+  - effect:sound{s=entity.firework_rocket.launch;v=0.8;p=0.01}
+  - effect:particles{p=flame;amount=20;hSpread=1;vSpread=1;speed=0;so=0}
+  - projectile{type=METEOR;onTick=GolemMeteor-Tick;onEnd=GolemMeteor-Hit;onHit=GolemMeteor-Hit;v=25;i=10;hR=1;vR=1;mr=100;g=1.5;hfs=20;d=20} @PIR{r=40}
+
+GolemMeteor-Tick:
+  Skills:
+  - summon{t=FallingStone;a=1;yr=1;yu=true} @origin
+
+GolemMeteor-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 35"} @PlayersNearOrigin{r=3}
+  - throw{v=6;vY=2} @PlayersNearOrigin{r=3}
+  - effect:sound{s=entity.generic.explode;v=0.2;p=0}
+  - effect:particles{p=lava;amount=15;speed=0.2;hS=0.1;vS=1} @origin
+
+StoneFist:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - delay 120
+  - potion{t=SLOW;d=70;l=1;hasParticles=false}
+  - delay 20
+  - cast{skillName="Stone Fist";duration=40;onCast=StoneFistcast;showCastBar=true} @self
+StoneFistcast:
+  Skills:
+  - projectile{ot=StoneFist-Tick;oh=StoneFist-Hit;oe=StoneFist-Hit;v=14;hr=1;vr=1;i=1} @target
+
+StoneFist-Tick:
+  Skills:
+  - effect:blockmask{m=stone;d=10;r=0;n=0;na=false} @origin
+
+StoneFist-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 60"} @PlayersNearOrigin{r=4}
+  - throw{v=5;vy=5} @PlayersNearOrigin{r=4}
+  - particles{p=block_crack;m=stone;a=40;y=0;hs=0.5;vs=0.5} @origin

@@ -1,0 +1,693 @@
+BanditAzana-elite-skill:
+  Cooldown: 12
+  Skills:
+  - randomskill{s=BanditAzana-elite-skill-near,BanditAzana-elite-skill-far}
+BanditAzana-elite-skill-far:
+  Conditions:
+  - playernotwithin 5
+  Skills:
+  - jump{v=.2}
+  - delay 2
+  - leap{v=250} @target
+  - delay 10
+  - playanimation{a=3;audience=World}
+  - sound{s=entity.player.attack.strong}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=3;h=25;mpd=true;a=30;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 15"} ];
+      roll=<random.-45to45>;fo=5;duration=1} @self
+  - delay 10
+  - leap{v=125} @Forward{f=4;y=1}
+  - delay 5
+  - playanimation{a=0;audience=World}
+  - sound{s=entity.player.attack.strong}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=25;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 15"} ];
+      roll=<random.-30to30>;fo=5;duration=1} @self
+  - delay 15
+  - leap{v=125} @Forward{f=2;y=1}
+  - delay 15
+  - effect:particlering{particle=crit;radius=4;points=32;amount=5;vS=0;yOffset=0.1} @self
+  - sound{s=entity.player.attack.sweep}
+  - throw{vy=8} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+
+BanditAzana-elite-skill-near:
+  Conditions:
+  - playerwithin 5
+  Skills:
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - delay 25
+  - playanimation{a=3;audience=World}
+  - sound{s=entity.player.attack.strong}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=3;h=25;mpd=true;a=30;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 15"} ];
+      roll=<random.-45to45>;fo=5;duration=1} @self
+  - delay 15
+  - leap{v=125} @Forward{f=4;y=1}
+  - delay 5
+  - playanimation{a=0;audience=World}
+  - sound{s=entity.player.attack.strong}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=25;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 15"} ];
+      roll=<random.-30to30>;fo=5;duration=1} @self
+  - delay 45
+  - leap{v=125} @Forward{f=2;y=1}
+  - delay 15
+  - effect:particlering{particle=crit;radius=4;points=32;amount=5;vS=0;yOffset=0.1} @self
+  - sound{s=entity.player.attack.sweep}
+  - throw{vy=8} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+
+BanditAzana-elite:
+  Skills:
+  - sound{s=block.grass.break;v=3}
+  - effect:particlesphere{p=reddust;c=#505050;amount=4;radius=2;yOffset=.5} 
+  - message{cooldown=60;m="&e[&6✸&e] &c&lOutlaw Duelist &e&lhas been challenged!"} @PIR{r=32}
+  - cast{skillName="Despawn";duration=3000;onCast=WitheredElf-elite-despawn;showCastBar=true}
+BanditAzana-elite-despawn:
+  Skills:
+  - sound{s=block.grass.break;v=3}
+  - effect:particlesphere{p=reddust;c=#505050;amount=4;radius=2;yOffset=.5} 
+  - message{cooldown=60;m="&e[&6✸&e] &c&lOutlaw Duelist &e&lhas despawned!"} @PIR{r=32}
+  - remove
+
+
+
+
+raven-boss-ground:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - delay 20
+  - sound{s=block.grass.break}
+  - throw{vy=12} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+
+raven-undead:
+  Conditions:
+  - incombat
+  Cooldown: 4
+  Skills:
+  - potion{t=SPEED;d=20;l=2;hasParticles=false}
+
+raven-wielder:
+  Skills:
+  - skill{s=raven-wielder-notwithin}
+  - skill{s=raven-wielder-leap}
+raven-wielder-notwithin:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.leap;amount=1}	
+raven-wielder-leap:
+  Conditions:
+  - varinrange{var=caster.leap;value=>7}
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - setvariable{var=caster.leap;value=0}
+  - potion{t=SLOW;d=30;l=1;hasParticles=false} @self
+  - cast{skillName="Lunge";duration=30;onCast=raven-wielder-leapcast;showCastBar=true} @target
+raven-wielder-leapcast:
+  Skills:
+  - jump{v=0.25}
+  - delay 2
+  - leap{v=400} @target
+
+
+dps_test_reset:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}  
+  Skills:
+  - setvariable{var=caster.active;value=0}
+  - heal{a=100000}
+  - message{m="&6Damage test reset"} @PIR{r=12}
+  - setvariable{var=caster.time;type=FLOAT;value=0}
+
+dps_test_start:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}  
+  Skills:
+  - setvariable{var=caster.active;value=1}
+  - message{m="&e[!] &7You have started a damage test! Slay the dummy to check your damage-per-second!"} @PIR{r=12}
+  - skill{s=dps_test_start2}
+dps_test_start2:
+  Skills:
+  - variableadd{var=caster.time;type=FLOAT;amount=.1}
+  - delay 2
+  - skill{s=dps_test_start2}
+
+dps_test_end3:
+  Skills:
+  - variableMath{var=caster.dps;equation="100000/<caster.var.time>"}
+  - message{m="&6You dealt 100000 damage in <caster.var.time>s<&co> DPS; <caster.var.dps>"} @PIR{r=12}
+dps_test_end2:
+  Skills:
+  - variableMath{var=caster.dps;equation="10000/<caster.var.time>"}
+  - message{m="&e[!] &7You dealt 10000 damage in &c<caster.var.time>s<&co>&7! Your damage-per-second was &6&l<caster.var.dps>&7."} @PIR{r=12}
+dps_test_end1:
+  Skills:
+  - variableMath{var=caster.dps;equation="1000/<caster.var.time>"}
+  - message{m="&e[!] &7You dealt 1000 damage in &c<caster.var.time>s<&co>&7! Your damage-per-second was &6&l<caster.var.dps>&7."} @PIR{r=12}
+
+CorruptedCreature-start:
+  Cooldown: 9999
+  Skills:
+  - summon{t=CorruptedCreature-spawn} @Ring{p=3;r=4}
+  - message{m="&cCorrupted Creature<&co> &eI forge the blades for battle."} @trigger
+azana_goblin:
+  Conditions:
+  - playernotwithin 3
+  Cooldown: 4
+  Skills:
+  - jump{v=0.2}
+  - delay 2
+  - leap{v=200} @target
+
+Buds-drop:
+  Skills:
+  - blockmask{m=dirt;d=40;r=3} @self
+  - sound{s=block.grass.break} @self 
+  - command{c="ri drop Honey <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Skally-start:
+  Cooldown: 9999
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false} 
+  - cast{skillName="Blood Blossom";duration=40;onCast=Skally-startcast;showCastBar=true} @self
+Skally-start2:
+  Cooldown: 9999
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false} 
+  - cast{skillName="Blood Blossom";duration=40;onCast=Skally-startcast;showCastBar=true} @self
+Skally-startcast:
+  Skills:
+  - skill{s=Skally-remove}
+  - summon{t=Skally-spawn} @Location{c=-599.5,38,-12.5}
+  - summon{t=Skally-spawn} @Location{c=-598.5,38,-7.5}
+  - summon{t=Skally-spawn} @Location{c=-592.5,36,-6.5}
+Skally-remove:
+  Cooldown: 9999
+  Skills:
+  - remove @MIR{t=Skally-spawn;r=64}
+
+Skally-spawn:
+  Cooldown: 16
+  Skills:
+  - sound{s=block.beehive.drip;v=6}
+  - summon{t=Skally-spawn2}
+Skally-spawn2:
+  Skills:
+  - delay 80
+  - summon{t=Skally-spawn3}
+  - remove
+Skally-spawn3:
+  Skills:
+  - delay 240
+  - summon{t=Skally-spawn4}
+  - remove
+Skally-spawn4:
+  Skills:
+  - sound{s=block.lava.pop}
+  - effect:blockmask{m=netherrack;r=2;d=80} @self
+  - delay 10
+  - skill{s=Skally-spawn4cast}
+  - delay 70
+  - remove
+Skally-spawn4cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=2}
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - delay 2
+  - skill{s=Skally-spawn4cast}
+  
+
+
+AzanianGuard:
+  Skills:
+  - skill{s=AzanianGuard-slow}
+  - skill{s=AzanianGuard-remove}
+AzanianGuard-slow:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+AzanianGuard-remove:
+  Conditions:
+  - playernotwithin 12
+  Skills:
+  - remove
+
+AllasterFusRohDah:
+  Skills:
+  - delay 240
+  - summon{t=HellFlame} @Location{c=-602.5,38,175.5}
+HellFlame:
+  Skills:
+  - skill{s=HellFlame-effect} 
+  - setAI{ai=false}
+  - delay 40
+  - setAI{ai=true} 
+  - leap{v=250} @Location{c=-618.5,35,182.5}
+  - delay 5
+  - effect:particlesphere{p=flame;amount=8;radius=3;yOffset=.5}
+  - leap{v=400} @Location{c=-618.5,37,180.5}
+  - delay 10
+  - effect:blockmask{m=red_nether_bricks;r=4;d=120} @self
+  - effect:particlesphere{p=flame;amount=12;radius=4;yOffset=.5}
+  - remove
+HellFlame-effect:
+  Skills:
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=.5}
+  - delay 2
+  - skill{s=HellFlame-effect}
+
+BabyDragon:
+  Conditions:
+  - incombat{}
+  Skills:
+  - setvariable{var=caster.fire;value=1} 
+  - delay 20
+  - jump{v=0.8}
+  - delay 10
+  - setAI{ai=false}
+  - delay 5
+  - setAI{ai=true}
+  - sound{s=entity.ender_dragon.flap}
+  - leap{v=250} @target
+  - delay 5
+  - setAI{ai=false}
+  - delay 5
+  - setAI{ai=true}
+  - jump{v=0.6}
+  - delay 5
+  - sound{s=entity.ender_dragon.flap}
+  - leap{v=150} @target
+  - delay 5
+  - setvariable{var=caster.fire;value=0} 
+BabyDragonFire:
+  Conditions:
+  - playernotwithin 5
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} @self
+  - delay 10
+  - sound{s=entity.ender_dragon.shoot;v=2} @self
+  - projectile{onTick=BabyDragonFiretick;onHit=BabyDragonFirehit;onEnd=BabyDragonFireend;i=2;v=8;mr=30} @target
+BabyDragonFiretick:
+  Skills:
+  - effect:particlesphere{particle=flame;amount=1;radius=1} @Origin
+BabyDragonFirehit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 20"}  
+  - ignite{ticks=40}
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+BabyDragonFireend:
+  Skills:
+  - effect:particlesphere{particle=flame;amount=3;radius=2} @Origin
+  - command{c="runicdamage <caster.uuid> <target.name> 20"}  
+  - ignite{ticks=40}
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+
+BabyDragonFiretick2:
+  Conditions:
+  - variableEquals{var=caster.fire;value=1}
+  Skills:
+  - effect:particlesphere{particle=flame;amount=2;radius=1;yOffset=.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=1}
+
+RatKing:
+  Cooldown: 4
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} @self
+  - delay 10
+  - summon{t=RatKingSpawn;r=2;a=2}
+
+ForestVessel:
+  Cooldown: 10
+  Conditions:
+  - incombat{}
+  Skills:
+  - sound{s=block.stone.break}
+  - summon{t=ForestVesselSpawn;r=3;os=true}
+  - delay 10
+  - sound{s=block.stone.break}
+  - summon{t=ForestVesselSpawn;r=3;os=true}
+  - delay 10
+  - sound{s=block.stone.break}
+  - summon{t=ForestVesselSpawn;r=3;os=true}
+  - delay 10
+  - sound{s=block.stone.break}
+  - summon{t=ForestVesselSpawn;r=3;os=true}
+ForestVesselSpawn:
+  Skills:
+  - blockmask{m=dirt;d=40;r=3}
+  - sound{s=block.grass.break}
+  - remove
+
+ForestVesselMissile:
+  Conditions:
+  - playernotwithin 3
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false}
+  - cast{skillName="Spirits";duration=20;onCast=ForestVesselMissileCast;showCastBar=true} @self
+ForestVesselMissileCast:
+  Skills:
+  - missile{ot=ForestVesselMissile-tick;oh=ForestVesselMissile-hit;v=4;i=1;in=0.5} @target
+  - delay 10
+  - missile{ot=ForestVesselMissile-tick;oh=ForestVesselMissile-hit;v=4;i=1;in=0.5} @target
+  - delay 10
+  - missile{ot=ForestVesselMissile-tick;oh=ForestVesselMissile-hit;v=4;i=1;in=0.5} @target
+  - delay 10
+  - missile{ot=ForestVesselMissile-tick;oh=ForestVesselMissile-hit;v=4;i=1;in=0.5} @target
+
+ForestVesselMissile-tick:
+  Skills:
+  - effect:particles{p=reddust;color=#84D17B;a=1} @origin
+
+ForestVesselMissile-hit:
+  Skills:
+  - effect:particlesphere{p=reddust;color=#84D17B;r=3;a=3} @origin
+  - command{c="runicdamage <caster.uuid> <target.name> 3"} 
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  
+AzanaCaptainTNT:
+  Cooldown: 10
+  Conditions:
+  - incombat{}
+  Skills:
+  - equip{i=AIR:0}
+  - potion{t=SLOW;d=40;l=3;hasParticles=false} 
+  - delay 10
+  - cast{skillName="Cannon Blast";duration=20;onCast=AzanaCaptainTNTCast;showCastBar=true} @self
+  - delay 55
+  - equip{i=IRON_SWORD:0}
+AzanaCaptainTNTCast:
+  Skills:
+  - summon{t=AzanianCaptainTNT}
+AzanianCaptainTNTIgnite:
+  Skills:
+  - sound{s=entity.tnt.primed;v=2} 
+  - delay 10
+  - jump{v=0.4}
+  - delay 5
+  - sound{s=entity.dragon_fireball.explode;v=2}
+  - leap{v=250} @NearestPlayer{r=24}
+  - delay 10
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - throw{vy=6} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 30"} @PIR{r=4}
+  - remove
+
+scarecrowwarning:
+  Conditions:
+  - playerwithin 8
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.warning;amount=1}
+  - randomskill{skills=scarecrowwarning1,scarecrowwarning2,scarecrowwarning3,scarecrowawaken}
+scarecrowwarning1:
+  Conditions:
+  - variableEquals{var=caster.warning;value=1}
+  Skills:
+  - heal{a=400}
+  - setAI{ai=false}
+  - message{m="&7[1/4] &cScarecrow<&co> &eScarecrow minds his business."} @trigger
+scarecrowwarning2:
+  Conditions:
+  - variableEquals{var=caster.warning;value=2}
+  Skills:
+  - heal{a=400}
+  - setAI{ai=false}
+  - message{m="&7[2/4] &cScarecrow<&co> &eA good scarecrow doesn't hurt people."} @trigger
+scarecrowwarning3:
+  Conditions:
+  - variableEquals{var=caster.warning;value=3}
+  Skills:
+  - heal{a=400}
+  - setAI{ai=false}
+  - message{m="&7[3/4] &cScarecrow<&co> &eBad people hurt good scarecrow."} @trigger
+scarecrowawaken:
+  Conditions:
+  - variableEquals{var=caster.warning;value=4}
+  Skills:
+  - heal{a=400}
+  - setAI{ai=true} 
+  - message{m="&7[4/4] &cScarecrow<&co> &4Scarecrow will drench wheat red with their &4blood!"} @trigger
+  - sound{s=entity.enderman.scream}
+#  - disguise{type=player;player=Scarecrow;skin=AbnormalV}
+  - equip{i=IRON_AXE:HAND}
+  - setvariable{var=caster.fire;value=1} 
+  - delay 20
+  - jump{v=.8)
+  - delay 2
+  - leap{v=250} @target
+  - delay 4
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+  - potion{type=BLINDNESS;duration=40;level=3} @PIR{r=3}
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=3}
+  - throw{vy=8} @PIR{r=3}
+  - sound{s=block.grass.break}
+scarecrowfire:
+  Conditions:
+  - variableEquals{var=caster.fire;value=1}
+  Skills:
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5}
+scarecrowidle:
+  Conditions:
+  - varinrange{var=caster.warning;value=>3}
+  - playernotwithin 15
+  Cooldown: 8
+  Skills:
+  - delay 40
+  - heal{a=20}
+  - setAI{ai=false}
+  - setvariable{var=caster.warning;value=0} 
+  - setvariable{var=caster.active;value=1} 
+#  - disguise{type=player;player=Scarecrow;skin=Honestly_Sassy}
+  - setvariable{var=caster.fire;value=0} 
+  - equip{i=AIR:0}
+scarecrowactive:
+  Conditions:
+  - varinrange{var=caster.warning;value=>3}
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - setvariable{var=caster.active;value=0} 
+  - potion{type=SPEED;duration=80;level=2;hasParticles=false} 
+  - setAI{ai=true}
+#  - disguise{type=player;player=Scarecrow;skin=AbnormalV}
+  - setvariable{var=caster.fire;value=1} 
+  - equip{i=IRON_AXE:HAND}
+  - sound{s=entity.enderman.scream}
+  - delay 20
+  - jump{v=.8)
+  - delay 2
+  - leap{v=250} @target
+  - delay 10
+  - jump{v=.8)
+  - delay 2
+  - leap{v=250} @target
+  - delay 10
+  - jump{v=.8)
+  - delay 2
+  - leap{v=250} @target
+  - delay 20
+scarecrowleap:
+  Conditions:
+  - varinrange{var=caster.warning;value=>3}
+  - variableEquals{var=caster.active;value=0}
+  - playerwithin 6
+  - incombat
+  Cooldown: 4
+  Skills:
+  - jump{v=.8)
+  - delay 2
+  - leap{v=250} @target
+
+BanditAzanaToughA:
+  Skills:
+#  - skill{s=BanditAzanaToughA1}
+  - skill{s=BanditAzanaToughA2}
+  - skill{s=BanditAzanaToughA3}
+BanditAzanaToughA1:
+  Conditions:
+  - variableEquals{var=caster.eat;value=0}
+  - playerwithin 4
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - leap{v=80} @target
+
+BanditAzanaToughA2:
+  Conditions:
+  - variableEquals{var=caster.eat;value=0}
+  - playernotwithin 6
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{type=SLOW;duration=20;level=10;hasParticles=false}
+  - delay 10
+  - setvariable{var=caster.eat;value=1}	
+  - equip{item=apple:0}
+  - delay 12
+  - potion{type=SLOW;duration=30;level=2;hasParticles=false}
+  - sound{s=entity.fox.eat}
+  - effect:particlesphere{particle=item_crack;material=apple;amount=2;y=1;radius=1;yOffset=.5}
+  - delay 10
+  - sound{s=entity.dolphin.eat}
+  - effect:particlesphere{particle=item_crack;material=apple;amount=2;y=1;radius=1;yOffset=.5}
+  - delay 10
+  - sound{s=entity.llama.eat}
+  - effect:particlesphere{particle=item_crack;material=apple;amount=2;y=1;radius=1;yOffset=.5}
+  - delay 10
+  - setvariable{var=caster.eat;value=0}	
+  - sound{s=entity.horse.eat}
+  - heal{a=5}
+  - equip{item=wooden_sword:0}
+BanditAzanaToughApple:
+  Conditions:
+  - variableEquals{var=caster.eat;value=1} castinstead BanditAzanaToughApple2
+  Skills:
+  - command{c="ri drop bandit-apple <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.2
+BanditAzanaToughApple2:
+  Skills:
+  - command{c="ri drop bandit-apple <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.6
+
+BanditAzanaToughA3:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.eat;value=0}	
+
+BanditSpin:
+  Cooldown: 15
+  Conditions:
+  - varinrange{var=caster.banditspin;value=>5}
+  - playerwithin 6
+  Skills:
+  - setvariable{var=caster.eat;value=1}
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @Self
+  - cast{skillName="Spin Attack";duration=30;onCast=BanditSpinTick;showCastBar=true} @target
+  - delay 80
+  - setvariable{var=caster.eat;value=0}
+  #- orbital{onTick=BanditSpinTick;onHit=BanditSpinTick;p=12;i=2;d=24;r=3;oy=1} @self
+
+BanditSpinwithin:
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.banditspin;amount=1} 
+  #- message{m="<caster.var.banditspin>"} @PIR{r=20} ~onTimer:20
+  
+BanditSpinnotwithin:
+  Cooldown: 1
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - setvariable{var=caster.banditspin;value=0}
+
+BanditSpinTick:
+  Skills:
+  - effect:particlering{particle=crit;radius=4;points=32;amount=5;hS=1;vS=0} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=4}
+  - throw{velocity=7;velocityY=4} @PIR{r=4}
+  - delay 10
+  - setvariable{var=caster.banditspin;value=0}
+
+#BanditSpinHit:
+#  Conditions:
+#  - playerwithin 3
+#  Skills:
+#  - command{c="runicdamage <caster.uuid> <target.name> 60"}
+#  - throw{velocity=10;velocityY=4} @target
+
+BanditAzanaEliteA:
+  Skills:
+  - skill{s=BanditAzanaEliteA1}
+  - skill{s=BanditAzanaEliteA2}
+  - skill{s=BanditAzanaEliteA3}
+BanditAzanaEliteA1:
+  Conditions:
+  - variableEquals{var=caster.eat;value=0}
+  - playerwithin 4
+  - playernotwithin 2
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - potion{type=SLOW;duration=30;level=10;hasParticles=false}
+  - jump{v=.3}
+  - delay 2
+  - leap{v=120} @target
+  - delay 20
+  - jump{v=.3}
+  - delay 2
+  - leap{v=120} @target
+BanditAzanaEliteA2:
+  Conditions:
+  - playernotwithin 6
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - setvariable{var=caster.eat;value=1}	
+  - potion{type=SLOW;duration=20;level=10;hasParticles=false}
+  - delay 10
+  - equip{item=apple:0}
+  - delay 12
+  - potion{type=SLOW;duration=30;level=2;hasParticles=false}
+  - sound{s=entity.fox.eat}
+  - effect:particlesphere{particle=item_crack;material=apple;amount=2;y=1;radius=1;yOffset=.5}
+  - delay 10
+  - sound{s=entity.dolphin.eat}
+  - effect:particlesphere{particle=item_crack;material=apple;amount=2;y=1;radius=1;yOffset=.5}
+  - delay 10
+  - sound{s=entity.llama.eat}
+  - effect:particlesphere{particle=item_crack;material=apple;amount=2;y=1;radius=1;yOffset=.5}
+  - delay 10
+  - setvariable{var=caster.eat;value=0}	
+  - sound{s=entity.horse.eat}
+  - heal{a=10}
+  - potion{type=SPEED;duration=20;level=1;hasParticles=false}
+  - equip{item=wooden_sword:0}
+BanditAzanaEliteA3:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.eat;value=0}	
+
+BanditAzanaRookieA:
+  Skills:
+  - skill{s=BanditAzanaRookiewithin} 
+  - skill{s=BanditAzanaRookienotwithin} 
+BanditAzanaRookiewithin:
+  Cooldown: 4
+  Conditions:
+  - variableEquals{var=caster.within;value=0}
+  - playerwithin 6
+  Skills:
+  - setvariable{var=caster.within;value=1}
+  - delay 20
+  - potion{type=SLOW;duration=20;level=1;hasParticles=false}
+  - delay 20
+  - equip{item=wooden_sword:0}
+#  - message{m="&7player within"} @PIR{r=32}
+BanditAzanaRookienotwithin:
+  Cooldown: 4
+  Conditions:
+  - variableEquals{var=caster.within;value=1}
+  - playernotwithin 6
+  Skills:
+  - setvariable{var=caster.within;value=0}
+  - delay 20
+  - potion{type=SLOW;duration=20;level=1;hasParticles=false}
+  - delay 20
+  - equip{item=bow:0} 
+#  - message{m="&7player not within"} @PIR{r=32}

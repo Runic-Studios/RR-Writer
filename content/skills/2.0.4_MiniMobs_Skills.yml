@@ -1,0 +1,240 @@
+Grass-suicide:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - command{c="ri give <target.name> Grass"} @PIR{r=2}
+  - sound{s=block.grass.break}
+  - suicide
+DestroyerofWorldsBolt:
+  Skills:
+  - effect:sound{s=entity.lightning_bolt.impact;volume=0.2;pitch=0.5}
+  - effect:lightning{localized=true;localizedradius=25}
+  - delay 10
+  - effect:lightning{localized=true;localizedradius=25}
+  - delay 10
+  - effect:sound{s=entity.lightning_bolt.impact;volume=0.2;pitch=0.5}
+  - effect:lightning{localized=true;localizedradius=25}
+  - delay 10
+  - effect:lightning{localized=true;localizedradius=25}
+DestroyerofWorldsBlow:
+  Skills:
+#  - message{m="signal received"} @PIR{r=8}
+  - jump{v=1.6}
+  - throw{vy=200} @MIR{t=MysticalSheep;r=24}
+  - delay 20
+  - remove @MIR{t=MysticalSheep;r=128}
+MythicalSheepShot:
+  Skills:
+  - potion{t=SLOW_FALLING;d=160;l=1;hasParticles=false} 
+  - jump{v=1.2}
+  - delay 10
+  - setAI{ai=false}
+  - summon{t=MysticShot;a=2;r=4}
+  - delay 10
+  - summon{t=MysticShot;a=2;r=4}
+  - delay 10
+  - signal{s=mysticshot} @MIR{t=MysticShot;r=32}
+  - delay 10
+  - setAI{ai=true}
+MythicalShot:
+  Skills:
+  - setAI{ai=true}
+  - leap{v=400} @MIR{t=DestroyerofWorlds2;r=24}
+MythicalShot2:
+  Skills:
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30} @MIR{t=DestroyerofWorlds2;r=24}
+  - sound{s=entity.generic.explode} @MIR{t=DestroyerofWorlds2;r=24}
+  - remove @MIR{t=DestroyerofWorlds2;r=24}
+
+MiniMobTuneBass:
+  Skills:
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 8
+  - skill{s=woodbassd}
+  - delay 8
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 8
+  - skill{s=woodbassa}
+  - delay 8
+  - summon{t=MiniMobTuneSnare;r=2;os=true}
+  - summon{t=MiniMobTuneSnare2;r=2;os=true}
+
+  - skill{s=woodbassc}
+  - delay 10
+  - summon{t=MiniMobTuneSnare2;r=2;os=true}
+  - delay 2
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 8
+  - skill{s=woodbassd}
+  - delay 8
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 8
+  - skill{s=woodbassa}
+  - delay 8
+
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 8
+  - skill{s=woodbassd}
+  - delay 8
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 8
+  - skill{s=woodbassa}
+  - remove @MIR{t=MiniMobTuneSnare2;r=24}
+  - delay 8
+
+  - delay 128
+
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 8
+  - skill{s=woodbassd}
+  - delay 8
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 8
+  - skill{s=woodbassa}
+  - delay 8
+
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 8
+  - skill{s=woodbassd}
+  - delay 8
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 12
+  - skill{s=woodbassc}
+  - delay 8
+  - skill{s=woodbassa}
+  - delay 8
+  - remove @MIR{t=MiniMobTuneSnare,t=MiniMobTuneSnare2;r=12}
+  - summon{t=MiniMobTuneBass;os=true}
+  - remove 
+
+MiniMobTuneSnare:
+  Skills:
+  - sound{s=block.note_block.snare}
+  - delay 4
+  - sound{s=block.note_block.snare}
+  - delay 4
+  - sound{s=block.note_block.snare}
+  - delay 4
+  - sound{s=block.note_block.snare}
+  - delay 4
+  - sound{s=block.note_block.snare}
+  - delay 4
+  - sound{s=block.note_block.snare}
+  - delay 2
+  - sound{s=block.note_block.snare}
+  - delay 2
+  - sound{s=block.note_block.snare}
+  - delay 4
+  - sound{s=block.note_block.snare}
+  - delay 4
+  - skill{s=MiniMobTuneSnare}
+MiniMobTuneSnare2:
+  Skills:
+  - sound{s=block.note_block.harp}
+  - delay 6
+  - sound{s=block.note_block.harp}
+  - delay 6
+  - sound{s=block.note_block.harp}
+  - delay 6
+  - sound{s=block.note_block.harp}
+  - delay 6
+  - sound{s=block.note_block.harp}
+  - delay 8
+  - skill{s=MiniMobTuneSnare2}
+
+MysticalSheep:
+  Skills:
+  - jump{v=1.2}
+  - delay 20
+  - leap{v=1000} @MIR{t=FeatheredFreak2,DestroyerofWorlds;r=24} 
+  - delay 5
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - sound{s=entity.generic.explode}
+  - remove @MIR{t=FeatheredFreak2,DestroyerofWorlds;r=24} 
+FeatheredFreakStun:
+  Skills:
+  - aura{auraName=FeatheredFreakStun;onTick=FeatheredFreakStun-Tick;interval=1;duration=40} @self
+FeatheredFreakStun-Tick:
+  Skills:
+  - velocity{vx=0;vy=0;vz=0} @PIR{r=4}
+MiniMobRemove:
+  Conditions:
+  - playernotwithin 24
+  Skills:
+  - remove

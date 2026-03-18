@@ -1,0 +1,335 @@
+roguesequence:
+  Skills:
+  - message{m="&a[Ro|35] &4timchuwu<&co> &fhi"} @PIR{r=24}
+  - delay 38
+  - jump{v=.6}
+  - delay 2
+  - leap{velocity=400} @target
+  - sound{s=entity.ender_dragon.flap} 
+  - delay 20
+  - sound{s=block.glass.break}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @target
+  - potion{type=SLOW;duration=60;level=2} @target
+  - potion{t=BLINDNESS;duration=60;level=1} @target
+  - delay 40 
+  - velocity{v=400} @self
+  - delay 15
+  - leap{velocity=250} @target
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @target
+  - effect:sound{s=entity.dragon_fireball.explode} @self
+  - delay 20
+  - message{m="&7timchuwu has been banned"} @PIR{r=24}
+  - sound{s=block.anvil.land} 
+  - remove
+LostBook: 
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - suicide
+  
+MageMissile:
+  Cooldown: 10
+  Conditions:
+  - playernotwithin 6
+  Skills:    
+  - projectile{onTick=MageMissileTick;onEnd=MageMissileEnd;i=1;v=25;mr=25;vO=1;g=2} @Target 
+  
+MageMissileTick:
+    Skills:
+    - effect:particles{particle=flame;a=40;hs=0;s=0} @origin
+    
+MageMissileEnd:
+    Skills:
+    - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=5}
+    - throw{v=5;vy=5}
+    - effect:particles{particle=explosion_large;a=20;hs=1;vs=1;r=30} @origin
+    - sound{s=entity.generic.explode} @origin  
+  
+HealSoldier:
+  Conditions:
+  - playernotwithin{d=15} true
+  Skills:
+  - effect:particlering{particle=happy_villager;radius=30;points=32;amount=1;hS=1;vS=0} @self
+  - effect:particles{particle=happy_villager;amount=50;hS=1;vS=1;speed=0} @MIR{r=30;t=AzanianSoldier}
+  - healpercent{m=0.35} @MIR{r=30;t=AzanianSoldier}
+  
+AzanaSoldier:
+  Skills:
+  - skill{s=RootingAxeCheckwithin} @Self 
+  - skill{s=RootingAxeChecknotwithin} @Self 
+  - skill{s=RootingSlash} @self 
+  - skill{s=RootingAxe} @self 
+AzanaSoldierVariableSpawn:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.rootingaxe;value=0}  
+  - setvariable{var=caster.rootingslash;value=0}  
+  - setvariable{var=caster.bannerbuff;value=0}  
+  - setvariable{var=caster.bannerspawn;value=1}
+  
+RootingAxeCheckwithin:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.rootingaxe;amount=1}
+  - variablesubtract{var=caster.rootingslash;amount=1} 
+
+RootingAxeChecknotwithin:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - variableadd{var=caster.rootingslash;amount=1}
+  - variablesubtract{var=caster.rootingaxe;amount=1} 
+  
+SoldierBuff:
+  Cooldown: 9999
+  Skills:
+  - delay 40
+  - setvariable{var=target.bannerbuff;value=1} @MIR{t=AzanianSoldier;r=6}
+  - effect:particlering{particle=block_crack;material=coal_block;radius=6;points=32;amount=1;hS=1;vS=0} @self
+  - potion{type=SPEED;duration=100;level=1;hasParticles=false} @MIR{t=AzanianSoldier;r=6}
+  - delay 20
+  - setvariable{var=target.bannerbuff;value=1} @MIR{t=AzanianSoldier;r=6}
+  - effect:particlering{particle=block_crack;material=coal_block;radius=6;points=32;amount=1;hS=1;vS=0} @self
+  - potion{type=SPEED;duration=100;level=1;hasParticles=false} @MIR{t=AzanianSoldier;r=6}
+  - delay 20
+  - setvariable{var=target.bannerbuff;value=1} @MIR{t=AzanianSoldier;r=6}
+  - effect:particlering{particle=block_crack;material=coal_block;radius=6;points=32;amount=1;hS=1;vS=0} @self
+  - potion{type=SPEED;duration=100;level=1;hasParticles=false} @MIR{t=AzanianSoldier;r=6}
+  - delay 20
+  - setvariable{var=target.bannerbuff;value=1} @MIR{t=AzanianSoldier;r=6}
+  - effect:particlering{particle=block_crack;material=coal_block;radius=6;points=32;amount=1;hS=1;vS=0} @self
+  - potion{type=SPEED;duration=100;level=1;hasParticles=false} @MIR{t=AzanianSoldier;r=6}
+  - delay 20
+  - setvariable{var=target.bannerbuff;value=1} @MIR{t=AzanianSoldier;r=6}
+  - effect:particlering{particle=block_crack;material=coal_block;radius=6;points=32;amount=1;hS=1;vS=0} @self
+  - potion{type=SPEED;duration=150;level=1;hasParticles=false} @MIR{t=AzanianSoldier;r=6}
+  - remove
+  
+SoldierBannerSummon:
+  Cooldown: 12
+  Conditions:
+  - varEquals{var=caster.bannerspawn;value=1}
+  - incombat{}
+  Skills:
+  - summon{mob=AzanianSoldierBannerMarker;amount=1;noise=5;radius=4;os=true} @Self
+  - signal{s=bannerspawn} @MIR{t=AzanianSoldier;r=32}
+SoldierBannerSummon2:
+  Skills:
+  - setvariable{var=caster.bannerspawn;value=0} @MIR{t=AzanianSoldier;r=32}
+  - delay 320
+  - setvariable{var=caster.bannerspawn;value=1} @MIR{t=AzanianSoldier;r=32}
+
+RootingAxe:
+  Cooldown: 15
+  Conditions:
+  - varinrange{var=caster.rootingaxe;value=>4}
+  Skills:
+  - skill{s=RootingAxe2} 
+  - skill{s=RootingAxe3}
+
+RootingSlash:
+  Cooldown: 15
+  Conditions:
+  - varinrange{var=caster.rootingslash;value=>6}
+  Skills:
+  - skill{s=RootingSlash2} 
+  - skill{s=RootingSlash3}
+
+RootingSlash2:
+  Conditions:
+  - variableEquals{var=caster.bannerbuff;value=0}
+  Skills:
+  - potion{type=SLOW;duration=30;level=1;hasParticles=false} @Self
+  - cast{skillName="Rooting Slash";duration=20;onCast=RootingSlashcast;showCastBar=true} @target
+RootingSlash3:
+  Conditions:
+  - variableEquals{var=caster.bannerbuff;value=1}
+  Skills:
+  - potion{type=SLOW;duration=30;level=1;hasParticles=false} @Self
+  - cast{skillName="&cRooting Slash";duration=20;onCast=RootingSlashcast2;showCastBar=true} @target
+RootingSlashcast:
+  Conditions:
+  - variableEquals{var=caster.bannerbuff;value=0}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 30"} @PIR{r=3}  
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+RootingSlashcast2:
+  Conditions:
+  - variableEquals{var=caster.bannerbuff;value=1}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=3}  
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=4}
+
+RootingAxe2:
+  Conditions:
+  - variableEquals{var=caster.bannerbuff;value=0}
+  Skills:
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @Self
+  - cast{skillName="Rooting Axe";duration=40;onCast=RootingAxecast;showCastBar=true} @target
+RootingAxe3:
+  Conditions:
+  - variableEquals{var=caster.bannerbuff;value=1}
+  Skills:
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @Self
+  - cast{skillName="&cRooting Axe";duration=40;onCast=RootingAxecast2;showCastBar=true} @target
+  - delay 20
+  - setvariable{var=caster.bannerbuff;value=0}
+  
+RootingAxecast:
+  Skills:
+  - equip{i=AIR:OFFHAND}
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - projectile{ot=RootingAxe-Tick;oh=RootingAxe-Hit;v=10;hr=1;vr=1;i=1} @target
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - setvariable{var=caster.rootingaxe;value=0}
+  - setvariable{var=caster.rootingslash;value=0}
+  - delay 20
+  - equip{i=IRON_AXE:OFFHAND}
+RootingAxecast2:
+  Skills:
+  - equip{i=AIR:OFFHAND}
+  - projectile{ot=RootingAxe-Tick;oh=RootingAxe-Hit2;v=10;hr=1;vr=1;i=1} @target
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - setvariable{var=caster.rootingaxe;value=0}
+  - setvariable{var=caster.rootingslash;value=0}
+  - delay 20
+  - equip{i=IRON_AXE:OFFHAND}
+  
+RootingAxe-Tick:
+  Skills:
+  - effect:particles{particle=item_crack;material=coal_block;a=1;d=5;v=0;yo=0} @origin
+  
+RootingAxe-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}
+  - potion{t=SLOW;d=40;p=false;i=false;force=true;l=10}
+  - effect:sound{s=item.axe.strip;v=2}
+RootingAxe-Hit2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+  - potion{t=SLOW;d=40;p=false;i=false;force=true;l=10}
+  - effect:sound{s=item.axe.strip;v=2}
+
+startConsume:
+  Cooldown: 60
+  Conditions:
+  - incombat{} true
+  Skills:
+  - sendtitle{title="&4&kooo&r&l&cConsume&r&4&kooo";subtitle="&e&l3";d=20}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cConsume&r&4&kooo";subtitle="&e&l2";d=20}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cConsume&r&4&kooo";subtitle="&e&l1";d=20}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - skill{s=Consume}
+
+Consume:
+  Conditions:
+  - incombat{} true
+  Skills:
+  - feed{amount=-18}
+  - effect:sound{s=entity.wither.ambient;volume=0.5;pitch=0.5} @self
+
+PirateLeap:
+  Conditions:
+  - incombat{} true
+  Skills:
+  - message{m="&eAdmiral Vex<&co> &6Board the Ship!"} @PIR{r=10}
+  - effect:sound{s=ambient.underwater.enter;v=2} @self
+  - delay 10
+  - velocity{m=set;vx=0;vy=1;vz=0} @self
+  - delay 20
+  - leap{v=200}
+  - delay 10
+  - effect:blockmask{m=dirt;r=4;d=40}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=4}
+  - throw{v=1;vy=10} @PIR{r=4}
+  #- effect:sound{s=entity.ghast.shoot;v=2} @self
+  - message{m="&eAdmiral Vex<&co> &6Ahoy!"} @PIR{r=5}
+
+SummonPirateGunner:
+  Skills:
+  - remove @MIR{t=PirateGunner;r=50}
+  - delay 1
+  - summon{t=PirateGunner;a=1;r=0;itt=true} @Location{c=-23.5,34,-663.5}
+  - summon{t=PirateGunner;a=1;r=0;itt=true} @Location{c=-34.5,35,-658.5}
+  - summon{t=PirateGunner;a=1;r=0;itt=true} @Location{c=-22.5,33,-645.5}
+  - summon{t=PirateGunner;a=1;r=0;itt=true} @Location{c=-36.5,37,-647.5}
+
+SummonPirateSurgeon:
+  Skills:
+  - remove @MIR{t=PirateSurgeon;r=50}
+  - delay 1
+  - summon{t=PirateSurgeon;a=1;r=0} @Location{c=-65.5,52,-644.5}
+  - summon{t=PirateSurgeon;a=1;r=0} @Location{c=2.5,35,-662.5}
+
+SummonPirateLookout:
+  Skills:
+  - remove @MIR{t=PirateLookout;r=50}
+  - delay 1
+  - summon{t=PirateLookout;a=1;r=0;itt=true} @Location{c=-20.5,41,-656.5}
+
+ShootCannon:
+  Skills:
+  - projectile{ot=ShootCannon-Tick;oe=ShootCannon-End;v=18;i=1;hs=1;vs=1}
+
+ShootCannon-Tick:
+  Skills:
+  - effect:particles{p=explosion_large;a=1} @origin
+
+ShootCannon-End:
+  Skills:
+  - throw{v=5;vy=5} @PlayersNearOrigin{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PlayersNearOrigin{r=3}
+  - effect:explosion{} @origin
+
+HealAdmiral:
+  Skills:
+  - missile{ot=HealAdmiral-Tick;oh=HealAdmiral-Hit;v=16;i=1;hs=1;vs=1;hnp=true;hp=false}
+  - effect:sound{s=entity.egg.throw;v=2} @self
+
+HealAdmiral-Tick:
+  Skills:
+  - effect:particles{p=happy_villager;a=1} @origin
+
+HealAdmiral-Hit:
+  Skills:
+  - heal{a=100}
+  - command{c="runicdamage <caster.uuid> <target.name> 0"}
+  - effect:particles{p=happy_villager;a=5}
+  - effect:sound{s=entity.experience_orb.pickup;volume=2;pitch=0.5} @origin
+  
+BlindTeleport:
+  Cooldown: 5
+  Conditions:
+  - incombat{} true
+  Skills:
+  - teleport{spreadh=1;spreadv=1} @NearestPlayer{r=12} ~onTimer:100
+  - effect:sound{s=entity.enderman.teleport;volume=0.35;p=0.5} @self 
+  - delay 5
+  - potion{t=BLINDNESS;d=40;l=998;hasParticles=true;force=true} @PlayersInRadius{r=12}
+  
+EnragedPull:
+  Cooldown: 9
+  Conditions:
+  - incombat{}
+  Skills:
+  - pull{v=9;to=false} @target ~onTimer:100
+  - effect:sound{s=block.beacon.deactivate;volume=0.35;p=0.5} @self 
+  - delay 5
+  - potion{t=SLOW;d=20;l=998;hasParticles=false;force=true} @target
+  
+Rise:
+  Conditions:
+  - incombat{}
+  Skills:
+  - summon{type=Fear;amount=3;radius=3} @PIR{r=50}
+  - potion{type=BLINDNESS;duration=100;level=3;hasParticles=false}
+  - potion{type=SLOW;duration=100;level=2;hasParticles=false}

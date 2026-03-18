@@ -1,0 +1,1142 @@
+angrybee:
+  Conditions:
+  - playerwithin 8
+  Cooldown: 4
+  Skills:
+  - leap{v=200} @NearestPlayer{r=6}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 4"} @PIR{r=4}
+  
+Garlicsuicide:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - suicide
+
+MushyMushroom:
+  Cooldown: 2
+  Skills:
+  - sound{s=block.slime_block.break} @trigger
+  - command{c="runicdamage <caster.uuid> <target.name> 7"} @trigger
+  - effect:particlesphere{p=dragon_breath;a=12;r=2} @trigger
+MushyMist:
+  Cooldown: 12
+  Skills:
+  - cast{skillName="Mushy Mist";duration=40;onCast=MushyMistCast;showCastBar=true} @target
+MushyMistCast:
+  Skills:
+  - summon{t=MushyMushroomMarker;r=5;os=true} @self
+  - summon{t=MushyMushroomMarker;r=5;os=true} @target
+  - delay 20
+  - summon{t=MushyMushroomMarker;r=5;os=true} @self
+  - summon{t=MushyMushroomMarker;r=5;os=true} @target
+  - delay 20
+  - summon{t=MushyMushroomMarker;r=5;os=true} @self
+  - summon{t=MushyMushroomMarker;r=5;os=true} @target
+  - delay 20
+MushyMushroomMarker:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=4}
+  - effect:particlesphere{p=dragon_breath;a=8;r=5}
+  - delay 20
+  - skill{s=MushyMushroomMarker}
+CaveMother:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - cast{skillName="Spider Nest";duration=40;onCast=CaveMotherCast;showCastBar=true} @target
+CaveMotherCast:
+  Skills:
+  - summon{t=SpiderNest}
+SpiderNest:
+  Skills:
+  - delay 40
+  - sound{s=block.stone.break} 
+  - summon{t=CaveSpiderling;a=3;r=3;os=true}
+  - remove
+
+HappyStump:
+  Conditions:
+  - variableEquals{var=caster.happy;value=4}
+  - variableEquals{var=caster.active;value=0}
+  Cooldown: 2
+  Skills:
+  - setAI{ai=false}
+  - variableadd{var=caster.happy;amount=1}
+  - summon{t=HappyStumpTune;r=3;os=true;a=3}
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=5;os=true}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=5;os=true}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=5;os=true}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=5;os=true}
+  - delay 18
+  - message{m="&7Could you.."} @PIR{r=24}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=5;os=true}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=10;os=true}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=10;os=true}
+  - delay 18
+  - message{m="&7be my.."} @PIR{r=24}
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=15;os=true}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=20;os=true}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=16;os=true}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=17;os=true}
+  - delay 18
+  - message{m="&7friend."} @PIR{r=24}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=19;os=true}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=19;os=true}
+  - delay 18
+  - summon{t=AngeryStumpFlowerMarker;a=2;r=20;os=true}
+  - delay 18
+  - message{m="&7The Angry Stump gave you his Sapling."} @PIR{r=24}
+  - command{c="questtrigger player <target.name> angrystump"} @PIR{r=24}
+  - delay 1040
+  - setvariable{var=caster.happy;value=0}
+  - setAI{ai=true}
+
+HappyStumpBass:
+  Cooldown: 1
+  Skills:
+  - skill{s=HappyStumpBass2} 
+HappyStumpBass2:
+  Cooldown: 1
+  Skills:
+  - summon{t=AngeryStumpTuneBass;r=2;os=true}  
+
+HappyStumpBassEnd:
+  Cooldown: 1
+  Skills:
+  - skill{s=HappyStumpBass2} 
+HappyStumpBassEnd2:
+  Cooldown: 1
+  Skills:
+  - summon{t=AngeryStumpTuneBassEnd;r=2;os=true}  
+
+AngeryStumpFlowerMarker:
+  Skills:
+  - randomskill{s=AngeryStumpFlower1,AngeryStumpFlower2,AngeryStumpFlower3,AngeryStumpFlower4,AngeryStumpFlower5,AngeryStumpFlower6,AngeryStumpFlower7,AngeryStumpFlower8,AngeryStumpFlower9,AngeryStumpFlower10}
+  - remove
+AngeryStumpFlower1: 
+  Skills:
+  - summon{t=AngeryStumpFlower1;os=true}
+AngeryStumpFlower2: 
+  Skills:
+  - summon{t=AngeryStumpFlower2;os=true}
+AngeryStumpFlower3: 
+  Skills:
+  - summon{t=AngeryStumpFlower3;os=true}
+AngeryStumpFlower4: 
+  Skills:
+  - summon{t=AngeryStumpFlower4;os=true}
+AngeryStumpFlower5: 
+  Skills:
+  - summon{t=AngeryStumpFlower5;os=true}
+AngeryStumpFlower6: 
+  Skills:
+  - summon{t=AngeryStumpFlower6;os=true}
+AngeryStumpFlower7: 
+  Skills:
+  - summon{t=AngeryStumpFlower7;os=true}
+AngeryStumpFlower8: 
+  Skills:
+  - summon{t=AngeryStumpFlower8;os=true}
+AngeryStumpFlower9: 
+  Skills:
+  - summon{t=AngeryStumpFlower9;os=true}
+AngeryStumpFlower10: 
+  Skills:
+  - summon{t=AngeryStumpFlower10;os=true}
+
+AngeryStumpTune:
+  Skills:
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - skill{s=AngeryStumpTuneBass1}
+  - delay 18
+  - skill{s=db}
+  - delay 3
+  - skill{s=eb}
+  - delay 3
+  - skill{s=fsh}
+  - delay 9
+  - skill{s=eb}
+  - delay 9
+  - skill{s=db}
+  - delay 6
+  - skill{s=b}
+  - skill{s=AngeryStumpTuneBass2}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - skill{s=AngeryStumpTuneBass3}
+  - delay 18
+  - skill{s=db}
+  - delay 3
+  - skill{s=eb}
+  - delay 3
+  - skill{s=fsh}
+  - delay 9
+  - skill{s=fsh}
+  - delay 9
+  - skill{s=a^b}
+  - delay 6
+  - skill{s=eb}
+  - skill{s=AngeryStumpTuneBass4}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - skill{s=AngeryStumpTuneBass1}
+  - delay 18
+  - skill{s=db}
+  - delay 3
+  - skill{s=eb}
+  - delay 3
+  - skill{s=fsh}
+  - delay 9
+  - skill{s=eb}
+  - delay 9
+  - skill{s=db}
+  - delay 6
+  - skill{s=b}
+  - skill{s=AngeryStumpTuneBass2}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=fsh}
+  - skill{s=AngeryStumpTuneBass3}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - skill{s=AngeryStumpTuneBass4}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - signal{s=bass} @MIR{t=AngryStump;r=128}
+  - skill{s=AngeryStumpTuneBass1}
+  - delay 12
+  - skill{s=db}
+  - delay 12
+  - skill{s=db}
+  - delay 9
+  - skill{s=b}
+  - delay 9
+  - skill{s=b}
+  - delay 6
+  - skill{s=AngeryStumpTuneBass2}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - skill{s=AngeryStumpTuneBass3}
+  - delay 12
+  - skill{s=db}
+  - delay 12
+  - skill{s=db}
+  - delay 9
+  - skill{s=fsh}
+  - delay 9
+  - skill{s=eb}
+  - delay 6
+  - skill{s=AngeryStumpTuneBass4}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - skill{s=AngeryStumpTuneBass1}
+  - delay 12
+  - skill{s=db}
+  - delay 12
+  - skill{s=db}
+  - delay 9
+  - skill{s=b}
+  - delay 9
+  - skill{s=b}
+  - delay 6
+  - skill{s=AngeryStumpTuneBass2}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=fsh}
+  - skill{s=AngeryStumpTuneBass3}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - skill{s=AngeryStumpTuneBass4}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - signal{s=bass2} @MIR{t=AngryStump;r=128}
+  - skill{s=AngeryStumpTuneBass1}
+  - delay 18
+  - skill{s=db}
+  - delay 3
+  - skill{s=eb}
+  - delay 3
+  - skill{s=fsh}
+  - delay 9
+  - skill{s=eb}
+  - delay 9
+  - skill{s=db}
+  - delay 6
+  - skill{s=b}
+  - skill{s=AngeryStumpTuneBass2}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - skill{s=AngeryStumpTuneBass3}
+  - delay 18
+  - skill{s=db}
+  - delay 3
+  - skill{s=eb}
+  - delay 3
+  - skill{s=fsh}
+  - delay 9
+  - skill{s=fsh}
+  - delay 9
+  - skill{s=a^b}
+  - delay 6
+  - skill{s=eb}
+  - skill{s=AngeryStumpTuneBass4}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - skill{s=AngeryStumpTuneBass1}
+  - delay 18
+  - skill{s=db}
+  - delay 3
+  - skill{s=eb}
+  - delay 3
+  - skill{s=fsh}
+  - delay 9
+  - skill{s=eb}
+  - delay 9
+  - skill{s=db}
+  - delay 6
+  - skill{s=b}
+  - skill{s=AngeryStumpTuneBass2}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=fsh}
+  - skill{s=AngeryStumpTuneBass3}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=db}
+  - skill{s=AngeryStumpTuneBass4}
+  - remove @MIR{t=AngeryStumpTuneBass,AngeryStumpTuneBassEnd;r=128}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 6
+  - skill{s=b^b}
+  - delay 6
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=fsh}
+  - delay 24
+
+  - skill{s=b^}
+  - delay 9
+  - skill{s=b^b}
+  - delay 3
+  - skill{s=fsh}
+  - delay 6
+  - skill{s=eb}
+  - delay 6
+  - skill{s=eb}
+  - delay 54
+  - remove
+
+AngeryStumpTuneBass1:
+  Skills:
+#  - skill{s=e}
+  - sound{s=block.note_block.bass;p=0.9} # e
+  - delay 6
+#  - skill{s=a^b}
+  - sound{s=block.note_block.bass;p=1.122} # ab
+  - delay 6
+#  - skill{s=b^}
+  - sound{s=block.note_block.bass;p=1.339} # b
+AngeryStumpTuneBass2:
+  Skills:
+#  - skill{s=a}
+  - sound{s=block.note_block.bass;p=0.594} # a
+  - delay 6
+#  - skill{s=fsh}
+  - sound{s=block.note_block.bass;p=0.992} # f#
+  - delay 6
+#  - skill{s=b^}
+  - sound{s=block.note_block.bass;p=1.339} # b
+AngeryStumpTuneBass3:
+  Skills:
+#  - skill{s=fsh}
+  - sound{s=block.note_block.bass;p=0.992} # f#
+  - delay 6
+#  - skill{s=b^b}
+  - sound{s=block.note_block.bass;p=1.266} # bb
+  - delay 6
+  - sound{s=block.note_block.bass;p=0.992} # f#
+AngeryStumpTuneBass4:
+  Skills:
+#  - skill{s=a^b}
+  - sound{s=block.note_block.bass;p=1.122} # ab
+  - delay 6
+#  - skill{s=b^}
+  - sound{s=block.note_block.bass;p=1.339} # b
+  - delay 6
+  - sound{s=block.note_block.bass;p=1.122} # ab
+AngeryStumpTuneBass:
+  Skills:
+  - sound{s=block.note_block.snare}
+  - delay 6
+  - sound{s=block.note_block.snare}
+  - delay 6
+  - sound{s=block.note_block.snare}
+  - delay 3
+  - sound{s=block.note_block.snare}
+  - delay 3
+  - sound{s=block.note_block.snare}
+  - delay 3
+  - sound{s=block.note_block.snare}
+  - delay 3
+  - skill{s=AngeryStumpTuneBass}
+AngeryStumpTuneBassp2:
+  Skills:
+  - sound{s=block.note_block.hat}
+  - delay 6
+  - sound{s=block.note_block.hat}
+  - delay 6
+  - sound{s=block.note_block.hat}
+  - delay 12
+  - skill{s=AngeryStumpTuneBassp2}
+AngeryStumpTuneBassEnd:
+  Skills:
+  - skill{s=basse}
+  - delay 6
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 6
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+
+  - skill{s=bassab}
+  - delay 6
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 6
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 3
+  - skill{s=bassab}
+  - delay 3
+
+  - skill{s=bassfsh}
+  - delay 6
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 6
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 3
+  - skill{s=bassfsh}
+  - delay 3
+
+  - skill{s=basse}
+  - delay 6
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 6
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=basse}
+  - delay 3
+  - skill{s=AngeryStumpTuneBassEnd}
+AngeryStumpTuneBassEnd2:
+  Skills:
+  - skill{s=2basse}
+  - delay 9
+  - skill{s=2basse}
+  - delay 9
+  - skill{s=2basse}
+  - delay 9
+  - skill{s=2basse}
+  - delay 9
+  - skill{s=2basse}
+  - delay 6
+  - skill{s=2basse}
+  - delay 6
+
+  - skill{s=2bassab}
+  - delay 9
+  - skill{s=2bassab}
+  - delay 9
+  - skill{s=2bassab}
+  - delay 9
+  - skill{s=2bassab}
+  - delay 9
+  - skill{s=2bassab}
+  - delay 6
+  - skill{s=2bassab}
+  - delay 6
+
+  - skill{s=2bassfsh}
+  - delay 9
+  - skill{s=2bassfsh}
+  - delay 9
+  - skill{s=2bassfsh}
+  - delay 9
+  - skill{s=2bassfsh}
+  - delay 9
+  - skill{s=2bassfsh}
+  - delay 6
+  - skill{s=2bassfsh}
+  - delay 6
+
+  - skill{s=2basse}
+  - delay 9
+  - skill{s=2basse}
+  - delay 9
+  - skill{s=2basse}
+  - delay 9
+  - skill{s=2basse}
+  - delay 9
+  - skill{s=2basse}
+  - delay 6
+  - skill{s=2basse}
+  - delay 6
+
+  - skill{s=AngeryStumpTuneBassEnd2}
+AngeryStumpTune2:
+  Skills: 
+  - skill{s=g}
+  - delay 8
+  - skill{s=f}
+  - delay 8 
+  - skill{s=e}
+  - delay 8
+  - skill{s=d}
+  - delay 12
+  - skill{s=c}
+  - delay 24
+
+  - skill{s=g}
+  - delay 8
+  - skill{s=f}
+  - delay 8  
+  - skill{s=e}
+  - delay 8
+  - skill{s=e}
+  - delay 16
+  - skill{s=c}
+  - delay 24
+
+  - skill{s=g}
+  - delay 8
+  - skill{s=f}
+  - delay 8 
+  - skill{s=e}
+  - delay 8
+  - skill{s=e}
+  - delay 16
+  - skill{s=d}
+  - delay 24
+
+  - skill{s=g}
+  - delay 8
+  - skill{s=f}
+  - delay 8 
+  - skill{s=e}
+  - delay 8
+  - skill{s=e}
+  - delay 16
+  - skill{s=e}
+  - delay 12
+  - skill{s=d}
+  - delay 12
+  - skill{s=c}
+  - delay 8
+  - skill{s=c}
+  - delay 12
+  - skill{s=d}
+  - delay 12
+  - skill{s=c}
+  - delay 12
+
+AngeryStumpHappy:
+  Conditions:
+  - playerwithin 1
+  - variableEquals{var=caster.active;value=0}
+  Cooldown: 5
+  Skills:
+  - skill{s=AngeryStumpHappy1}
+  - skill{s=AngeryStumpHappy2}
+  - skill{s=AngeryStumpHappy3}
+  - skill{s=AngeryStumpHappy4}
+AngeryStumpHappyHeal:
+  Conditions:
+  - variableEquals{var=caster.happy;value=5}
+  Skills:
+  - heal{a=500}
+AngeryStumpHappy1:
+  Conditions:
+  - variableEquals{var=caster.happy;value=0}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=4}	 
+  - message{m="&7Leave me alone."} @PIR{r=4}
+  - delay 20
+  - variableadd{var=caster.happy;amount=1}
+AngeryStumpHappy2:
+  Conditions:
+  - variableEquals{var=caster.happy;value=1}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}	 
+  - message{m="&7You disgust me."} @PIR{r=4}
+  - delay 20
+  - variableadd{var=caster.happy;amount=1}
+AngeryStumpHappy3:
+  Conditions:
+  - variableEquals{var=caster.happy;value=2}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}	 
+  - message{m="&7I've lost my trust in humans ages ago."} @PIR{r=4}
+  - delay 20
+  - variableadd{var=caster.happy;amount=1}
+AngeryStumpHappy4:
+  Conditions:
+  - variableEquals{var=caster.happy;value=3}
+  Skills:
+  - message{m="&7but you seem different.."} @PIR{r=4}
+  - delay 10
+  - variableadd{var=caster.happy;amount=1}
+
+AngeryStumpAngery:
+  Conditions:
+  - playernotwithin 20
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.happy;value=0}
+
+AngeryStumphurt:
+  Cooldown: 9999
+  Conditions:
+  - variableInRange{var=caster.happy;value=<4}
+  Skills:
+  - setvariable{var=caster.active;value=1}
+  - setname{name="&e[&6☠&e] &cAngery Stump"}
+#  - disguise{type=player;player=AngeryStump;skin=_TreeMC}
+AngeryStumpProj:
+  Conditions:
+  - variableInRange{var=caster.happy;value=<4}
+  - playernotwithin 12 castinstead AngeryStumpProjnotwithin
+  - incombat{}
+  Skills:
+  - potion{type=SLOW;duration=20;level=1;hasParticles=false} 
+  - delay 20
+  - potion{type=SLOW;duration=60;level=3;hasParticles=false}
+  - summon{t=AngeryStumpMarker;r=4;os=true} @PIR{r=12} 
+  - delay 20
+  - summon{t=AngeryStumpMarker;r=4;os=true} @PIR{r=12} 
+  - delay 20
+  - summon{t=AngeryStumpMarker;r=4;os=true} @PIR{r=12} 
+AngeryStumpProjnotwithin:
+  Conditions:
+  - variableInRange{var=caster.happy;value=<4}
+  - incombat{}
+  Skills:
+  - potion{type=SLOW;duration=20;level=1;hasParticles=false} 
+  - delay 20
+  - potion{type=SLOW;duration=60;level=3;hasParticles=false}
+  - summon{t=AngeryStumpMarker;r=4;os=true} @target
+  - delay 20
+  - summon{t=AngeryStumpMarker;r=4;os=true} @target
+  - delay 20
+  - summon{t=AngeryStumpMarker;r=4;os=true} @target
+AngeryStumpMarker:
+  Skills:
+  - effect:blockmask{m=podzol;r=4;d=20}
+  - effect:particlering{particle=block_crack;material=dirt;radius=4;amount=1;point=24}
+  - sound{s=block.grass.break} 
+  - delay 10
+  - effect:blockmask{m=podzol;r=4;d=10}
+  - delay 10
+  - effect:particlering{particle=block_crack;material=dirt;radius=4;amount=1;point=24}
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=4;amount=100}
+  - sound{s=block.grass.break}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - throw{vy=12} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=4}
+  - remove
+
+AngeryStumpRoot:
+  Conditions:
+  - variableInRange{var=caster.happy;value=<4}
+  - incombat{}
+  Skills:
+  - potion{type=SLOW;duration=40;level=1;hasParticles=false} 
+  - cast{skillName="Vigorous Roots";duration=40;onCast=AngeryStumpRootCast;showCastBar=true} @self
+AngeryStumpRootCast:
+  Skills:
+  - potion{type=SLOW;duration=60;level=3;hasParticles=false}
+  - summon{t=AngeryStumpMarker2;r=4;os=true}
+  - delay 20
+  - summon{t=AngeryStumpMarker2;r=4;os=true} 
+  - delay 20
+  - summon{t=AngeryStumpMarker2;r=4;os=true} 
+AngeryStumpMarker2:
+  Skills:
+  - potion{type=INVISIBILITY;duration=100;level=1;hasParticles=false} 
+  - effect:particles{particle=block_crack;material=dirt;amount=40;hS=1;vS=1} 
+  - sound{s=block.grass.break} 
+  - delay 10
+  - effect:particles{particle=block_crack;material=dirt;amount=40;hS=1;vS=1} 
+  - sound{s=block.grass.break} 
+  - delay 10
+  - effect:particles{particle=block_crack;material=dirt;amount=40;hS=1;vS=1} 
+  - sound{s=block.grass.break} 
+  - skill{s=AngeryStumpMarker2within}
+  - delay 10
+  - effect:particles{particle=block_crack;material=dirt;amount=40;hS=1;vS=1} 
+  - sound{s=block.grass.break} 
+  - skill{s=AngeryStumpMarker2within}
+  - delay 10
+  - effect:particles{particle=block_crack;material=dirt;amount=40;hS=1;vS=1} 
+  - sound{s=block.grass.break} 
+  - skill{s=AngeryStumpMarker2within}
+  - delay 10
+  - effect:particles{particle=block_crack;material=dirt;amount=40;hS=1;vS=1} 
+  - sound{s=block.grass.break} 
+  - skill{s=AngeryStumpMarker2within}
+  - delay 10
+  - effect:particles{particle=block_crack;material=dirt;amount=40;hS=1;vS=1} 
+  - sound{s=block.grass.break} 
+  - skill{s=AngeryStumpMarker2within}
+  - delay 10
+  - effect:particles{particle=block_crack;material=dirt;amount=40;hS=1;vS=1} 
+  - sound{s=block.grass.break} 
+  - skill{s=AngeryStumpMarker2within}
+  - delay 10
+  - effect:particles{particle=block_crack;material=dirt;amount=40;hS=1;vS=1} 
+  - sound{s=block.grass.break} 
+  - skill{s=AngeryStumpMarker2within}
+  - delay 10
+  - remove
+AngeryStumpMarker2within:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - summon{t=AngeryStumpRoot;r=2;a=3} @PIR{r=2}
+  - potion{type=SLOW;duration=60;level=1} @PIR{r=2}
+  - remove
+
+AngeryStumpMarker3:
+  Skills:
+  - skill{s=AngeryStumpStun}
+  - delay 40
+  - remove
+AngeryStumpStun:
+  Skills:
+  - aura{auraName=AngeryStumpStun;onTick=AngeryStumpStun-Tick;interval=1;duration=40} @self
+AngeryStumpStun-Tick:
+  Skills:
+  - velocity{vx=0;vy=0;vz=0} @PIR{r=2}
+
+ForestSpiderLeap:
+  Conditions:
+  - playerwithin 4
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - jump{v=.2} @self
+  - delay 2
+  - leap{v=120} 
+  - delay 5
+  - skill{s=ForestSpiderDOT} 
+ForestSpiderLeap2:
+  Conditions:
+  - playerwithin 4
+  - incombat{}
+  Skills:
+  - jump{v=.2} @self
+  - delay 2
+  - leap{v=120} 
+  - delay 5
+  - skill{s=ForestSpiderDOT} 
+
+ForestSpiderDOT:
+  Conditions:
+  - playerwithin 1
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 2"}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 2"}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 2"}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 2"}
+
+ForestSpider:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=ForestSpiderLeap} @target
+  - skill{s=ForestSpider-notwithin}
+  - skill{s=ForestSpider-within}
+  - skill{s=ForestSpider-Goo}
+ForestSpider-notwithin:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.goo;amount=1}	 
+ForestSpider-within:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - setvariable{var=caster.goo;value=0}
+ForestSpider-Goo:
+  Conditions:
+  - varinrange{var=caster.goo;value=>4}
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @self
+  - cast{skillName="White Goo";duration=40;onCast=ForestSpider-GooCast;showCastBar=true} @target
+  
+ForestSpider-GooCast:
+  Skills:
+  - projectile{ot=Goo-Tick;oh=Goo-Hit;v=20;hr=1;vr=1;i=1} @target
+  - sound{s=entity.spider.hurt} 
+  
+Goo-Tick:
+  Skills:
+  - effect:itemspray{i=cobweb;a=1;d=5;v=0;yo=0} @origin
+  
+Goo-Hit:
+  Skills:
+  - skill{s=ForestSpiderLeap2} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}
+  - potion{t=SLOW;d=40;p=false;i=false;force=true;l=2}
+  - delay 2
+  - pull{v=4} @target
+  
+RiderEnrage:
+  Cooldown: 160
+  Skills:
+   - effect:sound{s=entity.wither.spawn;volume=1;p=1} @self
+   - delay 20
+   - sendtitle{title="&4&kooo&r&l&cEnrage&r&4&kooo";subtitle="&e&lBlack Rider is now enraged!";d=40} @PlayersInRadius{r=15}
+   - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+   - equip{item=wither_skeleton_skull:4}
+   - effect:particles{particle=redstone;amount=7;vSpread=1;hSpread=1;Speed=.01;yOffset=1.5} @Self
+   - potion{type=DAMAGE_RESISTANCE;d=160;level=1;hasParticles=false} @Self
+   - potion{type=SPEED;d=160;level=1;hasParticles=false} @Self
+   - potion{type=SLOW;d=120;level=1} @PIR{r=10}
+   - skill{s=SummonHorse} @self
+#   - potion{type=BLINDNESS;d=100;level=0;} @PIR{r=10}
+   - delay 160
+   - effect:sound{s=entity.wither.break_block;volume=1;p=1} @self
+   - sendtitle{title="&2&kooo&r&l&aEnrage&r&2&kooo";subtitle="&e&lBlack Rider is no longer enraged!";d=40} @PlayersInRadius{r=15}
+   - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+
+SummonHorse:
+  Skills:
+  - effect:sound{s=entity.iron_golem.death} @self
+  - effect:particlesphere{p=reddust;r=4;a=200;c=#000000;hs=1} @selflocation
+  - mount{t=BlackHorse}
+
+CocoonHit:
+  Skills:
+  - prison{m=COBWEB;d=40}
+  - command{c="runicdamage <caster.uuid> <target.name> 8"}
+  - potion{type=SLOW;d=40;l=3;f=true;p=false;i=false}
+  - effect:particles{p=reddust;c=#ffffff;a=30}
+
+CaveMotherLunge:
+  Conditions:
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - jump{velocity=0.4}
+  - delay 5
+  - summon{type=CaveMotherGoo;amount=4;radius=3;os=true} 
+  - leap{velocity=250} @target
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=2}
+CaveMotherGoo:
+  Skills:
+  - potion{t=SLOW;duration=20;l=1} @PIR{r=2}  
+Cocoon-Tick:
+  Skills:
+  - effect:particles{p=reddust;c=#ffffff;amount=10;speed=0;hS=0.1;vS=0.1} @origin
+
+CocoonCast:
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;duration=40;l=1;hasParticles=false} @self
+  - cast{skillName="Cocoon";duration=30;onCast=Cocoon;onStart=Cocoon-Start;onInterrupted=Cocoon}
+
+Cocoon-Start:
+  Skills:
+
+Cocoon:
+  Skills:
+  - projectile{onStart=Cocoon-Start;onHit=CocoonHit;onTick=Cocoon-Tick;v=10;hR=1;vR=1} @target
+  - effect:sound{s=entity.slime.jump;v=2} @self
+  - delay 1
+  - effect:sound{s=entity.slime.jump;v=2} @self
+  - delay 1
+  - effect:sound{s=entity.slime.jump;v=2} @self
+  
+PoisonusSpit:
+  Cooldown: 6
+  Skills:
+  - projectile{onTick=PoisonusSpit-Tick;onHit=PoisonusS-Hit;HugSurface=false;MaxRange=6;i=1;hRadius=3;vRadius=3;Duration=20}
+
+PoisonusSpit-Tick:
+  Skills:
+  - effect:particlebox{particle=sneeze;amount=70;radius=2} @origin
+ 
+
+PoisonusS-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+  - skill{s=PoisonEffect} @target
+
+  
+PoisonEffect:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+  
+CobwebStun:
+  Cooldown: 13
+  Skills:
+  - projectile{onTick=CobwebStun-Tick;onHit=CobwebStun-Hit;HugSurface=false;MaxRange=5;i=1;hRadius=1;vRadius=1;Duration=20}
+  
+CobwebStun-Tick:
+  Skills:
+  - effect:particleline{particle=cloud;amount=1;fromOrigin=true} @target
+  
+CobwebStun-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}
+  - skill{s=WebLock} @target
+  
+WebLock: 
+  Skills:
+  - prison{material=COBWEB;duration=40;breakable=false} @target
+  
+CaveCrawlerSpawn:
+  Skills:
+  - summon{type=CaveCrawler;amount=4;radius=0}
+

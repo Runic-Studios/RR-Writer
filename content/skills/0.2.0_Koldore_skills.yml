@@ -1,0 +1,435 @@
+BigGreenSlime-leap:
+  Cooldown: 12
+  Skills:
+  - jump{v=.2} @self
+  - delay 2
+  - leap{v=250} @target
+BigGreenSlime:
+  Cooldown: 4
+  Skills:
+  - jump{velocity=0.6}
+  - delay 25
+  - jump{velocity=0.6}
+  - delay 25
+  - jump{velocity=1.2}
+  - delay 25
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=40;radius=8;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=8}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=8}
+BigGreenSlime-passive:
+  Cooldown: 6
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=20;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+
+ForestSlime:
+  Cooldown: 4
+  Skills:
+  - jump{velocity=0.6}
+  - delay 25
+  - jump{velocity=0.6}
+  - delay 25
+  - jump{velocity=1.2}
+  - delay 25
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=20;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=5}
+ForestSlime-passive:
+  Cooldown: 6
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=8;radius=3;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=3}
+
+ForestGuardian-missile:
+  Conditions:
+  - playernotwithin 6
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 20
+  - sound{s=block.enchantment_table.use}
+  - missile{ot=ForestGuardian-missiletick;oh=ForestGuardian-missilehit;v=6;i=1;in=0.5} @target
+  - delay 10
+  - sound{s=block.enchantment_table.use}
+  - missile{ot=ForestGuardian-missiletick;oh=ForestGuardian-missilehit;v=6;i=1;in=0.5} @target
+  - delay 10
+  - sound{s=block.enchantment_table.use}
+  - missile{ot=ForestGuardian-missiletick;oh=ForestGuardian-missilehit;v=6;i=1;in=0.5} @target
+  - delay 10
+  - sound{s=block.enchantment_table.use}
+  - missile{ot=ForestGuardian-missiletick;oh=ForestGuardian-missilehit;v=6;i=1;in=0.5} @target
+  - delay 10
+  - sound{s=block.enchantment_table.use}
+  - missile{ot=ForestGuardian-missiletick;oh=ForestGuardian-missilehit;v=6;i=1;in=0.5} @target
+
+ForestGuardian-missiletick:
+  Skills:
+  - effect:particles{p=reddust;color=#84D17B;a=1} @origin
+
+ForestGuardian-missilehit:
+  Skills:
+  - effect:particlesphere{p=reddust;color=#84D17B;r=3;a=3} @origin
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} 
+  - potion{t=SLOW;d=40;l=1} @PIR{r=2}
+
+ForestGuardian-passive:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  Skills:
+  - summon{t=ForestGuardian-root;r=3;a=3} @NearestPlayer{r=32}
+  - delay 5
+  - summon{t=ForestGuardian-root;r=3;a=3} @NearestPlayer{r=32}
+  - delay 5
+  - summon{t=ForestGuardian-root;r=3;a=3} @NearestPlayer{r=32}
+  - delay 5
+  - summon{t=ForestGuardian-root;r=3;a=3} @NearestPlayer{r=32}
+ForestGuardian-root:
+  Skills:
+  - skill{s=ForestGuardian-stun}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 12"} @PIR{r=1}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 12"} @PIR{r=1}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 12"} @PIR{r=1}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 12"} @PIR{r=1}
+  - remove
+ForestGuardian-stun:
+  Skills:
+  - aura{auraName=ForestGuardian-root;onTick=ForestGuardian-roottick;interval=1;duration=80} @self
+ForestGuardian-roottick:
+  Skills:
+  - velocity{vx=0;vy=0;vz=0} @PIR{r=1}
+
+ForestGuardian-skill:
+  Cooldown: 20
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=160;l=1;hasParticles=false} 
+  - cast{skillName="Nature's Calling";duration=80;onCast=ForestGuardian-skillcast;showCastBar=true} @self
+  - delay 40
+  - summon{t=ForestGuardian-add2;r=3;a=1;os=true}
+  - delay 40
+  - summon{t=ForestGuardian-add2;r=3;a=1;os=true}
+ForestGuardian-skillcast:
+  Conditions:
+  - health{h=<2000} castinstead ForestGuardian-enragecast
+  Skills:
+  - randomskill{s=ForestGuardian-summon1,ForestGuardian-summon2,ForestGuardian-summon3,ForestGuardian-summon4,ForestGuardian-summon5}
+  - randomskill{s=ForestGuardian-summon1,ForestGuardian-summon2,ForestGuardian-summon3,ForestGuardian-summon4,ForestGuardian-summon5}
+  - randomskill{s=ForestGuardian-summon1,ForestGuardian-summon2,ForestGuardian-summon3,ForestGuardian-summon4,ForestGuardian-summon5}
+ForestGuardian-summon1:
+  Cooldown: 12
+  Skills:
+  - summon{t=ForestGuardian-spawn1} 
+ForestGuardian-summon2:
+  Cooldown: 12
+  Skills:
+  - summon{t=ForestGuardian-spawn2} 
+ForestGuardian-summon3:
+  Cooldown: 12
+  Skills:
+  - summon{t=ForestGuardian-spawn3} 
+ForestGuardian-summon4:
+  Cooldown: 12
+  Skills:
+  - summon{t=ForestGuardian-spawn4} 
+ForestGuardian-summon5:
+  Cooldown: 12
+  Skills:
+  - summon{t=ForestGuardian-spawn5} 
+ForestGuardian-enragecast:
+  Skills:
+  - summon{t=ForestGuardian-spawn1} 
+  - summon{t=ForestGuardian-spawn2} 
+  - summon{t=ForestGuardian-spawn3} 
+  - summon{t=ForestGuardian-spawn4} 
+  - summon{t=ForestGuardian-spawn5} 
+
+ForestGuardian-skill2:
+  Cooldown: 20
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=120;l=1;hasParticles=false} 
+  - cast{skillName="Nature's Wrath";duration=80;onCast=ForestGuardian-skill2cast;showCastBar=true} @self
+  - delay 20
+  - summon{t=ForestGuardian-marker3;r=12;a=2;os=true}
+  - delay 20
+  - summon{t=ForestGuardian-marker3;r=12;a=2;os=true}
+  - delay 20
+  - summon{t=ForestGuardian-marker3;r=12;a=2;os=true}
+  - delay 20
+  - summon{t=ForestGuardian-marker3;r=12;a=2;os=true}
+ForestGuardian-skill2cast:
+  Skills:
+  - delay 5
+  - summon{t=ForestGuardian-marker3;r=12;a=2;os=true}
+  - delay 5
+  - summon{t=ForestGuardian-marker3;r=12;a=2;os=true}
+  - delay 5
+  - summon{t=ForestGuardian-marker3;r=12;a=2;os=true}
+  - delay 5
+  - summon{t=ForestGuardian-marker3;r=12;a=2;os=true}
+ForestGuardian-marker3:
+  Skills:
+  - effect:blockmask{m=podzol;r=5;d=20}
+  - effect:particlering{particle=block_crack;material=dirt;radius=4;amount=1;point=24}
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=4;amount=100}
+  - sound{s=block.grass.break;v=2}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=5}
+  - throw{vy=10} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - remove
+
+ForestGuardian-add:
+  Skills:
+  - sound{s=block.grass.break;v=2}
+  - effect:blockmask{m=dirt;r=4;d=20}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - delay 200
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=2;amount=4;yOffset=.5}
+  - sound{s=block.grass.break} 
+  - delay 20
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=2;amount=4;yOffset=.5}
+  - sound{s=block.grass.break} 
+  - delay 20
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=2;amount=4;yOffset=.5}
+  - sound{s=block.grass.break} 
+  - signal{s=heal} @MIR{t=ForestGuardian;r=12} 
+  - summon{t=ForestGuardian-marker2;r=2} 
+  - remove
+ForestGuardian-add2:
+  Skills:
+  - sound{s=block.grass.break;v=2}
+  - effect:blockmask{m=dirt;r=4;d=20}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - delay 360
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=2;amount=4;yOffset=.5}
+  - sound{s=block.grass.break} 
+  - delay 20
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=2;amount=4;yOffset=.5}
+  - sound{s=block.grass.break} 
+  - delay 20
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=2;amount=4;yOffset=.5}
+  - sound{s=block.grass.break} 
+  - summon{t=ForestGuardian-marker2;r=2} 
+  - remove
+
+ForestGuardian-heal:
+  Skills:
+  - heal{a=40;i=true} @self
+  - effect:sound{s=entity.experience_orb.pickup;volume=0.1;pitch=0.5} @self
+  - effect:particlesphere{p=VILLAGER_HAPPY;amount=2;radius=1;yOffset=.5} @self
+
+ForestGuardian-marker2:
+  Skills:
+  - effect:blockmask{m=dirt;r=4;d=20}
+  - effect:particlering{particle=block_crack;material=dirt;radius=4;amount=1;point=24}
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=4;amount=100}
+  - sound{s=block.grass.break}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - throw{vy=12} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - remove
+  
+ForestGuardian-start:
+  Skills:
+  - remove @MIR{t=ForestGuardian-marker;r=64}
+  - summon{t=ForestGuardian-marker} @Location{c=-1830,59,-35}
+  - summon{t=ForestGuardian-marker} @Location{c=-1854,54,-23}
+  - summon{t=ForestGuardian-marker} @Location{c=-1846,54,3}
+  - summon{t=ForestGuardian-marker} @Location{c=-1826,57,9}
+  - summon{t=ForestGuardian-marker} @Location{c=-1810,60,-9}
+
+ForestGuardian-spawn:
+  Skills:
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=2;amount=4;yOffset=.5}
+  - sound{s=block.grass.break} @self 
+ForestGuardian-spawn2:
+  Conditions:
+  - health{h=>66} castinstead ForestGuardian-spawn4
+  - health{h=>33} castinstead ForestGuardian-spawn3
+  Skills:
+  - summon{t=ForestGuardian-add;a=1;r=3;os=true}
+  - remove
+ForestGuardian-spawn4:
+  Skills:
+  - summon{t=ForestGuardian-add;a=1;r=5;os=true}
+  - delay 5
+  - summon{t=ForestGuardian-add;a=1;r=5;os=true}
+  - delay 5
+  - summon{t=ForestGuardian-add;a=1;r=5;os=true}
+  - remove
+ForestGuardian-spawn3:
+  Skills:
+  - summon{t=ForestGuardian-add;a=1;r=4;os=true}
+  - delay 5
+  - summon{t=ForestGuardian-add;a=1;r=4;os=true}
+  - remove
+
+
+monkeypoo:
+  Skills:
+  - leap{v=400} @NearestPlayer{r=64}
+monkeypooboom:
+  Skills:  
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5}
+  - sound{s=entity.generic.explode}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - remove
+MonkeySmash:
+  Skills:
+  - potion{type=SLOW;duration=40;level=1;hasParticles=false} 
+  - cast{skillName="Monkey Smash";duration=20;onCast=MonkeySmashCast;showCastBar=true} @self
+  - effect:particles{particle=block_crack;material=dirt;a=5}
+  - delay 10
+  - effect:particles{particle=block_crack;material=dirt;a=5}
+  - delay 10
+  - effect:particles{particle=block_crack;material=dirt;a=5}
+MonkeySmashCast:
+  Skills:
+  - sound{s=block.grass.break} 
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - throw{vy=10} @PIR{r=5}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - effect:particles{particle=block_crack;material=dirt;a=5} @PIR{r=5}
+
+Monkeymarksetup:
+  Skills:
+  - summon{t=Monkeymark1} @Location{c=-1864.5,65,105.5}
+  - summon{t=Monkeymark2} @Location{c=-1865.5,69,128.5}
+  - summon{t=Monkeymark3} @Location{c=-1849.5,70,126.5}
+MonkeyTree:
+  Cooldown: 16
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{type=SLOW;duration=40;level=1;hasParticles=false}   
+  - cast{skillName="Monkey Monkey";duration=40;onCast=MonkeyTreeSkillCast;showCastBar=true} @self
+MonkeyTreeSkillCast:
+  Skills:
+  - randomskill{s=MonkeyTree1,MonkeyTree2,MonkeyTree3}
+MonkeyTreeCast:
+  Skills:
+  - skill{s=MonkeyTree1Cast}
+  - skill{s=MonkeyTree2Cast}
+  - skill{s=MonkeyTree3Cast}
+MonkeyTree1:
+  Cooldown: 40
+  Skills:
+  - jump{v=1.2}
+  - delay 10
+  - leap{v=400} @MIR{t=Monkeymark1;r=128}
+MonkeyTree1Cast:
+  Cooldown: 8
+  Skills:
+  - remove @MIR{t=Monkeymark1;r=128}
+  - summon{t=monkeypoo}
+  - delay 4
+  - summon{t=monkeypoo}
+  - delay 4
+  - summon{t=monkeypoo}
+  - delay 4
+  - summon{t=monkeypoo}
+  - delay 20
+  - setAI{ai=true}
+  - delay 20
+  - leap{v=200} @target
+  - delay 20
+  - summon{t=Monkeymark1} @Location{c=-1843.5,71,92.5}
+  - delay 40
+  - skill{s=MonkeySmash} 
+MonkeyTree2:
+  Cooldown: 40
+  Skills:
+  - jump{v=1.2}
+  - delay 10
+  - leap{v=400} @MIR{t=Monkeymark2;r=128}
+MonkeyTree2Cast:
+  Cooldown: 8
+  Skills:
+  - remove @MIR{t=Monkeymark2;r=128}
+  - summon{t=monkeypoo}
+  - delay 4
+  - summon{t=monkeypoo}
+  - delay 4
+  - summon{t=monkeypoo}
+  - delay 4
+  - summon{t=monkeypoo}
+  - delay 20
+  - setAI{ai=true}
+  - delay 20
+  - leap{v=200} @target
+  - delay 20
+  - summon{t=Monkeymark2} @Location{c=-1843.5,71,92.5}
+  - delay 40
+  - skill{s=MonkeySmash} 
+MonkeyTree3:
+  Cooldown: 40
+  Skills:
+  - jump{v=1.2}
+  - delay 10
+  - leap{v=400} @MIR{t=Monkeymark3;r=128}
+MonkeyTree3Cast:
+  Cooldown: 8
+  Skills:
+  - remove @MIR{t=Monkeymark3;r=128}
+  - summon{t=monkeypoo}
+  - delay 4
+  - summon{t=monkeypoo}
+  - delay 4
+  - summon{t=monkeypoo}
+  - delay 4
+  - summon{t=monkeypoo}
+  - delay 20
+  - setAI{ai=true}
+  - delay 20
+  - leap{v=200} @target
+  - delay 20
+  - summon{t=Monkeymark3} @Location{c=-1843.5,71,92.5}
+  - delay 40
+  - skill{s=MonkeySmash} 
+
+StoneGolemBurstcheckwithin:
+  Conditions:
+  - playerwithin 6
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.stone;amount=1}	 
+StoneGolemBurstchecknotwithin:
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - setvariable{var=caster.stone;value=0}
+StoneGolemBurst:
+  Conditions:
+  - varinrange{var=caster.stone;value=>8}
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - potion{type=SLOW;duration=40;level=1;hasParticles=false} 
+  - cast{skillName="Rock Burst";duration=40;onCast=StoneGolemBurstCast;showCastBar=true} @self
+StoneGolemBurstCast:
+  Skills:
+  - sound{s=block.stone.break} 
+  - effect:particlesphere{particle=block_crack;material=stone;radius=5;amount=160;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=5}
+  - throw{vy=6} @PIR{r=6}
+  - velocity{v=600} @PIR{r=6}
+AppleGiverSelfDestruct:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - suicide

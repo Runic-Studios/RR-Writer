@@ -1,0 +1,24 @@
+Elven-Firebird-Fireball-Cast:
+ Conditions:
+  - incombat{}
+ Cooldown: 12
+ Skills:
+ - cast{skillname="&aFireball";duration=10;onCast=Elven-Firebird-Fireball;showcastbar=true;}
+Elven-Firebird-Fireball:
+  Conditions:
+  - incombat{}
+  - playernotwithin 4
+  TargetConditions:
+  - distance{d=<25}
+  Cooldown: 2
+  Skills:
+  - playanimation{a=0;audience=World}
+  - sound{s=entity.blaze.shoot;v=1}
+  - projectile{oT=Elven-Firebird-Fireball-tick;oH=Elven-Firebird-Fireball-Hit;i=1;v=20;mr=30;ac=.95;yOffset=0.75;fOffset=0.25} @target
+Elven-Firebird-Fireball-tick:
+  Skills:
+  - effect:particles{particle=flame;a=3} @Origin
+Elven-Firebird-Fireball-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 45"}
+  - sound{s=entity.generic.explode;v=1}

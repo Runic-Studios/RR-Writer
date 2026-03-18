@@ -1,0 +1,10 @@
+SugarcaneGiver:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - suicide
+BlueOrchidGiver:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - suicide

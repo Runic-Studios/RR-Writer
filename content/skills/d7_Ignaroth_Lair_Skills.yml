@@ -1,0 +1,2769 @@
+pyromancer-iii-clone-melee:
+  Cooldown: 8
+  Skills:
+  - randomskill{s=pyromancer-rupture,pyromancer-quake}
+
+pyromancer-iii-clone:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - summon{t=pyromancer-ii-clone1} @Location{c=10409,108,605.25}
+  - summon{t=pyromancer-ii-clone2} @Location{c=10409,108,601.725}
+  - summon{t=pyromancer-ii-clone3} @Location{c=10412.5,108,600.6}
+  - summon{t=pyromancer-ii-clone4} @Location{c=10414.5,108,603.5}
+  - summon{t=pyromancer-ii-clone5} @Location{c=10412,108,606.25}
+  - randomskill{s=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5}  @Location{c=10433.5,106,603.5}
+  - randomskill{s=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5}  @Location{c=10417.5,108,625.5}
+  - randomskill{s=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5}  @Location{c=10392.5,108,617.5}
+  - randomskill{s=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5}  @Location{c=10392.5,108,589.5}
+  - randomskill{s=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5}  @Location{c=10417.5,108,581.5}
+
+pyromancer-iii-clone2:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - remove @MIR{t=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5;r=256}
+  - summon{t=pyromancer-ii-clone1} @Location{c=10409,108,605.25}
+  - summon{t=pyromancer-ii-clone2} @Location{c=10409,108,601.725}
+  - summon{t=pyromancer-ii-clone3} @Location{c=10412.5,108,600.6}
+  - summon{t=pyromancer-ii-clone4} @Location{c=10414.5,108,603.5}
+  - summon{t=pyromancer-ii-clone5} @Location{c=10412,108,606.25}
+  - randomskill{s=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5}  @Location{c=10433.5,106,603.5}
+  - randomskill{s=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5}  @Location{c=10417.5,108,625.5}
+  - randomskill{s=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5}  @Location{c=10392.5,108,617.5}
+  - randomskill{s=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5}  @Location{c=10392.5,108,589.5}
+  - randomskill{s=pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5}  @Location{c=10417.5,108,581.5}
+
+pyromancer-iii-heart1:
+  Cooldown: 10
+  Skills:
+  - summon{t=pyromancer-iii-heart1}
+pyromancer-iii-heart2:
+  Cooldown: 10
+  Skills:
+  - summon{t=pyromancer-iii-heart2}
+pyromancer-iii-heart3:
+  Cooldown: 10
+  Skills:
+  - summon{t=pyromancer-iii-heart3}
+pyromancer-iii-heart4:
+  Cooldown: 10
+  Skills:
+  - summon{t=pyromancer-iii-heart4}
+pyromancer-iii-heart5:
+  Cooldown: 10
+  Skills:
+  - summon{t=pyromancer-iii-heart5}
+
+pyromancer-iii-lightning-bolt:
+  Conditions:
+  - incombat{}
+  Cooldown: 50
+  Skills:
+  - summon{t=pyromancer-lightning-bolt} @Location{c=10393.5,185,603.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10385.5,108,622.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10356.5,107,641.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10385.5,108,584.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10356.5,107,565.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10351.5,112,603.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=10393.5,108,603.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=10393.5,108,603.5}
+  - delay 180
+  - summon{t=pyromancer-lightning-bolt} @Location{c=10406.5,185,586.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10385.5,108,584.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10356.5,107,565.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10420.5,108,573.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10431.5,107,540.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10392.5,112,546.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=10406.5,108,586.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=10406.5,108,586.5}
+  - delay 180
+  - summon{t=pyromancer-lightning-bolt} @Location{c=10425.5,185,593.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10420.5,108,573.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10431.5,107,540.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10442.5,104,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10477.5,107,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10459.5,112,568.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=10424.5,108,594.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=10425.5,108,593.5}
+  - delay 180
+  - summon{t=pyromancer-lightning-bolt} @Location{c=10425.5,185,613.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10442.5,104,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10477.5,107,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10420.5,108,633.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10431.5,107,666.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10459.5,112,638.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=10424.5,108,612.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=10425.5,108,613.5}
+  - delay 180
+  - summon{t=pyromancer-lightning-bolt} @Location{c=10406.5,185,620.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10420.5,108,633.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10431.5,107,666.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10385.5,108,622.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10356.5,107,641.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10392.5,112,660.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=10406.5,108,620.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=10406.5,108,620.5}
+
+
+
+pyromancer-iii-fireball-cast:
+  Conditions:
+  - variableEquals{var=caster.hungry;value=1}
+  Skills:
+  - randomskill{s=pyromancer-iii-fireball1,pyromancer-iii-fireball2,pyromancer-iii-fireball3,pyromancer-iii-fireball4,pyromancer-iii-fireball5}
+pyromancer-iii-fireball:
+  Skills:
+  - skill{s=pyromancer-iii-fireball-start}
+  - delay 5
+  - skill{s=pyromancer-iii-fireball-ground}
+  - skill{s=pyromancer-iii-fireball}
+pyromancer-iii-fireball-ground:
+  Conditions:
+  - onground{}
+  Skills:
+  - delay 20
+  - skill{s=pyromancer-iii-fireball-ground-barrier}
+  - delay 5
+  - remove
+pyromancer-iii-fireball-ground-barrier:
+  Conditions:
+  - onblock{m=BARRIER} true
+  Skills:
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - signal{s=feed} @MIR{t=pyromancer-iii;r=128}
+  - sound{s=entity.horse.eat;v=4}
+  - remove
+pyromancer-iii-fireball-start:
+  Cooldown: 9999
+  Skills:
+  - leap{v=400} @Location{c=10411.5,120,603.5}
+  - effect:particlesphere{p=falling_lava;amount=2;radius=1;yOffset=1}
+  - sound{s=ambient.underwater.exit;v=4;p=1.5}
+
+pyromancer-iii-fireball1:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-iii-fireball} @Location{c=10434.5,109,603.5}
+pyromancer-iii-fireball2:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-iii-fireball} @Location{c=10417.5,109,625.5}
+pyromancer-iii-fireball3:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-iii-fireball} @Location{c=10392.5,109,617.5}
+pyromancer-iii-fireball4:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-iii-fireball} @Location{c=10392.5,109,589.5}
+pyromancer-iii-fireball5:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-iii-fireball} @Location{c=10417.5,109,581.5}
+
+
+
+pyromancer-iii-lava:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - heal{a=100000}
+  - teleport @Location{c=10411.5,108,603.5}
+  - sound{s=entity.enderman.teleport}
+
+
+pyromancer-iii-hunger:
+  Conditions:
+  - incombat{}
+  Cooldown: 30
+  Skills:
+  - randomskill{s=pyromancer-iii-hunger1,pyromancer-iii-hunger2}
+pyromancer-iii-hunger1:
+  Conditions:
+  - variableEquals{var=caster.hungry;value=0}
+  Cooldown: 60
+  Skills:
+  - sound{s=entity.warden.listening;v=4} @Location{c=10411.5,103,603.5}
+  - delay 40
+  - setvariable{var=caster.hungry;value=1}
+  - summon{t=pyromancer-hunger-visual1} @Location{c=10411.5,103.03,603.5} 
+  - delay 3
+  - summon{t=pyromancer-hunger-visual2} @Location{c=10412.25,103.02,603.5} 
+  - summon{t=pyromancer-hunger-visual2} @Location{c=10410.75,103.02,603.5} 
+  - summon{t=pyromancer-hunger-visual2} @Location{c=10411.5,103.02,604.25} 
+  - summon{t=pyromancer-hunger-visual2} @Location{c=10411.5,103.02,602.75} 
+  - delay 3
+  - summon{t=pyromancer-hunger-visual3} @Location{c=10412,103.01,603} 
+  - summon{t=pyromancer-hunger-visual3} @Location{c=10412,103.01,604} 
+  - summon{t=pyromancer-hunger-visual3} @Location{c=10411,103.01,604} 
+  - summon{t=pyromancer-hunger-visual3} @Location{c=10411,103.01,603} 
+pyromancer-iii-hunger2:
+  Conditions:
+  - variableEquals{var=caster.hungry;value=1}
+  Skills:
+  - setvariable{var=caster.hungry;value=0}
+  - delay 40
+  - sound{s=entity.warden.dig;v=4} @Location{c=10411.5,103,603.5}
+  - delay 40
+  - remove @MIR{t=pyromancer-hunger-visual3;r=100}
+  - delay 3
+  - remove @MIR{t=pyromancer-hunger-visual2;r=100}
+  - delay 3
+  - remove @MIR{t=pyromancer-hunger-visual1;r=100}
+
+pyromancer-iii-hunger-cast:
+  Cooldown: 2
+  Conditions:
+  - variableEquals{var=caster.hungry;value=1}
+  Skills:
+  - skill{s=pyromancer-iii-hunger-damage} @PIR{r=100}
+
+pyromancer-iii-hunger-damage:
+  TargetConditions:
+  - onblock{m=BARRIER} true
+  Skills:
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=entity.phantom.bite} @Location{c=10411.5,103,603.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"}
+
+pyromancer-iii-feast:
+  Conditions:
+  - variableInRange{var=caster.hunger;value=>2}
+  Skills:
+  - setvariable{var=caster.hunger;value=0}
+  - sound{s=entity.warden.angry;v=5} @Location{c=10411.5,103,603.5}
+  - delay 20
+  - summon{t=pyromancer-feast-marker} @PIR{r=100}
+
+pyromancer-iii-portal-unbreakable-cast:
+  Cooldown: 100
+  Skills:
+  - summon{t=pyromancer-ii-portal-unbreakable} @Location{c=10434.5,108,603.5}
+  - summon{t=pyromancer-ii-portal-unbreakable} @Location{c=10417.5,108,625.5}
+  - summon{t=pyromancer-ii-portal-unbreakable} @Location{c=10392.5,108,617.5}
+  - summon{t=pyromancer-ii-portal-unbreakable} @Location{c=10392.5,108,589.5}
+  - summon{t=pyromancer-ii-portal-unbreakable} @Location{c=10417.5,108,581.5}
+  - summon{t=pyromancer-iii-portal-marker-center} @Location{c=10411.5,115,603.5}
+
+pyromancer-iii-portal-marker-center:
+  Conditions:
+  - playerwithin 5
+  Skills:
+  - remove @MIR{t=pyromancer-ii-portal-unbreakable;r=100}
+  - SudoSkill{s=pyromancer-iii-portal-marker-cast} @PIR{r=5}
+  - remove
+
+pyromancer-iii-portal-cast:
+  Conditions:
+  - incombat{}
+  Cooldown: 20
+  Skills:
+  - randomskill{s=pyromancer-iii-portal1,pyromancer-iii-portal2,pyromancer-iii-portal3,pyromancer-iii-portal4,pyromancer-iii-portal5}
+
+pyromancer-iii-portal1:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=10434.5,108,603.5}
+  - summon{t=pyromancer-iii-portal-marker} @Location{c=10477.5,107,603.5}
+pyromancer-iii-portal2:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=10417.5,108,625.5}
+  - summon{t=pyromancer-iii-portal-marker} @Location{c=10431.5,107,666.5}
+pyromancer-iii-portal3:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=10392.5,108,617.5}
+  - summon{t=pyromancer-iii-portal-marker} @Location{c=10356.5,107,641.5}
+pyromancer-iii-portal4:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=10392.5,108,589.5}
+  - summon{t=pyromancer-iii-portal-marker} @Location{c=10356.5,107,565.5}
+pyromancer-iii-portal5:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=10417.5,108,581.5}
+  - summon{t=pyromancer-iii-portal-marker} @Location{c=10431.5,107,540.5}
+
+pyromancer-iii-portal-marker:
+  Conditions:
+  - playerwithin 13
+  Skills:
+  - remove @MIR{t=pyromancer-portal;r=50}
+  - SudoSkill{s=pyromancer-iii-portal-marker-cast} @PIR{r=13}
+  - remove
+pyromancer-iii-portal-marker-cast:
+  Skills:
+  - command{c="execute in dungeons run tp <caster.name> 10411.5 108 603.5"} @self
+  - effect:particlesphere{p=portal;amount=3;radius=2;yOffset=0.5} @self
+  - sound{s=entity.enderman.teleport} @self
+
+
+
+
+
+pyromancer-ii-clone-melee:
+  Cooldown: 10
+  Skills:
+  - randomskill{s=pyromancer-rupture,pyromancer-quake}
+
+
+pyromancer-ii-clone-death:
+  Skills:
+  - sound{s=block.honey_block.break;p=0.5} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=25;radius=1;yOffset=.5}  
+  - suicide
+  - remove
+
+pyromancer-ii-heart:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - sound{s=entity.warden.heartbeat;p=1}
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  
+pyromancer-ii-heart-hurt:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  Skills:
+  - setname{name='&4Heart';delay=1}
+  - heal{a=100000;i=true}
+  - skill{s=pyromancer-ii-heart-hurt-damage} @trigger
+
+pyromancer-ii-heart-hurt-damage:
+  TargetConditions:
+  - health{a=>500}
+  Cooldown: 1
+  Skills:
+  - sethealth{a=501}
+  - command{c="runicdamage <caster.uuid> <target.name> 1"}
+
+pyromancer-ii-clone:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - summon{t=pyromancer-ii-clone1} @Location{c=10169,108,605.25}
+  - summon{t=pyromancer-ii-clone2} @Location{c=10169,108,601.725}
+  - summon{t=pyromancer-ii-clone3} @Location{c=10172.5,108,600.6}
+  - summon{t=pyromancer-ii-clone4} @Location{c=10174.5,108,603.5}
+  - summon{t=pyromancer-ii-clone5} @Location{c=10172,108,606.25}
+  - randomskill{s=pyromancer-ii-heart1,pyromancer-ii-heart2,pyromancer-ii-heart3,pyromancer-ii-heart4,pyromancer-ii-heart5}  @Location{c=10194.5,108,603.5}
+  - randomskill{s=pyromancer-ii-heart1,pyromancer-ii-heart2,pyromancer-ii-heart3,pyromancer-ii-heart4,pyromancer-ii-heart5}  @Location{c=10177.5,108,625.5}
+  - randomskill{s=pyromancer-ii-heart1,pyromancer-ii-heart2,pyromancer-ii-heart3,pyromancer-ii-heart4,pyromancer-ii-heart5}  @Location{c=10152.5,108,617.5}
+  - randomskill{s=pyromancer-ii-heart1,pyromancer-ii-heart2,pyromancer-ii-heart3,pyromancer-ii-heart4,pyromancer-ii-heart5}  @Location{c=10152.5,108,589.5}
+  - randomskill{s=pyromancer-ii-heart1,pyromancer-ii-heart2,pyromancer-ii-heart3,pyromancer-ii-heart4,pyromancer-ii-heart5}  @Location{c=10177.5,108,581.5}
+
+pyromancer-ii-heart1:
+  Cooldown: 10
+  Skills:
+  - summon{t=pyromancer-ii-heart1}
+pyromancer-ii-heart2:
+  Cooldown: 10
+  Skills:
+  - summon{t=pyromancer-ii-heart2}
+pyromancer-ii-heart3:
+  Cooldown: 10
+  Skills:
+  - summon{t=pyromancer-ii-heart3}
+pyromancer-ii-heart4:
+  Cooldown: 10
+  Skills:
+  - summon{t=pyromancer-ii-heart4}
+pyromancer-ii-heart5:
+  Cooldown: 10
+  Skills:
+  - summon{t=pyromancer-ii-heart5}
+
+pyromancer-ii-lightning-bolt:
+  Conditions:
+  - incombat{}
+  Cooldown: 100
+  Skills:
+  - summon{t=pyromancer-lightning-bolt} @Location{c=10153.5,185,603.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10145.5,108,622.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10116.5,107,641.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10145.5,108,584.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10116.5,107,565.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10111.5,112,603.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=10153.5,108,603.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=10153.5,108,603.5}
+  - delay 380
+  - summon{t=pyromancer-lightning-bolt} @Location{c=10166.5,185,586.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10145.5,108,584.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10116.5,107,565.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10180.5,108,573.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10191.5,107,540.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10152.5,112,546.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=10166.5,108,586.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=10166.5,108,586.5}
+  - delay 380
+  - summon{t=pyromancer-lightning-bolt} @Location{c=10185.5,185,593.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10180.5,108,573.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10191.5,107,540.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10202.5,108,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10237.5,107,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10219.5,112,568.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=10184.5,108,594.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=10185.5,108,593.5}
+  - delay 380
+  - summon{t=pyromancer-lightning-bolt} @Location{c=10185.5,185,613.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10202.5,108,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10237.5,107,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10180.5,108,633.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10191.5,107,666.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10219.5,112,638.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=10184.5,108,612.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=10185.5,108,613.5}
+  - delay 380
+  - summon{t=pyromancer-lightning-bolt} @Location{c=10166.5,185,620.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10180.5,108,633.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10191.5,107,666.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10145.5,108,622.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10116.5,107,641.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=10152.5,112,660.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=10166.5,108,620.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=10166.5,108,620.5}
+
+
+
+pyromancer-ii-fireball-cast:
+  Conditions:
+  - variableEquals{var=caster.hungry;value=1}
+  Skills:
+  - randomskill{s=pyromancer-ii-fireball1,pyromancer-ii-fireball2,pyromancer-ii-fireball3,pyromancer-ii-fireball4,pyromancer-ii-fireball5}
+pyromancer-ii-fireball:
+  Skills:
+  - skill{s=pyromancer-ii-fireball-start}
+  - delay 5
+  - skill{s=pyromancer-ii-fireball-ground}
+  - skill{s=pyromancer-ii-fireball}
+pyromancer-ii-fireball-ground:
+  Conditions:
+  - onground{}
+  Skills:
+  - delay 20
+  - skill{s=pyromancer-ii-fireball-ground-barrier}
+  - delay 5
+  - remove
+pyromancer-ii-fireball-ground-barrier:
+  Conditions:
+  - onblock{m=BARRIER} true
+  Skills:
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - signal{s=feed} @MIR{t=pyromancer-ii;r=128}
+  - sound{s=entity.horse.eat;v=4}
+  - remove
+pyromancer-ii-fireball-start:
+  Cooldown: 9999
+  Skills:
+  - leap{v=400} @Location{c=10171.5,120,603.5}
+  - effect:particlesphere{p=falling_lava;amount=2;radius=1;yOffset=1}
+  - sound{s=ambient.underwater.exit;v=4;p=1.5}
+
+pyromancer-ii-fireball1:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-ii-fireball} @Location{c=10194.5,109,603.5}
+pyromancer-ii-fireball2:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-ii-fireball} @Location{c=10177.5,109,625.5}
+pyromancer-ii-fireball3:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-ii-fireball} @Location{c=10152.5,109,617.5}
+pyromancer-ii-fireball4:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-ii-fireball} @Location{c=10152.5,109,589.5}
+pyromancer-ii-fireball5:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-ii-fireball} @Location{c=10177.5,109,581.5}
+
+
+
+pyromancer-ii-lava:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - heal{a=100000}
+  - teleport @Location{c=10171.5,108,603.5}
+  - sound{s=entity.enderman.teleport}
+
+
+pyromancer-ii-hunger:
+  Conditions:
+  - incombat{}
+  Cooldown: 30
+  Skills:
+  - randomskill{s=pyromancer-ii-hunger1,pyromancer-ii-hunger2}
+pyromancer-ii-hunger1:
+  Conditions:
+  - variableEquals{var=caster.hungry;value=0}
+  Cooldown: 60
+  Skills:
+  - sound{s=entity.warden.listening;v=4} @Location{c=10171.5,103,603.5}
+  - delay 40
+  - setvariable{var=caster.hungry;value=1}
+  - summon{t=pyromancer-hunger-visual1} @Location{c=10171.5,103.03,603.5} 
+  - delay 3
+  - summon{t=pyromancer-hunger-visual2} @Location{c=10172.25,103.02,603.5} 
+  - summon{t=pyromancer-hunger-visual2} @Location{c=10170.75,103.02,603.5} 
+  - summon{t=pyromancer-hunger-visual2} @Location{c=10171.5,103.02,604.25} 
+  - summon{t=pyromancer-hunger-visual2} @Location{c=10171.5,103.02,602.75} 
+  - delay 3
+  - summon{t=pyromancer-hunger-visual3} @Location{c=10172,103.01,603} 
+  - summon{t=pyromancer-hunger-visual3} @Location{c=10172,103.01,604} 
+  - summon{t=pyromancer-hunger-visual3} @Location{c=10171,103.01,604} 
+  - summon{t=pyromancer-hunger-visual3} @Location{c=10171,103.01,603} 
+pyromancer-ii-hunger2:
+  Conditions:
+  - variableEquals{var=caster.hungry;value=1}
+  Skills:
+  - setvariable{var=caster.hungry;value=0}
+  - delay 40
+  - sound{s=entity.warden.dig;v=4} @Location{c=10171.5,103,603.5}
+  - delay 40
+  - remove @MIR{t=pyromancer-hunger-visual3;r=100}
+  - delay 3
+  - remove @MIR{t=pyromancer-hunger-visual2;r=100}
+  - delay 3
+  - remove @MIR{t=pyromancer-hunger-visual1;r=100}
+
+pyromancer-ii-hunger-cast:
+  Cooldown: 2
+  Conditions:
+  - variableEquals{var=caster.hungry;value=1}
+  Skills:
+  - skill{s=pyromancer-ii-hunger-damage} @PIR{r=100}
+
+pyromancer-ii-hunger-damage:
+  TargetConditions:
+  - onblock{m=BARRIER} true
+  Skills:
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=entity.phantom.bite} @Location{c=10171.5,103,603.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"}
+
+pyromancer-ii-feast:
+  Conditions:
+  - variableInRange{var=caster.hunger;value=>2}
+  Skills:
+  - setvariable{var=caster.hunger;value=0}
+  - sound{s=entity.warden.angry;v=5} @Location{c=10171.5,103,603.5}
+  - delay 20
+  - summon{t=pyromancer-feast-marker} @PIR{r=100}
+
+pyromancer-ii-portal-unbreakable-cast:
+  Cooldown: 1000
+  Skills:
+  - summon{t=pyromancer-ii-portal-unbreakable} @Location{c=10194.5,108,603.5}
+  - summon{t=pyromancer-ii-portal-unbreakable} @Location{c=10177.5,108,625.5}
+  - summon{t=pyromancer-ii-portal-unbreakable} @Location{c=10152.5,108,617.5}
+  - summon{t=pyromancer-ii-portal-unbreakable} @Location{c=10152.5,108,589.5}
+  - summon{t=pyromancer-ii-portal-unbreakable} @Location{c=10177.5,108,581.5}
+  - summon{t=pyromancer-ii-portal-marker-center} @Location{c=10171.5,115,603.5}
+
+pyromancer-ii-portal-marker-center:
+  Conditions:
+  - playerwithin 5
+  Skills:
+  - remove @MIR{t=pyromancer-ii-portal-unbreakable;r=100}
+  - SudoSkill{s=pyromancer-ii-portal-marker-cast} @PIR{r=5}
+  - remove
+
+pyromancer-ii-portal-unbreakable:
+  Skills:
+  - skill{s=pyromancer-portal-audio} 
+  - delay 20
+  - randomskill{s=pyromancer-portal-archer,pyromancer-portal-archer,pyromancer-portal-rider,pyromancer-portal-grunt,pyromancer-portal-grunt;repeat=6;repeatInterval=10}
+  - delay 60
+  - summon{t=pyromancer-elemental;a=1;r=5;os=true}
+  - remove
+
+pyromancer-ii-portal-cast:
+  Conditions:
+  - incombat{}
+  Cooldown: 30
+  Skills:
+  - randomskill{s=pyromancer-ii-portal1,pyromancer-ii-portal2,pyromancer-ii-portal3,pyromancer-ii-portal4,pyromancer-ii-portal5}
+
+pyromancer-ii-portal1:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=10194.5,108,603.5}
+  - summon{t=pyromancer-ii-portal-marker} @Location{c=10237.5,107,603.5}
+pyromancer-ii-portal2:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=10177.5,108,625.5}
+  - summon{t=pyromancer-ii-portal-marker} @Location{c=10191.5,107,666.5}
+pyromancer-ii-portal3:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=10152.5,108,617.5}
+  - summon{t=pyromancer-ii-portal-marker} @Location{c=10116.5,107,641.5}
+pyromancer-ii-portal4:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=10152.5,108,589.5}
+  - summon{t=pyromancer-ii-portal-marker} @Location{c=10116.5,107,565.5}
+pyromancer-ii-portal5:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=10177.5,108,581.5}
+  - summon{t=pyromancer-ii-portal-marker} @Location{c=10191.5,107,540.5}
+
+pyromancer-ii-portal-marker:
+  Conditions:
+  - playerwithin 13
+  Skills:
+  - remove @MIR{t=pyromancer-portal;r=50}
+  - SudoSkill{s=pyromancer-ii-portal-marker-cast} @PIR{r=13}
+  - remove
+pyromancer-ii-portal-marker-cast:
+  Skills:
+  - command{c="execute in dungeons run tp <caster.name> 10171.5 108 603.5"} @self
+  - effect:particlesphere{p=portal;amount=3;radius=2;yOffset=0.5} @self
+  - sound{s=entity.enderman.teleport} @self
+
+
+
+
+
+pyromancer-rider-convert:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.convert;value=1}
+  - setname{name='&e[&660&e] &cShattered Rider'}
+  - disguise{d="player Steve setSkin manderman6 setCustomName "&e[&660&e] &cShattered Rider" setDynamicName true"}
+pyromancer-elemental-convert:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.convert;value=1}
+  - setname{name='&e[&660&e] &cShattered Elemental'}
+  - disguise{d="player Steve setSkin sheitan06 setCustomName "&e[&660&e] &cShattered Elemental" setDynamicName true"}
+pyromancer-grunt-convert:
+  Cooldown: 9999
+  Skills:
+  - equip{i=AIR:HAND}
+  - setvariable{var=caster.convert;value=1}
+  - setname{name='&e[&660&e] &cShattered Grunt'}
+  - disguise{d="player Steve setSkin CubanCuisine setCustomName "&e[&660&e] &cShattered Grunt" setDynamicName true"}
+pyromancer-archer-convert:
+  Cooldown: 9999
+  Skills:
+  - equip{i=AIR:HAND}
+  - setvariable{var=caster.convert;value=1}
+  - setname{name='&e[&660&e] &cShattered Archer'}
+  - disguise{d="player Steve setSkin Quokkie setCustomName "&e[&660&e] &cShattered Archer" setDynamicName true"}
+
+
+
+
+pyromancer-rider-bolt:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.convert;value=1}
+  Skills:
+  - effect:particlesphere{p=block_crack;material=sculk;amount=2;radius=1;yOffset=0.5}
+  - potion{t=SPEED;d=10;l=1;hasParticles=false}
+
+pyromancer-archer-bolt:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.convert;value=1}
+  - playerwithin 6 castinstead pyromancer-archer-bolt-non
+  - playernotwithin 6
+  Cooldown: 2
+  Skills:
+  - potion{type=SLOW;duration=40;level=3;hasParticles=false} @self
+  - delay 20
+  - sound{s=block.sculk.break} @self
+  - projectile{onTick=pyromancer-archer-bolt-tick;onHit=pyromancer-archer-bolt-hit;mr=20;v=10;i=1;hR=1;vR=1;sfo=1.5} @target
+pyromancer-archer-bolt-tick:
+  Skills:
+  - effect:particles{p=block_crack;material=sculk;amount=1;speed=0;hS=0.1;vS=0.1} @origin
+pyromancer-archer-bolt-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 250"}
+pyromancer-archer-bolt-non:
+  Skills:
+
+pyromancer-elemental-bolt:
+  Conditions:
+  - incombat{}
+  - playernotwithin 3
+  - variableEquals{var=caster.convert;value=1}
+  Cooldown: 8
+  Skills:
+  - sound{s=entity.blaze.ambient}
+  - jump{v=.8} @self
+  - delay 20
+  - leap{v=300} @target
+  - effect:particlesphere{p=block_crack;material=sculk;amount=20;radius=4;yOffset=0.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=4}
+  - delay 5
+  - effect:particlesphere{p=block_crack;material=sculk;amount=16;radius=3;yOffset=0.5} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=3}
+  - delay 5
+  - effect:particlesphere{p=block_crack;material=sculk;amount=12;radius=2;yOffset=0.5} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=2}
+
+pyromancer-grunt-bolt:
+  Conditions:
+  - playerwithin 8
+  - variableEquals{var=caster.convert;value=1}
+  Cooldown: 4
+  Skills:
+  - delay 40
+  - effect:particlering{p=block_crack;material=sculk;a=20;vS=0;hS=0;radius=1}
+  - sound{s=entity.horse.step} @self
+  - delay 10
+  - effect:particlering{p=block_crack;material=sculk;a=20;vS=0;hS=0;radius=2}
+  - sound{s=entity.horse.step} @self
+  - delay 10
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - effect:particlering{p=block_crack;material=sculk;a=20;vS=0;hS=0;radius=3}
+  - sound{s=entity.horse.step} @self
+  - delay 10
+  - effect:particlering{p=block_crack;material=sculk;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;material=sculk;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;material=sculk;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;material=sculk;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:sound{s=entity.blaze.shoot;v=0.8;p=0.01} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PlayersInRadius{r=4} #nerfed r from 5->4, damage from 750->500
+
+
+
+
+pyromancer-lightning-bolt-add-bite:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=10;l=10;hasParticles=false}
+  - sound{s=entity.phantom.bite;p=1.5}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=50;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 250"}];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+  - summon{t=cyrus-minotaur-devour} @Forward{f=2;y=0}
+
+pyromancer-add-lava:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - suicide
+
+pyromancer-lightning-bolt:
+  Conditions:
+  - incombat{}
+  Cooldown: 100
+  Skills:
+  - summon{t=pyromancer-lightning-bolt} @Location{c=9913.5,185,603.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9905.5,108,622.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9876.5,107,641.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9905.5,108,584.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9876.5,107,565.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9871.5,112,603.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=9913.5,108,603.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=9913.5,108,603.5}
+  - delay 380
+  - summon{t=pyromancer-lightning-bolt} @Location{c=9926.5,185,586.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9905.5,108,584.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9876.5,107,565.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9940.5,108,573.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9951.5,107,540.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9912.5,112,546.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=9926.5,108,586.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=9926.5,108,586.5}
+  - delay 380
+  - summon{t=pyromancer-lightning-bolt} @Location{c=9945.5,185,593.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9940.5,108,573.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9951.5,107,540.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9962.5,108,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9997.5,107,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9979.5,112,568.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=9944.5,108,594.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=9945.5,108,593.5}
+  - delay 380
+  - summon{t=pyromancer-lightning-bolt} @Location{c=9945.5,185,613.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9962.5,108,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9997.5,107,603.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9940.5,108,633.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9951.5,107,666.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9979.5,112,638.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=9944.5,108,612.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=9945.5,108,613.5}
+  - delay 380
+  - summon{t=pyromancer-lightning-bolt} @Location{c=9926.5,185,620.5}
+  - delay 20
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9940.5,108,633.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9951.5,107,666.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9905.5,108,622.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9876.5,107,641.5}
+  - summon{t=pyromancer-lightning-bolt-damage} @Location{c=9912.5,112,660.5}
+  - summon{t=pyromancer-lightning-bolt-minor-damage} @Location{c=9926.5,108,620.5}
+  - summon{t=pyromancer-lightning-bolt-add} @Location{c=9926.5,108,620.5}
+
+pyromancer-lightning-bolt-visual:
+  Skills:
+  - summon{t=pyromancer-lightning-bolt-audio} @Forward{f=0;y=-80}
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-4}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-8}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-12}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-16}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-20}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-24}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-28}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-32}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-36}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-40}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-44}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-48}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-52}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-56}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-60}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-64}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-68}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-72}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-76}
+  - delay 1
+  - summon{t=pyromancer-lightning-bolt-visual} @Forward{f=0;y=-80}
+  - remove
+
+pyromancer-lightning-bolt-audio:
+  Skills:
+  - sound{s=entity.lightning_bolt.thunder;v=4}
+  - delay 20
+  - sound{s=entity.lightning_bolt.impact;v=4}
+  - remove
+pyromancer-lightning-bolt-minor-damage:
+  Skills:
+  - blockmask{m=sculk;d=10;r=3;n=.25}
+  - signal{s=convert} @MIR{t=pyromancer-rider,pyromancer-elemental,pyromancer-grunt,pyromancer-archer;r=3}
+  - sudoSkill{s=pyromancer-lightning-bolt-damage-ground} @PIR{r=3}
+  - remove
+pyromancer-lightning-bolt-damage:
+  Skills:
+  - blockmask{m=sculk;d=10;r=19;n=.25}
+  - signal{s=convert} @MIR{t=pyromancer-rider,pyromancer-elemental,pyromancer-grunt,pyromancer-archer;r=19}
+  - sudoSkill{s=pyromancer-lightning-bolt-damage-ground} @PIR{r=19} #reduced radius from 19 -> 17 -> 17
+  - remove
+
+pyromancer-lightning-bolt-damage-ground:
+  Conditions:
+  - onground{} true
+  Cooldown: 1
+  Skills:
+  - effect:particlesphere{p=end_rod;amount=2;radius=1;yOffset=0.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 750"} @self #reduced damage from 1000 -> 750
+  - potion{t=SLOW;d=200;l=3} @self #nerfed slow duration from 20s -> 10s and level from 10 -> 3
+  - message{m="&e<caster.name>&c has been struck by lightning"} @PIR{r=32}
+
+pyromancer-melee:
+  Conditions:
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - randomskill{s=pyromancer-melee1,pyromancer-melee2}
+
+pyromancer-melee1:
+  Conditions:
+  - variableEquals{var=caster.far;value=0}
+  Cooldown: 8
+  Skills:
+  - randomskill{s=pyromancer-rupture,pyromancer-quake,pyromancer-ripple}
+pyromancer-melee2:
+  Conditions:
+  - variableEquals{var=caster.far;value=1}
+  Cooldown: 4
+  Skills:
+  - randomskill{s=pyromancer-rupture,pyromancer-quake,pyromancer-ripple}
+
+pyromancer-far:
+  Skills:
+  - randomskill{s=pyromancer-far-true,pyromancer-far-false}
+
+pyromancer-far-false:
+  Conditions:
+  - variableEquals{var=caster.far;value=1}
+  - onblock{m=BARRIER} true
+  Skills:
+  - sound{s=item.armor.equip_netherite}
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+  - setvariable{var=caster.far;value=0}
+pyromancer-far-true:
+  Conditions:
+  - variableEquals{var=caster.far;value=0}
+  - onblock{m=BARRIER} false
+  Skills:
+  - sound{s=block.fire.ambient}
+  - equip{i=AIR:HEAD}
+  - equip{i=AIR:CHEST}
+  - equip{i=AIR:LEGS}
+  - equip{i=AIR:FEET}
+  - setvariable{var=caster.far;value=1}
+
+pyromancer-visual:
+  Conditions:
+  - variableEquals{var=caster.far;value=1}
+  Skills:
+  - potion{t=SPEED;d=5;l=1;hasParticles=false}
+  - effect:particlesphere{particle=flame;amount=2;radius=1;yOffset=0.5} @self
+
+pyromancer-rupture: #Tank buster
+  Conditions:
+  - incombat{}
+  Cooldown: 9
+  Skills:
+  - sound{s=entity.blaze.shoot;p=1.5;v=4}
+  - playanimation{a=0;audience=world}
+  - delay 5
+  - sound{s=entity.blaze.shoot;p=1.5;v=4}
+  - playanimation{a=1;audience=world}
+  - delay 5
+  - sound{s=entity.blaze.shoot;p=1.5;v=4}
+  - playanimation{a=0;audience=world}
+  - delay 5
+  - sound{s=entity.blaze.shoot;p=1.5;v=4}
+  - playanimation{a=1;audience=world}
+  - summon{t=pyromancer-rupture1} @PIR{r=100}
+  - delay 10
+  - sound{s=entity.dragon_fireball.explode;v=4}
+pyromancer-rupture1:
+  Skills:
+  - delay 15
+  - ignite{d=80} @target #changed to single target
+  - throw{vy=8} @target #changed to single target
+  - effect:particlering{particle=flame;radius=4;points=25;amount=1;vS=0;hS=0.2;yOffset=0.1}
+  - command{c="runicdamage <caster.uuid> <target.name> 2000"} @target
+  - remove
+
+pyromancer-quake: #AOE throw
+  Conditions:
+  - incombat{}
+  Cooldown: 9
+  Skills:
+  - summon{t=pyromancer-quake1}
+  - sound{s=entity.blaze.shoot;p=0.5;v=4}
+  - playanimation{a=0;audience=world}
+pyromancer-quake1:
+  Skills:
+  - delay 40
+  - sound{s=entity.dragon_fireball.explode;v=2}
+  - ignite{d=80} @PIR{r=8}
+  - throw{vy=15} @PIR{r=8}
+  - effect:particlering{particle=flame;radius=8;points=50;amount=1;vS=0;hS=0.2;yOffset=0.1}
+  - command{c="runicdamage <caster.uuid> <target.name> 300"} @PIR{r=8}
+  - remove
+
+pyromancer-ripple: #AOE damage
+  Conditions:
+  - incombat{}
+  Cooldown: 9
+  Skills:
+  - summon{t=pyromancer-ripple1;os=true} @Forward{f=5;y=0}
+  - summon{t=pyromancer-ripple2;os=true;r=1} @Forward{f=8;y=0}
+  - summon{t=pyromancer-ripple3;os=true;r=1} @Forward{f=15;y=0}
+  - sound{s=entity.blaze.shoot;v=4}
+  - playanimation{a=0;audience=world}
+  - delay 10
+  - sound{s=entity.blaze.shoot;v=4}
+  - playanimation{a=3;audience=world}
+  - delay 10
+  - sound{s=entity.blaze.shoot;v=4}
+  - playanimation{a=0;audience=world}
+
+pyromancer-ripple1:
+  Skills:
+  - delay 20
+  - sound{s=entity.dragon_fireball.explode}
+  - ignite{d=80} @PIR{r=5} 
+  - throw{vy=4;vx=1} @PIR{r=5}
+  - effect:particlering{particle=flame;radius=5;points=20;amount=1;vS=0;hS=0.2;yOffset=0.1}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - remove
+pyromancer-ripple2:
+  Skills:
+  - delay 40
+  - sound{s=entity.dragon_fireball.explode}
+  - ignite{d=80} @target #@PIR{r=8} 
+  - throw{vy=12} @target #@PIR{r=8}
+  - effect:particlering{particle=flame;radius=8;points=40;amount=1;vS=0;hS=0.2;yOffset=0.1}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=8}
+  - remove
+pyromancer-ripple3:
+  Skills:
+  - delay 60
+  - sound{s=entity.dragon_fireball.explode}
+  #- ignite{d=80} @target #@PIR{r=15} 
+  #- throw{vy=15} @target #@PIR{r=15}
+  - effect:particlering{particle=flame;radius=15;points=100;amount=1;vS=0;hS=0.2;yOffset=0.1}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=15}
+  - remove
+
+pyromancer-equip:
+  Skills:
+  - delay 5
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+
+devour-absolution-message:
+  Conditions:
+  - incombat{}
+  Skills:
+  - message{m= "&e<caster.name> &fhas been absolved"} @PIR{r=64} #added absolution commentary
+
+pyromancer-feast:
+  Conditions:
+  - variableInRange{var=caster.hunger;value=>2}
+  Skills:
+  - setvariable{var=caster.hunger;value=0}
+  - sound{s=entity.warden.angry;v=5} @Location{c=9931.5,103,603.5}
+  - delay 20
+  - summon{t=pyromancer-feast-marker} @PIR{r=100}
+pyromancer-feast-marker:
+  Skills:  
+  - delay 10
+  - summon{t=pyromancer-feast-conversion-death}
+  - remove
+
+pyromancer-feast-conversion-death1:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - effect:particles{p=mob_appearance;a=1;hs=1;vs=1} @self
+  - delay 40
+  - sethealth{a=600} @self #increased health from 500 -> 600
+  - message{m= "&e<caster.name> &cwill be DEVOURED"} @PIR{r=64} #added devour commentary, players must be healed to above 1k to avoid being devoured
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - delay 20
+  - skill{s=pyromancer-feast-conversion-death2} @self
+
+pyromancer-feast-conversion-death2:
+  Conditions:
+  #- health{h=>1000} castinstead devour-absolution-message @self
+  - health{h=<1000}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - delay 20
+  - skill{s=pyromancer-feast-conversion-death3} @self
+
+pyromancer-feast-conversion-death3:
+  Conditions:
+  #- health{h=>1000} castinstead devour-absolution-message @self
+  - health{h=<1000}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - delay 20
+  - skill{s=pyromancer-feast-conversion-death4} @self
+
+pyromancer-feast-conversion-death4:
+  Conditions:
+  #- health{h=>1000} castinstead devour-absolution-message @self
+  - health{h=<1000}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - delay 20
+  - skill{s=pyromancer-feast-conversion-death5} @self
+
+pyromancer-feast-conversion-death5:
+  Conditions:
+  #- health{h=>1000} castinstead devour-absolution-message @self
+  - health{h=<1000}
+  Skills:
+  - message{m= "&e<caster.name> &cHAS BEEN DEVOURED"} @PIR{r=64} #added devour commentary
+  - command{c="runicdamage <caster.uuid> <target.name> 10000"} @self #this should insta-kill as players had plenty of time to prevent it
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+
+pyromancer-hunger:
+  Conditions:
+  - incombat{}
+  Cooldown: 30
+  Skills:
+  - randomskill{s=pyromancer-hunger1,pyromancer-hunger2}
+pyromancer-hunger1:
+  Conditions:
+  - variableEquals{var=caster.hungry;value=0}
+  Cooldown: 60
+  Skills:
+  - sound{s=entity.warden.listening;v=4} @Location{c=9931.5,103,603.5}
+  - delay 40
+  - setvariable{var=caster.hungry;value=1}
+  - summon{t=pyromancer-hunger-visual1} @Location{c=9931.5,103.03,603.5} 
+  - delay 3
+  - summon{t=pyromancer-hunger-visual2} @Location{c=9932.25,103.02,603.5} 
+  - summon{t=pyromancer-hunger-visual2} @Location{c=9930.75,103.02,603.5} 
+  - summon{t=pyromancer-hunger-visual2} @Location{c=9931.5,103.02,604.25} 
+  - summon{t=pyromancer-hunger-visual2} @Location{c=9931.5,103.02,602.75} 
+  - delay 3
+  - summon{t=pyromancer-hunger-visual3} @Location{c=9932,103.01,603} 
+  - summon{t=pyromancer-hunger-visual3} @Location{c=9932,103.01,604} 
+  - summon{t=pyromancer-hunger-visual3} @Location{c=9931,103.01,604} 
+  - summon{t=pyromancer-hunger-visual3} @Location{c=9931,103.01,603} 
+  - delay 3
+  - summon{t=pyromancer-hunger-visual-new} @Location{c=9931,106,603}
+pyromancer-hunger2:
+  Conditions:
+  - variableEquals{var=caster.hungry;value=1}
+  Skills:
+  - setvariable{var=caster.hungry;value=0}
+  - delay 40
+  - sound{s=entity.warden.dig;v=4} @Location{c=9931.5,103,603.5}
+  - remove @MIR{t=pyromancer-hunger-visual-new;r=100}
+  #- blockunmask{r=64} #lags the server
+  - delay 40
+  - remove @MIR{t=pyromancer-hunger-visual3;r=100}
+  - delay 3
+  - remove @MIR{t=pyromancer-hunger-visual2;r=100}
+  - delay 3
+  - remove @MIR{t=pyromancer-hunger-visual1;r=100}
+
+pyromancer-hunger-visual-new:
+  Skills:
+  - blockmask{m=magma_block;d=600;r=16;ry=1;oa=true}
+
+pyromancer-hunger-cast:
+  Cooldown: 2
+  Conditions:
+  - variableEquals{var=caster.hungry;value=1}
+  Skills:
+  - skill{s=pyromancer-hunger-damage} @PIR{r=100}
+
+pyromancer-hunger-damage:
+  TargetConditions:
+  - onblock{m=BARRIER} true
+  Skills:
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=entity.phantom.bite} @Location{c=9931.5,103,603.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} #buffing from 400 -> 500 now with clearer visuals
+  
+pyromancer-fireball-cast:
+  Conditions:
+  - variableEquals{var=caster.hungry;value=1}
+  Cooldown: 20
+  Skills:
+  - randomskill{s=pyromancer-fireball1,pyromancer-fireball2,pyromancer-fireball3,pyromancer-fireball4,pyromancer-fireball5}
+pyromancer-fireball:
+  Skills:
+  - skill{s=pyromancer-fireball-start}
+  - delay 5
+  - skill{s=pyromancer-fireball-ground}
+  - skill{s=pyromancer-fireball}
+pyromancer-fireball-ground:
+  Conditions:
+  - onground{}
+  Skills:
+  - delay 20
+  - skill{s=pyromancer-fireball-ground-barrier}
+  - delay 5
+  - remove
+pyromancer-fireball-ground-barrier:
+  Conditions:
+  - onblock{m=BARRIER} true
+  Skills:
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - signal{s=feed} @MIR{t=pyromancer-i;r=128}
+  - sound{s=entity.horse.eat;v=4}
+  - remove
+pyromancer-fireball-start:
+  Cooldown: 9999
+  Skills:
+  - leap{v=400} @Location{c=9931.5,120,603.5}
+  - effect:particlesphere{p=falling_lava;amount=2;radius=1;yOffset=1}
+  - sound{s=ambient.underwater.exit;v=4;p=1.5}
+
+pyromancer-fireball1:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-fireball} @Location{c=9954.5,109,603.5}
+pyromancer-fireball2:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-fireball} @Location{c=9937.5,109,625.5}
+pyromancer-fireball3:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-fireball} @Location{c=9912.5,109,617.5}
+pyromancer-fireball4:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-fireball} @Location{c=9912.5,109,589.5}
+pyromancer-fireball5:
+  Cooldown: 60
+  Skills:
+  - summon{t=pyromancer-fireball} @Location{c=9937.5,109,581.5}
+
+pyromancer-portal-marker:
+  Conditions:
+  - playerwithin 13
+  Skills:
+  - remove @MIR{t=pyromancer-portal;r=256}
+  - SudoSkill{s=pyromancer-portal-marker-cast} @PIR{r=13}
+  - remove
+pyromancer-portal-marker-cast:
+  Skills:
+  - command{c="execute in dungeons run tp <caster.name> 9931.5 108 603.5"} @self
+  - effect:particlesphere{p=portal;amount=3;radius=2;yOffset=0.5} @self
+  - sound{s=entity.enderman.teleport} @self
+
+pyromancer-lava:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - heal{a=100000}
+  - teleport @Location{c=9931.5,108,603.5}
+  - sound{s=entity.enderman.teleport}
+
+pyromancer-portal-cast:
+  Conditions:
+  - incombat{}
+  Cooldown: 60 #increased cooldown from 30->60
+  Skills:
+  - randomskill{s=pyromancer-portal1,pyromancer-portal2,pyromancer-portal3,pyromancer-portal4,pyromancer-portal5}
+
+pyromancer-portal1:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=9954.5,108,603.5}
+  - summon{t=pyromancer-portal-marker} @Location{c=9997.5,107,603.5}
+pyromancer-portal2:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=9937.5,108,625.5}
+  - summon{t=pyromancer-portal-marker} @Location{c=9951.5,107,666.5}
+pyromancer-portal3:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=9912.5,108,617.5}
+  - summon{t=pyromancer-portal-marker} @Location{c=9876.5,107,641.5}
+pyromancer-portal4:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=9912.5,108,589.5}
+  - summon{t=pyromancer-portal-marker} @Location{c=9876.5,107,565.5}
+pyromancer-portal5:
+  Cooldown: 125
+  Skills:
+  - summon{t=pyromancer-portal} @Location{c=9937.5,108,581.5}
+  - summon{t=pyromancer-portal-marker} @Location{c=9951.5,107,540.5}
+
+pyromancer-portal:
+  Skills:
+  - skill{s=pyromancer-portal-audio} 
+  - delay 100 #increased delay from 40-> 100
+  #- randomskill{s=pyromancer-portal-archer,pyromancer-portal-archer,pyromancer-portal-rider,pyromancer-portal-grunt,pyromancer-portal-grunt;repeat=12;repeatInterval=5}
+  - randomskill{s=pyromancer-portal-archer 2,pyromancer-portal-rider 1,pyromancer-portal-grunt 2;repeat=8;repeatInterval=5} #nerfed number from 12->8
+  - delay 280
+  - summon{t=pyromancer-elemental;a=4;r=6;os=true}
+  - remove
+pyromancer-portal-archer:
+  Skills:
+  - summon{t=pyromancer-archer;r=6;os=true}
+pyromancer-portal-rider:
+  Skills:
+  - summon{t=pyromancer-rider;r=6;os=true}
+pyromancer-portal-grunt:
+  Skills:
+  - summon{t=pyromancer-grunt;r=6;os=true}
+
+pyromancer-portal-audio:
+  Skills:
+  - sound{s=block.honey_block.break;v=3}
+  - delay 20
+  - skill{s=pyromancer-portal-audio}
+
+pyromancer-rider:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.convert;value=0}
+  Skills:
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=0.5}
+
+pyromancer-archer:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.convert;value=0}
+  - playerwithin 6 castinstead pyromancer-archer-non
+  - playernotwithin 6
+  Cooldown: 2
+  Skills:
+  #- equip{item=FireBow:0}
+  #- equip{item=ignaroth-lair-archer-artifact}
+  - equip{item=Bow:0}
+  - potion{type=SLOW;duration=40;level=3;hasParticles=false} @self
+  - delay 20
+  - sound{s=entity.blaze.shoot} @self
+  - projectile{onTick=pyromancer-archer-tick;onHit=pyromancer-archer-hit;mr=20;v=10;i=1;hR=1;vR=1;sfo=1.5} @target
+pyromancer-archer-tick:
+  Skills:
+  - effect:particles{p=flame;amount=1;speed=0;hS=0.1;vS=0.1} @origin
+pyromancer-archer-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 125"}
+pyromancer-archer-non:
+  Skills:
+  - equip{item=iron_sword:0}
+
+pyromancer-elemental:
+  Conditions:
+  - incombat{}
+  - playernotwithin 3
+  - variableEquals{var=caster.convert;value=0}
+  Cooldown: 8
+  Skills:
+  - jump{v=.8} @self
+  - delay 20
+  - leap{v=300} @target
+  - effect:particlesphere{particle=flame;amount=20;radius=4;yOffset=0.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=4}
+  - delay 5
+  - effect:particlesphere{particle=flame;amount=16;radius=3;yOffset=0.5} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=3}
+  - delay 5
+  - effect:particlesphere{particle=flame;amount=12;radius=2;yOffset=0.5} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=2}
+
+pyromancer-grunt:
+  Conditions:
+  - playerwithin 8
+  - variableEquals{var=caster.convert;value=0}
+  Cooldown: 4
+  Skills:
+  - delay 40
+  - effect:particlering{p=flame;a=20;vS=0;hS=0;radius=1}
+  - sound{s=entity.horse.step} @self
+  - delay 10
+  - effect:particlering{p=flame;a=20;vS=0;hS=0;radius=2}
+  - sound{s=entity.horse.step} @self
+  - delay 10
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - effect:particlering{p=flame;a=20;vS=0;hS=0;radius=3}
+  - sound{s=entity.horse.step} @self
+  - delay 10
+  - effect:particlering{p=flame;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=flame;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=flame;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:sound{s=entity.blaze.shoot;v=0.8;p=0.01} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 350"} @PlayersInRadius{r=3} #nerfed r from 4->3, nerfed damage from 500->350
+
+
+
+
+cyrus-eye-shattered:
+  Conditions:
+  - health{a=1000}
+  Skills:
+  - remove
+
+cyrus-stasis-field:
+  Skills:
+  - skill{s=cyrus-stasis-field1} <75%
+  - skill{s=cyrus-stasis-field2} <25%
+  - skill{s=cyrus-stasis-field-true}
+
+cyrus-stasis-field1:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.cast;value=1}
+  - skill{s=cyrus-berserk}
+  - sound{s=entity.ender_eye.death;v=10}
+  - message{m="&e[&6☠&e] &cCyrus<&co> Scatter, my eyes, gain power and destroy them!"} @PIR{r=100}
+  - summon{t=cyrus-eye-shattered} @Location{c=9594.5,104,525.5}
+  - summon{t=cyrus-disc-item} @Location{c=9569,104,518.5}
+  - summon{t=cyrus-disc-item} @Location{c=9613,104,506.5}
+  - summon{t=cyrus-disc-item} @Location{c=9602,104,550.5}
+  - delay 400
+  - remove @MIR{t=cyrus-disc-item,cyrus-eye-shattered;r=128}
+  - skill{s=cyrus-stasis-field-false}
+  - setvariable{var=caster.eye;value=0}
+  - setvariable{var=caster.cast;value=0}
+cyrus-stasis-field2:
+  Conditions:
+  - variableEquals{var=caster.cast;value=0}
+  Cooldown: 9999
+  Skills:
+  - skill{s=cyrus-berserk2}
+  - sound{s=entity.ender_eye.death;v=10}
+  - message{m="&e[&6☠&e] &cCyrus<&co> Scatter, my eyes, gain power and destroy them!"} @PIR{r=100}
+  - summon{t=cyrus-eye-shattered} @Location{c=9594.5,104,525.5}
+  - summon{t=cyrus-disc-item} @Location{c=9569,104,518.5}
+  - summon{t=cyrus-disc-item} @Location{c=9613,104,506.5}
+  - summon{t=cyrus-disc-item} @Location{c=9602,104,550.5}
+  - delay 300
+  - remove @MIR{t=cyrus-disc-item,cyrus-eye-shattered;r=128}
+  - skill{s=cyrus-stasis-field-false}
+  - setvariable{var=caster.eye;value=0}
+  
+cyrus-stasis-field-true:
+  Conditions:
+  - variableEquals{var=caster.eye;value=3} true
+  Cooldown: 12
+  Skills:
+  - summon{t=cyrus-eye} @Location{c=9594.5,104,525.5}
+cyrus-stasis-field-false:
+  Conditions:
+  - variableEquals{var=caster.eye;value=3} false
+  Skills:
+  - message{m="&e[&6☠&e] &cCyrus<&co> The eyes, they have gained power... Now feel their wrath!"} @PIR{r=100}
+  - sound{s=entity.warden.sonic_boom;v=6}
+  #- summon{t=valmyra-dungeon-damage-1000} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=100} #150x10 damage to all players for failing the puzzle
+  - potion{t=SLOW;d=40;l=1} @PIR{r=100}
+  - delay 40
+  - sound{s=entity.warden.sonic_boom;v=6}
+  #- summon{t=valmyra-dungeon-damage-1000} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=100} #150x10 damage to all players for failing the puzzle
+  - potion{t=SLOW;d=40;l=1} @PIR{r=100}
+  - delay 40
+  - sound{s=entity.warden.sonic_boom;v=6}
+  #- summon{t=valmyra-dungeon-damage-1000} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=100} #150x10 damage to all players for failing the puzzle
+  - potion{t=SLOW;d=40;l=1} @PIR{r=100}
+  - delay 40
+  - sound{s=entity.warden.sonic_boom;v=6}
+  #- summon{t=valmyra-dungeon-damage-1000} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=100} #150x10 damage to all players for failing the puzzle
+  - potion{t=SLOW;d=40;l=1} @PIR{r=100}
+  - delay 40
+  - sound{s=entity.warden.sonic_boom;v=6}
+  #- summon{t=valmyra-dungeon-damage-1000} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=100} #150x10 damage to all players for failing the puzzle
+  - potion{t=SLOW;d=40;l=1} @PIR{r=100}
+  - delay 40
+  - sound{s=entity.warden.sonic_boom;v=6}
+  #- summon{t=valmyra-dungeon-damage-1000} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=100} #150x10 damage to all players for failing the puzzle
+  - potion{t=SLOW;d=40;l=1} @PIR{r=100}
+  - delay 40
+  - sound{s=entity.warden.sonic_boom;v=6}
+  #- summon{t=valmyra-dungeon-damage-1000} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=100} #150x10 damage to all players for failing the puzzle
+  - potion{t=SLOW;d=40;l=1} @PIR{r=100}
+  - delay 40
+  - sound{s=entity.warden.sonic_boom;v=6}
+  #- summon{t=valmyra-dungeon-damage-1000} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=100} #150x10 damage to all players for failing the puzzle
+  - potion{t=SLOW;d=40;l=1} @PIR{r=100}
+  - delay 40
+  - sound{s=entity.warden.sonic_boom;v=6}
+  #- summon{t=valmyra-dungeon-damage-1000} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=100} #150x10 damage to all players for failing the puzzle
+  - potion{t=SLOW;d=40;l=1} @PIR{r=100}
+  - delay 40
+  - sound{s=entity.warden.sonic_boom;v=6}
+  #- summon{t=valmyra-dungeon-damage-1000} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=100} #150x10 damage to all players for failing the puzzle
+  - potion{t=SLOW;d=40;l=1} @PIR{r=100}
+
+cyrus-disc-item:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - sound{s=entity.item.pickup}
+  - variableadd{var=target.eye;amount=1} @MIR{t=cyrus;r=128}
+  - heal{a=333} @MIR{t=cyrus-eye-shattered;r=128}
+  - remove
+
+cyrus-eye:
+  Skills:
+  - summon{t=cyrus-eye-item} @Forward{f=0;y=2}
+  - skill{s=cyrus-eye-visual}
+  - message{m="&e[&6☠&e] &cCyrus<&co>&a Stop it, eye, why do you protect them?!"} @PIR{r=100}
+  - delay 100
+  - skill{s=cyrus-eye-visual2}
+  - skill{s=cyrus-eye-slow1} @PIR{r=100}
+  - delay 40
+  - skill{s=cyrus-eye-slow2} @PIR{r=100}
+  - delay 40
+  - skill{s=cyrus-eye-slow3} @PIR{r=100}
+  - delay 40
+  - skill{s=cyrus-eye-slow4} @PIR{r=100}
+  - delay 40
+  - skill{s=cyrus-eye-slow5} @PIR{r=100}
+  - delay 40
+  - skill{s=cyrus-eye-slow6} @PIR{r=100}
+  - delay 40
+  - skill{s=cyrus-eye-slow7} @PIR{r=100}
+  - delay 40
+  - skill{s=cyrus-eye-slow8} @PIR{r=100}
+  - delay 40
+  - skill{s=cyrus-eye-slow9} @PIR{r=100}
+  - delay 40
+  - skill{s=cyrus-eye-slow10} @PIR{r=100}
+  - remove @MIR{t=cyrus-eye-item;r=32}
+  - remove
+
+cyrus-eye-slow1:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} #nerfing puzzle success from 1000x10 damage to 75x10 damage
+  - potion{t=SLOW;d=40;l=1}
+cyrus-eye-slow2:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} #nerfing puzzle success from 1000x10 damage to 75x10 damage
+  - potion{t=SLOW;d=40;l=1}
+cyrus-eye-slow3:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} #nerfing puzzle success from 1000x10 damage to 75x10 damage
+  - potion{t=SLOW;d=40;l=1}
+cyrus-eye-slow4:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} #nerfing puzzle success from 1000x10 damage to 75x10 damage
+  - potion{t=SLOW;d=40;l=1}
+cyrus-eye-slow5:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} #nerfing puzzle success from 1000x10 damage to 75x10 damage
+  - potion{t=SLOW;d=40;l=1}
+cyrus-eye-slow6:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} #nerfing puzzle success from 1000x10 damage to 75x10 damage
+  - potion{t=SLOW;d=40;l=1}
+cyrus-eye-slow7:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} #nerfing puzzle success from 1000x10 damage to 75x10 damage
+  - potion{t=SLOW;d=40;l=1}
+cyrus-eye-slow8:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} #nerfing puzzle success from 1000x10 damage to 75x10 damage
+  - potion{t=SLOW;d=40;l=1}
+cyrus-eye-slow9:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} #nerfing puzzle success from 1000x10 damage to 75x10 damage
+  - potion{t=SLOW;d=40;l=1}
+cyrus-eye-slow10:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} #nerfing puzzle success from 1000x10 damage to 75x10 damage
+  - potion{t=SLOW;d=40;l=1}
+
+cyrus-eye-visual:
+  Skills:
+  - effect:particlesphere{p=totem;amount=12;radius=12;yOffset=.5} 
+  - delay 10
+  - skill{s=cyrus-eye-visual}
+
+cyrus-eye-visual2:
+  Skills:
+  - sound{s=entity.warden.sonic_boom;v=6} @self
+  - effect:particlesphere{p=totem;amount=100;radius=10;yOffset=.5} @self
+  - effect:particlering{particle=totem;radius=10;points=50;amount=1;vS=0;hS=0.2;yOffset=0.1} @self
+  - delay 10
+  - effect:particlering{particle=totem;radius=7;points=24;amount=1;vS=0;hS=0.175;yOffset=0.1} @self
+  - delay 10
+  - effect:particlering{particle=totem;radius=5;points=12;amount=1;vS=0;hS=0.15;yOffset=0.1} @self
+  - delay 10
+  - effect:particlering{particle=totem;radius=3;points=5;amount=1;vS=0;hS=0.125;yOffset=0.1} @self
+  - delay 10
+  - skill{s=cyrus-eye-visual2}
+
+cyrus-lava:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - heal{a=25000} #nerf from 50,000 healing -> 25,000
+  - message{m="&cCyrus has healed"} @PIR{r=64} #added heal commentary
+  - teleport @Location{c=9594.5,104,525.5}
+  - sound{s=entity.enderman.teleport}
+
+cyrus-target-lava:
+  TargetConditions:
+  - blocktype{type=lava} true
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 1000"} #kills player if they fall into lava
+
+cyrus-berserk:
+  Skills:
+  - sound{s=entity.warden.emerge;v=6}
+  - disguise{d="WARDEN"}
+  - setvariable{var=caster.berserk;value=1}
+  - delay 800
+  - disguise{d="player Steve setSkin Salmon_47 setCustomName "&e[&6☠&e] &cCyrus" setDynamicName true"}
+  - setvariable{var=caster.berserk;value=0}
+cyrus-berserk2:
+  Skills:
+  - sound{s=entity.warden.emerge;v=6}
+  - disguise{d="WARDEN"}
+  - setvariable{var=caster.berserk;value=1}
+
+cyrus-minotaur-lava:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - teleport @Location{c=9594.5,104,525.5}
+  - sound{s=block.lava.pop}
+
+valmyra-dungeon-threat:
+  TargetConditions:
+  - distance{d=>15}
+  Cooldown: 12
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128}
+
+cyrus-missile-cast:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - skill{s=cyrus-missile-cast1}
+  - skill{s=cyrus-missile-cast2}
+
+cyrus-missile-cast1:
+  Conditions:
+  - variableEquals{var=caster.berserk;value=0}  
+  Skills:
+  - potion{t=SLOW;d=10;l=10;hasParticles=false}
+  - summon{t=cyrus-missile} @Forward{f=0;y=1.5}
+  - summon{t=cyrus-missile-marker} @PIR{r=50} #nerfed radius from 100 -> 50
+cyrus-missile:
+  Skills:
+  - skill{s=cyrus-missile-visual}
+  - jump{v=2}
+  - delay 15
+  - remove
+
+cyrus-missile-visual:
+  Skills:
+  - sound{s=block.lava.pop;v=3}
+  - effect:particlesphere{p=dragon_breath;amount=1;radius=1;yOffset=.5}
+  - delay 1
+  - skill{s=cyrus-missile-visual}
+
+cyrus-missile-marker:
+  Skills:
+  - blockmask{m=crying_obsidian;d=30;r=4;n=0.2}
+  - delay 30
+  - summon{t=cyrus-conversion-minotaur}
+  - remove
+
+cyrus-missile-cast2:
+  Conditions:
+  - variableEquals{var=caster.berserk;value=1}  
+  Skills:
+  - potion{t=SLOW;d=10;l=10;hasParticles=false}
+  - summon{t=cyrus-missile2} @Forward{f=0;y=2.5}
+  - summon{t=cyrus-missile-marker2} @PIR{r=50} #nerfed radius from 100 -> 50
+
+cyrus-missile2:
+  Skills:
+  - skill{s=cyrus-missile-visual}
+  - jump{v=2}
+  - delay 10
+  - remove
+
+cyrus-missile-marker2:
+  Skills:
+  - blockmask{m=crying_obsidian;d=30;r=4;n=0.2}
+  - delay 30
+  - summon{t=cyrus-conversion-death}
+  - remove
+
+cyrus-devour:
+  Skills:
+  - heal{a=10000} #nerf from 50,000 -> 25,000 healing -> 10,000 healing
+  - message{m= "&e[&6☠&e] &cCyrus<&co> Delicious"} @PIR{r=64} #added heal commentary
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=cyrus-devour-audio}
+cyrus-devour-audio:
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.horse.eat}
+
+cyrus-minotaur-devour:
+  Skills:
+  - sound{s=block.honey_block.break}
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - signal{s=devour} @MIR{t=cyrus;r=32}
+  - remove
+  
+cyrus-bite:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=cyrus-bite1}
+  - skill{s=cyrus-bite2}
+  
+cyrus-bite1:
+  Conditions:
+  - variableEquals{var=caster.berserk;value=0}  
+  Cooldown: 4
+  Skills:
+  - potion{t=SLOW;d=10;l=10;hasParticles=false}
+  - sound{s=entity.phantom.bite}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=50;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 250"}];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+  - summon{t=cyrus-minotaur-devour} @Forward{f=2;y=0}
+
+cyrus-bite2:
+  Conditions:
+  - variableEquals{var=caster.berserk;value=1}  
+  Cooldown: 7
+  Skills:
+  - potion{t=SLOW;d=10;l=10;hasParticles=false}
+  - sound{s=entity.phantom.bite;p=0.5}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=50;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 750"}];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+  - summon{t=cyrus-minotaur-devour} @Forward{f=2;y=0}
+
+cyrus-conversion-death1:
+  Cooldown: 20
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - effect:particles{p=mob_appearance;a=1;hs=1;vs=1} @self
+  - delay 40
+  - sethealth{a=600} @self #buffing from 500 -> 600
+  - message{m= "&e<caster.name> &cwill be DEVOURED"} @PIR{r=32} #added devour commentary
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - delay 20
+  - skill{s=cyrus-conversion-death2} @self
+
+cyrus-conversion-death2:
+  Conditions:
+  #- health{h=>1000} castinstead devour-absolution-message @self
+  - health{h=<1000}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - delay 20
+  - skill{s=cyrus-conversion-death3} @self
+
+cyrus-conversion-death3:
+  Conditions:
+  #- health{h=>1000} castinstead devour-absolution-message @self
+  - health{h=<1000}
+  Skills:
+  - summon{t=cyrus-conversion-death} @self
+  - signal{s=devour} @MIR{t=cyrus;r=128}
+  - message{m= "&e<caster.name> &cHAS BEEN DEVOURED"} @PIR{r=32} #added devour commentary
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @self #removing death instant kill from 10,000 damage -> 500 (player starts on 600 health)
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+
+cyrus-conversion-minotaur1:
+  Cooldown: 30 #increased cooldown from 20 -> 30
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - effect:particles{p=mob_appearance;a=1;hs=1;vs=1} @self
+  - delay 80
+  - sethealth{a=600} @self #buffing from 500->600
+  - message{m= "&e<caster.name> &cis being CONVERTED"} @PIR{r=32} #added devour commentary
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - delay 20
+  - skill{s=cyrus-conversion-minotaur2} @self
+
+cyrus-conversion-minotaur2:
+  Conditions:
+  #- health{h=>1000} castinstead devour-absolution-message @self
+  - health{h=<1000}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - delay 20
+  - skill{s=cyrus-conversion-minotaur3} @self
+
+cyrus-conversion-minotaur3:
+  Conditions:
+  #- health{h=>1000} castinstead devour-absolution-message @self
+  - health{h=<1000}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - delay 20
+  - skill{s=cyrus-conversion-minotaur4} @self
+
+cyrus-conversion-minotaur4:
+  Conditions:
+  #- health{h=>1000} castinstead devour-absolution-message @self
+  - health{h=<1000}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - delay 20
+  - skill{s=cyrus-conversion-minotaur5} @self
+
+cyrus-conversion-minotaur5:
+  Conditions:
+  #- health{h=>1000} castinstead devour-absolution-message @self
+  - health{h=<1000}
+  Skills:
+  - summon{t=cyrus-conversion-minotaur} @self
+  - summon{t=cyrus-minotaur} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self 
+  - potion{t=BLINDNESS;d=200;l=1;hasParticles=false} @self 
+  - potion{t=SLOWNESS;d=200;l=3;hasParticles=false} @self 
+  - message{m= "&e[&6☠&e] &cCyrus<&co> rest, &e<caster.name>"} @PIR{r=32} #added devour commentary
+  - command{c="execute in dungeons run tp <caster.name> 9666.5 109 508.5"} @self
+
+paimon-skill:
+  Cooldown: 12
+  Skills:
+  - randomskill{s=paimon-wing,paimon-proj}
+paimon-proj:
+  Conditions:
+  - playernotwithin 5
+  Skills:
+  - randomskill{s=paimon-proj-left,paimon-proj-right}
+
+paimon-wing:
+  Conditions:
+  - incombat{}
+  - playerwithin 8
+  Skills:
+  - playanimation{a=0;audience=world}
+  - potion{t=SLOW;d=40;l=10;hasParticles=false}
+  - effect:particlesphere{p=crimson_spore;amount=1;radius=1;yOffset=0.5}
+  - leap{v=150} @Forward{f=2;y=1}
+  - delay 15
+  - effect:particlesphere{p=crimson_spore;amount=4;radius=3;yOffset=0.5}
+  - sound{s=entity.ender_dragon.flap;v=2}
+  - jump{v=1.2}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=3}
+  - throw{vy=10} @PIR{r=3}
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=5}
+  - throw{v=20} @PIR{r=5}
+paimon-proj-left:
+  Conditions:
+  - incombat{}
+  Cooldown: 20
+  Skills:
+  - potion{t=SLOW;d=40;l=10;hasParticles=false}
+  - effect:particlesphere{p=crimson_spore;amount=1;radius=1;yOffset=0.5}
+  - leap{v=250} @Forward{f=-4;y=1}
+  - delay 10
+  - summon{t=paimon-proj-marker} @target
+  - delay 5
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - projectile{ot=paimon-proj-tick;oh=paimon-proj-hit;oe=paimon-proj-end;i=1;v=15;mr=256;ho=330} @MIR{t=paimon-proj-marker;r=32}
+  - delay 5
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - projectile{ot=paimon-proj-tick;oh=paimon-proj-hit;oe=paimon-proj-end;i=1;v=15;mr=256;ho=345} @MIR{t=paimon-proj-marker;r=32}
+  - delay 5
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - projectile{ot=paimon-proj-tick;oh=paimon-proj-hit;oe=paimon-proj-end;i=1;v=15;mr=256;ho=0} @MIR{t=paimon-proj-marker;r=32}
+  - delay 5
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - projectile{ot=paimon-proj-tick;oh=paimon-proj-hit;oe=paimon-proj-end;i=1;v=15;mr=256;ho=15} @MIR{t=paimon-proj-marker;r=32}
+  - delay 5
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - projectile{ot=paimon-proj-tick;oh=paimon-proj-hit;oe=paimon-proj-end;i=1;v=15;mr=256;ho=30} @MIR{t=paimon-proj-marker;r=32}
+paimon-proj-right:
+  Conditions:
+  - incombat{}
+  Cooldown: 20
+  Skills:
+  - potion{t=SLOW;d=40;l=10;hasParticles=false}
+  - effect:particlesphere{p=crimson_spore;amount=1;radius=1;yOffset=0.5}
+  - leap{v=250} @Forward{f=-4;y=1}
+  - delay 10
+  - summon{t=paimon-proj-marker} @target
+  - delay 5
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - projectile{ot=paimon-proj-tick;oh=paimon-proj-hit;oe=paimon-proj-end;i=1;v=15;mr=256;ho=30} @MIR{t=paimon-proj-marker;r=32}
+  - delay 5
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - projectile{ot=paimon-proj-tick;oh=paimon-proj-hit;oe=paimon-proj-end;i=1;v=15;mr=256;ho=15} @MIR{t=paimon-proj-marker;r=32}
+  - delay 5
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - projectile{ot=paimon-proj-tick;oh=paimon-proj-hit;oe=paimon-proj-end;i=1;v=15;mr=256;ho=0} @MIR{t=paimon-proj-marker;r=32}
+  - delay 5
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - projectile{ot=paimon-proj-tick;oh=paimon-proj-hit;oe=paimon-proj-end;i=1;v=15;mr=256;ho=345} @MIR{t=paimon-proj-marker;r=32}
+  - delay 5
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - projectile{ot=paimon-proj-tick;oh=paimon-proj-hit;oe=paimon-proj-end;i=1;v=15;mr=256;ho=330} @MIR{t=paimon-proj-marker;r=32}
+
+paimon-proj-tick:
+  Skills:
+  - effect:particlesphere{p=smoke_normal;amount=1;radius=1}
+  - effect:particlesphere{p=flame;amount=1;radius=1} 
+paimon-proj-hit:
+  Skills:
+  - sound{s=block.fire.extinguish;v=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} # I don't think this actually does damage atm... should it be @PIR{r=2}?
+  - ignite{d=120}
+  #- potion{t=SLOW;d=40;l=3} #nerfing slow from 10 seconds -> 2 removed slow
+paimon-proj-end:
+  Skills:
+  - sound{s=block.fire.extinguish;v=1}
+  - effect:particlesphere{p=flame;amount=20;radius=5;yOffset=.5} 
+  - effect:particlesphere{p=smoke_normal;amount=20;radius=5;yOffset=.5}
+  - summon{t=paimon-proj-damage}
+
+paimon-summon-explosive:
+  Conditions:
+  - incombat{}
+  Skills:
+  - randomskill{s=paimon-summon-explosive1,paimon-summon-explosive2,paimon-summon-explosive3,paimon-summon-explosive4}
+paimon-summon-explosive1:
+  Cooldown: 30
+  Skills:
+  - summon{t=paimon-explosive-add-marker} @Location{c=10000.5,115,37.5}
+  - delay 160
+  - summon{t=paimon-explosive-add} @Location{c=10000.5,89,76.5}
+paimon-summon-explosive2:
+  Cooldown: 30
+  Skills:
+  - summon{t=paimon-explosive-add-marker} @Location{c=9963.5,115,0.5}
+  - delay 160
+  - summon{t=paimon-explosive-add} @Location{c=9924.5,89,0.5}
+paimon-summon-explosive3:
+  Cooldown: 30
+  Skills:
+  - summon{t=paimon-explosive-add-marker} @Location{c=10000.5,115,-36.5}
+  - delay 160
+  - summon{t=paimon-explosive-add} @Location{c=10000.5,89,-76.5}
+paimon-summon-explosive4:
+  Cooldown: 30
+  Skills:
+  - summon{t=paimon-explosive-add-marker} @Location{c=10037.5,115,0.5}
+  - delay 160
+  - summon{t=paimon-explosive-add} @Location{c=10076.5,89,0.5}
+
+paimon-summon-air-cast:
+  Cooldown: 40
+  Conditions:
+  - incombat{}
+  Skills:
+  - sound{s=entity.blaze.hurt;v=2;p=0.75} @self
+  - summon{t=paimon-summon-air-cast} @Location{c=10000.5,149,0.5} >50%
+  - summon{t=paimon-summon-air-cast2} @Location{c=10000.5,149,0.5} <50%
+
+paimon-air-add:
+  Cooldown: 1
+  Conditions:
+  - onground{} true
+  Skills:
+  - sound{s=entity.blaze.hurt;p=1.25}
+  - summon{t=paimon-air-add-active}
+  - remove
+
+paimon-air-add-lava:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - effect:particlesphere{particle=flame;amount=5;radius=3}
+  - remove
+
+paimon-air-add-despawn:
+  Skills:
+  - delay 1200
+  - suicide
+paimon-air-add-active:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - jump{v=.8} @self
+  - delay 20
+  - leap{v=300} @target
+  - effect:particlesphere{particle=flame;amount=20;radius=5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=5}
+  - delay 5
+  - effect:particlesphere{particle=flame;amount=16;radius=4} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=4}
+  - delay 5
+  - effect:particlesphere{particle=flame;amount=12;radius=3} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=3}
+
+paimon-summon-teleport:
+  Skills:
+  - skill{s=paimon-summon-teleport1} <80%
+  - skill{s=paimon-summon-teleport2} <60%
+  - skill{s=paimon-summon-teleport3} <40%
+  - skill{s=paimon-summon-teleport4} <20%
+paimon-teleport-add-despawn:
+  Skills:
+  - delay 1200
+  - sound{s=entity.enderman.teleport}
+  - remove
+
+paimon-summon-teleport1:
+  Cooldown: 9999
+  Skills:
+  - skill{s=paimon-summon-teleport-cast}
+paimon-summon-teleport2:
+  Cooldown: 9999
+  Skills:
+  - skill{s=paimon-summon-teleport-cast}
+paimon-summon-teleport3:
+  Cooldown: 9999
+  Skills:
+  - skill{s=paimon-summon-teleport-cast2}
+paimon-summon-teleport4:
+  Cooldown: 9999
+  Skills:
+  - skill{s=paimon-summon-teleport-cast2}
+
+paimon-summon-teleport-cast:
+  Skills:
+  - teleport @Location{c=10000.5,99,0.5}
+  - potion{t=SLOW;d=144;l=10;hasParticles=false}
+  - sound{s=entity.enderman.teleport;v=3}
+  - delay 20
+  - summon{t=paimon-teleport-add} @Location{c=10014.5,99,0.5}
+  - delay 4
+  #- summon{t=paimon-teleport-add} @Location{c=10012.5,99,7.5} 
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=10007.5,99,12.5}
+  - delay 4
+  #- summon{t=paimon-teleport-add} @Location{c=10000.5,99,14.5}
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=9993.5,99,12.5}
+  - delay 4
+  #- summon{t=paimon-teleport-add} @Location{c=9988.5,99,7.5}
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=9986.5,99,0.5}
+  - delay 4
+  #- summon{t=paimon-teleport-add} @Location{c=9988.5,99,-6.5}
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=9993.5,99,-11.5}
+  - delay 4
+  #- summon{t=paimon-teleport-add} @Location{c=10000.5,99,-13.5} 
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=10007.5,99,-11.5}
+  - delay 4
+  #- summon{t=paimon-teleport-add} @Location{c=10012.5,99,-6.5}
+  - delay 40
+  - sound{s=entity.enderman.scream;v=3;p=0.5}
+  - signal{s=awaken} @MIR{t=paimon-teleport-add;r=64}
+  - delay 40
+  - potion{t=SLOW;d=240;l=3;hasParticles=false}
+paimon-summon-teleport-cast2:
+  Skills:
+  - teleport @Location{c=10000.5,99,0.5}
+  - potion{t=SLOW;d=144;l=10;hasParticles=false}
+  - sound{s=entity.enderman.teleport;v=3}
+  - delay 20
+  - summon{t=paimon-teleport-add} @Location{c=10014.5,99,0.5}
+  - delay 4
+  #- summon{t=paimon-teleport-add} @Location{c=10012.5,99,7.5} 
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=10007.5,99,12.5}
+  - delay 4
+  #- summon{t=paimon-teleport-add} @Location{c=10000.5,99,14.5}
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=9993.5,99,12.5}
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=9988.5,99,7.5}
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=9986.5,99,0.5}
+  - delay 4
+  #- summon{t=paimon-teleport-add} @Location{c=9988.5,99,-6.5}
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=9993.5,99,-11.5}
+  - delay 4
+  #- summon{t=paimon-teleport-add} @Location{c=10000.5,99,-13.5} 
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=10007.5,99,-11.5}
+  - delay 4
+  - summon{t=paimon-teleport-add} @Location{c=10012.5,99,-6.5}
+  - delay 40
+  - sound{s=entity.enderman.scream;v=3;p=0.5}
+  - signal{s=awaken} @MIR{t=paimon-teleport-add;r=64}
+  - delay 40
+  - potion{t=SLOW;d=240;l=3;hasParticles=false}
+
+paimon-lava:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - heal{a=50000}
+  - message{m="&cPaimon has healed"} @PIR{r=100} #added heal commentary
+  - teleport @Location{c=10000.5,99,0.5}
+  - sound{s=entity.enderman.teleport}
+
+paimon-target-lava:
+  TargetConditions:
+  - blocktype{type=lava} true
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 1000"} #kills player if they fall into lava
+
+paimon-teleport-add-lava:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - suicide
+
+paimon-helm-signal:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=paimon-helm-signal-false}
+  - skill{s=paimon-helm-signal-true}
+paimon-helm-signal-true:
+  Conditions:
+  - variableEquals{var=caster.helm;value=1}  
+  Skills:
+  - sound{s=block.beacon.activate;v=10}
+  #- message{m="&eThe &6&kHelmet &r&elimit his knowledge."} @PIR{r=64}
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - setvariable{var=caster.helm;value=0}
+paimon-helm-signal-false:
+  Conditions:
+  - variableEquals{var=caster.helm;value=0}  
+  Skills:
+  #- message{m="HELMET INCORRECT"} @PIR{r=128}
+  - summon{t=paimon-add-helm}
+  
+paimon-chest-signal:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=paimon-chest-signal-false}
+  - skill{s=paimon-chest-signal-true}
+paimon-chest-signal-true:
+  Conditions:
+  - variableEquals{var=caster.chest;value=1}  
+  Skills:
+  - sound{s=block.beacon.activate;v=10}
+  #- message{m="&eThe &6&kChestplate &r&econtain his hatred."} @PIR{r=64}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - setvariable{var=caster.chest;value=0}
+paimon-chest-signal-false:
+  Conditions:
+  - variableEquals{var=caster.chest;value=0}  
+  Skills:
+  #- message{m="CHEST INCORRECT"} @PIR{r=128}
+  - summon{t=paimon-add-chest}
+
+paimon-leggings-signal:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=paimon-leggings-signal-false}
+  - skill{s=paimon-leggings-signal-true}
+paimon-leggings-signal-true:
+  Conditions:
+  - variableEquals{var=caster.leggings;value=1}  
+  Skills:
+  - sound{s=block.beacon.activate;v=10}
+  #- message{m="&eThe &6&kLeggings &r&eweaken his desires."} @PIR{r=64}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - setvariable{var=caster.leggings;value=0}
+paimon-leggings-signal-false:
+  Conditions:
+  - variableEquals{var=caster.leggings;value=0}  
+  Skills:
+  #- message{m="LEGGINGS INCORRECT"} @PIR{r=128}
+  - summon{t=paimon-add-leggings}
+
+paimon-boots-signal:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=paimon-boots-signal-false}
+  - skill{s=paimon-boots-signal-true}
+paimon-boots-signal-true:
+  Conditions:
+  - variableEquals{var=caster.boots;value=1}  
+  Skills:
+  - sound{s=block.beacon.activate;v=10}
+  #- message{m="&eThe &6&kBoots &r&erestrict his mobility."} @PIR{r=64}
+  - equip{i=NETHERITE_BOOTS:FEET}
+  - setvariable{var=caster.boots;value=0}
+paimon-boots-signal-false:
+  Conditions:
+  - variableEquals{var=caster.boots;value=0}  
+  Skills:
+  #- message{m="BOOTS INCORRECT"} @PIR{r=128}
+  - summon{t=paimon-add-boots}
+
+paimon-start:
+  Cooldown: 9999
+  Skills:
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+
+paimon-equipment-helm-cast:
+  Conditions:
+  - variableEquals{var=caster.helm;value=1}
+  Skills:
+  - skill{s=paimon-equipment-cast-audio}
+  - summon{t=valmyra-dungeon-damage-1000} @self
+  - heal{a=50000} #nerfed heal from 100,000 -> 50,000
+  - message{m="&6The Helmet of Wisdom &cheals past wounds"} @PIR{r=128}
+  #- message{m="HELM CAST"} @PIR{r=128}
+  - setvariable{var=caster.helm;value=0}
+
+paimon-equipment-chest-cast:
+  Conditions:
+  - variableEquals{var=caster.chest;value=1}
+  Skills:
+  - skill{s=paimon-equipment-cast-audio}
+  - summon{t=valmyra-dungeon-damage-1000} @self
+  - message{m="&6The Chestplate of Ire &csets foes ablaze"} @PIR{r=128}
+  #- message{m="CHEST CAST"} @PIR{r=128}  
+  - skill{s=paimon-equipment-chest-cast-skill;repeat=10;repeatInterval=20} @PIR{r=128}
+  - effect:particlesphere{p=flame;amount=1;radius=2;yOffset=0.5;repeat=40;repeatInterval=10}
+  - setvariable{var=caster.chest;value=0}
+paimon-equipment-chest-cast-skill:
+  TargetConditions:
+  - onblock{m=RED_STAINED_GLASS} true
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 200"}
+  - effect:particlesphere{p=flame;amount=1;radius=2;yOffset=0.5}
+  - ignite{d=40}
+
+paimon-equipment-leggings-cast:
+  Conditions:
+  - variableEquals{var=caster.leggings;value=1}
+  Skills:
+  - skill{s=paimon-equipment-cast-audio}
+  - summon{t=valmyra-dungeon-damage-1000} @self
+  - message{m="&6The Leggings of Torpidity &cslow down all that dare come close"} @PIR{r=128}
+  #- message{m="LEGGINGS CAST"} @PIR{r=128}  
+  - skill{s=paimon-equipment-leggings-cast-skill;repeat=10;repeatInterval=20} @PIR{r=128}
+  - effect:particlesphere{p=block_crack;material=stone;amount=2;radius=1;yOffset=.5;repeat=40;repeatInterval=10} @self
+  - setvariable{var=caster.leggings;value=0}
+paimon-equipment-leggings-cast-skill:
+  TargetConditions:
+  - onground{} false
+  Skills:
+  - potion{t=SLOW;d=60;l=3;hasParticles=false} #buffed from lvl 2 -> 3
+  - effect:particlesphere{p=block_crack;material=stone;amount=2;radius=1;yOffset=.5} 
+
+paimon-equipment-boots-cast:
+  Conditions:
+  - variableEquals{var=caster.boots;value=1}
+  Skills:
+  - skill{s=paimon-equipment-cast-audio}
+  - summon{t=valmyra-dungeon-damage-1000} @self
+  - skill{s=paimon-equipment-boots-cast-skill;repeat=5;repeatInterval=40} @NearestPlayer{r=32}
+  - message{m="&6The Boots of Prey &csteal the lifeforce of the nearest victim"} @PIR{r=128}
+  #- message{m="BOOTS CAST"} @PIR{r=128}  
+  - setvariable{var=caster.boots;value=0}
+paimon-equipment-boots-cast-skill:
+  Skills:
+  - sound{s=entity.enderman.teleport} @self
+  - teleport 
+  - command{c="runicdamage <caster.uuid> <target.name> 1000"}
+  
+paimon-equipment-cast-audio:
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.ender_dragon.growl;v=10}
+  
+paimon-equipment:
+  Conditions:
+  - health{h=<285000} # depended on max health 95%
+  Cooldown: 70 #increased cooldown from 20 secs -> 70
+  Skills:
+  - skill{s=paimon-equipment-cast}
+
+paimon-equipment-cast:
+  Conditions:
+  - health{h=<75000} castinstead paimon-equipment4 #25% health
+  - health{h=<150000} castinstead paimon-equipment3 #50% health
+  - health{h=<225000} castinstead paimon-equipment2 #75% health
+  - health{h=<285000} #95% health
+  Skills:
+  #- message{m="CAST 1"} @PIR{r=32}  
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+  - sound{s=item.shield.break}
+  - effect:particlesphere{p=block_crack;material=netherite_block;amount=2;radius=1;yOffset=.5} @self
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - delay 300
+  - skill{s=paimon-equipment-helm-cast}
+  - skill{s=paimon-equipment-chest-cast}
+  - skill{s=paimon-equipment-leggings-cast}
+  - skill{s=paimon-equipment-boots-cast}
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+
+paimon-equipment1:
+  Skills:
+  #- message{m="CAST 1"} @PIR{r=32}  
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+  - sound{s=item.shield.break}
+  - effect:particlesphere{p=block_crack;material=netherite_block;amount=2;radius=1;yOffset=.5} @self
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - delay 300
+  - skill{s=paimon-equipment-helm-cast}
+  - skill{s=paimon-equipment-chest-cast}
+  - skill{s=paimon-equipment-leggings-cast}
+  - skill{s=paimon-equipment-boots-cast}
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+
+paimon-equipment2:
+  Skills:
+  #- message{m="CAST 2"} @PIR{r=32}  
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+  - sound{s=item.shield.break}
+  - effect:particlesphere{p=block_crack;material=netherite_block;amount=2;radius=1;yOffset=.5} @self
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - delay 300
+  - skill{s=paimon-equipment-helm-cast}
+  - skill{s=paimon-equipment-chest-cast}
+  - skill{s=paimon-equipment-leggings-cast}
+  - skill{s=paimon-equipment-boots-cast}
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+
+paimon-equipment3:
+  Skills:
+  #- message{m="CAST 3"} @PIR{r=32}  
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+  - sound{s=item.shield.break}
+  - effect:particlesphere{p=block_crack;material=netherite_block;amount=2;radius=1;yOffset=.5} @self
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - delay 300
+  - skill{s=paimon-equipment-helm-cast}
+  - skill{s=paimon-equipment-chest-cast}
+  - skill{s=paimon-equipment-leggings-cast}
+  - skill{s=paimon-equipment-boots-cast}
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+
+paimon-equipment4:
+  Skills:
+  #- message{m="CAST 4"} @PIR{r=32}  
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+  - sound{s=item.shield.break}
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - randomskill{s=paimon-equipment-helm,paimon-equipment-chest,paimon-equipment-leggings,paimon-equipment-boots}
+  - delay 300
+  - skill{s=paimon-equipment-helm-cast}
+  - skill{s=paimon-equipment-chest-cast}
+  - skill{s=paimon-equipment-leggings-cast}
+  - skill{s=paimon-equipment-boots-cast}
+  - sound{s=item.armor.equip_netherite}
+  - equip{i=NETHERITE_HELMET:HEAD}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_LEGGINGS:LEGS}
+  - equip{i=NETHERITE_BOOTS:FEET}
+
+paimon-equipment-helm:
+  Cooldown: 1
+  Skills:
+  #- equip{i=AIR:HEAD}
+  - equip{i=GOLDEN_HELMET:HEAD}
+  - setvariable{var=caster.helm;value=1}
+paimon-equipment-chest:
+  Cooldown: 1
+  Skills:
+  #- equip{i=AIR:CHEST}
+  - equip{i=GOLDEN_CHESTPLATE:CHEST}
+  - setvariable{var=caster.chest;value=1}
+paimon-equipment-leggings:
+  Cooldown: 1
+  Skills:
+  #- equip{i=AIR:LEGS}
+  - equip{i=GOLDEN_LEGGINGS:LEGS}
+  - setvariable{var=caster.leggings;value=1}
+paimon-equipment-boots:
+  Cooldown: 1
+  Skills:
+  #- equip{i=AIR:FEET}
+  - equip{i=GOLDEN_BOOTS:FEET}
+  - setvariable{var=caster.boots;value=1}
+
+valmyra-teleport-pad-helm:
+  Skills:
+  - signal{s=helm} @MIR{t=paimon;r=256}
+  - command{c="execute in dungeons run tp <caster.name> 10000.5 99 0.5"} @self
+  - effect:particlesphere{p=portal;amount=3;radius=2;yOffset=0.5} @self
+  - sound{s=entity.enderman.teleport} @self
+valmyra-teleport-pad-chest:
+  Skills:
+  - signal{s=chest} @MIR{t=paimon;r=256}
+  - command{c="execute in dungeons run tp <caster.name> 10000.5 99 0.5"} @self
+  - effect:particlesphere{p=portal;amount=3;radius=2;yOffset=0.5} @self
+  - sound{s=entity.enderman.teleport} @self
+valmyra-teleport-pad-leggings:
+  Skills:
+  - signal{s=leggings} @MIR{t=paimon;r=256}
+  - command{c="execute in dungeons run tp <caster.name> 10000.5 99 0.5"} @self
+  - effect:particlesphere{p=portal;amount=3;radius=2;yOffset=0.5} @self
+  - sound{s=entity.enderman.teleport} @self
+valmyra-teleport-pad-boots:
+  Skills:
+  - signal{s=boots} @MIR{t=paimon;r=256}
+  - command{c="execute in dungeons run tp <caster.name> 10000.5 99 0.5"} @self
+  - effect:particlesphere{p=portal;amount=3;radius=2;yOffset=0.5} @self
+  - sound{s=entity.enderman.teleport} @self
+
+valmyra-maze-minotaur:
+  Conditions:
+  - incombat{}
+  TargetConditions:
+  - distance{d=<6}
+  Skills:
+  - skill{s=valmyra-maze-minotaur1} >50%
+  - skill{s=valmyra-maze-minotaur2} <50%
+  
+valmyra-maze-minotaur1:
+  Cooldown: 12
+  Skills:
+  - randomskill{s=valmyra-maze-minotaur-skill1,valmyra-maze-minotaur-skill2}
+valmyra-maze-minotaur2:
+  Cooldown: 8
+  Skills:
+  - randomskill{s=valmyra-maze-minotaur-skill1,valmyra-maze-minotaur-skill2}
+
+valmyra-maze-minotaur-skill1:
+  Skills:
+  # nerfed from 4 secs lvl 3 -> 1 sec lvl 1
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - delay 10
+  - playanimation{a=3;audience=World}
+  - sound{s=entity.player.attack.strong}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=3;h=25;mpd=true;a=30;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 250"} ]; 
+      roll=<random.-45to45>;fo=5;duration=1} @self
+  # nerfed damage from 400 -> 250
+  - delay 15
+  - leap{v=125} @Forward{f=4;y=1}
+  - sound{s=entity.ravager.attack} 
+  - delay 5
+  - playanimation{a=0;audience=World}
+  - sound{s=entity.player.attack.strong}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=25;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 250"} ]; 
+      roll=<random.-30to30>;fo=5;duration=1} @self
+  # nerfed damage from 400 -> 250
+  - delay 30
+  - leap{v=125} @Forward{f=2;y=1}
+  - sound{s=entity.ravager.attack} 
+  - delay 15
+  - effect:particlering{particle=crit;radius=4;points=32;amount=5;vS=0;yOffset=0.1} @self
+  - sound{s=entity.player.attack.sweep}
+  - sound{s=entity.ravager.attack} 
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=4} 
+  # nerfed damage from 750 -> 500
+
+valmyra-maze-minotaur-skill2:
+  Skills:
+  - leap{v=125} @Forward{f=1;y=4}
+  - sound{s=entity.ravager.attack} 
+  - delay 20
+  - effect:particlering{particle=crit;radius=4;points=32;amount=5;vS=0;yOffset=0.1} @self
+  - sound{s=entity.player.attack.sweep}
+  - sound{s=entity.ravager.attack} 
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=4} #nerfed from 750 -> 500
+
+valmyra-maze-minotaur-roar:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.ravager.roar}
+  - signal{s=rage} @MIR{t=valmyra-maze-brute;r=20}
+
+valmyra-maze-dweller:
+  Conditions:
+  - incombat{}
+  - playernotwithin 4
+  TargetConditions:
+  - distance{d=<25}
+  Cooldown: 2
+  Skills:
+  - playanimation{a=0;audience=World}
+  - sound{s=item.crossbow.shoot;v=1}
+  - projectile{oT=valmyra-maze-dweller-tick;oH=valmyra-maze-dweller-hit;i=1;v=20;mr=30;ac=.95;yOffset=0.75;fOffset=0.25} @target
+  - delay 5
+  - sound{s=item.crossbow.shoot;v=1}
+  - playanimation{a=0;audience=World}
+  - projectile{oT=valmyra-maze-dweller-tick;oH=valmyra-maze-dweller-hit;i=1;v=20;mr=30;ac=.95;yOffset=0.5;fOffset=0.25} @target
+  - delay 5
+  - sound{s=item.crossbow.shoot;v=1}
+  - playanimation{a=0;audience=World}
+  - projectile{oT=valmyra-maze-dweller-tick;oH=valmyra-maze-dweller-hit;i=1;v=20;mr=30;ac=.95;yOffset=0.75;fOffset=0.25} @target
+valmyra-maze-dweller-tick:
+  Skills:
+  - effect:particles{particle=crit;a=1} @Origin
+valmyra-maze-dweller-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"}
+
+valmyra-maze-dweller-speed:
+  Conditions:
+  - playerwithin 3
+  Cooldown: 8
+  Skills:
+  - potion{t=SPEED;d=40;l=2;hasParticles=false}
+
+valmyra-maze-brute-rage:
+  Skills:
+  - potion{t=SPEED;d=400;l=2}
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=0.5;repeat=40;repeatInterval=10} @self
+
+valmyra-maze-brute:
+  Conditions:
+  - incombat{}
+  TargetConditions:
+  - distance{d=<6}
+  Cooldown: 8
+  Skills:
+  - sound{s=entity.piglin.angry} 
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - delay 20
+  - playanimation{a=3;audience=World}
+  - sound{s=entity.player.attack.strong}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=3;h=25;mpd=true;a=30;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 250"} ];
+      roll=<random.-45to45>;fo=5;duration=1} @self
+  - delay 10
+  - leap{v=125} @Forward{f=4;y=1}
+  - sound{s=entity.piglin.jealous} 
+  - delay 5
+  - playanimation{a=0;audience=World}
+  - sound{s=entity.player.attack.strong}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=25;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 250"} ];
+      roll=<random.-30to30>;fo=5;duration=1} @self
+  - delay 20
+  - leap{v=125} @Forward{f=1;y=4}
+  - sound{s=entity.piglin.jealous} 
+  - delay 20
+  - effect:particlering{particle=crit;radius=4;points=32;amount=5;vS=0;yOffset=0.1} @self
+  - sound{s=entity.player.attack.sweep}
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=4}
+
+valmyra-bridge-trap-monster-teleport:
+  Conditions:
+  - blocktype{type=lava} true
+  TargetConditions:
+  - distance{d=<50}
+  Skills:
+  - teleport @target
+  - effect:particlesphere{p=portal;amount=3;radius=2;yOffset=0.5} @self
+  - sound{s=entity.enderman.teleport} @self
+  
+valmyra-bridge-trap-monster:
+  Skills:
+  - setAI{ai=false}
+  - sound{s=entity.enderman.teleport}
+  - delay 40
+  - setAI{ai=true}
+  - sound{s=entity.enderman.ambient;p=0.5;v=2}
+  - delay 80
+  - skill{s=valmyra-bridge-trap-monster-skill}
+  - delay 1120
+  - effect:particlesphere{p=portal;amount=3;radius=2;yOffset=0.5} @self
+  - sound{s=entity.enderman.teleport}
+  - remove
+
+valmyra-bridge-trap-monster-skill:
+  Skills:
+  - skill{s=valmyra-bridge-trap-monster-skill2}
+  - delay 20
+  - skill{s=valmyra-bridge-trap-monster-skill}
+
+valmyra-bridge-trap-monster-skill2:
+  Conditions:
+  - playerwithin 4
+  Cooldown: 12
+  Skills:
+  - setAI{ai=false}
+  - sound{s=entity.enderman.ambient}
+  - delay 50
+  - sound{s=block.stone.break}
+  - blockmask{m=obsidian;d=40;r=7;n=0.25}
+  - effect:particlering{p=block_crack;m=obsidian;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=obsidian;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=obsidian;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;m=obsidian;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=block_crack;m=obsidian;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - effect:particlering{p=block_crack;m=obsidian;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=6}
+  - effect:particlering{p=block_crack;m=obsidian;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 750"} @PIR{r=7}
+  - setAI{ai=true}
+
+valmyra-bridge-trap:
+  Conditions:
+  - playerwithin 8
+  Cooldown: 60
+  Skills:
+  - summon{t=valmyra-bridge-trap-monster}
+
+valmyra-parkour-crystal:
+  Skills:
+  - command{c="ri give <target.name> runic-shard"} @trigger
+  - sound{s=block.amethyst_block.break} @trigger
+  - potion{t=BLINDNESS;d=40;l=1} @trigger
+  - message{m="&c&lYou should not be here."} @trigger
+  - command{c="execute in dungeons run tp <target.name> 9586.5 62 119.5"} @trigger  
+  - suicide
+
+valmyra-parkour-cannon-fire:
+  Skills:
+  - remove @MIR{t=valmyra-parkour-cannonball;r=2}
+  - sound{s=block.stone_button.click_on}
+  - delay 40
+  - effect:particlesphere{p=soul_fire_flame;amount=3;radius=2} @Forward{f=1.5;y=0} 
+  - sound{s=entity.generic.explode;v=1} 
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1} 
+  - summon{t=valmyra-parkour-cannonball-marker} @Forward{f=0.25;y=0}
+  - summon{t=valmyra-parkour-cannonball-fire} @Forward{f=0.1;y=0} 
+
+valmyra-parkour-cannonball-fire:
+  Conditions:
+  - blocktype{type=lava} true
+  Skills:
+  - summon{t=valmyra-parkour-platform} @Forward{f=0;y=1}
+  - remove
+
+valmyra-parkour-cannonball-despawn:
+  Skills:
+  - cast{skillName="Despawn";duration=1200;showCastBar=true}
+  - delay 1200
+  - sound{s=block.stone.break}
+  - effect:particlesphere{p=block_crack;material=basalt;amount=1;radius=1;yOffset=.5} 
+  - remove
+
+valmyra-parkour-platform-despawn:
+  Skills:
+  - cast{skillName="Despawn";duration=1200;showCastBar=true}
+  - delay 2400 #increased from 1 min to 2 mins
+  - sound{s=block.stone.break}
+  - effect:particlesphere{p=block_crack;material=basalt;amount=1;radius=1;yOffset=.5} 
+  - remove
+
+valmyra-parkour-cannonball-fire-despawn:
+  Skills:
+  - delay 240
+  - sound{s=block.stone.break}
+  - effect:particlesphere{p=block_crack;material=basalt;amount=1;radius=1;yOffset=.5} 
+  - remove
+
+valmyra-parkour-platform-jump:
+  Cooldown: 1
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=3;radius=2} @self
+  - sound{s=entity.ender_dragon.flap} @self
+  - delay 20
+  - sudoSkill{s=valmyra-parkour-platform-throw} @self
+
+valmyra-parkour-platform-throw:
+  Skills:
+  - leap{v=250} @Forward{f=5;y=0}
+  - effect:particlesphere{p=soul_fire_flame;amount=3;radius=2} @self
+  - sound{s=entity.ender_dragon.flap} @self
+
+valmyra-parkour-cannonball-jump:
+  Cooldown: 1
+  Skills:
+  - jump{v=0.5}

@@ -1,0 +1,938 @@
+AzanianCommander-spin:
+  Cooldown: 6
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Skills:
+  - delay 60
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @Self
+  - delay 20
+  - cast{skillName="Sword Sweep";duration=20;onCast=AzanianCommander-spincast;showCastBar=true} @target
+
+AzanianCommander-spincast:
+  Skills:
+  - effect:particlering{particle=crit;radius=4;points=32;amount=5;hS=1;vS=0} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}
+  - throw{velocity=5;velocityY=3} @PIR{r=4}
+
+AzanianCommander-spawn:
+  Conditions:
+  - playernotwithin 3
+  Skills:
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @Self
+  - delay 20
+  - cast{skillName="Slash";duration=20;onCast=AzanianCommander-spawncast;showCastBar=true} @target
+
+AzanianCommander-spawncast:
+  Skills:
+  - jump{v=.6}
+  - delay 2
+  - leap{v=250} @target
+
+
+AzanianBandit-slash:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  - playernotwithin 3
+  Skills:
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @Self
+  - delay 20
+  - cast{skillName="Slash";duration=20;onCast=AzanianBandit-slashcast;showCastBar=true} @target
+
+AzanianBandit-slashcast:
+  Skills:
+  - jump{v=.6}
+  - delay 2
+  - leap{v=250} @target
+
+AzanianCommander-message:
+  Skills:
+  - randommessage{
+      m=
+      "&eAzanian Commander<&co> &6Let us put on a brilliant show!",
+      "&eAzanian Commander<&co> &6A battle for all to see!",
+      "&eAzanian Commander<&co> &6We shall dance to the death!";
+      } @PIR{r=12}
+
+AzanianCommander-summon:
+  Conditions:
+  - incombat{}
+  Skills:
+  - randomskill{s=AzanianCommander-summon1,AzanianCommander-summon2,AzanianCommander-summon3}
+AzanianCommander-summon1:
+  Cooldown: 24
+  Skills:
+  - message{m="&eAzanian Commander<&co> &6Bear witness to this battle!"} @PIR{r=12}
+  - summon{t=AzanianCommander-spawn} @Location{c=-1920.5,64,-500.5}
+AzanianCommander-summon2:
+  Cooldown: 24
+  Skills:
+  - message{m="&eAzanian Commander<&co> &6Watch me fight in glory!"} @PIR{r=12}
+  - summon{t=AzanianCommander-spawn} @Location{c=-1927.5,64,-493.5}
+AzanianCommander-summon3:
+  Cooldown: 24
+  Skills:
+  - message{m="&eAzanian Commander<&co> &6I won't fall before my comrades!"} @PIR{r=12}
+  - summon{t=AzanianCommander-spawn} @Location{c=-1927.5,64,-507.5}
+
+CrystalGuardian:
+  Conditions:
+  - playerwithin 24
+  - variableEquals{var=caster.stun;value=0}
+  - incombat{}
+  Cooldown: 2
+  Skills:
+  - jump{v=0.4}
+  - delay 10
+  - jump{v=0.4}
+  - delay 10
+  - skill{s=CrystalGuardian-leap} @target
+CrystalGuardian-leap:
+  Conditions:
+  - playernotwithin 5 castinstead CrystalGuardian-leap2
+  - playerwithin 5
+  Skills:
+  - leap{v=250} 
+CrystalGuardian-leap2:
+  Skills:
+  - leap{v=400}
+
+CrystalGuardian-sound:
+  Cooldown: 2
+  Skills:
+  - sound{s=entity.guardian.hurt_land}
+  - setvariable{var=caster.stun;value=1}
+  - delay 40
+  - setvariable{var=caster.stun;value=0}
+
+ForestFairy:
+  Skills:
+  - skill{s=ForestFairy-within}
+  - skill{s=ForestFairy-skill}
+  - skill{s=ForestFairy-active}
+
+ForestFairy-skill:
+  Cooldown: 8
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  - varinrange{var=caster.fairy;value=>5}
+  Skills:
+  - potion{type=SLOW;duration=20;level=1;hasParticles=false} 
+  - cast{skillName="Fairy Flutter";duration=20;onCast=ForestFairy-skillcast;showCastBar=true} @self
+ForestFairy-skillcast:
+  Skills:
+  - potion{type=SPEED;duration=20;level=2;hasParticles=false} 
+  - randomskill{s=ForestFairy-color1,ForestFairy-color2,ForestFairy-color3,ForestFairy-color4,ForestFairy-color5}
+  - setvariable{var=caster.active;value=1}
+  - delay 80
+  - setvariable{var=caster.active;value=0}
+
+ForestFairy-active:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - potion{type=SPEED;duration=20;level=2;hasParticles=false} 
+  - randomskill{s=ForestFairy-color1,ForestFairy-color2,ForestFairy-color3,ForestFairy-color4,ForestFairy-color5}
+  - skill{s=ForestFairy-within}
+ForestFairy-within:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - sound{s=block.enchantment_table.use}
+  - throw{vy=8} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=4}
+  - randomskill{s=ForestFairy-color1a,ForestFairy-color2a,ForestFairy-color3a,ForestFairy-color4a,ForestFairy-color5a}
+  - leap{v=100} @target
+  - delay 5
+  - jump{v=0.8} @self
+  - setvariable{var=caster.active;value=0}
+  - setvariable{var=caster.fairy;value=0}
+
+ForestFairy-color1:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#85FEF9;amount=8;radius=3;yOffset=0.5}
+ForestFairy-color2:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#F5FF91;amount=8;radius=3;yOffset=0.5}
+ForestFairy-color3:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#FE8585;amount=8;radius=3;yOffset=0.5}
+ForestFairy-color4:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#B4FF91;amount=8;radius=3;yOffset=0.5}
+ForestFairy-color5:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#FDC7FF;amount=8;radius=3;yOffset=0.5}
+
+ForestFairy-color1a:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#85FEF9;amount=16;radius=4;yOffset=0.5}
+ForestFairy-color2a:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#F5FF91;amount=16;radius=4;yOffset=0.5}
+ForestFairy-color3a:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#FE8585;amount=16;radius=4;yOffset=0.5}
+ForestFairy-color4a:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#B4FF91;amount=16;radius=4;yOffset=0.5}
+ForestFairy-color5a:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#FDC7FF;amount=16;radius=4;yOffset=0.5}
+
+ForestFairy-notwithin:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - randomskill{s=ForestFairy-color1,ForestFairy-color2,ForestFairy-color3,ForestFairy-color4,ForestFairy-color5}
+  - variableadd{var=caster.fairy;amount=1} 
+
+LumiteNightmareStart:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.enderman.scream} 
+  - randommessage{
+      m=
+      "&7caN YoU hEAR The &lSCREAMS&r&7.",
+      "&7cAN You heAR THe &lSCREAMS&r&7.",
+      "&7caN yOU hEAr ThE &lSCREAMS&r&7.";
+      } @PIR{r=24}
+
+LumiteNightmareSkeleton:
+  Conditions:
+  - incombat{}
+  - playerwithin 8
+  Cooldown: 5
+  Skills:
+  - delay 40
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - equip{i=IRON_SWORD:0}
+  - equip{i=IRON_SWORD:OFFHAND}
+  - cast{skillName="Stenite";duration=20;onCast=LumiteNightmareSkeletonCast;showCastBar=true} @target 
+LumiteNightmareSkeletonCast:
+  Skills:
+  - potion{t=INVISIBILITY;d=20;l=1;hasParticles=false}
+  - potion{t=SPEED;d=80;l=1;hasParticles=false}
+  - leap{v=400} @RLNTE{a=1;r=5;s=1;minr=3}
+  - delay 20
+  - jump{velocity=0.4} @self
+  - delay 2
+  - sound{s=entity.enderman.scream}
+  - leap{v=400} @target
+  - delay 10
+  - equip{i=AIR:OFFHAND}
+
+LumiteNightmareWarrior:
+  Cooldown: 8
+  Conditions:
+  - incombat{}
+  Skills:
+  - delay 160
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 20
+  - cast{skillName="Arite";duration=60;onCast=LumiteNightmareWarriorCast;showCastBar=true} @target 
+  - delay 20
+  - sound{s=item.shield.block}
+  - equip{i=SHIELD:OFFHAND}
+  - setvariable{var=caster.active;value=1}
+  - delay 40
+  - sound{s=item.shield.break} @self
+  - setvariable{var=caster.active;value=0}
+  - equip{i=AIR:OFFHAND}
+LumiteNightmareWarriorCast:
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}  
+LumiteNightmareWarriorActive:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - sound{s=item.shield.block} @self
+  - pull{v=12} @trigger
+  - heal{a=20;i=true} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @trigger
+  
+  
+LumiteNightmareMage:
+  Cooldown: 5
+  Conditions:
+  - incombat{}
+  - playerwithin 20
+  Skills:
+  - delay 40
+  - potion{t=SLOW;d=60;l=1;hasParticles=false}
+  - equip{i=AIR:0}
+  - cast{skillName="Illuminite";duration=40;onCast=LumiteNightmareMageCast;showCastBar=true} @target 
+LumiteNightmareMageCast:
+  Skills:
+  - sound{s=block.enchantment_table.use;v=2} @target
+  - summon{t=NightmareIlluminos} @target
+  - delay 20
+  - sound{s=block.enchantment_table.use;v=2} @target
+  - summon{t=NightmareIlluminos} @target
+  - delay 20
+  - sound{s=block.enchantment_table.use;v=2} @target
+  - summon{t=NightmareIlluminos} @target
+NightmareIlluminos:
+  Skills:
+  - delay 20
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=3}
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=4}
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=5}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - delay 20
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=3}
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=4}
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 6"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=2} @PIR{r=5}
+  - delay 20
+  - effect:particlesphere{particle=spell_mob;amount=32;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 24"} @PIR{r=5}
+  - potion{t=SLOW;d=60;l=3} @PIR{r=5}
+
+LumiteNightmareBeast:
+  Cooldown: 10
+  Conditions:
+  - incombat{}
+  - playerwithin 20
+  Skills:
+  - delay 120
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - equip{i=IRON_AXE:0}
+  - cast{skillName="Orite";duration=40;onCast=LumiteNightmareBeastCast;showCastBar=true} @target 
+LumiteNightmareBeastCast:
+  Skills:
+  - sound{s=entity.wolf.howl;v=2}
+  - potion{t=SPEED;d=120;l=3;hasParticles=false}
+  - delay 40
+  - jump{v=.4}
+  - delay 2
+  - leap{v=400} @target
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=3}
+  - sound{s=entity.wolf.growl} 
+
+
+LumiteSkeleton:
+  Conditions:
+  - incombat{}
+  - playerwithin 8
+  Cooldown: 4
+  Skills:
+  - delay 40
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - cast{skillName="Stenos";duration=20;onCast=LumiteSkeletonCast;showCastBar=true} @target 
+LumiteSkeletonCast:
+  Skills:
+  - potion{t=INVISIBILITY;d=20;l=1;hasParticles=false}
+  - leap{v=300} @RLNTE{a=1;r=5;s=1;minr=3}
+  - jump{velocity=0.4} @self
+  - delay 2
+  - leap{v=200} @target
+
+LumiteWarrior:
+  Cooldown: 10
+  Conditions:
+  - incombat{}
+  Skills:
+  - delay 160
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 20
+  - cast{skillName="Aros";duration=60;onCast=LumiteWarriorCast;showCastBar=true} @target 
+  - delay 20
+  - sound{s=item.shield.block}
+  - equip{i=SHIELD:OFFHAND}
+  - setvariable{var=caster.active;value=1}
+  - delay 40
+  - setvariable{var=caster.active;value=0}
+  - equip{i=AIR:OFFHAND}
+LumiteWarriorCast:
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}  
+LumiteWarriorActive:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - sound{s=item.shield.block} @self
+  - pull{v=12} @trigger
+  - heal{a=5;i=true} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @trigger
+  
+  
+LumiteMage:
+  Cooldown: 6
+  Conditions:
+  - incombat{}
+  - playerwithin 20
+  Skills:
+  - delay 40
+  - potion{t=SLOW;d=60;l=1;hasParticles=false}
+  - cast{skillName="Illuminos";duration=40;onCast=LumiteMageCast;showCastBar=true} @target 
+LumiteMageCast:
+  Skills:
+  - sound{s=block.enchantment_table.use;v=2} @target
+  - summon{t=Illuminos} @target
+Illuminos:
+  Skills:
+  - delay 40
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=3}
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=4}
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=5}
+  - delay 20
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=3}
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=4}
+  - effect:particlesphere{particle=spell_mob;amount=4;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - delay 20
+  - effect:particlesphere{particle=spell_mob;amount=32;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 23"} @PIR{r=5}
+  - potion{t=SLOW;d=60;l=1} @PIR{r=5}
+
+LumiteBeast:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  - playerwithin 20
+  Skills:
+  - delay 120
+  - potion{t=SLOW;d=60;l=1;hasParticles=false}
+  - cast{skillName="Oros";duration=40;onCast=LumiteBeastCast;showCastBar=true} @target 
+LumiteBeastCast:
+  Skills:
+  - sound{s=entity.wolf.growl;v=2}
+  - potion{t=SPEED;d=40;l=1;hasParticles=false}
+  - delay 40
+  - jump{v=.4}
+  - delay 2
+  - leap{v=325} @target
+
+
+LoneFairyAirstrike:
+  Conditions:
+  - playerwithin 24
+  Skills:
+  - summon{t=FairyOrb1;r=20} 
+
+FairyOrbColor1:
+  Skills:
+  - setvariable{var=caster.color;value=1}
+  - effect:particles{particle=reddust;color=#85FEF9;amount=2;hS=1;vS=1}
+  - delay 2
+  - skill{s=FairyOrbColor1} 
+FairyOrbColor2:
+  Skills:
+  - setvariable{var=caster.color;value=2}
+  - effect:particles{particle=reddust;color=#F5FF91;amount=2;hS=1;vS=1}
+  - delay 2
+  - skill{s=FairyOrbColor2}
+FairyOrbColor3:
+  Skills:
+  - setvariable{var=caster.color;value=3}
+  - effect:particles{particle=reddust;color=#FE8585;amount=2;hS=1;vS=1}
+  - delay 2
+  - skill{s=FairyOrbColor3}
+FairyOrbColor4:
+  Skills:
+  - setvariable{var=caster.color;value=4}
+  - effect:particles{particle=reddust;color=#B4FF91;amount=2;hS=1;vS=1}
+  - delay 2
+  - skill{s=FairyOrbColor4}
+FairyOrbColor5:
+  Skills:
+  - setvariable{var=caster.color;value=5}
+  - effect:particles{particle=reddust;color=#FDC7FF;amount=2;hS=1;vS=1}
+  - delay 2
+  - skill{s=FairyOrbColor5}
+
+LoneFairyAssault:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{type=SLOW;duration=80;level=1;hasParticles=false} @self
+  - cast{skillName="Fairy Magic";duration=40;onCast=LoneFairyAssaultCast;showCastBar=true} @target 
+LoneFairyAssaultCast:
+  Skills:
+  - summon{t=FairyOrb2} @PIR{r=24}
+  - delay 20
+  - summon{t=FairyOrb2} @PIR{r=24}
+  - delay 20
+  - summon{t=FairyOrb2} @PIR{r=24}
+
+FairyOrb1:
+  Skills:
+  - delay 10
+  - skill{s=FairyOrb1a}
+FairyOrb1a:
+  Skills:
+  - skill{s=FairyOrb1b}
+  - delay 4
+  - skill{s=FairyOrb1a}
+FairyOrb1b:
+  Conditions: 
+  - playerwithin 3
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 14"} @PIR{r=4}
+  - potion{type=SLOW;duration=80;level=1} @PIR{r=4}
+  - potion{type=SPEED;duration=80;level=1;hasParticles=false} @MIR{t=FlightlessFairy;r=64}
+  - remove
+
+FairyOrb2:
+  Skills:
+  - delay 20
+  - randomskill{s=FairyOrb2Color1,FairyOrb2Color2,FairyOrb2Color3,FairyOrb2Color4,FairyOrb2Color5}
+  - command{c="runicdamage <caster.uuid> <target.name> 24"} @PIR{r=4}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - remove
+  
+FairyOrb2Color1:
+  Conditions:
+  - variableEquals{var=caster.color;value=1}
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#85FEF9;amount=12;radius=4}
+FairyOrb2Color2:
+  Conditions:
+  - variableEquals{var=caster.color;value=2}
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#F5FF91;amount=12;radius=4}
+FairyOrb2Color3:
+  Conditions:
+  - variableEquals{var=caster.color;value=3}
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#FE8585;amount=12;radius=4}
+FairyOrb2Color4:
+  Conditions:
+  - variableEquals{var=caster.color;value=4}
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#B4FF91;amount=12;radius=4}
+FairyOrb2Color5:
+  Conditions:
+  - variableEquals{var=caster.color;value=5}
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#FDC7FF;amount=12;radius=4}
+
+
+WhaletownGodAmmunition:
+  Skills:
+  - setAI{ai=false} @self ~onSpawn
+  - delay 20
+  - setAI{ai=true} @self ~onSpawn
+  - jump{v=0.2}
+  - delay 2
+  - leap{v=9999} @NearestPlayer{r=9999} 
+WhaletownIceCombustDeath:
+  Skills:
+  - throw{vy=2} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=4}
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30} @self
+  - summon{t=WhaleGuts1;r=6;a=1}
+  - summon{t=WhaleGuts2;r=6;a=1}
+  - summon{t=WhaleGuts3;r=6;a=1}
+  - effect:particlesphere{particle=reddust;amount=5;radius=6}
+  - effect:particlesphere{particle=reddust;amount=5;radius=5}
+  - effect:particlesphere{particle=reddust;amount=5;radius=4}
+  - effect:particlesphere{particle=reddust;amount=5;radius=3}
+  - effect:particlesphere{particle=reddust;amount=5;radius=2}
+  - effect:particlesphere{particle=reddust;amount=5;radius=1}
+  - remove
+
+WhaletownIceTrapInactive:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  Skills:
+  - potion{type=INVISIBILITY;duration=5;level=1;hasParticles=false} 
+  - potion{type=SLOW;duration=5;level=10;hasParticles=false} 
+WhaletownIceCombust:
+  Conditions:
+  - variableEquals{var=caster.combust;value=1}
+  - playerwithin 2
+  Cooldown: 9999
+  Skills:
+  - throw{vy=8} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30} @self
+  - summon{t=WhaleGuts1;r=6;a=1}
+  - summon{t=WhaleGuts2;r=6;a=1}
+  - summon{t=WhaleGuts3;r=6;a=1}
+  - effect:particlesphere{particle=reddust;amount=5;radius=6}
+  - effect:particlesphere{particle=reddust;amount=5;radius=5}
+  - effect:particlesphere{particle=reddust;amount=5;radius=4}
+  - effect:particlesphere{particle=reddust;amount=5;radius=3}
+  - effect:particlesphere{particle=reddust;amount=5;radius=2}
+  - effect:particlesphere{particle=reddust;amount=5;radius=1}
+  - remove
+WhaletownIceTrap:
+  Conditions:
+  - playerwithin 12
+  Cooldown: 9999
+  Skills:
+  - potion{type=SLOW;duration=120;level=2} @PIR{r=16} 
+  - sound{s=block.glass.break}
+  - delay 20
+  - setvariable{var=caster.active;value=1}
+  - sound{s=entity.player.splash}
+  - jump{v=1.45}
+  - delay 20
+  - leap{v=1000} @NearestPlayer{r=64} 
+  - delay 40
+  - sound{s=entity.fishing_bobber.throw} 
+  - pull{v=6} @target
+  - delay 20
+  - setvariable{var=caster.combust;value=1}
+  - delay 240
+  - jump{v=0.2}
+  - delay 2
+  - leap{v=1000} @NearestPlayer{r=64} 
+ArcticTrollStun:
+  Skills:
+  - aura{auraName=ArcticTrollStun;onTick=ArcticTrollStun-Tick;interval=1;duration=20} @self
+ArcticTrollStun-Tick:
+  Skills:
+  - velocity{vx=0;vy=0;vz=0} @target
+ArcticTrollStunSlam:
+  Skills:
+  - aura{auraName=ArcticTrollStunSlam;onTick=ArcticTrollStunSlam-Tick;interval=1;duration=40} @self
+ArcticTrollStunSlam-Tick:
+  Skills:
+  - velocity{vx=0;vy=0;vz=0} @PIR{r=5}
+ArcticTrollGrasp:
+  Cooldown: 12
+  Conditions:
+  - variableEquals{var=caster.number;value=0}
+  - playernotwithin 10
+  - incombat{}
+  Skills:
+  - sound{s=block.portal.ambient} 
+  - skill{s=ArcticTrollGraspMsg} 
+  - throw{vy=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=6}
+  - delay 2
+  - skill{s=ArcticTrollStun}
+  - delay 22
+  - pull{v=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=6}
+ArcticTrollGraspLow:
+  Cooldown: 12
+  Conditions:
+  - variableEquals{var=caster.number;value=0}
+  - playernotwithin 8
+  - incombat{}
+  Skills:
+  - sound{s=block.portal.ambient} 
+  - skill{s=ArcticTrollGraspMsgLow} 
+  - throw{vy=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=6}
+  - delay 2
+  - skill{s=ArcticTrollStun}
+  - delay 22
+  - pull{v=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=6}  
+ArcticTrollGraspMsg:
+#  Cooldown: 20
+  Conditions:
+  - incombat{}
+  Skills:
+  - randommessage{
+    m=
+    "&9cOme plaY WitH mE.",
+    "&9COme play wiTh mE.",
+    "&9comE plAy WiTh mE.",
+    "&9COmE pLAY WiTh Me.",
+    "&9CoME pLaY wiTh Me.",
+    "&9CoMe plAy WitH ME.";
+    }
+ArcticTrollGraspMsgLow:
+#  Cooldown: 20
+  Conditions:
+  - incombat{}
+  Skills:
+  - randommessage{
+    m=
+    "&9cOME plAY WiTH mE!",
+    "&9COmE PLAy wiTH ME!",
+    "&9COmE PLAy WiTH mE!",
+    "&9COmE PLAY WiTh ME!",
+    "&9COME pLaY WITh Me!",
+    "&9CoME PlAy WiTH ME!";
+    }
+ArcticTrollCharge:
+  Cooldown: 20
+  Conditions:
+  - playerwithin 8
+  - incombat{}
+  Skills:
+  - potion{type=SLOW;duration=40;level=3;hasParticles=false} 
+  - delay 10
+  - effect:particlesphere{particle=block_crack;material=ice;amount=5;radius=1;yOffset=.5} @self
+  - delay 10
+  - effect:particlesphere{particle=block_crack;material=ice;amount=5;radius=1;yOffset=.5} @self
+  - delay 10
+  - effect:particlesphere{particle=block_crack;material=ice;amount=5;radius=1;yOffset=.5} @self
+  - delay 10
+  - effect:particlesphere{particle=block_crack;material=ice;amount=5;radius=1;yOffset=.5} @self
+  - setvariable{var=caster.number;value=1}
+  - potion{type=SPEED;duration=80;level=2;hasParticles=false} 
+  - delay 80
+  - potion{type=SLOW;duration=10;level=3;hasParticles=false} 
+  - delay 10
+  - sound{s=block.glass.break}
+  - effect:particlesphere{particle=block_crack;material=ice;amount=15;radius=3;yOffset=.5} @self
+  - potion{type=SLOW;duration=60;level=2} @PIR{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=6}
+  - throw{vy=12} @PIR{r=6}
+  - delay 10
+  - jump{v=1.6}
+  - delay 10
+  - sound{s=block.glass.break}
+  - effect:particlesphere{particle=block_crack;material=ice;amount=15;radius=3;yOffset=.5} @self
+  - potion{type=SLOW;duration=60;level=2} @PIR{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=6}
+  - throw{v=12} @PIR{r=6}
+  - delay 20
+  - setvariable{var=caster.number;value=0}
+ArcticTrollSlam:
+  Cooldown: 20
+  Conditions:
+  - playerwithin 8
+  - incombat{}
+  Skills:
+  - potion{type=SLOW;duration=40;level=3;hasParticles=false} 
+  - delay 10
+  - effect:particlesphere{particle=block_crack;material=ice;amount=5;radius=1;yOffset=.5} @self
+  - delay 10
+  - effect:particlesphere{particle=block_crack;material=ice;amount=5;radius=1;yOffset=.5} @self
+  - delay 10
+  - effect:particlesphere{particle=block_crack;material=ice;amount=5;radius=1;yOffset=.5} @self
+  - delay 10
+  - effect:particlesphere{particle=block_crack;material=ice;amount=5;radius=1;yOffset=.5} @self
+  - setvariable{var=caster.number;value=1}
+  - jump{v=1.8}
+  - delay 40
+  - sound{s=block.glass.break}
+  - effect:particlesphere{particle=block_crack;material=ice;amount=15;radius=3} @self
+  - skill{s=ArcticTrollStunSlam}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=6}
+  - throw{vy=8} @PIR{r=6}
+  - delay 20
+  - sound{s=block.glass.break}
+  - effect:particlesphere{particle=block_crack;material=ice;amount=15;radius=3} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=6}
+  - throw{v=8} @PIR{r=6}
+  - delay 20
+  - setvariable{var=caster.number;value=0}
+
+MoveThroughGauntlet:
+  Skills:
+  - runaigoalselector{goal=gotolocation -1758,39,-779}
+  - delay 240
+  - runaigoalselector{goal=clear}
+  - delay 1
+  - runaigoalselector{goal=gotolocation -1745,42,-802}
+  - delay 180
+  - runaigoalselector{goal=clear}
+  - delay 1
+  #- runaigoalselector{goal=gotolocation -1739,44,-797}
+  - runaigoalselector{goal=gotolocation -1718,42,-797}
+  - delay 160
+  - runaigoalselector{goal=clear}
+  - delay 1
+  - runaigoalselector{goal=gotolocation -1717,41,-786}
+  - delay 50
+  - runaigoalselector{goal=clear}
+  - delay 1
+  - runaigoalselector{goal=gotolocation -1717,33,-739}
+  - delay 290
+  - effect:particles{particle=fireworks_spark;amount=200;hS=1;vS=1} @self
+  - effect:sound{s=entity.firework_rocket.large_blast;v=2} @self
+  - delay 1
+  - effect:sound{s=entity.firework_rocket.large_blast;v=2} @self
+  - delay 1
+  - effect:sound{s=entity.firework_rocket.large_blast;v=2} @self
+  - effect:particles{particle=fireworks_spark;amount=200;hS=1;vS=1} @self
+  - remove @self
+
+TraineeMissile:
+  Skills:
+  - missile{ot=TraineeMissile-Tick;oh=TraineeMissile-Hit;v=20;hnp=true;i=1}
+
+TraineeMissile-Tick:
+  Skills:
+  - effect:particles{p=flame;a=1} @origin
+
+TraineeMissile-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}
+  - effect:particles{p=lava;a=30;hs=2;vS=2}
+
+SummonSnowyOwl:
+  TargetConditions:
+  - crouching{} true
+  - onblock{b=end_stone} true
+  Skills:
+  - remove @MIR{t=SnowyOwl;r=30}
+  - delay 1
+  - effect:particles{p=cloud;uel=true;a=30;hs=0.1;vs=0.1}
+  - effect:sound{s=block.end_gateway.spawn;v=2}
+  - summon{t=SnowyOwl;a=1}
+  - dropitem{i=SnowyOwlFeather}
+  - delay 2
+  - throw{v=10;vy=10}
+
+SummonSnowyOwlMessage:
+  TargetConditions:
+  - crouching{} true
+  - onblock{b=end_stone} true
+  Skills:
+  - message{m="&bSummoning Snow Owl..."}
+  
+LethalBite:
+  Skills:
+  - leap{velocity=300} @target
+  - delay 20
+  - skill{s=LethalBiteHit} @self
+ 
+LethalBiteHit:
+  Conditions:
+  - targetwithin{d=5} true
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 70"}
+  - sound{s=entity.generic.eat} @self
+  
+MonkeySmash:
+  Skills:
+  - potion{type=SLOW;duration=113;level=10;hasParticles=false} @self
+  - delay 10
+  - sound{s=entity.generic.explode} @self
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=1;points=32}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1.5;velocity=0.6;shape=sphere} @Ring{r=2;points=32}
+  - command{c="runicdamage <caster.uuid> <target.name> 30"} @PlayersInRadius{r=5}
+  - delay 3
+  - throw{velocity=8;velocityY=3} @PlayersInRadius{r=5}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=3;points=32}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=4;points=32}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=5;points=32}
+  - delay 20
+  - sound{s=entity.generic.explode} @self
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=1;points=32}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1.5;velocity=0.6;shape=sphere} @Ring{r=2;points=32}
+  - command{c="runicdamage <caster.uuid> <target.name> 30"} @PlayersInRadius{r=5}
+  - delay 3
+  - throw{velocity=8;velocityY=3} @PlayersInRadius{r=5}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=3;points=32}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=4;points=32}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=5;points=32}
+  - delay 20
+  - sound{s=entity.generic.explode} @self
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=1;points=32}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1.5;velocity=0.6;shape=sphere} @Ring{r=2;points=32}
+  - command{c="runicdamage <caster.uuid> <target.name> 30"} @PlayersInRadius{r=5}
+  - delay 3
+  - throw{velocity=8;velocityY=3} @PlayersInRadius{r=5}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=3;points=32}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=4;points=32}
+  - delay 2
+  - blockwave{duration=30;radius=1;radiusY=1;velocity=0.6;shape=sphere} @Ring{r=5;points=32}
+  
+Undead_Viking_AxeThrow:
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{type=SLOW;duration=60;l=3;hasParticles=false} @Self
+  - delay 40
+  - projectile{bulletType=ITEM;material=IRON_AXE;onTick=Undead_Viking_AxeThrow-Tick;onHit=Undead_Viking_AxeThrow-Hit;v=23;i=1;hR=1;vR=2;yO=15;g=0.2;bulletSpin=0;tyo=1}
+  
+Undead_Viking_AxeThrow-Tick:
+  Skills:
+  - effect:particles{particle=item_crack;material=iron_axe;a=1;d=5;v=0;yo=0} @origin
+  
+Undead_Viking_AxeThrow-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 35"}
+  - potion{type=SlOW;duration=100;l=2;hasParticles=false}
+  - heal{a=40} @self
+  
+Undead_Viking_Slam:
+  Conditions:
+  - playerwithin{d=15} true
+  - incombat{}
+  Skills:
+  - potion{type=SLOW_FALLING;duration=40;lvl=250;p=false;i=false} @self
+  - jump{v=2}
+  - delay 40
+  - leap{v=350} @NearestPlayer{r=50} 
+  - delay 10
+  - effect:particles{particle=block_crack;m=anvil;amount=1000;hS=5;vS=1} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}
+  - summon{t=Undead_Viking_Bone_Chain;a=1} @PIR{10}
+    
+Undead_Viking_Chains:
+  Skills:
+  - setowner @NearestPlayer{r=5}
+  - potion{type=JUMP;duration=100;l=250;p=false;i=false} @PIR{r=3}
+  - potion{type=SlOW;duration=100;l=6;p=false;i=false} @PIR{r=3}
+  - delay 20
+  - sound{s=block.anvil.land;v=1;p=2} @self
+  - effect:particles{particle=block_crack;m=bone_block;amount=500;hS=0.3;vS=0.1;yO=-1} @self
+  - delay 20
+  - sound{s=block.anvil.land;v=1;p=2} @self
+  - effect:particles{particle=block_crack;m=bone_block;amount=500;hS=0.3;vS=0.1;yO=-1} @self
+  - delay 20
+  - sound{s=block.anvil.land;v=1;p=2} @self
+  - effect:particles{particle=block_crack;m=bone_block;amount=500;hS=0.3;vS=0.1;yO=-1} @self
+  - delay 40
+  - command{c="mm m kill Undead_Viking_Bone_Chain"}
+  
+Undead_Viking_Chains_Break:
+  Skills:
+  - sound{s=entity.skeleton.death;v=1;p=0.1} @self
+  - effect:particles{particle=block_crack;m=bone_block;amount=1000;hS=1;vS=0.1;yO=-1} @self
+
+Undead_Viking_Passive_Start:
+  Conditions:
+  - incombat{}
+  Skills:
+  - summon{type=Undead_Viking_Bone_Passive} @self
+
+Undead_Viking_Passive_Summon:
+  Skills:
+  - effect:spin{duration=60;velocity=20} @self
+  - delay 10
+  - jump{v=1}
+  - delay 10
+  - jump{v=-5}
+  - delay 20
+  - jump{v=1}
+  - delay 10
+  - jump{v=-5}
+  - delay 20
+  - jump{v=1}
+  - delay 10
+  - jump{v=-5}
+  - delay 10
+  - summon{type=Cursed_Skeleton} @self .6
+  - delay 10
+  - remove @self
+
+Cursed_Skeleton_Despawn:
+  Skills:
+  - delay 400
+  - suicide

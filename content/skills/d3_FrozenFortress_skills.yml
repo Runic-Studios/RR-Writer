@@ -1,0 +1,898 @@
+# BOSS-KILL BARS/MESSAGES
+
+SpawnWithCustomisableBossBar:
+  Skills:
+  - barcreate{name="BossKillBar";display="&1&lClick to claim kill";value=1;color=BLUE;style=SEGMENTED_10}	
+
+CreateKillBossBar:
+  Conditions:
+  - varEquals{var=caster.killClaimed;value="true"} castinstead KillClaimedMessage	
+  - varEquals{var=caster.killClaimed;value="false"}	
+  Skills:
+  - barset{name="BossKillBar";display="&1&lKilled by - <trigger.name>";value=0}	
+  - setvariable{var=caster.killClaimed;type=STRING;value="true"}	
+  #- barcreate{name="BossKillBar";display="&1Killed by - <trigger.name>";value=0;color=BLUE;style=SEGMENTED_10}
+
+BecomeKillOwner:
+  Conditions:
+  - varEquals{var=caster.ownerName;value="NONE"}	
+  Skills:
+  - setowner	
+  - setvariable{var=caster.ownerName;type=STRING;value="<trigger.name>";save=true}	
+  - message{m="&aYou have successfully claimed this kill!"}	
+  - effect:sound{s=entity.player.levelup;v=2}	
+
+DisplayOwner:
+  Conditions:
+  - varEquals{var=caster.ownerName;value="NONE"} castinstead BecomeKillOwner	
+  - varEquals{var=caster.ownerName;value="NONE"} false	
+  Skills:
+  - message{m="&cThis boss was slain by <caster.var.ownerName>"} @PIR{r=10}	
+  - effect:sound{s=entity.zombie_pigman.angry;v=10} @owner
+
+KillClaimedMessage:
+  Conditions:
+  - varEquals{var=caster.killClaimed;value="true"}	
+  Skills:
+  - message{m="&cSomeone has already claimed this kill!"} @PIR{r=5}	
+
+#
+############################################################
+#
+
+chooseSkill_Holmgeir:
+ Conditions:
+ - incombat{} true	
+ - stance normal	
+ Skills:
+ - randomskill{skills=startHolmgeir_retribution,startHolmgeir_AbsoluteZero} @self	
+
+chooseSkill_HolmgeirCoolAsIce:
+ Conditions:
+ - incombat{} true	
+ - stance coolAsIce	
+ Skills:
+ - skill{s=startHolmgeir_retribution} @self	
+
+startHolmgeir_retribution:
+ Conditions:
+ - incombat{} true	
+ Skills:
+ - sendtitle{title="&4&kooo&r&l&cRetribution&r&4&kooo";subtitle="&e&l5";d=20} @PlayersInRadius{r=50}	
+ - effect:sound{s=block.comparator.click;volume=4;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cRetribution&r&4&kooo";subtitle="&e&l4";d=20} @PlayersInRadius{r=50}	
+ - effect:sound{s=block.comparator.click;volume=4;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cRetribution&r&4&kooo";subtitle="&e&l3";d=20} @PlayersInRadius{r=50}	
+ - effect:sound{s=block.comparator.click;volume=4;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cRetribution&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=50}	
+ - effect:sound{s=block.comparator.click;volume=4;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cRetribution&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=50}	
+ - effect:sound{s=block.comparator.click;volume=4;pitch=0.5} @self
+ - delay 20	
+ - skill{s=Holmgeir_retribution}	
+
+Holmgeir_retribution:
+ Skills:
+ - jump{velocity=1.5}	
+ - delay 35	
+ - command{c="runicdamage <caster.uuid> <target.name> 500"} @PlayersInRadius{r=8}	
+ - throw{velocity=3;velocityY=0} @PlayersInRadius{r=8}	
+ - effect:sound{s=block.glass.break;v=0.5;p=2.0} @PlayersInRadius{r=50}	
+
+startHolmgeir_AbsoluteZero:
+ Conditions:
+ - incombat{} true	
+ Skills:
+ - sendtitle{title="&4&kooo&r&l&cAbsolute Zero&r&4&kooo";subtitle="&e&l5";d=20} @PlayersInRadius{r=50}	
+ - effect:sound{s=block.comparator.click;volume=4;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cAbsolute Zero&r&4&kooo";subtitle="&e&l4";d=20} @PlayersInRadius{r=50}	
+ - effect:sound{s=block.comparator.click;volume=4;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cAbsolute Zero&r&4&kooo";subtitle="&e&l3";d=20} @PlayersInRadius{r=50}	
+ - effect:sound{s=block.comparator.click;volume=4;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cAbsolute Zero&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=50}	
+ - effect:sound{s=block.comparator.click;volume=4;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cAbsolute Zero&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=50}	
+ - effect:sound{s=block.comparator.click;volume=4;pitch=0.5} @self
+ - delay 20	
+ - skill{s=Holmgeir_AbsoluteZero}	
+
+Holmgeir_AbsoluteZero:
+ Skills:
+ - effect:particlering{p=reddust;color=#15f7fd;radius=22;points=32;amount=1;hS=1;vS=0} @self	
+ - effect:particlering{p=reddust;color=#15f7fd;radius=22.1;points=32;amount=1;hS=1;vS=0} @self	
+ - effect:particlering{p=reddust;color=#15f7fd;radius=21.9;points=32;amount=1;hS=1;vS=0} @self	
+ - effect:sound{s=entity.blaze.shoot;volume=1.0;pitch=0.5} @self
+ - potion{t=SLOW;d=145;l=998;hasParticles=true;force=true} @PIR{r=22}	
+
+coolAsIcePassive:
+ Conditions:
+ - stance coolAsIce	
+ Skills:
+ - effect:particlering{p=reddust;color=#15f7fd;radius=17;points=32;amount=1;hS=1;vS=0} @self	
+ - effect:particlering{p=reddust;color=#15f7fd;radius=17.1;points=32;amount=1;hS=1;vS=0} @self	
+ - effect:particlering{p=reddust;color=#15f7fd;radius=16.9;points=32;amount=1;hS=1;vS=0} @self	
+ - potion{t=SLOW;d=40;l=998;hasParticles=true;force=true} @PIR{r=8}	
+
+##########################################################################################################################
+
+chooseSkill_Alkyr:
+ Conditions:
+ - incombat{} true	
+ Skills:
+ - randomskill{skills=startAlkyr_ShadowStep,startAlkyr_voracious} @self	
+
+summonTrick:
+ Conditions:
+ - incombat{} true	
+ Skills:
+ - summon{type=AlkyrTrick;amount=2;yr=0;os=true;radius=7} @self	
+
+TrickImmune:
+ Skills:
+ - heal{amount=10000;oh=false} @self	
+ - command{c="runicdamage <caster.uuid> <target.name> 0"} @self	
+ - message{m="&r&7You &r&4&lcan<&sq>t hit&r&7 an illusion<&cm> can you?"} @trigger	
+
+TrickDespawn:
+ Skills:
+ - delay 175	
+ - remove @self	
+
+startAlkyr_ShadowStep:
+ Conditions:
+ - incombat{} true	
+ Skills:
+ - sendtitle{title="&4&kooo&r&l&cShadow Step&r&4&kooo";subtitle="&e&l5";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cShadow Step&r&4&kooo";subtitle="&e&l4";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cShadow Step&r&4&kooo";subtitle="&e&l3";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cShadow Step&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cShadow Step&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8;pitch=0.5} @self
+ - delay 20	
+ - skill{s=Alkyr_ShadowStep}	
+
+Alkyr_ShadowStep:
+ Skills:
+ - teleport{spreadh=7;spreadv=0} @PlayersInRadius{r=150;limit=1;sort=FURTHEST}	
+ - effect:sound{s=entity.enderman.teleport;volume=8.0;pitch=0.5} @self
+ - delay 1	
+ - signal{s=teleport} @MIR{r=300;t=AlkyrTrick}	
+ - threat{amount=9999} @NearestPlayer	
+ - delay 1	
+ - rally{types=AlkyrTrick;radius=30;ot=true} @NearestPlayer	
+
+startAlkyr_voracious:
+ Conditions:
+ - incombat{} true	
+ Skills:
+ - sendtitle{title="&4&kooo&r&l&cVoracious&r&4&kooo";subtitle="&e&l5";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=4.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cVoracious&r&4&kooo";subtitle="&e&l4";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=4.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cVoracious&r&4&kooo";subtitle="&e&l3";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=4.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cVoracious&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=4.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cVoracious&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=4.0;pitch=0.5} @self
+ - delay 20	
+ - skill{s=Alkyr_voracious}	
+
+Alkyr_voracious:
+ Skills:
+ - setstance{stance=lifesteal} @self	
+ - message{m="&r&7The ability wears off in<&co> 15"} @PIR{r=180}	
+ - delay 200	
+ - message{m="&r&75"} @PIR{r=180}	
+ - delay 20	
+ - message{m="&r&74"} @PIR{r=180}	
+ - delay 20	
+ - message{m="&r&73"} @PIR{r=180}	
+ - delay 20	
+ - message{m="&r&72"} @PIR{r=180}	
+ - delay 20	
+ - message{m="&r&71"} @PIR{r=180}	
+ - delay 20	
+ - setstance{stance=normal} @self	
+
+voraciousHit:
+ Conditions:
+ - stance lifesteal	
+ Skills:
+ - heal{amount=305;oh=false} @self	
+ - command{c="runicdamage <caster.uuid> <target.name> 0"} @self	
+ - effect:sound{s=entity.experience_orb.pickup;volume=1.0;pitch=0.5} @self
+
+
+##########################################################################################################################
+
+EldridPassive:
+ Conditions:
+ - incombat{} true
+ Skills:
+ - randomskill{skills=Eldrid_HealingRune_north,Eldrid_HealingRune_south,Eldrid_HealingRune_east,Eldrid_HealingRune_west} @self	
+
+EldridPassiveBuff:
+ Conditions:
+ - stance buffMode	
+ Skills:
+ - signal{s=runeBuff} @MIR{r=300;t=HealingRune}	
+
+Eldrid_HealingRune_north:
+ Skills:
+ - summon{type=HealingRunePlus;amount=1;radius=0} @Location{c=-9.5,69,709.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=-9.5,69,817.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=46.5,69,763.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=-65.5,69,763.5}
+Eldrid_HealingRune_south:
+ Skills:
+ - summon{type=HealingRunePlus;amount=1;radius=0} @Location{c=-9.5,69,817.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=-9.5,69,709.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=46.5,69,763.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=-65.5,69,763.5}
+Eldrid_HealingRune_east:
+ Skills:
+ - summon{type=HealingRunePlus;amount=1;radius=0} @Location{c=46.5,69,763.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=-9.5,69,709.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=-65.5,69,763.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=-9.5,69,817.5}
+Eldrid_HealingRune_west:
+ Skills:
+ - summon{type=HealingRunePlus;amount=1;radius=0} @Location{c=-65.5,69,763.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=-9.5,69,817.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=46.5,69,763.5}
+ - summon{type=HealingRune;amount=1;radius=0} @Location{c=-9.5,69,709.5}
+
+chooseSkill_Eldrid:
+ Conditions:
+ - incombat{} true	
+ Skills:
+ - randomskill{skills=startEldrid_BlackIce,startEldrid_FrostNova} @self	
+
+startEldrid_BlackIce:
+ Conditions:
+ - incombat{} true	
+ Skills:
+ - sendtitle{title="&4&kooo&r&l&cBlack Ice&r&4&kooo";subtitle="&e&l5";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cBlack Ice&r&4&kooo";subtitle="&e&l4";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cBlack Ice&r&4&kooo";subtitle="&e&l3";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cBlack Ice&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8.0;pitch=0.5} @self	
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cBlack Ice&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8.0;pitch=0.5} @self
+ - delay 20	
+ - skill{s=Eldrid_BlackIce}	
+
+Eldrid_BlackIce:
+ Skills:
+ - setstance{stance=buffMode} @self	
+ - message{m="&r&7The ability wears off in<&co> 20"} @PIR{r=180}	
+ - delay 300	
+ - message{m="&r&75"} @PIR{r=180}	
+ - delay 20	
+ - message{m="&r&74"} @PIR{r=180}	
+ - delay 20	
+ - message{m="&r&73"} @PIR{r=180}	
+ - delay 20	
+ - message{m="&r&72"} @PIR{r=180}	
+ - delay 20	
+ - message{m="&r&71"} @PIR{r=180}	
+ - delay 20	
+ - setstance{stance=normal} @self	
+
+startEldrid_FrostNova:
+ Conditions:
+ - incombat{} true	
+ Skills:
+ - sendtitle{title="&4&kooo&r&l&cFrost Nova&r&4&kooo";subtitle="&e&l5";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cFrost Nova&r&4&kooo";subtitle="&e&l4";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cFrost Nova&r&4&kooo";subtitle="&e&l3";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cFrost Nova&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8.0;pitch=0.5} @self
+ - delay 20	
+ - sendtitle{title="&4&kooo&r&l&cFrost Nova&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=150}	
+ - effect:sound{s=block.comparator.click;volume=8.0;pitch=0.5} @self
+ - delay 20	
+ - skill{s=Eldrid_FrostNova}	
+
+EldridMinionSummon:
+ Conditions:
+ - incombat{} true
+ Cooldown: 24
+ Skills:
+ - summon{t=EldridMinionMelee;a=1} @Ring{r=23;p=12}
+ - summon{t=EldridMinionRanged;a=1} @Ring{r=23;p=8}
+
+EldridMinionSummon1:
+ Conditions:
+ - incombat{} true
+ Cooldown: 10000
+ Skills:
+ - delay 3600
+ - summon{t=EldridMinionMelee;a=1} @Ring{r=30;p=12}
+ - summon{t=EldridMinionRanged;a=1} @Ring{r=30;p=8}
+ - skill{s=EldridMinionSummon2}
+EldridMinionSummon2:
+ Conditions:
+ - incombat{} true
+ Skills:
+ - delay 600
+ - summon{t=EldridMinionMelee;a=1} @Ring{r=30;p=12}
+ - summon{t=EldridMinionRanged;a=1} @Ring{r=30;p=8} 
+ - skill{s=EldridMinionSummon2}
+ 
+EldridCrystalSpawn1:
+ Conditions:
+ - incombat{} true
+ Cooldown: 10000
+ Skills:
+ - delay 2400
+ - summon{t=EldridCrystal;a=1;radius=0} @Location{c=15,72,788}
+ - summon{t=EldridCrystal;a=1;radius=0} @Location{c=15,72,738}
+ - summon{t=EldridCrystal;a=1;radius=0} @Location{c=-35,72,738}
+ - summon{t=EldridCrystal;a=1;radius=0} @Location{c=-35,72,788}
+ - skill{s=EldridCrystalSpawn2} 
+EldridCrystalSpawn2:
+ Skills:
+ - delay 1200
+ - summon{t=EldridCrystal;a=1;radius=0} @Location{c=15,72,788}
+ - summon{t=EldridCrystal;a=1;radius=0} @Location{c=15,72,738}
+ - summon{t=EldridCrystal;a=1;radius=0} @Location{c=-35,72,738}
+ - summon{t=EldridCrystal;a=1;radius=0} @Location{c=-35,72,788}
+ - skill{s=EldridCrystalSpawn2}
+ 
+EldridGolemSpawn1:
+ Conditions:
+ - incombat{} true
+ Cooldown: 10000
+ Skills:
+ - delay 1200
+ - randomskill{skills=EldridGolem_north,EldridGolem_south,EldridGolem_east,EldridGolem_west} @self 
+ - skill{s=EldridGolemSpawn2} 
+EldridGolemSpawn2:
+ Skills:
+ - delay 600
+ - randomskill{skills=EldridGolem_north,EldridGolem_south,EldridGolem_east,EldridGolem_west} @self 
+ - skill{s=EldridGolemSpawn2}
+EldridGolem_east:
+ Skills:
+ - summon{t=EldridGolemPlus;a=1;radius=0} @Location{c=19,68,763}
+EldridGolem_north:
+ Skills:
+ - summon{t=EldridGolemPlus;a=1;radius=0} @Location{c=-10,68,734}
+EldridGolem_west:
+ Skills:
+ - summon{t=EldridGolemPlus;a=1;radius=0} @Location{c=-39,68,763}
+EldridGolem_south:
+ Skills: 
+ - summon{t=EldridGolemPlus;a=1;radius=0} @Location{c=-10,68,793}
+ 
+EldridGolemSummon1:
+ Conditions:
+ - incombat{} true
+ Cooldown: 10000
+ Skills:
+ - delay 6000
+ - summon{t=EldridGolem;a=1;radius=0} @Location{c=-25,69,778}
+ - summon{t=EldridGolem;a=1;radius=0} @Location{c=5,69,778}
+ - summon{t=EldridGolem;a=1;radius=0} @Location{c=5,69,748}
+ - summon{t=EldridGolem;a=1;radius=0} @Location{c=-25,69,748}
+ - skill{s=EldridGolemSummon2}
+EldridGolemSummon2:
+ Conditions:
+ - incombat{} true
+ Skills:
+ - delay 600
+ - summon{t=EldridGolem;a=1;radius=0} @Location{c=-25,69,778}
+ - summon{t=EldridGolem;a=1;radius=0} @Location{c=5,69,778}
+ - summon{t=EldridGolem;a=1;radius=0} @Location{c=5,69,748}
+ - summon{t=EldridGolem;a=1;radius=0} @Location{c=-25,69,748} 
+ - skill{s=EldridGolemSummon2} 
+
+Eldrid_FrostNova:
+ Skills:
+ - summon{type=FrozenGround;a=1;yradius=0;radius=5} @self	
+FrozenGroundStart:
+ Skills:
+ - skill{s=FrozenGroundDamageEffect} @Self	
+ - effect:blockmask{m=packed_ice;n=1.0;r=12;d=200} @self	
+ - effect:blockmask{m=ice;n=1.0;r=12;d=200} @self	
+ - delay 160	
+ - remove @self	
+FrozenGroundDamageEffect:
+ Skills:
+ - command{c="runicdamage <caster.uuid> <target.name> 100"} @PlayersInRadius{r=12}	
+ - potion{t=SLOW;d=60;l=4;hasParticles=true;force=true} @PlayersInRadius{r=8}	
+ - effect:sound{s=block.fire.extinguish;v=0.1;p=1.0} @Self	
+ - delay 5	
+ - effect:particlering{p=snowballpoof;a=1;vs=0.5;hs=0.5;s=0;y=0;points=5;radius=4}	
+ - delay 5	
+ - effect:particlering{p=snowballpoof;a=1;vs=0.5;hs=0.5;s=0;y=0;points=5;radius=6}	
+ - delay 5	
+ - effect:particlering{p=snowballpoof;a=1;vs=0.5;hs=0.5;s=0;y=0;points=5;radius=8}	
+ - skill{s=FrozenGroundDamageEffect} @Self	
+
+HealEldrid:
+ Conditions:
+ - region{r=emerald} true	
+ Skills:
+ - heal{amount=2500} @Parent	
+ - command{c="runicdamage <caster.uuid> <target.name> 0"} @Parent	
+ - effect:sound{s=entity.experience_orb.pickup;volume=8.0;pitch=0.5} @self
+ - effect:particles{p=HAPPY_VILLAGER;amount=25;vSpread=1;hSpread=1;Speed=0.00000001;yOffset=0} @Parent >0 1	
+ - remove @self	
+
+HealEldridPlus:
+ Conditions:
+ - region{r=emerald} true
+ Skills:
+ - heal{amount=10000} @Parent
+# - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=100}
+ - damage{a=0;ia=true} @Parent
+ - effect:sound{s=entity.experience_orb.pickup;volume=1.0;pitch=0.5} @self
+ - effect:particles{p=HAPPY_VILLAGER;amount=25;vSpread=1;hSpread=1;Speed=0.00000001;yOffset=0} @Parent >0 1
+ - remove @self
+
+EldridGolemTarget:
+ TargetConditions:
+ - distance{d=<3}
+ Skills:
+ - command{c="runicdamage <caster.uuid> <target.name> 20"}
+EldridMinionRanged:
+ TargetConditions:
+ - distance{d=<20}
+ Skills:
+ - potion{type=SLOW;duration=100;level=10;hasParticles=false} @self
+ - delay 100
+ - summon{t=EldridMinionPoof;a=1} @target
+EldridCrystal:
+ Skills:
+ - summon{t=EldridMinionPoof;a=1} 
+EldridMinionPoof:
+ Skills:
+ - effect:particlesphere{p=reddust;c=#FFFFFF;amount=2;radius=1;yOffset=.5} 
+ - effect:particlesphere{p=reddust;c=#A8FFFF;amount=2;radius=1;yOffset=.5} 
+ - delay 20
+ - effect:particlesphere{p=reddust;c=#FFFFFF;amount=5;radius=3;yOffset=.5} 
+ - effect:particlesphere{p=reddust;c=#A8FFFF;amount=5;radius=3;yOffset=.5} 
+ - delay 20
+ - effect:particlesphere{p=reddust;c=#FFFFFF;amount=10;radius=5;yOffset=.5} 
+ - effect:particlesphere{p=reddust;c=#A8FFFF;amount=10;radius=5;yOffset=.5} 
+ - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=5}
+ - delay 10
+ - remove
+##########################################################################################################################
+IceArrow:
+  Conditions:
+  - incombat{}	
+  Skills:
+  - sound{s=block.glass.break} @self	
+  - delay 5	
+  - projectile{onTick=IceArrow-Tick;onHit=IceArrow-Hit;v=15;i=1;hR=1;vR=1;sfo=1.5}	
+IceArrow-Tick:
+  Skills:
+  - effect:particles{particle=blockcrack;material=PACKED_ICE;amount=5;speed=0;hS=0.1;vS=0.1} @origin	
+IceArrow-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}	
+
+
+#########################~~~REWORK TIME LEGGO~~~###############################
+
+ApplyInitialThreat:
+  Conditions:
+  - varEquals{var=caster.threatInitiated;value="false"}	
+  Skills:
+  - threat{a=1000}	
+  - threat{a=1} @World	
+  - setvariable{var=caster.threatInitiated;type=STRING;value="true"}	
+
+ApplyBossThreat:
+  Conditions:
+  - varEquals{var=caster.threatInitiated;value="false"}	
+  Skills:
+  - threat{a=10000}	
+  - threat{a=1} @World	
+  - setvariable{var=caster.threatInitiated;type=STRING;value="true"}	
+
+CrystalSummoning:
+  Cooldown: 19
+  Conditions:
+  - playerwithin 25
+  - mobsinchunk{a=<24}
+  Skills:
+  - summon{t=ExiledFrostLord;a=1} @Ring{r=6;p=6}
+  - summon{t=ExiledFrostMage;a=1} @Ring{r=10;p=4}
+  - summon{t=FrozenSoldier;a=1} @Ring{r=8;p=2}
+  - effect:sound{s=entity.zombie_villager.converted;v=2} @self
+
+CrystalHealing:
+  Skills:
+  - heal{a=400}	
+  - particles{p=HAPPY_VILLAGER;a=10;hs=0.5;vs=0.5}	
+  - skill{s=CrystalCheeseProtection}
+
+CrystalCheeseProtection:
+  Conditions:
+  - playernotwithin 8
+  Skills:
+  - heal{a=800}	
+
+CheckPlayerDeath:
+  Conditions:
+  - incombat{}	
+  - targetwithin{d=15} false	
+  Skills:
+  - threat{a=-100000}	
+  - threat{a=1} @PIR{r=20;sort=NEAREST}	
+
+AntiKite1:
+  Conditions:
+  - varinrange{var=caster.mobsNear;value=>9} castinstead AntiKite3	
+  - varinrange{var=caster.mobsNear;value=>4} castinstead AntiKite2	
+  - varinrange{var=caster.mobsNear;value=>1}	
+  Skills:
+  - potion{t=SPEED;d=40;p=false;force=true;i=false;l=1;hasParticles=false}	
+
+AntiKite2:
+  Skills:
+  #- potion{t=SPEED;d=40;p=false;force=true;i=false;l=2}
+  - jump{v=1}	
+  - delay 10	
+  - leap{v=200} @target	
+
+AntiKite3:
+  Conditions:
+  - playerwithin{d=3} false	
+  Skills:
+  #- potion{t=SPEED;d=40;p=true;force=true;i=false;l=3}
+  - potion{t=SPEED;d=40;p=false;force=true;i=false;l=2;hasParticles=false}	
+  #- jump{v=1}
+  #- delay 10
+  #- leap{v=200} @target
+  #- message{m="&cTOGETHER, WE ARE STRONGER!"} @PIR{r=10}	
+
+ResetMobCount:
+  Skills:
+  - setvariable{var=caster.mobsNear;value=0}	
+
+AddMobCount:
+  Conditions:
+  - incombat{}	
+  Skills:
+  - variableadd{var=caster.mobsNear;amount=1}	
+
+NearbyMobMechanics:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=ResetMobCount}	
+  - skill{s=AddMobCount} @MIR{t=ExiledFrostLord;r=5}	
+  - skill{s=AntiKite1}	
+  #- message{m="<caster.var.mobsNear>"} @PIR{r=20}
+
+CrystalHealingSmall:
+  Skills:
+  - heal{a=60}	
+  - particles{p=HAPPY_VILLAGER;a=10;hs=0.5;vs=0.5}	
+  - command{c="runicdamage <caster.uuid> <target.name> 0"}	
+
+NearbyEntityMechanics:
+  Conditions:
+  - incombat{}	
+  Skills:
+  - skill{s=ResetMobCount}	
+  - skill{s=AddMobCount} @LivingEntitiesInRadius{r=6}	
+  - skill{s=NearbyEntityHealing1}	
+
+NearbyEntityHealing1:
+  Conditions:
+  - varinrange{var=caster.mobsNear;value=>2} castinstead NearbyEntityHealing3	
+  - varinrange{var=caster.mobsNear;value=2} castinstead NearbyEntityHealing2	
+  - varinrange{var=caster.mobsNear;value=1}	
+  Skills:
+  - heal{a=60}	
+
+NearbyEntityHealing2:
+  Skills:
+  - heal{a=100}	
+
+NearbyEntityHealing3:
+  Skills:
+  - heal{a=200}	
+
+CrystalSummoningRanged:
+  Cooldown: 19
+  Conditions:
+  - incombat{} true	
+  - mobsinchunk{a=<25}	
+  Skills:
+  - summon{t=CrystalMage;a=1} @Ring{r=6;p=5}	
+  - summon{t=CrystalSoldier;a=1} @Ring{r=4;p=4}	
+  - effect:sound{s=entity.zombie_villager.converted;v=2} @self
+
+CheckCrystalDistance:
+  TargetConditions:
+  - distance{d=>25}	
+  Skills:
+  - heal{a=400}	
+  - remove @self	
+
+MaxMobsReached:
+  Skills:
+  - heal{a=2500}	
+  - throw{v=100;vy=50} @PIR{20}	
+
+CrystalSummoningXalakyteLord:
+  Cooldown: 19
+  Conditions:
+  - incombat{} true	
+  - mobsinchunk{a=<20}	
+  Skills:
+  - summon{t=ExiledFrostLord;a=1} @Ring{r=5;p=6}	
+  - effect:sound{s=entity.zombie_villager.converted;v=2} @self
+
+CrystalSummoningXalakyteMage:
+  Cooldown: 19
+  Conditions:
+  - incombat{} true	
+  - mobsinchunk{a=<20}	
+  Skills:
+  - summon{t=ExiledFrostMage;a=1} @Ring{r=5;p=6}	
+  - effect:sound{s=entity.zombie_villager.converted;v=2} @self
+
+CrystalSummoningXalakyteSoldier:
+  Cooldown: 19
+  Conditions:
+  - incombat{} true	
+  - mobsinchunk{a=<20}	
+  Skills:
+  - summon{t=FrozenSoldier;a=1} @Ring{r=5;p=4}	
+  - effect:sound{s=entity.zombie_villager.converted;v=2} @self
+
+HealXalakyte:
+  Skills:
+  - missile{ot=HealXalakyte-Tick;oh=HealXalakyte-Hit;v=16;i=1;hs=1;vs=1;hnp=true;hp=false;sb=false}	
+  - effect:sound{s=entity.egg.throw;v=2} @self
+
+HealXalakyte-Tick:
+  Skills:
+  - effect:particles{p=happy_villager;a=1} @origin	
+
+XalakyteHeal:
+  Skills:
+  - heal{a=1000}	
+  #- command{c="runicdamage <caster.uuid> <target.name> 0"}
+  - effect:particles{p=happy_villager;a=5}	
+  - effect:sound{s=entity.experience_orb.pickup;volume=2;pitch=0.5} @origin
+
+HealXalakyte-Hit:
+  Skills:
+  - signal{s=HealSelf} @parent	
+
+RotateCrystalLord:
+  Skills:
+  - orbital{ot=RotateCrystalLord-Tick;points=30;i=20;d=600;r=20;hp=false;sb=false}	
+  #- message{m="&bLord Start"} @PIR{r=40}
+
+RotateCrystalLord-Tick:
+  Skills:
+  - pull{v=5;to=true} @MIR{r=100;t=RespawnCrystalXalakyteLord}	
+  #- effect:particles{p=explosion_huge;a=1} @origin
+
+RotateCrystalMage:
+  Skills:
+  - orbital{ot=RotateCrystalMage-Tick;points=30;i=20;d=600;r=20;hp=false;sb=false}	
+  #- message{m="&dMage Start"} @PIR{r=40}
+
+RotateCrystalMage-Tick:
+  Skills:
+  - pull{v=5;to=true} @MIR{r=100;t=RespawnCrystalXalakyteMage}	
+
+RotateCrystalSoldier:
+  Skills:
+  - orbital{ot=RotateCrystalSoldier-Tick;points=30;i=20;d=600;r=20;hp=false;sb=false}	
+  #- message{m="&eSoldier Start"} @PIR{r=40}
+
+RotateCrystalSoldier-Tick:
+  Skills:
+  - pull{v=5;to=true} @MIR{r=100;t=RespawnCrystalXalakyteSoldier}	
+
+RotateCrystalsOffset:
+  Cooldown: 30
+  Conditions:
+  - stance default castinstead StartSpawningCrystals	
+  - stance combat	
+  Skills:
+  - skill{s=RotateCrystalLord}	
+  - delay 200	
+  - skill{s=RotateCrystalMage}	
+  - delay 200	
+  - skill{s=RotateCrystalSoldier}	
+
+StartSpawningCrystals:
+  Cooldown: 30
+  Conditions:
+  #- stance default
+  - incombat{}	
+  Skills:
+  - summon{t=RespawnCrystalXalakyteLord;a=1} @forward{f=20;y=0}	
+  - skill{s=RotateCrystalLord}	
+  - delay 200	
+  - summon{t=RespawnCrystalXalakyteMage;a=1} @forward{f=20;y=0}	
+  - skill{s=RotateCrystalMage}	
+  - delay 200	
+  - summon{t=RespawnCrystalXalakyteSoldier;a=1} @forward{f=20;y=0}	
+  - skill{s=RotateCrystalSoldier}	
+  - delay 200	
+  - setstance{s=combat}	
+
+XalakyteBuffTimer:
+  Conditions:
+  - health{h=<1}
+  Skills:
+  - signal{s=Buffs} @parent
+  - remove
+XalakyteBuffs:
+  Skills:
+  - setvariable{var=caster.damageBuff;type=STRING;value="false"} @MIR{t=RespawnCrystalXalakyteLord;r=50}	
+  - setvariable{var=caster.regenBuff;type=STRING;value="false"} @MIR{t=RespawnCrystalXalakyteMage;r=50}	
+  - setvariable{var=caster.cooldownBuff;type=STRING;value="false"} @MIR{t=RespawnCrystalXalakyteSoldier;r=50}	
+  - remove @MIR{t=RespawnCrystalXalakyteLord,RespawnCrystalXalakyteMage,RespawnCrystalXalakyteSoldier;r=50}	
+#  - message{m="Buffs Given"} @PIR{r=50}	
+
+IceBeam:
+  Conditions:
+  - incombat{}	
+  Skills:
+  - potion{t=SLOW;d=40;l=100;p=false;hasParticles=false}	
+  - effect:particles{p=blockcrack;m=packed_ice;a=40;hs=1;vs=1}	
+  - effect:sound{s=event.raid.horn;v=2} @self
+  - delay 40	
+  - effect:sound{s=entity.ender_dragon.shoot;v=2} @self
+  - projectile{ot=IceBeam-Tick;oh=IceBeam-Hit;v=30;hr=2;vr=2;i=1} @PIR{r=80;limit=1;sort=random}	
+
+IceBeam-Tick:
+  Skills:
+  - effect:particles{p=blockcrack;m=packed_ice;a=100;hs=1;vs=1} @origin	
+  - effect:sound{s=entity.ender_dragon.flap;v=1} @origin	
+
+IceBeam-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PlayersNearOrigin{r=3}	
+  - prison{m=ICE;d=60} @PlayersNearOrigin{r=3}	
+
+PiercingIce:
+  Conditions:
+  - incombat{}	
+  Skills:
+  - projectile{ot=PiercingIce-Tick;oh=PiercingIce-Hit;v=20;hr=1;vr=1;i=1;sb=false;se=false;mr=50}	
+
+PiercingIce-Tick:
+  Skills:
+  - effect:particles{p=blockcrack;m=packed_ice;a=5;hs=0.05;vs=0} @origin	
+
+PiercingIce-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 30"}	
+  - potion{t=slow;d=20;l=1;p=false;i=false}	
+
+SnowHail:
+  Skills:
+  - totem{ot=SnowHail-Tick;hr=5;vr=10;md=200;i=10}	
+
+SnowHail-Tick:
+  Skills:
+  - effect:particlering{p=snow_shovel;r=5;hs=5;vs=1;a=30;s=1;y=3}	
+
+SnowHail-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}	
+  - potion{t=SLOW;d=4;p=false;i=false;l=2}	
+
+BurnState:
+  Skills:
+  - setstance{s=burnstate}	
+  - delay 100	
+  - setstance{s=default}	
+
+XalakytePhase2:
+  Skills:
+  - summon{t=RespawnCrystalXalakytePhase2;a=1} @location{c=0,67,589}	
+  - summon{t=RespawnCrystalXalakytePhase2;a=1} @location{c=-10,67,599}	
+  - summon{t=RespawnCrystalXalakytePhase2;a=1} @location{c=-20,67,589}	
+  - summon{t=RespawnCrystalXalakytePhase2;a=1} @location{c=-10,67,579}	
+
+CrystalSummoningXalakytePhase2:
+  Cooldown: 19
+  Conditions:
+  - mobsinchunk{a=<20}	
+  Skills:
+  - summon{t=ExiledFrostLord;a=1} @Ring{r=5;p=5}	
+  - effect:sound{s=entity.zombie_villager.converted;v=2} @self
+
+HarmingCrystalAura:
+  Skills:
+  - effect:particlering{p=spell_witch;points=32;a=32;r=15;y=1}	
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}	
+
+TargetedBlizzard:
+  Skills:
+  - aura{auraName=TargetedBlizzard;onTick=TargetedBlizzard-Tick;interval=5;duration=200}	
+
+TargetedBlizzard-Tick:
+  Skills:
+  - effect:particlering{p=snow_shovel;r=5;a=50;hs=3;vs=5;y=5}	
+  - potion{t=SLOW;l=2;p=false;i=false} @PIR{r=8}	
+  #- potion{t=SPEED;l=2;p=false} @MIR{t=ExiledFrostLord;r=8}
+
+XalakytePhase3:
+  Skills:
+  - summon{t=RespawnCrystalXalakytePhase3;a=1} @MIR{r=50;t=RespawnCrystalXalakytePhase2}	
+  - remove @MIR{r=50;t=RespawnCrystalXalakytePhase2}	
+
+CrystalSummoningXalakytePhase3:
+  Cooldown: 19
+  Conditions:
+  - incombat{} true	
+  - mobsinchunk{a=<20}	
+  Skills:
+  - summon{t=ExiledFrostLord;a=1} @Ring{r=5;p=3}	
+  - effect:sound{s=entity.zombie_villager.converted;v=2} @self
+
+LargeBlizzard:
+  Skills:
+  - effect:particlering{p=snow_shovel;r=15;a=300;hs=10;vs=5;y=5}	
+  - potion{t=SLOW;l=2;p=false;i=false} @PIR{r=30}	
+  #- potion{t=SPEED;l=2;p=false} @MIR{t=ExiledFrostLord;r=30}
+
+ClaimKill:
+  Skills:
+  - summon{t=BossKillAuto;a=1} @location{c=-8,68,569}	
+  - effect:sound{s=entity.player.levelup;v=2}	
+  - delay 1	
+  - signal{s=OwnerSignal} @MIR{r=30;t=BossKillAuto}	
+  - message{m="&6&l<caster.name> has defeated Xalakyte!"} @self	
+  - message{m="&6&l<caster.name> has defeated Xalakyte!"} @server	
+
+DisplayKiller:
+  Skills:
+  - actionmessage{m="&6This boss was slain by <caster.var.ownerName>!"}	
+
+SetKillParent:
+  Skills:
+  - delay 1	
+  - setowner

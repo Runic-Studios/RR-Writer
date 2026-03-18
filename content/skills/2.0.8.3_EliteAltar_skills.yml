@@ -1,0 +1,6 @@
+elite-threat:
+  TargetConditions:
+  - distance{d=>32}
+  Cooldown: 15
+  Skills:
+  - clearThreat{} @self

@@ -1,0 +1,1472 @@
+drifter-miniboss-smoke-bomb:
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=80;l=1} @Self{r=3}
+  - delay 20  
+  - sound{s=block.big_dripleaf.tilt_up;v=2}
+  - cast{skillName="Smoke Bombs";duration=40;onCast=smoke-bomb-cast;showCastBar=true} @Self
+smoke-bomb-cast:
+  Skills:
+  - summon{t=SmokeBomb1} 
+  - delay 10
+  - summon{t=SmokeBomb1}
+  - delay 10
+  - summon{t=SmokeBomb1}
+smoke-bomb-spawn:
+  Skills:
+  - lunge{velocity=0.75;velocityY=0.66} @RLNO
+smoke-bomb-damage:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - effect:particlesphere{particle=reddust;color="#262222";amount=15;radius=3;yOffset=.5}
+drifter-boss-smoke-bomb:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=target.drifter-boss-skills;value=1}
+  Cooldown: 10
+  Skills:
+  - potion{t=SLOW;d=40;l=1} @self
+  - delay 20  
+  - sound{s=block.big_dripleaf.tilt_up;v=2}
+  - cast{skillName="Empowered Smoke Bombs";duration=40;onCast=smoke-bomb-cast2;showCastBar=true} @Self
+smoke-bomb-cast2:
+  Skills:
+  - summon{t=SmokeBomb2}
+  - sound{s=block.big_dripleaf.tilt_up;v=2}
+  - delay 10
+  - summon{t=SmokeBomb2}
+  - sound{s=block.big_dripleaf.tilt_up;v=2}
+  - delay 10
+  - summon{t=SmokeBomb2}
+  - sound{s=block.big_dripleaf.tilt_up;v=2}
+  - delay 10
+  - summon{t=SmokeBomb2}
+  - sound{s=block.big_dripleaf.tilt_up;v=2}
+smoke-bomb-spawn2:
+  Skills:
+  - lunge{velocity=0.95;velocityY=0.8} @RLNO
+smoke-bomb-damage2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - potion{t=SLOW;d=10;l=1} @PIR{r=4}
+  - effect:particlesphere{particle=reddust;color="#ed1fe3";amount=15;radius=3;yOffset=.5} 
+drifter-miniboss-assassinate:
+  Cooldown: 8
+  Skills:
+  - setvariable{var=caster.stab;value=0}
+  - setvariable{var=caster.leap;value=0}
+  - potion{t=INVISIBILITY;d=10;l=1;hasParticles=false} 
+  - equip{i=AIR:HAND}
+  - equip{i=AIR:OFFHAND}
+  - equip{i=AIR:HEAD}
+  - equip{i=AIR:CHEST}
+  - equip{i=AIR:LEGS}
+  - equip{i=AIR:FEET}
+  - teleport @target
+  - setAI{ai=false}
+  - delay 10
+  - equip{i=GOLDEN_SWORD:HAND}
+  - equip{i=CHAINMAIL_HELMET:HELMET}
+  - equip{i=CHAINMAIL_CHESTPLATE:CHEST}
+  - equip{i=CHAINMAIL_LEGGINGS:LEGS}
+  - equip{i=CHAINMAIL_BOOTS:FEET}
+  - setAI{ai=true}
+  - sound{s=entity.player.attack.crit;v=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=2}
+  - potion{t=BLINDNESS;d=60;l=1} @PIR{r=2}
+  - delay 20
+  - setvariable{var=caster.stab;value=1}
+  - setvariable{var=caster.leap;value=1}
+drifter-boss-assassinate-cast:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=target.drifter-boss-skills;value=1}
+  Cooldown: 9
+  Skills:
+  - cast{skillName="Execute";duration=40;onCast=drifter-boss-assassinate;showCastBar=true} @Self
+drifter-boss-assassinate:
+  Cooldown: 10
+  Skills:
+  - setvariable{var=caster.stab;value=0}
+  - setvariable{var=caster.leap;value=0}
+  - potion{t=INVISIBILITY;d=30;l=1;hasParticles=false} 
+  - equip{i=AIR:HAND}
+  - equip{i=AIR:OFFHAND}
+  - equip{i=AIR:HEAD}
+  - equip{i=AIR:CHEST}
+  - equip{i=AIR:LEGS}
+  - equip{i=AIR:FEET}
+  - teleport @target
+  - setAI{ai=false}
+  - delay 15
+  - equip{i=GOLDEN_SWORD:HAND}
+  - equip{i=CHAINMAIL_HELMET:HELMET}
+  - equip{i=CHAINMAIL_CHESTPLATE:CHEST}
+  - equip{i=CHAINMAIL_LEGGINGS:LEGS}
+  - equip{i=CHAINMAIL_BOOTS:FEET}
+  - setAI{ai=true}
+  - sound{s=entity.player.attack.crit;v=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 1250"} @PIR{r=2}
+  - effect:particlering{particle=crit;radius=2;points=32;amount=5;hS=1;vS=0;y=0.75} @self
+  - potion{t=BLINDNESS;d=90;l=1} @PIR{r=2}
+  - delay 10
+  - setvariable{var=caster.stab;value=1}
+  - setvariable{var=caster.leap;value=1}
+   
+drifter-miniboss-leap:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  - variableEquals{var=caster.leap;value=1}  
+  Cooldown: 8 
+  Skills:
+  - jump{v=0.5}
+  - delay 5
+  - sound{s=entity.ender_dragon.flap;v=2}
+  - leap{v=400} @target
+
+drifter-boss-leap:
+  Conditions:
+  - playernotwithin 3
+  - incombat{}
+  - variableEquals{var=caster.leap;value=1}  
+  - variableEquals{var=target.drifter-boss-skills;value=1}
+  Cooldown: 15
+  Skills:
+  - jump{v=0.5}
+  - delay 5
+  - sound{s=entity.ender_dragon.flap;v=2}
+  - leap{v=300} @target
+
+drifter-boss-shadow-leap:
+  Conditions:
+  - playernotwithin 2
+  - incombat{}
+  Cooldown: 9
+  Skills:
+  - jump{v=0.5}
+  - delay 5
+  - sound{s=entity.ender_dragon.flap;v=2}
+  - leap{v=300} @target
+
+drifter-miniboss-stab:
+  Conditions:
+  - playerwithin 3
+  - incombat{}
+  - variableEquals{var=caster.stab;value=1}  
+  Cooldown: 10
+  Skills:
+  - potion{t=SLOW;d=20;l=2;hasParticles=false} 
+  - delay 5
+  - playanimation{a=0;audience=World}
+  - summon{t=drifter-miniboss-stab-minor-cast} @Forward{f=1;y=0}
+  - delay 20
+  - playanimation{a=0;audience=World}
+  - summon{t=drifter-miniboss-stab-major-cast} @Forward{f=1;y=0}
+
+drifter-miniboss-stab-minor-cast:
+  Skills:
+  - sound{s=entity.player.attack.weak;v=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=2}
+  - remove
+
+drifter-miniboss-stab-major-cast:
+  Skills:
+  - sound{s=entity.player.attack.sweep;v=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 300"} @PIR{r=2}
+  - remove
+
+drifter-miniboss-cocoon:
+  Conditions:
+  - incombat{}
+  - HasAI true
+  Cooldown: 5
+  Skills:
+  - potion{t=SLOW;d=40;l=3} @self
+  - delay 10
+  - effect:sound{s=entity.player.attack.crit;v=2;p=0.1}
+  - equip{i=STONE_SWORD:OFFHAND}
+  - delay 20
+  - equip{i=AIR:OFFHAND}
+  - projectile{ot=cocoon-Tick;oh=cocoon-Hit;v=10;hr=0.8;vr=0.8;i=1} @TargetLocation
+  - effect:sound{s=entity.player.attack.crit;v=2;p=0.1}
+cocoon-Tick:
+  Skills:
+  - effect:particlelinehelix{Fo=false;db=0.4;hl=2;syo=0.75;p=cloud;hr=0.4;md=256;tyo=.75} @origin
+  - delay 8
+  - endprojectile
+cocoon-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @target
+  - potion{t=SLOW;d=60;l=10} @target
+  - effect:sound{s=entity.player.attack.crit;v=2}
+drifter-boss-shadow-spawn:
+  Conditions:
+  - variableEquals{var=target.shadowspawn;value=1}
+  - variableEquals{var=target.drifter-boss-skills;value=1}
+  - incombat{}
+  Cooldown: 60
+  Skills:
+  - particle{p=villager_angry;yOffset=1.8;a=20} @Self
+  - setvariable{var=caster.shadows;value=0} @self
+  - potion{type=SLOW;duration=50;level=1} @Self
+  - delay 20
+  - cast{skillName="Shadowspawns";duration=20;onCast=drifter-boss-shadow-spawn-cast;showCastBar=true} @self
+drifter-boss-shadow-spawn-cast:
+  Skills:
+  - delay 10
+  - effect:particlesphere{particle=cloud;amount=200;radius=5} @self
+  - summon{t=drifter-boss-shadow} 
+  - delay 10
+  - effect:particlesphere{particle=cloud;amount=200;radius=5} @self
+  - summon{t=drifter-boss-shadow}
+  - delay 10
+  - effect:particlesphere{particle=cloud;amount=200;radius=5} @self
+  - summon{t=drifter-boss-shadow}
+drifter-boss-shadow-spawn-leap:
+  Skills:
+  - lunge{velocity=0.75;velocityY=0.75} @RLNO
+drifter-boss-shadow-spin:
+  Cooldown: 6
+  Skills:
+  - potion{type=SLOW;duration=50;level=1} @Self
+  - sound{s=entity.ender_dragon.flap;v=2}
+  - particle{p=villager_angry;yOffset=1.8;a=20} @Self
+  - delay 20
+  - effect:particlering{particle=crit;radius=2;points=32;amount=5;hS=1;vS=0;y=0.75} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=2}
+  - sound{s=entity.player.attack.crit;v=2}
+  - throw{velocity=9;velocityY=6} @PIR{r=2}
+drifter-boss-shadows-remove:
+  Cooldown: 10000
+  Skills:
+  - delay 10
+  - cast{skillName="Shadow Merge";duration=300;onCast=drifter-boss-shadows-remove-cast;showCastBar=true} @self
+drifter-boss-shadows-remove-cast:
+  Skills:
+  - delay 10
+  - variableadd{var=target.shadows;amount=1} @Parent
+  - delay 10
+  - remove @Self
+  
+drifter-boss-shadow-strike:
+  Conditions:
+  - variableEquals{var=target.shadows;value=3}
+  Skills:
+  - setvariable{var=caster.shadows;value=0} @self 
+  - setvariable{var=caster.shadowspawn;value=0} @self 
+  - setvariable{var=caster.drifter-boss-skills;value=0}
+  - delay 20
+  - potion{t=SLOW;d=200;l=3} @self
+  - effect:particleorbital{r=1;points=8;t=100;i=1;vy=20;particle=soul} @self
+  - effect:particleorbital{r=1.5;offy=1;points=10;t=100;i=1;vy=20;particle=soul} @self
+  - effect:particleorbital{r=1;offy=2;points=8;t=100;i=1;vy=20;particle=soul} @self
+  - cast{skillName="The Final Act";duration=140;onCast=drifter-boss-shadow-strike-cast;showCastBar=true} @self
+  - delay 160
+  - setvariable{var=caster.shadowspawn;value=1} @self 
+
+drifter-boss-shadow-strike-cast:
+  Skills:
+  - potion{t=SLOW;d=140;l=10} @Target
+  - setvariable{var=caster.shadowspawn;value=1} @self 
+  - message{cooldown=60;m="&7<&lb>1<&fs>1<&rb> &6Drifter<&co> &e&lImpending Doom."} @PlayersInRadius{r=50}
+  #- effect:particlesphere{particle=cloud;amount=100;radius=3;spread=0.01;y=1} @TargetLocation
+  - effect:particleorbital{r=5;points=10;t=20;i=1;vy=20;particle=flame;offy=2} @TargetLocation
+  - delay 20
+  - effect:particleorbital{r=4;points=10;t=20;i=1;vy=20;particle=flame;offy=1.5} @TargetLocation
+  #- effect:particlesphere{particle=cloud;amount=100;radius=3;spread=0.01;y=1} @TargetLocation
+  - delay 20
+  - message{cooldown=60;m="&7<&lb>1<&fs>2<&rb> &6Drifter<&co> &eWhere did your power go, Runespeaker?"} @Target
+  - effect:particleorbital{r=3;points=10;t=20;i=1;vy=20;particle=flame;offy=1} @TargetLocation
+  #- effect:particlesphere{particle=cloud;amount=100;radius=3;spread=0.01;y=1} @TargetLocation
+  - delay 20
+  - effect:particleorbital{r=2;points=10;t=20;i=1;vy=20;particle=flame;offy=0.5} @TargetLocation
+  #- effect:particlesphere{particle=cloud;amount=100;radius=3;spread=0.01;y=1} @TargetLocation
+  - delay 20
+  - message{cooldown=60;m="&7<&lb>2<&fs>2<&rb> &6Drifter<&co> &eLet's see if you can withstand this."} @Target
+  - effect:particleorbital{r=1;points=5;t=20;i=1;vy=20;particle=flame;offy=0.5} @TargetLocation
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 1000"} @Target
+  - effect:particlesphere{particle=cloud;amount=100;radius=3;spread=0.01;y=1} @TargetLocation
+drifter-boss-death:
+  Skills:
+  - summon{mob=drifter-boss-archer;amount=1;noise=5;os=true} @selflocation
+  - remove @self
+
+drifter-boss-archer-spawn:
+  Skills:
+  - setAI{ai=false} @self
+  - delay 40
+  - Atom{p=spell_witch;r=4;d=true;dr=true;dir=1,0,0;repeat=10;repeati=1} @selflocation{y=1}
+  - message{cooldown=60;m="&7<&lb>1<&fs>1<&rb> &6Drifter<&co> &eThis is it! What I've been waiting for! Come at me, the great one!"} @PIR{r=50}
+  - delay 10
+  - Atom{p=spell_witch;r=3;d=true;dr=true;dir=1,0,0;repeat=5;repeati=1} @selflocation{y=1}
+  - delay 10
+  - Atom{p=spell_witch;r=2;d=true;dr=true;dir=1,0,0;repeat=5;repeati=1} @selflocation{y=1}
+  - delay 10
+  - throw{velocity=15;velocityY=10} @PIR{r=10}
+  - effect:particlesphere{particle=spit;amount=200;radius=8;spread=1;y=1} @selflocation{y=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=10}
+  - delay 20
+  - setAI{ai=true} @self
+
+drifter-archer-barrage:
+  Conditions:
+  - incombat{}
+  - HasAI true
+  Cooldown: 6
+  Skills:
+  - potion{t=SLOW;d=35;l=10;hasParticles=false}
+  - message{m="&7<&lb>1<&fs>1<&rb> &6Drifter<&co> &eArrow Rain. Go."} @PIR{r=50}
+  - delay 35
+  - sound{s=entity.arrow.shoot;p=1.5;v=2}
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.65} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.65} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.65} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.65} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.65} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.65} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.65} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.65} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.65} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.55} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.55} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.55} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.55} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.75} @target
+  - projectile{bulletType=ARROW;onTick=drifter-archer-barrage-tick;onHit=drifter-archer-barrage-hit;i=1;v=15;mr=30;ac=.75} @target
+  
+drifter-archer-barrage-tick:
+  Skills:
+  - effect:particles{particle=crit;a=1} @Origin
+drifter-archer-barrage-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @Target
+
+drifter-archer-lunge:
+  Conditions:
+  - incombat{}
+  - HasAI true
+  Cooldown: 8
+  Skills:
+  - message{cooldown=4;m="&7<&lb>1<&fs>1<&rb> &6Drifter<&co> &eJolt, get ready."} @PIR{r=50}
+  - delay 35
+  - sound{s=entity.ender_dragon.flap}
+  - leap{v=300} @Forward{f=-10;y=4}
+  - sound{s=entity.arrow.shoot;p=0.5;v=2}
+  - delay 8
+  - skill{s=drifter-archer-explosive-proj} @targetlocation
+  - delay 4
+  - sound{s=entity.arrow.shoot;p=0.5;v=2}
+  - skill{s=drifter-archer-explosive-proj} @targetlocation
+  - delay 4
+  - sound{s=entity.arrow.shoot;p=0.5;v=2}
+  - skill{s=drifter-archer-explosive-proj} @targetlocation
+  - delay 4
+  - sound{s=entity.arrow.shoot;p=0.5;v=2}
+  - skill{s=drifter-archer-explosive-proj} @targetlocation
+  - delay 4
+  - sound{s=entity.arrow.shoot;p=0.5;v=2}
+  - skill{s=drifter-archer-explosive-proj} @targetlocation
+
+drifter-archer-explosive-proj:
+  Skills:
+  - sound{s=entity.arrow.shoot}
+  - projectile{bulletType=ARROW;arrowType=TRIDENT;ot=drifter-archer-explosive-proj-tick;oh=drifter-archer-explosive-proj-hit;oe=drifter-archer-explosive-proj-end;i=1;v=25;mr=30;g=.1}
+drifter-archer-explosive-proj-tick:
+  Skills:
+  - effect:particles{particle=crit_magic;a=1} @Origin
+drifter-archer-explosive-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @Target
+drifter-archer-explosive-proj-end:
+  Skills:
+  - summon{t=drifter-archer-explosive-proj-damage}
+drifter-archer-explosive-proj-damage:
+  Skills:
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=3}
+  - potion{t=SLOW;d=40;l=10} @PIR{r=3}
+  - sound{s=entity.dragon_fireball.explode;p=0.5}
+  - delay 10
+  - remove
+
+drifter-boss-archer-mirage-spawn1:
+  Cooldown: 100000
+  Skills:
+  - summon{t=drifter-boss-archer-mirage1} @SelfLocation{y=14.8}
+  - delay 320
+  - remove @MIR{t=drifter-boss-archer-mirage1,drifter-boss-archer-mirage3,drifter-boss-archer-mirage2,drifter-boss-archer-mirage4,drifter-archer-mirage-land-marker,drifter-boss-archer-mirage2,drifter-archer-mirage-projectile-marker;r=128}
+
+drifter-boss-archer-mirage-spawn2:
+  Cooldown: 100000
+  Skills:
+  - summon{t=drifter-boss-archer-mirage3} @SelfLocation{y=14.8}
+  - delay 400
+  - remove @MIR{t=drifter-boss-archer-mirage1,drifter-boss-archer-mirage3,drifter-boss-archer-mirage2,drifter-boss-archer-mirage4,drifter-archer-mirage-land-marker,drifter-boss-archer-mirage2,drifter-archer-mirage-projectile-marker;r=128}
+
+drifter-archer-mirage-box:
+  Skills:
+  - effect:particlering{particle=reddust;color="#ff8787";radius=12;points=50;amount=25;hS=0.1;vS=0;y=0} @SelfLocation{y=-15}
+  - effect:particlering{particle=end_rod;radius=12;points=25;amount=10;hS=0.1;vS=2;y=3} @SelfLocation{y=-15}
+  - effect:particlering{particle=end_rod;radius=12;points=25;amount=20;hS=0.1;vS=3;y=4} @SelfLocation{y=-15}
+  - effect:particlering{particle=end_rod;radius=12;points=25;amount=10;hS=0.1;vS=4;y=6} @SelfLocation{y=-15}
+
+drifter-archer-mirage-land-marker-spawn:
+  Skills:
+  - summon{t=drifter-archer-mirage-land-marker} @selflocation{y=-15}
+drifter-archer-mirage-box-pull:
+  Conditions:
+  - playernotwithin{d=12} true
+  Skills:
+  - message{m="&7<&lb>1<&fs>1<&rb> &6Drifter<&co> &eStay put."} @PIR{r=50}
+  - forcepull{spread=5} @PIR{r=50}
+  
+drifter-archer-mirage-box-pull-remover:
+  Skills:
+  - delay 10
+  - remove @Self
+drifter-archer-mirage-projectile-marker:
+  Skills:
+  - summon{t=drifter-archer-mirage-projectile-marker} @RLNO{r=10;s=1}
+  - sound{s=entity.blaze.shoot;v=2}
+drifter-archer-mirage-projectile-marker2:
+  Skills:
+  - summon{t=drifter-archer-mirage-projectile-marker2} @RLNO{r=10;s=1}
+  - sound{s=entity.blaze.shoot;v=2}
+
+sneak-wave-projectile:
+  Skills:
+  - projectile{bulletType=BLOCK;material=LIGHT_BLUE_STAINED_GLASS;oT=[- effect:particles{p=reddust;particle=reddust;color="#1f52ed";speed=0.5}];onHit=sneak-wave-slash-hit;i=1;v=5;mr=200;g=1;hR=0.5;vR=0.5;v=10;fO=true;syo="random(-12,12)";sso="random(-12,12)";ac=1} @RLNTE{a=12;r=2}
+sneak-wave-projectile2:
+  Skills:
+  - projectile{bulletType=BLOCK;material=LIGHT_BLUE_STAINED_GLASS;oT=[- effect:particles{p=reddust;particle=reddust;color="#1f52ed";speed=0.5}];onHit=sneak-wave-slash-hit;i=1;v=5;mr=200;g=1;hR=0.5;vR=0.5;v=10;fO=true;syo="random(-12,12)";sso="random(-12,12)";ac=1} @RLNTE{a=6;r=2}
+sneak-wave-slash-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @Target
+
+Spinning-test-cast-spawn:
+  Cooldown: 180
+  Skills:
+  - summon{t=drifter-boss-archer-mirage2} @selflocation{y=-15} 
+Spinning-test-cast-spawn2:
+  Cooldown: 180
+  Skills:
+  - summon{t=drifter-boss-archer-mirage4} @selflocation{y=-15} 
+Spinning-test-cast:
+  Cooldown: 6
+  Skills: 
+  - sound{s=entity.warden.attack_impact;v=2}
+  - projectile{onTick=Spinning-test;onEnd=Spinning-test-end-cast;onHit=spinning-hit;v=7;i=1;md=40;fo=false;vr=0.05;hr=0.10;ac=1;drawHitbox=true;syo=.1;tyo=.1;so=-.5;sfo=-.5} @RAO{p=50} 
+Spinning-test-cast2:
+  Cooldown: 3
+  Skills: 
+  - sound{s=entity.warden.attack_impact;v=2}
+  - projectile{onTick=Spinning-test;onEnd=Spinning-test-end-cast2;onHit=spinning-hit;v=15;i=1;md=20;fo=false;vr=0.05;hr=0.10;ac=1;drawHitbox=true;syo=.1;tyo=.1;so=-.5;sfo=-.5} @RAO{p=50}   
+Spinning-test:
+  Skills:
+  - effect:particles{delay=1;particle=reddust;color="#c94242";amount=1;speed=1;hS=0;vS=0;y=0.25;size=1.5} @origin
+Spinning-test-end-cast:
+  Skills:
+  - projectile{onTick=Spinning-test;onHit=spinning-hit;v=7;i=1;md=40;fo=true;syo=.1;tyo=.1;vr=0.05;hr=0.10;directionReversed=true;drawHitbox=true} @Selflocation
+Spinning-test-end-cast2:
+  Skills:
+  - projectile{onTick=Spinning-test;onHit=spinning-hit;v=15;i=1;md=20;fo=true;syo=.1;tyo=.1;vr=0.05;hr=0.10;directionReversed=true;drawHitbox=true} @Selflocation
+spinning-hit:
+  Skills:
+  - message{cooldown=20;m="&7<&lb>1<&fs>1<&rb> &6Drifter<&co> &eEver learn how to jump?"} @PIR{r=50} 
+  - command{c="runicdamage <caster.uuid> <target.name> 300"} @PIR{r=2}
+
+drifter-message1:
+  Cooldown: 9999
+  Skills:
+  - message{cooldown=4;m="&7<&lb>1<&fs>7<&rb> &6Drifter<&co> &cI do not understand you."} @PIR{r=50}
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>2<&fs>7<&rb> &6Drifter<&co> &cI wish to understand you."} @PIR{r=50}
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>3<&fs>7<&rb> &6Drifter<&co> &cIt's tricky. I know."} @PIR{r=50}
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>4<&fs>7<&rb> &6Drifter<&co> &cIt may be selfish of me."} @PIR{r=50}
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>5<&fs>7<&rb> &6Drifter<&co> &cBut what am I to do?"} @PIR{r=50}
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>6<&fs>7<&rb> &6Drifter<&co> &cHere's the deal, you might not realize."} @PIR{r=50}
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>7<&fs>7<&rb> &6Drifter<&co> &cYou mean a lot more than you think."} @PIR{r=50}
+
+drifter-message2:
+  Cooldown: 9999
+  Skills:
+  - message{cooldown=4;m="&7<&lb>1<&fs>4<&rb> &6Drifter<&co> &cTo me, to everyone, to those around you."} @PIR{r=50}
+  - delay 35
+  - message{cooldown=4;m="&7<&lb>2<&fs>4<&rb> &6Drifter<&co> &cI don't know how to say it."} @PIR{r=50}
+  - delay 35
+  - message{cooldown=4;m="&7<&lb>3<&fs>4<&rb> &6Drifter<&co> &cThis is my way of telling you."} @PIR{r=50}
+  - delay 35
+  - message{cooldown=4;m="&7<&lb>4<&fs>4<&rb> &6Drifter<&co> &cI have a lot of things to say to you."} @PIR{r=50}
+
+drifter-message3:
+  Cooldown: 9999
+  Skills:
+  - message{cooldown=4;m="&7<&lb>1<&fs>4<&rb> &6Drifter<&co> &cEven if you didn't mean to or didn't realize it."} @PIR{r=50} #Remove if going to live
+  - delay 35
+  - message{cooldown=4;m="&7<&lb>2<&fs>4<&rb> &6Drifter<&co> &cYou've been an integral part in my life."} @PIR{r=50}  #Remove if going to live
+  - delay 35
+  - message{cooldown=4;m="&7<&lb>3<&fs>4<&rb> &6Drifter<&co> &cThat's not an understatement."} @PIR{r=50} #Remove if going to live
+  - delay 35
+  - message{cooldown=4;m="&7<&lb>4<&fs>4<&rb> &6Drifter<&co> &cI wish only the best for you."} @PIR{r=50} 
+    
+drifter-message4:
+  Cooldown: 9999
+  Skills:
+  - message{cooldown=4;m="&7<&lb>1<&fs>3<&rb> &6Drifter<&co> &cI wish I could do more for you like you've done for me."} @PIR{r=50}
+  - delay 35
+  - message{cooldown=4;m="&7<&lb>2<&fs>3<&rb> &6Drifter<&co> &cIt's been fun, and I hope it continues that way."} @PIR{r=50}
+  - delay 35
+  - message{cooldown=4;m="&7<&lb>3<&fs>3<&rb> &6Drifter<&co> &cEven if I don't know what will make it better, or I don't understand you."} @PIR{r=50}
+
+drifter-message5:
+  Cooldown: 9999
+  Skills:
+  - message{cooldown=4;m="&7<&lb>1<&fs>5<&rb> &6Drifter<&co> &cJust like Nijika's sister said, "I see you"; corny isn't it? I'm sorry."} @PIR{r=50} #Remove if going to live
+  - delay 40
+  - message{cooldown=4;m="&7<&lb>2<&fs>5<&rb> &6Drifter<&co> &cNever stop trying, and that goes for everything."} @PIR{r=50}
+  - delay 40
+  - message{cooldown=4;m="&7<&lb>3<&fs>5<&rb> &6Drifter<&co> &cThink of the 1st thing that came to mind I said "never stop trying"."} @PIR{r=50}
+  - delay 40
+  - message{cooldown=4;m="&7<&lb>4<&fs>5<&rb> &6Drifter<&co> &cEven if I do not understand you, you're not alone."} @PIR{r=50} #Remove if going to live
+  - delay 40
+  - message{cooldown=4;m="&7<&lb>5<&fs>5<&rb> &6Drifter<&co> &cI don't mean to save you, I just want you to feel you have a friend."} @PIR{r=50} #Remove if going to live
+
+drifter-message6:
+  Cooldown: 9999
+  Skills:
+  - message{cooldown=4;m="&7<&lb>1<&fs>7<&rb> &6Drifter<&co> &cI hope these feelings reach you."} @PIR{r=50}
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>2<&fs>7<&rb> &6Drifter<&co> &cI hope you understand this, and then mock the cringiness on this thing I did."} @PIR{r=50} #Remove if going to live
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>3<&fs>7<&rb> &6Drifter<&co> &cBecause that's what makes you, you."} @PIR{r=50} #Remove if going to live
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>4<&fs>7<&rb> &6Drifter<&co> &cI hold all hope for you, for your future, for your ambitions"} @PIR{r=50} #Remove if going to live
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>5<&fs>7<&rb> &6Drifter<&co> &cI hope for the best."} @PIR{r=50}
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>6<&fs>7<&rb> &6Drifter<&co> &c&lI have the power to share your burden, the power to be your friend."} @PIR{r=50}
+  - delay 50
+  - message{cooldown=4;m="&7<&lb>7<&fs>7<&rb> &6Drifter<&co> &cBut...-"} @PIR{r=50}
+  - delay 60
+  - summon{mob=TheEnd;amount=1;noise=5;os=true} @selflocation
+
+
+
+GrandEscape:
+    Cooldown: 140
+    Skills:
+    - skill{s=GrandEscapeBass}
+    - delay 292
+    - skill{s=GrandEscapeMelody}
+GrandEscapeBass:
+    Skills:
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.339} @Self
+    - delay 4
+    
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.339} @Self
+    - delay 32
+    
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=1.122} @Self
+    - delay 32
+    - sound{s=block.note_block.bass;p=0.594} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.666} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 32
+    
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=1.122} @Self
+    - delay 32
+    - sound{s=block.note_block.bass;p=0.594} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.666} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 32
+    
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=1.122} @Self
+    - delay 32
+    - sound{s=block.note_block.bass;p=0.594} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.666} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 32
+    
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=1.122} @Self
+    - delay 32
+    - sound{s=block.note_block.bass;p=0.594} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.666} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 32
+    
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=1.122} @Self
+    - delay 32
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 32
+    
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=1.122} @Self
+    - delay 32
+    - sound{s=block.note_block.bass;p=0.594} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.666} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 32
+    
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=1.122} @Self
+    - delay 32
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 32
+    
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=1.122} @Self
+    - delay 32
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.992} @Self
+    - delay 16
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 32
+    
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 36
+    - sound{s=block.note_block.bass;p=0.9} @Self
+    - delay 36
+GrandEscapeMelody:
+    Skills:
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 44
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 44
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 44
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 44
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 44
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 44
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.752} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 44
+   
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+   
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 12
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 36
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 36
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 36
+
+    - sound{s=block.note_block.harp;p=1.339} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 28
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 8
+    
+    - sound{s=block.note_block.harp;p=1.339} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 8
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 28
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 8
+    
+    - sound{s=block.note_block.harp;p=1.339} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 28
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 8
+    
+    - sound{s=block.note_block.harp;p=1.339} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 28
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 8
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 32
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 8
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+ 
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.594} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.56} @Self
+    - delay 44
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 20
+     
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.339} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.339} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 8
+    
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 20
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.339} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.339} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 8
+     
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 12
+    
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 20
+   
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 20
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.843} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 18
+   
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 20
+     
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 12
+     
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.666} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 8
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 20
+    
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 20
+    
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 20
+    
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 48
+    
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.188} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=1.122} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.992} @Self
+    - delay 4
+    - sound{s=block.note_block.harp;p=0.9} @Self
+    - delay 20

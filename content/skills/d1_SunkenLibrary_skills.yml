@@ -1,0 +1,1276 @@
+ignis-remove:
+  Skills:
+  - message{m="&c&lIgnis is forbidden to leave the library."} @PIR{r=32} 
+  - remove
+
+ignis-meteor-cast:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - delay 40
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - sound{s=entity.blaze.ambient}
+  - delay 20
+  - potion{t=SLOW;d=40;l=2;hasParticles=false}
+  - skill{s=ignis-meteor-minor} @target
+  - delay 10
+  - skill{s=ignis-meteor-minor} @target
+  - delay 20
+  - skill{s=ignis-meteor-major} @target
+ignis-meteor-minor:
+  Conditions:
+  - playerwithin 25
+  Skills:
+  - sound{s=entity.blaze.shoot}
+  - projectile{ot=ignis-meteor-minor-tick;oh=ignis-meteor-minor-hit;v=.5;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=4;g=1.5}
+ignis-meteor-minor-tick:
+  Skills:
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5} @origin
+
+ignis-meteor-minor-hit:
+  Skills:
+  - ignite{d=40}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5}
+  - sound{s=entity.blaze.burn}
+
+ignis-meteor-major:
+  Conditions:
+  - playerwithin 25
+  Skills:
+  - sound{s=entity.blaze.shoot}
+  - projectile{ot=ignis-meteor-major-tick;oh=ignis-meteor-major-hit;v=.25;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=4;g=1.5}
+ignis-meteor-major-tick:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=.5} @origin
+
+ignis-meteor-major-hit:
+  Skills:
+  - ignite{d=80}
+  - potion{t=SLOW;d=80;l=10}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=.5}
+  - sound{s=entity.blaze.burn}
+
+
+ignis-enrage:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - sound{s=block.enchantment_table.use} 
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - effect:particlesphere{p=soul_fire_flame;amount=8;radius=5;yOffset=.5}
+  - summon{t=ignis-golem} @Location{c=5056,176,4872}
+
+
+ignis-spider-summon1:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.spider.ambient} 
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - effect:particlesphere{p=flame;amount=8;radius=5;yOffset=.5}
+  - delay 20
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - summon{t=ignis-spider;a=2;r=3;os=true} 
+  - delay 10
+  - summon{t=ignis-spider;a=3;r=4;os=true} 
+  - delay 10
+  - summon{t=ignis-spider;a=4;r=5;os=true} 
+  - delay 240
+  - skill{s=ignis-critter-summon}
+ignis-spider-summon2:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.spider.ambient} 
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - effect:particlesphere{p=flame;amount=8;radius=5;yOffset=.5}
+  - delay 20
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - summon{t=ignis-spider;a=2;r=3;os=true} 
+  - delay 10
+  - summon{t=ignis-spider;a=3;r=4;os=true} 
+  - delay 10
+  - summon{t=ignis-spider;a=4;r=5;os=true} 
+  - delay 240
+  - skill{s=ignis-critter-summon}
+ignis-critter-summon:
+  Skills:
+  - summon{t=ignis-critter;a=2;r=3;os=true} 
+  - delay 240
+  - skill{s=ignis-critter-summon}
+
+ignis-spider:
+  Skills:
+  - delay 40
+  - leap{v=250} @target
+  - delay 80
+  - ignite{d=40} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=3;yOffset=.5}
+  - sound{s=entity.blaze.burn}
+  - remove
+ignis-critter:
+  Skills:
+  - delay 40
+  - leap{v=100} @target
+  - delay 80
+  - ignite{d=40} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=3}
+  - effect:particlesphere{p=flame;amount=4;radius=3;yOffset=.5}
+  - sound{s=entity.blaze.burn}
+  - remove
+
+sunken-enchanted-air:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - jump{v=1.25}
+  - delay 10
+  - leap{v=250} @RLNTE{a=1;r=5;s=1;minr=3}
+  - skill{s=sunken-enchanted-air-projectile} @target
+  - delay 3
+  - skill{s=sunken-enchanted-air-projectile} @target
+  - delay 3
+  - skill{s=sunken-enchanted-air-projectile} @target
+  - delay 3
+  - skill{s=sunken-enchanted-air-projectile} @target
+  - delay 3
+  - skill{s=sunken-enchanted-air-projectile} @target
+sunken-enchanted-air-passive:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{d=SLOW;d=20;l=1;hasParticles=false}
+  - leap{v=250} @RLNTE{a=1;r=5;s=1;minr=3}
+  - delay 15
+  - skill{s=sunken-enchanted-air-projectile} @target
+  - delay 5
+  - skill{s=sunken-enchanted-air-projectile} @target
+sunken-enchanted-air-projectile:
+  Skills:
+  - sound{s=entity.arrow.shoot}
+  - projectile{ot=sunken-enchanted-air-projectile-tick;oh=sunken-enchanted-air-projectile-hit;oe=sunken-enchanted-air-projectile-end;i=1;v=30;mr=30;ac=.75}
+sunken-enchanted-air-projectile-tick:
+  Skills:
+  - effect:particles{particle=cloud;a=1} @Origin
+sunken-enchanted-air-projectile-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+sunken-enchanted-air-projectile-end:
+  Skills:
+  - sound{s=block.fire.extinguish}
+  
+
+sunken-enchanted-soul:
+  Conditions:
+  - incombat{}
+  - playerwithin 32
+  Cooldown: 16
+  Skills:
+  - summon{t=sunken-enchanted-soul-spawn;r=5} @target
+sunken-enchanted-soul-spawn:
+  Skills:
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - effect:particlesphere{p=soul;amount=8;radius=5;yOffset=.5}
+  - delay 20
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - effect:particlesphere{p=soul;amount=8;radius=5;yOffset=.5}
+  - delay 20
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - effect:particlesphere{p=soul;amount=8;radius=5;yOffset=.5}
+  - delay 20
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - effect:particlesphere{p=soul;amount=8;radius=5;yOffset=.5}
+  - delay 20
+  - effect:particlesphere{p=soul;amount=20;radius=5;yOffset=.5}
+  - sound{s=block.anvil.break}
+  - potion{t=SLOW;d=40;l=10} @PIR{r=5}
+  - remove
+sunken-enchanted-soul-passive:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{d=SLOW;d=40;l=3;hasParticles=false}
+  - sound{s=block.soul_sand.break}
+  - summon{t=sunken-enchanted-soul-passive-spawn;a=3;r=1}
+  - delay 10
+  - sound{s=block.soul_sand.break}
+  - summon{t=sunken-enchanted-soul-passive-spawn;a=3;r=1}
+  - delay 10
+  - sound{s=block.soul_sand.break}
+  - summon{t=sunken-enchanted-soul-passive-spawn;a=3;r=1}
+sunken-enchanted-soul-passive-spawn:
+  Skills:
+  - delay 40
+  - leap{v=100} @NearestPlayer{r=3}
+  - delay 20
+  - potion{d=SLOW;d=20;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=3}
+  - effect:particlesphere{p=soul;amount=4;radius=3;yOffset=.5}
+  - remove
+
+sunken-enchanted-fire:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=80;l=2;hasParticles=false}
+  - skill{s=sunken-enchanted-fire-meteor} @target
+  - delay 20
+  - skill{s=sunken-enchanted-fire-meteor} @target
+  - delay 10
+  - skill{s=sunken-enchanted-fire-meteor} @target
+sunken-enchanted-fire-meteor:
+  Conditions:
+  - playerwithin 32
+  Skills:
+  - sound{s=entity.blaze.shoot}
+  - projectile{ot=sunken-enchanted-fire-meteor-tick;oh=sunken-enchanted-fire-meteor-hit;v=1;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=8;g=1.5}
+sunken-enchanted-fire-meteor-tick:
+  Skills:
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5} @origin
+
+sunken-enchanted-fire-meteor-hit:
+  Skills:
+  - ignite{d=80}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"}
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5}
+  - sound{s=entity.blaze.burn}
+
+
+
+sunken-enchanted-fire-passive:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=120;l=1;hasParticles=false}
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=.5}
+  - ignite{d=80} @PIR{r=1}
+  - sound{s=entity.blaze.burn}
+  - delay 40
+  - effect:particlesphere{p=flame;amount=4;radius=3;yOffset=.5}
+  - ignite{d=40} @PIR{r=3}
+  - sound{s=entity.blaze.burn}
+  - delay 40
+  - effect:particlesphere{p=flame;amount=12;radius=5;yOffset=.5}
+  - ignite{d=20} @PIR{r=5}
+  - sound{s=entity.blaze.burn}
+
+sunken-enchanted-power:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - jump{v=1}
+  - delay 10
+  - equip{i=BloodAxe:0}
+  - delay 10
+  - sound{s=entity.cat.hurt} 
+  - effect:particlesphere{p=reddust;amount=8;radius=4;yOffset=.5} 
+  - throw{vy=10} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - delay 20
+  - equip{i=AIR:0}
+sunken-enchanted-power-heal:
+  Conditions:
+  - incombat{}
+  Skills:
+  - heal{a=75;i=true}
+  - sound{s=entity.cat.eat}
+  - effect:particlesphere{p=reddust;amount=4;radius=1;yOffset=.5} 
+  - signal{s=remove} @MIR{t=sunken-enchanted-power-spawn;r=3}
+
+sunken-enchanted-power-passive:
+  Conditions:
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - summon{t=sunken-enchanted-power-spawn;r=3} @self
+sunken-enchanted-power-spawn:
+  Skills:
+  - delay 40
+  - skill{s=sunken-enchanted-power-spawn-visual}
+  - delay 160
+  - remove
+sunken-enchanted-power-spawn-visual:
+  Skills:
+  - signal{s=heal} @MIR{t=sunken-enchanted-power;r=2}
+  - effect:particlesphere{p=reddust;amount=1;radius=1;yOffset=.25} 
+  - delay 5
+  - skill{s=sunken-enchanted-power-spawn-visual}
+
+sunken-riddle:
+  Skills:
+  - setvariable{var=caster.air;value=0} 
+  - setvariable{var=caster.soul;value=0}
+  - setvariable{var=caster.fire;value=0} 
+sunken-riddle-air:
+  Conditions:
+  - variableEquals{var=caster.air;value=0}   
+  Skills:
+  - message{m="&7Guardian of the greatest weapon mankind possesses..."} @PIR{r=42} 
+  - setvariable{var=caster.air;value=1}
+sunken-riddle-soul:
+  Conditions:
+  - variableEquals{var=caster.air;value=1} 
+  Skills:
+  - heal{a=60;i=true} 
+  - message{m="&7Distanced oneself's soul from the earth to seek light..."} @PIR{r=42} 
+  - setvariable{var=caster.soul;value=1}
+sunken-riddle-fire:
+  Conditions:
+  - variableEquals{var=caster.soul;value=1} 
+  Skills:
+  - heal{a=60;i=true} 
+  - message{m="&7Spoke words of fuming violence and guts..."} @PIR{r=42} 
+  - setvariable{var=caster.fire;value=1}
+sunken-riddle-power:
+  Conditions:
+  - variableEquals{var=caster.fire;value=1} 
+  Skills:
+  - heal{a=60;i=true} 
+  - message{m="&7For all those around to be drawn back in fright..."} @PIR{r=42} 
+  - delay 80
+  - message{m="&7You solved the Statue's Riddle and received an Ethereal Key by the lectern."} @PIR{r=42} 
+  - summon{t=sunken-ethereal-giver} @Location{c=5058.5,194,5000.5}
+  - skill{s=sunken-riddle}
+  - heal{a=60;i=true} 
+sunken-riddle-health:
+  Conditions:
+  - variableEquals{var=caster.air;value=1} 
+  Skills:
+  - skill{s=viator-timer-sethealth}
+  - skill{s=sunken-riddle-death} 
+sunken-riddle-death:
+  Conditions:
+  - health{h=<1}
+  Skills:
+  - message{m="&7The Statue's Riddle has been reset due to the &7lack &7of &7progression &7in &7the &7past &7minute."} @PIR{r=42} 
+  - skill{s=sunken-riddle}
+  - heal{a=60;i=true} 
+sunken-ethereal-giver:
+  Skills:
+  - command{c="ri drop ethereal-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - remove
+
+viator-timer-sethealth:
+  Skills:
+  - randomskill{s=viator-timer-sethealth1,viator-timer-sethealth2,viator-timer-sethealth3,viator-timer-sethealth4,viator-timer-sethealth5,viator-timer-sethealth6,viator-timer-sethealth7,viator-timer-sethealth8,viator-timer-sethealth9,viator-timer-sethealth10,viator-timer-sethealth11,viator-timer-sethealth12,viator-timer-sethealth13,viator-timer-sethealth14,viator-timer-sethealth15,viator-timer-sethealth16,viator-timer-sethealth17,viator-timer-sethealth18,viator-timer-sethealth19,viator-timer-sethealth20,viator-timer-sethealth21,viator-timer-sethealth22,viator-timer-sethealth23,viator-timer-sethealth24,viator-timer-sethealth25,viator-timer-sethealth26,viator-timer-sethealth27,viator-timer-sethealth28,viator-timer-sethealth29,viator-timer-sethealth30}
+viator-timer-sethealth1:
+  Conditions:
+  - health{a=1}
+  Skills:
+  - sethealth{a=0}
+viator-timer-sethealth2:
+  Conditions:
+  - health{a=2}
+  Skills:
+  - sethealth{a=1}
+viator-timer-sethealth3:
+  Conditions:
+  - health{a=3}
+  Skills:
+  - sethealth{a=2}
+viator-timer-sethealth4:
+  Conditions:
+  - health{a=4}
+  Skills:
+  - sethealth{a=3}
+viator-timer-sethealth5:
+  Conditions:
+  - health{a=5}
+  Skills:
+  - sethealth{a=4}
+viator-timer-sethealth6:
+  Conditions:
+  - health{a=6}
+  Skills:
+  - sethealth{a=5}
+viator-timer-sethealth7:
+  Conditions:
+  - health{a=7}
+  Skills:
+  - sethealth{a=6}
+viator-timer-sethealth8:
+  Conditions:
+  - health{a=8}
+  Skills:
+  - sethealth{a=7}
+viator-timer-sethealth9:
+  Conditions:
+  - health{a=9}
+  Skills:
+  - sethealth{a=8}
+viator-timer-sethealth10:
+  Conditions:
+  - health{a=10}
+  Skills:
+  - sethealth{a=9}
+viator-timer-sethealth11:
+  Conditions:
+  - health{a=11}
+  Skills:
+  - sethealth{a=10}
+viator-timer-sethealth12:
+  Conditions:
+  - health{a=12}
+  Skills:
+  - sethealth{a=11}
+viator-timer-sethealth13:
+  Conditions:
+  - health{a=13}
+  Skills:
+  - sethealth{a=12}
+viator-timer-sethealth14:
+  Conditions:
+  - health{a=14}
+  Skills:
+  - sethealth{a=13}
+viator-timer-sethealth15:
+  Conditions:
+  - health{a=15}
+  Skills:
+  - sethealth{a=14}
+viator-timer-sethealth16:
+  Conditions:
+  - health{a=16}
+  Skills:
+  - sethealth{a=15}
+viator-timer-sethealth17:
+  Conditions:
+  - health{a=17}
+  Skills:
+  - sethealth{a=16}
+viator-timer-sethealth18:
+  Conditions:
+  - health{a=18}
+  Skills:
+  - sethealth{a=17}
+viator-timer-sethealth19:
+  Conditions:
+  - health{a=19}
+  Skills:
+  - sethealth{a=18}
+viator-timer-sethealth20:
+  Conditions:
+  - health{a=20}
+  Skills:
+  - sethealth{a=19}
+viator-timer-sethealth21:
+  Conditions:
+  - health{a=21}
+  Skills:
+  - sethealth{a=20}
+viator-timer-sethealth22:
+  Conditions:
+  - health{a=22}
+  Skills:
+  - sethealth{a=21}
+viator-timer-sethealth23:
+  Conditions:
+  - health{a=23}
+  Skills:
+  - sethealth{a=22}
+viator-timer-sethealth24:
+  Conditions:
+  - health{a=24}
+  Skills:
+  - sethealth{a=23}
+viator-timer-sethealth25:
+  Conditions:
+  - health{a=25}
+  Skills:
+  - sethealth{a=24}
+viator-timer-sethealth26:
+  Conditions:
+  - health{a=26}
+  Skills:
+  - sethealth{a=25}
+viator-timer-sethealth27:
+  Conditions:
+  - health{a=27}
+  Skills:
+  - sethealth{a=26}
+viator-timer-sethealth28:
+  Conditions:
+  - health{a=28}
+  Skills:
+  - sethealth{a=27}
+viator-timer-sethealth29:
+  Conditions:
+  - health{a=29}
+  Skills:
+  - sethealth{a=28}
+viator-timer-sethealth30:
+  Conditions:
+  - health{a=30}
+  Skills:
+  - sethealth{a=29}
+
+
+viator-enrage1:
+  Conditions:
+  - incombat
+  Skills:
+  - effect:particlesphere{p=flame;amount=12;radius=5;yOffset=.5}
+  - ignite{d=80} @PIR{r=5}
+  - sound{s=entity.blaze.burn}
+viator-enrage2:
+  Conditions:
+  - incombat
+  Skills:
+  - summon{t=viator-ember;a=3;r=5}
+  
+
+viator-ember:
+  Skills:
+  - delay 40
+  - leap{v=250} @NearestPlayer{r=32}
+  - delay 40
+  - leap{v=250} @NearestPlayer{r=32}
+  - delay 40
+  - effect:particlesphere{p=flame;amount=12;radius=5;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=8}
+  - ignite{d=80} @PIR{r=5}
+  - sound{s=block.fire.extinguish}
+  - remove
+viator-ember-passive:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=3}
+  - effect:particlesphere{p=flame;amount=8;radius=3;yOffset=.5}
+  - delay 20
+  - skill{s=viator-ember-passive}
+
+viator-start:
+  Skills:
+  - remove @MIR{t=viator-timer;r=128}
+  - delay 20
+  - summon{t=viator-timer} @Location{c=5106.5,168,5152.5}
+ 
+viator-sand-death:
+  Skills:
+  - delay 800
+  - effect:particlesphere{p=block_crack;material=sand;amount=12;radius=1;yOffset=.5} 
+  - sound{s=block.sand.break}
+  - remove
+viator-sand:
+  Skills:
+  - signal{s=heal} @MIR{t=viator-timer;r=6}
+viator-timer:
+  Skills:
+  - heal{a=15;i=true} 
+  - effect:particlesphere{p=block_crack;material=sand;amount=12;radius=1;yOffset=.5} 
+  - sound{s=block.sand.break;v=2}
+  - remove @MIR{t=viator-sand;r=6}
+viator-timer-health:
+  Skills:
+  - skill{s=viator-timer-death}
+  - skill{s=viator-timer-enrage1} 
+  - skill{s=viator-timer-enrage2} 
+  - skill{s=viator-timer-enrage1-visual}
+  - skill{s=viator-timer-enrage2-visual}
+viator-timer-enrage1:
+  Conditions:
+  - health{h=<21}
+  Cooldown: 12
+  Skills:
+  - signal{s=enrage1} @MIR{t=viator;r=128}
+viator-timer-enrage1-visual:
+  Conditions:
+  - health{h=<21} 
+  - health{h=>10}
+  Skills:
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5} @MIR{t=viator;r=64}
+  - potion{t=SPEED;d=25;l=1;hasParticles=false} @MIR{t=viator;r=64}
+
+viator-timer-enrage2:
+  Conditions:
+  - health{h=<11}
+  Cooldown: 12
+  Skills:
+  - signal{s=enrage2} @MIR{t=viator;r=128}
+viator-timer-enrage2-visual:
+  Conditions:
+  - health{h=<11}
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=.5} @MIR{t=viator;r=128}
+  - potion{t=SPEED;d=25;l=2;hasParticles=false} @MIR{t=viator;r=64}
+
+viator-timer-death:
+  Conditions:
+  - health{h=<1}
+  Skills:
+  - signal{s=heal} @MIR{t=viator;r=128}
+  - remove @MIR{t=viator-sand;r=128}
+  - remove
+viator-heal:
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - summon{t=viator-timer} @Location{c=5106.5,168,5152.5}
+  - heal{a=500;i=true} 
+  - sound{s=block.portal.ambient}
+  - sound{s=entity.wandering_trader.drink_potion} 
+  - delay 20
+  - heal{a=500;i=true} 
+  - sound{s=entity.wandering_trader.drink_potion} 
+  - delay 20
+  - heal{a=500;i=true} 
+  - sound{s=entity.wandering_trader.drink_potion} 
+  - delay 20
+  - heal{a=500;i=true} 
+  - sound{s=entity.wandering_trader.drink_potion} 
+  - delay 20
+  - heal{a=500;i=true} 
+  - sound{s=entity.wandering_trader.drink_potion} 
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - sound{s=entity.generic.explode;v=1}
+  - effect:particlesphere{p=flame;amount=12;radius=5;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=5}
+  #- message{m="&7The health of the Chronomancer rewinds"} @PIR{r=32}
+
+viator-timer-sand:
+  Conditions:
+  - incombat{}
+  Skills:
+  - randomskill{skills=viator-timer-sand1,viator-timer-sand2,viator-timer-sand3,viator-timer-sand4,viator-timer-sand5,viator-timer-sand6,viator-timer-sand7,viator-timer-sand8}
+viator-timer-sand1:
+  Cooldown: 75
+  Skills:
+  - summon{t=viator-sand;r=1} @Location{c=5114,168,5160}
+viator-timer-sand2:
+  Cooldown: 75
+  Skills:
+  - summon{t=viator-sand;r=1} @Location{c=5117,168,5152}
+viator-timer-sand3:
+  Cooldown: 75
+  Skills:
+  - summon{t=viator-sand;r=1} @Location{c=5114,168,5144}
+viator-timer-sand4:
+  Cooldown: 75
+  Skills:
+  - summon{t=viator-sand;r=1} @Location{c=5106,168,5141}
+viator-timer-sand5:
+  Cooldown: 75
+  Skills:
+  - summon{t=viator-sand;r=1} @Location{c=5098,168,5144}
+viator-timer-sand6:
+  Cooldown: 75
+  Skills:
+  - summon{t=viator-sand;r=1} @Location{c=5095,168,5153}
+viator-timer-sand7:
+  Cooldown: 75
+  Skills:
+  - summon{t=viator-sand;r=1} @Location{c=5098,168,5160}
+viator-timer-sand8:
+  Cooldown: 75
+  Skills:
+  - summon{t=viator-sand;r=1} @Location{c=5106,168,5163}
+
+TheLibrarian-flame:
+  Conditions:
+  - incombat
+  Cooldown: 20
+  Skills:
+  - delay 160
+  - jump{v=1.25}
+  - delay 10
+  - setAI{ai=false}
+  - sound{s=entity.blaze.shoot;v=2} 
+  - summon{t=TheLibrarian-breath;a=3}
+  - delay 5
+  - sound{s=entity.blaze.shoot;v=2} 
+  - summon{t=TheLibrarian-breath;a=3}
+  - delay 5
+  - sound{s=entity.blaze.shoot;v=2} 
+  - summon{t=TheLibrarian-breath;a=3}
+  - delay 5
+  - setAI{ai=true}
+  - delay 80
+  - sound{s=block.fire.extinguish}
+  - signal{s=remove} @MIR{t=TheLibrarian-breath;r=128}
+
+TheLibrarian-breath:
+  Conditions:
+  - playernotwithin 12 castinstead TheLibrarian-breath2
+  Skills:
+  - leap{v=250} @NearestPlayer{r=128}
+  - delay 240
+  - remove
+TheLibrarian-breath2:
+  Skills:
+  - leap{v=400} @NearestPlayer{r=128}
+  - delay 80
+  - remove
+TheLibrarian-breath-remove:
+  Skills:
+  - remove
+
+TheLibrarian-breath-within:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=3}
+  - remove
+
+TheLibrarian-breath-damaged:
+  Skills:
+  - skill{s=TheLibrarian-breath-damaged-within}
+  - remove
+TheLibrarian-breath-damaged-within:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @trigger
+
+TheLibrarian-matter:
+  Skills:
+  - effect:particlesphere{p=flame;amount=12;radius=5;yOffset=.5}
+  - leap{v=400} @MIR{t=TheLibrarian;r=256}
+  - delay 20
+  - effect:particlesphere{p=flame;amount=24;radius=6;yOffset=.5}
+  - randomskill{skills=TheLibrarian-matter-lunge1,TheLibrarian-matter-lunge2} @MIR{t=TheLibrarian;r=256}
+TheLibrarian-matter2:
+  Skills:
+  - effect:particlesphere{p=flame;amount=12;radius=5;yOffset=.5}
+  - leap{v=400} @NearestPlayer{r=256} 
+  - delay 20
+  - effect:particlesphere{p=flame;amount=24;radius=6;yOffset=.5}
+  - leap{v=750} @NearestPlayer{r=256} 
+
+TheLibrarian-matter-lunge1:
+  Skills:
+  - leap{v=400} 
+TheLibrarian-matter-lunge2:
+  Skills:
+  - leap{v=750}
+TheLibrarian-matter-death:
+  Skills:
+  - sound{s=entity.magma_cube.squish}
+  - ignite{d=40} @PIR{r=5}
+  - blockmask{m=netherrack;d=5;r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - effect:particlesphere{p=flame;amount=24;radius=5;yOffset=.5}
+  - delay 5
+  - remove
+
+TheLibrarian-creation:
+  Conditions:
+  - playernotwithin 16 castinstead TheLibrarian-second-creation
+  - incombat{}
+  Cooldown: 30
+  Skills:
+  - delay 200
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 20
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 20
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 10
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 10
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-creation1,TheLibrarian-creation2,TheLibrarian-creation3,TheLibrarian-creation4}
+TheLibrarian-creation1:
+  Cooldown: 1
+  Skills:
+  - summon{t=TheLibrarian-matter} @Location{c=5245,95,4953}
+TheLibrarian-creation2:
+  Cooldown: 1
+  Skills:
+  - summon{t=TheLibrarian-matter} @Location{c=5198,95,5000}
+TheLibrarian-creation3:
+  Cooldown: 1
+  Skills:
+  - summon{t=TheLibrarian-matter} @Location{c=5245,95,5047}
+TheLibrarian-creation4:
+  Cooldown: 1
+  Skills:
+  - summon{t=TheLibrarian-matter} @Location{c=5292,95,5000}
+
+TheLibrarian-second-creation:
+  Conditions:
+  - incombat{}
+  - playernotwithin 12
+  Cooldown: 20
+  Skills:
+  - delay 200
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 20
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 20
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 10
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 10
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+  - delay 5
+  - randomskill{skills=TheLibrarian-second-creation1,TheLibrarian-second-creation2,TheLibrarian-second-creation3,TheLibrarian-second-creation4}
+TheLibrarian-second-creation1:
+  Cooldown: 1
+  Skills:
+  - summon{t=TheLibrarian-matter2} @Location{c=5245,95,4953}
+TheLibrarian-second-creation2:
+  Cooldown: 1
+  Skills:
+  - summon{t=TheLibrarian-matter2} @Location{c=5198,95,5000}
+TheLibrarian-second-creation3:
+  Cooldown: 1
+  Skills:
+  - summon{t=TheLibrarian-matter2} @Location{c=5245,95,5047}
+TheLibrarian-second-creation4:
+  Cooldown: 1
+  Skills:
+  - summon{t=TheLibrarian-matter2} @Location{c=5292,95,5000}
+
+
+TheLibrarian-fragment:
+  Skills:
+  - skill{s=TheLibrarian-fragment-visual}
+  - delay 240
+  - skill{s=TheLibrarian-fragment-visual}
+
+TheLibrarian-fragment-visual:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=20;radius=8;yOffset=.5}
+  - delay 10
+  - skill{s=TheLibrarian-fragment-transform}
+  - skill{s=TheLibrarian-fragment-visual}
+
+TheLibrarian-fragment2:
+  Skills:
+  - skill{s=TheLibrarian-fragment2-visual}
+  - delay 240
+  - skill{s=TheLibrarian-fragment2-visual}
+
+TheLibrarian-fragment2-visual:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=12;radius=8;yOffset=.5}
+  - delay 10
+  - skill{s=TheLibrarian-fragment2-transform}
+  - skill{s=TheLibrarian-fragment2-visual}
+
+TheLibrarian-monster-expire:
+  Skills:
+  - setvariable{var=caster.expire;value=0} 
+  - delay 1200
+  - setvariable{var=caster.expire;value=1}
+  - leap{v=400} @target
+  - delay 20
+  - leap{v=400} @target
+  - delay 20
+  - leap{v=400} @target
+  - delay 20
+  - leap{v=400} @target
+  - delay 20
+  - ignite{d=80} @PIR{r=6}
+  - sound{s=block.fire.extinguish}
+  - remove
+TheLibrarian-monster:
+  Conditions:
+  - variableEquals{var=caster.expire;value=0} 
+  Cooldown: 8
+  Skills:
+  - jump{v=0.25}
+  - delay 2
+  - leap{v=250} @target
+  - delay 40
+  - jump{v=1}
+  - delay 20
+  - sound{s=block.stone.break}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - throw{vy=10} @PIR{r=5}
+  - effect:particlesphere{p=flame;amount=20;radius=5;yOffset=.5}
+
+TheLibrarian-fragment-transform:
+  Cooldown: 1
+  Conditions:
+  - onground{} true
+  Skills:
+  - summon{t=TheLibrarian-monster}
+  - remove
+TheLibrarian-fragment2-transform:
+  Cooldown: 1
+  Conditions:
+  - onground{} true
+  Skills:
+  - summon{t=TheLibrarian-monster2}
+  - remove
+
+TheLibrarian-descent:
+  Conditions:
+  - incombat{}
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=3;yOffset=.5}
+  - randomskill{skills=TheLibrarian-descent1,TheLibrarian-descent2,TheLibrarian-descent3,TheLibrarian-descent4,TheLibrarian-descent5,TheLibrarian-descent6,TheLibrarian-descent7,TheLibrarian-descent8}
+TheLibrarian-descent1:
+  Cooldown: 80
+  Skills:
+  - summon{t=TheLibrarian-fragment} @Location{c=5270,100,5026}
+TheLibrarian-descent2:
+  Cooldown: 80
+  Skills:
+  - summon{t=TheLibrarian-fragment} @Location{c=5245,100,5036}
+TheLibrarian-descent3:
+  Cooldown: 80
+  Skills:
+  - summon{t=TheLibrarian-fragment} @Location{c=5220,100,5024}
+TheLibrarian-descent4:
+  Cooldown: 80
+  Skills:
+  - summon{t=TheLibrarian-fragment} @Location{c=5210,100,5000}
+TheLibrarian-descent5:
+  Cooldown: 80
+  Skills:
+  - summon{t=TheLibrarian-fragment} @Location{c=5221,100,4975}
+TheLibrarian-descent6:
+  Cooldown: 80
+  Skills:
+  - summon{t=TheLibrarian-fragment} @Location{c=5245,100,4965}
+TheLibrarian-descent7:
+  Cooldown: 80
+  Skills:
+  - summon{t=TheLibrarian-fragment} @Location{c=5272,100,4974}
+TheLibrarian-descent8:
+  Cooldown: 80
+  Skills:
+  - summon{t=TheLibrarian-fragment} @Location{c=5281,100,5000}
+
+
+
+TheLibrarian-final-descent:
+  Cooldown: 9999
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=12;radius=4;yOffset=.5}
+  - summon{t=TheLibrarian-fragment2} @Location{c=5270,100,5026}
+  - summon{t=TheLibrarian-fragment2} @Location{c=5245,100,5036}
+  - summon{t=TheLibrarian-fragment2} @Location{c=5220,100,5024}
+  - summon{t=TheLibrarian-fragment2} @Location{c=5210,100,5000}
+  - summon{t=TheLibrarian-fragment2} @Location{c=5221,100,4975}
+  - summon{t=TheLibrarian-fragment2} @Location{c=5245,100,4965}
+  - summon{t=TheLibrarian-fragment2} @Location{c=5272,100,4974}
+  - summon{t=TheLibrarian-fragment2} @Location{c=5281,100,5000}
+
+
+
+TheLibrarian-void:
+  Conditions:
+  - variableEquals{var=caster.void;value=0} 
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.void;value=1}
+  - message{m="&6The Librarian calls upon the Red Rift"} @PIR{r=128}
+  - delay 80
+  - message{m="&eThe &cInfernal Golem &eat center contains the hidden nature of the Red Rift"} @PIR{r=128}
+  - randomskill{skills=TheLibrarian-void1,TheLibrarian-void2}
+
+TheLibrarian-second-void:
+  Conditions:
+  - variableEquals{var=caster.void;value=0} 
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.void;value=1}
+  - message{m="&6The Librarian calls upon the Red Rift once more"} @PIR{r=128}
+  - delay 80
+  - message{m="&eThe &cInfernal Golem &eat center contains the hidden nature of the Red Rift"} @PIR{r=128}
+  - randomskill{skills=TheLibrarian-void1,TheLibrarian-void2}  
+TheLibrarian-void1:
+  Skills:
+  - summon{t=TheLibrarian-golem1;r=3} @Location{c=5245,64,5000}
+  - delay 300
+  - sound{s=block.portal.ambient;v=4}
+  - delay 100
+  - signal{s=remove} @MIR{t=TheLibrarian-golem1;r=128}
+  - skill{s=TheLibrarian-void-dmg1} @PIR{r=128}
+  - skill{s=TheLibrarian-safe-message1} @PIR{r=128}
+  - setvariable{var=caster.void;value=0}
+TheLibrarian-void-dmg1:
+  TargetConditions:
+  - onblock{m=BARRIER} true
+  Skills:
+  - message{m="&cYou have trespassed on the Red Rift while it was unstable"}
+  - ignite{d=400}
+  - potion{t=BLINDNESS;d=80;l=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"}
+TheLibrarian-safe-message1:
+  TargetConditions:
+  - onblock{m=BARRIER} false
+  Skills:
+  - message{m="&aYou did not anger the Red Rift"}
+  
+TheLibrarian-void2:
+  Cooldown: 9999
+  Skills:
+  - summon{t=TheLibrarian-golem2;r=3} @Location{c=5245,64,5000}
+  - delay 300
+  - sound{s=block.portal.ambient;v=4}
+  - delay 100
+  - signal{s=remove} @MIR{t=TheLibrarian-golem2;r=128}
+  - skill{s=TheLibrarian-void-dmg2} @PIR{r=128}
+  - skill{s=TheLibrarian-safe-message2} @PIR{r=128}
+  - setvariable{var=caster.void;value=0}
+TheLibrarian-void-dmg2:
+  TargetConditions:
+  - onblock{m=BARRIER} false
+  Skills:
+  - message{m="&cYou were not standing on the Red Rift for it to protect you"}
+  - ignite{d=400}
+  - potion{t=BLINDNESS;d=80;l=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"}
+TheLibrarian-safe-message2:
+  TargetConditions:
+  - onblock{m=BARRIER} true
+  Skills:
+  - message{m="&aThe Red Rift has kept you safe"}
+
+TheLibrarian-encryption-remove:
+  Skills:
+  - message{m="&6The hidden nature of the Red Rift was not revealed in time"} @PIR{r=128}
+  - remove
+
+sunken-cutscene1:
+  Skills:
+  - message{m="&7[1/2] &eTeigh<&co> &6Begone, Azanian Scum!"} @PIR{r=12}
+  - delay 38
+  - jump{v=.6}
+  - delay 2
+  - leap{velocity=400} @target
+  - sound{s=entity.ender_dragon.flap} 
+  - delay 10
+  - sound{s=block.glass.break}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @target
+  - potion{type=SLOW;duration=60;level=2} @target
+  - potion{t=BLINDNESS;duration=60;level=1} @target
+  - delay 20
+  - velocity{v=400} @self
+  - delay 15
+  - leap{velocity=250} @target
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @target
+  - effect:sound{s=entity.dragon_fireball.explode} @self
+  - delay 10
+  - setAI{ai=false}
+  - delay 20
+  - message{m="&7[2/2] &eTeigh<&co> &6Wait... Sorry! Are you okay!?"} @PIR{r=12}
+  - remove
+
+sunken-cutscene2:
+  Conditions:
+  - playerwithin 3
+  Cooldown: 32
+  Skills:
+  - equip{i=AIR:0}
+  - potion{t=INVISIBILITY;d=400;l=1;hasParticles=false}
+  - effect:particlesphere{p=smoke;amount=4;radius=1;yOffset=.5}
+  - delay 640
+  - equip{i=WRITABLE_BOOK:0}
+
+
+StartLightsOut:
+  Conditions:
+  - incombat{}
+  Skills:
+  - effect:smokeswirl{duration=60;interval=10} @TargetLocation
+  - delay 10
+  - sendtitle{title="&4&kooo&r&l&cLights Out&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=32}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cLights Out&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=32}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - skill{s=LightsOut}
+
+LightsOut:
+  Skills:
+  - potion{t=BLINDNESS;d=160;l=4;p=false} @PIR{r=32}
+  - delay 10
+  - teleport{spreadh=5;spreadv=0} @PlayersInRadius{r=32;sort=RANDOM}
+  - potion{t=SPEED;l=2;d=40} @self
+
+StartRally:
+  Conditions:
+  - incombat{} true
+  Skills:
+  - sendtitle{title="&4&kooo&r&l&cRally&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=32}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cRally&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=32}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - skill{s=Rally}
+
+Rally:
+  Skills:
+  - rally{types=DiscipleLibrarian;radius=32;ot=false} @target
+
+FireAura:
+  Skills:
+  - delay 40
+  - effect:particlering{p=flame;a=5;vS=0;hS=0;radius=1}
+  - sound{s=entity.horse.step} @self
+  - delay 20
+  - effect:particlering{p=flame;a=5;vS=0;hS=0;radius=3}
+  - sound{s=entity.horse.step} @self
+  - delay 20
+  - effect:particlering{p=flame;a=5;vS=0;hS=0;radius=5}
+  - sound{s=entity.horse.step} @self
+  - delay 20
+  - effect:particlering{p=flame;a=10;vs=0.5;hs=0.5;s=0;y=0;points=20;radius=1}
+  - effect:particlering{p=flame;a=10;vs=0.5;hs=0.5;s=0;y=0;points=20;radius=3}
+  - effect:particlering{p=flame;a=10;vs=0.5;hs=0.5;s=0;y=0;points=20;radius=5}
+  - effect:sound{s=entity.blaze.shoot;v=0.8;p=0.01} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PlayersInRadius{r=3}
+
+sunken-cutscene3:
+  Skills:
+  - setvariable{var=caster.bleed;value=1} 
+  - skill{s=sunken-visual-cutscene3}
+  - message{m="&7[1/16] &cOracle Librarian&r&c<&co> &6Agh! It hurts! It hurts so much!"} @PIR{r=32}
+  - delay 40
+  - message{m="&7[2/16] &cOracle Librarian&r&c<&co> &6Why would you do this!?"} @PIR{r=32}
+  - delay 20
+  - summon{t=UnknownFireFigure2} @Location{c=4893.5,202,4912.5}
+  - delay 20
+  - message{m="&7[3/16] &cOracle Librarian<&co> &6What are you aiming to do?"} @PIR{r=32}
+  - delay 40
+  - message{m="&7[4/16] &cOracle Librarian<&co> &6I don't understand the need of such pain!"} @PIR{r=32}
+  - delay 40
+  - message{m="&7[5/16] &c???<&co> &c&l..."} @PIR{r=32}
+  - delay 40
+  - setvariable{var=caster.bleed;value=0} 
+  - skill{s=sunken-visual2-cutscene3} 
+  - message{m="&7[6/16] &cOracle Librarian<&co> &6Ah!"} @PIR{r=32}
+  - delay 10
+  - message{m="&7[7/16] &cOracle Librarian<&co> &6Stop, stop, stop!"} @PIR{r=32}
+  - delay 10
+  - message{m="&7[8/16] &cOracle Librarian<&co> &6Make it stop, please!"} @PIR{r=32}
+  - delay 10
+  - message{m="&7[9/16] &cOracle Librarian<&co> &6I'll do anything for you to stop!"} @PIR{r=32}
+  - delay 20
+  - message{m="&7[10/16] &cOracle Librarian<&co> &6PLEASE!"} @PIR{r=32}
+  - delay 10
+  - message{m="&7[11/16] &cOracle Librarian<&co> &6MERCY!"} @PIR{r=32}
+  - delay 80
+  - message{m="&7[12/16] &cOracle Librarian<&co> &6...Ah."} @PIR{r=32}
+  - delay 80
+  - message{m="&7[13/16] &cOracle Librarian<&co> &6To think I was just crying in pain."} @PIR{r=32}
+  - delay 80
+  - message{m="&7[14/16] &cOracle Librarian<&co> &6That was distasteful of me, &c&lyour majesty&r&6."} @PIR{r=32}
+  - delay 80
+  - message{m="&7[15/16] &cOracle Librarian<&co> &6This place, everyone, they belong to you now."} @PIR{r=32}
+  - delay 80
+  - message{m="&7[16/16] &cOracle Librarian<&co> &6We shall devote ourselves to that oppressing power."} @PIR{r=32}
+  - delay 100
+  - command{c="questtrigger player <target.name> SunkenPyroScene"} @PIR{r=32}
+  - remove @MIR{t=UnknownFireFigure2;r=32}
+  - remove
+
+sunken-visual-cutscene3:
+  Conditions:
+  - variableEquals{var=caster.bleed;value=1}   
+  Skills:
+  - damage{a=1}
+  - sound{s=block.honey_block.break}
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} 
+  - delay 10
+  - skill{s=sunken-visual-cutscene3}
+
+sunken-visual2-cutscene3:
+  Skills:
+  - setAI{ai=true}
+  - jump{v=1}
+  - sound{s=entity.blaze.ambient}
+  - ignite{d=100}
+  - sound{s=entity.blaze.shoot}
+  - effect:particlesphere{p=soul_fire_flame;amount=8;radius=4;yOffset=.5}
+  - delay 10
+  - setAI{ai=false}
+  - sound{s=entity.blaze.shoot}
+  - effect:particlesphere{p=soul_fire_flame;amount=8;radius=4;yOffset=.5}
+  - delay 10
+  - sound{s=entity.blaze.shoot}
+  - effect:particlesphere{p=soul_fire_flame;amount=8;radius=4;yOffset=.5}
+  - delay 10
+  - sound{s=entity.blaze.shoot}
+  - effect:particlesphere{p=soul_fire_flame;amount=8;radius=4;yOffset=.5}
+  - delay 10
+  - sound{s=entity.blaze.shoot}
+  - effect:particlesphere{p=soul_fire_flame;amount=8;radius=4;yOffset=.5}
+  - delay 10
+  - sound{s=entity.blaze.shoot}
+  - effect:particlesphere{p=soul_fire_flame;amount=8;radius=4;yOffset=.5}
+  - delay 10
+  - sound{s=entity.blaze.shoot}
+  - effect:particlesphere{p=soul_fire_flame;amount=8;radius=4;yOffset=.5}
+  - delay 10
+  - sound{s=entity.blaze.shoot}
+  - effect:particlesphere{p=soul_fire_flame;amount=8;radius=4;yOffset=.5}
+  - delay 10
+  - sound{s=entity.blaze.shoot}
+  - effect:particlesphere{p=soul_fire_flame;amount=8;radius=4;yOffset=.5}
+  - setAI{ai=true}
+  - delay 20
+  - sound{s=block.fire.extinguish}
+  - setAI{ai=false}
+
+sunken-visual2-cutscene3-tick:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=1;radius=2;yOffset=.5} @origin
+
+OracleLibrarian-bleed:
+  Cooldown: 8
+  Skills:
+  - setvariable{var=caster.bleed;value=1}
+  - delay 80
+  - setvariable{var=caster.bleed;value=0}
+
+OracleLibrarian-bleed-visual:
+  Conditions:
+  - variableEquals{var=caster.bleed;value=1}   
+  Skills:
+  - sound{s=block.honey_block.break}
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} 
+  - skill{s=OracleLibrarian-bleed-damage} 
+OracleLibrarian-bleed-damage:
+  Conditions:
+  - health{h=>100}
+  Skills:
+  - command{c="damage <caster.uuid> 25"} @self

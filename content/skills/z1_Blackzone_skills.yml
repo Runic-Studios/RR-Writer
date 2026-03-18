@@ -1,0 +1,33 @@
+cave-horror-skill-manager:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=cave-horror-passive-adrenaline-damage} @self
+  - skill{s=cave-horror-passive-adrenaline-speed-var} @self
+  - skill{s=cave-horror-passive-adrenaline-speed-pot} @self
+  #- message{m="Skill Manager"} @PIR{r=16}
+
+cave-horror-passive-adrenaline-damage:
+  Cooldown: 10
+  Skills:
+  - variableadd{var=caster.damage;a=100}
+
+cave-horror-passive-adrenaline-speed-var:
+  Conditions:
+  - variableinrange{var=caster.speed;value=>5} cancel
+  Cooldown: 60
+  Skills:
+  - variableadd{var=caster.speed;a=1}
+  - message{m="Speed is <caster.var.speed>"} @PIR{r=16}
+
+cave-horror-passive-adrenaline-speed-pot:
+  Cooldown: 10
+  Skills:
+  - potion{t=speed;p=false;d=240;l=<caster.var.speed>}
+
+adrenaline-damage-test:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> <caster.var.damage>"} @target 
+  - message{m="Damaged for <caster.var.damage>"} @PIR{r=16}
+
+

@@ -12,6 +12,10 @@ relocations:
     target: plugins/MythicMobs/mobs
 
   - type: directory
+    source: skills
+    target: plugins/MythicMobs/skills
+
+  - type: directory
     source: model-blueprints
     target: plugins/ModelEngine/blueprints
 

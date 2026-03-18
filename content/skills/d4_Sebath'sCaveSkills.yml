@@ -1,0 +1,594 @@
+BossFirework:
+    Skills:
+    - delay 2
+    - command{c="runicfirework <trigger.uuid>"} @trigger
+    - message{m="&a&lCongratulations! You defeated the dungeon boss!"} @trigger
+GoblinRiderLunge:
+    Conditions:
+    - playerwithin 6
+    - playernotwithin 5
+    Skills:
+    - jump{v=0.4}
+    - delay 2
+    - leap{v=250} @NearestPlayer{r=6}
+CaveOgreBlindness:
+    Cooldown: 16
+    Conditions:
+    - incombat{}
+    Skills:
+    - delay 20
+    - potion{t=BLINDNESS;l=1;d=40;p=false;i=false}
+    - randommessage{m="&cCave Ogre<&co> &4You die now!","&cCave Ogre<&co> &4I kill you!","&cCave Ogre<&co> &4You are die!";} @PIR{r=12}
+    - potion{t=SPEED;l=1;d=60;p=false;i=false} @self
+CaveOgreSmack:
+    Cooldown: 12
+    Conditions:
+    - incombat{}
+    - playerwithin 4
+    Skills:
+    - delay 40
+    - randommessage{m="&cCave Ogre<&co> &4I smack you!","&cCave Ogre<&co> &4I hit you!","&cCave Ogre<&co> &4I stab you!";} @PIR{r=12}
+    - delay 20
+    - sound{s=block.gravel.break} @Self
+    - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=2}
+    - skill{s=GoblinStun} @PIR{r=2}
+    - potion{type=BLINDNESS;duration=40;level=1} @PIR{r=2}
+    - potion{type=NAUSEA;duration=120;level=1} @PIR{r=2}
+CaveOgreJump:
+    Cooldown: 20
+    Conditions:
+    - incombat{}
+    - playerwithin 6
+    Skills:
+    - delay 80
+    - randommessage{m="&cCave Ogre<&co> &4I jump!","&cCave Ogre<&co> &4I go up!","&cCave Ogre<&co> &4I move high!";} @PIR{r=12}
+    - delay 20
+    - jump{v=0.6
+    - delay 25
+    - sound{s=block.gravel.break} @Self
+    - velocity{v=400} @PIR{r=4}
+    - effect:particlesphere{particle=block_crack;material=stone;amount=25;radius=4;yOffset=.5}
+    - potion{type=BLINDNESS;duration=40;level=3} @PIR{r=4}
+    - potion{type=SLOW;duration=40;level=3} @PIR{r=4}
+    - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=4}
+GoblinSmokeBomb:
+    Conditions:
+    - playerwithin 12
+    - incombat{}
+    Cooldown: 20
+    Skills:
+    - potion{type=BLINDNESS;duration=120;level=1} @PIR{r=8}
+    - potion{type=INVISIBILITY;duration=120;level=1;hasParticles=false} 
+    - potion{type=SPEED;duration=120;level=1;hasParticles=false} 
+    - effect:particles{particle=explosion_large;a=20;hs=1;vs=1;r=30} 
+    - sound{s=block.fire.extinguish;v=2}
+GoblinThiefTrap:
+    Conditions:
+    - playerwithin 12
+    Skills:
+    - potion{type=SLOW;duration=120;level=10;hasParticles=false} 
+    - delay 20
+    - sound{s=block.metal_pressure_plate.click_on}
+    - delay 20
+    - sound{s=block.metal_pressure_plate.click_on}
+    - delay 20
+    - sound{s=block.metal_pressure_plate.click_on}
+    - delay 20
+    - sound{s=block.metal_pressure_plate.click_on}
+    - delay 20
+    - sound{s=block.metal_pressure_plate.click_off}
+    - summon{type=GoblinTrap;amount=1;radius=0} @self
+GoblinStun:
+    Skills:
+    - aura{auraName=GoblinStun;onTick=GoblinStun-Tick;interval=1;duration=40} @self
+GoblinStun-Tick:
+    Skills:
+    - velocity{vx=0;vy=0;vz=0} @PIR{r=2}
+  
+GoblinSwarm1:
+    Conditions:
+    - varinrange{var=caster.mobsNear;value=>5} castinstead GoblinSwarm3
+    - varinrange{var=caster.mobsNear;value=>3} castinstead GoblinSwarm2
+    - varinrange{var=caster.mobsNear;value=>1}
+    Skills:
+    - skill{s=GoblinStun} 
+    - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=3} 
+GoblinSwarm2:
+    Skills:
+    - potion{type=BLINDNESS;duration=40;level=1} @PIR{r=2}
+    - skill{s=GoblinStun} 
+    - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=3}  
+GoblinSwarm3:
+    Skills:
+    - potion{type=BLINDNESS;duration=40;level=1} @PIR{r=2}
+    - skill{s=GoblinStun} 
+    - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=3} 
+ResetGoblinCount:
+    Skills:
+    - setvariable{var=caster.mobsNear;value=0}	
+AddGoblinCount:
+    Conditions:
+    - incombat{} true
+    Skills:
+    - variableadd{var=caster.mobsNear;amount=1}	 
+NearbyGoblinMechanics:
+    Conditions:
+    - incombat{} true
+    Skills:
+    - skill{s=ResetGoblinCount}	
+    - skill{s=AddGoblinCount} @MIR{t=GoblinFootSoldier;r=5}	
+    - skill{s=GoblinSwarm1}     
+    
+GoblinTrapPrimed:
+    Conditions:
+    - playerwithin 4
+    - variableEquals{var=caster.number;value=0}
+    Skills:
+    - message{m="&7Triggered a goblin trap, right click to disarm it!"} @PIR{r=6}
+    - potion{type=SLOW;duration=40;level=1} @PIR{r=6}
+    - setvariable{var=caster.number;value=1} 
+#    - setname{name="&e[&66&e] &cPrimed Goblin Trap"}
+    - sound{s=block.metal_pressure_plate.click_on}
+GoblinTrapExplosion:
+    Conditions:
+    - playernotwithin 4
+    - variableEquals{var=caster.number;value=1}
+    Skills:
+    - message{m="&7Unsuccesfully disarmed the goblin trap!"} @PIR{r=6}
+    - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=6}
+    - damage{a=100} @MIR{t=GoblinFootSoldier} 
+    - potion{type=SLOW;duration=40;level=10} @PIR{r=6}
+    - potion{type=BLINDNESS;duration=60;level=2} @PIR{r=6}
+    - sound{s=entity.generic.explode;v=2}
+    - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+    - remove
+GoblinTrapParticle:
+    Conditions:
+    - variableEquals{var=caster.number;value=1}
+    - variableEquals{var=caster.disarm;value=0}
+    Skills:
+    - effect:particlesphere{p=reddust;amount=4;radius=1} 
+GoblinTrapDisarm:
+    Conditions:
+    - variableEquals{var=caster.disarm;value=0}
+    Skills:
+    - setvariable{var=caster.disarm;value=1} 
+    - message{m="&7Disarming the goblin trap"} @PIR{r=5}
+GoblinTrapDisarming:
+    Conditions:
+    - playerwithin 4
+    - variableEquals{var=caster.disarm;value=1}
+    Skills:
+    - variablesubtract{var=caster.disarming;amount=1}
+    - sound{s=block.metal_pressure_plate.click_on}
+    - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+    - delay 10
+    - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+GoblinTrapDisarmed:
+    Conditions:
+    - variableEquals{var=caster.disarming;value=0}
+    Skills:
+    - sound{s=block.metal_pressure_plate.click_off}
+    - message{m="&7Succesfully disarmed the goblin trap!"} @PIR{r=5}
+    - remove
+GoblinTrapHeal:
+    Conditions:
+    - variableEquals{var=caster.number;value=1}
+    Skills:
+    - heal{a=100} 
+
+redorb1:
+  Cooldown: 60
+  Skills:
+  - summon{t=redorb} @Location{c=-2105.5,176,-434.5}  
+redorb2:
+  Cooldown: 60
+  Skills:
+  - summon{t=redorb} @Location{c=-2100.5,176,-429.5}
+redorb3:
+  Cooldown: 60
+  Skills:
+  - summon{t=redorb} @Location{c=-2090.5,176,-429.5}
+redorb4:
+  Cooldown: 60
+  Skills:
+  - summon{t=redorb} @Location{c=-2085.5,176,-434.5}
+redorb5:
+  Cooldown: 60
+  Skills:
+  - summon{t=redorb} @Location{c=-2085.5,176,-444.5}
+redorb6:
+  Cooldown: 60
+  Skills:
+  - summon{t=redorb} @Location{c=-2090.5,176,-449.5}
+redorb7:
+  Cooldown: 60
+  Skills:
+  - summon{t=redorb} @Location{c=-2100.5,176,-449.5}
+redorb8:
+  Cooldown: 60
+  Skills:
+  - summon{t=redorb} @Location{c=-2105.5,176,-444.5}
+
+bloodritual1:
+  Cooldown: 60
+  Skills:
+  - summon{t=bloodritual} @Location{c=-2095.5,172,-460.5}  
+bloodritual2:
+  Cooldown: 60
+  Skills:
+  - summon{t=bloodritual} @Location{c=-2116.5,172,-439.5}
+bloodritual3:
+  Cooldown: 60
+  Skills:
+  - summon{t=bloodritual} @Location{c=-2095.5,172,-418.5}
+bloodritual4:
+  Cooldown: 60
+  Skills:
+  - summon{t=bloodritual} @Location{c=-2074.5,172,-439.5}
+
+sebathmimic1:
+  Cooldown: 60
+  Skills:
+  - summon{t=sebathmimic} @Location{c=-2081,172,-454}  
+sebathmimic2:
+  Cooldown: 60
+  Skills:
+  - summon{t=sebathmimic2} @Location{c=-2081,172,-425}
+  - summon{t=sebathmimic2} @Location{c=-2081,172,-425}
+  - summon{t=sebathmimic2} @Location{c=-2081,172,-425}
+sebathmimic3:
+  Cooldown: 60
+  Skills:
+  - summon{t=sebathmimic3} @Location{c=-2110,172,-425}
+sebathmimic4:
+  Cooldown: 60
+  Skills:
+  - summon{t=sebathmimic4} @Location{c=-2110,172,-454}
+
+redorbproj:
+  Skills:
+  - projectile{onTick=redorbProjTick;onHit=redorbProjHit;i=1;v=20;mr=128} @NearestPlayer{r=64}
+  - delay 40
+  - skill{s=redorbproj} 
+redorbproj2:
+  Conditions:
+  - variableEquals{var=caster.cast;value=1}
+  Skills:
+  - projectile{onTick=redorbProjTick;onHit=redorbProjHit2;i=1;v=20;mr=128} @NearestPlayer{r=64}
+redorbProjTick:
+  Skills:
+  - effect:particles{p=reddust;amount=4} @Origin
+redorbProjHit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 4"}
+  - potion{t=SLOW;duration=40;l=2}
+redorbProjHit2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 1"}
+  - potion{t=SLOW;duration=40;l=2}
+
+redorbsetup:
+  Conditions:
+  - varinrange{var=caster.redorb;value=<4}
+  - variableEquals{var=caster.start;value=0}
+  - incombat{}
+  Skills:
+  - randomskill{s=redorb1,redorb2,redorb3,redorb4,redorb5,redorb6,redorb7,redorb8}
+  - randomskill{s=redorb1,redorb2,redorb3,redorb4,redorb5,redorb6,redorb7,redorb8}
+  - randomskill{s=bloodritual1,bloodritual2,bloodritual3,bloodritual4} @self ~onSpawn
+  - message{m="&7Destroy the lectern to reset Sebath's blood magic!"} @PIR{r=128} ~onSpawn
+  - variableadd{var=caster.redorb;amount=1} 
+redorbsetup2:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.start;value=1} @self
+  - remove @MIR{t=redorb,bloodritual;r=128}
+  - signal{s=remove} @MIR{t=sebathmimic,sebathmimic2,sebathmimic3,sebathmimic4;r=128}
+  - teleport @Location{c=-2095.5,178,-439.5}
+  - setAI{ai=false} 
+  - summon{t=redorb2} @Location{c=-2105.5,176,-434.5}  
+  - sound{s=block.enchantment_table.use;v=6}
+  - summon{t=redorb2;delay=10} @Location{c=-2100.5,176,-429.5}
+  - summon{t=redorb2;delay=20} @Location{c=-2090.5,176,-429.5}
+  - sound{s=block.enchantment_table.use;v=6;delay=20}
+  - summon{t=redorb2;delay=30} @Location{c=-2085.5,176,-434.5}
+  - summon{t=redorb2;delay=40} @Location{c=-2085.5,176,-444.5}
+  - sound{s=block.enchantment_table.use;v=6;delay=40}
+  - summon{t=redorb2;delay=50} @Location{c=-2090.5,176,-449.5}
+  - summon{t=redorb2;delay=60} @Location{c=-2100.5,176,-449.5}
+  - sound{s=block.enchantment_table.use;v=6;delay=60}
+  - summon{t=redorb2;delay=70} @Location{c=-2105.5,176,-444.5}
+  - signal{s=cast;delay=80} @MIR{t=redorb2;r=128}
+  - setAI{ai=true;delay=80} 
+  - leap{v=400;delay=90} @NearestPlayer{r=128} 
+
+sebathmimicsetup:
+  Cooldown: 9999
+  Skills:
+  - skill{s=sebathmimicsetup1}
+  - skill{s=sebathmimicsetup2}
+  - skill{s=sebathmimicsetup3}
+  - skill{s=sebathmimicsetup4}
+
+sebathmimicsetup1:
+  Conditions:
+  - variableEquals{var=caster.redorb;value=1}
+  Skills:
+  - skill{s=sebathheart1}
+  - randomskill{s=sebathmimic1,sebathmimic2,sebathmimic3,sebathmimic4}
+sebathmimicsetup2:
+  Conditions:
+  - variableEquals{var=caster.redorb;value=2}
+  Skills:
+  - skill{s=sebathheart2}
+  - randomskill{s=sebathmimic1,sebathmimic2,sebathmimic3,sebathmimic4}
+  - delay 20
+  - randomskill{s=sebathmimic1,sebathmimic2,sebathmimic3,sebathmimic4}
+sebathmimicsetup3:
+  Conditions:
+  - variableEquals{var=caster.redorb;value=3}
+  Skills:
+  - skill{s=sebathheart3}
+  - randomskill{s=sebathmimic1,sebathmimic2,sebathmimic3,sebathmimic4}
+  - delay 20
+  - randomskill{s=sebathmimic1,sebathmimic2,sebathmimic3,sebathmimic4}
+sebathmimicsetup4:
+  Conditions:
+  - variableEquals{var=caster.redorb;value=4}
+  Skills:
+  - skill{s=sebathheart4}
+  - randomskill{s=sebathmimic1,sebathmimic2,sebathmimic3,sebathmimic4}
+  - delay 20
+  - randomskill{s=sebathmimic1,sebathmimic2,sebathmimic3,sebathmimic4}
+  - delay 20
+  - randomskill{s=sebathmimic1,sebathmimic2,sebathmimic3,sebathmimic4}
+  - delay 20
+  - randomskill{s=sebathmimic1,sebathmimic2,sebathmimic3,sebathmimic4}
+
+sebathheart1:
+  Conditions:
+  - variableEquals{var=caster.start;value=0}
+  Skills:
+  - potion{t=SLOW;duration=20;l=1;hasParticles=false} @self
+  - delay 20
+  - skill{s=sebathheart1}
+sebathheart2:
+  Conditions:
+  - variableEquals{var=caster.start;value=0}
+  Skills:
+  - potion{t=SLOW;duration=20;l=2;hasParticles=false} @self
+  - delay 20
+  - skill{s=sebathheart2}
+sebathheart3:
+  Conditions:
+  - variableEquals{var=caster.start;value=0}
+  Skills:
+  - potion{t=SLOW;duration=20;l=3;hasParticles=false} @self
+  - delay 20
+  - skill{s=sebathheart3}
+sebathheart4:
+  Conditions:
+  - variableEquals{var=caster.start;value=0}
+  Skills:
+  - potion{t=SLOW;duration=20;l=4;hasParticles=false} @self
+  - delay 20
+  - skill{s=sebathheart4}
+
+sebathmelee:
+  Conditions:
+  - incombat{}
+  - playerwithin 8
+  - variableEquals{var=caster.bloodritual;value=0}
+  - variableEquals{var=caster.start;value=0}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;duration=20;l=1;hasParticles=false} @self
+  - cast{skillName="Blood Grasp";duration=20;onCast=sebathmeleecast;showCastBar=true} @self
+sebathmeleecast:
+  Skills:
+  - summon{t=sebathmeleemark} @target
+
+sebathmelee2:
+  Skills:
+  - throw{vy=4} @target
+  - delay 2
+  - potion{t=SLOW;duration=40;l=2} @target
+  - pull{v=10} @target
+  - heal{a=4} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @target
+  - delay 4
+  - throw{vy=10} @target
+  - heal{a=4} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @target
+
+sebathmeleemark:
+  Conditions:
+  - playerwithin 1
+  Skills:
+  - signal{s=melee} @MIR{t=sebath;r=64}
+
+bloodritualin:
+  Cooldown: 12
+  Skills:
+  - setvariable{var=caster.bloodritual;value=1}
+  - delay 240
+  - setvariable{var=caster.bloodritual;value=0}
+
+bloodritualheal:
+  Conditions:
+  - playernotwithin 5
+  Cooldown: 2
+  Skills:
+  - sound{s=block.wood.break;v=2} 
+  - heal{a=4}
+
+bloodritualdeath:
+  Skills:
+  - remove @MIR{t=redorb,bloodritual;r=128}
+  - setvariable{var=target.redorb;value=0} @MIR{t=sebath;r=128}
+  - potion{type=SLOW;duration=40;level=1} @MIR{t=sebath;r=5}
+  - sudoskill{s=bloodritualdeath2} @PIR{r=128}
+bloodritualdeath2:
+  Skills:
+  - damage{a=12;i=true} @MIR{t=sebath;r=128}
+  - heal{a=25} @self
+  - effect:sound{s=entity.experience_orb.pickup;volume=0.1;pitch=0.5} @self
+  - effect:particlesphere{p=heart;amount=2;radius=1;yOffset=.5} @self
+
+redorbaura:
+  Skills:
+  - skill{s=redorbremove}
+  - effect:particlesphere{p=reddust;amount=16;radius=8;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=8}
+  - potion{t=SLOW;duration=20;l=1} @PIR{r=8}
+  - delay 20
+  - skill{s=redorbaura}
+
+redorbremove:
+  Conditions:
+  - playernotwithin 128
+  Skills:
+  - remove
+
+sebathset:
+  Skills:
+  - setvariable{var=caster.redorb;value=0} 
+  - setvariable{var=caster.bloodritual;value=0} 
+  - setvariable{var=caster.start;value=1} 
+
+sebathstart:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.start;value=0;delay=80}
+
+sebathout:
+  Conditions:
+  - playernotwithin 12
+  - incombat{}
+  Skills:
+  - potion{t=SPEED;duration=20;l=1;hasParticles=false} 
+
+sebathmimic:
+  Skills:
+  - setAI{ai=false}
+  - delay 80
+  - setAI{ai=true}
+  - setAI{ai=true} @MIR{t=sebathmimic,sebathmimic2,sebathmimic3,sebathmimic4;r=128} 
+  - setvariable{var=caster.start;value=1}
+  - setvariable{var=caster.start;value=1} @MIR{t=sebathmimic,sebathmimic2,sebathmimic3,sebathmimic4;r=128} 
+
+sebathmimicremove:
+  Skills:
+  - heal{a=15} @MIR{t=sebath;r=128}
+  - remove
+
+# burst
+sebathmimicaorta:
+  Conditions:
+  - playerwithin 4
+  - variableEquals{var=caster.start;value=1}
+  Cooldown: 6
+  Skills:
+  - potion{t=SLOW;duration=40;l=1;hasParticles=false} 
+  - cast{skillName="Aortic Valve Regurgitation";duration=40;onCast=sebathmimicaorta_cast;showCastBar=true} @self
+sebathmimicaorta_cast:
+  Skills:
+  - effect:particlesphere{p=reddust;amount=12;radius=4;yOffset=.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 4"} @PIR{r=4}
+  - throw{vy=8} @PIR{r=5}
+  - damage{a=5;i=true} @self
+
+# fuse
+sebathmimicatrium:
+  Conditions:
+  - playerwithin 12
+  - variableEquals{var=caster.start;value=1}
+  Cooldown: 9999
+  Skills:
+  - cast{skillName="Mitral Valve Stenosis";duration=40;onCast=sebathmimicatrium_cast;showCastBar=true} @self
+sebathmimicatrium_cast:
+  Skills:
+  - leap{v=80} @MIR{t=sebathmimic2;r=16}
+  - signal{s=damage} @MIR{t=sebathmimic2;r=16}
+  - delay 8
+  - skill{s=sebathmimicatrium_cast}
+
+# hole
+sebathmimicseptum:
+  Conditions:
+  - playerwithin 8
+  - variableEquals{var=caster.start;value=1}
+  Cooldown: 8
+  Skills:
+  - cast{skillName="Atrial Septal Defect";duration=40;onCast=sebathmimicseptum_cast;showCastBar=true} @self
+sebathmimicseptum_cast:
+  Skills:
+  - potion{t=SLOW;duration=20;l=1;hasParticles=false} 
+  - effect:particlering{p=reddust;a=1;y=0.1;s=0.1;r=4;points=32} @self
+  - pull{v=40} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=5} .6
+  - delay 4
+  - effect:particlering{p=reddust;a=1;y=0.1;s=0.1;r=4;points=32} @self
+  - pull{v=40} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=5} .6
+  - delay 4
+  - effect:particlering{p=reddust;a=1;y=0.1;s=0.1;r=4;points=32} @self
+  - pull{v=40} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=5} .6
+  - delay 4
+  - effect:particlering{p=reddust;a=1;y=0.1;s=0.1;r=4;points=32} @self
+  - pull{v=40} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=5} .6
+  - delay 4
+  - effect:particlering{p=reddust;a=1;y=0.1;s=0.1;r=4;points=32} @self
+  - pull{v=40} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=5} .6
+  - delay 4
+  - effect:particlering{p=reddust;a=1;y=0.1;s=0.1;r=4;points=32} @self
+  - pull{v=40} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=5} .6
+
+# enlargement
+sebathmimicventricle:
+  Conditions:
+  - playerwithin 8
+  - variableEquals{var=caster.start;value=1}
+  Cooldown: 9999
+  Skills:
+  - cast{skillName="Ventricular Hypertrophy";duration=80;onCast=sebathmimicventricle_cast;showCastBar=true} @self
+sebathmimicventricle_cast:
+  Skills:
+  - skill{s=sebathmimicventricle_cast2} 
+  - skill{s=sebathmimic4golem}
+  - potion{t=SLOW;duration=40;l=1;hasParticles=false}
+  - delay 20
+  - skill{s=sebathmimicventricle_cast}
+
+sebathmimicventricle_cast2:
+  Cooldown: 9999
+  Skills:
+  - disguise{d=IRON_GOLEM}
+
+sebathmimic4golem:
+  Conditions:
+  - playerwithin 2
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - throw{vy=10} @target
+  - sound{s=entity.iron_golem.attack}
+  - command{c="runicdamage <caster.uuid> <target.name> 4"} @target
+
+SlimeSkills:
+  Cooldown: 4
+  Skills:
+  - jump{velocity=0.6}
+  - delay 25
+  - jump{velocity=0.6}
+  - delay 25
+  - jump{velocity=1.2}
+  - delay 25
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=20;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=5}

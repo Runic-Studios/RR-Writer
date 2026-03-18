@@ -1,0 +1,1089 @@
+CrimsonColossus-drop:
+  Skills:
+  - randomskill{skills=CrimsonColossus-drop-0,CrimsonColossus-drop-1,CrimsonColossus-drop-2,CrimsonColossus-drop-3}
+CrimsonColossus-drop-0:
+  Conditions:
+  - variableEquals{var=caster.shine;value=0}
+  Skills:
+  - command{c="ri drop crimson-core <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.4
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.01
+CrimsonColossus-drop-1:
+  Conditions:
+  - variableEquals{var=caster.shine;value=1}
+  Skills:
+  - command{c="ri drop crimson-core <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.025
+CrimsonColossus-drop-2:
+  Conditions:
+  - variableEquals{var=caster.shine;value=2}
+  Skills:
+  - command{c="ri drop crimson-core <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.1
+CrimsonColossus-drop-3:
+  Conditions:
+  - variableEquals{var=caster.shine;value=3}
+  Skills:
+  - command{c="ri drop crimson-core <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"} 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.25
+
+SapphirineBehemoth-drop:
+  Skills:
+  - randomskill{skills=SapphirineBehemoth-drop-0,SapphirineBehemoth-drop-1,SapphirineBehemoth-drop-2,SapphirineBehemoth-drop-3}
+SapphirineBehemoth-drop-0:
+  Conditions:
+  - variableEquals{var=caster.shine;value=0}
+  Skills:
+  - command{c="ri drop sapphirine-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.4
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.01
+SapphirineBehemoth-drop-1:
+  Conditions:
+  - variableEquals{var=caster.shine;value=1}
+  Skills:
+  - command{c="ri drop sapphirine-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.025
+SapphirineBehemoth-drop-2:
+  Conditions:
+  - variableEquals{var=caster.shine;value=2}
+  Skills:
+  - command{c="ri drop sapphirine-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.1
+SapphirineBehemoth-drop-3:
+  Conditions:
+  - variableEquals{var=caster.shine;value=3}
+  Skills:
+  - command{c="ri drop sapphirine-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"} 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.25
+
+GlacialTitan-drop:
+  Skills:
+  - randomskill{skills=GlacialTitan-drop-0,GlacialTitan-drop-1,GlacialTitan-drop-2,GlacialTitan-drop-3}
+GlacialTitan-drop-0:
+  Conditions:
+  - variableEquals{var=caster.shine;value=0}
+  Skills:
+  - command{c="ri drop glacial-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.4
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.01
+GlacialTitan-drop-1:
+  Conditions:
+  - variableEquals{var=caster.shine;value=1}
+  Skills:
+  - command{c="ri drop glacial-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.025
+GlacialTitan-drop-2:
+  Conditions:
+  - variableEquals{var=caster.shine;value=2}
+  Skills:
+  - command{c="ri drop glacial-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.1
+GlacialTitan-drop-3:
+  Conditions:
+  - variableEquals{var=caster.shine;value=3}
+  Skills:
+  - command{c="ri drop glacial-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"} 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.25
+
+JadeGiant-drop:
+  Skills:
+  - randomskill{skills=JadeGiant-drop-0,JadeGiant-drop-1,JadeGiant-drop-2,JadeGiant-drop-3}
+JadeGiant-drop-0:
+  Conditions:
+  - variableEquals{var=caster.shine;value=0}
+  Skills:
+  - command{c="ri drop jade-gemstone <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.4
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.01
+JadeGiant-drop-1:
+  Conditions:
+  - variableEquals{var=caster.shine;value=1}
+  Skills:
+  - command{c="ri drop jade-gemstone <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.025
+JadeGiant-drop-2:
+  Conditions:
+  - variableEquals{var=caster.shine;value=2}
+  Skills:
+  - command{c="ri drop jade-gemstone <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.1
+JadeGiant-drop-3:
+  Conditions:
+  - variableEquals{var=caster.shine;value=3}
+  Skills:
+  - command{c="ri drop jade-gemstone <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"} 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.25
+
+CrystalWarden-drop:
+  Skills:
+  - randomskill{skills=CrystalWarden-drop-0,CrystalWarden-drop-1,CrystalWarden-drop-2,CrystalWarden-drop-3}
+CrystalWarden-drop-0:
+  Conditions:
+  - variableEquals{var=caster.shine;value=0}
+  Skills:
+  - command{c="ri drop crystal-corpus <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.4
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.01
+CrystalWarden-drop-1:
+  Conditions:
+  - variableEquals{var=caster.shine;value=1}
+  Skills:
+  - command{c="ri drop crystal-corpus <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.025
+CrystalWarden-drop-2:
+  Conditions:
+  - variableEquals{var=caster.shine;value=2}
+  Skills:
+  - command{c="ri drop crystal-corpus <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.1
+CrystalWarden-drop-3:
+  Conditions:
+  - variableEquals{var=caster.shine;value=3}
+  Skills:
+  - command{c="ri drop crystal-corpus <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"} 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.25
+
+Shine-select:
+  Skills:
+  - setvariable{var=caster.shine;value=0} 
+  - randomskill{skills=Shine-level-0,Shine-level-0,Shine-level-0,Shine-select-1}
+Shine-select-1:
+  Skills:
+  - randomskill{s=Shine-level-1,Shine-level-1,Shine-level-1,Shine-select-2}  
+Shine-select-2:
+  Skills:
+  - randomskill{s=Shine-level-2,Shine-level-2,Shine-level-2,Shine-level-3} 
+ 
+Shine-level-0:
+  Skills:
+  - setvariable{var=caster.shine;value=0} 
+Shine-level-1:
+  Skills:
+  - setvariable{var=caster.shine;value=1} 
+Shine-level-2:
+  Skills:
+  - setvariable{var=caster.shine;value=2} 
+Shine-level-3:
+  Skills:
+  - setvariable{var=caster.shine;value=3} 
+
+Shine-visual:
+  Skills:
+  - randomskill{skills=Shine-visual-1,Shine-visual-2,Shine-visual-3}
+Shine-visual-1:
+  Conditions:
+  - variableEquals{var=caster.shine;value=1}
+  Skills:
+  - effect:particlesphere{p=spell_instant;amount=2;radius=2;yOffset=0.5}
+Shine-visual-2:
+  Conditions:
+  - variableEquals{var=caster.shine;value=2}
+  Skills:
+  - effect:particlesphere{p=spell_instant;amount=5;radius=2;yOffset=0.5}
+Shine-visual-3:
+  Conditions:
+  - variableEquals{var=caster.shine;value=3}
+  Skills:
+  - effect:particlesphere{p=spell_instant;amount=20;radius=2;yOffset=0.5}
+
+
+
+
+CrimsonColossus-Skill-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - summon{t=CrimsonColossus-Spawn-greater;r=3;os=true} @target
+CrimsonColossus-Skill2-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - summon{t=CrimsonColossus-Spawn-greater;r=3;os=true} @target
+CrimsonColossusSpawn-Skill-greater:
+  Skills:
+  - setAI{ai=false}
+  - delay 20
+  - sound{s=entity.tnt.primed;v=2} 
+  - delay 40
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - throw{vy=6} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - remove  
+CrimsonColossus-Skill3-greater:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false} @self
+  - setvariable{var=caster.fire;value=1} 
+  - cast{skillName="Overheat";duration=40;onCast=CrimsonColossus-Skill3cast-greater;showCastBar=true} @self
+CrimsonColossus-Skill3cast-greater:
+  Skills:
+  - jump{v=0.8}
+  - delay 2 
+  - leap{v=250} @target
+  - delay 40
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - throw{vy=6} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=4}
+  - setvariable{var=caster.fire;value=0} 
+CrimsonColossusFiretick-greater:
+  Conditions:
+  - variableEquals{var=caster.fire;value=1}
+  Skills:
+  - effect:particlesphere{particle=flame;amount=2;radius=1;yOffset=.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=1}
+  - delay 2
+  - effect:particlesphere{particle=flame;amount=2;radius=1;yOffset=.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=1}
+
+
+SapphirineBehemoth-Skill-greater:
+  Conditions:
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - summon{t=SapphirineBehemoth-Spawn-greater;r=4} @self
+SapphirineBehemoth-Skill2-greater:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - summon{t=SapphirineBehemoth-Spawn-greater;r=3;os=true} @self
+SapphirineBehemoth-Skill3-greater:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=120;l=1;hasParticles=false} @self
+  - cast{skillName="Sappire";duration=40;onCast=SapphirineBehemoth-Skill3cast-greater;showCastBar=true} @self
+SapphirineBehemoth-Skill3cast-greater:
+  Skills:
+  - skill{s=SapphirineBehemoth-Proj-greater} @target
+  - delay 15
+  - skill{s=SapphirineBehemoth-Proj-greater} @target
+  - delay 15
+  - skill{s=SapphirineBehemoth-Proj-greater} @target
+  - delay 15
+  - skill{s=SapphirineBehemoth-Proj-greater} @target
+SapphirineBehemoth-Proj-greater:
+  Skills:
+  - sound{s=entity.ender_dragon.shoot;v=2} @self
+  - projectile{onTick=SapphirineBehemoth-tick-greater;onHit=SapphirineBehemoth-hit-greater;i=2;v=8;mr=30} @NearestPlayer{r=24}  
+SapphirineBehemoth-tick-greater:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#0F52BA;amount=1;radius=1} @Origin
+SapphirineBehemoth-hit-greater:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}  
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+
+SapphirineBehemothSpawn-Skill-greater:
+  Cooldown: 4
+  Skills:
+  - sound{s=block.stone.place;v=2}
+  - setAI{ai=false} 
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2-greater}
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2-greater}
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2-greater}
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2-greater}
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2-greater}
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2-greater}
+  - delay 40
+  - remove
+SapphirineBehemothSpawn-Skill2-greater:
+  Conditions:
+  - playernotwithin 3
+  Skills:
+  - sound{s=block.enchantment_table.use}
+  - projectile{onTick=SapphirineBehemothSpawn-tick-greater;onHit=SapphirineBehemothSpawn-hit-greater;i=2;v=7;mr=30} @NearestPlayer{r=24}  
+SapphirineBehemothSpawn-tick-greater:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#0F52BA;amount=1;radius=1} @Origin
+SapphirineBehemothSpawn-hit-greater:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}  
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+
+
+
+GlacialTitan-Skill-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - summon{t=GlacialTitan-Spawn-greater} @target
+  - skill{s=GlacialTitan-msg-greater} @target
+GlacialTitan-Skill2-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - summon{t=GlacialTitan-Spawn-greater} @target
+GlacialTitan-Skill3-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false}
+  - cast{skillName="Ice Field";duration=40;onCast=GlacialTitan-Skill3cast-greater;showCastBar=true} @self
+GlacialTitan-Skill3cast-greater:
+  Skills:
+  - summon{t=GlacialTitan-Marker-greater;r=2} @target
+  - delay 40
+  - summon{t=GlacialTitan-Marker-greater;r=2} @target
+  - delay 40
+  - summon{t=GlacialTitan-Marker-greater;r=2} @target
+GlacialTitanSpawn-Skill-greater:
+  Skills:
+  - sound{s=block.stone.place}
+  - setAI{ai=false}
+  - potion{t=SLOW;d=20;l=3} @PIR{r=2}
+  - aura{auraName=GlacialTitanStun-greater;onTick=GlacialTitanStun-Tick-greater;interval=1;duration=80} @self
+  - delay 80
+  - remove
+GlacialTitan-Marker-greater:
+  Skills:
+  - setvariable{var=caster.glacial;value=0} 
+  - sound{s=block.enchantment_table.use}
+  - effect:blockmask{m=PRISMARINE_BRICKS;r=4;d=80}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=4}
+  - remove{delay=80}
+  - delay 20
+  - skill{s=GlacialTitan-Markerdmg-greater} 
+GlacialTitan-Markerdmg-greater:
+  Skills:
+  - skill{s=GlacialTitan-Markerdmg2-greater}
+  - skill{s=GlacialTitan-Markerdmg3-greater}
+  - delay 10
+  - skill{s=GlacialTitan-Markerdmg-greater}
+GlacialTitan-Markerdmg2-greater:
+  Conditions:
+  - varinrange{var=caster.glacial;value=<7}
+  - playerwithin 4
+  Skills:
+  - variableadd{var=caster.glacial;amount=2}	
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=4}
+  - potion{t=SLOW;d=20;l=3} @PIR{r=4}
+GlacialTitan-Markerdmg3-greater:
+  Conditions:
+  - varinrange{var=caster.glacial;value=>7}
+  - playerwithin 4
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 60"} @PIR{r=4}
+  - potion{t=SLOW;d=20;l=3} @PIR{r=4}
+GlacialTitanStun-Tick-greater:
+  Skills:
+  - velocity{vx=0;vy=0;vz=0} @PIR{r=2}
+
+
+
+JadeGiant-Skill-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - summon{t=JadeGiant-Spawn-greater;r=4} 
+  - delay 5
+  - summon{t=JadeGiant-Spawn-greater;r=4} 
+JadeGiant-Skill2-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - summon{t=JadeGiant-Spawn-greater;r=4} 
+  - delay 5
+  - summon{t=JadeGiant-Spawn-greater;r=4}
+JadeGiantSpawn-Skill-greater:
+  Skills:
+  - sound{s=block.stone.place;v=2}
+  - setAI{ai=false}
+  - delay 20
+  - setAI{ai=true}
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - skill{s=JadeGiantSpawn-Skill2-greater}
+  - skill{s=JadeGiantSpawn-Skill3-greater}
+  - delay 20
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=4}
+  - potion{t=BLINDNESS;d=80;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=4}
+  - remove
+
+JadeGiantSpawn-Skill2-greater:
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - leap{v=100} @NearestPlayer{r=24}
+JadeGiantSpawn-Skill3-greater:
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - leap{v=250} @NearestPlayer{r=24}
+JadeGiantSpawn2-Skill-greater:
+  Skills:
+  - remove{delay=600}
+JadeGiant-Skill3-greater:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=240;l=1;hasParticles=false} 
+  - cast{skillName="Curse of the Dead";duration=40;onCast=JadeGiant-Skill3cast-greater;showCastBar=true} @self
+JadeGiant-Skill3cast-greater:
+  Skills:
+  - signal{s=suicide} @MIR{t=JadeGiant-Spawn2-greater;r=64} 
+  - summon{t=JadeGiant-Spawn2-greater;r=3;a=2;os=true} 
+
+
+CrystalWarden-Skill-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - sound{s=block.stone.place;v=2}
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - jump{v=0.6}
+  - delay 5
+  - setAI{ai=false}
+  - randomskill{s=CrystalWarden-Skillb-greater}
+  - delay 20
+  - setAI{ai=true}
+  - randomskill{s=CrystalWarden-Fire1-greater,CrystalWarden-Fire2-greater}
+  - delay 20
+  - remove @MIR{t=CrystalWarden-Marker-greater;r=24} 
+CrystalWarden-Fire1-greater:
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - signal{s=fire1} @MIR{t=CrystalWarden-Spawn-greater;r=32}  
+CrystalWarden-Fire2-greater:
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - signal{s=fire2} @MIR{t=CrystalWarden-Spawn-greater;r=32}  
+CrystalWarden-Skilla-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Skills:
+  - summon{t=CrystalWarden-Spawn-greater} @Ring{r=3;p=4}
+  - summon{t=CrystalWarden-Marker-greater} @Ring{r=4;p=4}
+CrystalWarden-Skillb-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Skills:
+  - summon{t=CrystalWarden-Spawn-greater} @Ring{r=3;p=5}
+  - summon{t=CrystalWarden-Marker-greater} @Ring{r=4;p=5}
+CrystalWarden-Skillc-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Skills:
+  - summon{t=CrystalWarden-Spawn-greater} @Ring{r=3;p=6}
+  - summon{t=CrystalWarden-Marker-greater} @Ring{r=4;p=6}
+
+CrystalWarden-Skill2-greater:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - summon{t=CrystalWarden-Spawn-greater;a=3;r=8} @target
+CrystalWardenSpawn-Skill-greater:
+  Skills:
+  - setAI{ai=false}
+CrystalWardenSignal-Skill-greater:
+  Skills:
+  - setvariable{var=caster.fire;value=1} 
+  - setAI{ai=true}
+  - leap{v=250} @MIR{t=CrystalWarden-Marker-greater;r=3} 
+  - delay 40
+  - sound{s=block.stone.break}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=25;radius=5;yOffset=.5}
+  - throw{vy=6} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=5}
+  - remove
+CrystalWardenSignal2-Skill-greater:
+  Skills:
+  - setvariable{var=caster.fire;value=1} 
+  - setAI{ai=true}
+  - leap{v=400} @MIR{t=CrystalWarden-Marker-greater;r=3} 
+  - delay 40
+  - sound{s=block.stone.break}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=25;radius=5;yOffset=.5}
+  - throw{vy=6} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 375"} @PIR{r=5}
+  - remove
+CrystalWardenFiretick-greater:
+  Conditions:
+  - variableEquals{var=caster.fire;value=1}
+  Skills:
+  - effect:particlesphere{particle=flame;amount=1;radius=1;yOffset=.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=1}
+  - delay 2
+  - effect:particlesphere{particle=flame;amount=1;radius=1;yOffset=.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=1}
+
+CrystalWarden-Skill3-greater:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - cast{skillName="Crystalize";duration=40;onCast=CrystalWarden-Skill3cast-greater;showCastBar=true} @self  
+  - setvariable{var=caster.defense;value=1}
+  - potion{type=SLOW;duration=120;level=3;hasParticles=false} 
+  - delay 40
+  - setvariable{var=caster.defense;value=0}
+CrystalWarden-Skill3cast-greater:
+  Conditions:
+  - varinrange{var=caster.armor;value=>4} castinstead CrystalWarden-Skill3cast4-greater
+  - varinrange{var=caster.armor;value=>3} castinstead CrystalWarden-Skill3cast3-greater
+  - varinrange{var=caster.armor;value=>2} castinstead CrystalWarden-Skill3cast2-greater
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=4}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=20;radius=4;yOffset=.5}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - setvariable{var=caster.armor;value=0}
+CrystalWardenArmorcheck-greater:
+  Skills:
+  - skill{s=CrystalWardenArmor-greater}
+  - skill{s=CrystalWardennoArmor-greater}
+CrystalWardenArmor-greater:
+  Conditions:
+  - variableEquals{var=caster.defense;value=1}  
+  Skills:
+  - sound{s=item.shield.block}
+  - skill{s=CrystalWardenHeal-greater}
+  - variableadd{var=caster.armor;amount=1}
+CrystalWardennoArmor-greater:
+  Conditions:
+  - variableEquals{var=caster.defense;value=0}  
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+CrystalWardenHeal-greater:
+  Cooldown: 1
+  Skills:
+  - heal{a=200}
+CrystalWarden-Skill3cast2-greater:
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+  - velocity{v=100} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=5}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=10;radius=4;yOffset=.5}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - setvariable{var=caster.armor;value=0}
+CrystalWarden-Skill3cast3-greater:
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+  - velocity{v=100} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 375"} @PIR{r=5}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=15;radius=5;yOffset=.5}
+  - potion{type=SLOW;duration=80;level=1} @PIR{r=5}
+  - setvariable{var=caster.armor;value=0}
+CrystalWarden-Skill3cast4-greater:
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+  - velocity{v=400} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=6}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=25;radius=6;yOffset=.5}
+  - potion{type=SLOW;duration=80;level=3} @PIR{r=6}
+  - setvariable{var=caster.armor;value=0}
+
+
+
+
+
+
+
+Mine-Knockup-lesser:
+  TargetConditions:
+  - distance{d=<2}
+  Conditions:
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - throw{vy=10}
+  - sound{s=entity.iron_golem.attack} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} 
+  - potion{t=SLOW;d=40;l=1}
+Mine-Knockup:
+  TargetConditions:
+  - distance{d=<2}
+  Conditions:
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - throw{vy=10}
+  - sound{s=entity.iron_golem.attack} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} 
+  - potion{t=SLOW;d=40;l=1}
+Mine-Knockup-greater:
+  TargetConditions:
+  - distance{d=<2}
+  Conditions:
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - throw{vy=10}
+  - sound{s=entity.iron_golem.attack} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 125"}
+  - potion{t=SLOW;d=40;l=2}
+
+
+CrimsonColossus-Skill:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 10
+  Skills:
+  - summon{t=CrimsonColossus-Spawn;r=3;os=true} @target
+CrimsonColossus-Skill2:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - summon{t=CrimsonColossus-Spawn;r=3;os=true} @target
+CrimsonColossusSpawn-Skill:
+  Skills:
+  - setAI{ai=false}
+  - delay 20
+  - sound{s=entity.tnt.primed;v=2} 
+  - delay 40
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - throw{vy=6} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=5}
+  - remove  
+CrimsonColossus-Skill3:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false} @self
+  - setvariable{var=caster.fire;value=1} 
+  - cast{skillName="Overheat";duration=40;onCast=CrimsonColossus-Skill3cast;showCastBar=true} @self
+CrimsonColossus-Skill3cast:
+  Skills:
+  - jump{v=0.8}
+  - delay 2 
+  - leap{v=250} @target
+  - delay 40
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - throw{vy=6} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}
+  - setvariable{var=caster.fire;value=0} 
+CrimsonColossusFiretick:
+  Conditions:
+  - variableEquals{var=caster.fire;value=1}
+  Skills:
+  - effect:particlesphere{particle=flame;amount=2;radius=1;yOffset=.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 4"} @PIR{r=1}
+  - delay 2
+  - effect:particlesphere{particle=flame;amount=2;radius=1;yOffset=.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 4"} @PIR{r=1}
+
+
+SapphirineBehemoth-Skill:
+  Conditions:
+  - incombat{}
+  Cooldown: 10
+  Skills:
+  - summon{t=SapphirineBehemoth-Spawn;r=4} @self
+SapphirineBehemoth-Skill2:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - summon{t=SapphirineBehemoth-Spawn;r=3;os=true} @self
+SapphirineBehemoth-Skill3:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=120;l=1;hasParticles=false} @self
+  - cast{skillName="Sappire";duration=40;onCast=SapphirineBehemoth-Skill3cast;showCastBar=true} @self
+SapphirineBehemoth-Skill3cast:
+  Skills:
+  - skill{s=SapphirineBehemoth-Proj} @target
+  - delay 15
+  - skill{s=SapphirineBehemoth-Proj} @target
+  - delay 15
+  - skill{s=SapphirineBehemoth-Proj} @target
+  - delay 15
+  - skill{s=SapphirineBehemoth-Proj} @target
+SapphirineBehemoth-Proj:
+  Skills:
+  - sound{s=entity.ender_dragon.shoot;v=2} @self
+  - projectile{onTick=SapphirineBehemoth-tick;onHit=SapphirineBehemoth-hit;i=2;v=8;mr=30} @NearestPlayer{r=24}  
+SapphirineBehemoth-tick:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#0F52BA;amount=1;radius=1} @Origin
+SapphirineBehemoth-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}  
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+
+SapphirineBehemothSpawn-Skill:
+  Cooldown: 4
+  Skills:
+  - sound{s=block.stone.place;v=2}
+  - setAI{ai=false} 
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2}
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2}
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2}
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2}
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2}
+  - delay 40
+  - skill{s=SapphirineBehemothSpawn-Skill2}
+  - delay 40
+  - remove
+SapphirineBehemothSpawn-Skill2:
+  Conditions:
+  - playernotwithin 3
+  Skills:
+  - sound{s=block.enchantment_table.use}
+  - projectile{onTick=SapphirineBehemothSpawn-tick;onHit=SapphirineBehemothSpawn-hit;i=2;v=7;mr=30} @NearestPlayer{r=24}  
+SapphirineBehemothSpawn-tick:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#0F52BA;amount=1;radius=1} @Origin
+SapphirineBehemothSpawn-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}  
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+
+
+
+GlacialTitan-Skill:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 10
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - summon{t=GlacialTitan-Spawn} @target
+  - skill{s=GlacialTitan-msg} @target
+GlacialTitan-Skill2:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - summon{t=GlacialTitan-Spawn} @target
+GlacialTitan-Skill3:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false}
+  - cast{skillName="Ice Field";duration=40;onCast=GlacialTitan-Skill3cast;showCastBar=true} @self
+GlacialTitan-Skill3cast:
+  Skills:
+  - summon{t=GlacialTitan-Marker;r=2} @target
+  - delay 40
+  - summon{t=GlacialTitan-Marker;r=2} @target
+  - delay 40
+  - summon{t=GlacialTitan-Marker;r=2} @target
+GlacialTitan-msg:
+  Cooldown: 9999
+  Skills:
+  #- message{m="&7Attack, swap hotbar slot, then attack to quickly break free!"} 
+GlacialTitanSpawn-Skill:
+  Skills:
+  - sound{s=block.stone.place}
+  - setAI{ai=false}
+  - potion{t=SLOW;d=20;l=3} @PIR{r=2}
+  - aura{auraName=GlacialTitanStun;onTick=GlacialTitanStun-Tick;interval=1;duration=80} @self
+  - delay 80
+  - remove
+GlacialTitan-Marker:
+  Skills:
+  - setvariable{var=caster.glacial;value=0} 
+  - sound{s=block.enchantment_table.use}
+  - effect:blockmask{m=PRISMARINE_BRICKS;r=4;d=80}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=4}
+  - remove{delay=80}
+  - delay 20
+  - skill{s=GlacialTitan-Markerdmg} 
+GlacialTitan-Markerdmg:
+  Skills:
+  - skill{s=GlacialTitan-Markerdmg2}
+  - skill{s=GlacialTitan-Markerdmg3}
+  - delay 10
+  - skill{s=GlacialTitan-Markerdmg}
+GlacialTitan-Markerdmg2:
+  Conditions:
+  - varinrange{var=caster.glacial;value=<7}
+  - playerwithin 4
+  Skills:
+  - variableadd{var=caster.glacial;amount=2}	
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=4}
+  - potion{t=SLOW;d=20;l=3} @PIR{r=4}
+GlacialTitan-Markerdmg3:
+  Conditions:
+  - varinrange{var=caster.glacial;value=>7}
+  - playerwithin 4
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 12"} @PIR{r=4}
+  - potion{t=SLOW;d=20;l=3} @PIR{r=4}
+GlacialTitanStun-Tick:
+  Skills:
+  - velocity{vx=0;vy=0;vz=0} @PIR{r=2}
+
+
+JadeGiant-Skill:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 10
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - summon{t=JadeGiant-Spawn;r=4} 
+  - delay 5
+  - summon{t=JadeGiant-Spawn;r=4} 
+JadeGiant-Skill2:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - summon{t=JadeGiant-Spawn;r=4} 
+  - delay 5
+  - summon{t=JadeGiant-Spawn;r=4}
+JadeGiantSpawn-Skill:
+  Skills:
+  - sound{s=block.stone.place;v=2}
+  - setAI{ai=false}
+  - delay 20
+  - setAI{ai=true}
+  - sound{s=entity.ender_dragon.shoot;v=2}
+  - skill{s=JadeGiantSpawn-Skill2}
+  - skill{s=JadeGiantSpawn-Skill3}
+  - delay 20
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=4}
+  - potion{t=BLINDNESS;d=80;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 30"} @PIR{r=4}
+  - remove
+
+JadeGiantSpawn-Skill2:
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - leap{v=100} @NearestPlayer{r=24}
+JadeGiantSpawn-Skill3:
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - leap{v=250} @NearestPlayer{r=24}
+JadeGiantSpawn2-Skill:
+  Skills:
+  - remove{delay=600}
+JadeGiant-Skill3:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=240;l=1;hasParticles=false} 
+  - cast{skillName="Curse of the Dead";duration=40;onCast=JadeGiant-Skill3cast;showCastBar=true} @self
+JadeGiant-Skill3cast:
+  Skills:
+  - signal{s=suicide} @MIR{t=JadeGiant-Spawn2;r=64} 
+  - summon{t=JadeGiant-Spawn2;r=3;a=2;os=true} 
+
+
+CrystalWarden-Skill:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 10
+  Skills:
+  - sound{s=block.stone.place;v=2}
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - jump{v=0.6}
+  - delay 5
+  - setAI{ai=false}
+  - randomskill{s=CrystalWarden-Skillb}
+  - delay 20
+  - setAI{ai=true}
+  - randomskill{s=CrystalWarden-Fire1,CrystalWarden-Fire2}
+  - delay 20
+  - remove @MIR{t=CrystalWarden-Marker;r=24} 
+CrystalWarden-Fire1:
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - signal{s=fire1} @MIR{t=CrystalWarden-Spawn;r=32}  
+CrystalWarden-Fire2:
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - signal{s=fire2} @MIR{t=CrystalWarden-Spawn;r=32}  
+CrystalWarden-Skilla:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Skills:
+  - summon{t=CrystalWarden-Spawn} @Ring{r=3;p=4}
+  - summon{t=CrystalWarden-Marker} @Ring{r=4;p=4}
+CrystalWarden-Skillb:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Skills:
+  - summon{t=CrystalWarden-Spawn} @Ring{r=3;p=5}
+  - summon{t=CrystalWarden-Marker} @Ring{r=4;p=5}
+CrystalWarden-Skillc:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Skills:
+  - summon{t=CrystalWarden-Spawn} @Ring{r=3;p=6}
+  - summon{t=CrystalWarden-Marker} @Ring{r=4;p=6}
+
+CrystalWarden-Skill2:
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - summon{t=CrystalWarden-Spawn;a=3;r=8} @target
+CrystalWardenSpawn-Skill:
+  Skills:
+  - setAI{ai=false}
+CrystalWardenSignal-Skill:
+  Skills:
+  - setvariable{var=caster.fire;value=1} 
+  - setAI{ai=true}
+  - leap{v=250} @MIR{t=CrystalWarden-Marker;r=3} 
+  - delay 40
+  - sound{s=block.stone.break}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=25;radius=5;yOffset=.5}
+  - throw{vy=6} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=5}
+  - remove
+CrystalWardenSignal2-Skill:
+  Skills:
+  - setvariable{var=caster.fire;value=1} 
+  - setAI{ai=true}
+  - leap{v=400} @MIR{t=CrystalWarden-Marker;r=3} 
+  - delay 40
+  - sound{s=block.stone.break}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=25;radius=5;yOffset=.5}
+  - throw{vy=6} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - remove
+CrystalWardenFiretick:
+  Conditions:
+  - variableEquals{var=caster.fire;value=1}
+  Skills:
+  - effect:particlesphere{particle=flame;amount=1;radius=1;yOffset=.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 4"} @PIR{r=1}
+  - delay 2
+  - effect:particlesphere{particle=flame;amount=1;radius=1;yOffset=.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 4"} @PIR{r=1}
+
+CrystalWarden-Skill3:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - cast{skillName="Crystalize";duration=40;onCast=CrystalWarden-Skill3cast;showCastBar=true} @self  
+  - setvariable{var=caster.defense;value=1}
+  - potion{type=SLOW;duration=120;level=3;hasParticles=false} 
+  - delay 40
+  - setvariable{var=caster.defense;value=0}
+CrystalWarden-Skill3cast:
+  Conditions:
+  - varinrange{var=caster.armor;value=>4} castinstead CrystalWarden-Skill3cast4
+  - varinrange{var=caster.armor;value=>3} castinstead CrystalWarden-Skill3cast3
+  - varinrange{var=caster.armor;value=>2} castinstead CrystalWarden-Skill3cast2
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=4}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=20;radius=4;yOffset=.5}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - setvariable{var=caster.armor;value=0}
+CrystalWardenArmorcheck:
+  Skills:
+  - skill{s=CrystalWardenArmor}
+  - skill{s=CrystalWardennoArmor}
+CrystalWardenArmor:
+  Conditions:
+  - variableEquals{var=caster.defense;value=1}  
+  Skills:
+  - sound{s=item.shield.block}
+  - skill{s=CrystalWardenHeal}
+  - variableadd{var=caster.armor;amount=1}
+CrystalWardennoArmor:
+  Conditions:
+  - variableEquals{var=caster.defense;value=0}  
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+CrystalWardenHeal:
+  Cooldown: 1
+  Skills:
+  - heal{a=200}
+CrystalWarden-Skill3cast2:
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+  - velocity{v=100} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=5}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=10;radius=4;yOffset=.5}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - setvariable{var=caster.armor;value=0}
+CrystalWarden-Skill3cast3:
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+  - velocity{v=100} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=15;radius=5;yOffset=.5}
+  - potion{type=SLOW;duration=80;level=1} @PIR{r=5}
+  - setvariable{var=caster.armor;value=0}
+CrystalWarden-Skill3cast4:
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+  - velocity{v=400} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=6}
+  - effect:particlesphere{particle=block_crack;material=quartz_block;amount=25;radius=6;yOffset=.5}
+  - potion{type=SLOW;duration=80;level=3} @PIR{r=6}
+  - setvariable{var=caster.armor;value=0}

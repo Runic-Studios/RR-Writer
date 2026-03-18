@@ -1,0 +1,463 @@
+swamp-elf-elite-damaged:
+  Cooldown: 8
+  Skills:
+  - summon{t=swamp-elf-elite-marker;r=3;os=true} @trigger
+
+swamp-elf-elite-passive:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=swamp-elf-elite-passive1} .25
+  - skill{s=swamp-elf-elite-passive2} .25
+swamp-elf-elite-passive1:
+  Cooldown: 15
+  Skills:
+  - summon{t=swamp-elf-elite-marker;r=3;os=true} @PIR{r=15}
+
+swamp-elf-elite-marker:
+  Skills:
+  - sound{s=block.grass.break}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 10
+  - sound{s=block.grass.break}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 10
+  - sound{s=block.grass.break}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 10
+  - sound{s=block.grass.break}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 10
+  - sound{s=block.grass.break;p=0.5}
+  - blockmask{d=40;r=5;oa=true;m=dirt}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=5}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=5}
+  - delay 20
+  - sound{s=block.grass.break;p=0.5}
+  - effect:particlesphere{p=block_crack;m=dirt;amount=40;radius=10;yOffset=0.5} @self
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=6}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=7}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=8}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=9}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=10}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=10}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=10}
+  - remove
+
+
+swamp-elf-neutral-dark-special:
+  TargetConditions:
+  - distance{d=>3}
+  Conditions:
+  - incombat{}
+  Cooldown: 15
+  Skills:
+  - sound{s=entity.player.attack.sweep} @self
+  - playanimation{a=0;audience=world} @self
+  - setAI{ai=false} @self
+  - delay 20
+  - playanimation{a=0;audience=world} @self
+  - summon{t=swamp-elf-neutral-dark-marker} @Forward{f=4;y=0}
+  - delay 2
+  - summon{t=swamp-elf-neutral-dark-marker} @Forward{f=8;y=0}
+  - delay 2
+  - summon{t=swamp-elf-neutral-dark-marker} @Forward{f=12;y=0}
+  - delay 2
+  - summon{t=swamp-elf-neutral-dark-marker} @Forward{f=16;y=0}
+  - setAI{ai=true} @self
+
+swamp-elf-neutral-dark-marker:
+  Skills:  
+  - blockmask{m=dirt;d=40;r=5;n=0.75}
+  - sound{s=block.grass.break}
+  - throw{vy=8} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=5}
+  - remove
+
+swamp-elf-neutral-light-special:
+  TargetConditions:
+  - distance{d=<32}
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - summon{t=swamp-elf-neutral-light-marker}
+
+swamp-elf-neutral-light-marker:
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false} @PIR{r=5}
+  - blockmask{m=gravel;d=40;r=5;n=0.75}
+  - delay 25
+  - sound{s=block.enchantment_table.use}
+  - effect:particlesphere{p=end_rod;amount=12;radius=5;yOffset=0.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - remove
+
+
+swamp-elf-neutral-light:
+  Conditions:
+  - incombat{}
+  - playernotwithin 3
+  Cooldown: 8
+  Skills:
+  - projectile{ot=swamp-elf-neutral-light-cast-tick;oh=swamp-elf-neutral-light-cast-hit;v=8;i=1;hR=1;vR=1;v=15} @target
+
+swamp-elf-neutral-light-cast:
+  Conditions:
+  - incombat{}
+  - playernotwithin 3
+  Cooldown: 2
+  Skills:
+  - projectile{ot=swamp-elf-neutral-light-cast-tick;oh=swamp-elf-neutral-light-cast-hit-weak;v=8;i=1;hR=1;vR=1;v=10} @target
+
+swamp-elf-neutral-light-cast-tick:
+  Skills:
+  - effect:particlesphere{p=end_rod;amount=1;radius=1} @Origin
+swamp-elf-neutral-light-cast-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} 
+swamp-elf-neutral-light-cast-hit-weak:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} 
+
+swamp-elf-neutral-dark:
+  Conditions:
+  - incombat{}
+  - playwithin 8
+  Cooldown: 15
+  Skills:
+  - potion{t=SLOW;d=40;l=2;hasParticles=false}
+  - delay 25
+  - playanimation{a=0;audience=world} @self
+  - sound{s=block.grass.break}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=4}
+  - throw{vy=8} @PIR{r=4}
+
+swamp-elf-neutral-dark-cast:
+  Conditions:
+  - incombat{}
+  - playwithin 8
+  Cooldown: 4
+  Skills:
+  - potion{t=SLOW;d=40;l=2;hasParticles=false}
+  - delay 25
+  - playanimation{a=0;audience=world} @self
+  - sound{s=block.grass.break}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=4}
+  - throw{vy=8} @PIR{r=4}
+  
+
+
+swamp-elf-colorful-pink:
+  TargetConditions:
+  - distance{d=<4}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=3;hasParticles=false} @self
+  - effect:particlesphere{p=heart;amount=1;radius=1;yOffset=0.5} @self
+  - delay 10
+  - effect:particlesphere{p=heart;amount=1;radius=1;yOffset=0.5} @self
+  - delay 10
+  - effect:particlesphere{p=heart;amount=1;radius=1;yOffset=0.5} @self
+  - delay 5
+  - playanimation{a=0;audience=world} @self
+  - sound{s=entity.fox.bite}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=5;h=25;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 25"}],
+      [ - pull{v=8} ],
+      [ - effect:particlesphere{p=heart;amount=2;radius=1;yOffset=0.5} ],
+      [ - potion{t=SLOW;d=80;l=1} ];
+      roll=<random.-30to30>;fo=5;duration=1} @self
+
+
+swamp-elf-colorful-blue:
+  Conditions:
+  - incombat{}
+  Cooldown: 10
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 20
+  - randomskill{s=swamp-elf-colorful-blue-far,swamp-elf-colorful-blue-near}
+
+swamp-elf-colorful-blue-near:
+  Conditions:
+  - playerwithin 5
+  Skills:
+  - effect:particlesphere{p=falling_dripstone_water;amount=5;radius=2;yOffset=0.5}
+  - delay 10
+  - effect:particlesphere{p=falling_dripstone_water;amount=8;radius=3;yOffset=0.5}
+  - delay 10
+  - effect:particlesphere{p=falling_dripstone_water;amount=12;radius=4;yOffset=0.5}
+  - delay 10
+  - sound{s=block.bubble_column.bubble_pop}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - throw{v=15;vy=5} @PIR{r=4}
+
+swamp-elf-colorful-blue-far:
+  Conditions:
+  - playernotwithin 5
+  Skills:
+  - sound{s=ambient.underwater.exit}
+  - projectile{ot=swamp-elf-colorful-blue-tick;oh=swamp-elf-colorful-blue-hit;v=8;i=1;hR=1;vR=1;v=5} @target
+  - delay 20
+  - sound{s=ambient.underwater.exit}
+  - projectile{ot=swamp-elf-colorful-blue-tick;oh=swamp-elf-colorful-blue-hit;v=8;i=1;hR=1;vR=1;v=5} @target
+  - delay 20
+  - sound{s=ambient.underwater.exit}
+  - projectile{ot=swamp-elf-colorful-blue-tick;oh=swamp-elf-colorful-blue-hit;v=8;i=1;hR=1;vR=1;v=5} @target
+
+swamp-elf-colorful-blue-tick:
+  Skills:
+  - blockmask{m=water;d=20;r=1;oa=true;n=0.25}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+swamp-elf-colorful-blue-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} 
+  - pull{v=8}
+
+swamp-elf-colorful-yellow:
+  Conditions:
+  - onground{}
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} @self
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.5} @self
+  - sound{s=block.sand.break;p=1} @self
+  - delay 10
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.5} @self
+  - sound{s=block.sand.break;p=1} @self
+  - delay 10
+  - randomskill{s=swamp-elf-colorful-yellow-near,swamp-elf-colorful-yellow-far} @target
+swamp-elf-colorful-yellow-near:
+  TargetConditions:
+  - distance{d=<5}
+  Skills:
+  - effect:particlering{p=block_crack;m=gravel;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1} @self
+  - effect:particlering{p=block_crack;m=gravel;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2} @self
+  - effect:particlering{p=block_crack;m=gravel;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3} @self
+  - effect:particlering{p=block_crack;m=gravel;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4} @self
+  - sound{s=block.sand.break;p=0.5} @self  
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=1;hasParticles=false} @PIR{r=4} 
+  - throw{vy=8} @PIR{r=4}
+  - jump{v=1} @self
+
+swamp-elf-colorful-yellow-far:
+  TargetConditions:
+  - distance{d=>5}
+  Skills:
+  - jump{v=0.2} @self
+  - delay 2
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.5}
+  - sound{s=block.sand.break;p=1}
+  - leap{v=325} @target
+  - delay 20
+  - skill{s=swamp-elf-colorful-yellow-near}
+
+
+swamp-elf-white-range:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - sound{s=entity.ender_dragon.flap;p=0.75}
+  - jump{v=0.75}
+  - delay 20
+  - projectile{ot=swamp-elf-white-range-tick;oe=swamp-elf-white-range-end;v=8;i=1;hR=1;vR=1;v=25} @target
+
+swamp-elf-white-range-hurt:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - sound{s=entity.ender_dragon.flap;p=0.75}
+  - leap{v=325} @Forward{f=-8;y=2}
+  - delay 10
+  - projectile{ot=swamp-elf-white-range-tick;oe=swamp-elf-white-range-end;v=8;i=1;hR=1;vR=1;v=25} @target
+
+swamp-elf-white-range-tick:
+  Skills:
+  - effect:particles{p=block_crack;m=gravel;a=1;speed=0;hS=0.2;vS=0.2} @Origin
+swamp-elf-white-range-end:
+  Skills:
+  - summon{t=swamp-elf-white-range-marker}
+swamp-elf-white-range-marker:
+  Skills:
+  - sound{s=block.sand.break}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=4}
+  - blockmask{m=gravel;d=60;r=4;n=0.75}
+  - delay 20
+  - skill{s=swamp-elf-white-range-marker-damage}
+  - delay 40
+  - remove
+swamp-elf-white-range-marker-damage:
+  Skills:
+  - effect:particlering{p=block_crack;m=gravel;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1} @self
+  - effect:particlering{p=block_crack;m=gravel;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2} @self
+  - effect:particlering{p=block_crack;m=gravel;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - delay 20
+  - skill{s=swamp-elf-white-range-marker-damage}
+
+
+swamp-elf-white-melee:
+  TargetConditions:
+  - distance{d=>5}
+  - distance{d=<32}
+  Cooldown: 15
+  Skills:
+  - potion{t=INVISIBILITY;d=40;l=1;hasParticles=false} @self
+  - equip{i=AIR:HAND} @self
+  - equip{i=AIR:OFFHAND} @self
+  - setAI{ai=false} @self
+  - delay 20
+  - teleport @target
+  - delay 20
+  - equip{i=WOODEN_SWORD:HAND} @self
+  - equip{i=WOODEN_SWORD:OFFHAND} @self
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} @self
+  - setAI{ai=true} @self
+  - sound{s=block.grass.step}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}  
+  - throw{vy=8} @PIR{r=4}  
+  - sound{s=block.grass.break} @self
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1} @self
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2} @self
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3} @self
+
+  
+swamp-elf-white-hybrid:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  Cooldown: 15
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - delay 20
+  - summon{t=swamp-elf-white-hybrid-wolf;r=2;os=true}
+swamp-elf-white-hybrid-wolf:
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - sound{s=entity.wolf.pant}
+  - delay 40
+  - skill{s=swamp-elf-white-hybrid-wolf-cast}
+  - delay 80
+  - remove
+
+swamp-elf-white-hybrid-wolf-cast:
+  Skills:
+  - effect:particlering{p=block_crack;m=gravel;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1} @self
+  - effect:particlering{p=block_crack;m=gravel;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2} @self
+  - potion{t=SPEED;d=20;l=1;hasParticles=false} @self
+  - skill{s=swamp-elf-white-hybrid-wolf-near} @target
+  - skill{s=swamp-elf-white-hybrid-wolf-near-leap} @target
+  - delay 40
+  - skill{s=swamp-elf-white-hybrid-wolf-cast} @self
+
+swamp-elf-white-hybrid-wolf-near-leap:
+  TargetConditions:
+  - distance{d=<5}
+  Skills:
+  - jump{v=0.2}
+  - delay 2
+  - leap{v=325}
+swamp-elf-white-hybrid-wolf-near:
+  TargetConditions:
+  - distance{d=<3}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - sudoSkill{s=swamp-elf-white-hybrid-wolf-near-pull} @PIR{r=3}
+  - sound{s=entity.wolf.hurt} @self 
+  - remove @self
+
+swamp-elf-white-hybrid-wolf-near-pull:
+  Skills:
+  - jump{v=0.2} @self
+  - delay 2
+  - leap{v=250} @MIR{t=swamp-elf-white-hybrid;r=15}
+
+swamp-elf-brown-melee:
+  TargetConditions:
+  - distance{d=<6}
+  Conditions:
+  - onground{}
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - sound{s=entity.player.attack.sweep} @self
+  - playanimation{a=0;audience=world} @self
+  - setAI{ai=false} @self
+  - delay 20
+  - playanimation{a=0;audience=world} @self
+  - summon{t=swamp-elf-brown-melee-marker} @Forward{f=2;y=0}
+  - delay 2
+  - summon{t=swamp-elf-brown-melee-marker} @Forward{f=4;y=0}
+  - delay 2
+  - summon{t=swamp-elf-brown-melee-marker} @Forward{f=6;y=0}
+  - delay 2
+  - summon{t=swamp-elf-brown-melee-marker} @Forward{f=8;y=0}
+  - setAI{ai=true} @self
+
+swamp-elf-brown-melee-marker:
+  Skills:
+  - sound{s=block.grass.break}
+  - blockmask{m=dirt;d=20;r=2;n=0.75}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=2}
+  - potion{t=SLOW;d=40;l=2} @PIR{r=2}
+  - remove
+
+
+swamp-elf-brown-range:
+  Conditions:
+  - playerwithin 4
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=80;l=2;hasParticles=false}
+  - sound{s=entity.ender_dragon.flap}
+  - equip{i=AIR:HAND}
+  - leap{v=325} @Forward{f=-8;y=2}
+  - delay 80
+  - equip{i=BOW:HAND}
+
+
+swamp-elf-elite:
+  Skills:
+  - sound{s=block.grass.break;v=2}
+  - effect:particlesphere{p=block_crack;m=dirt;amount=4;radius=2;yOffset=0.5}
+  - message{cooldown=60;m="&e[&6✸&e] &c&lElven Spirit &e&lhas spawned!"} @PIR{r=32}
+  - cast{skillName="Despawn";duration=3000;onCast=swamp-elf-elite-despawn;showCastBar=true}
+swamp-elf-elite-despawn:
+  Skills:
+  - sound{s=block.grass.break;v=2}
+  - effect:particlesphere{p=block_crack;m=dirt;amount=4;radius=2;yOffset=0.5}
+  - message{cooldown=60;m="&e[&6✸&e] &c&lElven Spirit &e&lhas despawned!"} @PIR{r=32}
+  - remove
