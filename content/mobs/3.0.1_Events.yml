@@ -332,7 +332,6 @@ frost-event-enemy-5:
   - skill{s=frost-event-setup-enemy-5} @self ~onSpawn
 
 frost-event-enemy-5-proj-dmg:
-  Skills:
   Type: armor_stand
   Options:
     Despawn: true

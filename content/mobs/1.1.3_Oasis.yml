@@ -152,7 +152,6 @@ FleshGut1:
   Type: BABY_ZOMBIE
   Display: '&6Flesh'
   Health: 1
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true
@@ -169,7 +168,6 @@ FleshGut2:
   Type: BABY_ZOMBIE
   Display: '&6Flesh Guts'
   Health: 1
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true
@@ -186,7 +184,6 @@ FleshGut3:
   Type: BABY_ZOMBIE
   Display: '&6Flesh Guts'
   Health: 1
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true
@@ -203,7 +200,6 @@ FleshGuts1:
   Type: BABY_ZOMBIE
   Display: '&6Flesh'
   Health: 1
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true
@@ -219,7 +215,6 @@ FleshGuts2:
   Type: BABY_ZOMBIE
   Display: '&6Flesh Guts'
   Health: 1
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true
@@ -235,7 +230,6 @@ FleshGuts3:
   Type: BABY_ZOMBIE
   Display: '&6Flesh Guts'
   Health: 1
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true

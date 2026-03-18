@@ -517,7 +517,6 @@ crystalSarcophagus-golem:
     Silent: true
     FollowRange: 15
     NoDamageTicks: 0
-    Silent: true
   Skills:
   - skill{s=crystalSarcophagus-golem-speed} @self ~onTimer:20
   - signal{s=heal} @MIR{t=crystalSarcophagus;r=50} ~onDeath

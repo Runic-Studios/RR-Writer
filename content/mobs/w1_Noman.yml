@@ -132,7 +132,6 @@ Noman-typeb:
   Disguise: PHANTOM
 
 Noman-typeb-projectile-damage:
-  Skills:
   Type: armor_stand
   Options:
     Despawn: true

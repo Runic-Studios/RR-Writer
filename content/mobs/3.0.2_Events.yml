@@ -333,7 +333,6 @@ giant-event-boss-spawn-4:
   #- message{m="&cA Garglag Monster is wreaking havoc at the cannonball supply!"} @PIR{r=128} ~onSpawn
 
 giant-event-boss-spawn-4-proj-dmg:
-  Skills:
   Type: armor_stand
   Options:
     Despawn: true

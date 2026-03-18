@@ -267,7 +267,6 @@ wallaceLackey:
     Silent: true
     FollowRange: 30
     NoDamageTicks: 0
-    Silent: true
     Angry: true
   Modules:
     ThreatTable: true

@@ -159,8 +159,6 @@ GolemLord:
     Range: 20
     Color: RED
     Style: SEGMENTED_10
-  Modules:
-    ThreatTable: true
   Options:
     AlwaysShowName: true
     MovementSpeed: 0.2

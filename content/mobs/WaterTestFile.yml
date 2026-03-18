@@ -60,7 +60,6 @@ SmokeBomb1:
   Type: BABY_ZOMBIE
   Display: '&6Smoke Bomb'
   Health: 50
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true
@@ -151,7 +150,6 @@ SmokeBomb2:
   Type: BABY_ZOMBIE
   Display: '&6Smoke Bomb'
   Health: 50
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true

@@ -442,7 +442,6 @@ SkeletonOverlord:
   Damage: 20
   DamageModifiers:
   - FALL 0
-  DamageModifiers:
   BossBar:
     Enabled: true
     Title: '&7&lSkeleton Overlord'

@@ -16,7 +16,6 @@ herbalism-event-rise-timer:
   - skill{s=herbalism-event-rise-timer-cast;delay=1} @self ~onSpawn
   - skill{s=herbalism-event-timer} @self ~onSpawn
   Options:
-    Invisible: false
     Invisible: true
     Marker: true
 

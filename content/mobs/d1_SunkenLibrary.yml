@@ -337,7 +337,6 @@ sunken-enchanted-power-spawn:
   Type: BABY_ZOMBIE
   Display: '&6Blood'
   Health: 1
-  Skills:
   Options:
     MovementSpeed: 0.01
     PreventOtherDrops: true

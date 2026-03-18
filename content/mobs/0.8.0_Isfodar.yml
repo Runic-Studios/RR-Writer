@@ -109,8 +109,6 @@ isfodar-grave-elder-spawn:
     Range: 32
     Color: RED
     Style: SEGMENTED_10
-  Modules:
-    ThreatTable: true
   Options:
     AlwaysShowName: true
     MovementSpeed: 0.24
@@ -462,8 +460,6 @@ BeastMaster:
     Range: 20
     Color: RED
     Style: SEGMENTED_10
-  Modules:
-    ThreatTable: true
   Options:
     AlwaysShowName: true
     MovementSpeed: 0.24
@@ -615,8 +611,6 @@ CowMother:
     Range: 20
     Color: RED
     Style: SEGMENTED_10
-  Modules:
-    ThreatTable: true
   Options:
     AlwaysShowName: true
     MovementSpeed: 0.5

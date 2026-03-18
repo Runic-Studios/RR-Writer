@@ -148,7 +148,6 @@ DisplacedSpirit:
     Silent: true
     FollowRange: 35
     NoDamageTicks: 0
-    Silent: true
   Skills:
   - command{c="runicgive exp <trigger.name> 62 <mob.l.x> <mob.l.y> <mob.l.z> 11"} @trigger ~onDeath 1.0
   - randomskill{s=g1,g2} @trigger ~onDeath .3

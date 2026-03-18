@@ -617,7 +617,7 @@ BlackfrostCitizen:
   - signal{s=respawn} @MobsInRadius{r=320;t=BlackfrostCSA} ~onDeath
   Disguise: player Steve setSkin Originary setCustomName "&e[&61&e] &aNaz" setDynamicName true
 
-  BlackfrostCitizen2:
+BlackfrostCitizen2:
   Type: ZOMBIE
   Display: '&e[&61&e] &1BlackFrost Citizen'
   Health: 100

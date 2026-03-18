@@ -718,7 +718,6 @@ SnowyOwl:
     PreventRandomEquipment: true
     PreventOtherDrops: true
     PreventJockeyMounts: true
-    PreventRandomEquipment: true
     Silent: true
     PreventRenaming: false
     MovementSpeed: 0.05
@@ -1308,7 +1307,6 @@ DTOwlSpawn:
   Options:
     Silent: true
     MovementSpeed: 0.05
-    Silent: true
   AIGoalSelectors:
   - 0 clear
   AITargetSelectors:
@@ -1328,7 +1326,6 @@ DTOwlSpawnSound60:
   Options:
     Silent: true
     MovementSpeed: 0.05
-    Silent: true
   AIGoalSelectors:
   - 0 clear
   AITargetSelectors:
@@ -1348,7 +1345,6 @@ DTOwlSpawnSound65:
   Options:
     Silent: true
     MovementSpeed: 0.05
-    Silent: true
   AIGoalSelectors:
   - 0 clear
   AITargetSelectors:
@@ -1368,7 +1364,6 @@ DTOwlSpawnSound70:
   Options:
     Silent: true
     MovementSpeed: 0.05
-    Silent: true
   AIGoalSelectors:
   - 0 clear
   AITargetSelectors:

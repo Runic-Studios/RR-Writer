@@ -379,7 +379,6 @@ blessing:
   - skill{s=underground-wave} @self ~onSpawn
   - skill{s=underground-wave-duration} @self ~onSpawn
   Options:
-    Invisible: false
     Invisible: true
     Marker: true
 
