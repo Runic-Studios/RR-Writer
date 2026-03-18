@@ -1,0 +1,157 @@
+LomiElder:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cLomi Elder'
+  Health: 5000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 45
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lLomi Elder'
+    Health: 4000
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=LomiElder-drop} @trigger ~onDeath
+  - effect:particlesphere{p=squid_ink;a=10;r=8;yOffset=.5} @self ~onTimer:1
+  - skill{s=wisperwood-boss-leap} @self ~onTimer:20 .15
+  - skill{s=wisperwood-boss-passive} @self ~onTimer:20
+  - skill{s=wisperwood-boss-summon-marker} @self ~onTimer:20 <50%
+  - setvariable{var=caster.passive;v=1} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin BienBienXu setCustomName "&e[&6☠&e] &cLomi Elder" setDynamicName true
+wisperwood-boss-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=wisperwood-boss-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+wisperwood-rogue:
+  Type: ZOMBIE
+  Display: '&e[&632&e] &cLomi Assassin'
+  Health: 515
+  Damage: 34
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  - IRON_SWORD OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 307 <mob.l.x> <mob.l.y> <mob.l.z> 32"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-32} @trigger ~onDeath
+  - skill{s=wisperwood-rogue-night} @self ~onTimer:20
+  - skill{s=wisperwood-rogue} @self ~onTimer:20 .15
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Brewitched setCustomName "&e[&632&e] &cLomi Assassin" setDynamicName true
+
+wisperwood-warrior:
+  Type: ZOMBIE
+  Display: '&e[&632&e] &cLomi Warrior'
+  Health: 515
+  Damage: 60
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 307 <mob.l.x> <mob.l.y> <mob.l.z> 32"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-32} @trigger ~onDeath
+  - skill{s=wisperwood-warrior-night} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin wakork23 setCustomName "&e[&632&e] &cLomi Warrior" setDynamicName true
+
+wisperwood-mage:
+  Type: ZOMBIE
+  Display: '&e[&633&e] &cLomi Caster'
+  Health: 530
+  Damage: 28
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 319 <mob.l.x> <mob.l.y> <mob.l.z> 33"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-33} @trigger ~onDeath
+  - skill{s=wisperwood-mage} @self ~onTimer:20 .4
+  - skill{s=wisperwood-mage-night} @self ~onTimer:20 .15
+  - skill{s=wisperwood-mage-notwithin}
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Xyonara setCustomName "&e[&633&e] &cLomi Caster" setDynamicName true

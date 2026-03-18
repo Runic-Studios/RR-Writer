@@ -1,0 +1,268 @@
+WhiteWarrior:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cWhite Warrior'
+  Health: 2000
+  Damage: 21
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  - LIGHTNING 0
+  Equipment:
+  - IRON_SWORD HAND
+  - SHIELD OFFHAND
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lWhite Warrior'
+    Health: 2000
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=WhiteWarrior-drop} @trigger ~onDeath
+  - skill{s=WhiteWarriortarget} @target ~onTimer:240
+  - skill{s=WhiteWarriorself} @NearestPlayer{r=32} ~onTimer:40
+  - skill{s=WhiteWarriorself} @self ~onTimer:40 <40%
+  - skill{s=WhiteWarriorself2} @self ~onTimer:40 <60%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Apostoll_ setCustomName "&e[&6☠&e] &cWhite Warrior" setDynamicName true
+WhiteWarriorMarker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: true
+    Marker: true
+  Skills:
+  - effect:particlesphere{p=snow_shovel;amount=5;radius=5} @self ~onTimer:4
+  - sound{s=block.snow.hit} @self ~onTimer:20
+  - sound{s=block.snow.hit} @self ~onSpawn
+  - skill{s=WhiteWarriorMarker} @self ~onSpawn
+  Disguise: FALLING_BLOCK ICE
+
+WhiteWarriorMarker4:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: true
+    Marker: true
+  Skills:
+  - effect:particlesphere{p=snow_shovel;amount=5;radius=5} @self ~onTimer:4
+  - sound{s=block.snow.hit} @self ~onTimer:20
+  - sound{s=block.snow.hit} @self ~onSpawn
+  - skill{s=WhiteWarriorMarker4} @self ~onSpawn
+  Disguise: FALLING_BLOCK BLUE_ICE
+
+WhiteWarriorMarker2:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: true
+    Marker: true
+  Skills:
+  - effect:particlesphere{p=snow_shovel;amount=5;radius=5} @self ~onTimer:4
+  - sound{s=block.snow.hit} @self ~onTimer:20
+  - sound{s=block.snow.hit} @self ~onSpawn
+  - skill{s=WhiteWarriorMarker2} @self ~onSpawn  
+  Disguise: FALLING_BLOCK BLUE_ICE
+
+WhiteWarriorMarker3:
+  Type: BABY_ZOMBIE
+  Display: '&cWhite Snow'
+  Health: 200
+  Damage: 1
+  Options:
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - potion{t=SLOW;d=40;l=3} @PIR{r=3} ~onTimer:4
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=3} ~onTimer:4
+  - effect:particlesphere{p=snow_shovel;amount=5;radius=5} @self ~onTimer:4
+  - sound{s=block.snow.hit} @self ~onTimer:20
+  - skill{s=WhiteWarriorMarker3} @self ~onSpawn
+  - remove{delay=240} 
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK SNOW_BLOCK
+
+WhiteHorror: #event
+  Type: ZOMBIE
+  Display: '&e[&616&e] &cWhite Horror'
+  Health: 275
+  Damage: 18
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 143 <mob.l.x> <mob.l.y> <mob.l.z> 16"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-16} @trigger ~onDeath
+  - skill{s=WhiteHorror} @self ~onTimer:80 .2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin ineedstats setCustomName "&e[&616&e] &cWhite Horror" setDynamicName true
+
+HilsteadCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=HilsteadCitizen;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=HilsteadCitizen2;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=HilsteadCitizen;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=HilsteadCitizen2;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn2
+HilsteadCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aHilstead Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aHilstead Citizen<&co> &fWe were once the kin of Wintervale.} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=HilsteadCSA} ~onDeath
+  Disguise: player Steve setSkin Barkzee setCustomName "&e[&61&e] &aHilstead Citizen" setDynamicName true
+HilsteadCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aHilstead Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aHilstead Citizen<&co> &fWe were once the kin of Wintervale.} @NearestPlayer ~onDamaged
+  - signal{s=respawn2} @MobsInRadius{r=320;t=HilsteadCSA} ~onDeath
+  Disguise: player Steve setSkin DustySoul setCustomName "&e[&61&e] &aHilstead Citizen" setDynamicName true
+
+NorthernBear:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cNorthern Bear'
+  Health: 600
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lNorthern Bear'
+    Health: 600
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=NorthernBear-drop} @trigger ~onDeath
+  #- sudoskill{s=BearPull;cat=true} @trigger ~onDamaged
+  #- sudoskill{s=BearPull} @target ~onDamaged
+  - skill{s=BearCharge} @self ~onTimer:240
+  - skill{s=BearKnockUp} @PIR{r=4} ~onTimer:40
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - sound{s=entity.polar_bear.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: POLAR_BEAR
+
+VikingVillager:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aViking'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aViking Villager<&co> &fWe have been sent to reclaim the mountain.} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin AlexVB setCustomName "&e[&61&e] &aViking" setDynamicName true

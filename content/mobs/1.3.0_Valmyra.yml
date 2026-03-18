@@ -1,0 +1,1176 @@
+Infernal-elite:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cInfernal Commander'
+  Health: 10000
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lElite&e&l] &c&lInfernal Commander'
+    Health: 10000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=elite-threat} @target ~onTimer:80
+  - signal{s=elite-remove} @MIR{t=Infernal-elite-timer;r=50} ~onSignal:remove
+  - skill{s=Infernal-elite} @self ~onSpawn
+  - skill{s=Infernal-elite-skill} @self ~onTimer:80
+  - command{c="runicgive exp <trigger.name> 20000 <mob.l.x> <mob.l.y> <mob.l.z> 55"} @trigger ~onDeath 1.0
+  - command{c="ri drop-range 53 57 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 53 57 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 53 57 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 53 57 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin 1337magNI setCustomName "&e[&6✸&e] &cInfernal Commander" setDynamicName true
+Infernal-elite-spawn:
+  Type: BLAZE
+  Display: '&e[&654&e] &cInfernal Elemental'
+  Health: 400
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Infernal-elite-spawn-passive} @self ~onTimer:20
+  - skill{s=Infernal-elite-spawn} @self ~onSpawn
+  - skill{s=FireElemental} @self ~onTimer:40 .4
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+Pyromancer-projectile:
+  Type: BABY_ZOMBIE
+  Display: ''
+  Health: 10
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  Equipment:
+  Options:
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=Pyromancer-projectile} @self ~onSpawn
+  - skill{s=Pyromancer-fire} @self ~onSignal:fire
+  - skill{s=Pyromancer-remove} @self ~onSignal:remove
+  Disguise: MAGMA_CUBE setSize 2
+
+ValmyraCutscene1:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=InfernalGrunt,InfernalArcher;r=32} ~onSpawn
+  - summon{t=InfernalGrunt} @Location{c=1736.5,27,1998.5} ~onSpawn
+  - summon{t=InfernalGrunt} @Location{c=1736.5,27,2006.5} ~onSpawn
+  - summon{t=InfernalGrunt} @Location{c=1734.5,27,2004} ~onSpawn
+  - summon{t=InfernalGrunt} @Location{c=1734.5,27,2001} ~onSpawn
+  - summon{t=InfernalArcher} @Location{c=1731,34,2001} ~onSpawn
+  - summon{t=InfernalArcher} @Location{c=1731,34,2004} ~onSpawn
+  - summon{t=MysticWintryWolf2} @Location{c=1739.5,27,2002.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+MysticWintryWolf:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &bMystic Wintry Wolf'
+  Health: 8000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&b&lMystic Wintry Wolf'
+    Health: 100
+    Range: 12
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - remove @MIR{t=MysticWintryWolf;r=32} ~onSpawn
+  - skill{s=MysticWintryWolf} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  Disguise: WOLF
+
+MysticWintryWolf2:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &bMystic Wintry Wolf'
+  Health: 8000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&b&lMystic Wintry Wolf'
+    Health: 100
+    Range: 12
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=MysticWintryWolf2} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  Disguise: WOLF
+
+MysticWintryWolf3:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &bMystic Wintry Wolf'
+  Health: 8000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&b&lMystic Wintry Wolf'
+    Health: 100
+    Range: 50
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=MysticWintryWolf3} @self ~onSpawn
+  - skill{s=MysticWintryWolf4} @self ~onSignal:cutscene4
+  - skill{s=MysticWintryWolf5} @self ~onSignal:cutscene5
+  AIGoalSelectors:
+  - 0 clear
+  Disguise: WOLF
+
+MysticWintryWolf4:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &bMystic Wintry Wolf'
+  Health: 8000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&b&lMystic Wintry Wolf'
+    Health: 100
+    Range: 24
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - sethealth{a=5333} @self ~onSpawn
+  - skill{s=MysticWintryWolf3} @self ~onSpawn
+  - skill{s=MysticWintryWolf4} @self ~onSignal:cutscene4
+  - skill{s=MysticWintryWolf5} @self ~onSignal:cutscene5
+  AIGoalSelectors:
+  - 0 clear
+  Disguise: WOLF
+
+MysticWintryWolf5:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &bMystic Wintry Wolf'
+  Health: 8000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&b&lMystic Wintry Wolf'
+    Health: 100
+    Range: 24
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - sethealth{a=2666} @self ~onSpawn
+  - skill{s=MysticWintryWolf3} @self ~onSpawn
+  - skill{s=MysticWintryWolf4} @self ~onSignal:cutscene4
+  - skill{s=MysticWintryWolf5} @self ~onSignal:cutscene5
+  AIGoalSelectors:
+  - 0 clear
+  Disguise: WOLF
+
+CinderedSap:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lCindered Sap'
+  Health: 7500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Equipment:  
+  - IRON_SWORD HAND
+  - IRON_SWORD OFFHAND
+  BossBar:
+    Enabled: true
+    Title: '&c&lCindered Sap'
+    Health: 7500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-threat} @target ~onTimer:20
+  - setvariable{var=caster.elite;value=0} @self ~onSpawn
+  - setvariable{var=caster.elite;value=1} @self ~onSpawn .15
+  - skill{s=CinderedSap-elite-setname} @self ~onSpawn
+  - skill{s=CinderedSap-elite-visual} @self ~onTimer:10
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 50"} @trigger ~onDeath
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .75
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - skill{s=CinderedSap-drop} @trigger ~onDeath
+  - skill{s=CinderedSap} @self ~onTimer:20
+  - skill{s=CinderedSap-heal} @self ~onSignal:heal
+  - signal{s=remove} @MIR{t=CinderedSpawn;r=32} ~onSpawn
+  - signal{s=remove} @MIR{t=CinderedSpawn;r=32} ~onDeath
+  - sound{s=entity.skeleton.hurt} @self ~onDamaged
+  - remove @MIR{t=CinderedSap-b,CinderedSap-r,CinderedSap-l;r=32} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: WITHER_SKELETON
+
+CinderedSap-grass:
+  Type: BABY_ZOMBIE
+  Display: ''
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: false
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=80} @self ~onSpawn
+  Disguise: FALLING_BLOCK GRASS
+
+CinderedSpawn:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lCindered Fortress'
+  Health: 500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:  
+  - SHIELD HAND
+  - SHIELD OFFHAND
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.16
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=remove} @MIR{t=CinderedSpawn;r=64} ~onSpawn
+  - skill{s=CinderedSpawn-remove} @self ~onSignal:remove
+  - skill{s=CinderedSpawn} @self ~onSpawn
+  - sound{s=entity.skeleton.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WITHER_SKELETON
+
+CinderedSap-b:
+  Type: ZOMBIE
+  Display: ''
+  Health: 500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Equipment:  
+  - IRON_SWORD HAND
+  Drops:
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 24
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=CinderedSap-b} @self ~onSpawn
+  - skill{s=CinderedSap-bsk} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WITHER_SKELETON
+
+CinderedSap-r:
+  Type: ZOMBIE
+  Display: ''
+  Health: 500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Equipment:  
+  - IRON_SWORD HAND
+  Drops:
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=CinderedSap-r} @self ~onSpawn
+  - skill{s=CinderedSap-rsk} @self ~onSignal:skill
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: WITHER_SKELETON
+
+CinderedSap-l:
+  Type: ZOMBIE
+  Display: ''
+  Health: 500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Equipment:  
+  - IRON_SWORD HAND
+  Drops:
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=CinderedSap-l} @self ~onSpawn
+  - skill{s=CinderedSap-lsk} @self ~onSignal:skill
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: WITHER_SKELETON
+
+AncientGolem:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cAncient Golem'
+  Health: 20000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  BossBar:
+    Enabled: true
+    Title: '&c&lAncient Golem'
+    Health: 20000
+    Range: 24
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.20
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-threat} @target ~onTimer:20
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 50"} @trigger ~onDeath
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop ancient-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .40
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - skill{s=AncientGolem-rupture} @self ~onDamaged
+  - skill{s=AncientGolem-throw} @self ~onSignal:throw
+  - skill{s=AncientGolem-Knockup} @target ~onTimer:4
+  - skill{s=AncientGolem-Knockup2} @self ~onTimer:40 .2
+  - skill{s=AncientGolem-Firetick} @self ~onTimer:2
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - setvariable{var=caster.fire;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+AncientRemnant:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lAncient Remnant'
+  Health: 1000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.20
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 400 <mob.l.x> <mob.l.y> <mob.l.z> 50"} @trigger ~onDeath
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.08
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - command{c="ri drop ancient-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.08
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin doriho2012 setCustomName "&e[&6☠&e] &c&lAncient Remnant" setDynamicName true
+
+AncientGolem-spawn:
+  Type: ZOMBIE
+  Display: ''
+  Health: 500
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:
+  - skill{s=AncientGolem-spawn} @self ~onSpawn
+  - skill{s=AncientGolem-spawn2} @self ~onSpawn
+  - skill{s=AncientGolemSpawn-jump} @self ~onSignal:jump
+  - skill{s=AncientGolemSpawn-leap} @self ~onSignal:leap
+  - sound{s=block.stone.break} @self ~onDeath
+  - summon{t=AncientRemnant} @self ~onDeath .15
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_BRICKS
+    
+AncientGolem-spawn2:
+  Type: ZOMBIE
+  Display: ''
+  Health: 500
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:
+  - skill{s=AncientGolem-spawn3} @self ~onSpawn
+  - sound{s=block.stone.break} @self ~onDeath
+  - summon{t=AncientRemnant} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK COAL_BLOCK
+    
+AncientGolem-rupture1:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    Marker: true
+    Invincible: true
+  Skills:
+  - skill{s=AncientGolem-rupture1} @self ~onSpawn
+  - remove @self ~onSpawn
+AncientGolem-rupture2:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    Marker: true
+    Invincible: true
+  Skills:
+  - skill{s=AncientGolem-rupture2} @self ~onSpawn
+  - remove @self ~onSpawn
+AncientGolem-rupture3:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    Marker: true
+    Invincible: true
+  Skills:
+  - skill{s=AncientGolem-rupture3} @self ~onSpawn
+  - remove @self ~onSpawn
+AncientGolem-rupture4:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    Marker: true
+    Invincible: true
+  Skills:
+  - skill{s=AncientGolem-rupture4} @self ~onSpawn
+  - remove @self ~onSpawn
+
+GrandAncientGolem:
+  Type: ZOMBIE
+  Display: '&4[☠] &cGrand Ancient Golem'
+  Health: 100000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&4&l[Field Boss] &r&c&lGrand Ancient Golem'
+    Health: 100000
+    Range: 48
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.20
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-threat} @target ~onTimer:20
+  - skill{s=GrandAncientGolem-drop} @trigger ~onDeath 1.0
+  - remove @MIR{t=GrandAncientOrb,GrandAncientGolem-chaos,GrandAncientGolem-order;r=128} ~onDeath
+  - remove @MIR{t=GrandAncientOrb,GrandAncientGolem-chaos,GrandAncientGolem-order;r=128} ~onDespawn
+  - skill{s=GrandAncientGolem-Start} @self ~onDamaged
+  - skill{s=GrandAncientGolem-Knockup} @target ~onTimer:4
+  - skill{s=GrandAncientGolem-Knockup2} @self ~onTimer:40 .2
+  - skill{s=GrandAncientGolem-Firetick} @self ~onTimer:2
+  - skill{s=GrandAncientGolem-Prison} @self ~onDamaged <80%
+  - skill{s=GrandAncientGolem-Prison2} @self ~onDamaged <20%
+  - skill{s=GrandAncientGolem-Rupture} @self ~onTimer:10 <35%
+  - skill{s=GrandAncientGolem-Rage} @self ~onDamaged <10%
+  - skill{s=GrandAncientGolem-Shoulder} @self ~onDamaged <50%
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - setvariable{var=caster.fire;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+GrandAncientGolem-chaos:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lAncient Chaos'
+  Health: 10000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lAncient Chaos'
+    Health: 10000
+    Range: 48
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - remove @MIR{t=GrandAncientGolem-chaos;r=128} ~onSpawn
+  - skill{s=GrandAncientGolemChaos-start} @self ~onSpawn
+  - skill{s=GrandAncientGolem-Knockup} @self ~onTimer:4
+  - skill{s=GrandAncientGolemChaos-death} @self ~onDeath
+  - skill{s=GrandAncientGolemChaos-death} @self ~onSignal:rage
+  - skill{s=GrandAncientGolem-chaos} @self ~onSignal:chaos
+  - skill{s=GrandAncientGolemChaos-rise} @self ~onSignal:death  
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=CheckPlayerDeath} @target ~onTimer:30
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+GrandAncientGolemChaos-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    Marker: true
+    Invincible: true
+  Skills:
+  - skill{s=GrandAncientGolemChaos-marker} @self ~onSpawn
+  - skill{s=GrandAncientGolemChaos-spawn} @self ~onSignal:chaos
+GrandAncientGolemChaos-spawn:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cFallen Chaos'
+  Health: 2500
+  Modules:
+    ThreatTable: true
+  Damage: 60
+  Drops:
+  Options:
+    Despawn: true
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=GrandAncientGolemChaosSpawn-skill} @self ~onTimer:4 .2
+  - skill{s=CheckPlayerDeath} @target ~onTimer:30
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin DEATHBOT4 setCustomName "&e[&6☠&e] &cFallen Chaos" setDynamicName true
+
+GrandAncientGolem-order:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lAncient Order'
+  Health: 10000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lAncient Order'
+    Health: 10000
+    Range: 48
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - remove @MIR{t=GrandAncientGolem-order;r=128} ~onSpawn
+  - skill{s=GrandAncientGolem-Knockup} @self ~onTimer:4
+  - skill{s=GrandAncientGolemOrder-death} @self ~onDeath
+  - skill{s=GrandAncientGolemOrder-death} @self ~onSignal:rage
+  - skill{s=GrandAncientGolem-order} @self ~onSignal:order
+  - skill{s=GrandAncientGolemOrder-rise} @self ~onSignal:death  
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=CheckPlayerDeath} @target ~onTimer:30
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+GrandAncientGolemOrder-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    Marker: true
+    Invincible: true
+  Skills:
+  - skill{s=GrandAncientGolemOrder-marker} @self ~onSpawn
+  - skill{s=GrandAncientGolemOrder-spawn} @self ~onSignal:order
+GrandAncientGolemOrder-spawn:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cFallen Order'
+  Health: 2500
+  Modules:
+    ThreatTable: true
+  Damage: 60
+  Drops:
+  Options:
+    Despawn: true
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=GrandAncientGolemOrderSpawn-skill} @self ~onTimer:40 .2
+  - skill{s=GrandAncientGolemOrderSpawn-skill2} @self ~onTimer:40 .2
+  - skill{s=CheckPlayerDeath} @target ~onTimer:30
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Ariniix setCustomName "&e[&6☠&e] &cFallen Order" setDynamicName true
+GrandAncientGolemOrderSpawn-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    Marker: true
+    Invincible: true
+  Skills:
+  - skill{s=GrandAncientGolemOrderSpawn-marker} @self ~onSpawn
+
+GrandAncientGolem-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    Marker: true
+    Invincible: true
+  Skills:
+  - skill{s=GrandAncientGolem-marker} @self ~onSpawn
+GrandAncientGolem-spawn:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &E&lIron Locket'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    Despawn: true
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - sound{s=block.stone.break} @self ~onDamaged
+#  - remove @MIR{t=GrandAncientOrb;r=128} ~onDeath
+  - skill{s=locket-threat} @target ~onTimer:20
+  - skill{s=GrandAncientGolem-spawn} @target ~onTimer:20
+  - signal{s=heal} @MIR{t=GrandAncientOrb;r=128} ~onTimer:40
+  - skill{s=GrandAncientGolem-spawn-despawn} @self ~onSpawn
+  - skill{s=CheckPlayerDeath} @target ~onTimer:30
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Tyranak setDynamicName true
+
+GrandAncientOrb:
+  Type: MAGMA_CUBE
+  Display: '&e[&6☠&e] &c&lBlood Born'
+  Health: 2500
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  Options:
+    Size: 4
+    Despawn: true
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - remove @MIR{t=GrandAncientOrb;r=16} ~onSpawn
+  - skill{s=GrandAncientOrb} @self ~onTimer:2
+  - skill{s=GrandAncientOrb4} @self ~onSignal:heal
+  - skill{s=GrandAncientOrb-damaged} @self ~onDamaged
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - heal{a=2000;i=true} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+
+FireElemental:
+  Type: BLAZE
+  Display: '&e[&654&e] &cFire Elemental'
+  Health: 785
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=FireElemental} @target ~onTimer:40 .4
+  - command{c="runicgive exp <trigger.name> 534 <mob.l.x> <mob.l.y> <mob.l.z> 54"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-54} @trigger ~onDeath
+  #- command{c="ri drop sacred-flame <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .075
+  - summon{t=Infernal-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+InfernalGrunt:
+  Type: ZOMBIE
+  Display: '&e[&652&e] &cInfernal Grunt'
+  Health: 815
+  Damage: 65
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - FireSword HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=FireGruntAuraSmall} @self ~onTimer:20
+  #- command{c="runicgive exp <trigger.name> 365 <caster.l.x> <caster.l.y> <caster.l.z>"} @trigger ~onDeath 1.0
+  - command{c="runicgive exp <trigger.name> 562 <mob.l.x> <mob.l.y> <mob.l.z> 52"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-52} @trigger ~onDeath
+  #- command{c="ri drop sacred-flame <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .04
+  - summon{t=Infernal-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin 0mah setCustomName "&e[&652&e] &cInfernal Grunt" setDynamicName true
+InfernalArcher:
+  Type: ZOMBIE
+  Display: '&e[&653&e] &cInfernal Archer'
+  Health: 800
+  Damage: 60
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - FireBow HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=FireArrow} @target ~onTimer:20
+  - command{c="runicgive exp <trigger.name> 562 <mob.l.x> <mob.l.y> <mob.l.z> 53"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-53} @trigger ~onDeath
+  #- command{c="ri drop sacred-flame <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .04
+  - summon{t=Infernal-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin umuYuyu setCustomName "&e[&653&e] &cInfernal Archer" setDynamicName true
+Pyromancer:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cThe Pyromancer'
+  Health: 8000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 60
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lThe Pyromancer'
+    Health: 8000
+    Range: 50
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - AIR HAND 
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Pyromancer-drop} @trigger ~onDeath
+  #- skill{s=passiveSkill_cinders} @self ~onTimer:20
+  - skill{s=Pyromancer-cutscene1} @self ~onTimer:20 <75%
+  - skill{s=Pyromancer-cutscene2} @self ~onTimer:20 <50%
+  - skill{s=Pyromancer-cutscene3} @self ~onTimer:20 <25%
+  - skill{s=startCinderStorm} @PIR{r=20} ~onTimer:600
+  #- potion{t=SLOW;d=2147483647;l=998;hasParticles=true;force=true} @self ~onSpawn
+  #- velocity{m=set;x=0;y=0;z=0} @self ~onDamaged
+  #- skill{s=FlamingRings} @self ~onTimer:200
+  #- skill{s=FloatingBarrage} @target ~onTimer:300
+  - skill{s=PyromancerTimer} ~onTimer:320
+  - effect:sound{s=music.nether;v=2;p=1} @PIR{r=20;v=2} ~onEnterCombat
+#  - command{c="giveartifact <trigger.name> scorpion <caster.l.x> <caster.l.y> <caster.l.z> <caster.uuid>"} @trigger ~onDeath 0.1
+#  - command{c="giveartifact <trigger.name> dawnbringer <caster.l.x> <caster.l.y> <caster.l.z> <caster.uuid>"} @trigger ~onDeath 0.1
+#  - command{c="giveartifact <trigger.name> sunflare <caster.l.x> <caster.l.y> <caster.l.z> <caster.uuid>"} @trigger ~onDeath 0.1
+#  - command{c="giveartifact <trigger.name> cataclysm <caster.l.x> <caster.l.y> <caster.l.z> <caster.uuid>"} @trigger ~onDeath 0.1
+#  - command{c="giveartifact <trigger.name> warmonger <caster.l.x> <caster.l.y> <caster.l.z> <caster.uuid>"} @trigger ~onDeath 0.1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin ChavezFam505 setCustomName "&e[&6☠&e] &cThe Pyromancer" setDynamicName true
+ThePyromancer-spawn:
+  Type: BLAZE
+  Display: '&e[&654&e] &cFire Elemental'
+  Health: 400
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=FireElemental} @target ~onTimer:40 .4
+  - command{c="runicgive exp <trigger.name> 200 <mob.l.x> <mob.l.y> <mob.l.z> 54"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  #- command{c="ri drop sacred-flame <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+EncodedLetterGiver:
+  Type: BABY_ZOMBIE
+  Display: '&6Encoded Letter'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=RemembranceNote} @self ~onTimer:2
+  - command{c="ri drop EncodedLetter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  Disguise: DROPPED_ITEM PURPLE_DYE

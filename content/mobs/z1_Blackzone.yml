@@ -1,0 +1,86 @@
+cave-horror:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cCave Horror'
+  Health: 300000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 300
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lCave Horror'
+    Health: 300000
+    Range: 64
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - iron_axe HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skills{s=general-threat-reset-64} @target ~onTimer:20 
+  - skills{s=general-leash-check-16} @PIR{r=64} ~onTimer:200
+  - remove{} @self ~onDropCombat
+  - model{mid=cave_horror} @self ~onSpawn
+  - state{mid=cave_horror;s=attack_1} @self ~onDamaged
+  - state{mid=cave_horror;s=idle} @self ~onSpawn
+  - state{mid=cave_horror;s=death} @self ~onDeath
+  #- command{c="ri drop cyrus-vessel <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} @trigger ~onDeath 1
+  - skill{s=BossFirework} @trigger ~onDeath
+  - setvariable{var=caster.damage;value=100} @self ~onSpawn
+  - setvariable{var=caster.speed;value=0} @self ~onSpawn
+  #- modifyDamage{a=<caster.var.damage_modifier>;modifier=MULTIPLY;sync=true} @self ~onAttack
+  - skill{s=cave-horror-skill-manager} @self ~onTimer:20
+  - message{m="Attack"} @PIR{r=16} ~onAttack
+  #- setspeed{speed=0.6;type=walking} ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Salmon_47 setCustomName "&e[&6☠&e] &cCave Horror" setDynamicName true
+
+
+cave-dweller:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cCave Dweller'
+  Health: 1000
+  Damage: 125
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  #- command{c="runicgive exp <trigger.name> 675 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - model{mid=cave_dweller} @self ~onSpawn
+  #- command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.02
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget

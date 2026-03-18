@@ -1,0 +1,580 @@
+Koda:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cKoda'
+  Health: 7500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lKoda'
+    Health: 10000
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Koda-drop} @trigger ~onDeath
+  - skill{s=Koda-summon} @self ~onEnterCombat
+  - skill{s=Koda-hurt} @self ~onSignal:hurt
+  - skill{s=Koda-throw} @self ~onTimer:240
+  - signal{s=suicide} @MIR{t=Nova;r=32} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: WOLF
+
+Nova:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cNova'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lNova'
+    Health: 2500
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Nova-summon} @self ~onSignal:summon
+  - skill{s=Nova-hurt} @self ~onDamaged
+  - heal{a=100;i=true} @self ~onSignal:heal
+  - skill{s=Nova-throw} @self ~onSignal:throw
+  - suicide @self ~onSignal:suicide
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WOLF
+
+Koda-throw-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=Koda-throw-marker} @self ~onSpawn
+
+BlackfrostBear:
+  Type: POLAR_BEAR
+  Display: '&e[&656&e] &cBlackfrost Bear'
+  Health: 875
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 520 <mob.l.x> <mob.l.y> <mob.l.z> 56"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-56} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+ArcticDemon:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cArctic Demon'
+  Health: 10000
+  Damage: 60
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lArctic Demon'
+    Health: 25000
+    Range: 20
+    Color: BLUE
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ArcticDemon-drop} @trigger ~onDeath
+  - randomskill{s=ar1,ar2} @trigger ~onDeath 1
+  - setvariable{var=caster.attackCounter;value=0} @self ~onSpawn
+  - setvariable{var=caster.attackCounter;value=0} @self ~onEnterCombat
+  - setvariable{var=caster.attackCounter;value=0} @self ~onChangeTarget
+  - sendtitle{title="";subtitle="&3&lTargeted";d=10} @target ~onChangeTarget
+  - sendtitle{title="";subtitle="&3&lTargeted";d=10} @target ~onEnterCombat
+  - setvariable{var=caster.threatInitiated;type=STRING;value="false"} @self ~onSpawn
+  - skill{s=ApplyArcticThreat} @PIR{r=25;sort=NEAREST;limit=1} ~onEnterCombat
+  - skill{s=ApplyArcticThreat} @target ~onChangeTarget
+  - skill{s=CheckPlayerDeath} @target ~onTimer:30
+  - skill{s=PassivelyLoseThreat} @PIR{r=25} ~onTimer:20
+  - skill{s=ArcticCrystal} @PIR{r=25;sort=random;limit=1} ~onTimer:100
+  - skill{s=ArcticMissile} @target ~onTimer:40
+  - skill{s=ArcticSkillRotation} @self ~onTimer:340
+  - skill{s=GetThemArchers} @trigger ~onDamaged
+  - effect:blockmask{m=ice;d=40;r=2;n=3} @self ~onTimer:20
+#  - skill{s=DeathExplosion} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+  Disguise: player Steve setSkin 5now setDynamicName true
+
+RemembranceNote1:
+  Type: BABY_ZOMBIE
+  Display: '&7Ragged Note'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=RemembranceNote} @self ~onTimer:2
+  - command{c="ri drop RemembranceNote1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM GRAY_DYE
+
+RemembranceNote2:
+  Type: BABY_ZOMBIE
+  Display: '&7Ragged Note'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=RemembranceNote} @self ~onTimer:2
+  - command{c="ri drop RemembranceNote2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM GRAY_DYE
+
+RemembranceNote3:
+  Type: BABY_ZOMBIE
+  Display: '&7Ragged Note'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=RemembranceNote} @self ~onTimer:2
+  - command{c="ri drop RemembranceNote3 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM GRAY_DYE
+
+RemembranceNote4:
+  Type: BABY_ZOMBIE
+  Display: '&7Ragged Note'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=RemembranceNote} @self ~onTimer:2
+  - command{c="ri drop RemembranceNote4 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM GRAY_DYE
+
+RemembranceNote5:
+  Type: BABY_ZOMBIE
+  Display: '&7Ragged Note'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=RemembranceNote} @self ~onTimer:2
+  - command{c="ri drop RemembranceNote5 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM GRAY_DYE
+
+RemembranceNote6:
+  Type: BABY_ZOMBIE
+  Display: '&7Ragged Note'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=RemembranceNote} @self ~onTimer:2
+  - command{c="ri drop RemembranceNote6 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM GRAY_DYE
+
+RemembranceNote7:
+  Type: BABY_ZOMBIE
+  Display: '&7Ragged Note'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=RemembranceNote} @self ~onTimer:2
+  - command{c="ri drop RemembranceNote7 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM GRAY_DYE
+
+EldridQuestSetup1:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - remove @MIR{t=EldridQuest1;r=32} ~onSpawn
+  - remove @MIR{t=ArcticDemonQuest1;r=32} ~onSpawn
+  - summon{t=EldridQuest1} @Location{c=1267,23,2531} ~onSpawn
+  - summon{t=ArcticDemonQuest1} @Location{c=1269.5,23,2526.5} ~onSpawn
+  - summon{t=EldridQuestStunShort} @PIR{r=8} ~onSpawn
+  - remove @self ~onSpawn  
+
+EldridQuest1:
+  Type: ZOMBIE
+  Display: '&6???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&6???';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - setAI{ai=false;delay=20} @self ~onSpawn
+  - remove{delay=240} @self ~onSpawn
+  Disguise: player Steve setSkin adaydremer setCustomName "&6???" setDynamicName true
+
+ArcticDemonQuest1:
+  Type: ZOMBIE
+  Display: '&7???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&7???';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - setAI{ai=false;delay=20} @self ~onSpawn
+  - remove{delay=240} @self ~onSpawn
+  Disguise: player Steve setSkin Icebird02 setCustomName "&7???" setDynamicName true
+
+EldridQuestSetup2:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=start} @MIR{t=EldridQuestStart2;r=64} ~onSpawn
+  - remove{delay=20} @self ~onSpawn
+
+EldridQuestStart2:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=EldridQuestStart2} @self ~onSignal:start
+
+EldridQuest2:
+  Type: ZOMBIE
+  Display: '&6???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.15
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&6???';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - summon{t=EldridSignalDialogue} @self ~onSpawn
+  - runaigoalselector{goal=gotolocation 1483,24,2419} @self ~onSignal:walk
+  - skill{s=EldridSignalDialogue} @PIR{r=8} ~onSignal:dialogue
+  Disguise: player Steve setSkin adaydremer setCustomName "&6???" setDynamicName true
+
+ArcticDemonQuest2:
+  Type: ZOMBIE
+  Display: '&7???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&7???';delay=1} @self ~onDamaged
+  - effect:blockmask{m=sand;r=4;d=20} @self ~onSpawn
+  - heal{a=5000} @self ~onDamaged
+  - skill{s=EldridSignalFreeze} @self ~onSignal:freeze
+  #- disguise{type=player;player=ArcticDemonQuest2;skin=5now} @self ~onSignal:frozen 
+  Disguise: player Steve setSkin Icebird02 setCustomName "&7???" setDynamicName true
+
+EldridSignalWalk:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=walk} @MIR{t=EldridQuest2;r=64} ~onSpawn
+  - remove @self ~onSpawn
+
+EldridSignalFreeze:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=freeze} @MIR{t=ArcticDemonQuest2;r=64} ~onSpawn
+  - remove @self ~onSpawn
+
+EldridSignalFrozen:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=frozen} @MIR{t=ArcticDemonQuest2;r=64} ~onSpawn
+  - remove @self ~onSpawn
+
+EldridSignalDialogue:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=dialogue} @MIR{t=EldridQuest2;r=64} ~onSpawn
+  - remove @self ~onSpawn
+
+EldridQuestStun:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=EldridQuestStun} @self ~onSpawn
+  - remove{delay=1000} @self ~onSpawn
+
+EldridQuestStunShort:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=EldridQuestStunShort} @self ~onSpawn
+  - remove{delay=1000} @self ~onSpawn
+
+EldridQuestTeleport:
+  Type: ZOMBIE
+  Display: '&7Old Spirit'
+  Health: 25000
+  Damage: 1
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=EldridQuestTeleport} @target ~onTimer:20  
+  - remove{delay=160} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK WHITE_TULIP

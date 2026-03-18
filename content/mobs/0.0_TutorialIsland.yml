@@ -1,0 +1,642 @@
+DaleCitizen1-drowning:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aWillowdale Citizen'
+  Health: 200
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:  
+  - teleport @Forward{f=0;y=-0.5} ~onSpawn
+  - skill{s=DaleCitizen-drowning-message} @self ~onSpawn
+  - skill{s=DaleCitizen-drowning} @self ~onTimer:20
+  Disguise: player Steve setSkin kookamooka setCustomName "&e[&61&e] &aWillowdale Citizen" setDynamicName true
+DaleCitizen2-drowning:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aWillowdale Citizen'
+  Health: 200
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: trueAniBee55
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:  
+  Disguise: player Steve setSkin AniBee55 setCustomName "&e[&61&e] &aWillowdale Citizen" setDynamicName true
+
+tutorial_boss:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cAzanian Warbeast'
+  Health: 125
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&c&lAzanian Warbeast'
+    Health: 100
+    Range: 16
+    Color: RED
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Skills:
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  - randomskill{s=tutorial_boss,tutorial_boss2} @self ~onTimer:160 .75
+  - randomskill{s=g1,g2} @self ~onDeath .3
+  Disguise: RAVAGER
+
+tutorial_boss-marker:
+  Type: armor_stand
+  Display: '&0'
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=tutorial_boss-marker} @self ~onSpawn
+
+tutorial_horse:
+  Type: HORSE
+  Display: ''
+  Health: 100
+  Faction: Boss
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    HorseColor: brown
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - heal{a=100} @self ~onDamaged
+
+tutorial_flower:
+  Type: BABY_ZOMBIE
+  Display: '&bCornflower'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - command{c="ri drop tutorial-reagent-flower <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK AZURE_BLUET
+
+tutorial_training:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &cTraining Dummy'
+  Health: 1
+  Damage: 5
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - sound{s=block.wood.break} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin firePixe0124 setCustomName "&e[&61&e] &cTraining Dummy" setDynamicName true
+
+tutorial_citizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aRedbrand Footman'
+  Health: 25
+  Damage: 5
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - WOODEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - command{c="ri drop tutorial-reagent-metal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 4 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Disguise: player Steve setSkin dwwb setCustomName "&e[&61&e] &aRedbrand Footman" setDynamicName true
+
+tutorial_mule:
+  Type: DONKEY
+  Display: '&e[&61&e] &aMule'
+  Health: 10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  Skills:
+  - command{c="ri drop tutorial-reagent-leather <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 4 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+tutorial_parrot:
+  Type: BEE
+  Display: '&e[&61&e] &aSeagull'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  Skills:
+  - command{c="ri drop tutorial-reagent-feather <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 1 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  - skill{s=tutorial_parrot} @self ~onTimer:20 .25
+  Disguise: PARROT
+tutorial_turtle:
+  Type: TURTLE
+  Display: '&e[&61&e] &aSea Turtle'
+  Health: 10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  Skills:
+  - command{c="ri drop tutorial-reagent-shell <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 4 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+
+# rework
+
+AzanianSoldierDummyElite:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &cElite Azanian Soldier'
+  Health: 25
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 3
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  - potion{t=SLOW;d=20;l=10;p=false} @self ~onAttack
+#  - effect:sound{s=entity.dragon_fireball.explode;p=1} @selflocation ~onSpawn #@PIR{r=40} ~onSpawn
+  Disguise: player Steve setSkin Acculmar setDynamicName true
+    
+redbrand_soldier:
+  Type: skeleton
+  Display: '&e[&61&e] &aRedbrand Footman'
+  Health: 15
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Faction: Player
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 12
+    MaxCombatDistance: 12
+    NoDamageTicks: 0
+    Silent: false
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  AIGoalSelectors:
+  - 0 clear
+  #- 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  #- 1 monsters
+  - 1 otherfactionmonsters
+  Skills:
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  - potion{t=SLOW;d=20;l=10;p=false} @self ~onAttack
+#  - skill{s=CatapultSoundEffect} @PIR{r=30} ~onSpawn
+  Disguise: player Steve setSkin dwwb setDynamicName true
+
+AzanianSoldierDummy:
+  Type: skeleton
+  Display: '&e[&61&e] &cAzanian Soldier'
+  Health: 10
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Faction: Undead
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 12
+    MaxCombatDistance: 12
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  AIGoalSelectors:
+  - 0 clear
+  #- 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  #- 1 monsters
+  - 1 otherfactionmonsters
+  Skills:
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  - potion{t=SLOW;d=20;l=10;p=false} @self ~onAttack
+#  - skill{s=CatapultSoundEffect} @PIR{r=30} ~onSpawn
+  Disguise: player Steve setSkin 15nickebr setDynamicName true
+    
+DaleCitizen1:
+  Type: zombie
+  Display: '&e[&61&e] &aWillowdale Citizen'
+  Health: 200
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Faction: Player
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - NONE HAND
+  AIGoalSelectors:
+  - 0 clear
+  #- 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  #- 1 monsters
+  - 1 otherfactionmonsters
+  Skills:  
+  - heal{a=200} @self ~onTimer:40
+  - jump{v=0.2} @self ~onSignal:jump
+  - skill{s=pbnpca} @self ~onTimer:20
+  Disguise: player Steve setSkin AniBee55 setCustomName "&e[&61&e] &aWillowdale Citizen" setDynamicName true
+DaleCitizen2:
+  Type: zombie
+  Display: '&e[&61&e] &aWillowdale Citizen'
+  Health: 200
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Faction: Player
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - NONE HAND
+  AIGoalSelectors:
+  - 0 clear
+  #- 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  #- 1 monsters
+  - 1 otherfactionmonsters
+  Skills:  
+  - heal{a=200} @self ~onTimer:40
+  - jump{v=0.2} @self ~onSignal:jump
+  - skill{s=pbnpca} @self ~onTimer:20
+  Disguise: player Steve setSkin kookamooka setCustomName "&e[&61&e] &aWillowdale Citizen" setDynamicName true
+
+DaleAzanianSoldier1:
+  Type: skeleton
+  Display: '&e[&625&e] &cAzanian Soldier'
+  Health: 200
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  #Faction: Boss
+  Faction: Undead
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  AIGoalSelectors:
+  - 0 clear
+  #- 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  #- 1 monsters
+  - 1 otherfactionmonsters
+  Skills:
+  - heal{a=200} @self ~onTimer:40
+  - skill{s=DaleAzanianSoldier1} @self ~onTimer:20
+  - skill{s=pbscheck} @self ~onTimer:20
+  Disguise: player Steve setSkin 06chipsahoy setCustomName "&e[&625&e] &cAzanian Soldier" setDynamicName true
+DaleAzanianSoldier2:
+  Type: zombie
+  Display: '&e[&625&e] &cAzanian Soldier'
+  Health: 200
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Faction: Undead
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - heal{a=200} @self ~onTimer:40
+  - heal{a=20} @PIR{r=2} ~onTimer:100
+  - potion{type=SLOW;duration=140;level=10} @self ~onSpawn
+  - skill{s=pbscheck} @self ~onTimer:20
+  Disguise: player Steve setSkin 06chipsahoy setCustomName "&e[&625&e] &cAzanian Soldier" setDynamicName true
+      
+EdmundCutscene:
+  Type: armor_stand
+  Display: '&0'
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - remove @MIR{t=EdmundMQ;r=32} ~onSpawn
+  - remove @MIR{t=AzanianSoldierMQ1;r=32} ~onSpawn
+  - remove @MIR{t=AzanianSoldierMQ2;r=32} ~onSpawn
+  - remove @MIR{t=AzanianSoldierMQ3;r=32} ~onSpawn
+  - remove @MIR{t=DaleAzanianSoldier2;r=32} ~onSpawn
+  - summon{t=EdmundMQ} @Location{c=532,49,-868} ~onSpawn
+  - summon{t=AzanianSoldierMQ1;r=3;os=true} @Location{c=541,49,-883} ~onSpawn
+  - summon{t=AzanianSoldierMQ2;r=3;os=true} @Location{c=543,49,-879} ~onSpawn
+  - summon{t=AzanianSoldierMQ3;r=3;os=true} @Location{c=537,49,-887} ~onSpawn
+  - summon{t=DaleAzanianSoldier2;r=3;os=true} @Location{c=541,49,-883} ~onSpawn
+  - summon{t=DaleAzanianSoldier2;r=3;os=true} @Location{c=543,49,-879} ~onSpawn
+  - summon{t=DaleAzanianSoldier2;r=3;os=true} @Location{c=537,49,-887} ~onSpawn
+  - remove @self ~onSpawn
+EdmundMQ:
+  Type: zombie
+  Display: '&e[&61&e] &aEdmund'
+  Health: 200
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Faction: Player
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - NONE HAND
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 501,48,-896
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&e[&61&e] &aEdmund';delay=1} @self ~onDamaged
+  - heal{a=200} @self ~onDamaged
+  - potion{type=SLOW;duration=120;level=10} @self ~onSpawn
+  - remove{delay=280} @self ~onSpawn
+  - message{m="&7[1/2] &6Edmund<&co> &eFly, you fools!";delay=120} @NearestPlayer{r=24} ~onSpawn
+  - message{m="&7[2/2] &6Edmund<&co> &eDown with the Azanian dogs!";delay=160} @NearestPlayer{r=24} ~onSpawn
+  Disguise: player Steve setSkin bat0onya setCustomName "&e[&61&e] &aEdmund" setDynamicName true
+
+AzanianSoldierMQ1:
+  Type: zombie
+  Display: '&e[&625&e] &cAzanian Soldier'
+  Health: 200
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Faction: Player
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 501,48,-896
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - potion{type=SLOW;duration=140;level=10} @self ~onSpawn
+  - remove{delay=280} @self ~onSpawn
+  - message{m="&6Azanian Soldier<&co> &eAfter him!";delay=180} @NearestPlayer{r=24} ~onSpawn
+  Disguise: player Steve setSkin 06chipsahoy setCustomName "&e[&625&e] &cAzanian Soldier" setDynamicName true
+    
+AzanianSoldierMQ2:
+  Type: zombie
+  Display: '&e[&625&e] &cAzanian Soldier'
+  Health: 200
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Faction: Player
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 501,48,-896
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - potion{type=SLOW;duration=140;level=10} @self ~onSpawn
+  - remove{delay=280} @self ~onSpawn
+  - message{m="&6Azanian Soldier<&co> &eGet him!";delay=180} @NearestPlayer{r=24} ~onSpawn
+  Disguise: player Steve setSkin 06chipsahoy setCustomName "&e[&625&e] &cAzanian Soldier" setDynamicName true
+    
+
+AzanianSoldierMQ3:
+  Type: zombie
+  Display: '&e[&625&e] &cAzanian Soldier'
+  Health: 200
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Faction: Player
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 501,48,-896
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - potion{type=SLOW;duration=140;level=10} @self ~onSpawn
+  - remove{delay=280} @self ~onSpawn
+  - message{m="&6Azanian Soldier<&co> &eKill him!";delay=180} @NearestPlayer{r=24} ~onSpawn
+  Disguise: player Steve setSkin 06chipsahoy setCustomName "&e[&625&e] &cAzanian Soldier" setDynamicName true
+    

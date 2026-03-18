@@ -1,0 +1,350 @@
+MalakarTheWrathful:
+  Type: SKELETON
+  Display: '&e[&637&e] &cMalakar the Wrathful'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - WOODEN_AXE HAND
+  - WOODEN_AXE OFFHAND
+  Options:
+    KnockbackResistance: 1
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - skill{s=WrathMeteor1} @target ~onDamaged =90%
+  - skill{s=WrathAxeToss} @target ~onTimer:60 .5 =52%-88%
+  - skill{s=WrathMeteor2} @target ~onDamaged =50%
+  - skill{s=WrathAxeToss} @target ~onTimer:60 .5 =22%-48%
+  - skill{s=WrathMeteor2} @target ~onDamaged =20%
+  - skill{s=WrathAxeToss} @target ~onTimer:60 .5 <18%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+
+WrathMeteorTotem:
+  Type: ARMOR_STAND
+  Health: 100
+  Options:
+    Invisible: true
+    Collidable: false
+  Skills:
+  - skill{s=WrathMeteorTotemSkill} ~onSpawn
+
+DespairaTheSlothful:
+  Type: SKELETON
+  Display: '&e[&637&e] &cDespaira the Slothful'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - TRIDENT HAND
+  Options:
+    KnockbackResistance: 1
+    AlwaysShowName: true
+    MovementSpeed: 0.1
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - skill{s=SlothSlowAura} ~onTimer:60
+  - skill{s=SlothTridentRing} @target ~onDamaged =90%
+  - skill{s=SlothTridentPull} @target ~onTimer:60 .5 =52%-88%
+  - skill{s=SlothTridentRing} @target ~onDamaged =50%
+  - skill{s=SlothTridentPull} @target ~onTimer:60 .5 =22%-48%
+  - skill{s=SlothTridentRing} @target ~onDamaged =20%
+  - skill{s=SlothTridentPull} @target ~onTimer:60 .5 <18%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+
+VorenTheGreedy:
+  Type: SKELETON
+  Display: '&e[&637&e] &cVoren the Greedy'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - Stone_Sword HAND
+  - Diamond_Sword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - skill{s=GreedGoldShower} @target ~onDamaged =90%
+  - skill{s=GreedLungeSlash} @target ~onTimer:60 .5 =52%-88%
+  - skill{s=GreedGoldShower} @target ~onDamaged =50%
+  - skill{s=GreedLungeSlash} @target ~onTimer:60 .5 =22%-48%
+  - skill{s=GreedGoldShower} @target ~onDamaged =20%
+  - skill{s=GreedLungeSlash} @target ~onTimer:60 .5 <18%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+
+GreedGoldShowerTotem:
+  Type: ARMOR_STAND
+  Health: 100
+  Options:
+    Invisible: true
+    Collidable: false
+  Skills:
+  - skill{s=GreedGoldShowerTotemSkill} ~onSpawn
+
+BaelricTheGluttonous:
+  Type: SKELETON
+  Display: '&e[&637&e] &cBaelric the Gluttonous'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - BONE HAND
+  - STONE_SHOVEL OFFHAND
+  BossBar:
+        Enabled: true
+        Title: '&7Baelric The Gluttonous'
+        Health: 1000
+        Range: 32
+        Color: GREY
+        Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - skill{s=GluttonousMace} @target ~onTimer:60 .5 =52%-88%
+  - skill{s=GluttonousSummonSacrifice} @target ~onDamaged =50%
+  - skill{s=GluttonousMace} @target ~onTimer:60 .5 =22%-48%
+  - skill{s=GluttonousSummonSacrifice} @target ~onDamaged =20%
+  - skill{s=GluttonousMace} @target ~onTimer:60 .5 <18%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+
+GluttonousSacrifice:
+  Type: PIG
+  Display: '&6Gluttonous Sacrifice'
+  Health: 40
+  Damage: 0
+  AIGoalSelectors:
+  - gotoparent
+  Skills:
+  - skill{s=GluttonousSacrificeDie} ~onDeath
+  Equipment:
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    KnockbackResistance: 1
+    MaxCombatDistance: 25
+    PreventOtherDrops: true
+
+RavennaTheLustful:
+  Type: SKELETON
+  Display: '&e[&637&e] &cRavenna the Lustful'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - skill{s=LustFallenSoldierSpawn} @target ~onDamaged =90%
+  - skill{s=LustBloodBoil} @target ~onTimer:60 .5 =52%-88%
+  - skill{s=LustFallenSoldierSpawn} @target ~onDamaged =50%
+  - skill{s=LustBloodBoil} @target ~onTimer:60 .5 =22%-48%
+  - skill{s=LustFallenSoldierSpawn} @target ~onDamaged =20%
+  - skill{s=LustBloodBoil} @target ~onTimer:60 .5 <18%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 rangedattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+
+LustBloodBoilTotem:
+  Type: ARMOR_STAND
+  Health: 100
+  Display: '&C&L<&heart>&7<&skull>&F&NCROUCH&R&L&7<&skull>&C<&heart>'
+  Options:
+    AlwaysShowName: true
+    Invisible: true
+    Collidable: false
+  Skills:
+  - skill{s=LustBloodBoilTotemSkill} ~onSpawn
+
+LustFallenSoldier:
+  Type: Skeleton
+  Display: '&6Fallen Soldier'
+  Health: 10000
+  Damage: 50
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - randomskill{skills=LustFallenSoldierShieldBash,LustFallenSoldierSwordStrike} ~onTimer:80
+  - skill{s=LustFallenSoldierDie} ~onDamaged
+  Equipment:
+  - diamond_chestplate CHEST
+  - diamond_boots FEET
+  - diamond_sword HAND
+  - shield OFFHAND
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.15
+    KnockbackResistance: 0
+    MaxCombatDistance: 25
+    PreventOtherDrops: true
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+
+
+MorgrimTheEnvious:
+  Type: SKELETON
+  Display: '&e[&637&e] &cMorgrim the Envious'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - BOOK HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - leap{v=-100} @target ~onDamaged .1
+  - skill{s=ZenythBanditSandThrow} @target ~onTimer:100
+  AIGoalSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+
+EnvyKnowledgeTotem1:
+  Type: ARMOR_STAND
+  Health: 100
+  Options:
+    Invisible: true
+    Collidable: false
+  Skills:
+  - skill{s=EnvyKnowledgeTotem1Skill} ~onSpawn
+
+ValeriusThePrideful:
+  Type: SKELETON
+  Display: '&e[&637&e] &cValerius the Prideful'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - leap{v=-100} @target ~onDamaged .1
+  - skill{s=ZenythBanditSandThrow} @target ~onTimer:100
+  AIGoalSelectors:
+  - 0 clear
+  - 1 rangedattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true

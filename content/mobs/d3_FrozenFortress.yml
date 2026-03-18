@@ -1,0 +1,1069 @@
+#---------------------------------------
+# Raids are 10-man multi-day boss fights
+#---------------------------------------
+
+BossKill:
+  Type: armor_stand
+  Display: '&eThis boss has been defeated'
+  Health: 1
+  Options:
+    Invincible: true
+  BossBar:
+    Enabled: true
+    Title: '&1&lClick me to see the Boss Killer!'
+    Range: 20
+    Color: BLUE
+    Style: SEGMENTED_10
+  Skills:
+  #- skill{s=SpawnWithCustomisableBossBar} @self ~onSpawn
+  #- skill{s=CreateKillBossBar} @self ~onInteract
+  #- setvariable{var=caster.killClaimed;type=STRING;value="false"} @self ~onSpawn
+  #- skill{s=BecomeKillOwner} @trigger ~onInteract
+  #- setowner @trigger ~onInteract
+  - skill{s=DisplayOwner} @trigger ~onInteract
+  - setvariable{var=caster.ownerName;type=STRING;value="NONE";save=true} @self ~onSpawn
+
+# ----------------------------------------------
+# FIRST SEMIBOSS
+# ----------------------------------------------
+Holmgeir:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cHolmgeir the Oathbreaker'
+  Health: 25000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  BossBar:
+    Enabled: true
+    Title: '&c&lHolmgeir'
+    Range: 50
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - IceAxe HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.335
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - command{c="ri drop HolmgeirKey <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- randomskill{s=ar1,ar2,ar3} @trigger ~onDeath 1
+  - effect:sound{s=entity.player.hurt;volume=1.0;pitch=0.5} @PlayersInRadius{r=50}
+  - skill{s=chooseSkill_Holmgeir} @self ~onTimer:600
+  - skill{s=chooseSkill_HolmgeirCoolAsIce} @self ~onTimer:600
+  - setstance{stance=normal} @self ~onSpawn
+  - setstance{stance=coolAsIce} @self ~onDamaged =1%-50% #"cool as ice" stage
+  - skill{s=coolAsIcePassive} @self ~onTimer:10
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin ImLeoOo setCustomName "&e[&6☠&e] &cHolmgeir the Oathbreaker" setDynamicName true
+
+# ----------------------------------------------
+# SECOND SEMIBOSS
+# ----------------------------------------------
+Alkyr:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cAlkyr the Cunning'
+  Health: 35000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 150
+  BossBar:
+    Enabled: true
+    Title: '&c&lAlkyr'
+    Range: 50
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - IceSword HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.315
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - command{c="ri drop AlkyrKey <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- randomskill{s=ar1,ar2,ar3} @trigger ~onDeath 1
+  - skill{s=chooseSkill_Alkyr} @self ~onTimer:600
+  - skill{s=summonTrick} @self ~onTimer:65
+  - setstance{stance=normal} @self ~onSpawn
+  - skill{s=voraciousHit} @self ~onAttack
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin lLight setCustomName "&e[&6☠&e] &cAlkyr the Cunning" setDynamicName true
+
+AlkyrTrick:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cAlkyr the Cunning'
+  Health: 25000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 70
+  Equipment:
+  - AIR HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=TrickImmune} @self ~onDamaged
+  - skill{s=TrickDespawn} @self ~onSpawn
+  - teleport{spreadh=3;spreadv=0} @Parent ~onSignal:teleport
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 attacker
+  Disguise: player Steve setSkin lLight setCustomName "&e[&6☠&e] &cAlkyr the Cunning" setDynamicName true
+
+# ----------------------------------------------
+# FINAL BOSS
+# ----------------------------------------------
+Eldrid:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cEldrid the Betrayer'
+  Health: 250000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 215
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lEldrid'
+    Health: 250000
+    Range: 50
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - IceMace HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    RepeatAllSkills: false
+  Skills:
+  - skill{s=EldridCrystalSpawn1} @self ~onTimer:20
+  - skill{s=EldridGolemSummon1} @self ~onTimer:20
+  - skill{s=EldridGolemSpawn1} @self ~onTimer:20
+  - skill{s=EldridMinionSummon} @self ~onTimer:20
+  - skill{s=EldridMinionSummon1} @self ~onTimer:20
+  - skill{s=chooseSkill_Eldrid} @self ~onTimer:600
+  - skill{s=EldridPassive} @self ~onTimer:320
+  - skill{s=EldridPassiveBuff} @self ~onSignal:runeSpawn
+  - setstance{stance=normal} @self ~onSpawn
+  - velocity{m=set;x=0;y=0;z=0} @self ~onDamaged
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  # RESET PARTY
+  - command{c="runicteleport <trigger.name> fortress"} @trigger ~onDeath 1.0
+  - command{c="party teleport <trigger.name>"} @trigger ~onDeath 1.0
+  - skill{s=BossFirework} @trigger ~onDeath
+  # DROPS
+  - command{c="runicboss <caster.uuid> fortress"} @self ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin adaydremer setCustomName "&e[&6☠&e] &cEldrid the Betrayer" setDynamicName true
+
+# ----------------------------------------------
+# ELDRID SKILL MOBS
+# ----------------------------------------------
+FrozenGround:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=FrozenGroundStart} @Self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+EldridCrystal:
+  Type: zombie
+  Display: '&e[&6✸&e] &cArctic Crystal'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    MovementSpeed: 0.01
+    KnockbackResistance: 1
+    PreventJockeyMounts: true
+  Skills:
+  - velocity{m=set;x=0;y=0;z=0} @self ~onDamaged
+  - skill{s=EldridCrystal} @PIR{r=250} ~onTimer:400 
+  Disguise:
+    Type: ender_crystal
+        
+EldridMinionMelee:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cArctic Elite'
+  Health: 1250
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  - LIGHTNING 0
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin BallVonFlaum setCustomName "&e[&6☠&e] &cArctic Elite" setDynamicName true
+EldridMinionRanged:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cArctic Mage'
+  Health: 750
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  - LIGHTNING 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:
+  - skill{s=EldridMinionRanged} @target ~onTimer:100
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Ordillious   setCustomName "&e[&6☠&e] &cArctic Mage" setDynamicName true
+EldridMinionPoof:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=EldridMinionPoof} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+    
+EldridGolem:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cArctic Guardian'
+  Health: 5000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.42
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:
+  - skill{s=EldridGolemTarget} @target ~onTimer:5 
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+  
+EldridGolemPlus:
+  Type: IRON_GOLEM
+  Display: '&e[&6☠&e] &cGreater Arctic Guardian'
+  Health: 10000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.42
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:
+  - skill{s=EldridGolemTarget} @target ~onTimer:5 
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+  
+HealingRune:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &aHealing Rune'
+  Health: 500
+  Equipment:
+  - healingrunehead HEAD
+  - AIR HAND
+  Skills:
+  - skill{s=HealEldrid} @self ~onTimer:20
+  - potion{t=INVISIBILITY;d=2147483647;l=0;hasParticles=true} @self ~onSpawn
+  - velocity{m=set;x=0;y=0;z=0} @self ~onDamaged
+  - signal{s=runeSpawn} @Parent ~onSpawn
+  - potion{t=SPEED;d=2147483647;l=1;force=true;hasParticles=true} @self ~onSignal:runeBuff
+  - equip{item=air:0} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    Silent: true
+    MovementSpeed: 0.215
+    FollowRange: 75
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -9,68,763
+  AITargetSelectors:
+  - 0 clear
+HealingRunePlus:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cGreater Healing Rune'
+  Health: 1000
+  Equipment:
+  - healingrunehead HEAD
+  - AIR HAND
+  Skills:
+  - skill{s=HealEldridPlus} @self ~onTimer:20
+  - potion{t=INVISIBILITY;d=2147483647;l=0;hasParticles=true} @self ~onSpawn
+  - velocity{m=set;x=0;y=0;z=0} @self ~onDamaged
+  - signal{s=runeSpawn} @Parent ~onSpawn
+  - potion{t=SPEED;d=2147483647;l=1;force=true;hasParticles=true} @self ~onSignal:runeBuff
+  - equip{item=air:0} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    Silent: true
+    MovementSpeed: 0.2
+    FollowRange: 75
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -9,68,763
+  AITargetSelectors:
+  - 0 clear
+##########################################################################################################################
+
+ExiledFrostLord:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cExiled Frost Lord'
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 60
+  Faction: Bandit
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.45
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - remove{delay=2400} @self ~onSpawn
+  #- skill{s=IceArrow} @NearestPlayer{r=40} ~onTimer:100
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.threatInitiated;type=STRING;value="false"} @self ~onSpawn
+  - skill{s=ApplyInitialThreat} @target ~onEnterCombat
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  - setvariable{var=caster.mobsNear;value=0} @self ~onSpawn
+  #- skill{s=NearbyMobMechanics} @self ~onTimer:40
+  - skill{s=ResetMobCount} @self ~onTimer:40
+  - skill{s=AddMobCount} @MIR{t=ExiledFrostLord;r=5} ~onTimer:41
+  - skill{s=AntiKite1} @self ~onTimer:42
+  #- message{m="<trigger.threat>"} @trigger ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin RAMBAXX setCustomName "&e[&6✸&e] &cExiled Frost Lord" setDynamicName true
+
+
+ExiledFrostMage:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cExiled Frost Mage'
+  Health: 1500
+  Modules:
+    ThreatTable: true
+  Damage: 50
+  Faction: Bandit
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=IceArrow} @NearestPlayer{r=30} ~onTimer:100
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.threatInitiated;type=STRING;value="false"} @self ~onSpawn
+  - skill{s=ApplyInitialThreat} @target ~onEnterCombat
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin niteofgond setCustomName "&e[&6✸&e] &cExiled Frost Mage" setDynamicName true
+    
+ExiledFrostMagePK:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cExiled Frost Mage'
+  Health: 1500
+  Modules:
+    ThreatTable: true
+  Damage: 50
+  Faction: Bandit
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=IceArrow} @NearestPlayer{r=30} ~onTimer:100
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.threatInitiated;type=STRING;value="false"} @self ~onSpawn
+  - skill{s=ApplyInitialThreat} @target ~onEnterCombat
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin niteofgond setCustomName "&e[&6✸&e] &cExiled Frost Mage" setDynamicName true
+    
+FrozenSoldier:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cFrozen Soldier'
+  Health: 2500
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 30
+    NoDamageTicks: 0
+  Skills:
+  - remove{delay=2400} @self ~onSpawn
+  #- skill{s=IceArrow} @NearestPlayer{r=40} ~onTimer:100
+  - command{c="runicgive exp <trigger.name> 200 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.threatInitiated;type=STRING;value="false"} @self ~onSpawn
+  - skill{s=ApplyInitialThreat} @target ~onEnterCombat
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Giss setCustomName "&e[&6✸&e] &cFrozen Soldier" setDynamicName true
+    
+FrozenSoldierPK:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cFrozen Soldier'
+  Health: 5000
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 30
+    NoDamageTicks: 0
+  Skills:
+  #- skill{s=IceArrow} @NearestPlayer{r=40} ~onTimer:100
+  - command{c="runicgive exp <trigger.name> 200 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.threatInitiated;type=STRING;value="false"} @self ~onSpawn
+  - skill{s=ApplyInitialThreat} @target ~onEnterCombat
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Giss setCustomName "&e[&6✸&e] &cFrozen Soldier" setDynamicName true
+##############################~~~REWORK TIME BABY~~~###########################
+
+RespawnCrystal1:
+  Type: zombie
+  Display: '&e[&6✸&e] &cSummoning Crystal'
+  Health: 5000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&c&lSummoning Crystal'
+    Range: 20
+    Color: BLUE
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    MovementSpeed: 0.01
+    KnockbackResistance: 1
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - randomskill{s=sk1,sk2,sk3,sk4} @trigger ~onDeath 1
+  - command{c="ri drop silver-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - skill{s=CrystalSummoning} @self ~onTimer:40
+  - skill{s=CrystalHealing} @self ~onTimer:20
+  - potion{t=SLOW;d=999999999;l=255;p=false;force=true} @self ~onSpawn
+  Disguise:
+    Type: ender_crystal
+    
+RespawnCrystal2:
+  Type: zombie
+  Display: '&e[&6✸&e] &cSummoning Crystal'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&c&lSummoning Crystal'
+    Range: 20
+    Color: PURPLE
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+    MovementSpeed: 0.01
+    KnockbackResistance: 1
+  Skills:
+  - skill{s=CrystalSummoningRanged} @self ~onTimer:40
+  - skill{s=CrystalHealingSmall} @self ~onTimer:40
+  - potion{t=SLOW;d=999999999;l=255;p=false;force=true} @self ~onSpawn
+  - setvariable{var=caster.mobsNear;value=0} @self ~onSpawn
+  - skill{s=NearbyEntityMechanics} @self ~onTimer:40
+  Disguise: ENDER_CRYSTAL
+    
+CrystalMage:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cExiled Frost Mage'
+  Health: 700
+  Modules:
+    ThreatTable: true
+  Damage: 50
+  Faction: Bandit
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=IceArrow} @NearestPlayer{r=30} ~onTimer:100
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.threatInitiated;type=STRING;value="false"} @self ~onSpawn
+  - skill{s=ApplyInitialThreat} @target ~onEnterCombat
+  - skill{s=CheckCrystalDistance} @parent ~onTimer:30
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin niteofgond setCustomName "&e[&6✸&e] &cExiled Frost Mage" setDynamicName true
+
+CrystalSoldier:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cFrozen Soldier'
+  Health: 1500
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 30
+    NoDamageTicks: 0
+  Skills:
+  - remove{delay=2400} @self ~onSpawn
+  #- skill{s=IceArrow} @NearestPlayer{r=40} ~onTimer:100
+  - command{c="runicgive exp <trigger.name> 200 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.threatInitiated;type=STRING;value="false"} @self ~onSpawn
+  - skill{s=ApplyInitialThreat} @target ~onEnterCombat
+  - skill{s=CheckCrystalDistance} @parent ~onTimer:30
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Giss setCustomName "&e[&6✸&e] &cFrozen Soldier" setDynamicName true
+
+#----------
+# CRYSTAL MINIBOSS
+#----------
+
+Xalakyte:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cXalakyte the Manipulator'
+  Health: 50000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 120
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lXalakyte the Manipulator'
+    Health: 50000
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - IceStaff HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - command{c="ri drop xalakyte-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- randomskill{s=ar1,ar2,ar3} @trigger ~onDeath 1
+  #- randomskill{s=tv2,tv3,tv4,tv5} @trigger ~onDeath 1
+  #
+  # IGNORE
+  #
+  #- skill{s=RotateCrystalLord} @self ~onTimer:600
+  #- skill{s=RotateCrystalMage} @self ~onTimer:600
+  #- skill{s=RotateCrystalSoldier} @self ~onTimer:600
+  #- setstance{s=default} @self ~onSpawn
+  #- summon{t=XalakyteBuffTimer;a=1} @self ~onSpawn #change this location
+  #- setvariable{var=caster.damageBuff;type=STRING;value="false"} @self ~onSpawn
+  #- setvariable{var=caster.regenBuff;type=STRING;value="false"} @self ~onSpawn
+  #- setvariable{var=caster.cooldownBuff;type=STRING;value="false"} @self ~onSpawn
+  #- skill{s=StartSpawningCrystals} @self ~onSpawn
+  #
+  # PHASE 1
+  #
+  - setstance{s=default} @self ~onEnterCombat
+  - summon{t=XalakyteBuffTimer;a=1} @self ~onEnterCombat
+  - setvariable{var=caster.damageBuff;type=STRING;value="false"} @self ~onEnterCombat
+  - setvariable{var=caster.regenBuff;type=STRING;value="false"} @self ~onEnterCombat
+  - setvariable{var=caster.cooldownBuff;type=STRING;value="false"} @self ~onEnterCombat
+  - skill{s=XalakyteBuffs} @self ~onSignal:Buffs
+  - skill{s=XalakyteHeal} @self ~onSignal:HealSelf
+  - skill{s=RotateCrystalsOffset} @self ~onTimer:40
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  #
+  # ABILITIES
+  #
+  - skill{s=PiercingIce} @target ~onTimer:40
+  - skill{s=IceBeam} @self ~onTimer:200
+  #
+  # PHASE 2
+  #
+  - skill{s=TargetedBlizzard} @target ~onTimer:240 =40%-90%
+  - skill{s=XalakytePhase2} =90%
+  #
+  # PHASE 3
+  #
+  - skill{s=TargetedBlizzard} @PIR{r=40;limit=1;sort=random} ~onTimer:240 =10%-40%
+  - skill{s=XalakytePhase3} =40%
+  #
+  # PHASE 4
+  #
+  - skill{s=LargeBlizzard} @self ~onTimer:20 =1%-10%
+  #
+  # DEATH
+  #
+  - command{c="runicgive exp <trigger.name> 10000 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - remove @MIR{r=100;t=RespawnCrystalXalakytePhase3} ~onDeath
+  #- sudoskill{s=ClaimKill} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin ImLeoOo setCustomName "&e[&6☠&e] &cXalakyte the Manipulator" setDynamicName true
+
+RespawnCrystalXalakyteLord:
+  Type: zombie
+  Display: '&e[&6✸&e] &cSummoning Crystal'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&c&lSummoning Crystal'
+    Range: 10
+    Color: PINK
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    NoDamageTicks: 0
+    MovementSpeed: 0.01
+    KnockbackResistance: 1
+    FollowRange: 50
+  Skills:
+  - skill{s=HealXalakyte} @parent ~onTimer:40
+  - skill{s=CrystalSummoningXalakyteLord} @self ~onTimer:40
+  - potion{t=SLOW;d=999999999;l=255;p=false;force=true} @self ~onSpawn
+  Disguise: ENDER_CRYSTAL
+    
+RespawnCrystalXalakyteMage:
+  Type: zombie
+  Display: '&e[&6✸&e] &cSummoning Crystal'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&c&lSummoning Crystal'
+    Range: 10
+    Color: PINK
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    NoDamageTicks: 0
+    MovementSpeed: 0.01
+    KnockbackResistance: 1
+    FollowRange: 50
+  Skills:
+  - skill{s=HealXalakyte} @parent ~onTimer:40
+  - skill{s=CrystalSummoningXalakyteMage} @self ~onTimer:40
+  - potion{t=SLOW;d=999999999;l=255;p=false;force=true} @self ~onSpawn
+  Disguise: ENDER_CRYSTAL
+    
+RespawnCrystalXalakyteSoldier:
+  Type: zombie
+  Display: '&e[&6✸&e] &cSummoning Crystal'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&c&lSummoning Crystal'
+    Range: 10
+    Color: PINK
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    NoDamageTicks: 0
+    MovementSpeed: 0.01
+    KnockbackResistance: 1
+    FollowRange: 50
+  Skills:
+  - skill{s=HealXalakyte} @parent ~onTimer:40
+  - skill{s=CrystalSummoningXalakyteSoldier} @self ~onTimer:40
+  - potion{t=SLOW;d=999999999;l=255;p=false;force=true} @self ~onSpawn
+  Disguise: ENDER_CRYSTAL
+    
+XalakyteBuffTimer:
+  Type: armor_stand
+  Display: '&0'
+  Health: 30 #180
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  BossBar:
+    Enabled: true
+    Title: '&1&lXalakyte Buff Timer'
+    Range: 30
+    Color: BLUE
+    Style: SEGMENTED_10
+  Skills:
+  - damage{a=1;i=true} @self ~onTimer:20
+  - skill{s=XalakyteBuffTimer} @self ~onTimer:20
+
+HailMarker:
+  Type: armor_stand
+  Display: '&aHail Marker'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=SolarBlessingAffect} @self ~onTimer:10
+  - skill{s=DespawnSolarBlessing} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: true
+    Marker: true
+
+RespawnCrystalXalakytePhase2:
+  Type: armor_stand
+  Display: '&e[&6✸&e] &cHarming Crystal'
+  Health: 0
+  Damage: 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&c&lHarming Crystal'
+    Range: 10
+    Color: PINK
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    KnockbackResistance: 1
+  Skills:
+  #- skill{s=CrystalSummoningXalakytePhase2} @self ~onTimer:40
+  - skill{s=HarmingCrystalAura} @PIR{r=10} ~onTimer:10
+  - skill{s=SnowHail} @self ~onTimer:200
+  Disguise: ENDER_CRYSTAL
+    
+RespawnCrystalXalakytePhase3:
+  Type: zombie
+  Display: '&e[&6✸&e] &cChasing Crystal'
+  Health: 5000
+  Damage: 75
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&c&lChasing Crystal'
+    Range: 10
+    Color: PINK
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    NoDamageTicks: 0
+    MovementSpeed: 0.3
+    KnockbackResistance: 1
+  Skills:
+  - skill{s=CrystalSummoningXalakytePhase3} @self ~onTimer:40
+  Disguise: ENDER_CRYSTAL
+    
+BossKillAuto:
+  Type: armor_stand
+  Display: '&eThis boss has been defeated'
+  Health: 1
+  Options:
+    Invincible: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - setvariable{var=caster.ownerName;type=STRING;value="NONE";save=true} @self ~onSpawn
+  - skill{s=SetKillParent} @trigger ~onSignal:OwnerSignal
+  - skill{s=DisplayKiller} @PIR{r=30} ~onTimer:1
+
+###
+
+PlayerKillShow:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cXalakyte the Manipulator'
+  Health: 500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  Equipment:
+  - IceStaff HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=PiercingIce} @target ~onTimer:40
+  - sudoskill{s=ClaimKill} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin ImLeoOo setCustomName "&e[&6☠&e] &cXalakyte the Manipulator" setDynamicName true
+
+###

@@ -1,0 +1,587 @@
+CharlieCutscene1:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Charlie1,Allaster1;r=32} ~onSpawn
+  - summon{t=Charlie1} @Location{c=-324,44,-400} ~onSpawn
+  - summon{t=Allaster1} @Location{c=-345,42,-390} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Charlie1:
+  Type: ZOMBIE
+  Display: '&eCharlie'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -342,42,-392
+  - 2 lookatplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eCharlie';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=880} @self ~onSpawn
+  Disguise: player Steve setSkin Wulet setCustomName "&eCharlie" setDynamicName true
+Allaster1:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eAllaster Farseer';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=880} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+
+DawnshireCutscene1:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Allaster1a;r=32} ~onSpawn
+  - summon{t=Allaster1a} @Location{c=-299.5,56,-427.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Allaster1a:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eAllaster Farseer';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=1280} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+
+
+DawnshireCutscene2:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Allaster2a;r=32} ~onSpawn
+  - remove @MIR{t=Allaster2b;r=32} ~onSpawn
+  - summon{t=Allaster2a} @Location{c=-294.5,56,-416.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Allaster2a:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Equipment:
+  - BOOK HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.15
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -287,56,-417
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eAllaster Farseer';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - summon{t=Allaster2b;delay=80} @self ~onSpawn
+  - remove{delay=80} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+Allaster2b:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Equipment:
+  - BOOK HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.15
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -290,56,-425
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eAllaster Farseer';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=120} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+
+
+DawnshireCutscene3:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Allaster3a;r=32} ~onSpawn
+  - remove @MIR{t=Allaster3b;r=32} ~onSpawn
+  - summon{t=Allaster3a} @Location{c=-301.5,61,-434.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Allaster3a:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.27
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -298,61,-440
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eAllaster Farseer';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - summon{t=Allaster3b;delay=80} @self ~onSpawn
+  - remove{delay=80} @self ~onSpawn
+  - equip{item=BOOK:0;delay=60} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+Allaster3b:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Equipment:
+  - BOOK HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -300,61,-447
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eAllaster Farseer';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=200} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+
+
+DawnshireCutscene4:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Allaster4a;r=32} ~onSpawn
+  - remove @MIR{t=Charlie4a;r=32} ~onSpawn
+  - summon{t=Allaster4a} @Location{c=-296.5,64,-415.5} ~onSpawn
+  - summon{t=Charlie4a} @Location{c=-301.5,64,-409.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Allaster4a:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -300,65,-412
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eAllaster Farseer';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=800} @self ~onSpawn
+  - equip{item=BOOK:0;delay=60} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+Charlie4a:
+  Type: ZOMBIE
+  Display: '&eCharlie'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Equipment:
+  - GRAY_DYE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eCharlie';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=800} @self ~onSpawn
+  Disguise: player Steve setSkin Wulet setCustomName "&eCharlie" setDynamicName true
+
+
+DawnshireCutscene5:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Allaster5a;r=32} ~onSpawn
+  - summon{t=Allaster5a} @Location{c=-299.5,56,-427.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+Allaster5a:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eAllaster Farseer';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=1120} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+
+ForestBanditLord:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cForest Bandit Lord'
+  Health: 2000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Damage: 35
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lForest Bandit Lord'
+    Health: 2000
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestBanditLord-drop} @trigger ~onDeath
+  - command{c="ri drop bandit-potato <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=ForestBanditSplit,ForestBanditDash} @self ~onTimer:200 
+  - skill{s=ForestBanditLordAura} @self ~onTimer:4
+  - skill{s=ForestBanditBladeDance} @self ~onTimer:40
+  - summon{t=ForestBanditLordSpawn;a=1;r=16;os=true} @self ~onTimer:200 <40%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin MissDigimon setCustomName "&e[&6☠&e] &cForest Bandit Lord" setDynamicName true
+ForestBanditLordSpawn:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cForest Bandit Lord'
+  Health: 100
+  Damage: 20
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 30
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestBanditLordSpawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin MissDigimon setCustomName "&e[&6☠&e] &cForest Bandit Lord" setDynamicName true
+ForestBanditLordSpawn2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cForest Bandit Lord'
+  Health: 100
+  Damage: 12
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 30
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestBanditLordSpawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin MissDigimon setCustomName "&e[&6☠&e] &cForest Bandit Lord" setDynamicName true
+
+Allaster:
+  Type: IRON_GOLEM
+  Display: '&e[&660&e] &aAllaster Farseer'
+  Health: 50000
+  Damage: 10
+  Faction: Guard
+  Equipment:
+  - WOODEN_HOE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  Skills:
+  - heal{a=50000} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 lookatplayers
+  - 3 randomlookaround
+  Disguise: player Steve setSkin 1_4m_b1663r setCustomName "&e[&660&e] &aAllaster Farseer" setDynamicName true
+    
+ForestOwl:
+  Type: BAT
+  Display: '&e[&63&e] &aForest Owl'
+  Health: 20
+  Disguise: ZOMBIE setBaby true
+  Equipment:
+  - birdhead HEAD
+  Skills:
+  - potion{t=INVISIBILITY;d=2147483647;l=1;hasParticles=false} @self ~onSpawn
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    Silent: true
+    PreventRenaming: false
+    MovementSpeed: 0.05
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+ForestBandit:
+  Type: ZOMBIE
+  Display: '&e[&625&e] &cForest Bandit'
+  Health: 410
+  Damage: 35
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 230 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - command{c="ri drop bandit-potato <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.2
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-25} @trigger ~onDeath
+  - skill{s=ForestBanditSpin} @target ~onTimer:4
+  - skill{s=ForestBanditLunge} @target ~onTimer:4
+  - skill{s=ForestBanditSpinwithin} @self ~onTimer:20
+  - skill{s=ForestBanditSpinnotwithin} @self ~onTimer:20
+  - setvariable{var=caster.banditspin;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin NoRa_Chan_ setCustomName "&e[&625&e] &cForest Bandit" setDynamicName true
+
+ForestSilverfish:
+  Type: Silverfish
+  Display: '&e[&626&e] &cForest Silverfish'
+  Health: 20
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    FollowRange: 5
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 4 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - command{c="ri drop OakWood <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .5
+  - undisguise ~onCombat
+  #- sudoskill{s=TargetSilverfish} @target ~onTimer:5
+  #- skill{s=CheckLOS} @PIR{r=20} ~onTimer:5
+  #- sudoskill{s=TestSudo;cat=true} @trigger ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK OAK_LOG
+    
+ForestSilverfishQuest:
+  Type: Silverfish
+  Display: '&e[&626&e] &cForest Silverfish'
+  Health: 20
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 5 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - randomskill{s=g1} @trigger ~onDeath .3
+  - command{c="ri drop OakWood <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .1
+  - remove @MIR{t=ForestSilverfishQuest;r=64} ~onSpawn
+  - undisguise ~onCombat
+  AIGoalSelectors:
+  - 0 clear
+  - 1 fleeplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK OAK_LOG
+        

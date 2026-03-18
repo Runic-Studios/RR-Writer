@@ -1,0 +1,636 @@
+CrystalCavernSilverKey:
+  Type: BABY_ZOMBIE
+  Display: 'Silver Key'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - command{c="ri drop silver-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - suicide @self ~onInteract
+  - setAI{ai=false} @self ~onSpawn
+  - sound{s=random.pop} @self ~onDeath
+  - skill{s=ConditionalSuicide} @self ~onTimer:5
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM PRISMARINE_CRYSTALS
+
+CrystalCavernGoldKey:
+  Type: BABY_ZOMBIE
+  Display: '&6Gold Key'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - command{c="ri drop gold-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - suicide @self ~onInteract
+  - setAI{ai=false} @self ~onSpawn
+  - sound{s=random.pop} @self ~onDeath
+  - skill{s=ConditionalSuicide} @self ~onTimer:5
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM PRISMARINE_SHARD
+
+GlitchedEntity:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cCodex Hexagonis'
+  Health: 1000
+  Damage: 10
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Drops:
+  BossBar:
+    Enabled: true
+    Title: '&c&lCodex Hexagonis'
+    Health: 1000
+    Range: 64
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    MovementSpeed: .32
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+#  - skill{s=bossdrop-codex} @trigger ~onDeath 1
+#  - message{m="&6<caster.var.within>"} @PIR{r=32} ~onTimer:20
+#  - message{m="&e<caster.var.notwithin>"} @PIR{r=32} ~onTimer:20
+#  - command{c="ri drop HeadOfHexagonis <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - skill{s=geblastcheckwithin} @self ~onTimer:5
+  - skill{s=geblastchecknotwithin} @self ~onTimer:5
+  - skill{s=geblast} @self ~onTimer:5
+  - skill{s=geblast2} @self ~onTimer:5
+  - skill{s=gevariableset} @self ~onSpawn
+  - skill{s=getearstart;delay=600} @self ~onDamaged
+  - skill{s=geshockwavestart;delay=240} @self ~onDamaged
+  - variableadd{var=caster.summon;amount=1} @self ~onSignal:death
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  # RESET PARTY
+  #- command{c="runicteleport <trigger.name> crystalcavern"} @trigger ~onDeath 1.0
+  #- command{c="party teleport <trigger.name>"} @trigger ~onDeath 1.0
+  - skill{s=BossFirework} @trigger ~onDeath
+  # DROPS
+  #- command{c="runicboss <caster.uuid> crystalcavern"} @self ~onDeath 1.0
+  - command{c="runicgive exp <trigger.name> 600 <trigger.l.x> <trigger.l.y> <trigger.l.z> 12"} @trigger ~onDeath 1.0  
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin a_storz setDynamicName true
+GlitchedSpawn:
+  Type: HUSK
+  Display: '&e[&6☠&e] &7Glitched Entity'
+  Health: 1
+  Damage: 2
+  Faction: Boss
+  Drops:
+  Options:
+    MovementSpeed: .5
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - remove{delay=120} @self ~onSpawn
+  - summon{t=gemarker2} @self ~onSpawn
+  - leap{v=400;delay=5} @NearestPlayer{r=64} ~onSpawn
+  - skill{s=gespawn} @self ~onTimer:40 .2
+  - signal{s=death} @MIR{r=64;t=GlitchedEntity} ~onDeath
+  - summon{t=gemarker2} @self ~onDespawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin BigDeal74 setCustomName "&e[&6☠&e] &7Glitched Entity" setDynamicName true
+
+gemarker:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - sound{s=block.glass.break} @self ~onSpawn
+  - skill{s=gemarker;delay=20} @self ~onSpawn
+  - effect:blockmask{m=ice;r=8;d=80} @self ~onSpawn
+  - remove{delay=80} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+gemarker2:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - sound{s=block.glass.break} @self ~onSpawn
+  - skill{s=gemarker2;delay=20} @self ~onSpawn
+  - effect:blockmask{m=ice;r=4;d=40} @self ~onSpawn
+  - remove{delay=40} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+gemarker3:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=gemarker2;delay=20} @self ~onSpawn
+  - effect:blockmask{m=ice;r=4;d=40} @self ~onSpawn
+  - remove{delay=40} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+geblast:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=geblastmarker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+ElementalCrystal:
+  Type: zombie
+  Display: '&e[&6✸&e] &cElemental Crystal'
+  Health: 500
+  Damage: 0
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&c&lElemental Crystal'
+    Health: 500
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    MovementSpeed: 0.01
+    KnockbackResistance: 1
+    PreventJockeyMounts: true
+  Skills:
+#  - message{m="<caster.var.combust>"} @PIR{r=32} ~onTimer:20
+#  - skill{s=ElementalClone} @self ~onInteract
+  - command{c="ri drop ethereal-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- command{c="ri drop gold-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  #- command{c="ri drop silver-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - skill{s=ElementalCrystalHint} @self ~onSignal:hint
+  - signal{s=remove} @MIR{r=256;t=ElementalCrystaltrue,ElementalCrystalfalse} ~onDeath
+  - setAI{ai=false} @self ~onSpawn
+  - skill{s=ElementalCrystalvuln} @self ~onDamaged
+  - skill{s=ElementalCrystal} @self ~onDamaged
+  - skill{s=ElementalCrystalEnergystop} @self ~onSignal:teleport
+  - sound{s=entity.generic.explode;v=3} @self ~onDeath
+  - effect:particles{particle=explosion_huge;a=1;hs=1;vs=1;r=30} @self ~onDeath
+  - command{c="runicgive exp <trigger.name> 300 <mob.l.x> <mob.l.y> <mob.l.z> 12"} @trigger ~onDeath 1.0
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  Disguise: ENDER_CRYSTAL
+    
+ElementalCrystaltrue:
+  Type: zombie
+  Display: '&e[&6✸&e] &cElemental Crystal'
+  Health: 100
+  Damage: 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    MovementSpeed: 0.01
+    KnockbackResistance: 1
+    PreventJockeyMounts: true
+  Skills:
+#  - message{m="&7<caster.var.energy>"} @PIR{r=32} ~onTimer:20
+  - skill{s=ElementalCrystalOverload} @self ~onTimer:20
+  - setvariable{var=caster.energy;value=0} @self ~onSpawn
+  - message{m="&7The Crystal becomes vulnerable!"} @PIR{r=32} ~onDeath
+  - signal{s=teleport} @MIR{r=256;t=ElementalCrystal} ~onDeath
+  - remove @MIR{r=64;t=ElementalCrystalfalse,ElementalCrystalEnergy} ~onDeath
+  Disguise: ENDER_CRYSTAL
+
+ElementalCrystalfalse:
+  Type: zombie
+  Display: '&e[&6✸&e] &cElemental Crystal'
+  Health: 100
+  Damage: 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    MovementSpeed: 0.01
+    KnockbackResistance: 1
+    PreventJockeyMounts: true
+  Skills:
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=5} ~onDeath
+  - sound{s=block.glass.break} @self ~onDeath
+  - effect:particlesphere{particle=block_crack;material=ice;amount=100;radius=4} @self ~onDeath
+  - message{m="&7The mirror image creates an ice blast!"} @PIR{r=32} ~onDeath
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=6} ~onDeath
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @trigger ~onDeath
+  Disguise: ENDER_CRYSTAL
+    
+ElementalCrystalEnergy:
+  Type: HUSK
+  Display: '&e[&612&e] &cElemental Energy'
+  Health: 12
+  Damage: 4
+  Drops:
+  Options:
+    MovementSpeed: .38
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - signal{s=hint} @MIR{r=64;t=ElementalCrystal} ~onDeath
+  - skill{s=ElementalCrystalEnergyDeath} @MIR{r=64;t=ElementalCrystaltrue} ~onDeath
+  - remove{delay=600} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin HedgehogBlaze36 setCustomName "&e[&612&e] &cElemental Energy" setDynamicName true
+  
+ElementalEnergyr:
+  Type: VINDICATOR
+  Display: '&e[&6✸&e] &cElemental Energy'
+  Health: 1
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  Options:
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    Silent: true
+    Despawn: false
+  Skills:
+  - skill{s=ElementalEnergyr} @self ~onSpawn
+  - skill{s=ElementalBurst} @self ~onDeath
+  Disguise: FALLING_BLOCK ICE
+
+ElementalEnergyq:
+  Type: VINDICATOR
+  Display: '&e[&6✸&e] &cElemental Energy'
+  Health: 1
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  Options:
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    Silent: true
+    Despawn: false
+  Skills:
+  - skill{s=ElementalEnergyq} @self ~onSpawn
+  - skill{s=ElementalEnergyqr} @self ~onSignal:fire
+  - skill{s=ElementalBurst} @self ~onDeath
+  Disguise: FALLING_BLOCK ICE
+
+ElementalEnergyCreate:
+  Type: VINDICATOR
+  Display: '&e[&6✸&e] &cElemental Energy'
+  Health: 4
+  Modules:
+    ThreatTable: true
+  Damage: 4
+  Options:
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    Silent: true
+    Despawn: false
+  Skills:
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=3} ~onTimer:20
+  - remove{delay=600} @self ~onSpawn
+  Disguise: FALLING_BLOCK ICE
+    
+IcecreamCone:
+  Type: HUSK
+  Display: '&e[&612&e] &9Animated Body of Ice'
+  Health: 100
+  Damage: 10
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    MovementSpeed: .16
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=Icecreamwithin} @self ~onTimer:20
+  - skill{s=Icecreamnotwithin} @self ~onTimer:20
+  - variableadd{var=caster.melt;amount=1} @self ~onInteract
+  - sound{s=block.glass.hit} @self ~onInteract
+  - skill{s=IcecreamConemelt} @self ~onTimer:5
+  - skill{s=IcecreamConeaoe} @self ~onTimer:5
+  - setvariable{var=caster.melt;value=0} @self ~onSpawn
+  - setvariable{var=caster.melt;value=0} @self ~onDamaged
+  - command{c="runicgive exp <trigger.name> 40 <mob.l.x> <mob.l.y> <mob.l.z> 12"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin ztrv setCustomName "&e[&612&e] &9Animated Body of Ice" setDynamicName true
+
+SkeletonOverlordSpawn:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - remove @MIR{r=128;t=SkeletonOverlord,SkeletonOverlordMinion,SkeletonOverlordTrap} ~onDespawn
+  - remove @MIR{r=128;t=SkeletonOverlord,SkeletonOverlordMinion,SkeletonOverlordTrap} ~onSpawn
+  - remove{delay=100} @self ~onSignal:remove
+  - summon{type=SkeletonOverlordTrap} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+SkeletonOverlord:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &7Skeleton Overlord'
+  Health: 400
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  DamageModifiers:
+  BossBar:
+    Enabled: true
+    Title: '&7&lSkeleton Overlord'
+    Health: 400
+    Range: 24
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: false
+  Skills:
+  - setvariable{var=caster.defense;value=0} @self ~onSpawn
+  - skill{s=SkeletonOverlordArmorcheck} @self ~onDamaged
+  - skill{s=SkeletonOverlordDefense} @self ~onTimer:5
+  - signal{s=remove} @MIR{r=128;t=SkeletonOverlordSpawn} ~onDeath
+  - summon{type=SkeletonOverlordBone;amount=8;radius=5;os=true} @self ~onSpawn
+  - skill{s=SkeletonOverlordBoneSpawn} @self ~onDamaged .6
+  - skill{s=SkeletonOverlordKnockup} @self ~onTimer:5
+  - command{c="runicgive exp <trigger.name> 240 <mob.l.x> <mob.l.y> <mob.l.z> 12"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+SkeletonOverlordBone:
+  Type: BABY_ZOMBIE
+  Display: '&7Cursed Bone'
+  Health: 1
+  Skills:
+  - summon{t=SkeletonOverlordSubMinion} @self ~onDespawn .2
+  - skill{s=SkeletonOverlordBone} @self ~onSpawn
+  - remove{delay=200} @self ~onSpawn
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: DROPPED_ITEM BONE
+    
+SkeletonOverlorMarker:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+#  - message{m="<caster.var.check>"} @PIR{r=32} ~onTimer:20
+  - variableadd{var=caster.check;amount=1} @self ~onSignal:add
+  - skill{s=SkeletonOverlorMarkerCheck} @self ~onTimer:5
+  - setvariable{var=caster.check;value=0} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true  
+SkeletonOverlordMinion:
+  Type: SKELETON
+  Display: '&e[&6☠&e] &7Skeleton'
+  Health: 20
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - stone_sword HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Despawn: false
+  Skills:
+  - signal{s=add} @MIR{r=128;t=SkeletonOverlorMarker} ~onDeath
+  - damage{a=2} @self ~onSignal:dmg .1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+SkeletonOverlordSubMinion:
+  Type: SKELETON
+  Display: '&e[&6☠&e] &7Skeleton'
+  Health: 5
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  Equipment:
+  - stone_sword HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Despawn: false
+  Skills:
+  - remove{delay=600} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+SkeletonOverlordTrap:
+  Type: ZOMBIE
+  Display: '&6Cursed Gold Block'
+  Health: 35
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: false
+  Skills:
+  - setAI{ai=false} @self ~onSpawn
+  - skill{s=SkeletonOverlordTrap} @self ~onDeath
+  Disguise: FALLING_BLOCK GOLD_BLOCK
+    
+CrystalCavernPK:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cSiren'
+  Health: 20
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Despawn: false
+  Skills:
+  - skill{s=CrystalCavernPK} @self ~onTimer:5
+  - command{c="runicgive exp <trigger.name> 10 <mob.l.x> <mob.l.y> <mob.l.z> 12"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Ghaduul setCustomName "&e[&6☠&e] &cSiren" setDynamicName true

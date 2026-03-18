@@ -1,0 +1,850 @@
+CrimsonColossus-greater:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lGreater Crimson Colossus'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lCrimson Colossus'
+    Health: 12500
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Shine-select} @self ~onSpawn 1
+  - skill{s=Shine-visual} @self ~onTimer:20
+  - skill{s=CrimsonColossus-drop} @trigger ~onDeath 
+  - skill{s=CrimsonColossus-drop} @trigger ~onDeath 
+  - skill{s=CrimsonColossus-drop} @trigger ~onDeath 
+  - skill{s=CrimsonColossus-drop} @trigger ~onDeath 
+  - command{c="ri drop crimson-core <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1 
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=gs3,gs4} @trigger ~onDeath 1.0
+  - skill{s=Mine-Knockup-greater} @target ~onTimer:5
+  - skill{s=CrimsonColossus-Skill-greater} @self ~onTimer:40
+  - skill{s=CrimsonColossus-Skill2-greater} @self ~onTimer:40 <40%
+  - skill{s=CrimsonColossus-Skill3-greater} @self ~onTimer:40 .4
+  - skill{s=CrimsonColossusFiretick-greater} @self ~onTimer:4
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - setvariable{var=caster.fire;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+CrimsonColossus-Spawn-greater:
+  Type: BABY_ZOMBIE
+  Display: '&cCrimson'
+  Health: 1000
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=CrimsonColossusSpawn-Skill-greater} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK REDSTONE_BLOCK
+    
+
+SapphirineBehemoth-greater:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &9&lGreater Sapphirine Behemoth'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&9&lSapphirine Behemoth'
+    Health: 12500
+    Range: 15
+    Color: BLUE
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Shine-select} @self ~onSpawn 1
+  - skill{s=Shine-visual} @self ~onTimer:20
+  - skill{s=SapphirineBehemoth-drop} @trigger ~onDeath 
+  - skill{s=SapphirineBehemoth-drop} @trigger ~onDeath 
+  - skill{s=SapphirineBehemoth-drop} @trigger ~onDeath 
+  - skill{s=SapphirineBehemoth-drop} @trigger ~onDeath 
+  - command{c="ri drop sapphirine-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=gs3,gs4} @trigger ~onDeath 1.0
+  - skill{s=Mine-Knockup-greater} @target ~onTimer:5
+  - skill{s=SapphirineBehemoth-Skill-greater} @self ~onTimer:40
+  - skill{s=SapphirineBehemoth-Skill2-greater} @self ~onTimer:40 <40%
+  - skill{s=SapphirineBehemoth-Skill3-greater} @self ~onTimer:40 .4
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+SapphirineBehemoth-Spawn-greater:
+  Type: BABY_ZOMBIE
+  Display: '&9Sapphirine'
+  Health: 500
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=SapphirineBehemothSpawn-Skill-greater} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK LAPIS_BLOCK
+    
+
+GlacialTitan-greater:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &b&lGreater Glacial Titan'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&b&lGlacial Titan'
+    Health: 12500
+    Range: 15
+    Color: BLUE
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Shine-select} @self ~onSpawn 1
+  - skill{s=Shine-visual} @self ~onTimer:20
+  - skill{s=GlacialTitan-drop} @trigger ~onDeath 
+  - skill{s=GlacialTitan-drop} @trigger ~onDeath 
+  - skill{s=GlacialTitan-drop} @trigger ~onDeath 
+  - skill{s=GlacialTitan-drop} @trigger ~onDeath 
+  - command{c="ri drop glacial-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=gs3,gs4} @trigger ~onDeath 1.0
+  - skill{s=Mine-Knockup-greater} @target ~onTimer:5
+  - skill{s=GlacialTitan-Skill-greater} @self ~onTimer:40
+  - skill{s=GlacialTitan-Skill2-greater} @self ~onTimer:40 <40%
+  - skill{s=GlacialTitan-Skill3-greater} @self ~onTimer:40 .4
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+GlacialTitan-Marker-greater:
+  Type: ARMOR_STAND
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=GlacialTitan-Marker-greater} @self ~onSpawn
+GlacialTitan-Spawn-greater:
+  Type: BABY_ZOMBIE
+  Display: '&bGlacial'
+  Health: 1000
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=GlacialTitanSpawn-Skill-greater} @self ~onSpawn
+  - potion{t=SLOW;d=20;l=3} @PIR{r=2} ~onTimer:20
+  - sound{s=block.stone.break} @self ~onDeath
+  - remove @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK DIAMOND_BLOCK
+    
+
+JadeGiant-greater:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &a&lGreater Jade Giant'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&a&lJade Giant'
+    Health: 12500
+    Range: 15
+    Color: GREEN
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Shine-select} @self ~onSpawn 1
+  - skill{s=Shine-visual} @self ~onTimer:20
+  - skill{s=JadeGiant-drop} @trigger ~onDeath 
+  - skill{s=JadeGiant-drop} @trigger ~onDeath 
+  - skill{s=JadeGiant-drop} @trigger ~onDeath 
+  - skill{s=JadeGiant-drop} @trigger ~onDeath 
+  - command{c="ri drop jade-gemstone <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=gs3,gs4} @trigger ~onDeath 1.0
+  - skill{s=Mine-Knockup-greater} @target ~onTimer:5
+  - skill{s=JadeGiant-Skill-greater} @self ~onTimer:40
+  - skill{s=JadeGiant-Skill2-greater} @self ~onTimer:40 <40%
+  - skill{s=JadeGiant-Skill3-greater} @self ~onTimer:40 .4
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+JadeGiant-Spawn-greater:
+  Type: BABY_ZOMBIE
+  Display: '&aJade'
+  Health: 1000
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=JadeGiantSpawn-Skill-greater} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK EMERALD_BLOCK
+
+JadeGiant-Spawn2-greater:
+  Type: WITHER_SKELETON
+  Display: '&7Withered Corpse'
+  Health: 1000
+  Damage: 75
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: false
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 400 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath 1.0
+  - skill{s=JadeGiantSpawn2-Skill-greater} @self ~onSpawn
+  - suicide @self ~onSignal:suicide
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+CrystalWarden-greater:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &F&lGreater Crystal Warden'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&F&lCrystal Warden'
+    Health: 12500
+    Range: 15
+    Color: WHITE
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Shine-select} @self ~onSpawn 1
+  - skill{s=Shine-visual} @self ~onTimer:20
+  - skill{s=CrystalWarden-drop} @trigger ~onDeath 
+  - skill{s=CrystalWarden-drop} @trigger ~onDeath 
+  - skill{s=CrystalWarden-drop} @trigger ~onDeath 
+  - skill{s=CrystalWarden-drop} @trigger ~onDeath 
+  - command{c="ri drop crystal-corpus <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=gs3,gs4} @trigger ~onDeath 1.0
+  - skill{s=Mine-Knockup-greater} @target ~onTimer:5
+  - skill{s=CrystalWarden-Skill-greater} @self ~onTimer:40
+  - skill{s=CrystalWarden-Skill2-greater} @self ~onTimer:40 <40%
+  - skill{s=CrystalWarden-Skill3-greater} @self ~onTimer:40 .4
+  - skill{s=CrystalWardenArmorcheck-greater} @self ~onDamaged
+  - setvariable{var=caster.defense;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+CrystalWarden-Marker-greater:
+  Type: ARMOR_STAND
+  Display: '&cCrystal'
+  Health: 500
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+CrystalWarden-Spawn-greater:
+  Type: BAT
+  Display: '&FCrystal'
+  Health: 1000
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=CrystalWardenSignal-Skill-greater} @self ~onSignal:fire1
+  - skill{s=CrystalWardenSignal2-Skill-greater} @self ~onSignal:fire2
+  - skill{s=CrystalWardenSpawn-Skill-greater} @self ~onSpawn
+  - skill{s=CrystalWardenFiretick-greater} @self ~onTimer:4
+  - setvariable{var=caster.fire;value=0} @self ~onSpawn
+  - remove{delay=400} @self ~onSpawn
+  - remove @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK QUARTZ_BLOCK
+
+
+
+
+
+
+
+
+CrimsonColossus:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lLesser Crimson Colossus'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lCrimson Colossus'
+    Health: 2500
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Shine-select} @self ~onSpawn 1
+  - skill{s=Shine-visual} @self ~onTimer:20
+  - skill{s=CrimsonColossus-drop} @trigger ~onDeath 
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath
+  - command{c="ri drop-range 23 27 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=gs3,gs4} @trigger ~onDeath 1.0
+  - skill{s=Mine-Knockup} @target ~onTimer:5
+  - skill{s=CrimsonColossus-Skill} @self ~onTimer:40
+  - skill{s=CrimsonColossus-Skill2} @self ~onTimer:40 <40%
+  - skill{s=CrimsonColossus-Skill3} @self ~onTimer:40 .4
+  - skill{s=CrimsonColossusFiretick} @self ~onTimer:4
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - setvariable{var=caster.fire;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+CrimsonColossus-Spawn:
+  Type: BABY_ZOMBIE
+  Display: '&cCrimson'
+  Health: 200
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=CrimsonColossusSpawn-Skill} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK REDSTONE_BLOCK
+    
+
+SapphirineBehemoth:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &9&lLesser Sapphirine Behemoth'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&9&lSapphirine Behemoth'
+    Health: 2500
+    Range: 15
+    Color: BLUE
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Shine-select} @self ~onSpawn 1
+  - skill{s=Shine-visual} @self ~onTimer:20
+  - skill{s=SapphirineBehemoth-drop} @trigger ~onDeath 
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath
+  - command{c="ri drop-range 23 27 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=gs3,gs4} @trigger ~onDeath 1.0
+  - skill{s=Mine-Knockup} @target ~onTimer:5
+  - skill{s=SapphirineBehemoth-Skill} @self ~onTimer:40
+  - skill{s=SapphirineBehemoth-Skill2} @self ~onTimer:40 <40%
+  - skill{s=SapphirineBehemoth-Skill3} @self ~onTimer:40 .4
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+SapphirineBehemoth-Spawn:
+  Type: BABY_ZOMBIE
+  Display: '&9Sapphirine'
+  Health: 100
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=SapphirineBehemothSpawn-Skill} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK LAPIS_BLOCK
+    
+
+GlacialTitan:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &b&lLesser Glacial Titan'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&b&lGlacial Titan'
+    Health: 2500
+    Range: 15
+    Color: BLUE
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Shine-select} @self ~onSpawn 1
+  - skill{s=Shine-visual} @self ~onTimer:20
+  - skill{s=GlacialTitan-drop} @trigger ~onDeath 
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath
+  - command{c="ri drop-range 23 27 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=gs3,gs4} @trigger ~onDeath 1.0
+  - skill{s=Mine-Knockup} @target ~onTimer:5
+  - skill{s=GlacialTitan-Skill} @self ~onTimer:40
+  - skill{s=GlacialTitan-Skill2} @self ~onTimer:40 <40%
+  - skill{s=GlacialTitan-Skill3} @self ~onTimer:40 .4
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+GlacialTitan-Marker:
+  Type: ARMOR_STAND
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=GlacialTitan-Marker} @self ~onSpawn
+GlacialTitan-Spawn:
+  Type: BABY_ZOMBIE
+  Display: '&bGlacial'
+  Health: 200
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=GlacialTitanSpawn-Skill} @self ~onSpawn
+  - potion{t=SLOW;d=20;l=3} @PIR{r=2} ~onTimer:20
+  - sound{s=block.stone.break} @self ~onDeath
+  - remove @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK DIAMOND_BLOCK
+    
+
+JadeGiant:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &a&lLesser Jade Giant'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&a&lJade Giant'
+    Health: 2500
+    Range: 15
+    Color: GREEN
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Shine-select} @self ~onSpawn 1
+  - skill{s=Shine-visual} @self ~onTimer:20
+  - skill{s=JadeGiant-drop} @trigger ~onDeath 
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath
+  - command{c="ri drop-range 23 27 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=gs3,gs4} @trigger ~onDeath 1.0
+  - skill{s=Mine-Knockup} @target ~onTimer:5
+  - skill{s=JadeGiant-Skill} @self ~onTimer:40
+  - skill{s=JadeGiant-Skill2} @self ~onTimer:40 <40%
+  - skill{s=JadeGiant-Skill3} @self ~onTimer:40 .4
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+JadeGiant-Spawn:
+  Type: BABY_ZOMBIE
+  Display: '&aJade'
+  Health: 200
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=JadeGiantSpawn-Skill} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK EMERALD_BLOCK
+
+JadeGiant-Spawn2:
+  Type: WITHER_SKELETON
+  Display: '&7Withered Corpse'
+  Health: 100
+  Damage: 25
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: false
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 20 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - skill{s=JadeGiantSpawn2-Skill} @self ~onSpawn
+  - suicide @self ~onSignal:suicide
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+CrystalWarden:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &F&lLesser Crystal Warden'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&F&lCrystal Warden'
+    Health: 2500
+    Range: 15
+    Color: WHITE
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Shine-select} @self ~onSpawn 1
+  - skill{s=Shine-visual} @self ~onTimer:20
+  - skill{s=CrystalWarden-drop} @trigger ~onDeath 
+  - setvariable{var=caster.defense;value=0} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath
+  - command{c="ri drop-range 23 27 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - randomskill{s=io7,io8,io9,io10} @trigger ~onDeath 1.0
+  - randomskill{s=go7,go8,go9,go10} @trigger ~onDeath 1.0
+  - randomskill{s=gs3,gs4} @trigger ~onDeath 1.0
+  - skill{s=Mine-Knockup} @target ~onTimer:5
+  - skill{s=CrystalWarden-Skill} @self ~onTimer:40
+  - skill{s=CrystalWarden-Skill2} @self ~onTimer:40 <40%
+  - skill{s=CrystalWarden-Skill3} @self ~onTimer:40 .4
+  - skill{s=CrystalWardenArmorcheck} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+CrystalWarden-Marker:
+  Type: ARMOR_STAND
+  Display: '&cCrystal'
+  Health: 100
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+CrystalWarden-Spawn:
+  Type: BAT
+  Display: '&FCrystal'
+  Health: 200
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=CrystalWardenSignal-Skill} @self ~onSignal:fire1
+  - skill{s=CrystalWardenSignal2-Skill} @self ~onSignal:fire2
+  - skill{s=CrystalWardenSpawn-Skill} @self ~onSpawn
+  - skill{s=CrystalWardenFiretick} @self ~onTimer:4
+  - setvariable{var=caster.fire;value=0} @self ~onSpawn
+  - remove{delay=400} @self ~onSpawn
+  - remove @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK QUARTZ_BLOCK
+    

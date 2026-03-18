@@ -1,0 +1,142 @@
+ValoranSpawn:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Valoran,Gorm,Bjorn;r=32} ~onSpawn
+  - skill{s=ValoranSpawnremove} @self ~onTimer:20
+  - skill{s=ValoranSpawnnotwithin} @self ~onTimer:20
+  - summon{type=Valoran;amount=1;radius=0} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+    Despawn: true
+Valoran:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &6Rogue &cValoran'
+  Health: 200
+  Damage: 16
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lRogue Valoran'
+    Health: 200
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin atomicmat setCustomName "&e[&6✸&e] &6Rogue &cValoran" setDynamicName true
+  Skills:
+  - setvariable{var=target.valoran;value=1} @MIR{t=ValoranSpawn;r=64} ~onDamaged
+  - summon{type=Gorm;amount=1;radius=1} @MIR{r=256;t=ValoranSpawn} ~onDeath
+  #- skill{s=SmokeCloud} @selflocation ~onTimer:160
+  #- skill{s=Poof} @target ~onTimer:200
+  - skill{s=SpeedBoost} @self ~onTimer:140
+  - command{c="runicgive exp <trigger.name> 40 <mob.l.x> <mob.l.y> <mob.l.z> 12"} @trigger ~onDeath 1.0
+  #- randomskill{s=g1,g2} @trigger ~onDeath 1
+Gorm:
+  Type: SKELETON
+  Display: '&e[&6✸&e] &6Archer &cGorm'
+  Health: 200
+  Damage: 8
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lArcher Gorm'
+    Health: 200
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Raidon_OG setCustomName "&e[&6✸&e] &6Archer &cGorm" setDynamicName true
+  Skills:
+  - skill{s=GormTimer} @target ~onTimer:200
+  - summon{type=Bjorn;amount=1;radius=1} @MIR{r=256;t=ValoranSpawn} ~onDeath
+  - effect:sound{s=entity.wither.spawn} @PIR{r=15} ~onSpawn
+  - command{c="runicgive exp <trigger.name> 40 <mob.l.x> <mob.l.y> <mob.l.z> 12"} @trigger ~onDeath 1.0
+
+Bjorn:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &6Warrior &cBjorn'
+  Health: 200
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lWarrior Bjorn'
+    Health: 200
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin DemonLuke setCustomName "&e[&6✸&e] &6Warrior &cBjorn" setDynamicName true
+  Skills:
+  - skill{s=SeismicLeap} @target ~onTimer:140
+  - effect:sound{s=entity.wither.spawn} @PIR{r=15} ~onSpawn
+  - command{c="runicgive exp <trigger.name> 40 <mob.l.x> <mob.l.y> <mob.l.z> 12"} @trigger ~onDeath 1.0
+  #- randomskill{s=g1,g2} @trigger ~onDeath 1
+  - remove @MIR{t=ValoranSpawn;r=128} ~onDeath

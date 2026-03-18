@@ -1,0 +1,134 @@
+Hobling:
+  Type: ZOMBIE
+  Display: '&e[&64&e] &aHobling Villager'
+  Health: 80
+  Damage: 15
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - wooden_hoe HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+#  - command{c="runicgive exp <trigger.name> 24 <mob.l.x> <mob.l.y> <mob.l.z> 10"} @trigger ~onDeath 1.0
+#  - randomskill{s=g1,g2} @trigger ~onDeath .3
+#  - randommessage{m="&cHobling Villager<&co> &4Azanian Scum!","&cHobling Villager<&co> &4We will not bow down to you!","&cHobling Villager<&co> &4We don't want you here!","&cHobling Villager<&co> &4We won't go down without a fight!","&cHobling Villager<&co> &4Get out of our village!";} @PIR{r=8} ~onDamaged .05
+#  - skill{s=drop-level-4} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Disguise: player Steve setSkin Mup68 setDynamicName true
+HoblingCutscene:
+  Type: ZOMBIE
+  Display: '&e[&64&e] &aHobling Villager'
+  Health: 80
+  Damage: 15
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - wooden_hoe HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - ignite{d=120} @self ~onSpawn
+  - potion{t=SLOW;d=40;l=10} @self ~onSpawn
+  - jump{v=0.4;delay=20} @self ~onSpawn
+  - jump{v=0.4;delay=30} @self ~onSpawn
+  - effect:firework{t=3;d=1;f=true;tr=true} @self ~onInteract
+  - remove{delay=1200} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -1720,50,-183
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin Mup68 setCustomName "&e[&64&e] &aHobling Villager" setDynamicName true
+SugarcaneGiver:
+  Type: BABY_ZOMBIE
+  Display: '&aSugar Cane'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - sound{s=block.grass.break} @self ~onDeath
+  - command{c="ri drop sugar_cane <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - remove @self ~onDeath
+  Disguise: FALLING_BLOCK SUGAR_CANE
+
+BlueOrchidGiver:
+  Type: BABY_ZOMBIE
+  Display: '&bBlue Orchid'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - sound{s=block.grass.break} @self ~onDeath
+  - command{c="ri drop blue-orchid <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - remove @self ~onDeath
+  Disguise: FALLING_BLOCK BLUE_ORCHID
+
+WildSquid:
+  Type: ZOMBIE
+  Display: '&e[&63&e] &cWild Squid'
+  Health: 10
+  Damage: 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.30
+    PreventOtherDrops: true
+    FollowRange: 35
+    NoDamageTicks: 5
+  Skills:
+  - command{c="runicgive exp <trigger.name> 1 <mob.l.x> <mob.l.y> <mob.l.z> 3"} @trigger ~onDeath 1.0
+  - command{c="ri drop ink-sac <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 float
+  AITargetSelectors:
+  - 0 clear
+  Disguise: SQUID

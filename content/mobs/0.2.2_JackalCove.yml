@@ -1,0 +1,191 @@
+JackalCaptain:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cJackal Captain'
+  Health: 1250
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 18
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lJackal Captain'
+    Health: 1250
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=JackalCaptain-drop} @trigger ~onDeath
+  - command{c="ri drop pirate-fish <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - setvariable{var=caster.crew;value=0} @self ~onSpawn
+  - skill{s=JackalCaptain} @self ~onTimer:120
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin SIMEIS_ setCustomName "&e[&6☠&e] &cJackal Captain" setDynamicName true
+JackalCaptainTNT:
+  Type: BABY_ZOMBIE
+  Display: '&6Boom Boom Box'
+  Health: 40
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=JackalCaptainTNTIgnite} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK COAL_BLOCK
+    
+JackalCaptainCrew:
+  Type: ZOMBIE
+  Display: '&e[&610&e] &cJackal Crewmate'
+  Health: 75
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 24 <mob.l.x> <mob.l.y> <mob.l.z> 10"} @trigger ~onDeath 1.0
+  - potion{t=SLOW;d=40;l=1} @MIR{t=JackalCaptain;r=12} ~onTimer:20
+  - setvariable{var=caster.crew;value=0} @MIR{t=JackalCaptain;r=64} ~onDeath
+  - remove{delay=800} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Disguise: player Steve setSkin antonin2003_ setCustomName "&e[&610&e] &cJackal Crewmate" setDynamicName true
+
+JackalPirate:
+  Type: ZOMBIE
+  Display: '&e[&68&e] &cJackal Pirate'
+  Health: 155
+  Damage: 16
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 80 <mob.l.x> <mob.l.y> <mob.l.z> 8"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-8} @trigger ~onDeath
+  - command{c="ri drop FishSnack <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+#  - message{m="<caster.var.proj>"} @PIR{r=10} ~onTimer:20
+  - setvariable{var=caster.proj;value=0} @self ~onSpawn
+  - skill{s=JackalPirateProjcheckwithin} @self ~onTimer:20
+  - skill{s=JackalPirateProjchecknotwithin} @self ~onTimer:20
+  - skill{s=JackalPirateProj} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Disguise: player Steve setSkin antonin2003_ setDynamicName true
+
+DisplacedSpirit:
+  Type: BEE
+  Display: '&e[&611&e] &cDisplaced Spirit'
+  Health: 125
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    Silent: true
+    FollowRange: 35
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 62 <mob.l.x> <mob.l.y> <mob.l.z> 11"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-11} @trigger ~onDeath
+  - skill{s=DisplacedSpirit} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Disguise: VEX
+    
+MorowinChicken:
+  Type: CHICKEN
+  Display: '&e[&610&e] &cThieving Chicken'
+  Health: 5
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - command{c="ri drop EtherealFlux <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 10"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 float

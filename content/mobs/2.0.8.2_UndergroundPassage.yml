@@ -1,0 +1,805 @@
+underground-passage-wither:
+  Type: WITHER_SKELETON
+  Display: '&e[&660&e] &cThe Primordial'
+  Health: 250000
+  Damage: 400
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&c&lThe Primordial'
+    Health: 250000
+    Range: 50
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=underground-passage-wither-skill} @self ~onTimer:20
+  - setvariable{var=caster.wolf;v=0} @self ~onSpawn
+  - setvariable{var=caster.devourer;v=0} @self ~onSpawn
+  - setvariable{var=caster.loot;v=0} @self ~onSpawn
+  - skill{s=UpdateHealthBar;delay=1} @self ~onSignal:UpdateHealthBar
+  - skill{s=underground-passage-wolf} @self ~onDeath
+  - skill{s=underground-passage-devourer} @self ~onDeath
+  - skill{s=underground-passage-wither-loot} @trigger ~onDeath
+  - skill{s=underground-passage-cursed} @self ~onSignal:cursed
+  - skill{s=underground-threat} @target ~onTimer:20
+  - skill{s=underground-passage-death-remove} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WITHER
+
+
+underground-passage-stray:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cPrimordial Frost Fire'
+  Health: 25000
+  Damage: 325
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - potion{t=SLOW;d=25;l=1;hasParticles=false} @PIR{r=50} ~onTimer:20
+  - potion{t=SLOW;d=80;l=2;hasParticles=false} @PIR{r=50} ~onTimer:400
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=.5} @self ~onTimer:400
+  - setvariable{var=caster.wolf;v=0} @self ~onSpawn
+  - setvariable{var=caster.devourer;v=0} @self ~onSpawn
+  - setvariable{var=caster.loot;v=0} @self ~onSpawn
+  - setvariable{var=caster.begone;v=0} @self ~onSpawn
+  - skill{s=UpdateHealthBar;delay=1} @self ~onSignal:UpdateHealthBar
+  - skill{s=underground-passage-wolf} @self ~onDeath
+  - skill{s=underground-passage-devourer} @self ~onDeath
+  - skill{s=underground-passage-stray-loot} @trigger ~onDeath
+  - skill{s=underground-passage-cursed} @self ~onSignal:cursed
+  - skill{s=underground-passage-stray-begone} @self ~onSignal:begone
+  - skill{s=underground-threat} @target ~onTimer:20
+  - skill{s=underground-passage-death-remove} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: STRAY
+
+
+underground-passage-brute:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cPrimordial Hell Fire'
+  Health: 25000
+  Damage: 325
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Faction: Boss
+  Equipment:
+  - NETHERITE_AXE HAND
+  - NETHERITE_AXE OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - potion{t=SPEED;d=25;l=1;hasParticles=false} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} ~onTimer:20 #all enemies
+  - potion{t=SPEED;d=80;l=2;hasParticles=false} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} ~onTimer:400 #all enemies
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5} @self ~onTimer:400 
+  - playanimation{a=0;audience=World} @self ~onTimer:400
+  - setvariable{var=caster.wolf;v=0} @self ~onSpawn
+  - setvariable{var=caster.devourer;v=0} @self ~onSpawn
+  - setvariable{var=caster.loot;v=0} @self ~onSpawn
+  - skill{s=UpdateHealthBar;delay=1} @self ~onSignal:UpdateHealthBar
+  - skill{s=underground-passage-wolf} @self ~onDeath
+  - skill{s=underground-passage-devourer} @self ~onDeath
+  - skill{s=underground-passage-stray-loot} @trigger ~onDeath
+  - skill{s=underground-passage-cursed} @self ~onSignal:cursed
+  - skill{s=underground-threat} @target ~onTimer:20
+  - skill{s=underground-passage-death-remove} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: PIGLIN_BRUTE
+
+
+underground-passage-slime:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cPrimordial Waste'
+  Health: 1250
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=underground-passage-slime-leap} @target ~onTimer:20 .2
+  - setvariable{var=caster.wolf;v=0} @self ~onSpawn
+  - setvariable{var=caster.devourer;v=0} @self ~onSpawn
+  - setvariable{var=caster.loot;v=0} @self ~onSpawn
+  - skill{s=UpdateHealthBar;delay=1} @self ~onSignal:UpdateHealthBar
+  - skill{s=underground-passage-wolf} @self ~onDeath
+  - skill{s=underground-passage-devourer} @self ~onDeath
+  - skill{s=underground-passage-skeleton-loot} @trigger ~onDeath
+  - skill{s=underground-passage-cursed} @self ~onSignal:cursed
+  - skill{s=underground-threat} @target ~onTimer:20
+  - skill{s=underground-passage-death-remove} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SLIME setSize 2
+
+underground-passage-spider:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cPrimordial Spider'
+  Health: 10000
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=underground-passage-spider-goo} @self ~onTimer:20
+  - setvariable{var=caster.wolf;v=0} @self ~onSpawn
+  - setvariable{var=caster.devourer;v=0} @self ~onSpawn
+  - setvariable{var=caster.loot;v=0} @self ~onSpawn
+  - skill{s=UpdateHealthBar;delay=1} @self ~onSignal:UpdateHealthBar
+  - skill{s=underground-passage-wolf} @self ~onDeath
+  - skill{s=underground-passage-devourer} @self ~onDeath
+  - skill{s=underground-passage-golem-loot} @trigger ~onDeath
+  - skill{s=underground-passage-cursed} @self ~onSignal:cursed
+  - skill{s=underground-threat} @target ~onTimer:20
+  - skill{s=underground-passage-death-remove} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SPIDER
+underground-passage-spider-goo-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=underground-passage-spider-goo-marker} @self ~onSpawn
+  Options:
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBWEB
+
+
+
+underground-passage-creeper:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cPrimordial Chaos'
+  Health: 4000
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=underground-passage-creeper-explosion} @self ~onTimer:20 .25
+  - skill{s=underground-passage-creeper-death} @self ~onDeath
+  - setvariable{var=caster.wolf;v=0} @self ~onSpawn
+  - setvariable{var=caster.devourer;v=0} @self ~onSpawn
+  - setvariable{var=caster.loot;v=0} @self ~onSpawn
+  - skill{s=UpdateHealthBar;delay=1} @self ~onSignal:UpdateHealthBar
+  - skill{s=UpdateHealthBar} @self ~onSignal:UpdateHealthBar
+  - skill{s=underground-passage-wolf} @self ~onDeath
+  - skill{s=underground-passage-devourer} @self ~onDeath
+  - skill{s=underground-passage-creeper-loot} @trigger ~onDeath
+  - skill{s=underground-passage-cursed} @self ~onSignal:cursed
+  - skill{s=underground-threat} @target ~onTimer:20
+  - skill{s=underground-passage-death-remove} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: CREEPER
+
+underground-passage-skeleton:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cPrimordial Walker'
+  Health: 1250
+  Damage: 77
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.wolf;v=0} @self ~onSpawn
+  - setvariable{var=caster.devourer;v=0} @self ~onSpawn
+  - setvariable{var=caster.loot;v=0} @self ~onSpawn
+  - setvariable{var=caster.begone;v=0} @self ~onSpawn
+  - skill{s=UpdateHealthBar;delay=1} @self ~onSignal:UpdateHealthBar
+  - skill{s=underground-passage-wolf} @self ~onDeath
+  - skill{s=underground-passage-devourer} @self ~onDeath
+  - skill{s=underground-passage-skeleton-loot} @trigger ~onDeath
+  - skill{s=underground-passage-cursed} @self ~onSignal:cursed
+  - skill{s=underground-passage-begone} @self ~onSignal:begone
+  - skill{s=underground-threat} @target ~onTimer:20
+  - skill{s=underground-passage-death-remove} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SKELETON
+
+underground-passage-golem:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cPrimordial Golem'
+  Health: 10000
+  Damage: 175
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.wolf;v=0} @self ~onSpawn
+  - setvariable{var=caster.devourer;v=0} @self ~onSpawn
+  - setvariable{var=caster.loot;v=0} @self ~onSpawn
+  - setvariable{var=caster.guru;v=0} @self ~onSpawn
+  - setvariable{var=caster.explosive;v=0} @self ~onSpawn
+  - skill{s=UpdateHealthBar;delay=1} @self ~onSignal:UpdateHealthBar
+  - skill{s=UpdateHealthBar} @self ~onSignal:UpdateHealthBar
+  - skill{s=underground-passage-wolf} @self ~onDeath
+  - skill{s=underground-passage-devourer} @self ~onDeath
+  - skill{s=underground-passage-golem-loot} @trigger ~onDeath
+  - skill{s=underground-passage-cursed} @self ~onSignal:cursed
+  - skill{s=underground-passage-guru} @self ~onDeath
+  - skill{s=underground-passage-explosive} @self ~onDeath
+  - skill{s=underground-threat} @target ~onTimer:20
+  - skill{s=underground-passage-death-remove} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+blessing:
+  Type: armor_stand
+  Health: 10000
+  BossBar:
+    Enabled: true
+    Title: '&4&l[BETA] &c&lThe Underground'
+    Range: 50
+    Color: GREEN
+    Style: SEGMENTED_10
+  Skills:
+  #- message{m="<caster.var.collection-color>"} @PIR{r=32} ~onTimer:20
+  - skill{s=blessing-collection} @self ~onSignal:collection
+  - skill{s=blessing-start} @self ~onSpawn
+  - skill{s=blessing-cast;repeat=5;repeatInterval=1200} @self ~onSpawn
+  - skill{s=blessing-effect} @self ~onTimer:20
+  - skill{s=underground-wave} @self ~onSpawn
+  - skill{s=underground-wave-duration} @self ~onSpawn
+  Options:
+    Invisible: false
+    Invisible: true
+    Marker: true
+
+blessing-display:
+  Type: armor_stand
+  Display: '&a&lGifts from the Underground<&co> &e1<&co>00'
+  Skills:
+  - setvariable{var=caster.active;v=1} @self ~onSpawn
+  - setvariable{var=caster.minute;v=1} @self ~onSpawn #initial minute
+  - setvariable{var=caster.second;v=0} @self ~onSpawn #initial second
+  - skill{s=blessing-display-timer} @self ~onTimer:20 #timer start
+  - skill{s=blessing-display-update} @self ~onSignal:update
+  Options:
+    AlwaysShowName: true
+    Invisible: true
+    Marker: true
+
+blessing-white:
+  Type: armor_stand
+  Display: '&1[&bGaleblessed&1]'
+  Skills:
+  - setvariable{var=target.collection-color;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&1[&bGaleblessed&1] &bEveryone gains permanent Swiftness &eI"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-white;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=WHITE_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK WHITE_TERRACOTTA
+
+blessing-gray:
+  Type: armor_stand
+  Display: '&4[&cBones Begone&4]'
+  Skills:
+  - setvariable{var=target.collection-color;v=2} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&4[&cBones Begone&4] &cAll Skeletons now have &e50% &cless health"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-gray;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=GRAY_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK GRAY_TERRACOTTA
+
+blessing-light-gray:
+  Type: armor_stand
+  Display: '&4[&cCursed&4]'
+  Skills:
+  - setvariable{var=target.collection-color;v=3} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&4[&cCursed&4] &cAll enemies now have a &e10% &cchance to have &e2500 &cless health"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-light-gray;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=LIGHT_GRAY_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK LIGHT_GRAY_TERRACOTTA
+
+blessing-black:
+  Type: armor_stand
+  Display: '&4[&cPlague&4]'
+  Skills:
+  - setvariable{var=target.collection-color;v=4} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&4[&cPlague&4] &cAll enemies lose &e250 &chealth every &e15 &cseconds"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-black;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=BLACK_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK BLACK_TERRACOTTA
+
+blessing-cyan:
+  Type: armor_stand
+  Display: '&1[&bWater Walker&1]'
+  Skills:
+  - setvariable{var=target.collection-color;v=5} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&1[&bWater Walker&1] &bEveryone gains &e8 &bseconds of Swiftness &eIV &bevery &e20 &bseconds"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-cyan;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=CYAN_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK CYAN_TERRACOTTA
+
+blessing-green:
+  Type: armor_stand
+  Display: '&2[&aHealing Pulse&2]'
+  Skills:
+  - setvariable{var=target.collection-color;v=6} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&2[&aHealing Pulse&2] &aEveryone restores &e100 &ahealth every &e8 &aseconds"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-green;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=LIME_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK LIME_TERRACOTTA
+
+blessing-dark-green:
+  Type: armor_stand
+  Display: '&2[&aFull Restore&2]'
+  Skills:
+  - setvariable{var=target.collection-color;v=7} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&2[&aFull Restore&2] &aEveryone health is restored to &efull &aevery &e75 &aseconds"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-dark-green;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=GREEN_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK GREEN_TERRACOTTA
+
+blessing-pink:
+  Type: armor_stand
+  Display: '&6[&eExtra Metal&6]'
+  Skills:
+  - setvariable{var=target.collection-color;v=8} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&6[&eExtra Metal&6] &aPrimordial Shard drop rate increased by &e10%"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-pink;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=PINK_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK PINK_TERRACOTTA
+
+blessing-purple:
+  Type: armor_stand
+  Display: '&2[&aGolem Guru&2]'
+  Skills:
+  - setvariable{var=target.collection-color;v=9} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&2[&aGolem Guru&2] &aEveryone heals for &e250 &ahealth on golem kill"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-purple;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=PURPLE_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK PURPLE_TERRACOTTA
+
+blessing-blue:
+  Type: armor_stand
+  Display: '&4[&cSnow Storm&4]'
+  Skills:
+  - setvariable{var=target.collection-color;v=10} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&4[&cSnow Storm&4] &cAll enemies now receive &e8 &cseconds of Slowness &eIII &cevery &e20 &cseconds"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-blue;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=LIGHT_BLUE_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK LIGHT_BLUE_TERRACOTTA
+
+blessing-dark-blue:
+  Type: armor_stand
+  Display: '&4[&cFrigid&4]'
+  Skills:
+  - setvariable{var=target.collection-color;v=11} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&4[&cFrigid&4] &c&cAll enemies now receive &e3 &cseconds of Slowness &eI &cevery &e7 &cseconds"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-dark-blue;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=BLUE_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK BLUE_TERRACOTTA
+
+blessing-red:
+  Type: armor_stand
+  Display: '&2[&aDevourer&2]'
+  Skills:
+  - setvariable{var=target.collection-color;v=12} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&2[&aDevourer&2] &aKilling an enemy restores &e50 &ahealth to yourself"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-red;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=RED_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK RED_TERRACOTTA
+
+blessing-yellow:
+  Type: armor_stand
+  Display: '&2[&aWolf Pack&2]'
+  Skills:
+  - setvariable{var=target.collection-color;v=13} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&2[&aWolf Pack&2] &aKilling an enemy restores &e5 &ahealth to everyone"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-yellow;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=YELLOW_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK YELLOW_TERRACOTTA
+
+blessing-orange:
+  Type: armor_stand
+  Display: '&1[&bExplosive&1]'
+  Skills:
+  - setvariable{var=target.collection-color;v=14} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&1[&bExplosive&1] &bGolems now explode on death dealing &e750 &bdamage in a &e3 &bblock radius"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-orange;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=ORANGE_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK ORANGE_TERRACOTTA
+
+blessing-magenta:
+  Type: armor_stand
+  Display: '&4[&cGravity&4]'
+  Skills:
+  - setvariable{var=target.collection-color;v=15} @MIR{t=blessing;r=50} ~onInteract
+  - message{m="&4[&cGravity&4] &cAll enemies are dragged towards the center every &e25 &cseconds"} @PIR{r=50} ~onInteract
+  - setvariable{var=target.effect-magenta;v=1} @MIR{t=blessing;r=50} ~onInteract
+  - effect:particlesphere{p=block_crack;material=MAGENTA_TERRACOTTA;amount=2;radius=1;yOffset=.25} @self ~onInteract
+  - skill{s=blessing-reset} @self ~onInteract
+  - skill{s=blessing-visual} @self ~onTimer:10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK MAGENTA_TERRACOTTA
+
+
+
+blessing-display-collection-white:
+  Type: armor_stand
+  #Display: '&bGaleblessed'
+  Skills:
+  - message{m="&1[&bGaleblessed&1] &bEveryone gains permanent Swiftness &eI"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK WHITE_TERRACOTTA
+
+blessing-display-collection-gray:
+  Type: armor_stand
+  #Display: '&cBones Begone'
+  Skills:
+  - message{m="&4[&cBones Begone&4] &cAll Skeletons now have &e50% &cless health"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK GRAY_TERRACOTTA
+
+blessing-display-collection-light-gray:
+  Type: armor_stand
+  #Display: '&cCursed'
+  Skills:
+  - message{m="&4[&cCursed&4] &cAll enemies now have a &e10% &cchance to have &e2500 &cless health"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK LIGHT_GRAY_TERRACOTTA
+
+blessing-display-collection-black:
+  Type: armor_stand
+  #Display: '&cPlague'
+  Skills:
+  - message{m="&4[&cPlague&4] &cAll enemies lose &e250 &chealth every &e15 &cseconds"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK BLACK_TERRACOTTA
+
+blessing-display-collection-cyan:
+  Type: armor_stand
+  #Display: '&bWater Walker'
+  Skills:
+  - message{m="&1[&bWater Walker&1] &bEveryone gains &e8 &bseconds of Swiftness &eIV &bevery &e20 &bseconds"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK CYAN_TERRACOTTA
+
+blessing-display-collection-green:
+  Type: armor_stand
+  #Display: '&aHealing Pulse'
+  Skills:
+  - message{m="&2[&aHealing Pulse&2] &aEveryone restores &e100 &ahealth every &e8 &aseconds"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK LIME_TERRACOTTA
+
+blessing-display-collection-dark-green:
+  Type: armor_stand
+  #Display: '&aFull Restore'
+  Skills:
+  - message{m="&2[&aFull Restore&2] &aEveryone health is restored to &efull &aevery &e75 &aseconds"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK GREEN_TERRACOTTA
+
+blessing-display-collection-pink:
+  Type: armor_stand
+  #Display: '&eExtra Metal'
+  Skills:
+  - message{m="&6[&eExtra Metal&6] &aPrimordial Shard drop rate increased by &e10%"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK PINK_TERRACOTTA
+
+blessing-display-collection-purple:
+  Type: armor_stand
+  #Display: '&aGolem Guru'
+  Skills:
+  - message{m="&2[&aGolem Guru&2] &aEveryone heals for &e250 &ahealth on golem kill"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK PURPLE_TERRACOTTA
+
+blessing-display-collection-blue:
+  Type: armor_stand
+  #Display: '&cSnow Storm'
+  Skills:
+  - message{m="&4[&cSnow Storm&4] &cAll enemies now receive &e8 &cseconds of Slowness &eIII &cevery &e20 &cseconds"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK LIGHT_BLUE_TERRACOTTA
+
+blessing-display-collection-dark-blue:
+  Type: armor_stand
+  #Display: '&cFrigid'
+  Skills:
+  - message{m="&4[&cFrigid&4] &c&cAll enemies now receive &e3 &cseconds of Slowness &eI &cevery &e7 &cseconds"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK BLUE_TERRACOTTA
+
+blessing-display-collection-red:
+  Type: armor_stand
+  #Display: '&aDevourer'
+  Skills:
+  - message{m="&2[&aDevourer&2] &aKilling an enemy restores &e50 &ahealth to yourself"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK RED_TERRACOTTA
+
+blessing-display-collection-yellow:
+  Type: armor_stand
+  #Display: '&aWolf Pack'
+  Skills:
+  - message{m="&2[&aWolf Pack&2] &aKilling an enemy restores &e5 &ahealth to everyone"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK YELLOW_TERRACOTTA
+
+blessing-display-collection-orange:
+  Type: armor_stand
+  #Display: '&bExplosive'
+  Skills:
+  - message{m="&1[&bExplosive&1] &bGolems now explode on death dealing &e750 &bdamage in a &e3 &bblock radius"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK ORANGE_TERRACOTTA
+
+blessing-display-collection-magenta:
+  Type: armor_stand
+  #Display: &cGravity'
+  Skills:
+  - message{m="&4[&cGravity&4] &cAll enemies are dragged towards the center every &e25 &cseconds"} @trigger ~onInteract
+  Options:
+    #AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK MAGENTA_TERRACOTTA

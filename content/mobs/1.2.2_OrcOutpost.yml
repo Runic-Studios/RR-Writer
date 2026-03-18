@@ -1,0 +1,120 @@
+HobgoblinBeast:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cHobgoblin Beast'
+  Health: 5000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 94
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lHobgoblin Beast'
+    Health: 5000
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=HobgoblinBeast-drop} @trigger ~onDeath
+  - skill{s=HobgoblinBeast-charge} @self ~onTimer:40 .5
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: PANDA
+
+HobgoblinBeast-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=HobgoblinBeast-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Hobgoblin:
+  Type: ZOMBIE
+  Display: '&e[&650&e] &cHobgoblin'
+  Health: 785
+  Damage: 65
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - OrcSword HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.41
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    KnockbackResistance: 1
+  Skills:
+  - setvariable{var=caster.hob;value=0} @self ~onSpawn
+  - skill{s=hobSmashcheckwithin} @self ~onTimer:20
+  - skill{s=hobSmashchecknotwithin} @self ~onTimer:20
+  - skill{s=hobSmash} @self ~onTimer:20
+  - command{c="runicgive exp <trigger.name> 534 <mob.l.x> <mob.l.y> <mob.l.z> 50"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-50} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin _ElGoblino setCustomName "&e[&650&e] &cHobgoblin" setDynamicName true
+
+HobgoblinArcher:
+  Type: SKELETON
+  Display: '&e[&651&e] &cHobgoblin'
+  Health: 750
+  Damage: 55
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - BOW HAND    
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    KnockbackResistance: 1
+  Skills:
+  - command{c="runicgive exp <trigger.name> 534 <mob.l.x> <mob.l.y> <mob.l.z> 51"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-51} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin _ElGoblino setCustomName "&e[&651&e] &cHobgoblin" setDynamicName true

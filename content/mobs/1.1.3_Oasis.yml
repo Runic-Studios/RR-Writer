@@ -1,0 +1,248 @@
+naheen-turtle:
+  Type: TURTLE
+  Display: '&e[&640&e] &cArmored Titan'
+  Health: 1250
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    Silent: true
+    FollowRange: 12
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 764 <mob.l.x> <mob.l.y> <mob.l.z> 40"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-40} @trigger ~onDeath
+  - skill{s=naheen-turtle} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+naheen-turtle-slam-dmg:
+  Type: armor_stand
+  Skills:
+  - skill{s=naheen-turtle-slam-dmg} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+
+
+naheen-cat:
+  Type: OCELOT
+  Display: '&e[&640&e] &cFerocious Furball'
+  Health: 635
+  Modules:
+    ThreatTable: true
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=naheen-cat} @self ~onTimer:20
+  - setvariable{var=caster.near;value=1} @self ~onSpawn
+  - setvariable{var=caster.drown;value=0} @self ~onSpawn
+  - skill{s=naheen-cat-drop} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+
+
+
+
+
+
+
+PileOfFlesh:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cPile of Flesh'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lPile of Flesh'
+    Health: 2500
+    Range: 24
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=PileOfFlesh-drop} @trigger ~onDeath
+  - skill{s=FleshSummon2} @self ~onTimer:200
+  - skill{s=FleshSummon} @self ~onDamaged .4
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin 69420112 setCustomName "&e[&6☠&e] &cPile of Flesh" setDynamicName true
+
+PileofFleshSpawn:
+  Type: ZOMBIE
+  Display: '&e[&638&e] &cFlesh'
+  Health: 275
+  Modules:
+    ThreatTable: true
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 75 <mob.l.x> <mob.l.y> <mob.l.z> 38"} @trigger ~onDeath 1.0
+  - skill{s=FleshUnstableCast} @self ~onDamaged
+  - skill{s=FleshUnstable} @self ~onTimer:80 .4
+  - skill{s=FleshSpawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin 69420112 setCustomName "&e[&638&e] &cFlesh" setDynamicName true
+
+FleshGut1:
+  Type: BABY_ZOMBIE
+  Display: '&6Flesh'
+  Health: 1
+  Skills:
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+  - skill{s=FleshSpawn2Skill} @self ~onTimer:20
+  - skill{s=FleshSpawn2} @self ~onSpawn
+  Disguise: DROPPED_ITEM REDSTONE
+
+FleshGut2:
+  Type: BABY_ZOMBIE
+  Display: '&6Flesh Guts'
+  Health: 1
+  Skills:
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+  - skill{s=FleshSpawn2Skill} @self ~onTimer:20
+  - skill{s=FleshSpawn2} @self ~onSpawn
+  Disguise: DROPPED_ITEM RED_DYE
+
+FleshGut3:
+  Type: BABY_ZOMBIE
+  Display: '&6Flesh Guts'
+  Health: 1
+  Skills:
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+  - skill{s=FleshSpawn2Skill} @self ~onTimer:20
+  - skill{s=FleshSpawn2} @self ~onSpawn
+  Disguise: DROPPED_ITEM RED_WOOL
+    
+FleshGuts1:
+  Type: BABY_ZOMBIE
+  Display: '&6Flesh'
+  Health: 1
+  Skills:
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+  - skill{s=FleshGutSkill} @self ~onTimer:20
+  Disguise: DROPPED_ITEM REDSTONE
+
+FleshGuts2:
+  Type: BABY_ZOMBIE
+  Display: '&6Flesh Guts'
+  Health: 1
+  Skills:
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+  - skill{s=FleshGutSkill} @self ~onTimer:20
+  Disguise: DROPPED_ITEM RED_DYE
+
+FleshGuts3:
+  Type: BABY_ZOMBIE
+  Display: '&6Flesh Guts'
+  Health: 1
+  Skills:
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+  - skill{s=FleshGutSkill} @self ~onTimer:20
+  Disguise: DROPPED_ITEM RED_WOOL

@@ -1,0 +1,416 @@
+WitheredElf-elite:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cCorrupted Greater Elf'
+  Health: 4000
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lElite&e&l] &c&lCorrupted Greater Elf'
+    Health: 4000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=elite-threat} @target ~onTimer:80
+  - signal{s=elite-remove} @MIR{t=WitheredElf-elite-timer;r=50} ~onSignal:remove
+  - skill{s=WitheredElf-elite} @self ~onSpawn
+  - skill{s=WitheredElf-elite-skill} @self ~onTimer:200
+  - command{c="runicgive exp <trigger.name> 8000 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger ~onDeath 1.0
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Zeonica setCustomName "&e[&6✸&e] &cCorrupted Greater Elf" setDynamicName true
+
+WitheredElf-elite-spawn:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &cRisen Withered Rose'
+  Health: 100
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - sound{s=block.grass.step} @self ~onSpawn
+  - remove{delay=240} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Nevarous setCustomName "&e[&635&e] &cRisen Withered Rose" setDynamicName true
+    
+WitheredElf-elite-rose:
+  Type: BABY_ZOMBIE
+  Display: ''
+  Health: 400
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=WitheredElf-elite-rose} @self ~onSpawn
+  Disguise: FALLING_BLOCK WITHER_ROSE
+    
+Axel:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cAxel'
+  Health: 2000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_AXE HAND
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lAxel, King of Fools'
+    Health: 2000
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Axel-drop} @trigger ~onDeath
+  - signal{s=suicide} @MIR{t=Axel-melee,Axel-range;r=32} ~onDeath
+  - signal{s=suicide} @MIR{t=Axel-melee,Axel-range;r=32} ~onDespawn
+  - skill{s=Axel-onSpawn} @self ~onSpawn
+  - skill{s=Axel-ghoul} @self ~onDamaged
+  - skill{s=Axel-add} @self ~onSignal:rage
+  - skill{s=Axel-rage} @self ~onTimer:4
+  - skill{s=Axel-heal} @self ~onSignal:heal <90%
+  - skill{s=Axel-wither} @self ~onTimer:80 40%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin DiamondQueen setCustomName "&e[&6☠&e] &cAxel" setDynamicName true
+
+
+Axel-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=Axel-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+Axel-range:
+  Type: SKELETON
+  Display: '&e[&635&e] &cGhoulish Creature'
+  Health: 400
+  Modules:
+    ThreatTable: true
+  Damage: 15
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 127 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - suicide @self ~onSignal:suicide
+  - signal{s=heal} @MIR{t=Axel;r=16} ~onTimer:4
+  - signal{s=rage} @MIR{t=Axel;r=32} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin 18vampires setCustomName "&e[&635&e] &cGhoulish Creature" setDynamicName true
+Axel-melee:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &cGhoulish Creature'
+  Health: 500
+  Damage: 24
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - WOODEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 143 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - suicide @self ~onSignal:suicide
+  - signal{s=heal} @MIR{t=Axel;r=16} ~onTimer:4
+  - signal{s=rage} @MIR{t=Axel;r=32} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin BloBG setCustomName "&e[&635&e] &cGhoulish Creature" setDynamicName true
+
+ElvenSpirit:
+  Type: BEE
+  Display: '&e[&635&e] &cElven Spirit'
+  Health: 400
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    Silent: true
+    FollowRange: 35
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 244 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-35} @trigger ~onDeath
+  - skill{s=ElvenSpirit} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: VEX
+
+WitheredElf:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &cWithered Elf'
+  Health: 560
+  Damage: 33
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 342 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-35} @trigger ~onDeath
+  - skill{s=WitheredElf} @self ~onTimer:20
+  - summon{t=WitheredElf-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Nevarous setCustomName "&e[&635&e] &cWithered Elf" setDynamicName true
+
+WitheredElfRose:
+  Type: BABY_ZOMBIE
+  Display: ''
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=WitheredElfRose} @self ~onSpawn
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: FALLING_BLOCK WITHER_ROSE
+
+WitheredElfRoseToss:
+  Type: BABY_ZOMBIE
+  Display: ''
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=WitheredElfRoseToss} @self ~onSpawn
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: FALLING_BLOCK WITHER_ROSE
+    
+MasterFeldruid:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cMaster Feldruid'
+  Health: 4000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - WOOD_HOE HAND
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lMaster Feldruid'
+    Health: 4000
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  #- skill{s=DruidShot3} @NearestPlayer{r=6} ~onTimer:600
+  - skill{s=MasterFeldruid-drop} @trigger ~onDeath
+  - skill{s=EarthlyRoot} @PIR{r=40} ~onTimer:200
+  - skill{s=Root1s} @target ~onDamaged 0.2
+  - skill{s=LogMeteor} @self ~onTimer:320
+  - skill{s=FeldruidProjectile} @target ~onTimer:80
+  - skill{s=FeldruidLevitate} @PIR{r=30;limit=1;sort=furthest} ~onTimer:440
+  - summon{t=ForestSilverfish;a=5;r=12} @PIR{r=30} ~onTimer:380
+  - skill{s=GetThemArchers} @trigger ~onDamaged
+  - skill{s=FeldruidDodge} @self ~onDamaged .5
+#  - skill{s=FeldruidConsume} @self ~onTimer:300
+  - setstance{s=default} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Furion setDynamicName true
+
+ForestPhantom:
+  Type: phantom
+  Display: '&e[&634&e] &cForest Phantom'
+  Health: 50
+  Damage: 70
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.21
+    PreventOtherDrops: true
+    FollowRange: 25
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+    Angry: true
+    Silent: true
+    Size: 0.5
+  Skills:
+  - command{c="runicgive exp <trigger.name> 20 <mob.l.x> <mob.l.y> <mob.l.z> 34"} @trigger ~onDeath 1.0
+  - pull{v=5} @PIR{r=5} ~onTimer:10
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget

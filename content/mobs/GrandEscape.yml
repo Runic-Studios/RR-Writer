@@ -1,0 +1,19 @@
+GrandEscape:
+    Type: SHEEP
+    Display: '&eHina'
+    Health: 100
+    Damage: 20
+    Options:
+        MovementSpeed: .001
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventRandomEquipment: true
+        Silent: true
+#    Disguise:
+#        Type: player
+#        Player: Steve
+#        Skin: 12fthh
+    Skills:
+#    - skill{s=SoundList} @Self ~onInteract
+    - skill{s=GrandEscape} @Self ~onInteract
+    

@@ -1,0 +1,544 @@
+WildMysticalSheep:
+  Type: ZOMBIE
+  Display: '&e[&6MM&e] &9Mystical Sheep'
+  Health: 100
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&9&lMystical Sheep'
+    Health: 100
+    Range: 12
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - sound{s=entity.sheep.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Disguise: SHEEP
+
+BattleofCentury4:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=CrescentKiller,EtherealTerror,DestroyerofWorlds3;r=32} ~onSpawn
+  - summon{t=EtherealTerror} @Location{c=1852.5,42,141.5} ~onSpawn
+  - summon{t=CrescentKiller} @Location{c=1855.5,38,146.5} ~onSpawn
+  - summon{t=DestroyerofWorlds3} @Location{c=1846.5,40,154.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+DestroyerofWorlds3:
+  Type: CHICKEN
+  Display: '&e[&6MM&e] &8&lDestroyer of Worlds'
+  Health: 20000
+  Faction: Boss
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&8&lDestroyer of Worlds'
+    Health: 20000
+    Range: 12
+    Color: BLACK
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - look{headOnly=false;immediately=true} @Location{c=1849.5,39,147.5} ~onSpawn
+  - setname{name='&e[&6MM&e] &8&lDestroyer of Worlds';delay=1} @self ~onDamaged
+  - heal{a=20000} @self ~onDamaged
+  #- summon{t=FeatheredFreakStun} @PIR{r=12} ~onSpawn
+  - summon{t=MiniMobTuneBass;delay=40} @Location{c=870.5,22,158.5} ~onSpawn
+  - skill{s=DestroyerofWorldsBlow} @self ~onSignal:blow
+  - remove @MIR{t=SaltBanditStrong;r=24} ~onTimer:20
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: ENDER_DRAGON
+
+Grass:
+  Type: BABY_ZOMBIE
+  Display: '&aGrass'
+  Health: 1
+  Damage: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Grass-suicide} @self ~onTimer:2
+  Disguise: FALLING_BLOCK GRASS
+    
+DestroyerofWorlds:
+  Type: CHICKEN
+  Display: '&e[&6MM&e] &cDestroyer of Nations'
+  Health: 20000
+  Faction: Boss
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&c&lDestroyer of Nations'
+    Health: 20000
+    Range: 12
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - look{headOnly=false;immediately=true} @Location{c=-81.5,31,-630.5} ~onSpawn
+  - setname{name='&e[&6MM&e] &cDestroyer of Nations';delay=1} @self ~onDamaged
+  - heal{a=20000} @self ~onDamaged
+  #- summon{t=FeatheredFreakStun} @PIR{r=12} ~onSpawn
+  - summon{t=MiniMobTuneBass;delay=40} @Location{c=-78.5,29,-629.5} ~onSpawn
+  - remove @MIR{t=Crawler,AzanianSoldier;r=24} ~onTimer:20
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Disguise: ENDER_DRAGON
+
+DestroyerofWorlds2:
+  Type: CHICKEN
+  Display: '&e[&6MM&e] &8&lDestroyer of Worlds'
+  Health: 20000
+  Faction: Boss
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&8&lDestroyer of Worlds'
+    Health: 20000
+    Range: 12
+    Color: BLACK
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - look{headOnly=false;immediately=true} @Location{c=871.5,23,166.5} ~onSpawn
+  - setname{name='&e[&6MM&e] &8&lDestroyer of Worlds';delay=1} @self ~onDamaged
+  - heal{a=20000} @self ~onDamaged
+  #- summon{t=FeatheredFreakStun} @PIR{r=12} ~onSpawn
+  - summon{t=MiniMobTuneBass;delay=40} @Location{c=870.5,22,158.5} ~onSpawn
+  - skill{s=DestroyerofWorldsBlow} @self ~onSignal:blow
+  - remove @MIR{t=Druid,Deserter;r=24} ~onTimer:20
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Disguise: ENDER_DRAGON
+
+DestroyerofWorldsBolt:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=DestroyerofWorldsBolt} @MIR{t=MysticalSheep,MysticalSheep2;r=24} ~onSpawn
+  - remove{delay=200} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+DestroyerofWorldsBlow:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+#  - message{m="signal spawned"} @PIR{r=8} ~onSpawn
+  - signal{s=blow} @MIR{t=DestroyerofWorlds2;r=24} ~onSpawn
+  - remove{delay=200} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+MiniMobTuneBass:
+  Type: BABY_ZOMBIE
+  Display: '&cMiniMob Bass'
+  Health: 100
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:   
+  - remove @MIR{t=MiniMobTuneBass;r=12} ~onSpawn
+  - remove @MIR{t=MiniMobTuneSnare,MiniMobTuneSnare2;r=12} ~onSpawn
+  - command{c="ri drop ShatteredMusicDisc <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - sound{s=block.glass.break} @self ~onDeath
+  - skill{s=MiniMobTuneBass} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK JUKEBOX
+
+MiniMobTuneSnare:
+  Type: BABY_ZOMBIE
+  Display: '&cMiniMob Snare'
+  Health: 100
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:   
+  - command{c="ri drop ShatteredMusicDisc <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - sound{s=block.glass.break} @self ~onDeath
+  - skill{s=MiniMobTuneSnare} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK JUKEBOX
+
+MiniMobTuneSnare2:
+  Type: BABY_ZOMBIE
+  Display: '&cMiniMob Tune'
+  Health: 100
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:   
+  - command{c="ri drop ShatteredMusicDisc <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - sound{s=block.glass.break} @self ~onDeath
+  - skill{s=MiniMobTuneSnare2} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK JUKEBOX
+
+FeatheredFreak:
+  Type: CHICKEN
+  Display: '&e[&6MM&e] &cFeathered Freak'
+  Health: 1000
+  Faction: Boss
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&c&lFeathered Freak'
+    Health: 1000
+    Range: 12
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6MM&e] &cFeathered Freak';delay=1} @self ~onDamaged
+  - heal{a=1000;i=true} @self ~onDamaged
+  #- summon{t=FeatheredFreakStun} @PIR{r=12} ~onSpawn
+  - remove @MIR{t=ForestSpider;r=12} ~onTimer:20  
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+FeatheredFreak2:
+  Type: CHICKEN
+  Display: '&e[&6MM&e] &cFeathered Freak'
+  Health: 1000
+  Faction: Boss
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&c&lFeathered Freak'
+    Health: 1000
+    Range: 12
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6MM&e] &cFeathered Freak';delay=1} @self ~onDamaged
+  - heal{a=1000;i=true} @self ~onDamaged
+  #- summon{t=FeatheredFreakStun} @PIR{r=12} ~onSpawn
+  - summon{t=MiniMobTuneBass;delay=40;os=true} @Location{c=-1209.5,60,183.5} ~onSpawn
+  - remove @MIR{t=ForestSpider;r=12} ~onTimer:20  
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+
+FeatheredFreakBolt:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - effect:sound{s=entity.lightning_bolt.impact;volume=0.2;pitch=0.5} @PIR{r=4} ~onSpawn
+  - effect:lightning{localized=true;localizedradius=25} @PIR{r=4} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+FeatheredFreakBolt2:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - effect:sound{s=entity.lightning_bolt.impact;volume=0.2;pitch=0.5} @MIR{t=MysticalSheep;r=15} ~onSpawn
+  - effect:lightning{localized=true;localizedradius=25} @MIR{t=MysticalSheep;r=15} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+MiniMobremove:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - remove @MIR{t=MysticalSheep,FeatheredFreak,FeatheredFreak2,FeatheredFreakStun,MiniMobTuneBass,MiniMobTuneSnare,MiniMobTuneSnare2,DestroyerofWorlds2,MysticalSheep2;r=24} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+MysticSheepSlam:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - signal{s=mystic} @MIR{t=MysticalSheep;r=24} ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+FeatheredFreakStun:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=FeatheredFreakStun} @self ~onTimer:2
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+MysticalSheep:
+  Type: COW
+  Display: '&e[&6MM&e] &9Mystical Sheep'
+  Health: 1000
+  Faction: Boss
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&9&lMystical Sheep'
+    Health: 1000
+    Range: 12
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6MM&e] &9Mystical Sheep';delay=1} @self ~onDamaged
+  - heal{a=1000;i=true} @self ~onDamaged
+  - skill{s=MysticalSheep} @self ~onSignal:mystic
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SHEEP
+
+MysticalSheep2:
+  Type: COW
+  Display: '&e[&6MM&e] &dMystical Pink Sheep'
+  Health: 1000
+  Faction: Boss
+  Damage: 1
+  BossBar:
+    Enabled: true
+    Title: '&d&lMystical Pink Sheep'
+    Health: 1000
+    Range: 12
+    Color: PINK
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6MM&e] &dMystical Pink Sheep';delay=1} @self ~onDamaged
+  - heal{a=1000;i=true} @self ~onDamaged
+  - setcolor{c=pink} @self ~onSpawn
+  - skill{s=MythicalSheepShot} @self ~onSignal:shot
+  - remove{delay=2400} @self ~onSpawn
+  - skill{s=MiniMobRemove} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SHEEP
+
+MythicalSheepShot:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - signal{s=shot} @MIR{t=MysticalSheep2;r=24} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+MysticShot:
+  Type: COW
+  Display: '&cMystic Shot'
+  Health: 1
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:   
+  - setcolor{c=pink} @self ~onSpawn
+  - skill{s=MythicalShot} @self ~onSignal:mysticshot
+  - setAI{ai=false} @self ~onSpawn
+  - skill{s=MythicalShot2} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SHEEP

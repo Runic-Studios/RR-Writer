@@ -1,0 +1,356 @@
+Goo:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &aGoo'
+  Health: 750
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  BossBar:
+    Enabled: true
+    Title: '&aGoo'
+    Health: 1000
+    Range: 25
+    Color: GREEN
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 500 <mob.l.x> <mob.l.y> <mob.l.z> 10"} @trigger ~onDeath
+  - command{c="ri drop-range 8 12 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath
+  - randomskill{s=gg2,gg3,gg4} @trigger ~onDeath 1.0
+  - sound{s=entity.slime.hurt} @self ~onDamaged
+  - setvariable{var=caster.passive;value=1} @self ~onSpawn 
+  - setvariable{var=caster.skill;value=1} @self ~onSpawn 
+  - skill{s=Goo-passive} @self ~onTimer:20
+  - skill{s=Goo-skill1} @self ~onTimer:40 .4
+  - skill{s=Goo-skill2} @self ~onTimer:40 .4
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SLIME setSize 5
+
+Goo-marker:
+  Type: ZOMBIE
+  Display: '&e[&610&e] &aGoo Sack'
+  Health: 100
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Goo-marker} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SLIME setSize 2
+
+Goop:
+  Type: ZOMBIE
+  Display: '&e[&610&e] &aGoop'
+  Health: 400
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 200 <mob.l.x> <mob.l.y> <mob.l.z> 10"} @trigger ~onDeath
+  - skill{s=drop-level-10} @trigger ~onDeath
+  - randomskill{s=gg1} @trigger ~onDeath 1.0
+  - sound{s=entity.slime.hurt} @self ~onDamaged
+  - skill{s=Goop-passive} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SLIME setSize 4
+
+
+Jelly:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &bWintry Jelly'
+  Health: 2000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 16
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  BossBar:
+    Enabled: true
+    Title: '&bWintry Jelly'
+    Health: 2000
+    Range: 25
+    Color: BLUE
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 1250 <mob.l.x> <mob.l.y> <mob.l.z> 22"} @trigger ~onDeath
+  - command{c="ri drop-range 20 24 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath
+  - randomskill{s=gj2,gj3,gj4} @trigger ~onDeath 1.0
+  - sound{s=entity.slime.hurt} @self ~onDamaged
+  - setvariable{var=caster.passive;value=1} @self ~onSpawn 
+  - setvariable{var=caster.skill;value=1} @self ~onSpawn 
+  - skill{s=Jelly-passive} @self ~onTimer:20
+  - skill{s=Jelly-skill1} @self ~onTimer:40 .4
+  - skill{s=Jelly-skill2} @self ~onTimer:40 .4
+  - skill{s=Jelly-skill3} @self ~onTimer:40 .4
+  - skill{s=Jelly-skill4} @target ~onTimer:200 <50%
+  - pull{v=250} @target ~onSignal:pull
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SLIME setSize 5
+
+Jelly-marker:
+  Type: ZOMBIE
+  Display: '&e[&622&e] &bWintry Jam'
+  Health: 100
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.16
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Jelly-marker} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SLIME setSize 2
+
+Jelly-pull:
+  Type: ZOMBIE
+  Display: '&e[&610&e] &bWintry Wonder'
+  Health: 100
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Jelly-pull} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SLIME setSize 3
+
+Gel:
+  Type: ZOMBIE
+  Display: '&e[&622&e] &bWintry Gel'
+  Health: 750
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 16
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 412 <mob.l.x> <mob.l.y> <mob.l.z> 22"} @trigger ~onDeath
+  - skill{s=drop-level-22} @trigger ~onDeath
+  - randomskill{s=gj1} @trigger ~onDeath 1.0
+  - sound{s=entity.slime.hurt} @self ~onDamaged
+  - skill{s=Gel-passive} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SLIME setSize 4
+
+
+
+Sludge:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &2Sludge'
+  Health: 3000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 24
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  BossBar:
+    Enabled: true
+    Title: '&2Sludge'
+    Health: 3000
+    Range: 25
+    Color: GREEN
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 2250 <mob.l.x> <mob.l.y> <mob.l.z> 33"} @trigger ~onDeath
+  - command{c="ri drop-range 31 35 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath
+  - randomskill{s=ss2,ss3,ss4} @trigger ~onDeath 1.0
+  - sound{s=entity.slime.hurt} @self ~onDamaged
+  - skill{s=Sludge-passive} @self ~onTimer:20
+  - skill{s=Sludge-skill1} @self ~onTimer:40 .4
+  - skill{s=Sludge-skill2} @self ~onTimer:40 .4
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SLIME setSize 5
+
+Sludge-marker:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=Sludge-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Slop:
+  Type: ZOMBIE
+  Display: '&e[&633&e] &2Slop'
+  Health: 1250
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 24
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 750 <mob.l.x> <mob.l.y> <mob.l.z> 33"} @trigger ~onDeath
+  - skill{s=drop-level-33} @trigger ~onDeath
+  - randomskill{s=ss1} @trigger ~onDeath 1.0
+  - sound{s=entity.slime.hurt} @self ~onDamaged
+  - skill{s=Slop-passive} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SLIME setSize 4

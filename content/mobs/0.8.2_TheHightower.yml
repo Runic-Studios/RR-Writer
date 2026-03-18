@@ -1,0 +1,278 @@
+hightower-pawn-elite:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cPromoted Pawn'
+  Health: 4000
+  Damage: 60
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lElite&e&l] &c&lPromoted Pawn'
+    Health: 4000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=elite-threat} @target ~onTimer:80
+  - signal{s=elite-remove} @MIR{t=hightower-pawn-elite-timer;r=50} ~onSignal:remove
+  - skill{s=hightower-pawn-elite} @self ~onSpawn
+  - skill{s=hightower-pawn-elite-skill} @self ~onTimer:80
+  - command{c="runicgive exp <trigger.name> 8000 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger ~onDeath 1.0
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop hightower-pawn <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin AdmiralTyrano setCustomName "&e[&6✸&e] &cPromoted Pawn" setDynamicName true
+
+
+Queen:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cQueen'
+  Health: 8000
+  Faction: Boss
+  Damage: 47
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lQueen'
+    Health: 8000
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Queen-drop} @trigger ~onDeath
+  - command{c="ri drop hightower-queen <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-35} @trigger ~onDeath
+  - skill{s=hightower-queen} @self ~onTimer:20
+  - skill{s=hightower-queen2} @self ~onTimer:20 <50%
+  - skill{s=hightower-queen3} @self ~onDamaged <25%
+  - skill{s=hightower-queen4} @self ~onTimer:20 <75%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin lxvendermxllow setCustomName "&e[&6☠&e] &cQueen" setDynamicName true
+    
+queen-flame:
+  Type: armor_stand
+  Skills:
+  - skill{s=queen-flame} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+hightower-spawn:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &cPawn'
+  Health: 224
+  Damage: 38
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 137 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - remove{delay=2400} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin AdmiralTyrano setCustomName "&e[&635&e] &cPawn" setDynamicName true
+    
+hightower-bishop:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cBishop'
+  Health: 2800
+  Faction: Boss
+  Damage: 47
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 1882 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - command{c="ri drop-range 32 37 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .4
+  - command{c="ri drop hightower-bishop <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - skill{s=hightower-bishop} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin ipityu12314 setCustomName "&e[&6✸&e] &cBishop" setDynamicName true
+    
+hightower-rook:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cRook'
+  Health: 2800
+  Faction: Boss
+  Damage: 24
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 1882 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - command{c="ri drop-range 32 37 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .4
+  - command{c="ri drop hightower-rook <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - skill{s=hightower-rook} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Fendrifte setCustomName "&e[&6✸&e] &cRook" setDynamicName true
+    
+hightower-knight:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cKnight'
+  Health: 2800
+  Faction: Boss
+  Damage: 47
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 1882 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - command{c="ri drop-range 32 37 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .4
+  - command{c="ri drop hightower-knight <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - skill{s=hightower-knight} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin _MoonSyy setCustomName "&e[&6✸&e] &cKnight" setDynamicName true
+    
+hightower-pawn:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &cPawn'
+  Health: 560
+  Damage: 47
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 342 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-35} @trigger ~onDeath
+  - command{c="ri drop hightower-pawn <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.1
+  - skill{s=hightower-pawn} @self ~onTimer:20 .04
+  - summon{t=hightower-pawn-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin AdmiralTyrano setCustomName "&e[&635&e] &cPawn" setDynamicName true
+    

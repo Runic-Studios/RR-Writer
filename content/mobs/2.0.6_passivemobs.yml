@@ -1,0 +1,268 @@
+ambient_chicken:
+  Type: CHICKEN
+  Display: '&e[&61&e] &aWild Chicken'
+  Health: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - command{c="ri drop raw-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+ambient_rabbit:
+  Type: RABBIT
+  Display: '&e[&61&e] &aWhite Rabbit'
+  Health: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - randomskill{s=ah1,ah2} @trigger ~onDeath 1
+  - command{c="ri drop rabbit <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+ambient_brownrabbit:
+  Type: RABBIT
+  Display: '&e[&61&e] &aBrown Rabbit'
+  Health: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - randomskill{s=ah1,ah2} @trigger ~onDeath 1
+  - command{c="ri drop rabbit <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+ambient_cow:
+  Type: COW
+  Display: '&e[&61&e] &aWild Cow'
+  Health: 100
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - randomskill{s=ah3,ah4} @trigger ~onDeath 1
+  - command{c="ri drop raw-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 10 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+ambient_cowlivestock:
+  Type: COW
+  Display: '&e[&61&e] &aLivestock'
+  Health: 100
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - randomskill{s=ah3,ah4} @trigger ~onDeath 1
+  - command{c="ri drop raw-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 10 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+ambient_pig:
+  Type: PIG
+  Display: '&e[&61&e] &aStolen Pig'
+  Health: 40
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - randomskill{s=ah2,ah3} @trigger ~onDeath 1
+  - command{c="ri drop raw-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 4 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+ambient_fox:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aWild Fox'
+  Health: 40
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 float
+  Skills:
+  - randomskill{s=ah2,ah3} @trigger ~onDeath 1
+  - command{c="ri drop raw-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 4 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  Disguise: FOX
+ambient_sheep:
+  Type: COW
+  Display: '&e[&61&e] &aWooly Sheep'
+  Health: 100
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 float
+  Skills:
+  - randomskill{s=t1,t2} @trigger ~onDeath .5  
+  - randomskill{s=ah2,ah3} @trigger ~onDeath 1
+  - command{c="ri drop raw-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 10 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  Disguise: SHEEP
+passive_cod: #this should be ambient_cod but im too lazy to redo all the mobs
+  Type: COD
+  Display: '&e[&61&e] &aCod'
+  Health: 10
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  Skills:
+  - command{c="ri drop cod <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+passive_salmon: #this should be ambient_salmon but im too lazy to redo all the mobs
+  Type: SALMON
+  Display: '&e[&61&e] &aSalmon'
+  Health: 10
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  Skills:
+  - command{c="ri drop salmon <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+
+passive_horse:
+  Type: HORSE
+  Display: ''
+  Health: 500
+  Faction: Boss
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    HorseColor: brown
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - setname{name='';delay=1} @self ~onDamaged
+  - heal{a=500} @self ~onDamaged
+passive_wolf:
+  Type: COW
+  Display: ''
+  Health: 500
+  Faction: Boss
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - setname{name='';delay=1} @self ~onDamaged
+  - heal{a=500} @self ~onDamaged
+  - sound{s=entity.wolf.hurt} @self ~onDamaged
+  Disguise: WOLF
+passive_sheep:
+  Type: COW
+  Display: ''
+  Health: 500
+  Faction: Boss
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - setname{name='';delay=1} @self ~onDamaged
+  - heal{a=500} @self ~onDamaged
+  Disguise: SHEEP
+passive_wintervalewolf:
+  Type: WOLF
+  Display: ''
+  Health: 500
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - setname{name='';delay=1} @self ~onDamaged
+  - heal{a=500} @self ~onDamaged
+  - sit{state=true} @self ~onSpawn

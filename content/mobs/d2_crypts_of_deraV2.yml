@@ -1,0 +1,921 @@
+#room 1
+corruptedDeraWorshiperTank:
+  Type: HUSK
+  Display: '&e[&6☠&e] &4Corrupted Dera Worshiper'
+  Health: 7500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 55
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&4&lCorrupted Dera Worshiper'
+    Range: 64
+    Color: RED
+    CreateFog: false
+    DarkenSky: true
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    KnockbackResistance: 1
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=EarthCSAttack-cast}  @self ~onTimer:460
+  - skill{s=summonSoul} ~onTimer:240
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - command{c="ri drop silver-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin ZeinDrux setCustomName "&e[&6☠&e] &4Corrupted Dera Worshiper" setDynamicName true
+
+corruptedDeraWorshiper:
+  Type: SILVERFISH
+  Display: '&e[&6✸&e] &cSoul of the Corrupted'
+  Health: 250
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=WorshipperSwarm1} ~onDamaged @self
+  - setvariable{var=caster.mobsNear;value=0} @self ~onSpawn
+  - skill{s=NearbyWorshipperMechanics} @self ~onTimer:10
+  - skill{s=WorshipperSwarm3} ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+#BOSS 3
+pharohMobPlaceholder:
+  Type: ARMOR_STAND
+  Display: '' 
+  Options:
+    NoGravity: true
+    AlwaysShowName: true
+    #Marker: true
+  Disguise: FALLING_BLOCK BEACON
+  Skills:
+  - setvariable{var=caster.vzStart;value=0} @self ~onSpawn
+  - skill{s=pharohSpawnStart} ~onInteract
+  - skill{s=csPlaceholderEffect} @self ~onTimer:15 
+  - potion{type=GLOWING;duration=99999;level=1} @self ~onspawn
+sandGuy:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cDera<&sq>s Pharaoh'
+  Health: 25000
+  Damage: 90
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0 
+    KnockbackResistance: 1
+    Despawn: true
+  Skills:
+  - skill{s=summonMobsPhar} @self ~onTimer:20
+  - effect:sound{s=entity.husk.hurt;volume=0.25;p=0.5} @PIR{r=45} ~onDamaged
+  - skill{s=chooseTypePhar} @self ~onSpawn
+  - skill{s=chooseTypePhar} @self ~onTimer:20
+  - cast{
+        skillName="&aPower of the Ancients";
+        duration=30;
+        onCast=autoAttackPhar;
+        cancelOnMove=false;
+        showCastBar=true
+      }  @self ~onTimer:300 
+  - cast{
+        skillName="§0Power of Oblivion ";
+        duration=60;
+        onCast=abilityPhar;
+        cancelOnMove=false;
+        showCastBar=true
+      } @self ~onTimer:620
+  - summon{type=pharoPassiveCheck;amount=1;radius=0;os=true} @PIR{r=50;limit=1;sort=RANDOM} ~onTimer:100
+  - skill{s=pharoPassiveAttack} ~onSignal:pharoPassiveLeapYouBitch @Trigger 
+  - remove @MIR{r=200;type=pharohMobPlaceholder} ~onDeath
+  # RESET PARTY
+  #- command{c="runicteleport <trigger.name> crypts"} @trigger ~onDeath 1.0
+  #- command{c="party teleport <trigger.name>"} @trigger ~onDeath 1.0
+  - skill{s=BossFirework} @trigger ~onDeath
+  # DROPS
+  #- command{c="runicboss <caster.uuid> crypts"} @self ~onDeath 1.0
+  - command{c="runicgive exp <trigger.name> 20000 <trigger.l.x> <trigger.l.y> <trigger.l.z> 35"} @trigger ~onDeath 1.0
+  BossBar:
+    Enabled: true
+    Title: '&c&lDera<&sq>s Pharaoh'
+    Range: 120
+    Color: RED
+    CreateFog: true
+    DarkenSky: true
+    Style: SEGMENTED_10
+  Disguise: player Steve setSkin Anubis setCustomName "&e[&6☠&e] &cDera<&sq>s Pharaoh" setDynamicName true
+  
+fireBladeProjectile:
+  Type: CHICKEN
+  Display: ''
+  Health: 10
+  Options:
+    NoGravity: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=fireBladeProjectile} ~onSpawn @self
+
+earthPharSandProjectileEffect:
+  Type: ARMOR_STAND
+  Options:
+    NoGravity: true
+    Marker: true
+    Invisible: true
+  Disguise: FALLING_BLOCK SAND
+
+pharoPassiveCheck:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    Invisible: true
+  Skills:
+  - skill{s=pharoPassiveCheckStart} ~onSpawn  
+  - skill{s=pharoPassiveCheckCountAddCheck} ~onSignal:pharoPassiveCheckAdd
+  - remove{delay=40} @self ~onSpawn
+  
+pharoSandProjec:
+  Type: ZOMBIE
+  Damage: 0
+  Display: ''
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Invincible: true
+    Baby: true
+    ApplyInvisibility: true
+    Silent: true
+    PreventSunburn: true
+    MovementSpeed: 0.3
+  Skills:
+  - skill{s=pharoSandProjec} ~onSpawn @self
+  - skill{s=pharoSandShoot-Hit} ~onSpawn
+
+deathPharoAbilityAnchor:
+  Type: ARMOR_STAND
+  Display: '&4&lAnchor'
+  Options:
+    AlwaysShowName: true
+    NoGravity: true
+    Marker: true
+  Disguise: FALLING_BLOCK NETHER_BRICK_WALL
+  Skills:
+  - skill{s=abilityPharDeathMobPull;delay=60} ~onSpawn @PIR{r=50;limit=1;sort=FURTHEST}
+  - skill{s=abilityPharDeathMobDeathTimer} ~onSpawn 
+  - skill{s=abilityPharDeathMobDeathClicks} ~onInteract
+ 
+deathPharoPrject:
+  Type: BAT
+  Display: ''
+  Modules:
+    ThreatTable: true
+  Options:
+    #Glowing: true
+    Invincible: true
+    NoAI: false
+    Silent: true
+    PreventSunburn: true
+    MovementSpeed: 1.0
+  Disguise: BAT #FALLING_BLOCK CHAIN
+  Skills:
+  - skill{s=chainProjecAI} ~onSpawn @self
+  AIGoalSelectors:
+  - 0 clear
+  - 1 movetowardstarget
+
+EarthSkill:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    Invisible: true
+  Skills:
+  - remove{delay=600} @self
+
+#BOSS 2
+vizierCrypts:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cDera<&sq>s Vizier'
+  Health: 7500
+  Damage: 75
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventSunburn: true
+    MovementSpeed: 0.32
+    Silent: false
+    NoDamageTicks: 0 
+    KnockbackResistance: 1
+    Despawn: true
+  Skills:
+  - remove @MIR{t=cryptsLookAlike1,cryptsLookAlike2,cryptsLookAlike3;r=50} ~onDeath
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} @self ~onDamaged
+  - command{c="ri drop gold-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - skill{s=elementsOfChaoMarkersSpawn} ~onSpawn
+  - effect:sound{s=entity.husk.hurt;volume=0.25;p=0.5} @PIR{r=25} ~onDamaged
+  - skill{s=elementsOfChaos} ~onSpawn
+  - skill{s=vizierLightningAttackStart} ~onTimer:160
+  - skill{s=elementsOfChaosVolly} @self ~onSpawn
+  - skill{s=elementsOfChaosVolly} @self ~onTimer:800
+  # if i ever need this again (lava thing)
+  #- skill{s=virLavaSpawn} @self ~onTimer:1200
+  - skill{s=vizierEnd} ~onDeath
+  - setvariable{var=caster.vizierAI;value=0} @self ~onSpawn
+  - skill{s=vizierFight} ~onTimer:300
+  - skill{s=vizierEnd} ~onDeath
+  - summon{type=VizierDeath} @Self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 fleeplayers
+  Disguise: player Steve setSkin Anubis setCustomName "&e[&6☠&e] &cDera<&sq>s Vizier" setDynamicName true
+  BossBar:
+    Enabled: true
+    Title: '&c&lDera<&sq>s Vizier'
+    Range: 120
+    Color: RED
+    CreateFog: false
+    DarkenSky: true
+    Style: SEGMENTED_10
+
+vizier_test_elements_of_chaos_markers:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    Invisible: true
+
+vizierLightningMarker:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: false
+    Marker: true
+    Invisible: true
+  Skills:
+  - skill{s=vizierLightningAttack} ~onSpawn
+
+vizierTestElementsOfChaosMarker-Fire:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    Invisible: true
+  Skills:
+  #- skill{s=elementsOfChaosProjectileFire} @MobsInRadius{r=100;types=vizier_test_elements_of_chaos_markers;limit=1;sort=RANDOM} ~onSpawn
+  - skill{s=elementsOfChaosProjectileFire} @self ~onSpawn
+  - remove{delay=100} @self ~onSpawn
+
+vizierTestElementsOfChaosMarker-Death:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    Invisible: true
+  Skills:
+  #- skill{s=elementsOfChaosProjectileDeath} @MobsInRadius{r=100;types=vizier_test_elements_of_chaos_markers;limit=1;sort=RANDOM} ~onSpawn
+  - skill{s=elementsOfChaosProjectileDeath} @self ~onSpawn
+  - remove{delay=100} @self ~onSpawn
+
+vizierLavaPlume:
+  Type: ZOMBIE
+  Damage: 0
+  Display: ''
+  Modules:
+    ThreatTable: true
+  Options:
+    Invincible: true
+    ApplyInvisibility: true
+    Silent: true
+    Baby: true
+    PreventSunburn: true
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    MovementSpeed: 0.3
+  Skills:
+  - skill{s=vizierLavaPlume} ~onSpawn @self
+  - skill{s=vizierLavaPlumet-Hit} ~onSpawn @self
+  - threat{amount=10000} @PlayersInRadius{r=15;limit=1;sort=RANDOM} ~onSpawn
+#TEMP
+vizierMobPlaceholder:
+  Type: ARMOR_STAND
+  Display: '' 
+  Options:
+    NoGravity: true
+    AlwaysShowName: true
+    #Marker: true
+  Disguise: FALLING_BLOCK CHISELED_SANDSTONE
+  Skills:
+  - setvariable{var=caster.vzStart;value=0} @self ~onSpawn
+  - skill{s=vizierPlaceholders} ~onSpawn
+  - skill{s=vizierSpawnStart} ~onInteract
+  - skill{s=csPlaceholderEffect} ~onTimer:15
+  - potion{type=GLOWING;duration=99999;level=1} @self ~onspawn
+
+vizierPlaceholder-b:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    #Marker: true
+  Disguise: FALLING_BLOCK SANDSTONE
+    
+vizierPlaceholder-cs:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+  Disguise: FALLING_BLOCK CHISELED_STONE_BRICKS
+
+vizierPlaceholder-wall:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+  Disguise: FALLING_BLOCK SANDSTONE_WALL
+
+vizierPlaceholder-head:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    ItemHead: vzHEAD
+
+#BOSS 1
+csMobPlaceholder:
+  Type: ARMOR_STAND
+  Display: '' 
+  Options:
+    #NoGravity: true
+    AlwaysShowName: true
+    #Marker: true
+  Disguise: FALLING_BLOCK CUT_SANDSTONE
+  Skills:
+  - setvariable{var=caster.csStart;value=0} @self ~onSpawn
+  - skill{s=csMobPlaceholderS} ~onSpawn
+  - skill{s=csStartFight} ~onInteract
+  - skill{s=csPlaceholderEffect} ~onTimer:15
+  - skill{s=csCleanR} ~onTimer:20
+  - potion{type=GLOWING;duration=99999;level=1} @self ~onspawn
+
+csMobPlaceholderNT:
+  Type: ARMOR_STAND
+  Display: '§c&lSealed Sarcophagus' 
+  Options:
+    #NoGravity: true
+    AlwaysShowName: true
+    Marker: true
+    Invisible: true
+  Skills:
+  - skill{s=csStartFightNT} ~onSignal:csNT
+  
+    
+csMobPlaceholder-slab:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+  Disguise: FALLING_BLOCK SANDSTONE_SLAB
+
+csMobPlaceholder-n:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+  Disguise: FALLING_BLOCK SANDSTONE
+
+csMobPlaceholder-wall:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+  Disguise: FALLING_BLOCK SANDSTONE_WALL
+    
+csMobPlaceholder-center:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+  Disguise: FALLING_BLOCK COAL_BLOCK
+
+
+#Boss 1
+crystalSarcophagus:
+  Type: ZOMBIE
+  Display: ''
+  Health: 25000
+  Damage: 5
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    NoAI: true
+    NoDamageTicks: 0 
+    KnockbackResistance: 1
+    ApplyInvisibility: true
+    PreventSunburn: true
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Disguise: GIANT
+  Skills:
+  - skill{s=csDEATH} @self ~onDeath 
+  - command{c="ri drop ethereal-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.deathBlockCS;value=0} @self ~onSpawn
+  - setvariable{var=caster.csEND;value=5} @self ~onSpawn
+  - skill{s=crystalSarcophagus-heal} @self ~onSignal:heal
+  - skill{s=crystalSarcophagus-golem} @self ~onTimer:20
+  - skill{s=crystalSarcophagus-stray} @self ~onTimer:20 <70%
+  - skill{s=deathSkillCSattackcount} ~onSignal:deathBlockCounter
+  - skill{s=SpawnCSnMobs} ~onTimer:20
+  - skill{s=csSummonTowers} ~onSpawn
+  - skill{s=DeathAttackCS} ~onSignal:DeathCS
+  - summon{type=Deathblock;amount=1;radius=2;os=true} @PlayersInRadius{r=30;limit=2;sort=RANDOM} ~onTimer:160
+  - skill{s=csEndCheck} ~onSignal:csEndCheck
+  - skill{s=csEndCheck2} ~onSignal:csEndCheck2
+  BossBar:
+    Enabled: true
+    Title: '&c&lAncient Sarcophagus'
+    Range: 120
+    Color: RED
+    CreateFog: true
+    DarkenSky: true
+    Style: SEGMENTED_10
+    
+crystalSarcophagus-golem:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cAncient Guardian'
+  Health: 2500
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&c&lGolem Guardian'
+    Health: 2500
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=crystalSarcophagus-golem-speed} @self ~onTimer:20
+  - signal{s=heal} @MIR{t=crystalSarcophagus;r=50} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+crystalSarcophagus-stray:
+  Type: HUSK
+  Display: '&4[&c☠&4] &cGuardian'
+  Health: 250
+  Damage: 40
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0 
+    KnockbackResistance: 0.5
+    Silent: true
+  Skills:
+  - skill{s=crystalSarcophagus-stray-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: STRAY
+
+
+
+mummieCS-zombie:
+  Type: HUSK
+  Display: '&6[&e1&6] &eDera Worshipper'
+  Health: 400
+  Damage: 5
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.15
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0 
+    KnockbackResistance: 0.5
+    Silent: true
+  Skills:
+  - skill{s=chooseTypeCS} ~onSpawn @self
+  - skill{s=checkMummieCS} ~onTimer:10
+  - effect:particlesphere{p=block_crack;m=SANDSTONE;amount=2;radius=1;yOffset=0.5;repeat=16;repeatInterval=5} @self ~onSignal:speed
+  - potion{t=SPEED;d=80;l=1;hasParticles=false} @self ~onSignal:speed
+  AIGoalSelectors:
+  - 0 clear
+  - 1 goto 298,86,261
+  Disguise: ZOMBIE
+mummieCS-husk:
+  Type: HUSK
+  Display: '&6[&e3&6] &eDera Worshipper'
+  Health: 1000
+  Damage: 5
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.15
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0 
+    KnockbackResistance: 0.5
+    Silent: true
+  Skills:
+  - skill{s=chooseTypeCS} ~onSpawn @self
+  - skill{s=checkMummieCS2} ~onTimer:10
+  - effect:particlesphere{p=block_crack;m=SANDSTONE;amount=2;radius=1;yOffset=0.5;repeat=16;repeatInterval=5} @self ~onSignal:speed
+  - potion{t=SPEED;d=80;l=1;hasParticles=false} @self ~onSignal:speed
+  AIGoalSelectors:
+  - 0 clear
+  - 1 goto 298,86,261
+  Disguise: HUSK
+mummieCS-skeleton:
+  Type: HUSK
+  Display: '&6[&e1&6] &eDera Worshipper'
+  Health: 250
+  Damage: 5
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0 
+    KnockbackResistance: 0.5
+    Silent: true
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} @self ~onSpawn
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} @self ~onDamaged
+  - effect:particlesphere{p=block_crack;m=SANDSTONE;amount=2;radius=1;yOffset=0.5;repeat=16;repeatInterval=5} @self ~onSignal:speed
+  - potion{t=SPEED;d=80;l=1;hasParticles=false} @self ~onSignal:speed
+  - skill{s=chooseTypeCS} ~onSpawn @self
+  - skill{s=checkMummieCS} ~onTimer:10
+  AIGoalSelectors:
+  - 0 clear
+  - 1 goto 298,86,261
+  Disguise: SKELETON
+ 
+
+cryptsMummie:
+  Type: HUSK
+  Display: '§4Dera Worshipper'
+  Health: 250
+  Damage: 25
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0 
+    MovementSpeed: 0.3
+  Disguise: player Steve setSkin ripsee setCustomName "§4Dera Worshipper" setDynamicName true
+    
+cryptsLookAlike1:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cDera<&sq>s Vizier'
+  Health: 10000
+  Damage: 25
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+    MovementSpeed: 0.28
+  AIGoalSelectors:
+  - 0 clear
+  - 1 fleeplayers
+  Disguise: player Steve setSkin Anubis setCustomName "&e[&6☠&e] &cDera<&sq>s Vizier" setDynamicName true
+  Skills:
+  - heal{a=10000;i=true} @self ~onDamaged
+  - setname{name='&e[&6☠&e] &cFake!';delay=1} @self ~onDamaged
+  - potion{t=SLOW;d=400;l=1;hasParticles=false} @self ~onDamaged
+  - setvariable{var=caster.damaged;value=0} @self ~onSpawn
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @trigger ~onDeath
+  - skill{s=cryptsLookAlike} @self ~onSpawn
+  - skill{s=cryptsLookAlike-damaged} @trigger ~onDamaged
+  - remove @self ~onDeath
+  
+cryptsLookAlike2:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cDera<&sq>s Vizier'
+  Health: 10000
+  Damage: 25
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+    MovementSpeed: 0.28
+  AIGoalSelectors:
+  - 0 clear
+  - 1 fleeplayers
+  Disguise: player Steve setSkin Anubis setCustomName "&e[&6☠&e] &cDera<&sq>s Vizier" setDynamicName true
+  Skills:
+  - heal{a=10000;i=true} @self ~onDamaged
+  - setname{name='&e[&6☠&e] &cFake!';delay=1} @self ~onDamaged
+  - potion{t=SLOW;d=400;l=1;hasParticles=false} @self ~onDamaged
+  - setvariable{var=caster.damaged;value=0} @self ~onSpawn
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @trigger ~onDeath
+  - skill{s=cryptsLookAlike} @self ~onSpawn
+  - skill{s=cryptsLookAlike-damaged} @trigger ~onDamaged
+  - remove @self ~onDeath
+  
+cryptsLookAlike3:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cDera<&sq>s Vizier'
+  Health: 10000
+  Damage: 25
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    PreventSunburn: true
+    MovementSpeed: 0.28
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  Disguise: player Steve setSkin Anubis setCustomName "&e[&6☠&e] &cDera<&sq>s Vizier" setDynamicName true
+  Skills:
+  - heal{a=10000;i=true} @self ~onDamaged
+  - setname{name='&e[&6☠&e] &cFake!';delay=1} @self ~onDamaged
+  - potion{t=SLOW;d=400;l=1;hasParticles=false} @self ~onDamaged
+  - setvariable{var=caster.damaged;value=0} @self ~onSpawn
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @trigger ~onDeath
+  - skill{s=cryptsLookAlike} @self ~onSpawn
+  - skill{s=cryptsLookAlike-damaged} @trigger ~onDamaged
+  - remove @self ~onDeath
+  
+Earthblock:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    Invisible: true
+  Skills:
+  - teleport @Origin{yoffset=-2} ~onSpawn
+  - skill{s=EarthCsAttackEffectStart;delay=10} ~onSpawn @self 
+  
+Fireblock:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    Invisible: true
+  Skills:
+  - teleport @Origin{yoffset=0} ~onSpawn
+  - skill{s=FireCsAttackEffect;delay=40} ~onSpawn @self 
+  Disguise: IRON_GOLEM
+   
+Deathblock:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    Invisible: true
+  Skills:
+  - remove @self ~onSpawn 0.2
+  - remove{delay=220} ~onSpawn @self 
+  - skill{s=startDeathBlockCS} ~onSpawn
+  
+DeathblockMarker:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - remove{delay=1200} @self ~onSpawn 
+  - skill{s=deathBlockActiveA} ~onSignal:deathBlockActive
+  - skill{s=DeathblockMarker-visual} @self ~onSpawn
+  Disguise: FALLING_BLOCK BLACK_GLAZED_TERRACOTTA
+
+csTowerPlaceholder:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    NoAI: true
+  Disguise: FALLING_BLOCK NETHER_BRICK_FENCE
+  Skills:
+  - skill{s=csTowerPlaceholderS} ~onSpawn
+  - remove{delay=60} @self ~onSignal:fallCS 
+
+csTowerPlaceholder-fenceE:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    Marker: true
+  Disguise: FALLING_BLOCK NETHER_BRICK_FENCE
+  Skills:
+  - setgravity{g=false} @self ~onSpawn  
+  - remove{delay=60} @self ~onSignal:fallCS 
+
+csTowerPlaceholder-fence:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    #Marker: true
+    Interactable: false
+    Invincible: true
+  Disguise: FALLING_BLOCK NETHER_BRICK_FENCE
+  Skills:
+  - setgravity{g=false} @self ~onSpawn  
+  - setgravity{g=true} @self ~onSignal:fallCS
+
+csTowerPlaceholder-coreS:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    Invisible: true
+    PreventOtherDrops: true
+    Invincible: true
+    Silent: true
+    Collidable: false
+    PreventRandomEquipment: true
+    ApplyInvisibility: true
+  Skills:
+  - skill{s=csTowerLightningStrikeS} @self ~onTimer:240
+  Equipment:
+  - BEACON HEAD
+ 
+csTowerLightningStrike-audio:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=remove} @MIR{t=csTowerLightningStrike-audio;r=4} ~onSpawn
+  - remove @self ~onSignal:remove
+  - skill{s=csTowerLightningStrike-audio} @self ~onSpawn
+
+csTowerPlaceholder-core:
+  Type: IRON_GOLEM
+  Health: 1000
+  Display: '&e&lSun Altar'
+  BossBar:
+    Enabled: true
+    Title: '&e&lSun Altar'
+    Health: 1000
+    Range: 8
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    NoGravity: true
+    PreventOtherDrops: true
+    Silent: true
+    #Marker: true
+    NoAI: true
+    ApplyInvisibility: true
+  Equipment:
+  - BEACON HEAD
+  Skills:
+  - remove{delay=60} @MobsInRadius{r=10;t=csTowerPlaceholder-coreS,csTowerPlaceholder-fence,csTowerPlaceholder,csTowerPlaceholder-fenceE} ~onDeath
+  - signal{s=fallCS} @MobsInRadius{r=10;t=csTowerPlaceholder-coreS,csTowerPlaceholder-fence,csTowerPlaceholder,csTowerPlaceholder-fenceE} ~onDeath
+
+csTowerShootM:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+    NoAI: true
+    Invisible: true
+  Skills:
+  - skill{s=csTowerLightningStrike} ~onSpawn  
+  
+#duplicate for final boss
+
+corruptedDeraWorshiperTank2:
+  Type: HUSK
+  Display: '&e[&6☠&e] &4Corrupted Dera Worshiper'
+  Health: 5500
+  Disguise: player Steve setSkin ZeinDrux setCustomName "&e[&6☠&e] &4Corrupted Dera Worshiper" setDynamicName true
+  Modules:
+    ThreatTable: true
+  Damage: 55
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    KnockbackResistance: 1
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Despawn: true
+  Skills:
+  - cast{
+        skillName="&aProtection of the Sands";
+        duration=40;
+        onCast=EarthCSAttack;
+        cancelOnMove=false;
+        showCastBar=true
+      }  @self ~onTimer:460
+  - command{c="runicgive exp <trigger.name> 250 <mob.l.x> <mob.l.y> <mob.l.z> 33"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget

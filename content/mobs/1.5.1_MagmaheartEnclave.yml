@@ -1,0 +1,1194 @@
+golem-conjured:
+  Type: ZOMBIE
+  Display: '&4[☠] &cHeart of The Colossus'
+  Health: 300000
+  Modules:
+    ThreatTable: true
+  Damage: 400 #buffed damage from 250 -> 400
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&4&l[Conjured Boss] &c&lHeart of The Colossus'
+    Health: 300000
+    Range: 50
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - remove @MIR{t=golem-conjured-floor-skill2-add;r=2} ~onSignal:wave
+  - skill{s=golem-conjured-outside-leash} @self ~onTimer:80
+  - skill{s=golem-conjured-floor-skill} @self ~onTimer:20
+  - skill{s=golem-conjured-leash} @MIR{t=golem-conjured-fire,golem-conjured-water,golem-conjured-earth,golem-conjured-void,golem-conjured-light;r=128} ~onTimer:20
+  - skill{s=golem-conjured-leg-teleport-reset} @self ~onDeath
+  - skill{s=golem-conjured-variable} @self ~onSpawn
+  - skill{s=golem-conjured-hurt} @self ~onSignal:hurt
+  - skill{s=golem-conjured-threat} @target ~onTimer:20
+  - skill{s=golem-threat-outside} @target ~onTimer:20
+  - skill{s=golem-conjured-leg-stomp} @self ~onTimer:40 #this is the pillar attack
+  - skill{s=golem-conjured-leg-inactive} @self ~onTimer:20
+  - skill{s=golem-conjured-damaged} @self ~onDamaged
+  - signal{s=remove} @MIR{t=golem-conjured;r=128} ~onSpawn
+  - remove @MIR{t=golem-conjured;r=128} ~onSignal:remove
+  - skill{s=golem-conjured-drop} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+golem-conjured-center-summon:
+  Type: armor_stand
+  Display: ''
+  Health: 500
+  BossBar:
+    Enabled: true
+    Title: '&4&l[Conjuring] &c&lThe Heart of The Colossus'
+    Health: 500
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Skills:
+  - sethealth{a=1} @self ~onSpawn
+  - skill{s=golem-conjured-center-summon} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+golem-conjured-floor-skill2-add:
+  Type: BABY_ZOMBIE
+  Display: '&bTidal Wave'
+  Health: 3500
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.15
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=remove} @MIR{t=golem-conjured-floor-skill2-add;r=3} ~onSpawn
+  - remove @MIR{t=golem-conjured-floor-skill2-add;r=3} ~onSignal:remove
+  - skill{s=golem-conjured-floor-skill2-add} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 gotoparent
+  AITargetSelectors:
+  - 0 clear
+
+golem-conjured-floor-skill3-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=golem-conjured-floor-skill3-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+golem-conjured-floor-skill3-add:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &aRisen Knight'
+  Health: 1000
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-conjured-floor-skill3-add} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Average9uy setCustomName "&e[&660&e] &aRisen Knight" setDynamicName true
+
+golem-conjured-floor-skill4-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=golem-conjured-floor-skill4-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+golem-conjured-floor-skill4-marker-damage:
+  Type: armor_stand
+  Skills:
+  - skill{s=golem-conjured-floor-skill4-marker-damage} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+golem-conjured-fire:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cFire Elemental Golem'
+  Health: 3500
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-threat} @target ~onTimer:20
+  - skill{s=golem-conjured-fire-enrage} @self ~onSignal:enrage
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - skill{s=golem-conjured-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-fire-visual} @self ~onTimer:40
+  #- sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=golem-fire-aoe} @self ~onTimer:40
+  - skill{s=golem-elemental-fire-proj} @target ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin RumormiLL setCustomName "&e[&660&e] &cGreater Fire Elemental" setDynamicName true
+
+golem-conjured-water:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cGreater Water Elemental'
+  Health: 3500
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-threat} @target ~onTimer:20
+  - skill{s=golem-conjured-water-enrage} @self ~onSignal:enrage
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - skill{s=golem-conjured-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-water-visual} @self ~onTimer:40
+  #- sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=golem-water-aoe} @self ~onTimer:40
+  - skill{s=golem-elemental-water-proj} @target ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin ImEleah setCustomName "&e[&660&e] &bGreater Water Elemental" setDynamicName true
+
+golem-conjured-earth:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cGreater Earth Elemental'
+  Health: 3500
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-threat} @target ~onTimer:20
+  - skill{s=golem-conjured-earth-enrage} @self ~onSignal:enrage
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - skill{s=golem-conjured-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-earth-visual} @self ~onTimer:40
+  #- sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=golem-earth-aoe} @self ~onTimer:40
+  - skill{s=golem-elemental-earth-proj} @target ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Cordelita setCustomName "&e[&660&e] &aGreater Earth Elemental" setDynamicName true
+
+golem-conjured-void:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cGreater Void Elemental'
+  Health: 3500
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-threat} @target ~onTimer:20
+  - skill{s=golem-conjured-void-enrage} @self ~onSignal:enrage
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - skill{s=golem-conjured-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-void-visual} @self ~onTimer:40
+  #- sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=golem-void-aoe} @self ~onTimer:40
+  - skill{s=golem-elemental-void-proj} @target ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin AmethystKitten setCustomName "&e[&660&e] &dGreater Void Elemental" setDynamicName true
+
+golem-conjured-light:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &eGreater Light Elemental'
+  Health: 3500
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-threat} @target ~onTimer:20
+  - skill{s=golem-conjured-light-enrage} @self ~onSignal:enrage
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - skill{s=golem-conjured-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-light-visual} @self ~onTimer:40
+  #- sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=golem-light-aoe} @self ~onTimer:40
+  - skill{s=golem-elemental-light-proj} @target ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin sharkiekai setCustomName "&e[&660&e] &eGreater Light Elemental" setDynamicName true
+
+
+
+
+golem-conjured-leg1:
+  Type: armor_stand
+  Skills:
+  - skill{s=golem-conjured-leg1} @self ~onSpawn
+  - skill{s=golem-conjured-leg-remove} @self ~onSignal:remove
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+golem-conjured-leg2:
+  Type: armor_stand
+  Skills:
+  - skill{s=golem-conjured-leg2} @self ~onSpawn
+  - skill{s=golem-conjured-leg-remove} @self ~onSignal:remove
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+golem-conjured-leg3:
+  Type: armor_stand
+  Skills:
+  - skill{s=golem-conjured-leg3} @self ~onSpawn
+  - skill{s=golem-conjured-leg-remove} @self ~onSignal:remove
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+golem-conjured-leg4:
+  Type: armor_stand
+  Skills:
+  - skill{s=golem-conjured-leg4} @self ~onSpawn
+  - skill{s=golem-conjured-leg-remove} @self ~onSignal:remove
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+golem-conjured-leg5:
+  Type: armor_stand
+  Skills:
+  - skill{s=golem-conjured-leg5} @self ~onSpawn
+  - skill{s=golem-conjured-leg-remove} @self ~onSignal:remove
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+golem-conjured-leg-visual:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=end_rod;amount=1;radius=1} @self ~onTimer:40
+  - effect:particlesphere{p=end_rod;amount=1;radius=1} @self ~onSpawn
+  - skill{s=golem-conjured-leg-interact} @self ~onInteract
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=1} ~onTimer:5 #changed damage from 10,000 to 500 -> 50 -> 80
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=1} ~onSpawn #changed damage from 10,000 to 500 -> 50 -> 80
+  - sound{s=entity.iron_golem.attack} @self ~onSpawn
+  - skill{s=golem-conjured-leg-visual-remove} @self ~onSignal:remove
+  Options:
+    Invisible: false
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK IRON_BLOCK
+
+golem-conjured-leg-aoe:
+  Type: armor_stand
+  Skills:
+  - skill{s=golem-conjured-leg-aoe} @self ~onSpawn
+  Options:
+    Invisible: false
+    HasGravity: false
+    Marker: true
+
+
+golem-center:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+    Despawn: true
+  Skills:
+  - skill{s=golem-center} @self ~onTimer:20
+  - skill{s=golem-center-fire} @self ~onSignal:fire
+  - skill{s=golem-center-water} @self ~onSignal:water
+  - skill{s=golem-center-earth} @self ~onSignal:earth
+  - skill{s=golem-center-void} @self ~onSignal:void
+  - skill{s=golem-center-light} @self ~onSignal:light
+  - setvariable{var=caster.fire;v=0} @self ~onSpawn
+  - setvariable{var=caster.water;v=0} @self ~onSpawn
+  - setvariable{var=caster.earth;v=0} @self ~onSpawn
+  - setvariable{var=caster.void;v=0} @self ~onSpawn
+  - setvariable{var=caster.light;v=0} @self ~onSpawn
+
+
+golem-gem-fire:
+  Type: armor_stand
+  Display: ''
+  Health: 250
+  BossBar:
+    Enabled: true
+    Title: '&c&lFire Crystal Excavation'
+    Health: 250
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Skills:
+  - skill{s=golem-gem-leash} @MIR{t=golem-fire,golem-elemental-fire;r=100} ~onTimer:40
+  - signal{s=despawn} @MIR{t=golem-fire,golem-elemental-fire;r=100} ~onSpawn
+  - sethealth{a=1} @self ~onSpawn
+  - setvariable{var=caster.type;value=1} @self ~onSpawn
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - setvariable{var=caster.accuracy;value=0} @self ~onSpawn
+  - setvariable{var=caster.time;value=1} @self ~onSpawn
+  - setvariable{var=caster.add;value=1} @self ~onSpawn
+  - skill{s=golem-gem-tick} @self ~onTimer:2
+  - skill{s=golem-gem-interact} @self ~onInteract
+  - skill{s=golem-gem-break} @self ~onTimer:20
+  - skill{s=golem-gem-wave} @self ~onTimer:20
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK RED_GLAZED_TERRACOTTA
+
+golem-gem-water:
+  Type: armor_stand
+  Display: ''
+  Health: 250
+  BossBar:
+    Enabled: true
+    Title: '&b&lWater Crystal Excavation'
+    Health: 250
+    Range: 20
+    Color: BLUE
+    Style: SEGMENTED_10
+  Skills:
+  - skill{s=golem-gem-leash} @MIR{t=golem-water,golem-elemental-water;r=100} ~onTimer:40
+  - signal{s=despawn} @MIR{t=golem-water,golem-elemental-water;r=100} ~onSpawn
+  - sethealth{a=1} @self ~onSpawn
+  - setvariable{var=caster.type;value=2} @self ~onSpawn
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - setvariable{var=caster.accuracy;value=0} @self ~onSpawn
+  - setvariable{var=caster.time;value=1} @self ~onSpawn
+  - setvariable{var=caster.add;value=1} @self ~onSpawn
+  - skill{s=golem-gem-tick} @self ~onTimer:2
+  - skill{s=golem-gem-interact} @self ~onInteract
+  - skill{s=golem-gem-break} @self ~onTimer:20
+  - skill{s=golem-gem-wave} @self ~onTimer:20
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK BLUE_GLAZED_TERRACOTTA
+
+golem-gem-earth:
+  Type: armor_stand
+  Display: ''
+  Health: 250
+  BossBar:
+    Enabled: true
+    Title: '&a&lEarth Crystal Excavation'
+    Health: 250
+    Range: 20
+    Color: GREEN
+    Style: SEGMENTED_10
+  Skills:
+  - skill{s=golem-gem-leash} @MIR{t=golem-earth,golem-elemental-earth;r=100} ~onTimer:40
+  - signal{s=despawn} @MIR{t=golem-earth,golem-elemental-earth;r=100} ~onSpawn
+  - sethealth{a=1} @self ~onSpawn
+  - setvariable{var=caster.type;value=3} @self ~onSpawn
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - setvariable{var=caster.accuracy;value=0} @self ~onSpawn
+  - setvariable{var=caster.time;value=1} @self ~onSpawn
+  - setvariable{var=caster.add;value=1} @self ~onSpawn
+  - skill{s=golem-gem-tick} @self ~onTimer:2
+  - skill{s=golem-gem-interact} @self ~onInteract
+  - skill{s=golem-gem-break} @self ~onTimer:20
+  - skill{s=golem-gem-wave} @self ~onTimer:20
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK GREEN_GLAZED_TERRACOTTA
+
+golem-gem-void:
+  Type: armor_stand
+  Display: ''
+  Health: 250
+  BossBar:
+    Enabled: true
+    Title: '&d&lVoid Crystal Excavation'
+    Health: 250
+    Range: 20
+    Color: PURPLE
+    Style: SEGMENTED_10
+  Skills:
+  - skill{s=golem-gem-leash} @MIR{t=golem-void,golem-elemental-void;r=100} ~onTimer:40
+  - signal{s=despawn} @MIR{t=golem-void,golem-elemental-void;r=100} ~onSpawn
+  - sethealth{a=1} @self ~onSpawn
+  - setvariable{var=caster.type;value=4} @self ~onSpawn
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - setvariable{var=caster.accuracy;value=0} @self ~onSpawn
+  - setvariable{var=caster.time;value=1} @self ~onSpawn
+  - setvariable{var=caster.add;value=1} @self ~onSpawn
+  - skill{s=golem-gem-tick} @self ~onTimer:2
+  - skill{s=golem-gem-interact} @self ~onInteract
+  - skill{s=golem-gem-break} @self ~onTimer:20
+  - skill{s=golem-gem-wave} @self ~onTimer:20
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK PURPLE_GLAZED_TERRACOTTA
+
+golem-gem-light:
+  Type: armor_stand
+  Display: ''
+  Health: 250
+  BossBar:
+    Enabled: true
+    Title: '&e&lLight Crystal Excavation'
+    Health: 250
+    Range: 20
+    Color: YELLOW
+    Style: SEGMENTED_10
+  Skills:
+  - skill{s=golem-gem-leash} @MIR{t=golem-light,golem-elemental-light;r=100} ~onTimer:40
+  - signal{s=despawn} @MIR{t=golem-light,golem-elemental-light;r=100} ~onSpawn
+  - sethealth{a=1} @self ~onSpawn
+  - setvariable{var=caster.type;value=5} @self ~onSpawn
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - setvariable{var=caster.accuracy;value=0} @self ~onSpawn
+  - setvariable{var=caster.time;value=1} @self ~onSpawn
+  - setvariable{var=caster.add;value=1} @self ~onSpawn
+  - skill{s=golem-gem-tick} @self ~onTimer:2
+  - skill{s=golem-gem-interact} @self ~onInteract
+  - skill{s=golem-gem-break} @self ~onTimer:20
+  - skill{s=golem-gem-wave} @self ~onTimer:20
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK WHITE_GLAZED_TERRACOTTA
+
+
+
+golem-grunt:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cGolem Grunt'
+  Health: 935
+  Damage: 77
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-grunt-remove} @self ~onSpawn
+  - randomskill{s=g3,g4} @trigger ~onDeath .15
+  - skill{s=golem-grunt} @self ~onTimer:40 .25
+  - command{c="ri drop crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.15
+  - command{c="runicgive exp <trigger.name> 187 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin C0stco_Wholesale setCustomName "&e[&660&e] &cGolem Grunt" setDynamicName true
+
+
+golem-fire:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cFire Elemental Golem'
+  Health: 7500
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - randomskill{s=g3,g4} @trigger ~onDeath .5
+  - skill{s=golem-gem-fire-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-fire-visual} @self ~onTimer:40
+  #- sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=golem-fire-aoe} @self ~onTimer:40
+  - command{c="ri drop fire-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+golem-water:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cWater Elemental Golem'
+  Health: 7500
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - randomskill{s=g3,g4} @trigger ~onDeath .5
+  - skill{s=golem-gem-water-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-water-visual} @self ~onTimer:40
+  #- sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=golem-water-aoe} @self ~onTimer:40
+  - command{c="ri drop water-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+golem-earth:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cEarth Elemental Golem'
+  Health: 7500
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - randomskill{s=g3,g4} @trigger ~onDeath .5
+  - skill{s=golem-gem-earth-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-earth-visual} @self ~onTimer:40
+  #- sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=golem-earth-aoe} @self ~onTimer:40
+  - command{c="ri drop earth-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+golem-void:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cVoid Elemental Golem'
+  Health: 7500
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - randomskill{s=g3,g4} @trigger ~onDeath .5
+  - skill{s=golem-gem-void-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-void-visual} @self ~onTimer:40
+  #- sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=golem-void-aoe} @self ~onTimer:40
+  - command{c="ri drop void-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+golem-light:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cLight Elemental Golem'
+  Health: 7500
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - randomskill{s=g3,g4} @trigger ~onDeath .5
+  - skill{s=golem-gem-light-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-light-visual} @self ~onTimer:40
+  #- sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=golem-light-aoe} @self ~onTimer:40
+  - command{c="ri drop light-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+
+
+golem-elemental-fire:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cFire Elemental'
+  Health: 935
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - skill{s=golem-elemental-fire-proj} @target ~onTimer:20
+  - skill{s=golem-gem-fire-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-elemental-fire-visual} @self ~onTimer:20
+  - command{c="ri drop fire-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.1
+  - command{c="runicgive exp <trigger.name> 467 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin RumormiLL setCustomName "&e[&660&e] &cFire Elemental" setDynamicName true
+
+golem-elemental-water:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cWater Elemental'
+  Health: 935
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - randomskill{s=g3,g4} @trigger ~onDeath .1
+  - skill{s=golem-elemental-water-proj} @target ~onTimer:20
+  - skill{s=golem-gem-water-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-elemental-water-visual} @self ~onTimer:20
+  - command{c="ri drop water-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.1
+  - command{c="runicgive exp <trigger.name> 467 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin ImEleah setCustomName "&e[&660&e] &bWater Elemental" setDynamicName true
+
+golem-elemental-earth:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cEarth Elemental'
+  Health: 935
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - randomskill{s=g3,g4} @trigger ~onDeath .1
+  - skill{s=golem-elemental-earth-proj} @target ~onTimer:20
+  - skill{s=golem-gem-earth-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-elemental-earth-visual} @self ~onTimer:20
+  - command{c="ri drop earth-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.1
+  - command{c="runicgive exp <trigger.name> 467 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Cordelita setCustomName "&e[&660&e] &aEarth Elemental" setDynamicName true
+
+golem-elemental-void:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cVoid Elemental'
+  Health: 935
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - randomskill{s=g3,g4} @trigger ~onDeath .1
+  - skill{s=golem-elemental-void-proj} @target ~onTimer:20
+  - skill{s=golem-gem-void-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-elemental-void-visual} @self ~onTimer:20
+  - command{c="ri drop void-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.1
+  - command{c="runicgive exp <trigger.name> 467 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin AmethystKitten setCustomName "&e[&660&e] &dVoid Elemental" setDynamicName true
+
+golem-elemental-light:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cLight Elemental'
+  Health: 935
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=golem-despawn} @self ~onSignal:despawn
+  - randomskill{s=g3,g4} @trigger ~onDeath .1
+  - skill{s=golem-elemental-light-proj} @target ~onTimer:20
+  - skill{s=golem-gem-light-leash-teleport} @self ~onSignal:leash
+  - skill{s=golem-elemental-light-visual} @self ~onTimer:20
+  - command{c="ri drop light-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.1
+  - command{c="runicgive exp <trigger.name> 467 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin sharkiekai setCustomName "&e[&660&e] &eLight Elemental" setDynamicName true
+
+
+
+
+golem-elemental-wisp-fire:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cFire Elemental Wisp'
+  Health: 10000
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=fire} @MIR{t=golem-center;r=5} ~onTimer:10
+  - signal{s=remove} @MIR{t=golem-elemental-wisp-fire;r=256} ~onSpawn
+  - message{m="&cAnother Fire Elemental Wisp has appeared."} @NearestPlayer{r=32} ~onSignal:remove
+  - remove @MIR{t=golem-elemental-wisp-fire;r=256} ~onSpawn
+  - skill{s=golem-elemental-fire-visual} @self ~onTimer:40
+  - setvariable{var=caster.follow;value=0} @self ~onSpawn
+  - skill{s=golem-elemental-wisp-fire} @self ~onInteract
+  - skill{s=golem-elemental-wisp-follow} @self ~onTimer:5
+  - skill{s=golem-elemental-wisp-unfollow} @self ~onTimer:40
+  - heal{a=10000} @self ~onDamaged
+  - setname{name='&e[&6✸&e] &cFire Elemental Wisp';delay=1} @self ~onDamaged  
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: VEX
+
+golem-elemental-wisp-water:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &bWater Elemental Wisp'
+  Health: 10000
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=water} @MIR{t=golem-center;r=5} ~onTimer:10
+  - signal{s=remove} @MIR{t=golem-elemental-wisp-water;r=256} ~onSpawn
+  - message{m="&bAnother Water Elemental Wisp has appeared."} @NearestPlayer{r=32} ~onSignal:remove
+  - remove @MIR{t=golem-elemental-wisp-water;r=256} ~onSpawn
+  - skill{s=golem-elemental-water-visual} @self ~onTimer:40
+  - setvariable{var=caster.follow;value=0} @self ~onSpawn
+  - skill{s=golem-elemental-wisp-water} @self ~onInteract
+  - skill{s=golem-elemental-wisp-follow} @self ~onTimer:5
+  - skill{s=golem-elemental-wisp-unfollow} @self ~onTimer:40
+  - heal{a=10000} @self ~onDamaged
+  - setname{name='&e[&6✸&e] &bWater Elemental Wisp';delay=1} @self ~onDamaged  
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: VEX
+
+golem-elemental-wisp-earth:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &aEarth Elemental Wisp'
+  Health: 10000
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=earth} @MIR{t=golem-center;r=5} ~onTimer:10
+  - signal{s=remove} @MIR{t=golem-elemental-wisp-earth;r=256} ~onSpawn
+  - message{m="&aAnother Earth Elemental Wisp has appeared."} @NearestPlayer{r=32} ~onSignal:remove
+  - remove @MIR{t=golem-elemental-wisp-earth;r=256} ~onSpawn
+  - skill{s=golem-elemental-earth-visual} @self ~onTimer:40
+  - setvariable{var=caster.follow;value=0} @self ~onSpawn
+  - skill{s=golem-elemental-wisp-earth} @self ~onInteract
+  - skill{s=golem-elemental-wisp-follow} @self ~onTimer:5
+  - skill{s=golem-elemental-wisp-unfollow} @self ~onTimer:40
+  - heal{a=10000} @self ~onDamaged
+  - setname{name='&e[&6✸&e] &aEarth Elemental Wisp';delay=1} @self ~onDamaged  
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: VEX
+
+golem-elemental-wisp-void:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &dVoid Elemental Wisp'
+  Health: 10000
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=void} @MIR{t=golem-center;r=5} ~onTimer:10
+  - signal{s=remove} @MIR{t=golem-elemental-wisp-void;r=256} ~onSpawn
+  - message{m="&dAnother Void Elemental Wisp has appeared."} @NearestPlayer{r=32} ~onSignal:remove
+  - remove @MIR{t=golem-elemental-wisp-void;r=256} ~onSpawn
+  - skill{s=golem-elemental-void-visual} @self ~onTimer:40
+  - setvariable{var=caster.follow;value=0} @self ~onSpawn
+  - skill{s=golem-elemental-wisp-void} @self ~onInteract
+  - skill{s=golem-elemental-wisp-follow} @self ~onTimer:5
+  - skill{s=golem-elemental-wisp-unfollow} @self ~onTimer:40
+  - heal{a=10000} @self ~onDamaged
+  - setname{name='&e[&6✸&e] &dVoid Elemental Wisp';delay=1} @self ~onDamaged  
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: VEX
+
+golem-elemental-wisp-light:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &eLight Elemental Wisp'
+  Health: 10000
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=light} @MIR{t=golem-center;r=5} ~onTimer:10
+  - signal{s=remove} @MIR{t=golem-elemental-wisp-light;r=256} ~onSpawn
+  - message{m="&eAnother Light Elemental Wisp has appeared."} @NearestPlayer{r=32} ~onSignal:remove
+  - remove @MIR{t=golem-elemental-wisp-light;r=256} ~onSpawn
+  - skill{s=golem-elemental-light-visual} @self ~onTimer:40
+  - setvariable{var=caster.follow;value=0} @self ~onSpawn
+  - skill{s=golem-elemental-wisp-light} @self ~onInteract
+  - skill{s=golem-elemental-wisp-follow} @self ~onTimer:5
+  - skill{s=golem-elemental-wisp-unfollow} @self ~onTimer:40
+  - heal{a=10000} @self ~onDamaged
+  - setname{name='&e[&6✸&e] &eLight Elemental Wisp';delay=1} @self ~onDamaged  
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: VEX

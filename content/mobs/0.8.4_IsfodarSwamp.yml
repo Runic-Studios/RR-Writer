@@ -1,0 +1,485 @@
+swamp-elf-elite:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cElven Spirit'
+  Health: 4000
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lElite&e&l] &c&lElven Spirit'
+    Health: 4000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=swamp-elf-elite} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 8000 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - command{c="ri drop-range 33 37 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 33 37 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 33 37 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 33 37 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - skill{s=swamp-elf-elite-damaged} @self ~onDamaged .25
+  - skill{s=swamp-elf-elite-passive} @self ~onTimer:40 
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin sosoyyxy setCustomName "&e[&630&e] &cElf" setDynamicName true
+swamp-elf-elite-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=swamp-elf-elite-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+swamp-elf-brown-melee:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cBrown Elf'
+  Health: 485
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - WOODEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 284 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-30} @trigger ~onDeath
+  - skill{s=swamp-elf-brown-melee} @target ~onTimer:20 .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin MiniChoco__ setCustomName "&e[&630&e] &cElf" setDynamicName true
+swamp-elf-brown-melee-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=swamp-elf-brown-melee-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+swamp-elf-brown-range:
+  Type: SKELETON
+  Display: '&e[&631&e] &cBrown Elf'
+  Health: 500
+  Damage: 15
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 296 <mob.l.x> <mob.l.y> <mob.l.z> 31"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-31} @trigger ~onDeath
+  - skill{s=swamp-elf-brown-range} @self ~onTimer:40
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 fleeplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin ChloeLaMalice setCustomName "&e[&630&e] &cElf" setDynamicName true
+
+
+swamp-elf-white-melee:
+  Type: ZOMBIE
+  Display: '&e[&634&e] &cWhite Elf'
+  Health: 545
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - WOODEN_SWORD HAND
+  - WOODEN_SWORD OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 330 <mob.l.x> <mob.l.y> <mob.l.z> 34"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-34} @trigger ~onDeath
+  - skill{s=swamp-elf-white-melee} @target ~onTimer:40 .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Kitletka setCustomName "&e[&630&e] &cElf" setDynamicName true
+
+swamp-elf-white-hybrid:
+  Type: ZOMBIE
+  Display: '&e[&632&e] &cWhite Elf'
+  Health: 515
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 307 <mob.l.x> <mob.l.y> <mob.l.z> 32"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-32} @trigger ~onDeath
+  - skill{s=swamp-elf-white-hybrid} @self ~onTimer:40 .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CobaltJarl setCustomName "&e[&630&e] &cElf" setDynamicName true
+swamp-elf-white-hybrid-wolf:
+  Type: ZOMBIE
+  Display: '&e[&634&e] &cWhite Wolf'
+  Health: 85
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=swamp-elf-white-hybrid-wolf} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WOLF
+
+swamp-elf-white-range:
+  Type: ZOMBIE
+  Display: '&e[&633&e] &cWhite Elf'
+  Health: 530
+  Damage: 32
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.15
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 319 <mob.l.x> <mob.l.y> <mob.l.z> 33"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-33} @trigger ~onDeath
+  - skill{s=swamp-elf-white-range} @self ~onTimer:40 .25
+  - skill{s=swamp-elf-white-range-hurt} @self ~onDamaged .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin angee078 setCustomName "&e[&630&e] &cElf" setDynamicName true
+swamp-elf-white-range-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=swamp-elf-white-range-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+swamp-elf-colorful-yellow:
+  Type: ZOMBIE
+  Display: '&e[&636&e] &cYellow Elemental Elf'
+  Health: 575
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 354 <mob.l.x> <mob.l.y> <mob.l.z> 36"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=swamp-elf-colorful-yellow} @self ~onTimer:40 .25
+  - skill{s=drop-level-36} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin UnderHell_ setCustomName "&e[&630&e] &cElf" setDynamicName true
+
+swamp-elf-colorful-blue:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &cBlue Elemental Elf'
+  Health: 560
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 342 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-35} @trigger ~onDeath
+  - skill{s=swamp-elf-colorful-blue} @self ~onTimer:40
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Blxsomizz setCustomName "&e[&630&e] &cElf" setDynamicName true
+
+
+swamp-elf-colorful-pink:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &cPink Elemental Elf'
+  Health: 545
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 330 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-35} @trigger ~onDeath
+  - skill{s=swamp-elf-colorful-pink} @target ~onTimer:40
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Pyrrhia22 setCustomName "&e[&630&e] &cElf" setDynamicName true
+
+
+swamp-elf-neutral-light:
+  Type: ZOMBIE
+  Display: '&e[&637&e] &cLight Elf'
+  Health: 1180
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 782 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-37} @trigger ~onDeath
+  - potion{t=SPEED;d=400;l=1;hasParticles=false} @MIR{t=swamp-elf-neutral-dark;r=12} ~onDeath
+  - skill{s=swamp-elf-neutral-light} @self ~onTimer:20 .25
+  - skill{s=swamp-elf-neutral-light-cast} @self ~onSignal:cast
+  - signal{s=cast} @MIR{t=swamp-elf-neutral-dark;r=3} ~onTimer:20
+  - signal{s=threat} @MIR{t=swamp-elf-neutral-dark;r=8} ~onEnterCombat
+  - threat{a=1} @NearestPlayer{r=25} ~onSignal:threat
+  - skill{s=swamp-elf-neutral-light-special} @target ~onTimer:40 .4
+  - effect:particlesphere{p=heart;amount=1;radius=1;yOffset=0.5} @MIR{t=swamp-elf-neutral-dark;r=3} ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin HannahOphelia setCustomName "&e[&630&e] &cElf" setDynamicName true
+swamp-elf-neutral-light-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=swamp-elf-neutral-light-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+swamp-elf-neutral-dark:
+  Type: ZOMBIE
+  Display: '&e[&637&e] &cDark Elf'
+  Health: 1180
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 782 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - potion{t=SPEED;d=400;l=1;hasParticles=false} @MIR{t=swamp-elf-neutral-light;r=12} ~onDeath
+  - skill{s=drop-level-37} @trigger ~onDeath
+  - skill{s=swamp-elf-neutral-dark} @self ~onTimer:20 .25
+  - skill{s=swamp-elf-neutral-dark-cast} @self ~onSignal:cast
+  - signal{s=cast} @MIR{t=swamp-elf-neutral-light;r=3} ~onTimer:20
+  - signal{s=threat} @MIR{t=swamp-elf-neutral-light;r=8} ~onEnterCombat
+  - threat{a=1} @NearestPlayer{r=25} ~onSignal:threat
+  - skill{s=swamp-elf-neutral-dark-special} @target ~onTimer:40 .4
+  - effect:particlesphere{p=heart;amount=1;radius=1;yOffset=0.5} @MIR{t=swamp-elf-neutral-light;r=3} ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin khitoe setCustomName "&e[&630&e] &cElf" setDynamicName true
+swamp-elf-neutral-dark-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=swamp-elf-neutral-dark-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+

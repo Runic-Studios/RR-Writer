@@ -1,0 +1,440 @@
+PyromancerCutscene1:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=UnknownFireFigure1;r=32} ~onSpawn
+  - summon{t=UnknownFireFigure1} @Location{c=-96.5,39,-663.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+UnknownFireFigure1:
+  Type: ZOMBIE
+  Display: '&e???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&e???';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - sound{s=entity.ghast.hurt} @self ~onSpawn
+  - potion{t=BLINDNESS;d=300;l=1} @PIR{r=12} ~onSpawn
+  - remove @MIR{t=Crawler;r=12} ~onTimer:20
+  - remove{delay=300} @self ~onSpawn
+  Disguise: player Steve setSkin ChavezFam505 setCustomName "&e???" setDynamicName true
+
+
+Crawler-spawn:
+  Type: CAVE_SPIDER
+  Display: '&e[&626&e] &cCrawler'
+  Health: 425
+  Modules:
+    ThreatTable: true
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 15
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+  Skills:
+  - command{c="runicgive exp <trigger.name> 241 <mob.l.x> <mob.l.y> <mob.l.z> 26"} @trigger ~onDeath 1.0
+  - randomskill{s=t1,t2} @trigger ~onDeath .5
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-26} @trigger ~onDeath
+  - setvariable{var=caster.lunge;value=0} @self ~onSpawn
+  - skill{s=Crawler} @self ~onTimer:20
+  - skill{s=CrawlerConsume} @self ~onTimer:20 .4
+  - sound{s=entity.spider.hurt} @self ~onSpawn
+  - remove{delay=150} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SPIDER
+
+Crawler:
+  Type: CAVE_SPIDER
+  Display: '&e[&626&e] &cCrawler'
+  Health: 425
+  Modules:
+    ThreatTable: true
+  Damage: 27
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 15
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+  Skills:
+  - command{c="runicgive exp <trigger.name> 241 <mob.l.x> <mob.l.y> <mob.l.z> 26"} @trigger ~onDeath 1.0
+  - randomskill{s=t1,t2} @trigger ~onDeath 1
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-26} @trigger ~onDeath
+  - setvariable{var=caster.lunge;value=0} @self ~onSpawn
+  - skill{s=Crawler} @self ~onTimer:10
+  - skill{s=CrawlerConsume} @self ~onTimer:20 .4
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SPIDER
+
+CrawlerGoo:
+  Type: armor_stand
+  Skills:
+  - skill{s=CrawlerGoo} @self ~onTimer:20
+  - setAI{ai=false} @self ~onSpawn 
+  - remove{delay=200} @self ~onSpawn 
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBWEB
+    
+AzanianSoldier:
+  Type: ZOMBIE
+  Display: '&e[&625&e] &cAzanian Soldier'
+  Health: 410
+  Damage: 28
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+#  - message{m="<caster.var.bannerbuff>"} @PIR{r=32} ~onTimer:20
+  - command{c="runicgive exp <trigger.name> 230 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-25} @trigger ~onDeath
+  - skill{s=AzanaSoldierVariableSpawn} @Self ~onSpawn
+  - skill{s=AzanaSoldier} @self ~onTimer:20
+  - skill{s=SoldierBannerSummon} @Self ~onTimer:240 0.2
+  - skill{s=SoldierBannerSummon2} @self ~onSignal:bannerspawn
+#  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Starider14 setDynamicName true
+    
+AzanianSoldierQuest:
+  Type: ZOMBIE
+  Display: '&e[&625&e] &cAzanian Soldier'
+  Health: 275
+  Damage: 28
+  DamageModifiers:
+  - FALL 0
+  Faction: Undead
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+#  - message{m="<caster.var.bannerbuff>"} @PIR{r=32} ~onTimer:20
+  - command{c="runicgive exp <trigger.name> 20 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - remove @MobsInRadius{r=32;t=AzanianSoldierQuest} ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Starider14 setDynamicName true
+        
+AzanianSoldierBannerMarker:
+  Type: ZOMBIE
+  Display: '&e[&626&e] &bBlue Banner'
+  Health: 50
+  Skills:
+  - setAI{ai=false} @self ~onSpawn
+  - skill{s=SoldierBuff} @Self ~onTimer:20
+  Options:
+    Invisible: false
+    HasGravity: false
+    Marker: false
+    PreventRandomEquipment: true
+    Silent: true
+    NoDamageTicks: 0
+    MovementSpeed: 0.01
+  Disguise: FALLING_BLOCK LAPIS_BLOCK
+
+HauntingGhoul:
+  Type: ZOMBIE
+  Display: '&e[&627&e] &cHaunting Ghoul'
+  Health: 440
+  Damage: 28
+  DamageModifiers:
+  - FALL 0
+  Faction: Undead
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 252 <mob.l.x> <mob.l.y> <mob.l.z> 27"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-27} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin FLOPPERED setCustomName "&e[&627&e] &cHaunting Ghoul" setDynamicName true
+RisenCorpse:
+  Type: SKELETON
+  Display: '&e[&628&e] &cRisen Corpse'
+  Health: 425
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Faction: Undead
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - SkeletonBow HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.26
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 262 <mob.l.x> <mob.l.y> <mob.l.z> 28"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-28} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin SuperDAIU setCustomName "&e[&628&e] &cRisen Corpse" setDynamicName true
+    
+HauntingNecromancer:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cHaunting Necromancer'
+  Health: 2700
+  Damage: 28
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lHaunting Necromancer'
+    Health: 2700
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - remove @MIR{t=RisenCorpseSpecial,HauntingGhoulWeak;r=32} ~onSpawn
+  - remove @MIR{t=RisenCorpseSpecial,HauntingGhoulWeak;r=32} ~onDeath
+  - skill{s=HauntingNecromancer-drop} @trigger ~onDeath
+  - skill{s=HauntingNecromancer-start} @self ~onEnterCombat
+  - skill{s=RaiseCorpses} @self ~onTimer:100
+  - skill{s=RaiseHaunted} @self ~onTimer:20 <50%
+  - command{c="questtrigger player <target.name> MurkwoodQuest1"} @PIR{r=12} ~onDamaged # idk
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Morah_Woodbane setCustomName "&e[&6☠&e] &cHaunting Necromancer" setDynamicName true
+    
+HauntingNecromancer-ghost:
+  Type: BEE
+  Display: '&e[&6✸&e] &7Ghost'
+  Health: 200
+  Faction: Boss
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 64
+    NoDamageTicks: 0
+    Despawn: true
+  Skills:
+  - skill{s=HauntingNecromancer-ghost} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: VEX
+
+RisenCorpseSpecial:
+  Type: ZOMBIE
+  Display: '&e[&625&e] &cRisen Corpse'
+  Health: 200
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.26
+    PreventOtherDrops: true
+    FollowRange: 25
+    MaxCombatDistance: 4
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 44 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - randomskill{s=g1} @trigger ~onDeath .3
+  - summon{t=RisenCorpseSpecial-marker} @self ~onDeath
+  - sound{s=entity.skeleton.death} @self ~onDeath
+  - sound{s=entity.skeleton.hurt} @self ~onDamaged
+  - remove{delay=400} @self ~onSpawn
+#  - skill{s=DamageShield} @self ~onTimer:10
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin SuperDAIU setDynamicName true
+RisenCorpseSpecial-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=RisenCorpseSpecial-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  
+HauntingGhoulWeak:
+  Type: ZOMBIE
+  Display: '&e[&625&e] &cWeak Haunting Ghoul'
+  Health: 125
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 28 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - randomskill{s=g1} @trigger ~onDeath .3
+  - remove{delay=400} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin FLOPPERED setCustomName "&e[&625&e] &cWeak Haunting Ghoul" setDynamicName true

@@ -1,0 +1,946 @@
+isfodar-grave-elder-spawn-add:
+  Type: BEE
+  Display: '&e[&632&e] &cWisp'
+  Health: 10
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=isfodar-grave-elder-spawn-add} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: VEX
+
+
+isfodar-elemental:
+  Type: BLAZE
+#  Display: '&e[&654&e] &cGreater Phoenix'
+  Display: '&e[&654&e] &cGreater Fire Elemental'
+  Health: 2500
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+#    Title: '&cGreater Phoenix'
+    Title: '&cGreater Fire Elemental'
+    Health: 500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=proj} @MIR{t=isfodar-allaster-proj-marker;r=32} ~onTimer:20
+  - remove @MIR{t=isfodar-allaster-proj-marker;r=32} ~onSpawn
+  - skill{s=isfodar-elemental} @self ~onTimer:40
+  - remove @MIR{t=isfodar-allaster-proj-marker;r=32} ~onDeath
+  - heal{a=400;i=true} @target ~onTimer:200
+  - sound{s=block.enchantment_table.use} @target ~onTimer:200
+  - effect:particlesphere{p=heart;amount=2;radius=1;yOffset=.5} @target ~onTimer:40
+  - command{c="questtrigger player <target.name> isfodar-elemental-death"} @PIR{r=64} ~onDeath
+  - skill{s=isfodar-elemental-leap} @self ~onTimer:40
+  #- model{mid=phoenix_enemy} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+
+isfodar-allaster-proj-marker:
+  Type: armor_stand
+  Skills:
+  - summon{t=isfodar-allaster-proj} @Location{c=773.5,22,-46.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+
+isfodar-allaster-proj:
+  Type: armor_stand
+  Skills:
+  - skill{s=isfodar-allaster-proj} @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+
+isfodar-grave-elder-spawn:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cSoulless Feldruid Elder'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e[&6✸&e] &c&lElder Feldruid'
+    Health: 2500
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 5
+  Skills:
+  - command{c="runicgive exp <trigger.name> 2000 <mob.l.x> <mob.l.y> <mob.l.z> 32"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - skill{s=drop-level-32} @trigger ~onDeath
+  - skill{s=isfodar-grave-elder-spawn-despawn} @self ~onSpawn
+  - skill{s=isfodar-grave-elder-spawn-skill1} @self ~onTimer:40 .25
+  - skill{s=isfodar-grave-elder-spawn-skill2} @self ~onTimer:80
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin DeltaZL1 setCustomName "&e[&6✸&e] &cElder Feldruid" setDynamicName true
+isfodar-grave-elder-spawn-skill1-marker1:
+  Type: armor_stand
+  Skills:
+  - skill{s=isfodar-grave-elder-spawn-skill1-marker1} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+isfodar-grave-elder-spawn-skill1-marker2:
+  Type: armor_stand
+  Skills:
+  - skill{s=isfodar-grave-elder-spawn-skill1-marker2} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+isfodar-grave-elder-spawn-skill1-marker3:
+  Type: armor_stand
+  Skills:
+  - skill{s=isfodar-grave-elder-spawn-skill1-marker3} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+isfodar-grave-elder-spawn-skill1-marker4:
+  Type: armor_stand
+  Skills:
+  - skill{s=isfodar-grave-elder-spawn-skill1-marker4} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+
+isfodar-grave-elder:
+  Type: BABY_ZOMBIE
+  Display: '&7Right Click to Purify'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&7Right Click to Purify';delay=1} @self ~onDamaged
+  - heal{a=5000;i=true} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - setvariable{var=caster.purify;value=0} @self ~onSpawn
+  - randomskill{s=isfodar-grave-elder,isfodar-grave-false} @trigger ~onInteract
+  - skill{s=isfodar-grave-elder-visual} @self ~onTimer:20
+  Disguise: FALLING_BLOCK POLISHED_DEEPSLATE_WALL
+    
+
+isfodar-grave1:
+  Type: BABY_ZOMBIE
+  Display: '&7Right Click to Purify'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&7Right Click to Purify';delay=1} @self ~onDamaged
+  - heal{a=5000;i=true} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - setvariable{var=caster.purify;value=0} @self ~onSpawn
+  - randomskill{s=isfodar-grave1,isfodar-grave-false} @trigger ~onInteract
+  - skill{s=isfodar-grave-visual} @self ~onTimer:20
+  Disguise: FALLING_BLOCK DIORITE_WALL
+
+isfodar-grave2:
+  Type: BABY_ZOMBIE
+  Display: '&7Right Click to Purify'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&7Right Click to Purify';delay=1} @self ~onDamaged
+  - heal{a=5000;i=true} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - setvariable{var=caster.purify;value=0} @self ~onSpawn
+  - randomskill{s=isfodar-grave2,isfodar-grave-false} @trigger ~onInteract
+  - skill{s=isfodar-grave-visual} @self ~onTimer:20
+  Disguise: FALLING_BLOCK DIORITE_WALL
+
+isfodar-grave3:
+  Type: BABY_ZOMBIE
+  Display: '&7Right Click to Purify'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&7Right Click to Purify';delay=1} @self ~onDamaged
+  - heal{a=5000;i=true} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - setvariable{var=caster.purify;value=0} @self ~onSpawn
+  - randomskill{s=isfodar-grave3,isfodar-grave-false} @trigger ~onInteract
+  - skill{s=isfodar-grave-visual} @self ~onTimer:20
+  Disguise: FALLING_BLOCK DIORITE_WALL
+
+isfodar-grave4:
+  Type: BABY_ZOMBIE
+  Display: '&7Right Click to Purify'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&7Right Click to Purify';delay=1} @self ~onDamaged
+  - heal{a=5000;i=true} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - setvariable{var=caster.purify;value=0} @self ~onSpawn
+  - randomskill{s=isfodar-grave4,isfodar-grave-false} @trigger ~onInteract
+  - skill{s=isfodar-grave-visual} @self ~onTimer:20
+  Disguise: FALLING_BLOCK DIORITE_WALL
+    
+isfodar-grave-spawn:
+  Type: ZOMBIE
+  Display: '&e[&632&e] &cSoulless Feldruid'
+  Health: 515
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - command{c="runicgive exp <trigger.name> 308 <mob.l.x> <mob.l.y> <mob.l.z> 32"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-32} @trigger ~onDeath
+  - skill{s=isfodar-grave-spawn} @self ~onTimer:40 .25
+  - skill{s=isfodar-grave-spawn-remove} @self ~onSpawn
+  - skill{s=isfodar-grave-spawn-tick} @self ~onTimer:5
+  Disguise: player Steve setSkin dyzzoul setCustomName "&e[&632&e] &cSoulless Feldruid" setDynamicName true
+    
+isfodar-grave-spawn-marker:
+  Type: armor_stand
+  Skills:
+  - summon{t=isfodar-grave-spawn;a=3;r=4;os=true} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+isfodar-grave-soul:
+  Type: BEE
+  Display: '&aWisp'
+  Health: 100
+  Damage: 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=isfodar-grave-soul} @self ~onSpawn
+  Disguise: VEX
+
+isfodar-wisp:
+  Type: ZOMBIE
+  Display: '&e[&632&e] &aElven Wisp'
+  Health: 1
+  Damage: 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    FollowRange: 1
+    MaxCombatDistance: 1
+    NoDamageTicks: 0
+    NoAI: true
+    NoGravity: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - message{m="&aElven Wisp<&co> &e&eBack to the surface!"} @trigger ~onInteract
+  - command{c="tp <trigger.name> 723.5 71 -118.5"} @trigger ~onInteract
+  Disguise: VEX
+
+isfodar-bird:
+  Type: BEE
+  Display: '&e[&632&e] &aElven Fire Bird'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 10
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  Skills:
+  - sound{s=entity.parrot.hurt;volume=1} @self ~onDamaged
+  - sound{s=entity.parrot.fly;volume=1} @self ~onTimer:20
+  - sound{s=entity.parrot.ambient;p=1.7;volume=1} @self ~onTimer:80
+  Disguise: PARROT
+
+isfodar-slime:
+  Type: IRON_GOLEM
+  Display: '&e[&632&e] &cLush Slime'
+  Health: 515
+  Damage: 43
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MaxCombatDistance: 30
+    FollowRange: 10
+    NoDamageTicks: 0
+    MovementSpeed: .32
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=isfodar-slime} @self ~onTimer:20
+  - command{c="runicgive exp <trigger.name> 307 <mob.l.x> <mob.l.y> <mob.l.z> 32"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-32} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SLIME setSize 4
+
+BeastMaster:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lBeast Master'
+  Health: 4000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lBeast Master'
+    Health: 4000
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 5
+  Skills:
+  - skill{s=BeastMaster-drop} @trigger ~onDeath
+  - skill{s=isfodar-summoner-summon} @self ~onTimer:40 .4
+  - skill{s=isfodar-summoner-mount} @self ~onTimer:40 .4
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: EVOKER
+
+isfodar-summoner-mount:
+  Type: ZOMBIE
+  Display: '&e[&634&e] &cLesser Beast'
+  Health: 216
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 25
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - command{c="runicgive exp <trigger.name> 91 <mob.l.x> <mob.l.y> <mob.l.z> 34"} @trigger ~onDeath 1.0
+  - skill{s=isfodar-summoner-mount-start} @self ~onSpawn
+  Disguise: RAVAGER
+
+isfodar-summoner-spawn:
+  Type: ZOMBIE
+  Display: '&e[&634&e] &cLesser Beast'
+  Health: 432
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 25
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - command{c="runicgive exp <trigger.name> 182 <mob.l.x> <mob.l.y> <mob.l.z> 34"} @trigger ~onDeath 1.0
+  - skill{s=isfodar-summoner-spawn-start} @self ~onSpawn
+  - skill{s=isfodar-summoner-spawn-stomp} @self ~onTimer:20 .25
+  - skill{s=isfodar-summoner-spawn-ground} @self ~onTimer:5
+  Disguise: RAVAGER
+    
+isfodar-beast:
+  Type: ZOMBIE
+  Display: '&e[&634&e] &cGreater Beast'
+  Health: 2180
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 5
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - command{c="runicgive exp <trigger.name> 1417 <mob.l.x> <mob.l.y> <mob.l.z> 34"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - skill{s=drop-level-34} @trigger ~onDeath 1
+  - skill{s=drop-level-34} @trigger ~onDeath 1
+  - skill{s=drop-level-34} @trigger ~onDeath 1
+  - skill{s=drop-level-34} @trigger ~onDeath 1
+  - skill{s=isfodar-beast-stomp} @self ~onTimer:40 .25
+  - skill{s=isfodar-beast-charge} @self ~onTimer:40 .25
+  Disguise: RAVAGER
+isfodar-beast-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=isfodar-beast-marker} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+
+CowMother:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lCow Mother'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lCow Mother'
+    Health: 2500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 5
+  Skills:
+  - skill{s=CowMother-drop} @trigger ~onDeath
+  - skill{s=CowMother-summon} @self ~onTimer:80 .5
+  - skill{s=CowMother-throw} @self ~onTimer:5
+  - skill{s=CowMother-leap} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: COW
+
+CowMother-spawn:
+  Type: ZOMBIE
+  Display: '&e[&632&e] &eMoo Cow Minion'
+  Health: 20
+  Damage: 40
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.55
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - skill{s=CowMother-spawn} @self ~onSpawn
+  - skill{s=Cowmother-onSpawn} @self ~onSpawn
+  - skill{s=CowMother-onDeath} @self ~onDeath
+  Disguise: COW
+
+MooCow:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMoo Cow'
+  Health: 485
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - command{c="runicgive exp <trigger.name> 284 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-30} @trigger ~onDeath 1
+  - skill{s=MooCow} @self ~onTimer:20
+  - randomskill{s=ah1,ah2} @trigger ~onDeath 1
+  - setvariable{var=caster.charge;value=0} @self ~onSpawn
+  - setvariable{var=caster.stomp;value=0} @self ~onSpawn
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  Disguise: COW
+
+IsfodarCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=IsfodarCitizen;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=IsfodarCitizen2;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=IsfodarCitizen;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=IsfodarCitizen2;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn2
+IsfodarCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aIsfodar Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aIsfodar Citizen<&co> &fOur kingdom has endured a hundred wars of men.} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=IsfodarCSA} ~onDeath
+  Disguise: player Steve setSkin Cosmik setCustomName "&e[&61&e] &aIsfodar Citizen" setDynamicName true
+IsfodarCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aIsfodar Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aIsfodar Citizen<&co> &fOur kingdom has endured a hundred wars of men.} @NearestPlayer ~onDamaged
+  - signal{s=respawn2} @MobsInRadius{r=320;t=IsfodarCSA} ~onDeath
+  Disguise: player Steve setSkin porox789 setCustomName "&e[&61&e] &aIsfodar Citizen" setDynamicName true
+Fawn:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aFawn'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aFawn<&co> &fOur kingdom has endured a hundred wars of men.} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin horrors setCustomName "&e[&61&e] &aFawn" setDynamicName true
+IsfodarGuard1:
+  Type: ZOMBIE
+  Display: '&e[&650&e] &aIsfodar Guard'
+  Health: 5000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+#  - 1 gotolocation 625,106,-40
+  - 2 lookatplayers
+  - 3 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aIsfodar Guard<&co> &fWelcome, human, to our hidden kingdom.} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin IrishPerson setDynamicName true
+IsfodarGuard2:
+  Type: ZOMBIE
+  Display: '&e[&650&e] &aIsfodar Guard'
+  Health: 5000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+#  - 1 gotolocation 625,106,-32
+  - 2 lookatplayers
+  - 3 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aIsfodar Guard<&co> &fWelcome, human, to our hidden kingdom.} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin IrishPerson setDynamicName true
+
+FireElementalQuest:
+  Type: BLAZE
+  Display: '&e[&654&e] &cFire Elemental'
+  Health: 785
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  Skills:
+  - remove @MIR{t=FireElementalQuest;r=10} ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+
+Druid:
+  Type: ZOMBIE
+  Display: '&e[&632&e] &cFeldruid'
+  Health: 515
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - WOODEN_HOE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - command{c="runicgive exp <trigger.name> 308 <mob.l.x> <mob.l.y> <mob.l.z> 32"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-32} @trigger ~onDeath
+  - skill{s=FeldruidSapling} @self ~onTimer:20 .25
+  - skill{s=FeldruidHeal} @self ~onSignal:heal
+  Disguise: player Steve setSkin MaSCky_ setCustomName "&e[&632&e] &cFeldruid" setDynamicName true
+FeldruidSapling:
+  Type: BABY_ZOMBIE
+  Display: '&ASapling'
+  Health: 10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=FeldruidSaplingonSpawn} @self ~onSpawn
+  - summon{t=FeldruidSaplingDead} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK OAK_SAPLING
+
+FeldruidSaplingDead:
+  Type: BABY_ZOMBIE
+  Display: '&7Sapling'
+  Health: 10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=FeldruidSaplingDeadonSpawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK DEAD_BUSH
+    

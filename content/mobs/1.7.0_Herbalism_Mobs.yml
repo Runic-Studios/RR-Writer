@@ -1,0 +1,287 @@
+#Zone 1
+ForestNymph:
+    Type: ZOMBIE
+    Display: '&e[&68&e] &cForest Nymph'
+    Health: 100
+    Modules:
+        ThreatTable: true
+    Damage: 5
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.28
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - summon{type=ForestNymphPoof;amount=1;radius=1;os=true} @target ~onTimer:120 .6
+    - summon{type=ForestSlime;amount=1;radius=5;os=true} @self ~onTimer:240 .6
+    - command{c="runicgive exp <trigger.name> 80 <mob.l.x> <mob.l.y> <mob.l.z> 10"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin Amni_ setCustomName "&e[&68&e] &cForest Nymph" setDynamicName true
+ForestNymphPoof:
+    Type: armor_stand
+    Display: '&0'
+    Health: 0
+    Damage: 0
+    Skills:
+    - skill{s=ForestNymphPoof} @self ~onSpawn
+    Options:
+        Invisible: true
+        HasGravity: false
+        Marker: true
+ForestGrump:
+    Type: ZOMBIE
+    Display: '&e[&68&e] &cForest Grump'
+    Health: 100
+    Modules:
+        ThreatTable: true
+    Damage: 5
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.32
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - skill{s=ForestGrumpPoof} @self ~onTimer:120 .6
+    - command{c="runicgive exp <trigger.name> 80 <mob.l.x> <mob.l.y> <mob.l.z> 10"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin faerietoast  setCustomName "&e[&68&e] &cForest Grump" setDynamicName true
+ForestGolemite:
+    Type: ZOMBIE
+    Display: '&e[&68&e] &cForest Golemite'
+    Health: 80
+    Damage: 15
+    Modules:
+        ThreatTable: true
+    Options:
+        MovementSpeed: 0.26
+        PreventOtherDrops: true
+        FollowRange: 20
+        NoDamageTicks: 0
+    Skills:
+    - command{c="runicgive exp <trigger.name> 60 <mob.l.x> <mob.l.y> <mob.l.z> 8"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin 00Ev_alt001 setCustomName "&e[&68&e] &cForest Golemite" setDynamicName true
+
+#Zone 2
+#Zone 3
+ForestBloater:
+    Type: ZOMBIE
+    Display: '&e[&626&e] &cForest Bloater'
+    Health: 240
+    Modules:
+        ThreatTable: true
+    Damage: 20
+    DamageModifiers:
+    - FALL 0
+    Options:
+        MovementSpeed: 0.28
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 140 <mob.l.x> <mob.l.y> <mob.l.z> 26"} @trigger ~onDeath 1.0
+    - skill{s=BloaterAOE} @Self ~onTimer:200 0.60
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin PVPERO setCustomName "&e[&626&e] &cForest Bloater" setDynamicName true
+
+ForestGrunt:
+    Type: ZOMBIE
+    Display: '&e[&626&e] &cForest Grunt'
+    Health: 240
+    Modules:
+        ThreatTable: true
+    Damage: 20
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.3
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 140 <mob.l.x> <mob.l.y> <mob.l.z> 26"} @trigger ~onDeath 1.0
+    - skill{s=ForestGruntCharge} @self ~onTimer:240 .6
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin Ernest6660 setCustomName "&e[&626&e] &cForest Grunt" setDynamicName true
+ForestBlossom:
+    Type: ZOMBIE
+    Display: '&e[&626&e] &cForest Blossom'
+    Health: 240
+    Modules:
+        ThreatTable: true
+    Damage: 20
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.32
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:   
+    - command{c="runicgive exp <trigger.name> 140 <mob.l.x> <mob.l.y> <mob.l.z> 26"} @trigger ~onDeath 1.0
+    - skill{s=ForestBlossomPoof} @self ~onTimer:240 .6
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin faerietoast  setCustomName "&e[&626&e] &cForest Blossom" setDynamicName true
+ForestBlossomBlue:
+    Type: ZOMBIE
+    Display: '&e[&626&e] &cForest Blossom'
+    Health: 100
+    Modules:
+        ThreatTable: true
+    Damage: 5
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.45
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 20 <mob.l.x> <mob.l.y> <mob.l.z> 26"} @trigger ~onDeath 1.0
+    - skill{s=ForestBlossomBlue} @self ~onSpawn
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin faerietoast  setCustomName "&e[&626&e] &cForest Blossom" setDynamicName true
+ForestBlossomRed:
+    Type: ZOMBIE
+    Display: '&e[&626&e] &cForest Blossom'
+    Health: 100
+    Modules:
+        ThreatTable: true
+    Damage: 5
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.45
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:   
+    - command{c="runicgive exp <trigger.name> 20 <mob.l.x> <mob.l.y> <mob.l.z> 26"} @trigger ~onDeath 1.0
+    - skill{s=ForestBlossomRed} @self ~onSpawn
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin faerietoast  setCustomName "&e[&626&e] &cForest Blossom" setDynamicName true
+ForestBlossomGreen:
+    Type: ZOMBIE
+    Display: '&e[&626&e] &cForest Blossom'
+    Health: 100
+    Modules:
+        ThreatTable: true
+    Damage: 5
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.45
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:  
+    - command{c="runicgive exp <trigger.name> 20 <mob.l.x> <mob.l.y> <mob.l.z> 26"} @trigger ~onDeath 1.0
+    - skill{s=ForestBlossomGreen} @self ~onSpawn
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin faerietoast  setCustomName "&e[&626&e] &cForest Blossom" setDynamicName true

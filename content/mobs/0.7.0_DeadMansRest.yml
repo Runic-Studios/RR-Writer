@@ -1,0 +1,393 @@
+RogueMimic:
+  Type: ZOMBIE
+  Display: '&a[Ro|35] &4timchuwu'
+  Health: 800
+  Damage: 6
+  Faction: Boss
+  Equipment:
+  - IRON_SWORD HAND
+  - LEATHER_HELMET HEAD
+  - LEATHER_CHESTPLATE CHEST
+  - LEATHER_LEGGINGS LEGS
+  - LEATHER_BOOTS FEET
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - skill{s=roguesequence} @self ~onSpawn
+  Disguise: player Steve setSkin timchuwu setCustomName "&a[Ro|35] &4timchuwu" setDynamicName true
+
+RestCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=RestCitizen;amount=8;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=RestCitizen;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+RestCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aVagabond'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aVagabond<&co> &fThis city was beautiful once...} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=RestCSA} ~onDeath
+  Disguise: player Steve setSkin RedParadoxin setCustomName "&e[&61&e] &aVagabond" setDynamicName true
+RestBat:
+  Type: BAT
+  Display: '&e[&61&e] &aBat'
+  Health: 5
+  Damage: 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+RestGuard:
+  Type: ZOMBIE
+  Display: '&e[&650&e] &aHired Mercenary'
+  Health: 5000
+  Damage: 0
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+#  - 1 gotolocation -210,36,-511
+  - 2 lookatplayers
+  - 3 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aCity Guard<&co> &fThis city cannot afford its own guards!} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin Mugetsu setDynamicName true
+
+AdmiralVex:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cAdmiral Vex'
+  Health: 2250
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lAdmiral Vex'
+    Health: 2250
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - DeathbringerNew HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 5
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=AdmiralVex-drop} @trigger ~onDeath
+#  - skill{s=startConsume} @PIR{r=30} ~onTimer:400
+  - skill{s=PirateLeap} @target ~onTimer:300
+  - remove @MIR{t=PirateGunner,PirateSurgeon,PirateLookout;r=64} ~onEnterCombat
+  - remove @MIR{t=PirateGunner,PirateSurgeon,PirateLookout;r=64} ~onDeath
+  - skill{s=SummonPirateGunner} @self ~onEnterCombat
+  - skill{s=SummonPirateSurgeon} @self ~onEnterCombat
+  - skill{s=SummonPirateLookout} @self ~onEnterCombat
+  - message{m="&eAdmiral Vex<&co> &6Protect the Ship!"} @PIR{r=15} ~onEnterCombat
+  - effect:sound{s=entity.zombie_villager.converted;v=2} @PIR{r=15} ~onEnterCombat
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin 3vilP4nd4 setDynamicName true
+
+PirateGunner:
+  Type: ZOMBIE
+  Display: '&e[&626&e] &cPirate Gunner'
+  Health: 225
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.05
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 5
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=ShootCannon} @target ~onTimer:100
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 26"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 attacker
+  Disguise: player Steve setSkin AnonymousPanda setCustomName "&e[&626&e] &cPirate Gunner" setDynamicName true
+
+PirateSurgeon:
+  Type: ZOMBIE
+  Display: '&e[&627&e] &cPirate Surgeon'
+  Health: 300
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.05
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 5
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=HealAdmiral} @MIR{t=AdmiralVex;r=50} ~onTimer:160
+  - command{c="runicgive exp <trigger.name> 120 <mob.l.x> <mob.l.y> <mob.l.z> 27"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin C7avin setCustomName "&e[&627&e] &cPirate Surgeon" setDynamicName true
+
+PirateLookout:
+  Type: SKELETON
+  Display: '&e[&628&e] &cPirate Lookout'
+  Health: 300
+  Modules:
+    ThreatTable: true
+  Damage: 35
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 40
+    NoDamageTicks: 5
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 120 <mob.l.x> <mob.l.y> <mob.l.z> 28"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 attacker
+  Disguise: player Steve setSkin Bandit_Lounge setCustomName "&e[&628&e] &cPirate Lookout" setDynamicName true
+
+LostBookKnowledge:
+  Type: BABY_ZOMBIE
+  Display: '&6Lost Book of Knowledge'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=LostBook} @self ~onTimer:40
+  - command{c="ri drop LostBookKnowledge <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM BOOK
+    
+LostBookWisdom:
+  Type: BABY_ZOMBIE
+  Display: '&6Lost Book of Wisdom'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=LostBook} @self ~onTimer:40
+  - command{c="ri drop LostBookWisdom <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM BOOK
+    
+LostBookFaith:
+  Type: BABY_ZOMBIE
+  Display: '&6Lost Book of Faith'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=LostBook} @self ~onTimer:40
+  - command{c="ri drop LostBookFaith <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM BOOK
+    
+LostBookPower:
+  Type: BABY_ZOMBIE
+  Display: '&6Lost Book of Power'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=LostBook} @self ~onTimer:40
+  - command{c="ri drop LostBookPower <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM BOOK
+    
+LostBookMagic:
+  Type: BABY_ZOMBIE
+  Display: '&6Lost Book of Magic'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=LostBook} @self ~onTimer:40
+  - command{c="ri drop LostBookMagic <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM BOOK
+    
+Nightmare:
+  Type: WITHER_SKELETON
+  Display: '&e[&6☠&e] &7Nightmare'
+  Health: 500
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&7&lNightmare'
+    Health: 500
+    Range: 20
+    Color: GREY
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.30
+    PreventOtherDrops: true
+    FollowRange: 5
+    NoDamageTicks: 0
+  Conditions:
+  - incombat{} true
+  Skills: 
+  - remove @MIR{t=Nightmare;r=256} ~onSpawn
+  - effect:sound{s=entity.ender_eye.death;volume=0.35;p=0.5} @PIR{r=35} ~onDamaged 
+  - randomskill{skills=EnragedPull,Rise} @self ~onTimer:120
+  - effect:sound{s=entity.wither.death;volume=0.35;p=0.5} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  
+Fear:
+  Type: WITHER_SKELETON
+  Display: '&7Fear'
+  Health: 1
+  Damage: 5
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: .7
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventRandomEquipment: true
+  Skills:
+  - potion{type=BLINDNESS;d=40;force=true;p=false} @PIR{r=5} ~onTimer:20
+  - potion{type=SLOW;d=30;force=true;p=false} @PIR{r=5} ~onTimer:20

@@ -1,0 +1,170 @@
+ColdsteelCommander:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cColdsteel Commander'
+  Health: 2000
+  Damage: 34
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lColdsteel Commander'
+    Health: 2000
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ColdsteelCommander-drop} @trigger ~onDeath
+  - skill{s=coldsteel-peak-boss-skill} @self ~onTimer:40 .25
+  - skill{s=coldsteel-peak-boss-passive} @self ~onTimer:5 <50%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin FrozedCode setCustomName "&e[&6☠&e] &cColdsteel Commander" setDynamicName true
+
+coldsteel-peak-rogue: #event
+  Type: ZOMBIE
+  Display: '&e[&619&e] &cColdsteel Bandit'
+  Health: 320
+  Damage: 28
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  - IRON_SWORD OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 170 <mob.l.x> <mob.l.y> <mob.l.z> 19"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-19} @trigger ~onDeath
+  - randomskill{skills=coldsteel-peak-rogue-r,coldsteel-peak-rogue-l} @self ~onTimer:20 .15
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin NotTheGoose setCustomName "&e[&619&e] &cColdsteel Bandit" setDynamicName true
+coldsteel-peak-rogue-sword:
+  Type: ZOMBIE
+  Display: ''
+  Health: 1000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  DamageModifiers:
+  - FALL 0
+  Equipment:  
+  - IRON_SWORD HAND
+  Drops:
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=coldsteel-peak-rogue-sword} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+coldsteel-peak-cleric: #event
+  Type: ZOMBIE
+  Display: '&e[&618&e] &cColdsteel Surgeon'
+  Health: 305
+  Damage: 27
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 161 <mob.l.x> <mob.l.y> <mob.l.z> 18"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-18} @trigger ~onDeath
+  - skill{s=coldsteel-peak-cleric} @self ~onTimer:20 .1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin splom setCustomName "&e[&618&e] &cColdsteel Surgeon" setDynamicName true
+
+coldsteel-peak-warrior: #event
+  Type: ZOMBIE
+  Display: '&e[&619&e] &cColdsteel Mercenary'
+  Health: 320
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 170 <mob.l.x> <mob.l.y> <mob.l.z> 19"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-19} @trigger ~onDeath
+  - skill{s=coldsteel-peak-warrior} @self ~onTimer:20 .2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin JackCanty setCustomName "&e[&619&e] &cColdsteel Mercenary" setDynamicName true

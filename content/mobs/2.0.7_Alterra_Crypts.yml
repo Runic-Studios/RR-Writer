@@ -1,0 +1,291 @@
+goldenglade-crypts-health: #635
+  Type: ZOMBIE
+  Display: '&e[&640&e] &cCrypts Titan' 
+  Health: 1270
+  Damage: 55
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_CHESTPLATE CHEST
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 5
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 934 <mob.l.x> <mob.l.y> <mob.l.z> 40"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-40} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+
+goldenglade-crypts-damage:
+  Type: ZOMBIE
+  Display: '&e[&640&e] &cCrypts Dweller' 
+  Health: 950
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_HELMET HEAD
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 700 <mob.l.x> <mob.l.y> <mob.l.z> 40"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-40} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+
+goldenglade-crypts-speed:
+  Type: ZOMBIE
+  Display: '&e[&640&e] &cCrypts Walker' 
+  Health: 635
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_BOOTS FEET
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 467 <mob.l.x> <mob.l.y> <mob.l.z> 40"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-40} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+
+
+
+tireneas-crypts-health: #485
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cCrypts Titan' 
+  Health: 970
+  Damage: 45
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_CHESTPLATE CHEST
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 5
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 685 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-30} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+
+tireneas-crypts-damage:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cCrypts Dweller' 
+  Health: 725
+  Damage: 65
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_HELMET HEAD
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 513 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-30} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+
+tireneas-crypts-speed:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cCrypts Walker' 
+  Health: 485
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_BOOTS FEET
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 342 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-30} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+
+
+
+wintervale-crypts-health: #335
+  Type: ZOMBIE
+  Display: '&e[&620&e] &cCrypts Titan' 
+  Health: 670
+  Damage: 35
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_CHESTPLATE CHEST
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 5
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 460 <mob.l.x> <mob.l.y> <mob.l.z> 20"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-20} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+
+wintervale-crypts-damage:
+  Type: ZOMBIE
+  Display: '&e[&620&e] &cCrypts Dweller' 
+  Health: 500
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_HELMET HEAD
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 345 <mob.l.x> <mob.l.y> <mob.l.z> 20"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-20} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+
+wintervale-crypts-speed:
+  Type: ZOMBIE
+  Display: '&e[&620&e] &cCrypts Walker' 
+  Health: 335
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_BOOTS FEET
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 230 <mob.l.x> <mob.l.y> <mob.l.z> 20"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-20} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players

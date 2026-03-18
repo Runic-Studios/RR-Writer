@@ -1,0 +1,1122 @@
+ignis-marker:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - signal{s=remove} @MIR{t=ignis;r=4} ~onTimer:5
+ignis:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cIgnis'
+  Health: 8000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lIgnis the Corrupted'
+    Health: 8000
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - remove @MIR{t=ignis-golem;r=64} ~onDeath
+  - remove @MIR{t=ignis-golem,ignis-marker;r=64} ~onSpawn
+  - summon{t=ignis-marker} @Location{c=5067.5,175,4874.5} ~onSpawn
+  - command{c="runicgive exp <trigger.name> 1750 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - command{c="ri drop silver-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - skill{s=ignis-meteor-cast} @self ~onTimer:40 .25
+  - skill{s=ignis-spider-summon1} @self ~onTimer:20 <75%
+  - skill{s=ignis-spider-summon2} @self ~onTimer:20 <25%
+  - skill{s=ignis-enrage} @self ~onTimer:20 <50%
+  - skill{s=ignis-remove} @self ~onSignal:remove
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Raghav_Gamer setCustomName "&e[&6☠&e] &cIgnis" setDynamicName true
+
+ignis-golem:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &bHeart of Corruption'
+  Health: 2000
+  Damage: 40
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.16
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+ignis-spider:
+  Type: CAVE_SPIDER
+  Display: '&e[&6☠&e] &cDust Crawler'
+  Health: 200
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=1;radius=1;yOffset=.25} @self ~onTimer:10
+  - skill{s=ignis-spider} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+ignis-critter:
+  Type: CAVE_SPIDER
+  Display: '&e[&6☠&e] &cDust Critter'
+  Health: 80
+  Modules:
+    ThreatTable: true
+  Damage: 8
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=.25} @self ~onTimer:10
+  - skill{s=ignis-critter} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+sunken-riddle:
+  Type: armor_stand
+  Display: '&eStatue''s Riddle'
+  Health: 30
+  Options:
+    Invisible: true
+    Marker: true
+  BossBar:
+    Enabled: true
+    Title: '&eStatue''s Riddle'
+    Health: 5000
+    Range: 42
+    Color: BLUE
+    Style: SEGMENTED_10
+  Skills:
+  - skill{s=sunken-riddle} @self ~onSpawn
+  - skill{s=sunken-riddle-air} @self ~onSignal:air
+  - skill{s=sunken-riddle-soul} @self ~onSignal:soul
+  - skill{s=sunken-riddle-fire} @self ~onSignal:fire
+  - skill{s=sunken-riddle-power} @self ~onSignal:power
+  - skill{s=sunken-riddle-health} @self ~onTimer:40
+sunken-ethereal-giver:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=sunken-ethereal-giver} @self ~onSpawn
+sunken-enchanted-air:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cRespiration'
+  Health: 800
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=air} @MIR{t=sunken-riddle;r=128} ~onDeath
+  - command{c="runicgive exp <trigger.name> 250 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - skill{s=sunken-enchanted-air} @self ~onTimer:80
+  - skill{s=sunken-enchanted-air-passive} @self ~onDamaged .1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin chickenoodle065 setCustomName "&e[&6☠&e] &cRespiration" setDynamicName true
+
+sunken-enchanted-soul:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cSoul Speed'
+  Health: 800
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=soul} @MIR{t=sunken-riddle;r=128} ~onDeath
+  - command{c="runicgive exp <trigger.name> 250 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - skill{s=sunken-enchanted-soul} @self ~onTimer:80
+  - skill{s=sunken-enchanted-soul-passive} @self ~onDamaged .1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin chickenoodle065 setCustomName "&e[&6☠&e] &cSoul Speed" setDynamicName true
+
+sunken-enchanted-soul-spawn:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=sunken-enchanted-soul-spawn} @self ~onSpawn
+  
+sunken-enchanted-soul-passive-spawn:
+  Type: BEE
+  Display: ''
+  Health: 1
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 64
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=sunken-enchanted-soul-passive-spawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Disguise: VEX
+
+sunken-enchanted-fire:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cFire Aspect'
+  Health: 800
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=fire} @MIR{t=sunken-riddle;r=128} ~onDeath
+  - command{c="runicgive exp <trigger.name> 250 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - skill{s=sunken-enchanted-fire} @self ~onTimer:80
+  - skill{s=sunken-enchanted-fire-passive} @self ~onDamaged .1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin chickenoodle065 setCustomName "&e[&6☠&e] &cFire Aspect" setDynamicName true
+
+sunken-enchanted-power:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cPower'
+  Health: 800
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=power} @MIR{t=sunken-riddle;r=128} ~onDeath
+  - command{c="runicgive exp <trigger.name> 250 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - skill{s=sunken-enchanted-power} @self ~onTimer:80
+  - skill{s=sunken-enchanted-power-passive} @self ~onDamaged .1
+  - skill{s=sunken-enchanted-power-heal} @self ~onSignal:heal
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin chickenoodle065 setCustomName "&e[&6☠&e] &cPower" setDynamicName true
+
+sunken-enchanted-power-spawn:
+  Type: BABY_ZOMBIE
+  Display: '&6Blood'
+  Health: 1
+  Skills:
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=sunken-enchanted-power-spawn} @self ~onSpawn
+  - remove @self ~onSignal:remove
+  Disguise: DROPPED_ITEM RED_WOOL
+    
+sunken-bookshelf:
+  Type: ZOMBIE
+  Display: '&e[&625&e] &cBookshelf'
+  Health: 400
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 5
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin THE_CHR0NICLER setCustomName "&e[&6☠&e] &cBookshelf" setDynamicName true
+
+viator:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cViator'
+  Health: 5000
+  Modules:
+    ThreatTable: true
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lViator the Timeless'
+    Health: 5000
+    Range: 50
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 2000 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - command{c="ri drop gold-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - remove @MIR{t=viator-sand,viator-timer;r=128} ~onSpawn
+  - remove @MIR{t=viator-sand,viator-timer;r=128} ~onEnterCombat
+  - remove @MIR{t=viator-sand,viator-timer;r=128} ~onDeath
+  - skill{s=viator-timer-sand} @self ~onTimer:200
+  - skill{s=viator-start} @self ~onEnterCombat
+  - skill{s=viator-heal} @self ~onSignal:heal
+  - skill{s=viator-enrage1} @self ~onSignal:enrage1
+  - skill{s=viator-enrage2} @self ~onSignal:enrage2
+  - skill{s=CheckPlayerDeath} @target ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin CyberNinja_ setCustomName "&e[&6☠&e] &cViator" setDynamicName true
+
+viator-ember:
+  Type: BLAZE
+  Display: '&e[&6☠&e] &cEmber'
+  Health: 100
+  Damage: 10
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=viator-ember} @self ~onSpawn
+  - skill{s=viator-ember-passive} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+viator-sand:
+  Type: ZOMBIE
+  Display: '&eSand'
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setname{name='&eSand';delay=1} @self ~onDamaged
+  - heal{a=1000;i=true} @self ~onDamaged
+  - skill{s=viator-sand} @self ~onTimer:5
+  - skill{s=viator-sand-death} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK SAND
+
+viator-timer:
+  Type: armor_stand
+  Display: '&0'
+  Health: 30
+  Damage: 0
+  Options:
+    Invisible: false
+    Marker: true
+  BossBar:
+    Enabled: true
+    Title: '&fSand Clock'
+    Range: 50
+    Color: WHITE
+    Style: SEGMENTED_10
+  Skills:
+  - skill{s=viator-timer} @self ~onSignal:heal
+  - skill{s=viator-timer-sethealth} @self ~onTimer:20
+  - skill{s=viator-timer-health} @self ~onTimer:20
+  Disguise: FALLING_BLOCK GLASS
+    
+TheLibrarian:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cThe Great Librarian'
+  Health: 20000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lThe Great Librarian'
+    Health: 20000
+    Range: 100
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - WRITABLE_BOOK HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 8000 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - remove @MIR{t=TheLibrarian-breath,TheLibrarian-matter,TheLibrarian-matter2,TheLibrarian-golem1,TheLibrarian-golem2,TheLibrarian-fragment,TheLibrarian-monster;r=128} ~onSpawn
+  - remove @MIR{t=TheLibrarian-breath,TheLibrarian-matter,TheLibrarian-matter2,TheLibrarian-golem1,TheLibrarian-golem2,TheLibrarian-fragment,TheLibrarian-monster;r=128} ~onDeath
+  - skill{s=TheLibrarian-flame} @self ~onTimer:40 .40
+  - skill{s=TheLibrarian-void} @self ~onTimer:20 <66%
+  - skill{s=TheLibrarian-second-void} @self ~onTimer:20 <33%
+  - skill{s=TheLibrarian-creation} @self ~onTimer:40 .25
+  - skill{s=TheLibrarian-descent} @self ~onTimer:400 <75%
+  - skill{s=TheLibrarian-final-descent} @self ~onTimer:20 <25%
+  - setvariable{var=caster.void;value=0} @self ~onSpawn
+  # RESET PARTY
+  #- command{c="runicteleport <trigger.name> library"} @trigger ~onDeath 1.0
+  #- command{c="party teleport <trigger.name>"} @trigger ~onDeath 1.0
+  - skill{s=BossFirework} @trigger ~onDeath
+  # DROPS
+  #- command{c="runicboss <caster.uuid> library"} @self ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Grey_Wizard setCustomName "&e[&6☠&e] &cThe Great Librarian" setDynamicName true
+
+TheLibrarian-breath:
+  Type: BLAZE
+  Display: '&e[&6☠&e] &cInfernal Breath'
+  Health: 250
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=TheLibrarian-breath-within} @self ~onTimer:5
+  - skill{s=TheLibrarian-breath-damaged} @self ~onDamaged
+  - skill{s=TheLibrarian-breath} @self ~onSpawn
+  - skill{s=TheLibrarian-breath-remove} @self ~onSignal:remove
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+TheLibrarian-matter:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cInfernal Matter'
+  Health: 10
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=TheLibrarian-matter} @self ~onSpawn
+  - skill{s=TheLibrarian-matter-death} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MAGMA_CUBE setSize 4
+
+TheLibrarian-matter2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cInfernal Matter'
+  Health: 10
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=TheLibrarian-matter2} @self ~onSpawn
+  - skill{s=TheLibrarian-matter-death} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MAGMA_CUBE setSize 4
+
+
+TheLibrarian-golem1:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &fInfernal Golem'
+  Health: 1000
+  Damage: 20
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&f&lInfernal Golem'
+    Health: 2500
+    Range: 100
+    Color: WHITE
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.12
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - message{m="&6The Red Rift is not safe"} @PIR{r=128} ~onDeath
+  - skill{s=TheLibrarian-encryption-remove} @self ~onSignal:remove
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+TheLibrarian-golem2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &fInfernal Golem'
+  Health: 1000
+  Damage: 20
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&f&lInfernal Golem'
+    Health: 2500
+    Range: 20
+    Color: WHITE
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.12
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - message{m="&6Standing on the Red Rift will keep you safe"} @PIR{r=128} ~onDeath
+  - skill{s=TheLibrarian-encryption-remove} @self ~onSignal:remove
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+TheLibrarian-fragment:
+  Type: BLAZE
+  Display: '&e[&6☠&e] &bInfernal Shard'
+  Health: 250
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:
+  - skill{s=TheLibrarian-fragment} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+TheLibrarian-fragment2:
+  Type: BLAZE
+  Display: '&e[&6☠&e] &bInfernal Fragment'
+  Health: 25
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:
+  - skill{s=TheLibrarian-fragment2} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+TheLibrarian-monster:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cInfernal Creature'
+  Health: 750
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.16
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=TheLibrarian-monster} @self ~onTimer:20
+  - skill{s=TheLibrarian-monster-expire} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: MAGMA_CUBE setSize 6
+
+TheLibrarian-monster2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cInfernal Critter'
+  Health: 250
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.16
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=TheLibrarian-monster2} @self ~onTimer:20
+  - skill{s=TheLibrarian-monster-expire} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: MAGMA_CUBE setSize 5
+
+sunken-cutscene1:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=sunken-teigh-cutscene1;r=32} ~onSpawn
+  - summon{t=sunken-teigh-cutscene1} @Location{c=5000.5,215,4989.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+
+sunken-teigh-cutscene1:
+  Type: ZOMBIE
+  Display: '&eTeigh'
+  Health: 5000
+  Damage: 6
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - skill{s=sunken-cutscene1} @self ~onSpawn
+  Disguise: player Steve setSkin Erwoniser setCustomName "&eTeigh" setDynamicName true
+sunken-note-cutscene1:
+  Type: BABY_ZOMBIE
+  Display: '&6Teigh''s Note'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=LostBook} @self ~onTimer:10
+  - command{c="questtrigger player <target.name> TeighFirstTalk"} @PIR{r=12} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM BOOK
+    
+sunken-cutscene2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&kThe Great Librarian'
+  Health: 20000
+  Faction: Boss
+  Damage: 50
+  Equipment:
+  - WRITABLE_BOOK HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &c&kThe Great Librarian';delay=1} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - heal{a=20000;i=true} @self ~onDamaged
+  - skill{s=sunken-cutscene2} @self ~onTimer:10
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin Grey_Wizard setCustomName "&e[&6☠&e] &c&kThe Great Librarian" setDynamicName true
+
+OracleLibrarian:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cOracle Librarian'
+  Faction: Boss
+  Health: 2000
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    MaxCombatDistance: 30
+    FollowRange: 30
+    AttackSpeed: 1
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    NoDamageTicks: 0
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&c&lOracle Librarian'
+    Health: 2000
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Skills:
+  - randomskill{skills=StartLightsOut,StartRally} ~onTimer:320
+  - summon{t=DiscipleLibrarian;a=4;r=12;os=true} @self ~onEnterCombat
+  - remove @MIR{t=DiscipleLibrarian;r=32} ~onDropCombat
+  - remove @MIR{t=DiscipleLibrarian;r=32} ~onDeath
+  - setvariable{var=caster.bleed;value=0} @self ~onSpawn
+  - skill{s=OracleLibrarian-bleed} @self ~onDamaged .25
+  - skill{s=OracleLibrarian-bleed-visual} @self ~onTimer:20
+  - summon{t=sunken-cutscene3} @Location{c=4893.5,202,4915.5} ~onDeath
+  - command{c="runicgive exp <trigger.name> 750 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Haku setCustomName "&e[&6☠&e] &cOracle Librarian" setDynamicName true
+
+DiscipleLibrarian:
+  Type: ZOMBIE
+  #Faction: Disciple
+  Display: '&e[&6✸&e] &cDisciple Librarian'
+  Health: 250
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.18
+    MaxCombatDistance: 30
+    FollowRange: 30
+    AttackSpeed: 1
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    NoDamageTicks: 0
+  Skills:
+  - potion{type=SPEED;d=80;l=1;p=true} @self ~onDamaged 0.15
+  - skill{s=FireAura} @self ~onTimer:200 0.8
+  - command{c="runicgive exp <trigger.name> 150 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath
+
+
+sunken-cutscene3:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cOracle Librarian'
+  Health: 1000
+  Faction: Boss
+  Damage: 50
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cOracle Librarian';delay=1} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - heal{a=1000;i=true} @self ~onDamaged
+  - skill{s=sunken-cutscene3} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin Haku setCustomName "&e[&6☠&e] &cOracle Librarian" setDynamicName true
+
+UnknownFireFigure2:
+  Type: ZOMBIE
+  Display: '&e???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&e???';delay=1} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=680} @self ~onSpawn
+  Disguise: player Steve setSkin ChavezFam505 setCustomName "&e???" setDynamicName true
+
+sunken-note-message1:
+  Type: BABY_ZOMBIE
+  Display: '&eBook'
+  Health: 1
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&eBook';delay=1} @self ~onDamaged
+  - heal{a=1000} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - potion{t=INVISIBILITY;d=99999;l=1;hasParticles=false} @self ~onSpawn
+  - command{c="questtrigger player <target.name> BookInteractSunken"} @trigger ~onInteract
+  - command{c="questtrigger player <target.name> BookInteractSunken"} @trigger ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+sunken-note-message2:
+  Type: BABY_ZOMBIE
+  Display: '&eBook'
+  Health: 1
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&eBook';delay=1} @self ~onDamaged
+  - heal{a=1000} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - potion{t=INVISIBILITY;d=99999;l=1;hasParticles=false} @self ~onSpawn
+  - command{c="questtrigger player <target.name> BookInteractSunken"} @trigger ~onInteract
+  - command{c="questtrigger player <target.name> BookInteractSunken"} @trigger ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+sunken-note-message3:
+  Type: BABY_ZOMBIE
+  Display: '&eBook'
+  Health: 1
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&eBook';delay=1} @self ~onDamaged
+  - heal{a=1000} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - potion{t=INVISIBILITY;d=99999;l=1;hasParticles=false} @self ~onSpawn
+  - command{c="questtrigger player <target.name> BookInteractSunken"} @trigger ~onInteract
+  - command{c="questtrigger player <target.name> BookInteractSunken"} @trigger ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear

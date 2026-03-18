@@ -1,0 +1,514 @@
+zenyth-altar:
+  Type: ZOMBIE
+  Display: '&dRunic Altar'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - heal{a=5000} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - skill{s=zenyth-altar} @self ~onInteract
+  - skill{s=zenyth-altar-remove} @self ~onTimer:20
+  Disguise: FALLING_BLOCK CHORUS_PLANT
+
+zenyth-altar-timer:
+  Type: armor_stand
+  Display: '&0'
+  Health: 20
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  BossBar:
+    Enabled: true
+    Title: '&d&lRunic Altar'
+    Range: 20
+    Color: PINK
+    Style: SEGMENTED_10
+  Skills:
+  #- damage{a=1;i=true} @self ~onTimer:20
+  - skill{s=zenyth-altar-timer-remove} @self ~onSpawn
+ZenythSoldier-altar:
+  Type: ZOMBIE
+  Display: '&e[&637&e] &cZenyth Soldier'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - GOLDEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - skill{s=Zenythwithin} @self ~onTimer:20
+  - skill{s=ZenythSpin} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+    
+ZenythCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=ZenythCitizen;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=ZenythCitizen2;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=ZenythCitizen;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=ZenythCitizen2;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn2
+ZenythCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aZenyth Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aZenyth Citizen<&co> &fThe sun shines brightly.} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=ZenythCSA} ~onDeath
+  Disguise: player Steve setSkin plavic setCustomName "&e[&61&e] &aZenyth Citizen" setDynamicName true
+ZenythCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aZenyth Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aZenyth Citizen<&co> &fThe sun shines brightly.} @NearestPlayer ~onDamaged
+  - signal{s=respawn2} @MobsInRadius{r=320;t=ZenythCSA} ~onDeath
+  Disguise: player Steve setSkin Baysonqor setCustomName "&e[&61&e] &aZenyth Citizen" setDynamicName true
+ZenythCitizen3:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aZenyth Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aZenyth Citizen<&co> &fThe sun shines brightly.} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin Sevennemesis setCustomName "&e[&61&e] &aZenyth Citizen" setDynamicName true
+ZenythCat:
+  Type: OCELOT
+  Display: '&e[&61&e] &aDesert Cat'
+  Health: 50
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+ZenythGuard1:
+  Type: ZOMBIE
+  Display: '&e[&650&e] &aZenyth Guard'
+  Health: 5000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+#  - 1 gotolocation 1610,38,-57
+  - 2 lookatplayers
+  - 3 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aZenyth Guard<&co> &fWelcome to the jewel of the desert.} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin Diarrhoea setDynamicName true
+ZenythGuard2:
+  Type: ZOMBIE
+  Display: '&e[&650&e] &aZenyth Guard'
+  Health: 5000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+#  - 1 gotolocation 1617,38,-64
+  - 2 lookatplayers
+  - 3 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aZenyth Guard<&co> &fWelcome to the jewel of the desert.} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin Diarrhoea setDynamicName true
+
+SaltBandit:
+  Type: ZOMBIE
+  Display: '&e[&638&e] &cSalt Bandit'
+  Health: 605
+  Damage: 35
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - GOLDEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 380 <mob.l.x> <mob.l.y> <mob.l.z> 38"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-38} @trigger ~onDeath
+  - skill{s=SaltBandit} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Krxlion setCustomName "&e[&638&e] &cSalt Bandit" setDynamicName true
+
+SaltBag:
+  Type: BABY_ZOMBIE
+  Display: ''
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=SaltBag} @self ~onSpawn
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM WHITE_CONCRETE
+
+SaltBagToss:
+  Type: BABY_ZOMBIE
+  Display: ''
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=SaltBagToss} @self ~onSpawn
+  #- setgravity{g=false} @self ~onSpawn
+  Disguise: DROPPED_ITEM WHITE_CONCRETE
+    
+GuardianOfTheFruit:
+  MobType: ZOMBIE
+  Display: '&e[&6✸&e] &cGuardian Of The Fruit'
+  Health: 2500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lGuardian Of The Fruit'
+    Range: 50
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    NoDamageTicks: 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - AIR HAND
+  Skills:
+  - skill{s=GuardianOfTheFruit-drop} @trigger ~onDeath
+  #- doppleganger @target ~onEnterCombat
+  - skill{s=MirrorTarget} @target ~onEnterCombat
+  - skill{s=SummonHealingTotem} @self ~onTimer:400
+  - skill{s=GOFHeal} @self ~onSignal:heal
+  - skill{s=SunRay} @self ~onTimer:200
+  #- setstance{s=default} @self ~onDropCombat
+  - remove @self ~onDropCombat
+  #- setstance{s=dragon} @self =50%
+  #- sudoskill{s=BecomePig} @target =50%
+  #- sudoskill{s=RevertToSelf} @PIR{r=40} ~onDeath
+  #- skill{s=BecomeDragon} @self =49%
+  #- skill{s=DragonFireball} @target ~onTimer:40
+  #- skill{s=Switcharoo} @self ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  #- 1 lookatplayers
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+  Disguise: player Steve setSkin Contagiousx setCustomName "&e[&6✸&e] &cGuardian Of The Fruit" setDynamicName true
+
+HealingTotem:
+  Type: armor_stand
+  Display: '&aHealing Totem'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=SolarBlessingAffect} @self ~onTimer:20
+  - skill{s=DespawnSolarBlessing} @self ~onSpawn
+  #Options:
+    #Invisible: false
+    #HasGravity: false
+    #Marker: false
+  Disguise: player Steve setSkin AmirBo1112 setCustomName "&aHealing Totem" setDynamicName true
+
+ZenythBandit:
+  Type: ZOMBIE
+  Display: '&e[&637&e] &cZenyth Bandit'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - GOLDEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 366 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - skill{s=ZenythBanditSlash} ~onTimer:60
+  - skill{s=ZenythBanditSandThrow} @target ~onTimer:100
+  - summon{t=ZenythBanditElite} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+
+ZenythBanditArcher:
+  Type: SKELETON
+  Display: '&e[&637&e] &cZenyth Archer'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 366 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - leap{v=-100} @target ~onDamaged .1
+  - skill{s=ZenythBanditSandThrow} @target ~onTimer:100
+  - summon{t=ZenythBanditElite} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 rangedattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+
+ZenythBanditElite:
+  Type: SKELETON
+  Display: '&e[&6✸&e] &cExiled Captain'
+  Health: 3500
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - GOLDEN_SWORD HAND
+  - CROSSBOW OFFHAND
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lElite&e&l] &c&lExiled Captain'
+    Health: 4000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ZenythBanditElite} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 6000 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger ~onDeath 1.0
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - setvariable{var=caster.status;value=0} @self ~onSpawn 
+  - setvariable{var=caster.interrupt;value=0} @self ~onSpawn
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - leap{v=100} @target ~onDamaged .2
+  - skill{s=ZenythBanditCrossbolt} @self ~onDamaged #=75%
+  - skill{s=ZenythBanditCrossbolt-Interrupt} ~onDamaged 1
+  - skill{s=ZenythBanditCrossbolt-Knockback} ~onDamaged 1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Kloudnyne setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+
+ZenythBanditMelon:
+  Type: BABY_ZOMBIE
+  Display: '&aMelon'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove @self ~onDeath
+  - setAI{ai=false} @self ~onSpawn
+  - command{c="ri drop ZenythBanditMelon <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK MELON
