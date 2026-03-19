@@ -1273,4 +1273,4 @@ OracleLibrarian-bleed-damage:
   Conditions:
   - health{h=>100}
   Skills:
-  - command{c="damage <caster.uuid> 25"} @self
+  - command{c="damage <caster.uuid> 25";silent=true} @self

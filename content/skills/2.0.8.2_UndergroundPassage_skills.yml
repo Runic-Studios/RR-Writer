@@ -561,12 +561,12 @@ blessing-effect-gray:
 underground-passage-begone:
   Cooldown: 9999
   Skills:
-  - command{c="damage <target.uuid> 625"} @self
+  - command{c="damage <target.uuid> 625";silent=true} @self
   - skill{s=UpdateHealthBar;delay=1}
 underground-passage-stray-begone:
   Cooldown: 9999
   Skills:
-  - command{c="damage <target.uuid> 12500"} @self
+  - command{c="damage <target.uuid> 12500";silent=true} @self
   - skill{s=UpdateHealthBar;delay=1}
 
 blessing-effect-light-gray:
@@ -580,7 +580,7 @@ underground-passage-cursed:
   - skill{s=underground-passage-cursed-cast} .1
 underground-passage-cursed-cast:
   Skills:
-  - command{c="damage <caster.uuid> 2500"}
+  - command{c="damage <caster.uuid> 2500";silent=true}
   - skill{s=UpdateHealthBar;delay=1}
 
 blessing-effect-black:
@@ -755,7 +755,7 @@ underground-passage-explosive:
   Skills:
   - sound{s=block.stone.break;v=2} @self
   - effect:particlesphere{p=block_crack;material=stone;amount=12;radius=3;yOffset=.75} @self
-  - command{c="damage <target.uuid> 750"} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=3} #all enemies
+  - command{c="damage <target.uuid> 750";silent=true} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=3} #all enemies
   - signal{s=UpdateHealthBar} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=3} #all enemies
 
 blessing-visual:

@@ -40,7 +40,7 @@ DaleCitizen-drowning:
   Skills:
   - jump{v=0.102}
   - sound{s=entity.player.hurt_drown}
-  - command{c="damage <caster.uuid> 1"}
+  - command{c="damage <caster.uuid> 1";silent=true}
   - heal{a=1;i=true}
 
 tutorial_boss2:
@@ -88,7 +88,7 @@ tutorial_boss:
 tutorial_boss-marker:
   Skills:
   - potion{t=SLOW;d=40;l=1} @PIR{r=5}
-  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10";silent=true} @PIR{r=5}
   - sound{s=block.grass.break;p=.5} 
   - blockmask{m=dirt;d=40;r=5}
   - remove

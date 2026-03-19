@@ -69,7 +69,7 @@ stonehaven-anvil-add:
 stonehaven-anvil-sub:
   Skills:
   #- damage{a=25;i=true}
-  - command{c="damage <caster.uuid> 25"} @self
+  - command{c="damage <caster.uuid> 25";silent=true} @self
   - message{m="&3Heat-Seeking Anima cooled The Living Forge!"} @PIR{r=40}
   - remove @MIR{t=stonehaven-anvil-add,stonehaven-anvil-sub;r=40}
   - sound{s=block.lava.extinguish;v=4}
@@ -126,7 +126,7 @@ stonehaven-anvil-temp-off:
   - variableEquals{var=caster.active;value=1}
   Skills:
   #- damage{a=2;i=true}
-  - command{c="damage <caster.uuid> 2"} @self
+  - command{c="damage <caster.uuid> 2";silent=true} @self
 stonehaven-anvil-temp-on-sound:
   Cooldown: 8
   Skills:
