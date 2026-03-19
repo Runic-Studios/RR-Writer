@@ -23,6 +23,10 @@ relocations:
     source: holograms.yml
     target: plugins/FancyHolograms.yml
 
+  - type: file
+    source: warps.yml
+    target: plugins/Game/warps.yml
+
   - type: zip
     source: spawners-compressed.zip
     target: plugins/MythicMobs/spawners
