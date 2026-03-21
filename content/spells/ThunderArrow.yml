@@ -1,0 +1,5 @@
+cooldown: 8
+magic-damage: 10
+magic-damage-per-level: 2
+mana: 15
+radius: 3

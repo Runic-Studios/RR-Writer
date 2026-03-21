@@ -1,0 +1,672 @@
+aquatic-despawn:
+  Skills:
+  - cast{skillName="Despawn";duration=6000;onCast=aquatic-despawn-cast;showCastBar=true}
+aquatic-despawn-cast:
+  Skills:
+  - sound{s=entity.player.hurt_drown}
+  - effect:particlesphere{p=drip_water;a=12;r=5;yOffset=.5} 
+  - remove
+
+
+aquatic-conjured-aoe:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.aoe;value=1}  
+  - playerwithin 8
+  Cooldown: 16
+  Skills:
+  - setvariable{var=caster.jump;value=0} 
+  - potion{t=SLOW;d=120;l=3;hasParticles=false}
+  - sound{s=ambient.underwater.exit}
+  - delay 40
+  - sound{s=ambient.underwater.enter}
+  - pull{v=6} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - effect:particlesphere{p=drip_water;a=12;r=5;yOffset=.5} 
+  - delay 20
+  - sound{s=ambient.underwater.enter}
+  - pull{v=6} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - effect:particlesphere{p=drip_water;a=12;r=5;yOffset=.5} 
+  - delay 20
+  - sound{s=ambient.underwater.enter}
+  - pull{v=6} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - effect:particlesphere{p=drip_water;a=12;r=5;yOffset=.5} 
+  - delay 80
+  - setvariable{var=caster.jump;value=1} 
+
+aquatic-conjured-trident-visual:
+  Skills:
+  - effect:particlesphere{p=end_rod;amount=8;radius=2;yOffset=0.5} @Location{c=535,8,1132}
+  - delay 15
+  - effect:particlesphere{p=end_rod;amount=8;radius=2;yOffset=0.5} @Location{c=535,12,1132}
+  - delay 15
+  - effect:particlesphere{p=end_rod;amount=8;radius=2;yOffset=0.5} @Location{c=535,16,1132}
+  - delay 15
+  - effect:particlesphere{p=end_rod;amount=8;radius=2;yOffset=0.5} @Location{c=535,20,1132}
+  - delay 15
+  - effect:particlesphere{p=end_rod;amount=8;radius=2;yOffset=0.5} @Location{c=535,24,1132}
+  - delay 15
+  - summon{t=aquatic-conjured-trident-projectile} @Location{c=535,28,1132}
+
+aquatic-conjured-trident-projectile:
+  Conditions:
+  - playerwithin 64
+  Skills:
+  - sound{s=entity.shulker.shoot;v=3}
+  - projectile{ot=aquatic-conjured-trident-projectile-tick;oh=aquatic-conjured-trident-projectile2-hit;oe=aquatic-conjured-trident-projectile-end;i=1;v=24;ac=.95} @PIR{r=64}  
+  - delay 15
+  - sound{s=entity.shulker.shoot;v=3}
+  - projectile{ot=aquatic-conjured-trident-projectile-tick;oh=aquatic-conjured-trident-projectile2-hit;oe=aquatic-conjured-trident-projectile-end;i=1;v=24;ac=.95} @PIR{r=64} 
+  - delay 15
+  - sound{s=entity.shulker.shoot;v=3}
+  - projectile{ot=aquatic-conjured-trident-projectile-tick;oh=aquatic-conjured-trident-projectile2-hit;oe=aquatic-conjured-trident-projectile-end;i=1;v=24;ac=.95} @PIR{r=64} 
+  - delay 80
+  - remove
+  
+aquatic-conjured-trident-projectile-tick:
+  Skills:
+  - effect:particlesphere{p=end_rod;amount=1;radius=1}  @origin
+aquatic-conjured-trident-projectile-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"}
+  - potion{t=GLOWING;c=WHITE;d=40;l=1;hasParticles=false}
+  - potion{t=SLOW;d=40;l=1}
+aquatic-conjured-trident-projectile-end:
+  Skills:
+  - summon{t=aquatic-conjured-trident-projectile-marker;os=true;r=1}
+aquatic-conjured-trident-projectile-marker:
+  Skills:
+  - blockmask{m=gold_block;d=100;r=4;n=.5} @self
+  - delay 20
+  - skill{s=aquatic-conjured-trident-projectile-marker-effect}
+  - delay 80
+  - remove  
+
+aquatic-conjured-trident-projectile-marker-effect:
+  Skills:  
+  - effect:particlesphere{p=end_rod;amount=4;radius=4;yOffset=0.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=4}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=4}
+  - delay 10
+  - skill{s=aquatic-conjured-trident-projectile-marker-effect}
+
+aquatic-conjured-jump:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.jump;value=1}  
+  Cooldown: 20
+  Skills:
+  - setvariable{var=caster.aoe;value=0} 
+  - randomskill{skills=aquatic-conjured-jump1,aquatic-conjured-jump2,aquatic-conjured-jump3}
+  - delay 160
+  - setvariable{var=caster.aoe;value=1} 
+
+aquatic-conjured-jump1:
+  Cooldown: 16
+  Skills:
+  - setvariable{var=caster.harm;value=0} 
+  - teleport @Location{c=542,1,1133}
+  - sound{s=entity.dolphin.splash;v=2}
+  - setvariable{var=caster.vulnerable;value=1} 
+  - delay 20
+  - setvariable{var=caster.vulnerable;value=0} 
+  - skill{s=aquatic-conjured-jump-dmg}
+aquatic-conjured-jump2:
+  Cooldown: 16
+  Skills:
+  - setvariable{var=caster.harm;value=0} 
+  - teleport @Location{c=556,1,1117}
+  - sound{s=entity.dolphin.splash;v=2}
+  - setvariable{var=caster.vulnerable;value=1} 
+  - delay 20
+  - setvariable{var=caster.vulnerable;value=0} 
+  - skill{s=aquatic-conjured-jump-dmg}
+aquatic-conjured-jump3:
+  Cooldown: 16
+  Skills:
+  - setvariable{var=caster.harm;value=0} 
+  - teleport @Location{c=565,1,1150}
+  - sound{s=entity.dolphin.splash;v=2}
+  - setvariable{var=caster.vulnerable;value=1} 
+  - delay 20
+  - setvariable{var=caster.vulnerable;value=0} 
+  - skill{s=aquatic-conjured-jump-dmg}
+
+aquatic-conjured-jump-dmg:
+  Conditions:
+  - variableEquals{var=caster.harm;value=0}  
+  Skills:
+  - sound{s=entity.player.hurt_drown;v=2} 
+  - effect:particlesphere{p=drip_water;a=12;r=5;yOffset=.5} 
+  - jump{v=1.25} 
+  - delay 10
+  - leap{v=500} @NearestPlayer{r=64}
+  - delay 5
+  - setvariable{var=caster.bite;value=1} 
+  - delay 15
+  - setvariable{var=caster.bite;value=0} 
+  - randomskill{skills=aquatic-conjured-jump1,aquatic-conjured-jump2,aquatic-conjured-jump3}
+
+aquatic-conjured-bite:
+  Conditions:
+  - variableEquals{var=caster.bite;value=1}  
+  - playerwithin 3
+  Skills:
+  - sound{s=entity.dolphin.eat}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=5}
+  - setvariable{var=caster.bite;value=0} 
+aquatic-conjured-harm:
+  Conditions:
+  - variableEquals{var=caster.vulnerable;value=1}   
+  Skills:
+  - sound{s=entity.dolphin.hurt}
+  - setvariable{var=caster.harm;value=1} 
+  - setvariable{var=caster.vulnerable;value=0} 
+
+
+aquatic-conjured-start:
+  Skills:
+  - setvariable{var=caster.jump;value=1} 
+  - setvariable{var=caster.aoe;value=1} 
+  - setvariable{var=caster.bite;value=0} 
+  - setvariable{var=caster.harm;value=0} 
+  - setvariable{var=caster.vulnerable;value=0} 
+  - sound{s=entity.player.hurt_drown;v=2} 
+  - effect:particlesphere{p=drip_water;a=12;r=5;yOffset=.5} 
+  - jump{v=1.25} 
+  - delay 20
+  - leap{v=250} @MIR{t=aquatic-blood-altar;r=32}
+  - delay 20
+  - sound{s=entity.dolphin.eat;v=2}
+
+aquatic-fieldboss-blood:
+  Skills:
+  - sound{s=block.honey_block.break}
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - signal{s=altar} @MIR{t=aquatic-blood-altar;r=3}
+
+aquatic-blood-altar:
+  Conditions:
+  - variableEquals{var=caster.active;value=0} 
+  Skills:
+  - remove @MIR{t=aquatic-fieldboss-blood;r=5}
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=block.honey_block.break}
+  - setvariable{var=caster.active;value=1}
+  - sound{s=block.enchantment_table.use;v=2} 
+  - sethealth{a=100}
+  - delay 40
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=block.honey_block.break}
+  - sethealth{a=80}
+  - delay 40
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=block.honey_block.break}
+  - sethealth{a=60}
+  - delay 40
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=block.honey_block.break}
+  - sethealth{a=40}
+  - delay 40
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=block.honey_block.break}
+  - sethealth{a=20}
+  - delay 40
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=block.honey_block.break}
+  - sethealth{a=1}
+  - delay 80
+  - summon{t=aquatic-conjured} @Location{c=542,1,1133}
+  - setvariable{var=caster.active;value=0}
+
+aquatic-curse-spawn:
+  Skills:
+  - delay 800
+  - potion{t=SLOW;d=80;l=3;hasParticles=false} 
+  - cast{skillName="Curse of the Sea";duration=80;onCast=aquatic-curse-spawncast;showCastBar=true} @self 
+aquatic-curse-spawncast:
+  Conditions:
+  - playerwithin 32
+  Skills:
+  - sound{s=item.bucket.empty}
+  - effect:particlesphere{p=sneeze;a=4;r=2;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @target
+  - effect:particlesphere{p=sneeze;a=4;r=2;yOffset=.5} @target
+  - potion{t=SLOW;d=80;l=3} @target
+  - remove
+
+aquatic-curse-sound:
+  Cooldown: 2
+  Skills:
+  - sound{s=entity.guardian.hurt_land}
+  - setvariable{var=caster.stun;value=1}
+  - delay 40
+  - setvariable{var=caster.stun;value=0}
+
+aquatic-curse:
+  Conditions:
+  - playerwithin 24
+  - variableEquals{var=caster.stun;value=0}
+  - incombat{}
+  Cooldown: 2
+  Skills:
+  - jump{v=0.4}
+  - delay 10
+  - jump{v=0.4}
+  - delay 10
+  - skill{s=aquatic-curse-leap} @target
+aquatic-curse-leap:
+  Conditions:
+  - playernotwithin 5 castinstead aquatic-curse-leap2
+  - playerwithin 5
+  Skills:
+  - leap{v=250} 
+aquatic-curse-leap2:
+  Skills:
+  - leap{v=400}
+
+aquatic-fieldboss:
+  Conditions:
+  - variableEquals{var=caster.stun;value=0}
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - jump{v=0.4}
+  - delay 10
+  - jump{v=0.4}
+  - delay 10
+  - skill{s=aquatic-fieldboss-leap} @target
+aquatic-fieldboss-leap:
+  Conditions:
+  - playernotwithin 5 castinstead aquatic-fieldboss-leap2
+  - playerwithin 5
+  Skills:
+  - leap{v=400} 
+aquatic-fieldboss-leap2:
+  Skills:
+  - leap{v=750}
+
+aquatic-fieldboss2:
+  Conditions:
+  - variableEquals{var=caster.stun;value=0}
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - jump{v=0.4}
+  - delay 10
+  - jump{v=0.4}
+  - delay 10
+  - skill{s=aquatic-fieldboss2-leap} @target
+aquatic-fieldboss2-leap:
+  Conditions:
+  - playernotwithin 5 castinstead aquatic-fieldboss2-leap2
+  - playerwithin 5
+  Skills:
+  - leap{v=250} 
+aquatic-fieldboss2-leap2:
+  Skills:
+  - leap{v=400}
+
+aquatic-fieldboss-jump:
+  Conditions:
+  - incombat{}
+  Cooldown: 24
+  Skills:
+  - sound{s=entity.elder_guardian.flop;v=2}
+  - delay 40
+  - sound{s=entity.elder_guardian.flop;v=2}
+  - delay 40
+  - sound{s=entity.elder_guardian.flop;v=2}
+  - delay 40
+  - sound{s=entity.elder_guardian.flop;v=2}
+  - delay 40
+  - sound{s=entity.elder_guardian.flop;v=2}
+  - delay 40
+  - sound{s=entity.elder_guardian.flop;v=2}
+  - delay 40
+  - jump{v=2}
+  - delay 45
+  - sound{s=entity.elder_guardian.flop;v=2;p=0.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=8}
+  - potion{t=SLOW;d=200;l=10} @PIR{r=8}
+  - throw{vy=15} @PIR{r=8}
+
+aquatic-fieldboss-curse1:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - SudoSkill{s=aquatic-fieldboss-accursed;setcasterastrigger=true} @NearestPlayer{r=32}
+aquatic-fieldboss-curse2:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - SudoSkill{s=aquatic-fieldboss-accursed;setcasterastrigger=true} @NearestPlayer{r=32}
+aquatic-fieldboss-curse3:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - SudoSkill{s=aquatic-fieldboss-accursed;setcasterastrigger=true} @NearestPlayer{r=64}
+aquatic-fieldboss-accursed:
+  Skills:
+  - sound{s=entity.elder_guardian.curse} @self
+  - potion{t=SLOW;d=160;l=1} @self
+  - potion{t=GLOWING;c=WHITE;d=160;l=1;hasParticles=false} @self
+  - skill{s=aquatic-fieldboss-curse-visual} @self
+  - delay 40
+  - skill{s=aquatic-fieldboss-curse-visual} @self
+  - delay 40
+  - skill{s=aquatic-fieldboss-curse-visual} @self
+  - delay 40
+  - skill{s=aquatic-fieldboss-curse-visual} @self
+  - delay 40
+  - effect:particlesphere{p=soul_fire_flame;a=64;r=8;yOffset=.5} @self
+  - potion{t=SLOW;d=80;l=10} @self
+  - potion{t=SLOW;d=200;l=10} @PIR{r=8}
+  - potion{t=BLINDNESS;d=80;l=10} @self
+  - potion{t=BLINDNESS;d=200;l=10} @PIR{r=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=8}
+  - summon{t=aquatic-curse;a=5;r=3} @self
+  - summon{t=aquatic-blight;a=1;r=3} @PIR{r=8}
+  
+aquatic-fieldboss-curse-visual:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;a=32;r=8;yOffset=.5} @self
+  - delay 10
+  - effect:particlesphere{p=soul_fire_flame;a=32;r=8;yOffset=.5} @self
+  - delay 10
+  - effect:particlesphere{p=soul_fire_flame;a=32;r=8;yOffset=.5} @self
+  - delay 10
+  - effect:particlesphere{p=soul_fire_flame;a=32;r=8;yOffset=.5} @self
+
+aquatic-fieldboss-sound:
+  Cooldown: 12
+  Skills:
+  - sound{s=entity.elder_guardian.hurt}
+  - setvariable{var=caster.stun;value=1}
+  - delay 160
+  - setvariable{var=caster.stun;value=0}
+
+aquatic-boss-summon:
+  Conditions:
+  - incombat{}
+  - playerwithin 48
+  Cooldown: 8
+  Skills:
+  - summon{t=aquatic-boss-marker;r=12;os=true} 
+aquatic-boss-goo1:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 80
+  - effect:particlesphere{p=sneeze;a=128;r=12;yOffset=.5} 
+  - summon{t=aquatic-boss-marker;r=8;os=true;a=4} 
+  - potion{t=SLOW;d=80;l=10} @PIR{r=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=8}
+aquatic-boss-goo2:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 5
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5} 
+  - delay 80
+  - effect:particlesphere{p=sneeze;a=128;r=12;yOffset=.5} 
+  - summon{t=aquatic-boss-marker;r=12;os=true;a=6} 
+  - potion{t=SLOW;d=80;l=10} @PIR{r=12}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=12}
+aquatic-boss-marker:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - sound{s=block.lava.pop}
+  - remove
+aquatic-boss-marker-visual:
+  Skills:
+  - effect:particlesphere{p=sneeze;a=4;r=2;yOffset=.5} 
+  - skill{s=aquatic-boss-marker-audio}
+  - delay 5
+  - skill{s=aquatic-boss-marker-visual}
+aquatic-boss-marker-audio:
+  Cooldown: 1
+  Skills:
+  - sound{s=item.bucket.fill;v=2}
+  
+aquatic-boss-marker2:
+  Skills:
+  - skill{s=aquatic-boss-marker-visual}
+  - delay 120
+  - summon{t=aquatic-boss-spawn}
+  - remove
+aquatic-boss-spawn:
+  Skills:
+  - delay 400
+  - potion{t=SLOW;d=80;l=3;hasParticles=false} 
+  - cast{skillName="Servant Sacrifice";duration=80;onCast=aquatic-boss-spawncast;showCastBar=true} @self 
+aquatic-boss-spawncast:
+  Conditions:
+  - playerwithin 64
+  Skills:
+  - sound{s=item.bucket.empty}
+  - effect:particlesphere{p=sneeze;a=4;r=2;yOffset=.5} 
+  - summon{t=aquatic-boss-spawn-marker} @target
+  - summon{t=aquatic-boss-spawn-marker;r=5;a=2} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @target
+  - effect:particlesphere{p=sneeze;a=4;r=2;yOffset=.5} @target
+  - potion{t=SLOW;d=80;l=3} @target
+  - remove
+
+aquatic-boss-spawn-marker:
+  Skills:
+  - effect:blockmask{m=warped_nylium;r=4;d=160}
+  - delay 20
+  - skill{s=aquatic-boss-spawn-marker-dmg}
+  - delay 140
+  - remove
+aquatic-boss-spawn-marker-visual:
+  Skills:
+aquatic-boss-spawn-marker-dmg:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - delay 20
+  - skill{s=aquatic-boss-spawn-marker-dmg}
+  
+aquatic-squid-spawn:
+  Skills:
+  - setvariable{var=caster.leap;value=0}
+  - setvariable{var=caster.aoe;value=0} 
+  - effect:particlesphere{p=squid_ink;a=1;r=1;yOffset=.5} 
+  - sound{s=item.bucket.empty}
+  - jump{v=.75} 
+
+aquatic-squid:
+  Skills:
+  - skill{s=aquatic-squid-leap} 
+  - skill{s=aquatic-squid-aoe} 
+  - skill{s=aquatic-squid-within} 
+  - skill{s=aquatic-squid-notwithin}
+
+aquatic-squid-within:
+  Conditions:
+  - playerwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.aoe;amount=1}	
+aquatic-squid-notwithin:
+  Conditions:
+  - playernotwithin 5
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.leap;amount=1}	 
+aquatic-squid-leap:
+  Conditions:
+  - varinrange{var=caster.leap;value=>4}
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - cast{skillName="Thrust";duration=20;onCast=aquatic-squid-leapcast;showCastBar=true} @self 
+aquatic-squid-leapcast:
+  Skills:
+  - setvariable{var=caster.leap;value=0}
+  - sound{s=item.bucket.empty}
+  - effect:particlesphere{p=squid_ink;a=1;r=1;yOffset=.5} 
+  - leap{v=250} @target
+
+aquatic-squid-aoe:
+  Conditions:
+  - varinrange{var=caster.aoe;value=>6}
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - cast{skillName="Ooze";duration=40;onCast=aquatic-squid-aoecast;showCastBar=true} @self 
+aquatic-squid-aoecast:
+  Skills:
+  - setvariable{var=caster.aoe;value=0}
+  - sound{s=item.bucket.fill}
+  - effect:particlesphere{p=squid_ink;a=8;r=5;yOffset=.5} 
+  - potion{t=BLINDNESS;d=80;l=1} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=5}
+
+aquatic-squid-ink:
+  Skills:
+  - sound{s=item.bottle.empty}
+  - command{c="ri drop sandswept-basin-squid-ink <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+  - remove
+aquatic-monster:
+  Conditions:
+  - playerwithin 24
+  - variableEquals{var=caster.stun;value=0}
+  - incombat{}
+  Cooldown: 2
+  Skills:
+  - jump{v=0.4}
+  - delay 10
+  - jump{v=0.4}
+  - delay 10
+  - skill{s=aquatic-monster-leap} @target
+aquatic-monster-leap:
+  Conditions:
+  - playernotwithin 5 castinstead aquatic-monster-leap2
+  - playerwithin 5
+  Skills:
+  - leap{v=250} 
+aquatic-monster-leap2:
+  Skills:
+  - leap{v=400}
+
+aquatic-monster-sound:
+  Cooldown: 2
+  Skills:
+  - sound{s=entity.guardian.hurt_land}
+  - setvariable{var=caster.stun;value=1}
+  - delay 40
+  - setvariable{var=caster.stun;value=0}
+aquatic-monster-spine:
+  Skills:
+  - sound{s=block.stone.break}
+  - command{c="ri drop sandswept-basin-monster-spike <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+  - command{c="questtrigger player <target.name> DroughtwyrmSpike"} @trigger 
+  - remove
+
+aquatic-monster-projectile-chance:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - skill{s=aquatic-monster-projectile} .5
+aquatic-monster-projectile:
+  Skills:
+  - sound{s=entity.arrow.shoot;p=0.5}
+  - projectile{ot=aquatic-monster-projectile-tick;oh=aquatic-monster-projectilee-hit;oe=aquatic-monster-projectile-end;i=1;v=30;mr=30;g=1} @target
+aquatic-monster-projectile-tick:
+  Skills:
+  - effect:particles{p=block_crack;m=ice;a=1} @Origin
+aquatic-monster-projectile-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}
+aquatic-monster-projectile-end:
+  Skills:
+  - summon{t=aquatic-monster-spine;os=true;r=2} 
+
+aquatic-undead:
+  Cooldown: 12
+  Conditions:
+  - playerwithin 5
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=40;l=2;hasParticles=false}
+  - sound{s=entity.player.hurt_drown}
+  - effect:particlesphere{p=drip_water;a=12;r=5;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=5}
+
+
+aquatic-azurite-drop:
+  Skills:
+  - skill{s=aquatic-azurite-chance1}
+
+aquatic-azurite-chance1:
+  Skills:
+  - randomskill{skills=aquatic-azurite-poor,aquatic-azurite-poor,aquatic-azurite-chance2}
+aquatic-azurite-chance2:
+  Skills:
+  - randomskill{skills=aquatic-azurite-moderate,aquatic-azurite-moderate,aquatic-azurite-moderate,aquatic-azurite-chance3}
+aquatic-azurite-chance3:
+  Skills:
+  - randomskill{skills=aquatic-azurite-excellent,aquatic-azurite-excellent,aquatic-azurite-excellent,aquatic-azurite-excellent,aquatic-azurite-pure}
+
+aquatic-azurite-poor:
+  Skills:
+  - command{c="ri drop azurite-poor <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+aquatic-azurite-moderate:
+  Skills:
+  - command{c="ri drop azurite-moderate <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+aquatic-azurite-excellent:
+  Skills:
+  - command{c="ri drop azurite-excellent <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+aquatic-azurite-pure:
+  Skills:
+  - command{c="ri drop azurite-pure <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger

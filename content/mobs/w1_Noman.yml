@@ -1,0 +1,344 @@
+Noman:
+  Type: ZOMBIE
+  Display: '&4[☠] &c&lNoman Type A'
+  Health: 1000000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&4&l[World Boss] &c&lNoman Type A'
+    Health: 1000000
+    Range: 128
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 64
+    NoDamageTicks: 0
+    Despawn: true
+  Skills:
+  - skill{s=Noman-knockup} @target ~onTimer:5
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=Noman-drop} @trigger ~onDeath
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=Noman-launcher} @self ~onTimer:20 .25
+  - skill{s=Noman-flamethrower} @self ~onTimer:20 .25
+  - skill{s=Noman-ageofcreation} @self ~onTimer:20 <50%
+  - skill{s=Noman-sentry1} @self ~onTimer:20 <80%
+  - skill{s=Noman-sentry2} @self ~onTimer:20 <60%
+  - skill{s=Noman-sentry3} @self ~onTimer:20 <40%
+  - skill{s=Noman-sentry4} @self ~onTimer:20 <20%
+  - skill{s=Noman-passive} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: IRON_GOLEM
+
+
+Noman-typed:
+  Type: bat
+  Display: '&e[&6☠&e] &c&lNoman Type D'
+  Health: 2500
+  Faction: Boss
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - WITHER_SKELETON_SKULL HEAD
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 64
+    NoDamageTicks: 0
+    Despawn: true
+  Skills:
+  - skill{s=Noman-typed} @self ~onTimer:4
+  - skill{s=Noman-typed-spawn} @self ~onSpawn
+  - skill{s=Noman-typed-assault} @self ~onTimer:240
+  - setvariable{var=caster.visual;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: ZOMBIE setBaby true
+
+
+Noman-typeb:
+  Type: BEE
+  Display: '&e[&6☠&e] &f&lNoman Type B'
+  Health: 25000
+  Faction: Boss
+  Damage: 200
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&f&lNoman Type B'
+    Health: 25000
+    Range: 128
+    Color: WHITE
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 64
+    NoDamageTicks: 0
+    Despawn: true
+  Skills:
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=Noman-typeb} @NearestPlayer{r=256} ~onTimer:240
+  - skill{s=Noman-ai} @self ~onSpawn
+  - skill{s=Noman-typeb-passive} @NearestPlayer{r=256} ~onTimer:40
+  - skill{s=Noman-typeb-return} @self ~onTimer:20
+  - setvariable{var=caster.visual;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: PHANTOM
+
+Noman-typeb-projectile-damage:
+  Type: armor_stand
+  Options:
+    Despawn: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=Noman-typeb-projectile-damage} @self ~onSpawn
+
+
+Noman-overheat:
+  Type: armor_stand
+  Options:
+    Despawn: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=Noman-overheat} @self ~onSpawn
+
+  
+Noman-typec:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lNoman Type C'
+  Health: 10000
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 64
+    NoDamageTicks: 0
+    Despawn: true
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=Noman-ai} @self ~onSpawn
+  - skill{s=Noman-typec-passive} @self ~onTimer:20 .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WITHER_SKELETON
+
+Noman-typec-variant:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &c&lNoman Type C'
+  Health: 10000
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 64
+    NoDamageTicks: 0
+    Despawn: true
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=Noman-typec-passive} @self ~onTimer:20 .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WITHER_SKELETON
+
+
+Noman-flamethrower1:
+  Type: armor_stand
+  Options:
+    Despawn: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=Noman-flamethrower1} @self ~onSpawn
+Noman-flamethrower2:
+  Type: armor_stand
+  Options:
+    Despawn: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=Noman-flamethrower2} @self ~onSpawn
+Noman-flamethrower3:
+  Type: armor_stand
+  Options:
+    Despawn: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=Noman-flamethrower3} @self ~onSpawn
+Noman-flamethrower4:
+  Type: armor_stand
+  Options:
+    Despawn: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=Noman-flamethrower4} @self ~onSpawn
+Noman-flamethrower5:
+  Type: armor_stand
+  Options:
+    Despawn: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=Noman-flamethrower5} @self ~onSpawn
+
+Noman-missile-noaudio:
+  Type: ZOMBIE
+  Display: ''
+  Health: 10000
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Noman-missile-noaudio} @self ~onSpawn
+  - skill{s=Noman-missileboom} @self ~onDeath
+  Disguise: MAGMA_CUBE setSize 3
+
+Noman-missile:
+  Type: ZOMBIE
+  Display: ''
+  Health: 10000
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Noman-missile} @self ~onSpawn
+  - skill{s=Noman-missileboom} @self ~onDeath
+  Disguise: MAGMA_CUBE setSize 3
+
+Noman-missiletype2:
+  Type: ZOMBIE
+  Display: ''
+  Health: 10000
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Noman-missiletype2} @self ~onSpawn
+  - skill{s=Noman-missileboom2} @self ~onDeath
+  Disguise: MAGMA_CUBE setSize 5

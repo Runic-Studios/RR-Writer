@@ -1,0 +1,7 @@
+cooldown: 10
+damage-cap: 500
+distance: 3
+mana: 15
+percent: 0.15
+physical-damage: 5
+physical-damage-per-level: 1.5

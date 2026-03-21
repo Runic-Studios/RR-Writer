@@ -1,0 +1,8 @@
+cooldown: 18
+duration: 4
+mana: 35
+percent: 2.0
+period: 1.0
+radius: 5
+shield: 20
+shield-per-level: 1.5

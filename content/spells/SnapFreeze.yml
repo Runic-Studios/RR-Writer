@@ -1,0 +1,7 @@
+cooldown: 10
+distance: 6
+duration: 0.5
+magic-damage: 15
+magic-damage-per-level: 2
+mana: 25
+stun-duration: 1.5

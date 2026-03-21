@@ -1,0 +1,336 @@
+BloodHarvesterGoo:
+  Skills:
+  - potion{type=SLOW;duration=10;level=3} @PIR{r=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=1}
+
+BloodHarvester-jump:
+  Conditions:
+  - incombat{}
+  Cooldown: 20
+  Skills:
+  - delay 80
+  - summon{t=BloodHarvesterNest;r=3;os=true}
+  - summon{t=BloodSpiderling-elite;a=2;r=5;os=true}
+  - summon{t=BloodHarvesterGoo;a=5;r=5;os=true} 
+  - jump{v=2}
+  - delay 10
+  - setAI{ai=false}
+  - delay 40
+  - setAI{ai=true} 
+  - leap{v=1000} @target{r=128}
+  - delay 20
+  - sound{s=entity.enderman.scream;v=1} 
+  - effect:blockmask{m=red_nether_bricks;r=5;d=10}
+  - potion{type=SLOW;duration=80;level=10} @PIR{r=5}
+  - potion{type=BLINDNESS;duration=80;level=10} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - throw{vy=12} @PIR{r=4}
+
+  
+BloodHarvesterNest:
+  Conditions:
+  - health{h=>666} castinstead BloodHarvesterNest3
+  - health{h=>333} castinstead BloodHarvesterNest2
+  Skills:
+  - summon{t=BloodSpiderling;a=5;r=5;os=true} 
+  - sound{s=block.wool.break}
+  - remove
+BloodHarvesterNest2:
+  Skills:
+  - summon{t=BloodSpiderling;a=7;r=7;os=true} 
+  - sound{s=block.wool.break}
+  - remove
+BloodHarvesterNest3:
+  Skills:
+  - summon{t=BloodSpiderling;a=9;r=9;os=true} 
+  - sound{s=block.wool.break}
+  - remove
+
+BloodSpiderling-lunge:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - cast{skillName="Lunge";duration=20;onCast=BloodHarvester-lungecast;showCastBar=false} @self
+
+BloodHarvester-lunge:
+  Conditions:
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - cast{skillName="Lunge";duration=20;onCast=BloodHarvester-lungecast;showCastBar=false} @self
+BloodHarvester-lungecast:
+  Skills:
+  - jump{velocity=0.4}
+  - delay 5
+  - effect:particles{particle=reddust;color=#FFFFFF;amount=5;hS=1;vS=1}
+  - summon{type=BloodHarvesterGoo;amount=3;radius=3;os=true} 
+  - leap{velocity=250} @target
+  - setvariable{var=caster.lunge;value=0}
+BloodHarvesterConsume:
+  Conditions:
+  - playerwithin 1
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - sound{s=entity.cat.eat}
+  - heal{amount=40}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=1}
+  - effect:particles{particle=reddust;color=#E30303;amount=5;hS=1;vS=1}
+
+UndeadBarbarian-spawn:
+  Skills:
+  - setvariable{var=caster.enraged;value=0}
+  - setvariable{var=caster.enrage;value=0}
+  - setvariable{var=caster.quake;value=0}
+UndeadBarbarian-skill:
+  Skills:
+  - skill{s=BarbarianEnragechecknotwithin}
+  - skill{s=BarbarianEnragecheckwithin}
+  - skill{s=BarbarianQuakechecknotwithin}
+  - skill{s=BarbarianQuakecheckwithin}
+  - skill{s=BarbarianQuake} @target 
+  - skill{s=BarbarianEnrage}
+  - skill{s=EnragedDash} @target 
+
+  
+UndeadBarbarianEliterng:
+  Conditions:
+  - variableEquals{var=caster.rng;value=1}
+  Skills:
+  - setvariable{var=target.rng;value=0} @MIR{t=UndeadBarbarian;r=256} ~onDeath
+
+BarbarianEnrage:
+  Conditions:
+  - varinrange{var=caster.enraged;value=>11}
+  Cooldown: 9999
+  Skills:
+  - potion{type=SLOW;duration=50;level=10;hasParticles=false}
+  - cast{skillName="Enrage";duration=40;onCast=BarbarianEnrageCast;showCastBar=true} @self
+BarbarianEnrageCast:
+  Skills:  
+  - setvariable{var=caster.enrage;value=1}
+#  - disguise{type=player;player=UndeadBarbarian;skin=hibiki9999} #Change the skin=Skrafty to different skin when available
+  - equip{i=IRON_AXE:OFFHAND}
+  - potion{type=SPEED;duration=9999;level=1;hasParticles=false}
+  - skill{s=BarbarianEnragefire}
+BarbarianEnragefire:
+  Skills:
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=.5}
+  - delay 4
+  - skill{s=BarbarianEnragefire}
+
+BarbarianEnragechecknotwithin:
+  Conditions:
+  - playernotwithin 6
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.enraged;amount=1}
+
+BarbarianEnragecheckwithin:
+  Conditions:
+  - playerwithin 4
+  - incombat{}
+  Skills:
+  - setvariable{var=caster.enraged;value=0}
+
+EnragedDash:
+  Conditions:
+  - variableEquals{var=caster.enrage;value=1}
+  - incombat{}
+  - playernotwithin 4
+  - playerwithin 20
+  Cooldown: 12
+  Skills:
+  - summon{mob=UndeadBarbarianDashMarker;r=1} @target
+  - jump{v=.2} @self
+  - delay 2
+  - leap{v=200} @MobsInRadius{r=32;t=UndeadBarbarianDashMarker}
+  - delay 2
+  - remove @MobsInRadius{r=32;t=UndeadBarbarianDashMarker}
+  - delay 18
+  - summon{mob=UndeadBarbarianDashMarker;r=1} @target
+  - jump{v=.2} @self
+  - delay 2
+  - leap{v=200} @MobsInRadius{r=32;t=UndeadBarbarianDashMarker}
+  - delay 2
+  - remove @MobsInRadius{r=32;t=UndeadBarbarianDashMarker}
+
+BarbarianQuake:
+  Conditions:
+  - varinrange{var=caster.quake;value=>5}
+  - variableEquals{var=caster.enrage;value=0}
+  Cooldown: 10
+  Skills:
+  - potion{type=SLOW;duration=50;level=3;hasParticles=false} @self
+  - cast{skillName="Quake";duration=25;onCast=BarbarianQuake-Cast;showCastBar=true} @target
+  - setvariable{var=caster.quake;value=0}
+
+BarbarianQuakecheckwithin:
+  Conditions:
+  - playerwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.quake;amount=1}
+BarbarianQuakechecknotwithin:
+  Conditions:
+  - playernotwithin 6
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.quake;value=0}
+  
+BarbarianQuake-Cast:
+  Cooldown: 10
+  Skills:
+  - effect:particles{particle=block_crack;m=dirt;amount=40;hS=1;vS=1} 
+  - sound{s=block.grass.break} @self
+  - throw{vy=10} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+  - effect:sound{s=block.bamboo.break} @self
+  - jump{v=.2} @self
+  - delay 2
+  - leap{v=200} @target
+  
+BarbarianQuakeAOE:
+  Cooldown: 10
+  Skills:
+  - delay 20
+  - effect:particles{particle=block_crack;m=dirt;amount=100;hS=1;vS=1} 
+  - throw{vy=10} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=4}
+  - effect:sound{s=block.bamboo.break} @self
+  - remove @self
+  
+startSmite:
+ Conditions:
+ - incombat{} true
+ Skills:
+ - sendtitle{title="&4&kooo&r&l&cSmite&r&4&kooo";subtitle="&e&l3";d=20} @PlayersInRadius{r=15}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+ - delay 20
+ - sendtitle{title="&4&kooo&r&l&cSmite&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=15}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+ - delay 20
+ - sendtitle{title="&4&kooo&r&l&cSmite&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=15}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+ - delay 20
+ - skill{s=Smite}
+
+Smite:
+ Conditions:
+ - incombat{} true
+ Skills:
+ - effect:sound{s=entity.lightning_bolt.impact;volume=0.2;pitch=0.5} @self
+ - effect:lightning{localized=true;localizedradius=75} @PlayersInRadius{r=15}
+ - command{c="runicdamage <caster.uuid> <target.name> 60"} @PlayersInRadius{r=5}
+ - throw{v=3;vy=3} @PIR{r=5}
+
+BlightCast:
+  Conditions:
+  - incombat{} true
+  Skills:
+  - potion{type=SLOW;duration=40;level=1;hasParticles=false} @self
+  - cast{skillName="Blight";duration=40;onCast=Blight;onStart=Blight-Start;onInterrupted=Blight-Start} @self
+
+Blight:
+  Skills:
+  - projectile{ot=Blight-Tick;oh=Blight-Hit;v=6;i=1;hr=1;vr=1;syo=2.5} @target
+
+Blight-Tick:
+  Skills:
+  - effect:particles{p=reddust;a=1;c=#00FF00} @origin
+
+Blight-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}
+  - pull{v=10}
+  - delay 10
+  #- stun{d=30}
+  - skill{s=RunicStun2s}
+
+Blight-Start:
+  Skills:
+  - effect:particlesphere{p=dragon_breath;r=2;a=50}
+
+ToxicWastelandTrigger:
+  Conditions:
+  - incombat{} true
+  Cooldown: 24
+  Skills:
+  - sendtitle{title="&4&kooo&r&l&2Toxic Wasteland&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=20}
+  - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+  - delay 20
+  - skill{s=ToxicWasteland} @self
+
+
+ToxicWastelandTrigger2:
+  Conditions:
+  - incombat{} true
+  Cooldown: 24
+  Skills:
+  - sendtitle{title="&4&kooo&r&l&2Toxic Wasteland&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=20}
+  - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+  - message{m="&2Move or perish!"} @PIR{r=20}
+  - delay 20
+  - summon{t=TogrundTheBlightedMarker} @target
+  - summon{t=TogrundTheBlightedMarker;a=2;r=8;os=true} @target
+  - summon{t=TogrundTheBlightedMarker;a=2;r=12;os=true} @target
+
+ToxicWasteland:
+  Conditions:
+  - incombat{} true
+  Skills:
+  - message{m="&2Come close or perish!"} @PIR{r=20}
+  - skill{s=ToxicWastelandTick}
+  - delay 20
+  - skill{s=ToxicWastelandTick}
+  - delay 20
+  - skill{s=ToxicWastelandTick}
+  - delay 20
+  - skill{s=ToxicWastelandTick}
+  - delay 20
+  - skill{s=ToxicWastelandTick}
+  - delay 20
+  - skill{s=ToxicWastelandTick}
+  - delay 20
+  - skill{s=ToxicWastelandTick}
+  - delay 20
+  - skill{s=ToxicWastelandTick}
+  - delay 20
+  - skill{s=ToxicWastelandTick}
+  - delay 20
+  - skill{s=ToxicWastelandTick}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 30"} @PlayersInRing{min=5;max=20}
+
+ToxicWastelandTick:
+  Skills:
+  #- effect:particlesphere{p=dragon_breath;r=5;a=100}
+  - effect:particlering{p=dragon_breath;r=20;a=200;hs=1;vs=1}
+  - effect:particlering{p=dragon_breath;r=10;a=100;hs=1;vs=1}
+  - effect:sound{s=ambient.cave} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PlayersInRing{min=5;max=20}
+ToxicWastelandTick2:
+  Skills:
+  - effect:particlering{p=dragon_breath;r=1;a=20;hs=1;vs=1}
+  - delay 20
+  - effect:particlering{p=dragon_breath;r=1;a=40;hs=1;vs=1}
+  - sound{s=ambient.cave}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=4}
+  - skill{s=ToxicWastelandTick2}
+TogrundTimer:
+  Skills:
+  - skill{s=BlightCast} #Stuns on +2s
+  - skill{s=startSmite} #Fires on +3s
+  - delay 80
+  - randomskill{s=ToxicWastelandTrigger,ToxicWastelandTrigger2} #Fires on +5s
+
+TogrundStart:
+  Skills:
+  - delay 100
+  - skill{s=BlightCast} #Stuns on +2s
+  - skill{s=startSmite} #Fires on +3s

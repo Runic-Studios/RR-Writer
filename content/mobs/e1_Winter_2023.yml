@@ -1,0 +1,474 @@
+winter-2023-world-boss:
+  Type: WITHER_SKELETON
+  Display: '&b[☠] &9&lFallen Frost Lord'
+  Health: 1000000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - DIAMOND_SWORD HAND
+  - DIAMOND_SWORD OFFHAND
+  - PUMPKIN HEAD
+  BossBar:
+    Enabled: true
+    Title: '&b&l[World Boss] &9&lFallen Frost Lord'
+    Health: 1000000
+    Range: 128
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+    Despawn: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 20000 <mob.l.x> <mob.l.y> <mob.l.z> 20"} @trigger ~onDeath 1.0
+  - remove @MIR{t=winter-2023-world-boss-rogue-add,winter-2023-world-boss-twisted-add;r=256} ~onDeath
+  - skill{s=winter-2023-world-boss-leash} @self ~onSignal:leash
+  #- signal{s=remove} @MIR{t=winter-2023-world-boss;r=128} ~onSpawn
+  #- remove @MIR{t=winter-2023-world-boss;r=128} ~onSignal:remove
+  - skill{s=winter-2023-world-boss-player-burn} @PIR{r=100} ~onTimer:20
+  - skill{s=winter-2023-world-boss-twisted-add-summon} @self ~onTimer:20
+  - skill{s=winter-2023-threat} @target ~onTimer:20
+  - skill{s=winter-2023-world-boss-mask} @self ~onTimer:20
+  - skill{s=winter-2023-world-boss-mask-effect} @self ~onTimer:20
+  - setvariable{var=caster.mask;value=0} @self ~onSpawn
+  - setvariable{var=caster.class;value=0} @self ~onSpawn
+  - equip{i=NETHERITE_CHESTPLATE:CHEST;delay=5} @self ~onSpawn  
+  - equip{i=NETHERITE_BOOTS:FEET;delay=5} @self ~onSpawn  
+  # RESET PARTY
+  - skill{s=BossFirework} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+
+winter-2023-world-boss-altar-leash:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=winter-2023-world-boss-altar-leash} @MIR{t=winter-2023-world-boss;r=256} ~onTimer:20
+
+winter-2023-world-boss-rogue-add:
+  Type: WITHER_SKELETON
+  Display: '&b[☠] &9&lFallen Frost Lord'
+  Health: 10000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - DIAMOND_SWORD HAND
+  - DIAMOND_SWORD OFFHAND
+  - CARVED_PUMPKIN HEAD
+  - LEATHER_CHESTPLATE CHEST
+  - LEATHER_BOOTS FEET
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+    Despawn: true
+  Skills:
+  - skill{s=winter-2023-threat} @target ~onTimer:20
+  - sound{s=entity.wither_skeleton.ambient} @self ~onSpawn
+  - skill{s=winter-2023-world-boss-rogue-add} @self ~onTimer:20 .1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+winter-2023-world-boss-twisted-add-marker:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=winter-2023-world-boss-twisted-add-marker} @self ~onSpawn
+
+winter-2023-world-boss-twisted-add:
+  Type: ZOMBIE
+  Display: '&9[&b✸&9] &9Snowman'
+  Health: 10000
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventSnowFormation: true
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+    Derp: true
+  Skills:
+  - skill{s=winter-2023-world-boss-twisted-add-burn} @self ~onTimer:20
+  - skill{s=winter-2023-threat} @target ~onTimer:20
+  - skill{s=winter-2023-world-boss-twisted-add-heal} @self ~onSignal:heal .4
+  - skill{s=winter-2023-world-boss-twisted-add-convert} @self ~onSignal:convert .25
+  - sound{s=block.snow.break;p=0.5;v=2} @self ~onSpawn 
+  - skill{s=winter-2023-world-boss-twisted-add-hurt} @self ~onDamaged
+  - skill{s=winter-2023-world-boss-twisted-add} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SNOWMAN
+
+
+
+
+winter-2023-elite-20:
+  Type: ZOMBIE
+  Display: '&9[&b✸&9] &9Snowman'
+  Health: 1000
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&9&l[&b&lWinter&9&l] &9&lSnowman'
+    Health: 1000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    PreventSnowFormation: true
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Derp: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 1000 <mob.l.x> <mob.l.y> <mob.l.z> 20"} @trigger ~onDeath 1.0
+  - skill{s=winter-2023-elite-20-proj-fire} @self ~onTimer:20
+  - skill{s=winter-2023-elite-20-aoe} @self ~onTimer:20
+  - skill{s=winter-2023-elite-20-add} @self ~onTimer:20  
+  - skill{s=winter-2023-elite-near} @self ~onTimer:20
+  - skill{s=winter-2023-threat} @target ~onTimer:20
+  - setvariable{var=caster.rarity;value=0} @self ~onSpawn
+  - setvariable{var=caster.rate;value=0} @self ~onSpawn
+  - skill{s=winter-2023-elite-select} @self ~onSpawn .1
+  - skill{s=winter-2023-elite} @self ~onSpawn
+  - skill{s=winter-2023-elite-drop-20} @trigger ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SNOWMAN
+
+winter-2023-elite-40:
+  Type: ZOMBIE
+  Display: '&9[&b✸&9] &9Snowman'
+  Health: 4000
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&9&l[&b&lWinter&9&l] &9&lSnowman'
+    Health: 4000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    PreventSnowFormation: true
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Derp: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 4000 <mob.l.x> <mob.l.y> <mob.l.z> 40"} @trigger ~onDeath 1.0
+  - skill{s=winter-2023-elite-40-proj-fire} @self ~onTimer:20
+  - skill{s=winter-2023-elite-40-aoe} @self ~onTimer:20
+  - skill{s=winter-2023-elite-40-add} @self ~onTimer:20  
+  - skill{s=winter-2023-elite-near} @self ~onTimer:20
+  - skill{s=winter-2023-threat} @target ~onTimer:20
+  - setvariable{var=caster.rarity;value=0} @self ~onSpawn
+  - setvariable{var=caster.rate;value=0} @self ~onSpawn
+  - skill{s=winter-2023-elite-select} @self ~onSpawn .1
+  - skill{s=winter-2023-elite} @self ~onSpawn
+  - skill{s=winter-2023-elite-drop-40} @trigger ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SNOWMAN
+
+winter-2023-elite-60:
+  Type: ZOMBIE
+  Display: '&9[&b✸&9] &9Snowman'
+  Health: 10000
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&9&l[&b&lWinter&9&l] &9&lSnowman'
+    Health: 10000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    PreventSnowFormation: true
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Derp: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 10000 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - skill{s=winter-2023-elite-60-proj-fire} @self ~onTimer:20
+  - skill{s=winter-2023-elite-60-aoe} @self ~onTimer:20
+  - skill{s=winter-2023-elite-60-add} @self ~onTimer:20  
+  - skill{s=winter-2023-elite-near} @self ~onTimer:20
+  - skill{s=winter-2023-threat} @target ~onTimer:20
+  - setvariable{var=caster.rarity;value=0} @self ~onSpawn
+  - setvariable{var=caster.rate;value=0} @self ~onSpawn
+  - skill{s=winter-2023-elite-select} @self ~onSpawn .1
+  - skill{s=winter-2023-elite} @self ~onSpawn
+  - skill{s=winter-2023-elite-drop-60} @trigger ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SNOWMAN
+
+
+winter-2023-elite-20-add:
+  Type: ZOMBIE
+  Display: '&9[&b✸&9] &9Winter Wolf'
+  Health: 25
+  Damage: 8
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=winter-2023-elite-add} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WOLF
+
+winter-2023-elite-40-add:
+  Type: ZOMBIE
+  Display: '&9[&b✸&9] &9Winter Wolf'
+  Health: 100
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=winter-2023-elite-add} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WOLF
+
+winter-2023-elite-60-add:
+  Type: ZOMBIE
+  Display: '&9[&b✸&9] &9Winter Wolf'
+  Health: 250
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=winter-2023-elite-add} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WOLF
+
+
+winter-2023-elf:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &cElf'
+  Health: 560
+  Modules:
+    ThreatTable: true
+  Damage: 32
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 330 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-35} @trigger ~onDeath 
+  - skill{s=winter-2023-elf-spawn} @self ~onSpawn
+  - skill{s=winter-2023-elf} @self ~onDamaged .1
+  - skill{s=winter-2023-elf-drunk} @self ~onTimer:10
+  - skill{s=winter-2023-elf-effect} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: VILLAGER setBaby true
+
+winter-2023-present-visual:
+  Type: armor_stand
+  Display: '&0'
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{t=winter-2023-present;r=12;a=8;os=true} @self ~onSpawn
+  - remove
+
+winter-2023-present:
+  Type: ZOMBIE
+  Display: '&aPresent'
+  Health: 10000
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=winter-2023-present-select} @self ~onSpawn
+  - skill{s=winter-2023-present-drop} @self ~onInteract
+  - skill{s=winter-2023-present-hurt} @self ~onDamaged
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK GREEN_WOOL

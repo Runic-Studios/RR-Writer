@@ -1,0 +1,6 @@
+attribute: Wisdom
+attribute-base-value: 2
+attribute-multiplier: 0.125
+max-stacks: 5
+stack-duration: 12
+stack-threshold: 4

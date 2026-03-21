@@ -1,0 +1,7 @@
+cooldown: 20
+duration: 6
+heal: 5
+heal-per-level: 0.75
+mana: 35
+radius: 6
+warmup: 1.5

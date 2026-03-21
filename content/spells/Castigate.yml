@@ -1,0 +1,6 @@
+duration-to-hit: 2
+magic-damage: 5
+magic-damage-per-level: 0.25
+number-of-ticks: 2
+percent: 0.2
+healing-reduction-duration: 2

@@ -1,0 +1,556 @@
+GoblinThief:
+    Type: BABY_ZOMBIE
+    Display: '&e[&6☠&e] &4Goblin Thief'
+    Health: 8
+    Modules:
+        ThreatTable: true
+    Damage: 3
+    DamageModifiers:
+    - FALL 0
+    Equipment:
+    - STONE_SWORD HAND
+    - LEATHER_HELMET HEAD
+    - LEATHER_CHESTPLATE CHEST
+    - LEATHER_LEGGINGS LEGS
+    - LEATHER_BOOTS FEET
+    Faction: Boss
+    BossBar:
+        Enabled: true
+        Title: '&c&lGoblin Thief'
+        Health: 8
+        Range: 20
+        Color: RED
+        Style: SEGMENTED_10
+    Options:
+        AlwaysShowName: true
+        MovementSpeed: 0.28
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+        Despawn: true
+    Skills:  
+    - command{c="ri drop gold-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+    - command{c="runicgive exp <trigger.name> 5 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+    - skill{s=GoblinSmokeBomb} @self ~onTimer:80 .25
+    AIGoalSelectors:
+    - 0 clear
+    - 1 randomstroll
+    - 2 fleeplayers
+    - 3 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 hurtbytarget
+
+CaveOgre:
+    Type: ZOMBIE
+    Display: '&e[&6☠&e] &cCave Ogre'
+    Health: 200
+    Damage: 12
+    DamageModifiers:
+    - FALL 0
+    Equipment:
+    - OgreClub HAND
+    Modules:
+        ThreatTable: true
+    Faction: Boss
+    BossBar:
+        Enabled: true
+        Title: '&c&lCave Ogre'
+        Health: 100
+        Range: 12
+        Color: RED
+        Style: SEGMENTED_10
+    Options:
+        AlwaysShowName: true
+        MovementSpeed: 0.38
+        PreventOtherDrops: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+        FollowRange: 15
+        NoDamageTicks: 0
+    Skills:
+    - command{c="ri drop silver-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+    - randomee{m="&cCave Ogre<&co> &4Leave cave human!","&cCave Ogre<&co> &4Stupid monkey!","&cCave Ogre<&co> &4Pesky human!";} @PIR{r=8} ~onDamaged .15
+    - command{c="runicgive exp <trigger.name> 50 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+    - randomskill{s=CaveOgreJump,CaveOgreSmack} @self ~onTimer:40 .25 
+    - skill{s=CaveOgreBlindness} @PIR{r=12} ~onTimer:20 .25 
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 attacker
+    Disguise: player Steve setSkin husky12345 setCustomName "&e[&6☠&e] &cCave Ogre" setDynamicName true
+GoblinFootSoldier:
+    Type: BABY_ZOMBIE
+    Display: '&e[&65&e] &cGoblin'
+    Health: 8
+    Modules:
+        ThreatTable: true
+    Damage: 3
+    Equipment:
+    - STONE_SWORD HAND
+    Options:
+        AlwaysShowName: true
+        MovementSpeed: 0.32
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+        Despawn: true
+    Skills:   
+    - setvariable{var=caster.mobsNear;value=0} @self ~onSpawn
+    - skill{s=NearbyGoblinMechanics} @self ~onTimer:10
+    - command{c="runicgive exp <trigger.name> 5 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+#    - message{m="<caster.var.mobsNear>"} @PIR{r=6} ~onTimer:4
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+GoblinArcher:
+    Type: SKELETON
+    Display: '&e[&65&e] &cGoblin'
+    Health: 8
+    Modules:
+        ThreatTable: true
+    Damage: 2
+    Equipment: 
+    - BOW HAND
+    Options:
+        AlwaysShowName: true
+        MovementSpeed: 0.2
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+        Despawn: true
+    Skills: 
+    - command{c="runicgive exp <trigger.name> 5 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+    Disguise: ZOMBIE setBaby true
+  
+GoblinRider:
+    Type: BABY_ZOMBIE
+    Display: '&e[&65&e] &cGoblin'
+    Health: 8
+    Modules:
+        ThreatTable: true
+    Damage: 3
+    Equipment:
+    - STONE_SWORD HAND
+    Options:
+        AlwaysShowName: true
+        MovementSpeed: 0.36
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+        Despawn: true
+    Skills:   
+    - mount{type=GoblinWolf} @self ~onSpawn
+    - command{c="runicgive exp <trigger.name> 5 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+
+GoblinWolf:
+    Type: HORSE
+    Display: '&e[&65&e] &cWolf'
+    Health: 8
+    Modules:
+        ThreatTable: true
+    Damage: 3
+    Equipment:
+    Options:
+        AlwaysShowName: true
+        MovementSpeed: 0.42
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+        Despawn: true
+    Skills:   
+    - skill{s=GoblinRiderLunge} @self ~onTimer:10
+    - command{c="runicgive exp <trigger.name> 5 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: WOLF
+      
+GoblinTrap:
+    Type: armor_stand
+    Display: '&0'
+    Health: 0
+    Damage: 0
+    Skills:
+    - signal{s=remove} @MIR{r=2;t=GoblinTrapSpawn} ~onDespawn
+    - skill{s=GoblinTrapPrimed} @self ~onTimer:5
+    - skill{s=GoblinTrapExplosion} @self ~onTimer:5
+    - skill{s=GoblinTrapParticle} @self ~onTimer:20
+#    - skill{s=GoblinTrapHeal} @self ~onTimer:5
+    - setvariable{var=caster.number;value=0} @self ~onSpawn
+    - setvariable{var=caster.disarm;value=0} @self ~onSpawn
+    - setvariable{var=caster.disarming;value=5} @self ~onSpawn
+    - skill{s=GoblinTrapDisarm} @self ~onInteract
+    - skill{s=GoblinTrapDisarming} @self ~onTimer:20
+    - skill{s=GoblinTrapDisarmed} @self ~onTimer:5
+    Options:
+        Invisible: true
+        HasGravity: false
+        Marker: true
+    Disguise: FALLING_BLOCK STONE_PRESSURE_PLATE
+
+GoblinSlime:
+    Type: ZOMBIE
+    Display: '&e[&65&e] &cSludge'
+    Health: 10
+    Damage: 2
+    DamageModifiers:
+    - FALL 0
+    Options:
+        AlwaysShowName: true
+        MaxCombatDistance: 30
+        FollowRange: 30
+        NoDamageTicks: 0
+        MovementSpeed: .5
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - skill{s=SlimeSkills} @self ~onTimer:100 .4
+    - command{c="runicgive exp <trigger.name> 5 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: SLIME setSize 2
+
+sebath:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cSebath'
+  Health: 400
+  Damage: 8
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Equipment:
+  - BloodAxe HAND
+  - BloodSword OFFHAND
+  BossBar:
+    Enabled: true
+    Title: '&c&lSebath the Blood Orc'
+    Health: 400
+    Range: 64
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: .30
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - remove @MIR{t=redorb,redorb2,bloodritual;r=128} ~onDeath
+  - skill{s=sebathset} @self ~onSpawn
+  - setvariable{var=caster.redorb;value=0} @self ~onSpawn
+  - setvariable{var=caster.bloodritual;value=0} @self ~onSpawn
+  - setvariable{var=caster.start;value=1} @self ~onSpawn
+  - skill{s=sebathstart} @self ~onDamaged
+  - skill{s=sebathmimicsetup} @self ~onTimer:20 <40%
+  - skill{s=redorbsetup} @self ~onTimer:320 >20%
+  - skill{s=redorbsetup2} @self ~onTimer:2 <20%
+  - skill{s=sebathmelee} @self ~onTimer:20 .6 >25%
+  - skill{s=sebathmelee2} @self ~onSignal:melee
+  - skill{s=bloodritualin} @self ~onSignal:bloodritual
+  - skill{s=sebathout} @self ~onTimer:10
+  # RESET PARTY
+  #- command{c="runicteleport <trigger.name> sebathscave"} @trigger ~onDeath 1.0
+  #- command{c="party teleport <trigger.name>"} @trigger ~onDeath 1.0
+  - skill{s=BossFirework} @trigger ~onDeath
+  # DROPS
+  #- command{c="runicboss <caster.uuid> sebathscave"} @self ~onDeath 1.0
+  - command{c="runicgive exp <trigger.name> 400 <trigger.l.x> <trigger.l.y> <trigger.l.z> 5"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Nakomii setCustomName "&e[&6☠&e] &cSebath" setDynamicName true
+
+sebathmimic:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cSebath''s Aorta'
+  Health: 30
+  Damage: 10
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Equipment:
+  - BloodAxe HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: .22
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.start;value=0} @self ~onSpawn
+  - skill{s=sebathmimic} @self ~onSpawn
+  - skill{s=sebathmimicaorta} @self ~onTimer:20
+  - skill{s=sebathmimicremove} @self ~onSignal:remove
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Nakomii setCustomName "&e[&6☠&e] &cSebath" setDynamicName true
+sebathmimic2:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cSebath''s Atrium'
+  Health: 5
+  Damage: 3
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Equipment:
+  - BloodSword HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: .34
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.start;value=0} @self ~onSpawn
+  - skill{s=sebathmimic} @self ~onSpawn
+  - skill{s=sebathmimicatrium} @self ~onTimer:20
+  - skill{s=sebathmimicremove} @self ~onSignal:remove
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=5} ~onSignal{s=damage}
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Nakomii setCustomName "&e[&6☠&e] &cSebath" setDynamicName true
+sebathmimic3:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cSebath''s Septum'
+  Health: 25
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BloodAxe HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: .28
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.start;value=0} @self ~onSpawn
+  - skill{s=sebathmimic} @self ~onSpawn
+  - skill{s=sebathmimicseptum} @self ~onTimer:20
+  - skill{s=sebathmimicremove} @self ~onSignal:remove
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Nakomii setCustomName "&e[&6☠&e] &cSebath" setDynamicName true
+sebathmimic4:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cSebath''s Ventricle'
+  Health: 20
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BloodSword HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: .28
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.start;value=0} @self ~onSpawn
+  - skill{s=sebathmimic} @self ~onSpawn
+  - skill{s=sebathmimicventricle} @self ~onTimer:20
+  - skill{s=sebathmimicremove} @self ~onSignal:remove
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Nakomii setCustomName "&e[&6☠&e] &cSebath" setDynamicName true
+sebathmimic4golem:
+  Type: HUSK
+  Display: '&e[&6☠&e] &cSebath''s Ventricle'
+  Health: 35
+  Damage: 12
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: .24
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=sebathmimic4golem} @self ~onTimer:2
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: IRON_GOLEM
+
+bloodritual:
+  Type: EVOKER
+  Display: '&4&LBlood Relic'
+  Health: 25
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+    NoGravity: true
+    NoAI: true
+  Skills:
+  - skill{s=bloodritualdeath} @self ~onDeath
+  - signal{s=bloodritual} @MIR{t=sebath;r=4} ~onTimer:2
+  - effect:particlesphere{p=reddust;c=#FFFC9B;amount=24;radius=5;yOffset=.5} @self ~onTimer:4
+  - sound{s=block.enchantment_table.use;v=6} @self ~onSpawn
+  - skill{s=bloodritualheal} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK LECTERN
+    
+redorb:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - effect:particlesphere{p=reddust;amount=12;radius=2;yOffset=.5} @self ~onTimer:2
+  - skill{s=redorbaura;delay=20} @self ~onSpawn
+  - skill{s=redorbproj;delay=20} @self ~onSpawn
+redorb2:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - effect:particlesphere{p=reddust;amount=16;radius=2;yOffset=.5} @self ~onTimer:2
+#  - sound{s=block.enchantment_table.use;v=6} @self ~onSpawn
+  - skill{s=redorbproj2} @self ~onTimer:40
+  - skill{s=redorbaura} @self ~onSpawn
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - setvariable{var=caster.cast;value=1} @self ~onSignal:cast
+
+sebathmeleemark:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - effect:particlesphere{p=reddust;amount=4;radius=1;yOffset=.5} @self ~onTimer:2
+  - skill{s=sebathmeleemark;delay=3} @self ~onSpawn
+  - remove{delay=3} @self ~onSpawn

@@ -31,9 +31,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Relocate Content
+        run: ./relocate.sh
+
       - name: Build Artifact (Zip)
         run: |
-          zip -r rr-writer.zip .
+          cd relocated && zip -r ../rr-writer.zip .
 
       - name: Get Short SHA
         id: vars

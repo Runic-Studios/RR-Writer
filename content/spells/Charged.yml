@@ -1,0 +1,6 @@
+attribute: Intelligence
+attribute-base-value: 1
+attribute-multiplier: 0.2
+cooldown: 0
+duration: 8
+mana: 0

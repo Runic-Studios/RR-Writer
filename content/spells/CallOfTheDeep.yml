@@ -1,0 +1,6 @@
+dash-buff: 0.5
+dash-buff-duration: 4.0
+warmup: 0.5
+physical-damage: 10
+physical-damage-per-level: 1
+duration: 1.5

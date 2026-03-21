@@ -1,0 +1,346 @@
+
+
+# Awakened Shrub #
+
+Awakened_Shrub:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &fAwakened Shrub'
+  Health: 1000
+  Damage: 65
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - model{mid=awakened_shrub;n=true;step=1} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 1804 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - effect:sound{s=entity.bee.pollinate;volume=0.8;pitch=1} @self ~onTimer:140 0.35
+  - effect:sound{s=entity.bee.pollinate:samus.skeleton_idle;volume=0.8;pitch=1.2} @self ~onDeath
+  - skill{s=Changetarget} ~onTimer:160 <99%
+  - skill{s=Cancelattack;sync=true} ~onAttack
+  - skill{s=Awakened_Shrub_Attack} ~onTimer:20 0.7
+  - skill{s=Awakened_Shrub_Hit} ~onDamaged
+  
+# Vine Guardian #
+
+Vine_Guardian:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &fVine Guardian'
+  Health: 4500
+  Damage: 250
+  Options:
+    MovementSpeed: 0.2
+    ShowHealth: true
+    PreventRandomEquipment: true
+    AlwaysShowName: true
+    Persistent: false
+    Despawn: true
+    PreventOtherDrops: true
+    FollowRange: 20
+    Silent: true
+    KnockbackResistance: 1
+    PreventSunburn: true
+    NoDamageTicks: 0
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 movetowardstarget
+  - 3 randomstroll
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - model{mid=vine_guardian;n=false;step=1} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 1804 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - effect:sound{s=entity.zoglin.ambient;volume=0.6;pitch=0.4} @self ~onTimer:140 0.35
+  - effect:sound{s=entity.zoglin.ambient;volume=0.6;pitch=0.5} @self ~onDeath
+  - skill{s=Changetarget} ~onTimer:160 <99%
+  - skill{s=Cancelattack;sync=true} ~onAttack
+  - skill{s=Vine_Guardian_Attack} ~onTimer:20 0.7
+  - skill{s=Vine_Guardian_Hit} ~onDamaged
+  
+# Thorn Spitter #
+
+Thorn_Spitter:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &fThorn Spitter'
+  Health: 3000
+  Damage: 10
+  Options:
+    MovementSpeed: 0.01
+    ShowHealth: true
+    PreventRandomEquipment: true
+    AlwaysShowName: true
+    Persistent: false
+    Collidable: true
+    Despawn: true
+    PreventOtherDrops: true
+    FollowRange: 20
+    Silent: true
+    KnockbackResistance: 1
+    PreventSunburn: true
+    NoDamageTicks: 0
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - model{mid=thorn_spitter;n=false;step=1} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 1804 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - effect:sound{s=entity.fox.aggro;volume=0.7;pitch=0.3} @self ~onTimer:140 0.35
+  - effect:sound{s=entity.fox.aggro;volume=0.7;pitch=0.4} @self ~onDeath
+  - skill{s=Changetarget} ~onTimer:160 <99%
+  - skill{s=Cancelattack;sync=true} ~onAttack
+  - skill{s=Thorn_Spitter_Attack} ~onTimer:20 0.7
+  - skill{s=Vine_Guardian_Hit} ~onDamaged
+  
+# Mutant Flower #
+
+Mutant_Flower:
+  Type: ZOMBIE
+  Display: '&4[☠] &4Mutant Flower'
+  Health: 500000
+  Damage: 600
+  BossBar:
+    Enabled: true
+    Title: '&4Mutant Flower'
+    Health: 500000
+    Range: 64
+    Color: RED
+    Style: SEGMENTED_10
+    DarkenSky: false
+  Options:
+    MovementSpeed: 0.01
+    ShowHealth: false
+    PreventRandomEquipment: true
+    AlwaysShowName: true
+    Persistent: false
+    Collidable: true
+    PreventOtherDrops: true
+    FollowRange: 100
+    Silent: true
+    KnockbackResistance: 1
+    PreventSunburn: true
+    NoDamageTicks: 0
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  AIGoalSelectors:
+  - 0 clears
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - setAI{ai=false} @self ~onSpawn
+  - model{mid=mutant_flower;n=false;step=1;lockpitch=true;lockyaw=true} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 1804 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - effect:sound{s=entity.zoglin.ambient;volume=0.6;pitch=0.4} @self ~onTimer:140 0.35
+  - effect:sound{s=entity.zoglin.ambient;volume=0.6;pitch=0.5} @self ~onDeath
+  - skill{s=Changetarget} ~onTimer:160 <99%
+  - skill{s=Cancelattack;sync=true} ~onAttack
+  - skill{s=Mutant_Flower_Hit} @self ~onDamaged
+  - skill{s=Summon_Vines} ~onSpawn
+  
+  - skill{s=Mutant_Flower_Vine_Root} @PIR{r=15} ~onTimer:80
+  - skill{s=Mutant_Flower_Skill} ~onTimer:120 >50%
+  - skill{s=Summon_Vines_RANDOM} ~onTimer:200 0.6 >50%
+  - effect:particles{particle=redstone;color=#03ab65;size=0.6;amount=35;hS=2;vS=2;y=0.7;speed=0;forwardOffset=0;sideOffset=0} @self ~onTimer:20 >50%
+  - skill{s=Mutant_Flower_Venom_Aura} @PIR{r=5} ~onTimer:80 >50%
+  
+  - skill{s=Mutant_Flower_Skill_2} ~onTimer:120 <50%
+  - skill{s=Summon_Vines_RANDOM2} ~onTimer:200 0.6 <50%
+  - effect:particles{particle=redstone;color=#4406cc;size=0.6;amount=35;hS=2;vS=2;y=0.7;speed=0;forwardOffset=0;sideOffset=0} @self ~onTimer:20 <50%
+  - skill{s=Mutant_Flower_Venom_Aura2} @PIR{r=5} ~onTimer:80 <50%
+  
+  - skill{s=Mutant_Flower_Death} ~onDeath
+
+Mutant_Vine:
+  Type: ZOMBIE
+  Display: '&fMutant Vine'
+  Health: 1500
+  Damage: 100
+  Options:
+    MovementSpeed: 0.01
+    ShowHealth: false
+    PreventRandomEquipment: true
+    AlwaysShowName: false
+    Persistent: false
+    Collidable: true
+    Despawn: true
+    PreventOtherDrops: true
+    FollowRange: 20
+    Silent: true
+    KnockbackResistance: 1
+    PreventSunburn: true
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Skills:
+  - model{mid=mutant_flower_vine;n=false;step=1} @self ~onSpawn
+  - state{s=spawn} @self ~onSpawn
+  - look{immediately=true;headOnly=false} @PIR{r=10;sort=NEAREST;limit=1} ~onTimer:1
+  - effect:sound{s=block.chorus_flower.grow;volume=1.1;pitch=0.9} @self ~onSpawn
+  - skill{s=Changetarget} ~onTimer:160 <99%
+  - skill{s=Cancelattack;sync=true} ~onAttack
+  - skill{s=Mutant_Vine_Attack} ~onTimer:20
+  - skill{s=Mutant_Vine_Hit} ~onDamaged
+  - skill{s=Mutant_Vine_REMOVE} ~onDeath
+  - damage{a=1500} @Parent ~onDeath
+  
+Mutant_Vine_REVIVE:
+  Type: ARMOR_STAND
+  Pose:
+      Head: 0,0,0
+  Options:
+    Marker: true
+    Small: false
+    Invisible: true
+    Invincible: true
+  Skills:
+  - summon{type=Mutant_Vine;amount=1;radius=0;yRadius=0;onSurface=true;delay=200} @selflocation ~onSpawn
+  - remove{delay=201} @self ~onSpawn
+  
+Mutant_Vine_SUMMON:
+  Type: ZOMBIE
+  Display: '&fMutant Vine'
+  Health: 1500
+  Damage: 100
+  Options:
+    MovementSpeed: 0.01
+    ShowHealth: false
+    PreventRandomEquipment: true
+    AlwaysShowName: false
+    Persistent: false
+    Collidable: true
+    Despawn: true
+    PreventOtherDrops: true
+    FollowRange: 20
+    Silent: true
+    KnockbackResistance: 1
+    PreventSunburn: true
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Skills:
+  - model{mid=mutant_flower_vine;n=false;step=1} @self ~onSpawn
+  - state{s=spawn} @self ~onSpawn
+  - look{immediately=true;headOnly=false} @PIR{r=10;sort=NEAREST;limit=1} ~onTimer:1
+  - effect:sound{s=block.chorus_flower.grow;volume=1.1;pitch=0.9} @self ~onSpawn
+  - skill{s=Changetarget} ~onTimer:160 <99%
+  - skill{s=Cancelattack;sync=true} ~onAttack
+  - skill{s=Mutant_Vine_Attack} ~onTimer:20
+  - skill{s=Mutant_Vine_Hit} ~onDamaged
+  - damage{a=1500} @Parent ~onDeath
+  
+Explosive_Seed:
+  Type: ARMOR_STAND
+  Pose:
+      Head: 0,0,0
+  Options:
+    Marker: true
+    Small: false
+    Invisible: true
+    Invincible: true
+  Skills:
+  - model{mid=explosive_seed;n=false} @self ~onSpawn
+  
+Solar_Beam_DUMMY:
+  Type: ARMOR_STAND
+  Pose:
+      Head: 0,0,0
+  Options:
+    Marker: true
+    Small: false
+    Invisible: true
+    Invincible: true
+  Skills:
+  - remove{delay=100} @self ~onSpawn
+  
+Stinger:
+  Type: BEE
+  Display: '&fStinger'
+  Health: 200
+  Damage: 20
+  Options:
+    MovementSpeed: 0.01
+    ShowHealth: true
+    PreventRandomEquipment: true
+    AlwaysShowName: true
+    Persistent: false
+    Collidable: true
+    Despawn: true
+    PreventOtherDrops: true
+    FollowRange: 20
+    Silent: true
+    KnockbackResistance: 1
+    PreventSunburn: true
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 movetowardstarget
+  - 3 randomFly
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Skills:
+  - model{mid=bug_swarm;n=false;step=1} @self ~onSpawn
+  - potion{type=LEVITATION;duration=40;level=1;hasParticles=false} @self ~onSpawn
+  - leap{velocity=100} @forward{f=0;y=5} ~onSpawn
+  - effect:sound{s=entity.dolphin.attack;volume=0.7;pitch=0.6} @self ~onTimer:140 0.35
+  - effect:sound{s=entity.dolphin.attack;volume=0.7;pitch=0.7} @self ~onDeath
+  - skill{s=Changetarget} ~onTimer:160 <99%
+  - skill{s=Cancelattack;sync=true} ~onAttack
+  - skill{s=Stinger_Attack} ~onTimer:5 0.3
+  
+Vine_Root:
+  Type: ARMOR_STAND
+  Pose:
+      Head: 0,0,0
+  Options:
+    Marker: true
+    Small: false
+    Invisible: true
+    Collidable: false
+    Invincible: true
+  Skills:
+  - model{mid=vine_root;n=false;step=1} @self ~onSpawn
+  - state{s=skill} @self ~onSpawn
+  - remove{delay=80} @self ~onSpawn

@@ -1,0 +1,900 @@
+murkwood-elite:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cSpirit of Marcus'
+  Health: 3000
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lElite&e&l] &c&lSpirit of Marcus'
+    Health: 3000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=elite-threat} @target ~onTimer:80
+  - signal{s=elite-remove} @MIR{t=murkwood-elite-timer;r=50} ~onSignal:remove
+  - skill{s=murkwood-elite} @self ~onSpawn
+  - skill{s=murkwood-elite-skill} @target ~onTimer:40
+  - command{c="runicgive exp <trigger.name> 6000 <mob.l.x> <mob.l.y> <mob.l.z> 32"} @trigger ~onDeath 1.0
+  - command{c="ri drop-range 30 34 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 30 34 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 30 34 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 30 34 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - skill{s=murkwood-unique-drop} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin ababada setCustomName "&e[&6✸&e] &cSpirit of Marcus" setDynamicName true
+murkwood-elite-spawn:
+  Type: CHICKEN
+  Display: ''
+  Health: 200
+  Damage: 0
+  Options:
+    Marker: true
+  Skills:
+  - skill{s=murkwood-elite-spawn} @self ~onSpawn
+  Disguise: VEX
+
+MurkwoodBook1:
+  Type: BABY_ZOMBIE
+  Display: '&6Lost Passage'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=LostBook} @self ~onTimer:40
+  - command{c="ri drop MurkwoodBook1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="questtrigger player <target.name> MurkwoodKeep1"} @PIR{r=12} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM BOOK
+    
+
+MurkwoodBook2:
+  Type: BABY_ZOMBIE
+  Display: '&6Lost Passage'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=LostBook} @self ~onTimer:40
+  - command{c="ri drop MurkwoodBook2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="questtrigger player <target.name> MurkwoodKeep2"} @PIR{r=12} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM BOOK
+    
+
+MurkwoodBook3:
+  Type: BABY_ZOMBIE
+  Display: '&6Lost Passage'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=LostBook} @self ~onTimer:40
+  - command{c="ri drop MurkwoodBook3 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="questtrigger player <target.name> MurkwoodKeep3"} @PIR{r=12} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM BOOK
+    
+
+Myrtle:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cMyrtle'
+  Health: 7500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lMyrtle, of the Damned'
+    Health: 1000
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.16
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 25
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=remove} @MIR{t=murkwood-boss-spawn2,murkwood-boss-spawn3,murkwood-boss-spawn4;r=64} ~onSpawn
+  - skill{s=Myrtle-drop} @trigger ~onDeath
+  - skill{s=murkwood-boss-aoe} @self ~onTimer:200 <75%
+  - skill{s=murkwood-boss-vines} @self ~onTimer:20
+  - skill{s=murkwood-boss-growth} @self ~onSignal:growth
+  - skill{s=murkwood-boss-hunt} @trigger ~onDamaged
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin seabe4r setCustomName "&e[&6☠&e] &cMyrtle" setDynamicName true
+    
+
+murkwood-boss-spawn2:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cWeak Vines'
+  Health: 250
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 4
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=murkwood-boss-spawn2-growth} @self ~onSignal:sacrifice
+  - remove @self ~onSignal:remove
+  - skill{s=murkwood-boss-spawn-ai} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin likeontv setCustomName "&e[&630&e] &cWeak Vines" setDynamicName true
+murkwood-boss-spawn3:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cVines'
+  Health: 325
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 8
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=murkwood-boss-spawn2-growth} @self ~onSignal:sacrifice
+  - remove @self ~onSignal:remove
+  - skill{s=murkwood-boss-spawn-ai} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin likeontv setCustomName "&e[&630&e] &cVines" setDynamicName true
+murkwood-boss-spawn4:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cElite Vines'
+  Health: 400
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 12
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=murkwood-boss-spawn2-growth} @self ~onSignal:sacrifice
+  - remove @self ~onSignal:remove
+  - skill{s=murkwood-boss-spawn-ai} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin likeontv setCustomName "&e[&630&e] &cElite Vines" setDynamicName true
+    
+murkwood-boss-spawn:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cRupture'
+  Health: 500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=murkwood-boss-spawn-start} @self ~onSpawn
+  - skill{s=murkwood-boss-spawn-visual} @self ~onTimer:5
+  - potion{t=INVISIBILITY;d=9999;l=1;hasParticles=false} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin Charman3000 setCustomName "&e[&630&e] &cRupture" setDynamicName true
+    
+murkwood-boss-spawn-marker:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - remove{delay=20} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK DARK_OAK_LEAVES 
+
+murkwood-boss-hunt-spawn:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cRupture'
+  Health: 500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=murkwood-boss-hunt-spawn-start} @self ~onSpawn
+  - skill{s=murkwood-boss-hunt-spawn-visual} @self ~onTimer:2
+  - potion{t=INVISIBILITY;d=9999;l=1;hasParticles=false} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin Charman3000 setCustomName "&e[&630&e] &cRupture" setDynamicName true
+murkwood-boss-hunt-spawn-marker:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - remove{delay=20} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK OAK_LEAVES
+    
+
+murkwood-trap-explosion:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=murkwood-trap-explosion-primed} @self ~onTimer:5
+  - skill{s=murkwood-trap-explosion-trigger} @self ~onTimer:5
+  - skill{s=murkwood-trap-explosion-particle-active} @self ~onTimer:20
+  - skill{s=murkwood-trap-explosion-particle-not-active} @self ~onTimer:20
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.disarm;value=0} @self ~onSpawn
+  - setvariable{var=caster.disarming;value=3} @self ~onSpawn
+  - setvariable{var=caster.triggered;value=0} @self ~onSpawn
+  - skill{s=murkwood-trap-explosion-disarm} @self ~onInteract
+  - skill{s=murkwood-trap-explosion-disarming} @self ~onTimer:20
+  - skill{s=murkwood-trap-explosion-disarmed} @self ~onTimer:5
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK STONE_PRESSURE_PLATE
+    
+
+murkwood-trap-fire:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=murkwood-trap-fire-primed} @self ~onTimer:5
+  - skill{s=murkwood-trap-fire-trigger} @self ~onTimer:5
+  - skill{s=murkwood-trap-fire-particle-active} @self ~onTimer:20
+  - skill{s=murkwood-trap-fire-particle-not-active} @self ~onTimer:20
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.disarm;value=0} @self ~onSpawn
+  - setvariable{var=caster.disarming;value=3} @self ~onSpawn
+  - setvariable{var=caster.triggered;value=0} @self ~onSpawn
+  - skill{s=murkwood-trap-fire-disarm} @self ~onInteract
+  - skill{s=murkwood-trap-fire-disarming} @self ~onTimer:20
+  - skill{s=murkwood-trap-fire-disarmed} @self ~onTimer:5
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK OAK_PRESSURE_PLATE
+    
+murkwood-trap-ambush:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=murkwood-trap-ambush-primed} @self ~onTimer:5
+  - skill{s=murkwood-trap-ambush-trigger} @self ~onTimer:5
+  - skill{s=murkwood-trap-ambush-particle-active} @self ~onTimer:20
+  - skill{s=murkwood-trap-ambush-particle-not-active} @self ~onTimer:20
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.disarm;value=0} @self ~onSpawn
+  - setvariable{var=caster.disarming;value=3} @self ~onSpawn
+  - setvariable{var=caster.triggered;value=0} @self ~onSpawn
+  - skill{s=murkwood-trap-ambush-disarm} @self ~onInteract
+  - skill{s=murkwood-trap-ambush-disarming} @self ~onTimer:20
+  - skill{s=murkwood-trap-ambush-disarmed} @self ~onTimer:5
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK STONE_PRESSURE_PLATE
+    
+murkwood-spirit1:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood Flame'
+  Health: 500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 315 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodFlame-skill} @self ~onTimer:20
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Charman3000 setCustomName "&e[&630&e] &cMurkwood Flame" setDynamicName true
+murkwood-spirit2:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood Golem'
+  Health: 535
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 321 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodGolem-skill} @self ~onTimer:20
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Zhiphyr setCustomName "&e[&630&e] &cMurkwood Golem" setDynamicName true
+murkwood-spirit3:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood Flower'
+  Health: 500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 315 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodVine-skill} @self ~onTimer:20
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Jasimi setCustomName "&e[&630&e] &cMurkwood Flower" setDynamicName true
+MurkwoodVine-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=MurkwoodVine-marker} @self ~onTimer:4
+  - skill{s=MurkwoodVine-marker2} @self ~onSpawn
+  - sound{s=block.grass.break} @self ~onInteract
+  - remove @self ~onInteract
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK OAK_LEAVES
+    
+murkwood-spirit4:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood Mage'
+  Health: 465
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 311 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodMage-skill} @self ~onTimer:20
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin NeptuneCPU setCustomName "&e[&630&e] &cMurkwood Mage" setDynamicName true
+MurkwoodMage-marker:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=MurkwoodMage-marker} @self ~onSpawn
+
+murkwood-human1:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood Vampire'
+  Health: 500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 315 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodVamp-sunlight} @self ~onTimer:20
+  - skill{s=MurkwoodVamp-skill} @self ~onTimer:20
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Decayr setCustomName "&e[&630&e] &cMurkwood Vampire" setDynamicName true
+MurkwoodVamp-marker:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - effect:particlesphere{p=reddust;amount=12;radius=2;yOffset=.5} @self ~onTimer:2
+  - skill{s=MurkwoodVamp-aura;delay=20} @self ~onSpawn
+  - skill{s=MurkwoodVamp-proj;delay=20} @self ~onSpawn
+  - remove{delay=160} @self ~onSpawn
+
+murkwood-human2:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood Goblette'
+  Health: 475
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  - IRON_SWORD OFFHAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 312 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodElf-skill} @self ~onTimer:20
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin KoeniginAzshara setCustomName "&e[&630&e] &cMurkwood Goblette" setDynamicName true
+murkwood-human3:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood Ghoul'
+  Health: 500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 315 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodGhoul-skill} @self ~onTimer:20
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin MajkWazowski setCustomName "&e[&630&e] &cMurkwood Ghoul" setDynamicName true
+murkwood-human4:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood Knight'
+  Health: 535
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 321 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodKnight-active} @self ~onDamaged
+  - skill{s=MurkwoodKnight-skill} @self ~onTimer:20
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin NitroCreeper53 setCustomName "&e[&630&e] &cMurkwood Knight" setDynamicName true
+    
+murkwood-monster1:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood Jaws'
+  Health: 500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 315 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodJaws-skill} @self ~onTimer:20
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin stico setCustomName "&e[&630&e] &cMurkwood Jaws" setDynamicName true
+murkwood-monster2:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood White Mask'
+  Health: 525
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - remove{delay=600} @self ~onSignal:remove
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 319 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodWhite-skill} @self ~onTimer:20 
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin FdeFolio setCustomName "&e[&630&e] &cMurkwood White Mask" setDynamicName true
+murkwood-monster3:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMurkwood Skeleton'
+  Health: 500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 315 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=MurkwoodSkeleton-skill} @self ~onDamaged 0.1
+  - skill{s=MurkwoodSkeleton-skill} @self ~onTimer:20 0.1
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin MCDungeon setCustomName "&e[&630&e] &cMurkwood Skeleton" setDynamicName true
+MurkwoodSkeleton-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=MurkwoodSkeleton-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: DROPPED_ITEM BONE
+
+murkwood-monster4:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cMonster Red Mask'
+  Health: 475
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=murkwood-drop} @trigger ~onDeath .12
+  - command{c="runicgive exp <trigger.name> 312 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=MurkwoodRed-skill} @self ~onTimer:20 
+  - summon{t=murkwood-elite-timer;os=true} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin cCranky setCustomName "&e[&630&e] &cMonster Red Mask" setDynamicName true
+MurkwoodRed-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=MurkwoodRed-marker} @self ~onTimer:10
+  - skill{s=MurkwoodRed-marker2} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true

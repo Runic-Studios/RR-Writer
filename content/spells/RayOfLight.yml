@@ -1,0 +1,9 @@
+cooldown: 16
+knockback-vector: 2
+magic-damage: 10
+magic-damage-per-level: 2.5
+mana: 40
+max-distance: 8
+radius: 4
+silence-duration: 3
+warmup: 1.5

@@ -1,0 +1,1277 @@
+winter-2023-world-boss-twisted-add-summon:
+  Skills:
+  - skill{s=winter-2023-world-boss-twisted-add-summon1} <80%
+  - skill{s=winter-2023-world-boss-twisted-add-summon2} <60%
+  - skill{s=winter-2023-world-boss-twisted-add-summon3} <40%
+  - skill{s=winter-2023-world-boss-twisted-add-summon4} <20%
+
+winter-2023-world-boss-twisted-add-marker:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=block.snow.break}
+  - delay 20
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=block.snow.break}
+  - delay 20
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5}
+  - summon{t=winter-2023-world-boss-twisted-add} 
+  - remove
+winter-2023-world-boss-twisted-add-summon1:
+  Cooldown: 9999
+  Skills:
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=4;r=25;os=true}
+  - summon{t=winter-2023-present;a=4;r=32;os=true}
+  - delay 5
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=4;r=25;os=true}
+  - summon{t=winter-2023-present;a=4;r=32;os=true}
+  - delay 5
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=4;r=25;os=true}
+  - summon{t=winter-2023-present;a=4;r=32;os=true}
+winter-2023-world-boss-twisted-add-summon2:
+  Cooldown: 9999
+  Skills:
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=5;r=25;os=true}
+  - summon{t=winter-2023-present;a=5;r=32;os=true}
+  - delay 5
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=5;r=25;os=true}
+  - summon{t=winter-2023-present;a=5;r=32;os=true}
+  - delay 5
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=5;r=25;os=true}
+  - summon{t=winter-2023-present;a=5;r=32;os=true}
+winter-2023-world-boss-twisted-add-summon3:
+  Cooldown: 9999
+  Skills:
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=6;r=25;os=true}
+  - summon{t=winter-2023-present;a=6;r=32;os=true}
+  - delay 5
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=6;r=25;os=true}
+  - summon{t=winter-2023-present;a=6;r=32;os=true}
+  - delay 5
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=6;r=25;os=true}
+  - summon{t=winter-2023-present;a=6;r=32;os=true}
+winter-2023-world-boss-twisted-add-summon4:
+  Cooldown: 9999
+  Skills:
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=8;r=25;os=true}
+  - summon{t=winter-2023-present;a=8=32;os=true}
+  - delay 5
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=8;r=25;os=true}
+  - summon{t=winter-2023-present;a=8;r=32;os=true}
+  - delay 5
+  - summon{t=winter-2023-world-boss-twisted-add-marker;a=8;r=25;os=true}
+  - summon{t=winter-2023-present;a=8;r=32;os=true}
+  
+winter-2023-world-boss-altar-leash:
+  TargetConditions:
+  - distance{d=>32}
+  Cooldown: 20
+  Skills:
+  - signal{s=leash}
+
+winter-2023-world-boss-leash:
+  Skills:
+  - sound{s=entity.warden.dig;v=4;p=0.5} @self
+  - delay 40
+  - teleport @Location{c=-876.5,24.5,-1958}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128}
+
+
+winter-2023-world-boss-class-archer-spell:
+  Conditions:
+  - variableEquals{var=caster.class;value=1}
+  Skills:
+  - sound{s=item.crossbow.loading_start;v=5}
+  - delay 20
+  - sound{s=item.crossbow.loading_middle;v=5}
+  - delay 20
+  - sound{s=item.crossbow.loading_end;v=5}
+  - delay 20
+  - skill{s=winter-2023-world-boss-class-archer-neutral}
+  - delay 80
+  - skill{s=winter-2023-world-boss-class-archer-ult}
+
+winter-2023-world-boss-class-archer-neutral:
+  Skills:
+  - setAI{ai=false}
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;sE=false;yOffset=1}
+  - delay 8
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=22.5;sE=false;yOffset=1}
+  - delay 8
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=45;sE=false;yOffset=1}
+  - delay 7
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=67.5;sE=false;yOffset=1}
+  - delay 7
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=90;sE=false;yOffset=1}
+  - delay 6
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=112.5;sE=false;yOffset=1}
+  - delay 6
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=135;sE=false;yOffset=1}
+  - delay 5
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=157.5;sE=false;yOffset=1}
+  - delay 5
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=180;sE=false;yOffset=1}
+  - delay 4
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=202.5;sE=false;yOffset=1}
+  - delay 4
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=225;sE=false;yOffset=1}
+  - delay 3
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=247.5;sE=false;yOffset=1}
+  - delay 3
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=270;sE=false;yOffset=1}
+  - delay 2
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=292.5;sE=false;yOffset=1}
+  - delay 2
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=315;sE=false;yOffset=1}
+  - delay 1
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=337.5;sE=false;yOffset=1}
+  - delay 1
+  - sound{s=item.crossbow.shoot;v=5}
+  - playanimation{a=0;audience=world}
+  - projectile{ot=winter-2023-world-boss-class-archer-tick;oh=winter-2023-world-boss-class-archer-hit;v=25;i=1;ho=360;sE=false;yOffset=1}
+  - setAI{ai=true}
+winter-2023-world-boss-class-archer-tick:
+  Skills:
+  - effect:particles{p=crit_magic;a=1}
+winter-2023-world-boss-class-archer-hit:
+  Skills:
+  - potion{t=SLOW;d=80;l=3}
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 750"}
+
+
+
+winter-2023-world-boss-class-archer-ult:
+  Skills:
+  - potion{t=SLOW;d=80;l=4;hasParticles=false}
+  - effect:particlering{p=crit_magic;a=1;points=100;vS=0;hS=0.25;radius=12;yOffset=0.5}
+  - sound{s=item.crossbow.loading_start;v=5}
+  - delay 20
+  - effect:particlering{p=crit_magic;a=1;points=100;vS=0;hS=0.25;radius=12;yOffset=0.5}
+  - sound{s=item.crossbow.loading_middle;v=5}
+  - delay 20
+  - effect:particlering{p=crit_magic;a=1;points=100;vS=0;hS=0.25;radius=12;yOffset=0.5}
+  - sound{s=item.crossbow.loading_end;v=5}
+  - delay 10
+  - effect:particlering{p=crit_magic;a=1;points=100;vS=0;hS=0.25;radius=12;yOffset=0.5}
+  - playanimation{a=0;audience=world}
+  - sound{s=item.crossbow.shoot;v=5}
+  - skill{s=winter-2023-world-boss-class-archer-ult-damage} @PIR{r=100}
+  - delay 5
+  - effect:particlering{p=crit_magic;a=1;points=100;vS=0;hS=0.25;radius=12;yOffset=0.5}
+  - playanimation{a=0;audience=world}
+  - sound{s=item.crossbow.shoot;v=5}
+  - skill{s=winter-2023-world-boss-class-archer-ult-damage} @PIR{r=100}
+  - delay 5
+  - effect:particlering{p=crit_magic;a=1;points=100;vS=0;hS=0.25;radius=12;yOffset=0.5}
+  - playanimation{a=0;audience=world}
+  - sound{s=item.crossbow.shoot;v=5}
+  - skill{s=winter-2023-world-boss-class-archer-ult-damage} @PIR{r=100}
+winter-2023-world-boss-class-archer-ult-damage:
+  TargetConditions:
+  - distance{d=>12}
+  Skills:
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"}
+
+winter-2023-world-boss-class-cleric-spell:
+  Conditions:
+  - variableEquals{var=caster.class;value=2}
+  Skills:
+  - delay 80
+  - sound{s=entity.zombie_villager.cure;v=5}
+  - signal{s=convert} @MIR{t=winter-2023-world-boss-twisted-add;r=100}
+  - delay 80
+  - sound{s=entity.experience_orb.pickup;v=5;p=0.5}
+  - signal{s=heal} @MIR{t=winter-2023-world-boss-twisted-add;r=100}
+  - delay 80
+  - sound{s=entity.dragon_fireball.explode;v=5}
+
+winter-2023-world-boss-class-mage-spell:
+  Conditions:
+  - variableEquals{var=caster.class;value=3}
+  Skills:
+  - delay 80
+  - skill{s=winter-2023-world-boss-class-mage-neutral}
+
+winter-2023-world-boss-class-mage-neutral:
+  Skills:
+  - sound{s=block.enchantment_table.use;v=5}
+  - SudoSkill{s=winter-2023-world-boss-class-mage-neutral-mark} @PIR{r=100}
+  - delay 80
+  - sound{s=block.enchantment_table.use;v=5}
+  - playanimation{a=0;audience=world}
+  - delay 20
+  - sound{s=block.enchantment_table.use;v=5}
+  - playanimation{a=0;audience=world}
+  - delay 20
+  - sound{s=block.enchantment_table.use;v=5}
+  - playanimation{a=0;audience=world}
+  - delay 20
+  - sound{s=block.enchantment_table.use;v=5}
+  - playanimation{a=0;audience=world}
+  - delay 20
+  - sound{s=block.enchantment_table.use;v=5}
+  - playanimation{a=0;audience=world}
+
+winter-2023-world-boss-class-mage-neutral-mark:
+  Skills:
+  - SudoSkill{s=winter-2023-world-boss-class-mage-neutral-mark-cast} @self .25
+
+winter-2023-world-boss-class-mage-neutral-mark-cast:
+  Skills:
+  - potion{t=SLOW;d=160;l=1} @self
+  - potion{t=GLOWING;c=WHITE;d=160;l=1;hasParticles=false} @self
+  - delay 80
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=15;radius=5;yOffset=.5}
+  - skill{s=winter-2023-world-boss-class-mage-neutral-mark-damage} @PIR{r=5}
+  - delay 20
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=15;radius=5;yOffset=.5}
+  - skill{s=winter-2023-world-boss-class-mage-neutral-mark-damage} @PIR{r=5}
+  - delay 20
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=15;radius=5;yOffset=.5}
+  - skill{s=winter-2023-world-boss-class-mage-neutral-mark-damage} @PIR{r=5}
+  - delay 20
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=15;radius=5;yOffset=.5}
+  - skill{s=winter-2023-world-boss-class-mage-neutral-mark-damage} @PIR{r=5}
+  - delay 20
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=15;radius=5;yOffset=.5}
+  - skill{s=winter-2023-world-boss-class-mage-neutral-mark-damage} @PIR{r=5}
+
+winter-2023-world-boss-class-mage-neutral-mark-damage:
+  TargetConditions:
+  - distance{d=>1}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}
+
+winter-2023-world-boss-class-rogue-spell:
+  Conditions:
+  - variableEquals{var=caster.class;value=4}
+  Skills:
+  - delay 80
+  - skill{s=winter-2023-world-boss-class-rogue-neutral}
+  - delay 80
+  - skill{s=winter-2023-world-boss-class-rogue-ult}
+
+winter-2023-world-boss-class-rogue-neutral:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @target
+  - throw{vy=8} @target
+  - delay 5
+  - playanimation{a=0;audience=world}
+  - sound{s=entity.phantom.bite;p=1.5}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=50;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 200"}];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+  - delay 4
+  - playanimation{a=3;audience=world}
+  - sound{s=entity.phantom.bite;p=1.5}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=50;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 200"}];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+  - delay 4
+  - playanimation{a=0;audience=world}
+  - sound{s=entity.phantom.bite;p=1.5}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=50;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 200"}];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+  - delay 4
+  - playanimation{a=3;audience=world}
+  - sound{s=entity.phantom.bite;p=1.5}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=50;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 200"}];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+  - delay 4
+  - playanimation{a=0;audience=world}
+  - sound{s=entity.phantom.bite;p=1.5}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=50;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 200"}];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+  
+winter-2023-world-boss-rogue-add:
+  Cooldown: 8
+  Skills:
+  - playanimation{a=0;audience=world}
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - delay 10
+  - sound{s=entity.phantom.bite;p=1.5}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=4;h=50;mpd=true;a=40;radius=1;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 100"}];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+
+winter-2023-world-boss-class-rogue-ult:
+  Skills:
+  - remove @MIR{t=winter-2023-world-boss-rogue-add;r=256}
+  - sound{s=entity.ender_dragon.flap;v=5}
+  - leap{v=275} @Forward{f=-10;y=15}
+  - delay 10
+  - projectile{ot=winter-2023-world-boss-class-rogue-tick;oe=winter-2023-world-boss-class-rogue-end;v=16;i=1;sE=false;ac=.75} @target
+  - projectile{ot=winter-2023-world-boss-class-rogue-tick;oe=winter-2023-world-boss-class-rogue-end;v=16;i=1;sE=false;ac=.75} @target
+  - projectile{ot=winter-2023-world-boss-class-rogue-tick;oe=winter-2023-world-boss-class-rogue-end;v=16;i=1;sE=false;ac=.75} @target
+  - projectile{ot=winter-2023-world-boss-class-rogue-tick;oe=winter-2023-world-boss-class-rogue-end;v=16;i=1;sE=false;ac=.75} @target
+  - delay 10
+  - skill{s=winter-2023-world-boss-class-rogue-ult-teleport} @target
+
+winter-2023-world-boss-class-rogue-ult-teleport:
+  TargetConditions:
+  - distance{d=<50}
+  Skills:
+  - teleport @target
+
+winter-2023-world-boss-class-rogue-tick:
+  Skills:
+  - effect:particles{p=squid_ink;a=1}
+winter-2023-world-boss-class-rogue-end:
+  Skills:
+  - summon{t=winter-2023-world-boss-rogue-add}
+
+winter-2023-world-boss-class-warrior-spell:
+  Conditions:
+  - variableEquals{var=caster.class;value=5}
+  Skills:
+  - delay 80
+  - skill{s=winter-2023-world-boss-class-warrior-neutral}
+  - delay 80
+  - skill{s=winter-2023-world-boss-class-warrior-ult}
+
+winter-2023-world-boss-class-warrior-neutral:
+  Skills:
+  - playanimation{a=0;audience=world}
+  - playanimation{a=3;audience=world}
+  - sound{s=item.shield.break;p=1.5}
+  - slash{y=0.5;foffset=1.5;FromOrigin=false;w=10;h=50;mpd=true;a=75;radius=5;
+      oP=[ - e:p{p=crit} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 250"}],
+      [ - pull{v=40} ],
+      [ - potion{t=SLOW;d=100;l=3} ];
+      roll=<random.-30to30>;fo=5;duration=5} @self  
+
+winter-2023-world-boss-class-warrior-ult:
+  Skills:
+  - leap{v=275} @Forward{f=10;y=15}
+  - delay 40
+  - sound{s=entity.wither.break_block;v=5}
+  - sound{s=block.snow.break;v=5;p=0.5}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=6}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=7}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=8}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=9}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=10}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=11}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=12}
+  - command{c="runicdamage <caster.uuid> <target.name> 1000"} @PIR{r=12}
+  - potion{t=SLOW;d=200;l=10} @PIR{r=12}
+
+winter-2023-world-boss-mask:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - randomskill{s=winter-2023-world-boss-mask-true,winter-2023-world-boss-mask-false}
+
+winter-2023-world-boss-mask-effect:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=winter-2023-world-boss-mask-false-effect}
+
+winter-2023-world-boss-mask-true:
+  Conditions:
+  - variableEquals{var=caster.mask;value=1}
+  Skills:
+  - setvariable{var=caster.class;value=0}
+  - equip{i=PUMPKIN:HEAD}
+  - setvariable{var=caster.mask;value=0}
+  - equip{i=DIAMOND_SWORD:OFFHAND}
+  - equip{i=NETHERITE_CHESTPLATE:CHEST}
+  - equip{i=NETHERITE_BOOTS:FEET}  
+winter-2023-world-boss-mask-false:
+  Conditions:
+  - variableEquals{var=caster.mask;value=0}
+  Skills:
+  - equip{i=CARVED_PUMPKIN:HEAD}
+  - setvariable{var=caster.mask;value=1}
+  - randomskill{s=winter-2023-world-boss-archer-select,winter-2023-world-boss-cleric-select,winter-2023-world-boss-mage-select,winter-2023-world-boss-rogue-select,winter-2023-world-boss-warrior-select}
+
+winter-2023-world-boss-mask-false-effect:
+  Conditions:
+  - variableEquals{var=caster.mask;value=0}
+  Skills:
+  - potion{t=SLOW;d=21;l=3;hasParticles=false}
+  - skill{s=winter-2023-world-boss-mask-false-effect-add} 
+winter-2023-world-boss-mask-false-effect-add:
+  Cooldown: 2
+  Skills:
+  - skill{s=winter-2023-world-boss-mask-false-effect-add1} >50%
+  - skill{s=winter-2023-world-boss-mask-false-effect-add2} <50%
+winter-2023-world-boss-mask-false-effect-add1:
+  Skills:
+  - summon{t=winter-2023-world-boss-twisted-add;a=2;r=12;os=true}
+winter-2023-world-boss-mask-false-effect-add2:
+  Skills:
+  - summon{t=winter-2023-world-boss-twisted-add;a=3;r=12;os=true}
+  
+winter-2023-world-boss-archer-select:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.class;value=1}
+  - equip{i=CROSSBOW:OFFHAND}
+  - equip{i=CHAINMAIL_CHESTPLATE:CHEST}
+  - equip{i=CHAINMAIL_BOOTS:FEET}
+  - skill{s=winter-2023-world-boss-class-archer-spell}
+winter-2023-world-boss-cleric-select:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.class;value=2}
+  - equip{i=GOLDEN_CHESTPLATE:CHEST}
+  - equip{i=GOLDEN_BOOTS:FEET}
+  - skill{s=winter-2023-world-boss-class-cleric-spell}
+winter-2023-world-boss-mage-select:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.class;value=3}
+  - equip{i=DIAMOND_CHESTPLATE:CHEST}
+  - equip{i=DIAMOND_BOOTS:FEET}
+  - skill{s=winter-2023-world-boss-class-mage-spell}
+winter-2023-world-boss-rogue-select:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.class;value=4}
+  - equip{i=LEATHER_CHESTPLATE:CHEST}
+  - equip{i=LEATHER_BOOTS:FEET}
+  - skill{s=winter-2023-world-boss-class-rogue-spell}
+winter-2023-world-boss-warrior-select:
+  Cooldown: 60
+  Skills:
+  - setvariable{var=caster.class;value=5}
+  - equip{i=SHIELD:OFFHAND}
+  - equip{i=IRON_CHESTPLATE:CHEST}
+  - equip{i=IRON_BOOTS:FEET}
+  - skill{s=winter-2023-world-boss-class-warrior-spell}
+
+winter-2023-world-boss-player-burn:
+  TargetConditions:
+  - onblock{m=RED_STAINED_GLASS} true
+  Skills:
+  - ignite{d=80}
+
+winter-2023-world-boss-twisted-add-burn:
+  Conditions:
+  - onblock{m=RED_STAINED_GLASS} true
+  Skills:
+  - ignite{d=21}
+  - playanimation{a=1;audience=world}
+  - variablesubtract{var=caster.health;amount=1}
+  - skill{s=winter-2023-world-boss-twisted-add-death}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt1}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt2}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt3}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt4}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt5}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt6}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt7}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt8}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt9}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt10}
+
+winter-2023-world-boss-twisted-add-heal:
+  Conditions:
+  - varinrange{var=caster.health;value=<100}
+  Skills:
+  - effect:particles{p=HAPPY_VILLAGER;amount=25;vSpread=1;hSpread=1;Speed=0.00000001;yOffset=0}
+  - setvariable{var=caster.health;value=100}
+  - setname{name='&e[&a|||||&f<caster.var.health>&a|||||&e]'}
+
+winter-2023-world-boss-twisted-add-convert:
+  Skills:
+  - clearThreat{} @self
+  - threat{a=10000} @NearestPlayer{r=100}
+  - potion{t=SPEED;d=160;l=5;hasParticles=false}
+  - disguise{d="SNOWMAN setDerp false"}
+  - delay 160
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=5}
+  - remove
+
+winter-2023-world-boss-twisted-add:
+  Skills:
+  - setvariable{var=caster.health;value=100}
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5}
+  - sound{s=block.snow.break;v=2}
+  - delay 200
+  - potion{t=SPEED;d=100;l=1;hasParticles=false}
+  - delay 200
+  - potion{t=SPEED;d=100;l=2;hasParticles=false}
+  - delay 200
+  - potion{t=SPEED;d=100;l=3;hasParticles=false}
+  - delay 200
+  - potion{t=SPEED;d=100;l=4;hasParticles=false}
+  - delay 200
+  - potion{t=SPEED;d=100;l=5;hasParticles=false}
+  - delay 200
+  - potion{t=SLOW;d=200;l=10} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=5}
+  - effect:particlesphere{p=block_crack;material=ice;amount=2;radius=1;yOffset=.5}
+  - sound{s=block.glass.break;v=2}
+  - remove
+
+winter-2023-world-boss-twisted-add-hurt:
+  Skills:
+  - delay 1
+  - variablesubtract{var=caster.health;amount=1}
+  - skill{s=winter-2023-world-boss-twisted-add-death}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt1}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt2}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt3}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt4}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt5}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt6}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt7}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt8}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt9}
+  - skill{s=winter-2023-world-boss-twisted-add-hurt10}
+  
+winter-2023-world-boss-twisted-add-hurt1:
+  Conditions:
+  - varinrange{var=caster.health;value=<100}
+  Skills:
+  - setname{name='&e[&a|||||&f<caster.var.health>&a|||||&e]'}
+winter-2023-world-boss-twisted-add-hurt2:
+  Conditions:
+  - varinrange{var=caster.health;value=<90}
+  Skills:
+  - setname{name='&e[&a|||||&f<caster.var.health>&a||||&7|&e]'}
+winter-2023-world-boss-twisted-add-hurt3:
+  Conditions:
+  - varinrange{var=caster.health;value=<80}
+  Skills:
+  - setname{name='&e[&e|||||&f<caster.var.health>&e|||&7||&e]'}
+winter-2023-world-boss-twisted-add-hurt4:
+  Conditions:
+  - varinrange{var=caster.health;value=<70}
+  Skills:
+  - setname{name='&e[&e|||||&f<caster.var.health>&e||&7|||&e]'}
+winter-2023-world-boss-twisted-add-hurt5:
+  Conditions:
+  - varinrange{var=caster.health;value=<60}
+  Skills:
+  - setname{name='&e[&e|||||&f<caster.var.health>&e|&7||||&e]'}
+winter-2023-world-boss-twisted-add-hurt6:
+  Conditions:
+  - varinrange{var=caster.health;value=<50}
+  Skills:
+  - setname{name='&e[&e|||||&f<caster.var.health>&e&7|||||&e]'}
+winter-2023-world-boss-twisted-add-hurt7:
+  Conditions:
+  - varinrange{var=caster.health;value=<40}
+  Skills:
+  - setname{name='&e[&c||||&7|&f<caster.var.health>&7|||||&e]'}
+winter-2023-world-boss-twisted-add-hurt8:
+  Conditions:
+  - varinrange{var=caster.health;value=<30}
+  Skills:
+  - setname{name='&e[&c|||&7||&f<caster.var.health>&7|||||&e]'}
+winter-2023-world-boss-twisted-add-hurt9:
+  Conditions:
+  - varinrange{var=caster.health;value=<20}
+  Skills:
+  - setname{name='&e[&c||&7|||&f<caster.var.health>&7|||||&e]'}
+winter-2023-world-boss-twisted-add-hurt10:
+  Conditions:
+  - varinrange{var=caster.health;value=<10}
+  Skills:
+  - setname{name='&e[&c|&7||||&f<caster.var.health>&7|||||&e]'}
+
+winter-2023-world-boss-twisted-add-death:
+  Conditions:
+  - varinrange{var=caster.health;value=<0}
+  Skills:
+  - remove
+
+
+winter-2023-elite-20-proj-fire:
+  Conditions:
+  - incombat{}
+  - playernotwithin 5
+  Skills:
+  - skill{s=winter-2023-elite-20-proj-rate-add}
+  - skill{s=winter-2023-elite-20-proj-fire1}
+  - skill{s=winter-2023-elite-20-proj-fire2}
+  - skill{s=winter-2023-elite-20-proj-fire3}
+
+winter-2023-elite-20-proj-rate-add:
+  Cooldown: 6
+  Skills:
+  - variableadd{var=caster.rate;amount=1}
+
+winter-2023-elite-20-proj-fire1:
+  Conditions:
+  - variableEquals{var=caster.rate;value=1}  
+  Cooldown: 2
+  Skills:
+  - skill{s=winter-2023-elite-20-proj}
+
+winter-2023-elite-20-proj-fire2:
+  Conditions:
+  - variableEquals{var=caster.rate;value=2}  
+  Skills:
+  - skill{s=winter-2023-elite-20-proj}
+
+winter-2023-elite-20-proj-fire3:
+  Conditions:
+  - varinrange{var=caster.rate;value=>2}
+  Skills:
+  - skill{s=winter-2023-elite-20-proj}
+  - delay 10
+  - skill{s=winter-2023-elite-20-proj}
+
+
+winter-2023-elite-40-proj-fire:
+  Conditions:
+  - incombat{}
+  - playernotwithin 5
+  Skills:
+  - skill{s=winter-2023-elite-40-proj-rate-add}
+  - skill{s=winter-2023-elite-40-proj-fire1}
+  - skill{s=winter-2023-elite-40-proj-fire2}
+  - skill{s=winter-2023-elite-40-proj-fire3}
+
+winter-2023-elite-40-proj-rate-add:
+  Cooldown: 6
+  Skills:
+  - variableadd{var=caster.rate;amount=1}
+
+winter-2023-elite-40-proj-fire1:
+  Conditions:
+  - variableEquals{var=caster.rate;value=1}  
+  Cooldown: 2
+  Skills:
+  - skill{s=winter-2023-elite-40-proj}
+
+winter-2023-elite-40-proj-fire2:
+  Conditions:
+  - variableEquals{var=caster.rate;value=2}  
+  Skills:
+  - skill{s=winter-2023-elite-40-proj}
+
+winter-2023-elite-40-proj-fire3:
+  Conditions:
+  - varinrange{var=caster.rate;value=>2}
+  Skills:
+  - skill{s=winter-2023-elite-40-proj}
+  - delay 10
+  - skill{s=winter-2023-elite-40-proj}
+
+
+winter-2023-elite-60-proj-fire:
+  Conditions:
+  - incombat{}
+  - playernotwithin 5
+  Skills:
+  - skill{s=winter-2023-elite-60-proj-rate-add}
+  - skill{s=winter-2023-elite-60-proj-fire1}
+  - skill{s=winter-2023-elite-60-proj-fire2}
+  - skill{s=winter-2023-elite-60-proj-fire3}
+
+winter-2023-elite-60-proj-rate-add:
+  Cooldown: 6
+  Skills:
+  - variableadd{var=caster.rate;amount=1}
+
+winter-2023-elite-60-proj-fire1:
+  Conditions:
+  - variableEquals{var=caster.rate;value=1}  
+  Cooldown: 2
+  Skills:
+  - skill{s=winter-2023-elite-60-proj}
+
+winter-2023-elite-60-proj-fire2:
+  Conditions:
+  - variableEquals{var=caster.rate;value=2}  
+  Skills:
+  - skill{s=winter-2023-elite-60-proj}
+
+winter-2023-elite-60-proj-fire3:
+  Conditions:
+  - varinrange{var=caster.rate;value=>2}
+  Skills:
+  - skill{s=winter-2023-elite-60-proj}
+  - delay 10
+  - skill{s=winter-2023-elite-60-proj}
+
+
+
+winter-2023-elite-20-proj:
+  Conditions:
+  - incombat{}
+  Skills:
+  - projectile{ot=winter-2023-elite-proj-tick;oh=winter-2023-elite-20-proj-hit;v=24;i=1} @target
+  - sound{s=block.snow.hit;p=1.5;v=2} @self
+winter-2023-elite-proj-tick:
+  Skills:
+  - effect:particles{p=snowball;a=1} @origin
+winter-2023-elite-20-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}
+
+winter-2023-elite-40-proj:
+  Conditions:
+  - incombat{}
+  Skills:
+  - projectile{ot=winter-2023-elite-proj-tick;oh=winter-2023-elite-40-proj-hit;v=24;i=1} @target
+  - sound{s=block.snow.hit;p=1.5;v=2} @self
+winter-2023-elite-40-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 15"}
+
+winter-2023-elite-60-proj:
+  Conditions:
+  - incombat{}
+  Skills:
+  - projectile{ot=winter-2023-elite-proj-tick;oh=winter-2023-elite-60-proj-hit;v=24;i=1} @target
+  - sound{s=block.snow.hit;p=1.5;v=2} @self
+winter-2023-elite-60-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}
+
+winter-2023-elite-near:
+  Conditions:
+  - playerwithin 5
+  - incombat{}
+  Skills:
+  - setvariable{var=caster.rate;value=0}
+
+winter-2023-elite-20-aoe:
+  Conditions:
+  - playerwithin 5
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - delay 20
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - delay 20
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 20
+  - sound{s=block.snow.break;p=0.5} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=5}
+
+winter-2023-elite-40-aoe:
+  Conditions:
+  - playerwithin 5
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - delay 20
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - delay 20
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 20
+  - sound{s=block.snow.break;p=0.5} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=5}
+
+winter-2023-elite-60-aoe:
+  Conditions:
+  - playerwithin 5
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - delay 20
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - delay 20
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - delay 20
+  - sound{s=block.snow.break;p=0.5} 
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=block_crack;material=snow_block;a=5;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+
+winter-2023-elite-20-add:
+  Conditions:
+  - incombat{}
+  Cooldown: 15
+  Skills:
+  - summon{t=winter-2023-elite-20-add;r=3;os=true}
+  - delay 10
+  - summon{t=winter-2023-elite-20-add;r=3;os=true}
+  - delay 10
+  - summon{t=winter-2023-elite-20-add;r=3;os=true}
+
+winter-2023-elite-40-add:
+  Conditions:
+  - incombat{}
+  Cooldown: 15
+  Skills:
+  - summon{t=winter-2023-elite-40-add;r=3;os=true}
+  - delay 10
+  - summon{t=winter-2023-elite-40-add;r=3;os=true}
+  - delay 10
+  - summon{t=winter-2023-elite-40-add;r=3;os=true}
+
+winter-2023-elite-60-add:
+  Conditions:
+  - incombat{}
+  Cooldown: 15
+  Skills:
+  - summon{t=winter-2023-elite-60-add;r=3;os=true}
+  - delay 10
+  - summon{t=winter-2023-elite-60-add;r=3;os=true}
+  - delay 10
+  - summon{t=winter-2023-elite-60-add;r=3;os=true}
+
+winter-2023-elite-add:
+  Skills:
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - delay 160
+  - sound{s=block.snow.break;p=1} 
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - remove
+
+winter-2023-elf-drunk:
+  Conditions:
+  - variableEquals{var=caster.burp;value=1}   
+  Skills:
+  - skill{s=winter-2023-elf-drunk1} .025
+  - skill{s=winter-2023-elf-drunk2} .1 
+  - skill{s=winter-2023-elf-drunk3} .25
+  - skill{s=winter-2023-elf-drunk4} .25
+
+winter-2023-elf-vomit:
+  Cooldown: 30
+  Skills:
+  - message{m="&7Gross... that elf just threw up..."} @self
+  - potion{t=CONFUSION;d=100;l=3} @self
+  - potion{t=SLOW;d=100;l=3} @self
+
+winter-2023-elf-drunk-burp:
+  Skills:
+  - potion{t=SLOW;d=40;l=3}
+  - sound{s=entity.player.burp;p=1.2}
+  - leap{v=75} @RLNTE{a=1;r=5;s=1;minr=3}
+  - skill{s=winter-2023-elf-drunk-vomit}
+
+winter-2023-elf-drunk-vomit:
+  Conditions:
+  - variableEquals{var=caster.vomit;value=1}  
+  Skills:
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.25}   
+  - sound{s=entity.player.burp;p=0.5}  
+  - sudoSkill{s=winter-2023-elf-vomit} @PIR{r=10}
+
+winter-2023-elf-drunk1:
+  Conditions:
+  - variableEquals{var=caster.drunk;value=1}  
+  Cooldown: 1 
+  Skills:
+  - skill{s=winter-2023-elf-drunk-burp}
+winter-2023-elf-drunk2:
+  Conditions:
+  - variableEquals{var=caster.drunk;value=2}  
+  Cooldown: 1 
+  Skills:
+  - skill{s=winter-2023-elf-drunk-burp}
+winter-2023-elf-drunk3:
+  Conditions:
+  - variableEquals{var=caster.drunk;value=3}  
+  Cooldown: 1 
+  Skills:
+  - skill{s=winter-2023-elf-drunk-burp}
+winter-2023-elf-drunk4:
+  Conditions:
+  - varinrange{var=caster.drunk;value=>3}
+  Cooldown: 1 
+  Skills:
+  - skill{s=winter-2023-elf-drunk-burp}
+
+
+winter-2023-elf-spawn:
+  Skills:
+  - setvariable{var=caster.stoneskin;value=0}
+  - setvariable{var=caster.enrage;value=0}
+  - setvariable{var=caster.gluttony;value=0}
+  - setvariable{var=caster.absorption;value=0}
+  - setvariable{var=caster.drunk;value=0}
+  - setvariable{var=caster.burp;value=1}
+  - setvariable{var=caster.vomit;value=0}
+  
+winter-2023-elf:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - delay 1
+  - setvariable{var=caster.vomit;value=1}  
+  - equip{i=POTION:HAND}
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - sound{s=entity.generic.drink}
+  - delay 20
+  - equip{i=GLASS_BOTTLE:HAND}
+  - sound{s=entity.generic.drink}
+  - setvariable{var=caster.vomit;value=0}  
+  - delay 20
+  - equip{i=AIR:HAND}
+  - sound{s=entity.zombie_villager.cure;p=0.5}
+  - variableadd{var=caster.drunk;amount=1}
+  - randomskill{s=winter-2023-elf-magnify,winter-2023-elf-stoneskin,winter-2023-elf-enrage,winter-2023-elf-gluttony,winter-2023-elf-absorption}
+winter-2023-elf-effect:
+  Skills:
+  - skill{s=winter-2023-elf-stoneskin-effect} 
+  - skill{s=winter-2023-elf-gluttony-effect} 
+  - skill{s=winter-2023-elf-enrage-effect} 
+  - skill{s=winter-2023-elf-absorption-effect} 
+
+winter-2023-elf-magnify:
+  Skills:
+  - setvariable{var=caster.burp;value=0}  
+  - cast{skillName="Magnify";duration=80;showCastBar=true}
+  - disguise{d="VILLAGER setBaby false"}
+  - potion{t=SPEED;d=80;l=2;hasParticles=false}
+  - delay 80
+  - disguise{d="VILLAGER setBaby true"}
+  - setvariable{var=caster.burp;value=1}  
+
+winter-2023-elf-absorption:
+  Skills:
+  - setvariable{var=caster.burp;value=0}  
+  - cast{skillName="Absorption";duration=80;showCastBar=true}
+  - disguise{d="SLIME setSize 3"}
+  - setvariable{var=caster.absorption;value=1}
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 80
+  - setvariable{var=caster.absorption;value=0}
+  - disguise{d="VILLAGER setBaby true"}
+  - setvariable{var=caster.burp;value=1}  
+winter-2023-elf-absorption-effect:
+  Conditions:
+  - variableEquals{var=caster.absorption;value=1}  
+  Skills:
+  - pull{v=8} @trigger
+  - sound{s=entity.slime.squish}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @trigger
+
+winter-2023-elf-stoneskin:
+  Skills:
+  - setvariable{var=caster.burp;value=0}  
+  - cast{skillName="Stoneskin";duration=80;showCastBar=true}
+  - disguise{d="IRON_GOLEM"}
+  - setvariable{var=caster.stoneskin;value=1}
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 80
+  - setvariable{var=caster.stoneskin;value=0}
+  - disguise{d="VILLAGER setBaby true"}
+  - setvariable{var=caster.burp;value=1}  
+winter-2023-elf-stoneskin-effect:
+  Conditions:
+  - variableEquals{var=caster.stoneskin;value=1}  
+  Skills:
+  - heal{a=25;i=true}
+  - sound{s=entity.iron_golem.hurt}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @trigger
+
+winter-2023-elf-enrage:
+  Skills:
+  - setvariable{var=caster.burp;value=0}  
+  - cast{skillName="Enrage";duration=80;showCastBar=true}
+  - disguise{d="WOLF"}
+  - setvariable{var=caster.enrage;value=1}
+  - potion{t=SPEED;d=80;l=1;hasParticles=false}
+  - delay 80
+  - setvariable{var=caster.enrage;value=0}
+  - disguise{d="VILLAGER setBaby true"}
+  - setvariable{var=caster.burp;value=1}  
+winter-2023-elf-enrage-effect:
+  Conditions:
+  - variableEquals{var=caster.enrage;value=1}  
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.wolf.ambient}
+  - leap{v=200} @target
+
+winter-2023-elf-gluttony:
+  Skills:
+  - setvariable{var=caster.burp;value=0}  
+  - cast{skillName="Gluttony";duration=80;showCastBar=true}
+  - disguise{d="PIG"}
+  - setvariable{var=caster.gluttony;value=1}
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 80
+  - setvariable{var=caster.gluttony;value=0}
+  - disguise{d="VILLAGER setBaby true"}
+  - setvariable{var=caster.burp;value=1}  
+winter-2023-elf-gluttony-effect:
+  Conditions:
+  - variableEquals{var=caster.gluttony;value=1}  
+  Cooldown: 10
+  Skills:
+  - heal{a=500}
+  - sound{s=entity.pig.ambient}
+
+winter-2023-drop-20:
+  Skills:
+  - summon{t=winter-2023-elite-20} @self .01
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger .1
+  
+winter-2023-drop-40:
+  Skills:
+  - summon{t=winter-2023-elite-40} @self .01
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger .14
+
+winter-2023-drop-60:
+  Skills:
+  - summon{t=winter-2023-elite-60} @self .01
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger .2
+
+
+winter-2023-elite-select:
+  Skills:
+  - setvariable{var=caster.rarity;value=1}
+  - disguise{d="SNOWMAN setDerp false"}
+
+winter-2023-elite-drop-20:
+  Skills:
+  - skill{s=winter-2023-elite-drop-20-common}
+  - skill{s=winter-2023-elite-drop-20-rare}
+winter-2023-elite-drop-20-common:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=0}  
+  Skills:
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"}
+winter-2023-elite-drop-20-rare:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=1}  
+  Skills:
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 10"}
+
+winter-2023-elite-drop-40:
+  Skills:
+  - skill{s=winter-2023-elite-drop-40-common}
+  - skill{s=winter-2023-elite-drop-40-rare}
+winter-2023-elite-drop-40-common:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=0}  
+  Skills:
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"}
+winter-2023-elite-drop-40-rare:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=1}  
+  Skills:
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 15"}
+
+winter-2023-elite-drop-60:
+  Skills:
+  - skill{s=winter-2023-elite-drop-60-common}
+  - skill{s=winter-2023-elite-drop-60-rare}
+winter-2023-elite-drop-60-common:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=0}  
+  Skills:
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 7"}
+winter-2023-elite-drop-60-rare:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=1}  
+  Skills:
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 20"}
+
+winter-2023-elite:
+  Skills:
+  - sound{s=block.snow.break;p=0.5;v=3} 
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - message{cooldown=60;m="&9[&b✸&9] &c&lSnowman &e&lhas spawned!"} @PIR{r=32}
+  - cast{skillName="Despawn";duration=6000;onCast=hightower-pawn-elite-despawn;showCastBar=true}
+winter-2023-elite-despawn:
+  Skills:
+  - sound{s=block.snow.break;p=0.5;v=3} 
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - message{cooldown=60;m="&9[&b✸&9] &c&lSnowman &e&lhas despawned!"} @PIR{r=32}
+  - remove
+
+
+
+winter-2023-present-select:
+  Skills:
+  - setvariable{var=caster.rarity;value=1}
+  - setvariable{var=caster.rarity;value=2} .5
+  - setvariable{var=caster.rarity;value=3} .1
+  - setvariable{var=caster.rarity;value=4} .01
+  - randomskill{s=winter-2023-present-select-common,winter-2023-present-select-uncommon,winter-2023-present-select-rare,winter-2023-present-select-epic}
+  - delay 40
+  - setAI{ai=false}
+  
+winter-2023-present-hurt:
+  Skills:
+  - delay 1
+  - randomskill{s=winter-2023-present-hurt-common,winter-2023-present-hurt-uncommon,winter-2023-present-hurt-rare,winter-2023-present-hurt-epic}  
+winter-2023-present-hurt-common:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=1}  
+  Skills:
+  - setname{name='&aPresent'}
+winter-2023-present-hurt-uncommon:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=2}  
+  Skills:
+  - setname{name='&ePresent'}
+winter-2023-present-hurt-rare:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=3}  
+  Skills:
+  - setname{name='&bPresent'}
+winter-2023-present-hurt-epic:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=4}  
+  Skills:
+  - setname{name='&cPresent'}
+
+winter-2023-present-select-common:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=1}  
+  Skills:
+  - setname{name='&aPresent'}
+  - disguise{d="FALLING_BLOCK GREEN_WOOL"}
+winter-2023-present-select-uncommon:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=2}  
+  Skills:
+  - setname{name='&ePresent'}
+  - disguise{d="FALLING_BLOCK YELLOW_WOOL"}
+winter-2023-present-select-rare:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=3}  
+  Skills:
+  - setname{name='&bPresent'}
+  - disguise{d="FALLING_BLOCK LIGHT_BLUE_WOOL"}
+winter-2023-present-select-epic:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=4}  
+  Skills:
+  - setname{name='&cPresent'}
+  - disguise{d="FALLING_BLOCK RED_WOOL"}
+
+winter-2023-present-drop:
+  Skills:
+  - command{c="questtrigger player <trigger.name> winter-2023-present"}
+  - sound{s=block.wool.break}
+  - randomskill{s=winter-2023-present-drop-common,winter-2023-present-drop-uncommon,winter-2023-present-drop-rare,winter-2023-present-drop-epic}
+  - suicide
+
+winter-2023-present-drop-common:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=1}  
+  Skills:
+  - effect:particlesphere{p=block_crack;material=green_wool;amount=2;radius=1;yOffset=.5} 
+  - randomskill{s=winter-2023-present-drop-low,winter-2023-present-drop-low,winter-2023-present-drop-low,winter-2023-present-drop-low,winter-2023-present-drop-low,winter-2023-present-drop-low,winter-2023-present-drop-low,winter-2023-present-drop-low,winter-2023-present-drop-low,winter-2023-present-drop-gem}
+  - command{c="questtrigger player <trigger.name> winter-2023-present-common"} @trigger
+  #- message{m="COMMON"} @trigger
+
+winter-2023-present-drop-uncommon:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=2}  
+  Skills:
+  - effect:particlesphere{p=block_crack;material=yellow_wool;amount=2;radius=1;yOffset=.5} 
+  - randomskill{s=winter-2023-present-drop-low,winter-2023-present-drop-low,winter-2023-present-drop-low,winter-2023-present-drop-gem}
+  - command{c="questtrigger player <trigger.name> winter-2023-present-uncommon"} @trigger
+  #- message{m="UNCOMMON"} @trigger
+
+winter-2023-present-drop-rare:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=3}  
+  Skills:
+  - effect:particlesphere{p=block_crack;material=light_blue_wool;amount=2;radius=1;yOffset=.5} 
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="questtrigger player <trigger.name> winter-2023-present-rare"} @trigger
+  #- message{m="RARE"} @trigger
+
+winter-2023-present-drop-epic:
+  Conditions:
+  - variableEquals{var=caster.rarity;value=4}  
+  Skills:
+  - effect:particlesphere{p=block_crack;material=red_wool;amount=2;radius=1;yOffset=.5} 
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 5"}
+  - command{c="questtrigger player <trigger.name> winter-2023-present-epic"} @trigger
+  #- message{m="EPIC"} @trigger
+
+winter-2023-present-drop-low:
+  Skills:
+  - randomskill{s=gs1,io1,go1,g1,ah1,t1}
+winter-2023-present-drop-gem:
+  Skills:
+  - command{c="ri drop winter-2023-gem <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+winter-2023-threat:
+  TargetConditions:
+  - distance{d=>15}
+  Cooldown: 12
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128}
+

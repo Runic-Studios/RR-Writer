@@ -1,0 +1,307 @@
+Goo-skill1:
+  Cooldown: 8
+  Conditions:
+  - incombat{}
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - leap{v=250} @target
+Goo-skill2:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.skill;value=1}
+  Skills:
+  - setvariable{var=caster.passive;value=0} 
+  - potion{t=SLOW;d=80;l=1;hasParticles=false} @self 
+  - cast{skillName="Goo Geyser";duration=40;onCast=Goo-skill2cast1;showCastBar=true} @self
+Goo-skill2cast1:
+  Skills:
+  - skill{s=Goo-skill2casta}
+  - skill{s=Goo-skill2castb}
+Goo-skill2casta:
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - summon{t=Goo-marker;a=3;r=4;os=true} @self
+  - delay 25
+  - summon{t=Goo-marker;a=3;r=4;os=true} @self
+  - delay 20
+  - setvariable{var=caster.passive;value=1} 
+Goo-skill2castb:
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - summon{t=Goo-marker;r=2;os=true} @target
+  - delay 10
+  - summon{t=Goo-marker;r=2;os=true} @target
+  - delay 10
+  - summon{t=Goo-marker;r=2;os=true} @target
+  - delay 10
+  - summon{t=Goo-marker;r=2;os=true} @target
+  - delay 20
+  - setvariable{var=caster.slime;value=0} 
+Goo-marker:
+  Skills:
+  - effect:particles{particle=slime;amount=15} @self
+  - delay 25
+  - skill{s=Goo-skill2cast2}
+  - remove
+Goo-skill2cast2:
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=40;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}  
+
+Goo-passive:
+  Cooldown: 6
+  Conditions:
+  - playerwithin 12
+  - variableEquals{var=caster.passive;value=1}
+  Skills:
+  - setvariable{var=caster.skill;value=0} 
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 15
+  - effect:blockmask{m=slime_block;r=4;d=25}
+  - delay 10
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 15
+  - effect:blockmask{m=slime_block;r=4;d=25}
+  - delay 10
+  - jump{velocity=1}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - effect:blockmask{m=slime_block;r=5;d=50}
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=100;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=5}
+Goop-passive:
+  Cooldown: 5
+  Conditions:
+  - playerwithin 12
+  Skills:
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - jump{velocity=1}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=100;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=4}
+
+
+Jelly-skill1:
+  Cooldown: 8
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.skill;value=1}
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - leap{v=250} @target
+Jelly-skill2:
+  Cooldown: 8
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.skill;value=1}
+  Skills:
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - setvariable{var=caster.passive;value=0} 
+  - cast{skillName="Jam Drizzle";duration=40;onCast=Jelly-skill2cast;showCastBar=true} @self
+Jelly-skill2cast:
+  Skills:
+  - summon{t=Jelly-marker;a=12;r=16}
+  - delay 20
+  - setvariable{var=caster.passive;value=1} 
+
+Jelly-skill3:
+  Cooldown: 8
+  Conditions:
+  - playernotwithin 12
+  - playerwithin 48
+  - incombat{}
+  Skills:
+  - summon{t=Jelly-pull;r=1} @target
+
+Jelly-skill4:
+  Cooldown: 10
+  Conditions:
+  - playerwithin 48
+  - incombat{}
+  Skills:
+  - summon{t=Jelly-marker;r=8;a=2}
+
+Jelly-marker:
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - delay 40
+  - skill{s=Jelly-marker2}
+  - delay 40
+  - skill{s=Jelly-marker2}
+  - delay 40
+  - skill{s=Jelly-marker2}
+  - delay 40
+  - skill{s=Jelly-marker2}
+  - delay 40
+  - skill{s=Jelly-marker3}
+Jelly-marker2:
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=10;radius=3;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=3}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=3}
+  - damage{i=true;a=20}
+Jelly-marker3:
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=25;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=5}
+  - suicide
+Jelly-pull:
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=5;radius=2;yOffset=.5} @self
+  - delay 10
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=10;radius=3;yOffset=.5} @self
+  - delay 10
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=20;radius=4;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=4}
+  - skill{s=Jelly-pull2}
+  - delay 80
+  - suicide
+Jelly-pull2:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - signal{s=pull} @MIR{t=Jelly;r=32}  
+Jelly-passive:
+  Cooldown: 6
+  Conditions:
+  - playerwithin 12
+  Skills:
+  - setvariable{var=caster.skill;value=0} 
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 15
+  - effect:blockmask{m=slime_block;r=4;d=25}
+  - delay 10
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 15
+  - effect:blockmask{m=slime_block;r=4;d=25}
+  - delay 10
+  - jump{velocity=1}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - effect:blockmask{m=slime_block;r=5;d=50}
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=100;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 30"} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=5}
+Gel-passive:
+  Cooldown: 5
+  Conditions:
+  - playerwithin 12
+  Skills:
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - jump{velocity=1}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=100;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 70"} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=4}
+
+
+Sludge-skill1:
+  Cooldown: 8
+  Conditions:
+  - incombat{}
+  Skills:
+  - sound{s=entity.slime.squish} @self
+  - leap{v=250} @target
+Sludge-skill2:
+  Cooldown: 16
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - cast{skillName="Sludge Slurry";duration=80;onCast=Sludge-skill2cast;showCastBar=true} @self
+Sludge-skill2cast:
+  Skills:
+  - summon{t=Sludge-marker;a=8;r=12;os=true} @target
+Sludge-marker:
+  Skills:
+  - skill{s=Sludge-marker2}
+  - delay 20
+  - skill{s=Sludge-marker3}
+  - delay 380
+  - remove
+Sludge-marker2:
+  Skills:
+  - effect:particles{p=dragon_breath;a=125;hs=1;vs=1}
+  - delay 20
+  - skill{s=Sludge-marker2} 
+Sludge-marker3:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=4}
+  - delay 10
+  - skill{s=Sludge-marker3}
+
+Sludge-passive:
+  Cooldown: 6
+  Conditions:
+  - playerwithin 12
+  Skills:
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 15
+  - effect:blockmask{m=slime_block;r=4;d=25}
+  - delay 10
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 15
+  - effect:blockmask{m=slime_block;r=4;d=25}
+  - delay 10
+  - jump{velocity=1}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - effect:blockmask{m=slime_block;r=5;d=50}
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=100;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=5}
+Slop-passive:
+  Cooldown: 5
+  Conditions:
+  - playerwithin 12
+  Skills:
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - jump{velocity=0.6}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - jump{velocity=1}
+  - sound{s=entity.slime.jump} 
+  - delay 25
+  - sound{s=entity.slime.squish} @self
+  - effect:particlesphere{particle=slime;amount=100;radius=5;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=4}

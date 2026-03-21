@@ -1,0 +1,616 @@
+GelatinousCube:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cGelatinous Cube'
+  Health: 501
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 13
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lGelatinous Cube'
+    Health: 500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=GelatinousCube-drop} @trigger ~onDeath
+  - skill{s=BigGreenSlime} @self ~onTimer:20
+  - skill{s=BigGreenSlime-leap} @self ~onTimer:40 .25
+  - skill{s=BigGreenSlime-passive} @self ~onTimer:40 .25 
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SLIME setSize 5
+
+ForestSlime:
+  Type: ZOMBIE
+  Display: '&e[&69&e] &cForest Slime'
+  Health: 170
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MaxCombatDistance: 30
+    FollowRange: 10
+    NoDamageTicks: 0
+    MovementSpeed: .5
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=ForestSlime} @self ~onTimer:20 .05
+  - command{c="runicgive exp <trigger.name> 86 <mob.l.x> <mob.l.y> <mob.l.z> 9"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-9} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SLIME setSize 3
+
+
+ForestGuardian:
+  Type: ZOMBIE
+  Display: '&4[☠] &2Forest Guardian'
+  Health: 4000
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  BossBar:
+    Enabled: true
+    Title: '&4&l[Field Boss] &r&2&lForest Guardian'
+    Health: 4000
+    Range: 40
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestGuardian-drop} @trigger ~onDeath
+  - skill{s=ForestGuardian-start} @self ~onEnterCombat
+  - skill{s=ForestGuardian-heal} @self ~onSignal:heal
+  - randomskill{s=ForestGuardian-skill,ForestGuardian-skill2} @self ~onTimer:320
+  - skill{s=ForestGuardian-passive} @self ~onTimer:40 <50% .2
+  - skill{s=ForestGuardian-missile} @self ~onTimer:40 <50%
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - skill{s=CheckPlayerDeath} @target ~onTimer:30
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Zakkra setCustomName "&4[☠] &2Forest Guardian" setDynamicName true
+
+ForestGuardian-root:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=ForestGuardian-root} @self ~onSpawn
+  - potion{type=SLOW;duration=20;level=1} @PIR{r=4} ~onSpawn
+  - potion{type=SLOW;duration=20;level=1} @PIR{r=4} ~onTimer:20
+  - sound{s=block.grass.break} @self ~onInteract
+  - remove @self ~onInteract
+  Disguise: FALLING_BLOCK OAK_LEAVES
+    
+ForestGuardian-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=summon} @MIR{t=ForestGuardian-spawn1,ForestGuardian-spawn2,ForestGuardian-spawn3,ForestGuardian-spawn4,ForestGuardian-spawn5;r=4} ~onTimer:20
+ForestGuardian-marker2:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=ForestGuardian-marker2} @self ~onSpawn
+ForestGuardian-marker3:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=ForestGuardian-marker3} @self ~onSpawn
+ForestGuardian-add:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cLiving Fragment'
+  Health: 80
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 64
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestGuardian-add} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin xWeaulox setCustomName "&e[&6☠&e] &cLiving Fragment" setDynamicName true
+ForestGuardian-add2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cTreant'
+  Health: 200
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 24
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.26
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 64
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestGuardian-add2} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Moon_Liight setCustomName "&e[&6☠&e] &cTreant" setDynamicName true
+
+ForestGuardian-spawn1:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cSpirit Fragment'
+  Health: 200
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestGuardian-spawn} @self ~onTimer:20
+  - skill{s=ForestGuardian-spawn2} @self ~onSignal:summon
+  - potion{t=SLOW;d=40;l=3} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -1830,59,-35
+  - 2 lookatplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin Mielija setCustomName "&e[&6☠&e] &cSpirit Fragment" setDynamicName true
+ForestGuardian-spawn2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cSpirit Fragment'
+  Health: 200
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestGuardian-spawn} @self ~onTimer:20
+  - skill{s=ForestGuardian-spawn2} @self ~onSignal:summon
+  - potion{t=SLOW;d=40;l=3} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -1854,53,-23
+  - 2 lookatplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin Mielija setCustomName "&e[&6☠&e] &cSpirit Fragment" setDynamicName true
+ForestGuardian-spawn3:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cSpirit Fragment'
+  Health: 200
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestGuardian-spawn} @self ~onTimer:20
+  - skill{s=ForestGuardian-spawn2} @self ~onSignal:summon
+  - potion{t=SLOW;d=40;l=3} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -1846,54,3
+  - 2 lookatplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin Mielija setCustomName "&e[&6☠&e] &cSpirit Fragment" setDynamicName true
+ForestGuardian-spawn4:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cSpirit Fragment'
+  Health: 200
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestGuardian-spawn} @self ~onTimer:20
+  - skill{s=ForestGuardian-spawn2} @self ~onSignal:summon
+  - potion{t=SLOW;d=40;l=3} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -1826,57,9
+  - 2 lookatplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin Mielija setCustomName "&e[&6☠&e] &cSpirit Fragment" setDynamicName true
+ForestGuardian-spawn5:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cSpirit Fragment'
+  Health: 200
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestGuardian-spawn} @self ~onTimer:20
+  - skill{s=ForestGuardian-spawn2} @self ~onSignal:summon
+  - potion{t=SLOW;d=40;l=3} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -1810,60,-9
+  - 2 lookatplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin Mielija setCustomName "&e[&6☠&e] &cSpirit Fragment" setDynamicName true
+
+Monkey:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cMonkey'
+  Health: 500
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lMonkey'
+    Health: 500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Monkey-drop} @trigger ~onDeath
+  - skill{s=MonkeyTreeCast} @self ~onSignal:monkeycast
+  - skill{s=Monkeymarksetup} @self ~onSpawn
+  - skill{s=MonkeyTree} @self ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Qaoric setCustomName "&e[&6☠&e] &cMonkey" setDynamicName true
+
+monkeypoo:
+  Type: BABY_ZOMBIE
+  Display: ''
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=monkeypoo} @self ~onSpawn
+  - skill{s=monkeypooboom} @self ~onDeath
+  Disguise: DROPPED_ITEM DIRT
+    
+Monkeymark1:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - setAI{ai=false} @MIR{t=Monkey;r=4} ~onTimer:2
+  - signal{s=monkeycast} @MIR{t=Monkey;r=4} ~onTimer:2
+Monkeymark2:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - setAI{ai=false} @MIR{t=Monkey;r=4} ~onTimer:2
+  - signal{s=monkeycast} @MIR{t=Monkey;r=4} ~onTimer:2
+Monkeymark3:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - setAI{ai=false} @MIR{t=Monkey;r=4} ~onTimer:2
+  - signal{s=monkeycast} @MIR{t=Monkey;r=4} ~onTimer:2
+
+KoldoreCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=KoldoreCitizen;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=KoldoreCitizen2;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=KoldoreCitizen;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=KoldoreCitizen2;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn2
+KoldoreCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aKoldore Citizen'
+  Health: 100
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aKoldore Citizen<&co> &fOur folk don<&sq>t take kindly to outsiders.} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=KoldoreCSA} ~onDeath
+  Disguise: player Steve setSkin FourNaaan setCustomName "&e[&61&e] &aKoldore Citizen" setDynamicName true
+KoldoreCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aKoldore Citizen'
+  Health: 100
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_PICKAXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aKoldore Citizen<&co> &fOur folk don<&sq>t take kindly to outsiders.} @NearestPlayer ~onDamaged
+  - signal{s=respawn2} @MobsInRadius{r=320;t=KoldoreCSA} ~onDeath
+  Disguise: player Steve setSkin killbotgamma setCustomName "&e[&61&e] &aKoldore Citizen" setDynamicName true
+KoldoreGuard:
+  Type: ZOMBIE
+  Display: '&e[&650&e] &aKoldore Guard'
+  Health: 5000
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - DwarvenBattleaxe HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+#  - 1 gotolocation -1626,28,318
+  - 2 lookatplayers
+  - 3 randomlookaround
+  Skills:
+  - message{cooldown=4;m='&aKoldore Guard<&co> &fOur will is iron.'} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin Shades416 setDynamicName true
+KoldoreChicken:
+  Type: Chicken
+  Display: '&e[&61&e] &aChicken'
+  Health: 5
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+
+KoldoreBee:
+  Type: Bee
+  Display: '&e[&62&e] &aKoldore Bee'
+  Health: 10
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    Silent: false
+    MovementSpeed: 0.3
+AppleGiver:
+  Type: ZOMBIE
+  Display: '&AApple'
+  Health: 1
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setgravity{g=false} @self ~onSpawn
+  - skill{s=AppleGiverSelfDestruct} @Self ~onTimer:20
+  - command{c="ri drop KoldoreApple <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  Disguise: DROPPED_ITEM APPLE
+    
+TrueIronGiver:
+  Type: BABY_ZOMBIE
+  Display: '&F&LTrue Iron'
+  Health: 40
+  Damage: 1
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - command{c="ri drop TrueIron <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - sound{s=block.stone.break} @self ~onDeath
+  - setAI{ai=false} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK IRON_BLOCK
+    

@@ -1,0 +1,435 @@
+
+
+Changetarget:  
+  Cooldown: 0
+  Skills:
+  - runaitargetselector{target=clear}
+  - runaitargetselector{target=players}
+  
+Cancelattack:
+  Skills:
+  - CancelEvent
+  
+# Awakened Shrub #
+  
+Awakened_Shrub_Attack:
+  Cooldown: 4
+  Conditions:
+  - offgcd
+  - targetwithin{d=4} true
+  Skills:
+  - gcd{ticks=32}
+  - setAI{ai=false} @self
+  - setAI{ai=true;delay=32} @self
+  - state{s=skill;li=2;lo=3} @self
+  - delay 18
+  
+  - effect:sound{s=entity.zombie.infect;volume=1;pitch=1} @self
+  - effect:particles{particle=redstone;color=#03ab65;size=0.8;amount=40;hS=0.7;vS=0.4;y=1;speed=0;forwardOffset=0;sideOffset=0} @self
+  - totem{md=2;c=1;oH=Awakened_Shrub_Attack_DAMAGE;hnp=false;hp=true;hR=3;vR=2;i=1} @selflocation
+  
+Awakened_Shrub_Attack_DAMAGE:
+  TargetConditions:
+  - isblocking false
+  Skills:
+  - damage{a=1;pkb=false;hnp=false;hp=true;repeat=3;repeatinterval=20}
+  - effect:particles{particle=redstone;color=#03ab65;size=0.6;amount=35;hS=0.25;vS=0.8;y=0.7;speed=0;forwardOffset=0;sideOffset=0;repeat=7;repeatinterval=10}
+  - effect:sound{s=entity.player.hurt_sweet_berry_bush;volume=0.8;pitch=0.8;repeat=3;repeatinterval=20}
+  
+Awakened_Shrub_Hit:
+  Cooldown: 1
+  Skills:
+  - effect:sound{s=entity.player.hurt_on_fire;volume=0.4;pitch=0.6} @self
+
+# Vine Guardian #
+
+Vine_Guardian_Attack:
+  Conditions:
+  - offgcd
+  - targetwithin{d=5} true
+  Skills:
+  - randomskill{skills=Vine_Guardian_Attack_1,Vine_Guardian_Attack_2}
+  
+Vine_Guardian_Hit:
+  Cooldown: 1
+  Skills:
+  - effect:sound{s=entity.player.hurt_on_fire;volume=0.5;pitch=0.4} @self
+  
+Vine_Guardian_Attack_1:
+  Skills:
+  - gcd{ticks=45}
+  - setAI{ai=false} @self
+  - setAI{ai=true;delay=45} @self
+  - state{s=skill;li=2;lo=3} @self
+  - effect:sound{s=entity.zoglin.ambient;volume=0.4;pitch=0.4} @self 0.5
+  - delay 17
+  
+  - effect:sound{s=entity.player.hurt_on_fire;volume=0.7;pitch=0.6} @self
+  - totem{md=2;c=1;oH=Vine_Guardian_Attack_1_DAMAGE;hnp=false;hp=true;hR=2.5;vR=2;i=1} @forward{f=1}
+  - effect:particles{particle=block_crack;m=OAK_LEAVES;amount=40;hS=0.7;vS=0.15;y=0.2;speed=0;forwardOffset=0;sideOffset=0} @forward{f=1;y=0}
+
+Vine_Guardian_Attack_1_DAMAGE:
+  TargetConditions:
+  - isblocking false
+  Skills:
+  - damage{a=4;pkb=false;hnp=false;hp=true}
+  - throw{velocity=4;velocityY=0}
+  
+Vine_Guardian_Attack_2:
+  Skills:
+  - gcd{ticks=56}
+  - setAI{ai=false} @self
+  - setAI{ai=true;delay=56} @self
+  - state{s=skill2;li=2;lo=3} @self
+  - effect:sound{s=entity.zoglin.ambient;volume=0.4;pitch=0.4} @self 0.5
+  - delay 28
+  
+  - effect:sound{s=entity.player.hurt_on_fire;volume=0.7;pitch=0.6} @self
+  - totem{md=2;c=1;oH=Vine_Guardian_Attack_2_DAMAGE;hnp=false;hp=true;hR=2.5;vR=2;i=1} @forward{f=1}
+  - effect:particles{particle=block_crack;m=OAK_LEAVES;amount=40;hS=0.7;vS=0.15;y=0.2;speed=0;forwardOffset=0;sideOffset=0} @forward{f=1.5;y=0}
+
+Vine_Guardian_Attack_2_DAMAGE:
+  TargetConditions:
+  - isblocking false
+  Skills:
+  - damage{a=4;pkb=false;hnp=false;hp=true}
+  - throw{velocity=0;velocityY=4}
+  
+# Thorn Spitter #
+
+Thorn_Spitter_Attack:
+  Conditions:
+  - offgcd
+  - targetwithin{d=15} true
+  Skills:
+  - gcd{ticks=54}
+  - state{s=skill;li=2;lo=3} @self
+  - look{repeat=24;repeatinterval=1} @PIR{r=20;sort=NEAREST;limit=1}
+  - effect:sound{s=entity.fox.aggro;volume=0.75;pitch=0.4;delay=5} @self 0.5
+  
+  - delay 24
+  - effect:sound{s=item.crossbow.shoot;volume=1;pitch=0.6} @self
+  - projectile{onTick=Thorn_Spitter_Attack_T;onHit=Thorn_Spitter_Attack_DAMAGE;v=12;i=1;hR=1;vR=1;mr=12;hnp=false;hO=0;sE=true;sB=true;hs=false;hfs=0;syo=1.5;tyo=1.5} @forward{f=10;y=0}
+  
+Thorn_Spitter_Attack_T:
+  Skills:
+  - effect:particles{particle=redstone;color=#001410;size=0.5;amount=2;hS=0;vS=0;y=0;speed=0;forwardOffset=0;sideOffset=0} @origin
+  - effect:particles{particle=redstone;color=#001410;size=0.5;amount=2;hS=0;vS=0;y=0;speed=0;forwardOffset=0.5;sideOffset=0} @origin
+  - effect:particles{particle=redstone;color=#001410;size=0.5;amount=2;hS=0;vS=0;y=0;speed=0;forwardOffset=1;sideOffset=0} @origin
+  - effect:particles{particle=redstone;color=#001410;size=0.5;amount=2;hS=0;vS=0;y=0;speed=0;forwardOffset=1.5;sideOffset=0} @origin
+  - effect:particles{particle=redstone;color=#001410;size=0.5;amount=2;hS=0;vS=0;y=0;speed=0;forwardOffset=2;sideOffset=0} @origin
+  
+Thorn_Spitter_Attack_DAMAGE:
+  TargetConditions:
+  - isblocking false
+  Skills:
+  - effect:sound{s=entity.player.hurt_sweet_berry_bush;volume=0.8;pitch=0.8;repeat=3;repeatinterval=20}
+  - damage{a=2;pkb=false;hnp=false;hp=true;repeat=3;repeatinterval=20}
+  - effect:particles{particle=redstone;color=#001410;size=0.6;amount=35;hS=0.25;vS=0.8;y=0.7;speed=0;forwardOffset=0;sideOffset=0;repeat=7;repeatinterval=10}
+  
+# Mutant Flower #
+
+Mutant_Flower_Skill:
+  Skills:
+  - randomskill{skills=Mutant_Flower_Explosive_Seeds 50,Mutant_Flower_Summon_Stingers 25,Mutant_Flower_Solar_Beam 25}
+
+Mutant_Flower_Hit:
+  Cooldown: 0.7
+  Conditions:
+  - offgcd
+  Skills:
+  - effect:sound{s=entity.guardian.hurt;volume=1;pitch=1.5} @self
+  - state{s=hit} @self
+  
+Mutant_Vine_Attack:
+  Conditions:
+  - offgcd
+  - targetwithin{d=7} true
+  Skills:
+  - gcd{ticks=84}
+  - setAI{ai=false} @self
+  - setAI{ai=true;delay=84} @self
+  - state{s=skill;li=2;lo=3} @self
+  - delay 33
+  
+  - effect:sound{s=entity.player.hurt_on_fire;volume=0.7;pitch=0.6} @self
+  - totem{md=2;c=1;oH=Mutant_Vine_Attack_DAMAGE;hnp=false;hp=true;hR=1;vR=1;i=1} @forward{f=2.5}
+  - totem{md=2;c=1;oH=Mutant_Vine_Attack_DAMAGE;hnp=false;hp=true;hR=1;vR=1;i=1} @forward{f=4.5}
+  - effect:particles{particle=block_crack;m=OAK_LEAVES;amount=15;hS=0.3;vS=0.15;y=0.2;speed=0;forwardOffset=0;sideOffset=0} @modelpart{p=top}
+  - effect:particles{particle=block_crack;m=OAK_LEAVES;amount=15;hS=0.3;vS=0.15;y=0.2;speed=0;forwardOffset=0;sideOffset=0} @modelpart{p=middle}
+
+Mutant_Vine_Attack_DAMAGE:
+  Skills:
+  - damage{a=4;pkb=false;hnp=false;hp=true}
+  
+Mutant_Vine_Hit:
+  Cooldown: 0.7
+  Skills:
+  - effect:sound{s=entity.player.hurt_on_fire;volume=0.5;pitch=0.4} @self
+  - skill{s=Mutant_Vine_HitD}
+  
+Mutant_Vine_HitD:
+  Conditions:
+  - offgcd
+  Skills:
+  - state{s=hit} @selflocation
+  
+# Summon Vines #
+
+Summon_Vines:
+  Conditions:
+  - offgcd
+  Skills:
+  - summon{type=Mutant_Vine;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=3.5;sideOffset=3.5}
+  - summon{type=Mutant_Vine;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=-3.5;sideOffset=3.5}
+  - summon{type=Mutant_Vine;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=3.5;sideOffset=-3.5}
+  - summon{type=Mutant_Vine;amount=1;radius=0;yRadius=0;onSurface=true} @forward{f=-3.5;sideOffset=-3.5}
+  
+Summon_Vines_RANDOM:
+  Cooldown: 10
+  Conditions:
+  - playerwithin{d=20} true
+  Skills:
+  - summon{type=Mutant_Vine_SUMMON;amount=1;radius=2;yRadius=0;onSurface=true} @PIR{r=20;sort=FURTHEST;limit=1}
+
+  
+# Explosive Seeds #
+
+Mutant_Flower_Explosive_Seeds:
+  Cooldown: 0
+  Conditions:
+  - offgcd
+  - playerwithin{d=20} true
+  Skills:
+  - gcd{ticks=60}
+  - state{s=explosive_seeds;li=2;lo=3} @self
+  - delay 33
+  
+  - effect:sound{s=entity.ender_dragon.flap;volume=1;pitch=0.8} @self
+  - totem{md=1;c=1;oT=Mutant_Flower_Explosive_SeedsS;hnp=false;hp=true;hR=1;vR=1;i=1} @selflocation
+  
+Mutant_Flower_Explosive_SeedsS:
+  Skills:
+  - projectile{g=0.6;bulletSpin=15;bulletType=MOB;mob=Explosive_Seed;fromorigin=true;sfo=0;onEnd=Mutant_Flower_Explosive_Seeds_DAMAGE;v=10;i=1;hR=1;vR=1;mr=40;hnp=false;hO=0;sE=false;sB=true;hs=false;hfs=0;syo=4.5;tyo=23} @RandomLocationsNearOrigin{a=4;r=15;s=1;minr=2.5}
+
+Mutant_Flower_Explosive_Seeds_DAMAGE:
+  Skills:
+  - effect:sound{s=entity.dragon_fireball.explode;volume=0.6;pitch=1} @origin
+  - effect:particles{particle=explosion_large;size=0.01;amount=1;hS=0;vS=0;y=0.1;speed=0;forwardOffset=0;sideOffset=0} @origin
+  - skill{s=Mutant_Flower_Explosive_Seeds_DAMAGE_D} @PlayersNearOrigin{r=3}
+  
+Mutant_Flower_Explosive_Seeds_DAMAGE_D:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  Skills:
+  - damage{a=4;pkb=true;hnp=false;hp=true}
+  
+# Summon Stingers #
+
+Mutant_Flower_Summon_Stingers:
+  Cooldown: 25
+  Conditions:
+  - offgcd
+  - playerwithin{d=20} true
+  Skills:
+  - gcd{ticks=60}
+  - state{s=explosive_seeds;li=2;lo=3} @self
+  - delay 33
+  
+  - effect:sound{s=entity.ender_dragon.flap;volume=1;pitch=0.8} @self
+  - effect:particles{particle=smoke;amount=15;hS=0.4;vS=0.4;y=1;speed=0;forwardOffset=0;sideOffset=0} @self{y=5}
+  - summon{type=Stinger;amount=3;radius=2;yRadius=1;onSurface=false} @selflocation{y=4}
+
+Stinger_Attack:
+  Conditions:
+  - offgcd
+  - targetwithin{d=2.5} true
+  Skills:
+  - gcd{ticks=25}
+  - state{s=skill} @self
+  - delay 9
+  
+  - effect:sound{s=entity.bee.sting;volume=0.8;pitch=1} @self
+  - totem{md=2;c=1;oH=Stinger_Attack_DAMAGE;hnp=false;hp=true;hR=1.5;vR=1;i=1} @forward{f=0.6}
+  
+Stinger_Attack_DAMAGE:
+  TargetConditions:
+  - isblocking false
+  Skills:
+  - damage{a=1;pkb=false;hnp=false;hp=true;repeat=2;repeatinterval=20}
+  - effect:particles{particle=redstone;color=#03ab65;size=0.6;amount=35;hS=0.25;vS=0.8;y=0.7;speed=0;forwardOffset=0;sideOffset=0;repeat=5;repeatinterval=10}
+  - effect:sound{s=entity.player.hurt_sweet_berry_bush;volume=0.8;pitch=0.8;repeat=2;repeatinterval=20}
+  
+# Solar Beam #
+
+Mutant_Flower_Solar_Beam:
+  Cooldown: 10
+  Conditions:
+  - offgcd
+  - playerwithin{d=20} true
+  Skills:
+  - gcd{ticks=100}
+  - state{s=solar_beam;speed=0.75} @self
+  - effect:sound{s=entity.elder_guardian.curse;volume=1;pitch=1.2} @self
+  - delay 22
+  
+  - effect:sound{s=block.beacon.activate;volume=2.3;pitch=0.5} @self
+  - effect:particleline{particle=redstone;color=#ffee57;size=0.7;hS=0.2;vS=0.2;amount=4;fromOrigin=true;repeat=60;repeatinterval=2;y=0.2} @MIR{r=20;t=Solar_Beam_DUMMY;target=armorstands}
+  - projectile{sfo=-1;onHit=Mutant_Flower_Solar_Beam_DAMAGE;v=50;i=1;hR=1;vR=1;mr=20;hnp=false;hO=0;sE=false;sB=false;hs=false;hfs=0;syo=1;tyo=0;repeat=120;repeatinterval=1} @MIR{r=20;t=Solar_Beam_DUMMY;target=armorstands}
+  - orbital{bulletType=MOB;mob=Solar_Beam_DUMMY;hr=1;vr=1;hp=false;hnp=false;r=17;points=90;i=1;duration=40000;oy=1.5;rx=0;ry=0;rz=0;avx=0;avy=0;avz=0} @self
+  - orbital{bulletType=MOB;mob=Solar_Beam_DUMMY;hr=1;vr=1;hp=false;hnp=false;r=17;points=90;i=1;duration=40000;oy=1.5;rx=0;ry=0;rz=0;avx=0;avy=0;avz=0;rx=3.14;ry=0;rz=3.14} @self
+  
+Mutant_Flower_Solar_Beam_TICK:
+  Skills:
+  - effect:particles{particle=redstone;color=#ffee57;size=0.7;amount=20;hS=0.3;vS=0.3;y=0;speed=0;forwardOffset=0;sideOffset=0} @origin
+  
+Mutant_Flower_Solar_Beam_DAMAGE:
+  Skills:
+  - effect:sound{s=block.fire.ambient;volume=0.5;pitch=1} @PlayersNearOrigin{r=1}
+  - damage{a=4;pkb=true;hnp=false;hp=true;repeat=2;repeatinterval=20} @PlayersNearOrigin{r=1}
+  - effect:particles{particle=flame;amount=8;hS=0.3;vS=0.8;y=1;speed=0;forwardOffset=0;sideOffset=0;repeat=4;repeatinterval=10} @PlayersNearOrigin{r=1}
+
+# Venom Aura #
+
+Mutant_Flower_Venom_Aura:
+  Skills:
+  - damage{a=2;pkb=true;hnp=false;hp=true;repeat=2;repeatinterval=20}
+  - effect:particles{particle=redstone;color=#03ab65;size=0.6;amount=35;hS=0.25;vS=0.8;y=0.7;speed=0;forwardOffset=0;sideOffset=0;repeat=5;repeatinterval=10}
+  - effect:sound{s=entity.player.hurt_sweet_berry_bush;volume=0.8;pitch=0.8;repeat=2;repeatinterval=20}
+  
+Mutant_Vine_REMOVE:
+  Conditions:
+  - mobsInRadius{types=Mutant_Flower;amount=1;radius=10} true
+  Skills:
+  - summon{type=Mutant_Vine_REVIVE;amount=1;radius=0;yRadius=0;onSurface=true} @selflocation
+  
+# Mutant Flower Death #
+
+Mutant_Flower_Death:
+  Skills:
+  - remove @Child
+  - remove @MIR{r=8;t=Mutant_Vine_REVIVE}
+  - remove @MIR{r=8;t=Mutant_Vine}
+  - remove @MIR{r=8;t=Mutant_Vine_SUMMON}
+  - effect:sound{s=entity.zoglin.ambient;volume=1;pitch=0.5} @self
+  - effect:sound{s=entity.zoglin.ambient;volume=1;pitch=0.7;delay=20} @self
+  - delay 51
+  - partvisibility{p=head;v=false} @self
+  - partvisibility{p=mouth;v=false;em=false} @self
+  - effect:particles{particle=explosion_huge;amount=1;hS=0;vS=0;y=0.7;speed=0;forwardOffset=0;sideOffset=0} @modelpart{p=head}
+  - effect:sound{s=entity.generic.explode;volume=1;pitch=0.8} @self
+  - effect:sound{s=entity.ender_dragon.flap;volume=1;pitch=1.2} @self
+  
+# Vine Root #
+
+Mutant_Flower_Vine_Root:
+  Conditions:
+  - playerwithin{d=20} true
+  TargetConditions:
+  - isSprinting
+  Skills:
+  - skill{s=Mutant_Flower_Vine_Root_S}
+  
+Mutant_Flower_Vine_Root_S:
+  Skills:
+  - orbital{bulletType=MOB;mob=Vine_Root;r=0;points=1;i=1;duration=2000;oy=0.8;rx=0;ry=0;rz=0;avx=0;avy=0;avz=0}
+  - potion{type=SLOW;duration=80;level=50;hasParticles=false}
+  - effect:sound{s=block.chorus_flower.grow;volume=1.5;pitch=0.9}
+  
+  
+  
+  
+# Mutant Flower Phase 2 #
+
+Mutant_Flower_Skill_2:
+  Skills:
+  - randomskill{skills=Mutant_Flower_Explosive_Seeds2 50,Mutant_Flower_Summon_Stingers2 25,Mutant_Flower_Solar_Beam2 25}
+  
+# Summon Vines #
+
+Summon_Vines_RANDOM2:
+  Cooldown: 7
+  Conditions:
+  - playerwithin{d=20} true
+  Skills:
+  - summon{type=Mutant_Vine_SUMMON;amount=1;radius=2;yRadius=0;onSurface=true} @PIR{r=20;sort=FURTHEST;limit=1}
+  
+# Explosive Seeds #
+
+Mutant_Flower_Explosive_Seeds2:
+  Cooldown: 0
+  Conditions:
+  - offgcd
+  - playerwithin{d=20} true
+  Skills:
+  - gcd{ticks=60}
+  - state{s=explosive_seeds;li=2;lo=3} @self
+  - delay 33
+  
+  - effect:sound{s=entity.ender_dragon.flap;volume=1;pitch=0.8} @self
+  - totem{md=1;c=1;oT=Mutant_Flower_Explosive_SeedsS2;hnp=false;hp=true;hR=1;vR=1;i=1} @selflocation
+  
+Mutant_Flower_Explosive_SeedsS2:
+  Skills:
+  - projectile{g=0.6;bulletSpin=15;bulletType=MOB;mob=Explosive_Seed;fromorigin=true;sfo=0;onEnd=Mutant_Flower_Explosive_Seeds_DAMAGE2;v=10;i=1;hR=1;vR=1;mr=40;hnp=false;hO=0;sE=false;sB=true;hs=false;hfs=0;syo=4.5;tyo=23} @RandomLocationsNearOrigin{a=7;r=15;s=1;minr=2.5}
+
+Mutant_Flower_Explosive_Seeds_DAMAGE2:
+  Skills:
+  - effect:sound{s=entity.dragon_fireball.explode;volume=0.6;pitch=1} @origin
+  - effect:particles{particle=explosion_large;size=0.01;amount=1;hS=0;vS=0;y=0.1;speed=0;forwardOffset=0;sideOffset=0} @origin
+  - skill{s=Mutant_Flower_Explosive_Seeds_DAMAGE_D2} @PlayersNearOrigin{r=3}
+  
+Mutant_Flower_Explosive_Seeds_DAMAGE_D2:
+  TargetConditions:
+  - entitytype{t=ARMOR_STAND} false
+  Skills:
+  - damage{a=6;pkb=true;hnp=false;hp=true}
+  
+# Summon Stingers #
+
+Mutant_Flower_Summon_Stingers2:
+  Cooldown: 25
+  Conditions:
+  - offgcd
+  - playerwithin{d=20} true
+  Skills:
+  - gcd{ticks=60}
+  - state{s=explosive_seeds;li=2;lo=3} @self
+  - delay 33
+  
+  - effect:sound{s=entity.ender_dragon.flap;volume=1;pitch=0.8} @self
+  - effect:particles{particle=smoke;amount=15;hS=0.4;vS=0.4;y=1;speed=0;forwardOffset=0;sideOffset=0} @self{y=5}
+  - summon{type=Stinger;amount=5;radius=2;yRadius=1;onSurface=false} @selflocation{y=4}
+
+# Solar Beam #
+
+Mutant_Flower_Solar_Beam2:
+  Cooldown: 10
+  Conditions:
+  - offgcd
+  - playerwithin{d=20} true
+  Skills:
+  - gcd{ticks=100}
+  - state{s=solar_beam;speed=0.9} @self
+  - effect:sound{s=entity.elder_guardian.curse;volume=1;pitch=1.2} @self
+  - delay 22
+  
+  - effect:sound{s=block.beacon.activate;volume=2.3;pitch=0.5} @self
+  - effect:particleline{particle=redstone;color=#ffee57;size=0.7;hS=0.2;vS=0.2;amount=4;fromOrigin=true;repeat=45;repeatinterval=2;y=0.2} @MIR{r=20;t=Solar_Beam_DUMMY;target=armorstands}
+  - projectile{sfo=-1;onHit=Mutant_Flower_Solar_Beam_DAMAGE2;v=50;i=1;hR=1;vR=1;mr=20;hnp=false;hO=0;sE=false;sB=false;hs=false;hfs=0;syo=1;tyo=0;repeat=90;repeatinterval=1} @MIR{r=20;t=Solar_Beam_DUMMY;target=armorstands}
+  - orbital{bulletType=MOB;mob=Solar_Beam_DUMMY;hr=1;vr=1;hp=false;hnp=false;r=17;points=75;i=1;duration=40000;oy=1.5;rx=0;ry=0;rz=0;avx=0;avy=0;avz=0} @self
+  - orbital{bulletType=MOB;mob=Solar_Beam_DUMMY;hr=1;vr=1;hp=false;hnp=false;r=17;points=75;i=1;duration=40000;oy=1.5;rx=0;ry=0;rz=0;avx=0;avy=0;avz=0;rx=3.14;ry=0;rz=3.14} @self
+
+Mutant_Flower_Solar_Beam_DAMAGE2:
+  Skills:
+  - effect:sound{s=block.fire.ambient;volume=0.5;pitch=1} @PlayersNearOrigin{r=1}
+  - damage{a=5;pkb=true;hnp=false;hp=true;repeat=2;repeatinterval=20} @PlayersNearOrigin{r=1}
+  - effect:particles{particle=flame;amount=8;hS=0.3;vS=0.8;y=1;speed=0;forwardOffset=0;sideOffset=0;repeat=4;repeatinterval=10} @PlayersNearOrigin{r=1}
+
+# Venom Aura #
+
+Mutant_Flower_Venom_Aura2:
+  Skills:
+  - damage{a=4;pkb=true;hnp=false;hp=true;repeat=2;repeatinterval=20}
+  - effect:particles{particle=redstone;color=#4406cc;size=0.6;amount=35;hS=0.25;vS=0.8;y=0.7;speed=0;forwardOffset=0;sideOffset=0;repeat=5;repeatinterval=10}
+  - effect:sound{s=entity.player.hurt_sweet_berry_bush;volume=0.8;pitch=0.8;repeat=2;repeatinterval=20}

@@ -1,0 +1,9 @@
+attribute: Vitality
+attribute-base-value: 5
+attribute-multiplier: 0.05
+cooldown: 0
+magic-damage: 25
+magic-damage-per-level: 1
+mana: 0
+max-atacks: 3
+stack-duration: 10

@@ -1,0 +1,375 @@
+Ecru:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cEcru'
+  Health: 2000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lEcru the Gatekeeper'
+    Health: 2000
+    Range: 10
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Ecru-drop} @trigger ~onDeath
+  - skill{s=Sandstorm} @self ~onTimer:20
+  - skill{s=Ecru-summon} @self ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+  Disguise: player Steve setSkin 04patrick setCustomName "&e[&6☠&e] &cEcru" setDynamicName true
+Ecru-spawn:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &eSand Soldier'
+  Health: 250
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    FollowRange: 15
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - skill{s=Ecru-spawn} @self ~onSpawn
+  Disguise: player Steve setSkin RizzsaurusRex setCustomName "&e[&635&e] &eSand Soldier" setDynamicName true
+
+MaskedFigure:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cMasked Figure'
+  Health: 2400
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  Equipment:
+  - IRON_SWORD HAND
+  - IRON_SWORD OFFHAND
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lMasked Figure'
+    Health: 2400
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=MaskedFigure-drop} @trigger ~onDeath
+  - command{c="ri drop SealedEnvelope <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{skills=MaskedFigure-smoke,MaskedFigure-dash,MaskedFigure-clone} @self ~onTimer:120
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Krabiks setCustomName "&e[&6☠&e] &cMasked Figure" setDynamicName true
+MaskedFigureMarker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=MaskedFigure-marker} @self ~onSpawn
+MaskedFigureClone:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &eMirage'
+  Health: 40
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    FollowRange: 15
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - skill{s=MaskedFigure-cloner} @self ~onSpawn
+  Disguise: player Steve setSkin Jufii setCustomName "&e[&635&e] &eMirage" setDynamicName true
+
+DesertHusk:
+  Type: ZOMBIE
+  Display: '&e[&637&e] &cDesert Husk'
+  Health: 590
+  Damage: 36
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 366 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - randomskill{s=gs2,gs3} @trigger ~onDeath .3
+  - skill{s=drop-level-37} @trigger ~onDeath
+#  - message{m="<caster.var.sand>"} @PIR{r=32} ~onTimer:20
+  - setvariable{var=caster.sand;value=0} @self ~onSpawn
+  - skill{s=DesertHuskSandchecknotwithin} @self ~onTimer:20
+  - skill{s=DesertHuskSandcheckwithin} @self ~onTimer:20
+  - skill{s=DesertHuskSand} @target ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin KingRexatron setDynamicName true
+    
+ZenythSoldier:
+  Type: ZOMBIE
+  Display: '&e[&637&e] &cZenyth Soldier'
+  Health: 590
+  Damage: 48
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - GOLDEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 366 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-37} @trigger ~onDeath
+  - setvariable{var=caster.spin;value=0} @self ~onSpawn
+  - skill{s=Zenythwithin} @self ~onTimer:20
+  - skill{s=ZenythSpin} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin CrowRogue setCustomName "&e[&637&e] &cZenyth Soldier" setDynamicName true
+    
+ZenythGeneral:
+  Type: ZOMBIE
+  Display: '&e[&637&e] &cZenyth General'
+  Health: 2500
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - GOLDEN_SWORD HAND
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lZenyth General'
+    Health: 3200
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ZenythGeneral-drop} @trigger ~onDeath
+  - skill{s=ArcherAmbush} @self ~onTimer:40
+  - skill{s=VoidGrip} @target ~onTimer:480
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+  Disguise: player Steve setSkin BartyPlaster setCustomName "&e[&637&e] &cZenyth General" setDynamicName true
+    
+ZenythArcher:
+  Type: SKELETON
+  Display: '&e[&637&e] &cZenyth Archer'
+  Health: 225
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 37"} @trigger ~onDeath 1.0
+  - randomskill{s=g1} @trigger ~onDeath .3
+  - remove{delay=400} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Ulendril setCustomName "&e[&637&e] &cZenyth Archer" setDynamicName true
+    
+SunPriest:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cSun Priest'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lSun Priest'
+    Health: 2500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - DeraStaff HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=SunPriest-drop} @trigger ~onDeath
+  - skill{s=SunDamage} @PIR{r=30} ~onTimer:20
+  - skill{s=SunHeal} @self ~onTimer:20
+  - skill{s=SunBeam} @target ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+  Disguise: player Steve setSkin Toadmare setCustomName "&e[&6☠&e] &cSun Priest" setDynamicName true
+
+SandHusk:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &cSand Husk'
+  Health: 560
+  Damage: 45
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 342 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-35} @trigger ~onDeath
+  - potion{t=SLOW;d=15;l=1;p=false;i=false} @target ~onAttack
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin GroovyGigi setCustomName "&e[&635&e] &cSand Husk" setDynamicName true
+    

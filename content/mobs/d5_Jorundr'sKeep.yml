@@ -1,0 +1,1407 @@
+StormguardWatcher:
+    Type: HUSK
+    Display: '&e[&615&e] &cStormguard Watcher'
+    Health: 225
+    Damage: 14
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - IRON_SWORD HAND
+    Options:
+        MovementSpeed: .28
+        FollowRange: 15
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 135 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    Disguise: player Steve setSkin Dstormzy setCustomName "&e[&615&e] &cStormguard Watcher" setDynamicName true
+
+StormguardGuard:
+    Type: HUSK
+    Display: '&e[&615&e] &cStormguard Keeper'
+    Health: 225
+    Damage: 12
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - IRON_SWORD HAND
+    Options:
+        MovementSpeed: .28
+        FollowRange: 15
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 135 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    Disguise: player Steve setSkin Athilyr setCustomName "&e[&615&e] &cStormguard Keeper" setDynamicName true
+
+StormguardKnight2:
+    Type: HUSK
+    Display: '&e[&615&e] &cStormguard Knight'
+    Health: 200
+    Damage: 12
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - IRON_SWORD HAND
+    Options:
+        MovementSpeed: .28
+        FollowRange: 15
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 120 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    Disguise: player Steve setSkin Ha2san setCustomName "&e[&615&e] &cStormguard Knight" setDynamicName true
+
+StormguardCultist:
+    Type: HUSK
+    Display: '&e[&615&e] &cStormguard Cultist'
+    Health: 125
+    Damage: 10
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    Options:
+        MovementSpeed: .36
+        FollowRange: 15
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 75 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    Disguise: player Steve setSkin Shadows_Murderer setCustomName "&e[&615&e] &cStormguard Cultist" setDynamicName true
+
+StormguardScout:
+    Type: HUSK
+    Display: '&e[&615&e] &cStormguard Scout'
+    Health: 175
+    Damage: 9
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - IRON_SWORD HAND
+    Options:
+        MovementSpeed: .32
+        FollowRange: 15
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 105 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    Disguise: player Steve setSkin MintChocoDonut_ setCustomName "&e[&615&e] &cStormguard Scout" setDynamicName true
+
+StormguardGatekeeper:
+    Type: HUSK
+    Display: '&e[&615&e] &cStormguard Gatekeeper'
+    Health: 500
+    Damage: 15
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - IRON_SWORD HAND
+    Options:
+        MovementSpeed: .24
+        FollowRange: 15
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 300 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    Disguise: player Steve setSkin Medieval__ setCustomName "&e[&615&e] &cStormguard Gatekeeper" setDynamicName true
+
+StormguardArcher:
+    Type: SKELETON
+    Display: '&e[&615&e] &cStormguard Archer'
+    Health: 125
+    Damage: 6
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - BOW HAND
+    Options:
+        MovementSpeed: .2
+        FollowRange: 15
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - shoot{type=ARROW;velocity=0.5;damage=6} @NearestPlayer{r=12} ~onTimer:40
+    - command{c="runicgive exp <trigger.name> 94 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 bowshoot
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin UnicornReaper setCustomName "&e[&615&e] &cStormguard Archer" setDynamicName true
+
+StormguardKnight:
+    Type: HUSK
+    Display: '&e[&615&e] &cStormguard Knight'
+    Health: 225
+    Damage: 12
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - IRON_AXE HAND
+    Options:
+        MovementSpeed: .28
+        FollowRange: 15
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 135 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    Disguise: player Steve setSkin Purolium3 setCustomName "&e[&615&e] &cStormguard Knight" setDynamicName true
+
+JorundrCutscene1:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Jorundr1,Frigg1;r=32} ~onSpawn
+  - summon{t=Jorundr1} @Location{c=-562.5,133,-354.5} ~onSpawn
+  - summon{t=Frigg1} @Location{c=-563.5,133,-351.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Jorundr1:
+  Type: ZOMBIE
+  Display: '&b???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: truet
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&b???';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=320} @self ~onSpawn
+  Disguise: player Steve setSkin EliteTrooper1 setCustomName "&b???" setDynamicName true
+Frigg1:
+  Type: ZOMBIE
+  Display: '&e???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&e???';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=320} @self ~onSpawn
+  Disguise: player Steve setSkin AgentWisconsin setCustomName "&e???" setDynamicName true
+
+
+JorundrCutscene2:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Jorundr2,Frigg2;r=32} ~onSpawn
+  - summon{t=Jorundr2} @Location{c=-510.5,133.5,-380.5} ~onSpawn
+  - summon{t=Frigg2} @Location{c=-510.5,133.5,-383.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Jorundr2:
+  Type: ZOMBIE
+  Display: '&b???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&b???';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=320} @self ~onSpawn
+  Disguise: player Steve setSkin EliteTrooper1 setCustomName "&b???" setDynamicName true
+Frigg2:
+  Type: ZOMBIE
+  Display: '&e???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&e???';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=320} @self ~onSpawn
+  Disguise: player Steve setSkin AgentWisconsin setCustomName "&e???" setDynamicName true
+
+
+JorundrCutscene3:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Jorundr3,Frigg3,StormGuard1,StormGuard2,StormGuard3,StormGuard4;r=32} ~onSpawn
+  - summon{t=Jorundr3} @Location{c=-541.5,127,-469.5} ~onSpawn
+  - summon{t=Frigg3} @Location{c=-538.5,127,-470.5} ~onSpawn
+  - summon{t=StormGuard1} @Location{c=-534.5,127,-467.5} ~onSpawn
+  - summon{t=StormGuard2} @Location{c=-543.5,127,-464.5} ~onSpawn
+  - summon{t=StormGuard3} @Location{c=-541.5,127,-455.5} ~onSpawn
+  - summon{t=StormGuard4} @Location{c=-534.5,127,-457.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Jorundr3:
+  Type: ZOMBIE
+  Display: '&b???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&b???';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=380} @self ~onSpawn
+  Disguise: player Steve setSkin EliteTrooper1 setCustomName "&b???" setDynamicName true
+Frigg3:
+  Type: ZOMBIE
+  Display: '&e???'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&e???';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=380} @self ~onSpawn
+  Disguise: player Steve setSkin AgentWisconsin setCustomName "&e???" setDynamicName true
+StormGuard1:
+  Type: ZOMBIE
+  Display: '&eFollower'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eFollower';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=380} @self ~onSpawn
+  Disguise: player Steve setSkin Elues setCustomName "&eFollower" setDynamicName true
+StormGuard2:
+  Type: ZOMBIE
+  Display: '&eFollower'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eFollower';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=380} @self ~onSpawn
+  Disguise: player Steve setSkin Veloi setCustomName "&eFollower" setDynamicName true
+StormGuard3:
+  Type: ZOMBIE
+  Display: '&eFollower'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eFollower';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=380} @self ~onSpawn
+  Disguise: player Steve setSkin Off_Luxus setCustomName "&eFollower" setDynamicName true
+StormGuard4:
+  Type: ZOMBIE
+  Display: '&eFollower'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eFollower';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=380} @self ~onSpawn
+  Disguise: player Steve setSkin JustKylian setCustomName "&eFollower" setDynamicName true
+
+
+JorundrCutscene4:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Jorundr4;r=32} ~onSpawn
+  - summon{t=Jorundr4} @Location{c=-636.5,127,-368.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Jorundr4:
+  Type: ZOMBIE
+  Display: '&bJorundr'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&bJorundr';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=320} @self ~onSpawn
+  Disguise: player Steve setSkin EliteTrooper1 setCustomName "&bJorundr" setDynamicName true
+
+
+JorundrCutscene5:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=Jorundr5;r=32} ~onSpawn
+  - summon{t=Jorundr5} @Location{c=-539.5,118,-167.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Jorundr5:
+  Type: ZOMBIE
+  Display: '&bJorundr'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&bJorundr';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=320} @self ~onSpawn
+  Disguise: player Steve setSkin EliteTrooper1 setCustomName "&bJorundr" setDynamicName true
+
+
+Jorundr:
+    Type: HUSK
+    Display: '&e[&6☠&e] &cJorundr'
+    Health: 5000
+    Damage: 25
+    DamageModifiers:
+    - FALL 0
+    Equipment:
+    - OdinsWrath HAND
+    Faction: Boss
+    Modules:
+        ThreatTable: true
+    BossBar:
+        Enabled: true
+        Title: '&c&lJorundr the Unconquered'
+        Health: 6000
+        Range: 32
+        Color: RED
+        Style: SEGMENTED_10
+    Options:
+        MovementSpeed: .4
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - randomskill{skills=OdinJump,OdinCharge} @self ~onTimer:160
+    - skill{s=OdinErupt} @PIR{r=40} ~onTimer:40 .25 <80%
+    - skill{s=OdinRise3} @self ~onTimer:1 <80%
+    - skill{s=OdinErupt2} @PIR{r=40} ~onTimer:40 .25 <40%
+    - skill{s=OdinRise2} @self ~onTimer:1 <60%
+    - skill{s=OdinRise1} @self ~onTimer:1 <40%
+    - skill{s=OdinTick} @self ~onTimer:120 <20%
+    - remove @MIR{t=UndeadWarden,UndeadGeneral,UndeadKeeper;r=100} ~onDeath
+    - skill{s=CheckPlayerDeath} @target ~onTimer:200
+    # RESET PARTY
+    #- command{c="runicteleport <trigger.name> jorundrskeep"} @trigger ~onDeath 1.0
+    #- command{c="party teleport <trigger.name>"} @trigger ~onDeath 1.0
+    - skill{s=BossFirework} @trigger ~onDeath
+    # DROPS
+    #- command{c="runicboss <caster.uuid> jorundrskeep"} @self ~onDeath 1.0
+    - command{c="runicgive exp <trigger.name> 5000 <trigger.l.x> <trigger.l.y> <trigger.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 attacker
+    Disguise: player Steve setSkin Lecayte setCustomName "&e[&6☠&e] &cJorundr" setDynamicName true
+OdinShock:
+    Type: BABY_ZOMBIE
+    Display: '&9Odin Shock'
+    Health: 10
+    Modules:
+        ThreatTable: true
+    Damage: 0
+    Equipment:
+    Options:
+        MovementSpeed: 0.2
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - suicide{delay=20} @self ~onSpawn
+    - skill{s=OdinShockSkill} @self ~onSpawn
+    - skill{s=OdinShockSkill-death} @self ~onDeath
+    - remove @self ~onDeath
+    Disguise: MAGMA_CUBE setSize 2
+
+OdinAOE:
+    Type: armor_stand
+    Display: '&0'
+    Health: 0
+    Damage: 0
+    Skills:
+    - skill{s=OdinAOESkill} @self ~onSpawn
+    Options:
+        Invisible: true
+        HasGravity: false
+        Marker: true
+OdinShockAOE:
+    Type: armor_stand
+    Display: '&0'
+    Health: 0
+    Damage: 0
+    Skills:
+    - skill{s=OdinShockAOESkill} @self ~onSpawn
+    Options:
+        Invisible: true
+        HasGravity: false
+        Marker: true
+OdinAOEMarker:
+    Type: armor_stand
+    Display: '&0'
+    Health: 0
+    Damage: 0
+    Skills:
+    - skill{s=OdinAOEMarkerSkill} @self ~onSpawn
+    Options:
+        Invisible: true
+        HasGravity: false
+        Marker: true
+TheWarden:
+    Type: HUSK
+    Display: '&e[&6☠&e] &cStormguard Warden'
+    Health: 1000
+    Damage: 25
+    DamageModifiers:
+    - FALL 0
+    Faction: Boss
+    Modules:
+        ThreatTable: true
+    BossBar:
+        Enabled: true
+        Title: '&c&lWarden'
+        Health: 1000
+        Range: 10
+        Color: RED
+        Style: SEGMENTED_10
+    Options:
+        MovementSpeed: .36
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 500 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - command{c="ri drop wardens-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+    - command{c="ri drop JorundrBook2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+    - skill{s=TheWardenChain} @self ~onTimer:80
+    - skill{s=TheWardenChain-message} @self ~onSignal:message
+    - skill{s=TheWardenUndeadPrisoners} @target ~onTimer:400
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 attacker
+    Disguise: player Steve setSkin DianaThePirate setCustomName "&e[&6☠&e] &cStormguard Warden" setDynamicName true
+UndeadWarden:
+    Type: HUSK
+    Display: '&e[&6☠&e] &7Undead Warden'
+    Health: 500
+    Damage: 16
+    DamageModifiers:
+    - FALL 0
+    Faction: Boss
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - IRON_SWORD HAND
+    BossBar:
+        Enabled: true
+        Title: '&7Undead Warden'
+        Health: 1000
+        Range: 32
+        Color: GREY
+        Style: SEGMENTED_10
+    Options:
+        MovementSpeed: .28
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 500 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - skill{s=TheUndeadWardenChain} @self ~onTimer:120
+    - skill{s=TheWardenChain-message} @self ~onSignal:message
+    - skill{s=TheWardenUndeadPrisoners} @target ~onTimer:440
+    - skill{s=CheckPlayerDeath} @target ~onTimer:200
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin DianaThePirate setCustomName "&e[&6☠&e] &7Undead Warden" setDynamicName true
+TheWardenAntiCheese:
+    Type: armor_stand
+    Display: '&0'
+    Health: 0
+    Damage: 0
+    Skills:
+    - skill{s=TheWardenAntiCheeseSkill} @self ~onSpawn
+    Options:
+        Invisible: true
+        HasGravity: false
+        Marker: true
+TheWardenChain:
+    Type: ZOMBIE
+    Display: '&7Chains'
+    Health: 200
+    Modules:
+        ThreatTable: true
+    Damage: 0
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.01
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - skill{s=TheWardenChainToss} @self ~onSpawn
+    - skill{s=TheWardenChainTrap} @self ~onTimer:2
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: FALLING_BLOCK GRAY_STAINED_GLASS
+
+TheWardenPrison:
+    Type: armor_stand
+    Display: '&0'
+    Health: 0
+    Damage: 0
+    Skills:
+    - skill{s=TheWardenStun} @self ~onTimer:1
+#    - message{m="&7Right click the chains to break free!"} @PIR{r=6} ~onSpawn
+    - remove{delay=200} @self ~onSpawn
+    - setvariable{var=caster.number;value=2} @self ~onSpawn
+    - skill{s=TheWardenDisarm} @self ~onInteract
+    - skill{s=TheWardenChainNoOne} @self ~onTimer:2
+#    - skill{s=TheWardenDisarmed} @self ~onTimer:1
+    Options:
+        Invisible: true
+        HasGravity: false
+        Marker: true
+    Disguise: FALLING_BLOCK GRAY_STAINED_GLASS
+
+TheWardenUndeadPrisoners:
+    Type: HUSK
+    Display: '&7Undead Prisoner'
+    Health: 40
+    Damage: 12
+    Equipment:
+    Options:
+        MovementSpeed: .4
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 20 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - skill{s=TheWardenUndeadPrisonerLeap} @self ~onTimer:100 .2
+    - setvariable{var=caster.mobsNear;value=0} @self ~onSpawn
+    - skill{s=NearbyPrisonerMechanics} @self ~onTimer:10
+    - remove{delay=600} @self ~onSpawn
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin Szymonkie420 setCustomName "&7Undead Prisoner" setDynamicName true
+TheGeneral:
+    Type: HUSK
+    Display: '&e[&6☠&e] &cStormguard General'
+    Health: 1000
+    Damage: 15
+    DamageModifiers:
+    - FALL 0
+    Faction: Boss
+    Modules:
+      ThreatTable: true
+    Equipment:
+    - IRON_AXE HAND
+    BossBar:
+        Enabled: true
+        Title: '&c&lGeneral'
+        Health: 1000
+        Range: 10
+        Color: RED
+        Style: SEGMENTED_10
+    Options:
+        MovementSpeed: .36
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:    
+    - command{c="runicgive exp <trigger.name> 500 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - command{c="ri drop generals-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+    - command{c="ri drop JorundrBook3 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+#    - message{m="<caster.var.number>"} @PIR{r=10} ~onTimer:20
+    - setvariable{var=caster.number;value=0} @self ~onSpawn
+    - skill{s=TheGeneralCheckWithin} @self ~onTimer:40
+    - skill{s=TheGeneralCheckNotWithin} @self ~onTimer:40
+    - skill{s=TheGeneralAura3} @self ~onTimer:20
+    - skill{s=TheGeneralSTICSummon} @self ~onTimer:1 <60%
+    - remove @MIR{t=TheGeneralSIC,TheGeneralTIC;r=50} ~onDeath
+    - skill{s=CheckPlayerDeath} @target ~onTimer:200
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 attacker
+    Disguise: player Steve setSkin MikeH75 setDynamicName true
+UndeadGeneral:
+    Type: HUSK
+    Display: '&e[&6☠&e] &7Undead General'
+    Health: 500
+    Damage: 15
+    DamageModifiers:
+    - FALL 0
+    Faction: Boss
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - IRON_AXE HAND
+    BossBar:
+        Enabled: true
+        Title: '&7Undead General'
+        Health: 1000
+        Range: 32
+        Color: GREY
+        Style: SEGMENTED_10
+    Options:
+        MovementSpeed: .32
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:  
+    - command{c="runicgive exp <trigger.name> 500 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+#    - message{m="<caster.var.number>"} @PIR{r=10} ~onTimer:20
+    - setvariable{var=caster.number;value=0} @self ~onSpawn
+    - skill{s=TheUndeadGeneralCheckWithin} @self ~onTimer:40
+    - skill{s=TheUndeadGeneralCheckNotWithin} @self ~onTimer:40
+    - skill{s=TheGeneralAura3} @self ~onTimer:40
+    - skill{s=UndeadGeneralSTICSummon} @self ~onTimer:1 <60%
+    - remove @MIR{t=UndeadGeneralSIC,UndeadGeneralTIC;r=20} ~onDeath
+    - skill{s=CheckPlayerDeath} @target ~onTimer:200
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin MikeH75 setDynamicName true
+TheGeneralSIC:
+    Type: HUSK
+    Display: '&e[&6☠&e] &cSecond in Command'
+    Health: 240
+    Damage: 10
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - IRON_SWORD HAND
+    Options:
+        MovementSpeed: .4
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 80 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - skill{s=TheGeneralSICSkill} @self ~onTimer:40 .6
+    - potion{type=SPEED;duration=200;level=3} @MIR{t=TheGeneral;r=20} ~onDeath
+    - skill{s=CheckPlayerDeath} @target ~onTimer:200
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin NiyuS setCustomName "&e[&6☠&e] &cSecond in Command" setDynamicName true
+UndeadGeneralSIC:
+    Type: HUSK
+    Display: '&e[&6☠&e] &7Second in Command'
+    Health: 100
+    Damage: 10
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    - IRON_SWORD HAND
+    Options:
+        MovementSpeed: .4
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 80 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - skill{s=TheGeneralSICSkill} @self ~onTimer:40 .6
+    - potion{type=SPEED;duration=200;level=2} @MIR{t=UndeadGeneral;r=20} ~onDeath
+    - skill{s=CheckPlayerDeath} @target ~onTimer:200
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin NiyuS setCustomName "&e[&6☠&e] &7Second in Command" setDynamicName true
+TheGeneralTIC:
+    Type: HUSK
+    Display: '&e[&6☠&e] &cThird in Command'
+    Health: 240
+    Damage: 10
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Equipment:
+    Options:
+        MovementSpeed: .08
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 80 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - skill{s=TheGeneralTICSpeed} @self ~onTimer:10
+    - skill{s=TheGeneralTICSkill} @self ~onTimer:40 .6
+    - potion{type=INCREASE_DAMAGE;duration=200;level=3} @MIR{t=TheGeneral;r=20} ~onDeath
+    - skill{s=CheckPlayerDeath} @target ~onTimer:200
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin sl33pyboy setCustomName "&e[&6☠&e] &cThird in Command" setDynamicName true
+UndeadGeneralTIC:
+    Type: HUSK
+    Display: '&e[&6☠&e] &7Third in Command'
+    Health: 100
+    Damage: 10
+    DamageModifiers:
+    - FALL 0
+    Modules:
+        ThreatTable: true
+    Options:
+        MovementSpeed: .08
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 80 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - skill{s=TheGeneralTICSpeed} @self ~onTimer:10
+    - skill{s=TheGeneralTICSkill} @self ~onTimer:40 .6
+    - potion{type=INCREASE_DAMAGE;duration=200;level=2} @MIR{t=UndeadGeneral;r=20} ~onDeath
+    - skill{s=CheckPlayerDeath} @target ~onTimer:200
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin sl33pyboy setCustomName "&e[&6☠&e] &7Third in Command" setDynamicName true
+TheKeeper:
+    Type: HUSK
+    Display: '&e[&6☠&e] &cStormguard Keeper'
+    Health: 1000
+    Damage: 15
+    DamageModifiers:
+    - FALL 0
+    Faction: Boss
+    Modules:
+        ThreatTable: true
+    BossBar:
+        Enabled: true
+        Title: '&c&lKeeper'
+        Health: 1000
+        Range: 10
+        Color: RED
+        Style: SEGMENTED_10
+    Options:
+        MovementSpeed: .4
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 500 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - command{c="ri drop keepers-key <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+    - command{c="ri drop JorundrBook1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+    - skill{s=TheKeeperAntiCheese} @self ~onTimer:400
+    - skill{s=TheKeeperSkill} @self ~onTimer:20
+    - skill{s=TheKeeperGoldCoinSpawn} @self ~onDamaged .6
+    - skill{s=TheKeeperProjectile} @self ~onTimer:40 .6
+    - skill{s=CheckPlayerDeath} @target ~onTimer:200
+    - remove @MIR{t=TheKeeperGold;r=32} ~onDeath
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 attacker
+    Disguise: player Steve setSkin GeberNatt setCustomName "&e[&6☠&e] &cStormguard Keeper" setDynamicName true
+UndeadKeeper:
+    Type: HUSK
+    Display: '&e[&6☠&e] &7Undead Keeper'
+    Health: 500
+    Damage: 15
+    DamageModifiers:
+    - FALL 0
+    Faction: Boss
+    Modules:
+        ThreatTable: true
+    Equipment:
+    BossBar:
+        Enabled: true
+        Title: '&7Undead Keeper'
+        Health: 1000
+        Range: 32
+        Color: GREY
+        Style: SEGMENTED_10
+    Options:
+        MovementSpeed: .36
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 500 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - skill{s=TheKeeperSkill} @self ~onTimer:20
+    - skill{s=TheKeeperGoldCoinSpawn} @self ~onDamaged .2
+    - skill{s=TheKeeperProjectile} @self ~onTimer:40 .6
+    - skill{s=CheckPlayerDeath} @target ~onTimer:200
+    - remove @MIR{t=TheKeeperGold;r=32} ~onDeath
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin GeberNatt setCustomName "&e[&6☠&e] &7Undead Keeper" setDynamicName true
+TheKeeperChest:
+    Type: armor_stand
+    Display: '&0'
+    Health: 0
+    Damage: 0
+    Skills:
+    - skill{s=TheKeeperChest} @self ~onSpawn
+    Options:
+        Invisible: true
+        HasGravity: false
+        Marker: true
+TheKeeperGold:
+    Type: ZOMBIE
+    Display: '&6The Keeper''s Gold'
+    Health: 30
+    Modules:
+        ThreatTable: true
+    Damage: 5
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        AlwaysShowName: true
+        MovementSpeed: 0.32
+        PreventOtherDrops: true
+        FollowRange: 30
+        MaxCombatDistance: 35
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 10 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    - skill{s=TheKeeperGoldonSpawn} @self ~onSpawn
+    - remove{delay=600} @self ~onSpawn
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: FALLING_BLOCK GOLD_BLOCK
+
+TheKeeperGoldCoin:
+    Type: BABY_ZOMBIE
+    Display: '&6Gold Coin'
+    Health: 1
+    Skills:
+    - skill{s=TheKeeperGoldCoin} @self ~onSpawn
+    - remove{delay=200} @self ~onSpawn
+    Options:
+        AlwaysShowName: true
+        MovementSpeed: 0.01
+        PreventOtherDrops: true
+        PreventJockeyMounts: true
+        NoDamageTicks: 0
+        Silent: true
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: DROPPED_ITEM GOLD_NUGGET
+
+TheKeeperAntiCheese:
+    Type: armor_stand
+    Display: '&0'
+    Health: 0
+    Damage: 0
+    Skills:
+    - skill{s=TheKeeperAntiCheeseSkill} @self ~onSpawn
+    Options:
+        Invisible: true
+        HasGravity: false
+        Marker: true
+OdinCivilian1:
+    Type: HUSK
+    Display: '&e[&6✸&e] &cJorundr''s Follower'
+    Health: 100
+    Damage: 12
+    Equipment:
+    Options:
+        MovementSpeed: .32
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 8 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 randomstroll
+    - 2 fleeplayers
+    - 3 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 hurtbytarget
+    Disguise: player Steve setSkin Elues setCustomName "&e[&6✸&e] &cJorundr" setDynamicName true
+OdinCivilian2:
+    Type: HUSK
+    Display: '&e[&6✸&e] &cJorundr''s Follower'
+    Health: 100
+    Damage: 12
+    Equipment:
+    Options:
+        MovementSpeed: .32
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 8 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 randomstroll
+    - 2 fleeplayers
+    - 3 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 hurtbytarget
+    Disguise: player Steve setSkin Veloi setCustomName "&e[&6✸&e] &cJorundr" setDynamicName true
+OdinCivilian3:
+    Type: HUSK
+    Display: '&e[&6✸&e] &cJorundr''s Follower'
+    Health: 100
+    Damage: 12
+    Equipment:
+    Options:
+        MovementSpeed: .32
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 8 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 randomstroll
+    - 2 fleeplayers
+    - 3 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 hurtbytarget
+    Disguise: player Steve setSkin Off_Luxus setCustomName "&e[&6✸&e] &cJorundr" setDynamicName true
+OdinCivilian4:
+    Type: HUSK
+    Display: '&e[&6✸&e] &cJorundr''s Follower'
+    Health: 100
+    Damage: 12
+    Equipment:
+    Options:
+        MovementSpeed: .32
+        FollowRange: 50
+        NoDamageTicks: 0
+        PreventOtherDrops: true
+        PreventItemPickup: true
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 8 <mob.l.x> <mob.l.y> <mob.l.z> 15"} @trigger ~onDeath 1.0
+    AIGoalSelectors:
+    - 0 clear
+    - 1 randomstroll
+    - 2 fleeplayers
+    - 3 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 hurtbytarget
+    Disguise: player Steve setSkin JustKylian setCustomName "&e[&6✸&e] &cJorundr" setDynamicName true

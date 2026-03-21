@@ -1,0 +1,644 @@
+blackfrost-devourer:
+  Type: ZOMBIE
+  Display: '&4[☠] &cBlackfrost Devourer'
+  Health: 300000
+  # Health dependencies: blackfrost-devourer-sonar, blackfrost-devourer-heartbeat-effect
+  Modules:
+    ThreatTable: true
+  Damage: 400
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&4&l[Conjured Boss] &c&lBlackfrost Devourer'
+    Health: 300000
+    Range: 64
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=blackfrost-devourer-water-leash} @self ~onTimer:40
+  #- randomskill{s=black-frost2,black-frost3} @trigger ~onDeath 1.0
+  - skill{s=blackfrost-devourer-leash} @self ~onSignal:leash
+  - command{c="runicgive exp <trigger.name> 25000 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.heart;value=1} @self ~onSpawn
+  - skill{s=blackfrost-devourer-ice-random} @self ~onTimer:20 .25 <75% #teleports a player under the ice who must then swim up and be let out by other players.
+  - skill{s=blackfrost-devourer-heartbeat-set} @self ~onTimer:40 .25 <95% 
+  #- skill{s=blackfrost-devourer-summon-air1} @self ~onTimer:20 <75%
+  #- skill{s=blackfrost-devourer-summon-air2} @self ~onTimer:20 <50%
+  - skill{s=blackfrost-devourer-summon-air3} @self ~onTimer:20 <25%
+  - skill{s=blackfrost-devourer-heartbeat1} @self ~onSpawn
+  - skill{s=blackfrost-devourer-sonar} @self ~onTimer:20 .15 <85%
+  - skill{s=blackfrost-devourer-threat} @target ~onTimer:40
+  - skill{s=blackfrost-devourer-teleport} @trigger ~onDamaged .15
+  - skill{s=blackfrost-devourer-teleport-message} @trigger ~onDamaged 
+  - signal{s=remove} @MIR{t=blackfrost-devourer;r=128} ~onSpawn
+  - remove @MIR{t=blackfrost-devourer;r=128} ~onSignal:remove
+  - signal{s=feed} @MIR{t=blackfrost-spirit;r=128} ~onTimer:20
+  - skill{s=BossFirework} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WARDEN
+
+blackfrost-devourer-ice-up:
+  Type: armor_stand
+  Display: '&bCracked Ice'
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Skills:
+  - skill{s=blackfrost-devourer-ice-up} @self ~onInteract
+  - skill{s=blackfrost-devourer-ice-remove} @self ~onSpawn
+  Disguise: FALLING_BLOCK ICE
+blackfrost-devourer-ice-down:
+  Type: armor_stand
+  Display: '&bCracked Ice'
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Skills:
+  - skill{s=blackfrost-devourer-ice-down} @self ~onInteract
+  - skill{s=blackfrost-devourer-ice-remove} @self ~onSpawn
+  Disguise: FALLING_BLOCK ICE
+
+blackfrost-devourer-air:
+  Type: ENDER_DRAGON
+  Display: '&e[&660&e] &cBlackfrost Dragon'
+  Health: 10000
+  Damage: 77
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - sound{s=entity.ender_dragon.flap;p=0.5;v=8} @self ~onTimer:40
+  - skill{s=blackfrost-devourer-air} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+blackfrost-devourer-sonar-marker:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=blackfrost-devourer-sonar-marker} @self ~onSpawn
+  - skill{s=blackfrost-devourer-sonar-marker-visual} @self ~onSpawn
+  
+blackfrost-devourer-altar:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=blackfrost-devourer-altar-leash} @MIR{t=blackfrost-devourer;r=256} ~onTimer:20
+  - signal{s=visual} @MIR{t=blackfrost-spirit;r=20} ~onTimer:20
+  - skill{s=blackfrost-devourer-altar} @self ~onSignal:summon
+
+blackfrost-walker:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cBlackfrost Walker'
+  Health: 10000
+  Damage: 75 #nerfed damage 100 -> 75
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - DIAMOND_SWORD HAND
+  - DIAMOND_SWORD OFFHAND
+  - LEATHER_HELMET HEAD
+  - LEATHER_CHESTPLATE CHEST
+  - LEATHER_LEGGINGS LEGS
+  - LEATHER_BOOTS FEET
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=blackfrost-devourer-threat} @target ~onTimer:40
+  - skill{s=blackfrost-walker-ground} @self ~onTimer:10
+  - skill{s=blackfrost-walker-cast} @self ~onTimer:60 #increased delay 20->60
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .25
+  #- command{c="ri drop black-frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.025
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WITHER_SKELETON
+
+blackfrost-walker-rogue-aoe-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=blackfrost-walker-rogue-aoe-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+frost-walker-altar: #event
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cFrost Walker'
+  Health: 935
+  Damage: 77
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - sound{s=block.glass.break;p=0.5} @self ~onSpawn
+  - skill{s=frost-walker-altar} @self ~onSpawn
+  - skill{s=blackfrost-spirit-spawn} @self ~onDeath .01
+  - setvariable{var=caster.rogue;value=0} @self ~onSpawn
+  - setvariable{var=caster.mage;value=0} @self ~onSpawn
+  - setvariable{var=caster.tier;value=0} @self ~onSpawn
+  - setvariable{var=caster.lunge;value=1} @self ~onSpawn
+  - skill{s=frost-walker-cast} @self ~onTimer:20
+  - randomskill{s=frost-walker-rogue-selection,frost-walker-mage-selection} @self ~onSpawn
+  - sound{s=item.armor.equip_iron;delay=5} @self ~onSpawn
+  - skill{s=frost-walker-death} @trigger ~onDeath
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-60} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SKELETON
+
+frost-walker: #event
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cFrost Walker'
+  Health: 935
+  Damage: 77
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=blackfrost-spirit-spawn} @self ~onDeath .01
+  - setvariable{var=caster.rogue;value=0} @self ~onSpawn
+  - setvariable{var=caster.mage;value=0} @self ~onSpawn
+  - setvariable{var=caster.tier;value=0} @self ~onSpawn
+  - setvariable{var=caster.lunge;value=1} @self ~onSpawn
+  - skill{s=frost-walker-cast} @self ~onTimer:20
+  - randomskill{s=frost-walker-rogue-selection,frost-walker-mage-selection} @self ~onSpawn
+  - sound{s=item.armor.equip_iron;delay=5} @self ~onSpawn
+  - skill{s=frost-walker-death} @trigger ~onDeath
+  - command{c="ri drop-lt Blackfrost-mob-items 0 0 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .05
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-60} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SKELETON
+
+frost-walker-rogue-aoe-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=frost-walker-rogue-aoe-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+frost-walker-mage-aoe-marker-lesser:
+  Type: armor_stand
+  Skills:
+  - skill{s=frost-walker-mage-aoe-marker-lesser} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+frost-walker-mage-aoe-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=frost-walker-mage-aoe-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+frost-rider: #event
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cFrost Rider'
+  Health: 2485
+  Damage: 77
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=blackfrost-spirit-spawn} @self ~onDeath .01
+  - command{c="runicgive exp <trigger.name> 1804 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - command{c="ri drop-lt Blackfrost-mob-items 0 0 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .05
+  #- command{c="ri drop frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .25
+  #- command{c="ri drop frost-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .75
+  - randomskill{s=g3,g4} @trigger ~onDeath .75
+  - skill{s=drop-level-60} @trigger ~onDeath
+  - skill{s=frost-rider-cast} @target ~onTimer:20   
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SKELETON_HORSE
+  
+frost-rider-bomb:
+  Type: ZOMBIE
+  Display: ''
+  Health: 2500
+  Damage: 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=frost-rider-bomb} @self ~onTimer:5
+  - setname{name='';delay=1} @self ~onDamaged
+  Disguise: FALLING_BLOCK BONE_BLOCK
+
+blackfrost-reaper:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cBluefrost Reaper'
+  Health: 10000
+  Damage: 77
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Equipment:
+  - DIAMOND_SWORD HAND
+  - DIAMOND_SWORD OFFHAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=blackfrost-reaper-slash} @self ~onTimer:40 .25
+  - skill{s=blackfrost-reaper-teleport} @trigger ~onDamaged .25
+  - skill{s=blackfrost-reaper-hunt} @target ~onTimer:40 .15
+  - skill{s=blackfrost-spirit-spawn} @self ~onDeath .1 #increasing spawn chance from 0.025 to 0.1
+  - command{c="runicgive exp <trigger.name> 4875 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - command{c="ri drop mount-blackfrost-kitsune <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.001
+  - command{c="ri drop-lt Blackfrost-mob-items 0 0 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .07
+  #- randomskill{s=frost-drop,frost-drop,frost-drop,frost-drop,blue-frost-drop} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .4
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: STRAY
+
+blackfrost-reaper-teleport-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=blackfrost-reaper-teleport-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+blackfrost-spirit:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cBlackfrost Spirit'
+  Health: 10000
+  Damage: 77
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=blackfrost-spirit-visual-altar-near} @self ~onSignal:visual
+  - setvariable{var=caster.follow;value=0} @self ~onSpawn
+  - skill{s=blackfrost-spirit} @self ~onInteract
+  - skill{s=blackfrost-spirit-follow} @self ~onTimer:5
+  - skill{s=blackfrost-spirit-unfollow} @self ~onTimer:40
+  - skill{s=blackfrost-spirit-feed} @self ~onSignal:feed
+  - heal{a=10000} @self ~onDamaged
+  - setname{name='&e[&6✸&e] &cBlackfrost Spirit';delay=1} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: VEX
+
+blackfrost-keeper:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cBluefrost Keeper'
+  Health: 40000
+  Damage: 77
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - DIAMOND_SWORD HAND
+  - DIAMOND_SWORD OFFHAND
+  - NETHERITE_CHESTPLATE CHEST
+  - DIAMOND_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&c&lBluefrost Keeper'
+    Health: 40000
+    Range: 22
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - remove @MIR{t=blackfrost-keeper-aoe,blackfrost-keeper-curse-add;r=128} ~onDeath
+  - signal{s=blackfrost-keeper-aoe} @MIR{t=blackfrost-keeper;r=32} ~onDeath
+  - summon{t=blackfrost-keeper-aoe} @Location{c=2560.5,131,2286.5} ~onSignal:blackfrost-keeper-aoe
+  - skill{s=blackfrost-keeper-threat} @target ~onTimer:20
+  - skill{s=blackfrost-spirit-spawn} @self ~onDeath .25 #buffing spawn chance from 0.05 to 0.25
+  - skill{s=blackfrost-keeper-teleport1} @trigger ~onDamaged
+  - skill{s=blackfrost-keeper-curse} @target ~onTimer:40
+  - setvariable{var=caster.curse;value=0} @self ~onSpawn
+  - skill{s=blackfrost-keeper-summon-curse1} @self ~onTimer:20
+  - skill{s=blackfrost-keeper-summon-curse2} @self ~onTimer:20 <25%
+  - command{c="ri drop mount-blackfrost-kitsune <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.01
+  - command{c="ri drop-lt Blackfrost-mob-items 0 0 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .10
+  - command{c="runicgive exp <trigger.name> 18750 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  #- command{c="ri drop frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} @trigger ~onDeath 1.0
+  #- command{c="ri drop blue-frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: WITHER_SKELETON
+
+blackfrost-keeper-aoe:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - signal{s=remove} @MIR{t=blackfrost-keeper-aoe;r=128} ~onSpawn
+  - remove @MIR{t=blackfrost-keeper-aoe;r=128} ~onSignal:remove
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - blockmask{m=GREEN_STAINED_GLASS;d=40;r=5;delay=1} @self ~onSpawn
+  - setvariable{var=caster.near;value=0} @self ~onSpawn
+  - skill{s=blackfrost-keeper-aoe} @self ~onTimer:20 .25
+  - skill{s=blackfrost-keeper-aoe-cast} @self ~onTimer:10
+
+blackfrost-keeper-curse-add:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cKeeper''s Curse'
+  Health: 750
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=blackfrost-keeper-curse-add} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WITHER_SKELETON
+
+frost-stalker:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cFrost Stalker'
+  Health: 935
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - CROSSBOW HAND
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=blackfrost-spirit-spawn} @self ~onDeath .01
+  - command{c="runicgive exp <trigger.name> 935 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - command{c="ri drop-lt Blackfrost-mob-items 0 0 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .05
+  #- command{c="ri drop frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .12
+  #- command{c="ri drop frost-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .75
+  - randomskill{s=g3,g4} @trigger ~onDeath .4
+  - skill{s=drop-level-60} @trigger ~onDeath
+  - setvariable{var=caster.stalker;value=0} @self ~onSpawn
+  - setvariable{var=caster.shoot;value=0} @self ~onSpawn
+  - setvariable{var=caster.start;value=0} @self ~onSpawn
+  - potion{t=SPEED;d=80;l=1;hasParticles=false} @self ~onDamaged
+  - skill{s=frost-stalker} @self ~onTimer:20
+  - skill{s=frost-stalker-hurt} @self ~onDamaged
+  - skill{s=frost-stalker-cast} @self ~onTimer:20
+  - skill{s=frost-stalker-start} @self ~onTimer:20
+  - skill{s=frost-stalker-start-hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 fleeplayers
+  Disguise: STRAY
+
+BlackfrostCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=BlackfrostCitizen;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=BlackfrostCitizen;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=BlackfrostCitizen2;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=BlackfrostCitizen2;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  
+  
+BlackfrostCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &1BlackFrost Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m="&aBlackFrost Citizen<&co> &cI WILL NOT YIELD!."} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=BlackfrostCSA} ~onDeath
+  Disguise: player Steve setSkin Originary setCustomName "&e[&61&e] &aNaz" setDynamicName true
+
+BlackfrostCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &1BlackFrost Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m="&1BlackFrost Citizen<&co> &cI WILL NOT YIELD!"} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=BlackfrostCSA} ~onDeath
+  Disguise: player Steve setSkin Originary setCustomName "&e[&61&e] &aNaz" setDynamicName true
+

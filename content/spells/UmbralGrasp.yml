@@ -1,0 +1,7 @@
+cooldown: 14
+duration: 5
+launch-multiplier: 1.5 # for the backwards wind-up
+magic-damage: 25
+magic-damage-per-level: 2
+mana: 30
+speed-multiplier: 1.0 # of the projectile!

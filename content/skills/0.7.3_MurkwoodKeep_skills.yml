@@ -1,0 +1,953 @@
+murkwood-elite-skill:
+  Conditions:
+  - playerwithin 32
+  - incombat{}
+  Skills:
+  - summon{t=murkwood-elite-spawn;r=12;a=1} @Forward{f=0;y=5}
+murkwood-elite-spawn:
+  Skills:
+  - delay 20
+  - skill{s=murkwood-elite-spawn2}
+murkwood-elite-spawn2:
+  Skills:
+  - delay 20
+  - skill{s=murkwood-elite-spawn2}
+  - skill{s=murkwood-elite-spawn3}
+murkwood-elite-spawn3:
+  Conditions:
+  - onground{} true  
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=12;radius=8;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=8}
+  - potion{type=SLOW;duration=40;level=10} @PIR{r=8}
+  - potion{type=BLINDNESS;duration=60;level=2} @PIR{r=8}
+  - remove
+
+murkwood-elite:
+  Skills:
+  - sound{s=entity.vex.charge;v=3}
+  - message{cooldown=60;m="&e[&6✸&e] &c&lSpirit of Marcus &e&lhas spawned!"} @PIR{r=32}
+  - cast{skillName="Despawn";duration=3000;onCast=murkwood-elite-despawn;showCastBar=true}
+murkwood-elite-despawn:
+  Skills:
+  - sound{s=entity.vex.charge;v=3}
+  - message{cooldown=60;m="&e[&6✸&e] &c&lSpirit of Marcus &e&lhas despawned!"} @PIR{r=32}
+  - remove
+
+
+murkwood-boss-spawn-ai:
+  Skills:
+  - setAI{ai=false}
+  - delay 40
+  - setAI{ai=true}
+  - delay 560
+  - remove
+
+murkwood-boss-hunt:
+  Conditions:
+  - playernotwithin 12
+  Cooldown: 12
+  Skills:
+  - skill{s=murkwood-boss-hunt-message} @trigger
+  - summon{t=murkwood-boss-hunt-spawn;r=2;os=true} @trigger
+murkwood-boss-hunt-message:
+  Cooldown: 24
+  Skills:
+  - summon{t=murkwood-boss-spawn3;r=3;a=2;os=true}
+  - message{m="&eThe Vines hunt for their &6far &eaway prey."} @trigger
+
+murkwood-boss-vines:
+  Cooldown: 12
+  Skills:
+  - skill{s=murkwood-boss-vines-summon}
+  - delay 230
+  - signal{s=sacrifice} @MIR{t=murkwood-boss-spawn2;r=4}
+  - signal{s=sacrifice} @MIR{t=murkwood-boss-spawn3;r=5}
+  - signal{s=sacrifice} @MIR{t=murkwood-boss-spawn4;r=6}
+  - delay 10
+  - skill{s=murkwood-boss-growth-message}
+  - signal{s=remove} @MIR{t=murkwood-boss-spawn2,murkwood-boss-spawn3,murkwood-boss-spawn4;r=64}
+  - skill{s=murkwood-boss-growth-cast}
+  - skill{s=murkwood-boss-vines}
+murkwood-boss-vines-summon:
+  Conditions:
+  - health{h=<2500} castinstead murkwood-boss-vines-summon3
+  - health{h=<5000} castinstead murkwood-boss-vines-summon2
+  - health{h=>5000}
+  Skills:
+  - summon{t=murkwood-boss-spawn2;r=30;a=25;os=true}
+murkwood-boss-vines-summon2:
+  Skills:
+  - summon{t=murkwood-boss-spawn3;r=30;a=25;os=true}
+murkwood-boss-vines-summon3:
+  Skills:
+  - summon{t=murkwood-boss-spawn4;r=30;a=25;os=true}
+  
+
+murkwood-boss-growth:
+  Skills:
+  - variableadd{var=caster.cast;amount=1}
+murkwood-boss-growth-message:
+  Conditions:
+  - varinrange{var=caster.cast;value=>0}
+  - incombat{}
+  Skills:
+  - message{m="&eMyrtle absorbed &6<caster.var.cast> &eVines"} @PIR{r=32}
+murkwood-boss-growth-cast:
+  TargetConditions:
+  - playerwithin 64
+  Conditions:
+  - varinrange{var=caster.cast;value=>0}
+  Skills:
+  - summon{t=murkwood-boss-spawn;r=4;os=true} @target
+  - variablesubtract{var=caster.cast;amount=1}
+  - delay 20
+  - skill{s=murkwood-boss-growth-cast}
+
+murkwood-boss-spawn2-growth:
+  Skills:
+  - leap{v=400} @MIR{t=Myrtle;r=24} 
+  - delay 5
+  - signal{s=growth} @MIR{t=Myrtle;r=24}
+  - remove
+murkwood-boss-aoe:
+  Conditions:
+  - incombat{}
+  Cooldown: 32
+  Skills:
+  - delay 240
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - delay 20
+  - potion{t=SLOW;d=20;l=3;hasParticles=false}
+  - delay 20
+  - potion{t=SLOW;d=200;l=10;hasParticles=false}
+  - jump{v=2}
+  - delay 40
+  - summon{t=murkwood-boss-spawn;r=1;os=true} @Ring{r=6;p=3}
+  - delay 20
+  - summon{t=murkwood-boss-spawn;r=1;os=true} @Ring{r=9;p=5}
+  - delay 20
+  - summon{t=murkwood-boss-spawn;r=1;os=true} @Ring{r=12;p=8}
+  - delay 20
+  - summon{t=murkwood-boss-spawn;r=1;os=true} @Ring{r=9;p=5}
+  - delay 20
+  - summon{t=murkwood-boss-spawn;r=1;os=true} @Ring{r=6;p=3}
+murkwood-boss-spawn-start:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - throw{vy=12} @PIR{r=4}
+  - jump{v=1.25} 
+  - summon{t=murkwood-boss-spawn-marker;a=3;r=2;os=true} 
+  - sound{s=block.grass.break} 
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}
+  - throw{vy=8} @PIR{r=4}
+  - delay 5
+  - remove 
+murkwood-boss-spawn-visual:
+  Skills:
+  - summon{t=murkwood-boss-spawn-marker;a=2;r=2}
+  - sound{s=block.grass.break}
+
+murkwood-boss-hunt-spawn-start:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - throw{vy=12} @PIR{r=4}
+  - jump{v=1.25} 
+  - summon{t=murkwood-boss-hunt-spawn-marker;a=3;r=2} 
+  - sound{s=block.grass.break} 
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}
+  - throw{vy=8} @PIR{r=4}
+  - delay 5
+  - remove 
+murkwood-boss-hunt-spawn-visual:
+  Skills:
+  - summon{t=murkwood-boss-hunt-spawn-marker;a=2;r=2}
+  - sound{s=block.grass.break}
+
+murkwood-trap-explosion-primed:
+  Conditions:
+  - playerwithin 3
+  - variableEquals{var=caster.triggered;value=0}
+  - variableEquals{var=caster.active;value=0}
+  Skills:
+  - message{m="&7Triggered a trap, right click to disarm it!"} @PIR{r=6}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=6}
+  - setvariable{var=caster.active;value=1} 
+  - sound{s=block.metal_pressure_plate.click_on}
+murkwood-trap-explosion-trigger:
+  Conditions:
+  - playernotwithin 3
+  - variableEquals{var=caster.active;value=1}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - message{m="&7Unsuccesfully disarmed the trap!"} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=6}
+  - potion{type=SLOW;duration=40;level=10} @PIR{r=6}
+  - potion{type=BLINDNESS;duration=60;level=2} @PIR{r=6}
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - setvariable{var=caster.triggered;value=1} 
+  - delay 600
+  - setvariable{var=caster.active;value=0} 
+  - setvariable{var=caster.disarm;value=0} 
+  - setvariable{var=caster.disarming;value=3} 
+  - setvariable{var=caster.triggered;value=0} 
+murkwood-trap-explosion-particle-active:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  - variableEquals{var=caster.disarm;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - effect:particlesphere{p=reddust;amount=4;radius=1} 
+murkwood-trap-explosion-particle-not-active:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  - variableEquals{var=caster.disarm;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+murkwood-trap-explosion-disarm:
+  Conditions:
+  - variableEquals{var=caster.disarm;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - setvariable{var=caster.disarm;value=1} 
+  - message{m="&7Disarming the trap"} @PIR{r=5}
+murkwood-trap-explosion-disarming:
+  Conditions:
+  - playerwithin 3
+  - variableEquals{var=caster.disarm;value=1}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - variablesubtract{var=caster.disarming;amount=1}
+  - sound{s=block.metal_pressure_plate.click_on}
+  - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+  - delay 10
+  - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+murkwood-trap-explosion-disarmed:
+  Conditions:
+  - variableEquals{var=caster.disarming;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - sound{s=block.metal_pressure_plate.click_off}
+  - message{m="&7Succesfully disarmed the trap!"} @PIR{r=5}
+  - setvariable{var=caster.triggered;value=1} 
+  - delay 600
+  - setvariable{var=caster.active;value=0} 
+  - setvariable{var=caster.disarm;value=0} 
+  - setvariable{var=caster.disarming;value=3} 
+  - setvariable{var=caster.triggered;value=0} 
+
+
+murkwood-trap-fire-primed:
+  Conditions:
+  - playerwithin 3
+  - variableEquals{var=caster.triggered;value=0}
+  - variableEquals{var=caster.active;value=0}
+  Skills:
+  - message{m="&7Triggered a trap, right click to disarm it!"} @PIR{r=6}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=6}
+  - setvariable{var=caster.active;value=1} 
+  - sound{s=block.metal_pressure_plate.click_on}
+murkwood-trap-fire-trigger:
+  Conditions:
+  - playernotwithin 3
+  - variableEquals{var=caster.active;value=1}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - message{m="&7Unsuccesfully disarmed the trap!"} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=6}
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=6}
+  - ignite{d=160} @PIR{r=6}
+  - sound{s=block.fire.extinguish;v=2}
+  - effect:particlesphere{p=flame;amount=24;radius=6} 
+  - setvariable{var=caster.triggered;value=1} 
+  - delay 600
+  - setvariable{var=caster.active;value=0} 
+  - setvariable{var=caster.disarm;value=0} 
+  - setvariable{var=caster.disarming;value=3} 
+  - setvariable{var=caster.triggered;value=0} 
+murkwood-trap-fire-particle-active:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  - variableEquals{var=caster.disarm;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - effect:particlesphere{p=reddust;amount=4;radius=1} 
+murkwood-trap-fire-particle-not-active:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  - variableEquals{var=caster.disarm;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+murkwood-trap-fire-disarm:
+  Conditions:
+  - variableEquals{var=caster.disarm;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - setvariable{var=caster.disarm;value=1} 
+  - message{m="&7Disarming the trap"} @PIR{r=5}
+murkwood-trap-fire-disarming:
+  Conditions:
+  - playerwithin 3
+  - variableEquals{var=caster.disarm;value=1}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - variablesubtract{var=caster.disarming;amount=1}
+  - sound{s=block.metal_pressure_plate.click_on}
+  - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+  - delay 10
+  - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+murkwood-trap-fire-disarmed:
+  Conditions:
+  - variableEquals{var=caster.disarming;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - sound{s=block.metal_pressure_plate.click_off}
+  - message{m="&7Succesfully disarmed the trap!"} @PIR{r=5}
+  - setvariable{var=caster.triggered;value=1} 
+  - delay 600
+  - setvariable{var=caster.active;value=0} 
+  - setvariable{var=caster.disarm;value=0} 
+  - setvariable{var=caster.disarming;value=3} 
+  - setvariable{var=caster.triggered;value=0} 
+
+
+murkwood-trap-ambush-primed:
+  Conditions:
+  - playerwithin 2
+  - variableEquals{var=caster.triggered;value=0}
+  - variableEquals{var=caster.active;value=0}
+  Skills:
+  - message{m="&7Triggered a trap, right click to disarm it!"} @PIR{r=6}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=6}
+  - setvariable{var=caster.active;value=1} 
+  - sound{s=block.metal_pressure_plate.click_on}
+murkwood-trap-ambush-trigger:
+  Conditions:
+  - playernotwithin 2
+  - variableEquals{var=caster.active;value=1}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - message{m="&7Unsuccesfully disarmed the trap!"} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=6}
+  - summon{t=murkwood-monster2;a=3;r=5;os=true} @NearestPlayer{r=12}
+  - signal{s=remove} @MIR{t=murkwood-monster2;r=24} 
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=6}
+  - potion{type=BLINDNESS;duration=60;level=2} @PIR{r=6}
+  - sound{s=block.fire.extinguish;v=2}
+  - setvariable{var=caster.triggered;value=1} 
+  - delay 600
+  - setvariable{var=caster.active;value=0} 
+  - setvariable{var=caster.disarm;value=0} 
+  - setvariable{var=caster.disarming;value=3} 
+  - setvariable{var=caster.triggered;value=0} 
+murkwood-trap-ambush-particle-active:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  - variableEquals{var=caster.disarm;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - effect:particlesphere{p=reddust;amount=4;radius=1} 
+murkwood-trap-ambush-particle-not-active:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  - variableEquals{var=caster.disarm;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+murkwood-trap-ambush-disarm:
+  Conditions:
+  - variableEquals{var=caster.disarm;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - setvariable{var=caster.disarm;value=1} 
+  - message{m="&7Disarming the trap"} @PIR{r=5}
+murkwood-trap-ambush-disarming:
+  Conditions:
+  - playerwithin 2
+  - variableEquals{var=caster.disarm;value=1}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - variablesubtract{var=caster.disarming;amount=1}
+  - sound{s=block.metal_pressure_plate.click_on}
+  - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+  - delay 10
+  - effect:particlesphere{p=reddust;c=#B9B9B9;amount=4;radius=1} 
+murkwood-trap-ambush-disarmed:
+  Conditions:
+  - variableEquals{var=caster.disarming;value=0}
+  - variableEquals{var=caster.triggered;value=0}
+  Skills:
+  - sound{s=block.metal_pressure_plate.click_off}
+  - message{m="&7Succesfully disarmed the trap!"} @PIR{r=5}
+  - setvariable{var=caster.triggered;value=1} 
+  - delay 600
+  - setvariable{var=caster.active;value=0} 
+  - setvariable{var=caster.disarm;value=0} 
+  - setvariable{var=caster.disarming;value=3} 
+  - setvariable{var=caster.triggered;value=0} 
+
+MurkwoodSkeleton-skill:
+  Skills:
+  - sound{s=entity.skeleton.hurt}
+  - summon{t=MurkwoodSkeleton-marker;r=3}
+MurkwoodSkeleton-marker:
+  Skills:
+  - skill{s=MurkwoodSkeleton-marker2}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=4}
+  - delay 120
+  - remove
+MurkwoodSkeleton-marker2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=4}
+  - delay 5
+  - skill{s=MurkwoodSkeleton-marker2}
+
+MurkwoodRed-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodRed-within}
+  - skill{s=MurkwoodRed-notwithin}
+  - skill{s=MurkwoodRed}
+MurkwoodRed-notwithin:
+  Conditions:
+  - playernotwithin 4
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodRed-within:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodRed:
+  Conditions:
+  - varinrange{var=caster.cast;value=>3}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - setvariable{var=caster.cast;value=0}
+  - cast{skillName="Bleed";duration=20;onCast=MurkwoodRedcast;showCastBar=true} @self
+MurkwoodRedcast:
+  Skills:
+  - summon{t=MurkwoodRed-marker}
+MurkwoodRed-marker:
+  Skills:
+  - potion{t=SLOW;duration=10;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=4}
+MurkwoodRed-marker2:
+  Skills:
+  - blockmask{material=netherrack;d=80;r=4}
+  - delay 80
+  - remove
+
+MurkwoodWhite-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodWhite-within}
+  - skill{s=MurkwoodWhite-notwithin}
+  - skill{s=MurkwoodWhite}
+MurkwoodWhite-notwithin:
+  Conditions:
+  - playernotwithin 4
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodWhite-within:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodWhite:
+  Conditions:
+  - varinrange{var=caster.cast;value=>3}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=40;l=2;hasParticles=false}
+  - cast{skillName="Haze";duration=40;onCast=MurkwoodWhitecast;showCastBar=true} @self
+MurkwoodWhitecast:
+  Skills:
+  - sound{s=block.enchantment_table.use}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=4}
+  - potion{t=BLINDNESS;d=80;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+
+MurkwoodJaws-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodJaws-within}
+  - skill{s=MurkwoodJaws-notwithin}
+  - skill{s=MurkwoodJaws}
+MurkwoodJaws-notwithin:
+  Conditions:
+  - playernotwithin 4
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodJaws-within:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodJaws:
+  Conditions:
+  - varinrange{var=caster.cast;value=>3}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - cast{skillName="Bite";duration=20;onCast=MurkwoodJawscast;showCastBar=true} @self
+MurkwoodJawscast:
+  Skills:
+  - potion{t=SLOW;d=40;l=2} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=3}
+
+MurkwoodKnight-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodKnight-within}
+  - skill{s=MurkwoodKnight-notwithin}
+  - skill{s=MurkwoodKnight}
+MurkwoodKnight-notwithin:
+  Conditions:
+  - playernotwithin 2
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodKnight-within:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodKnight:
+  Conditions:
+  - varinrange{var=caster.cast;value=>8}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - delay 20
+  - cast{skillName="En Garde";duration=60;onCast=MurkwoodKnightcast;showCastBar=true} @self
+  - delay 20
+  - sound{s=item.shield.block}
+  - equip{i=SHIELD:OFFHAND}
+  - setvariable{var=caster.active;value=1}
+  - delay 40
+  - sound{s=item.shield.break} @self
+  - setvariable{var=caster.active;value=0}
+  - equip{i=AIR:OFFHAND}
+
+MurkwoodKnight-active:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - setvariable{var=caster.lunge;value=1}
+  - sound{s=item.shield.block} @self
+  - pull{v=8} @trigger
+  - heal{a=20;i=true} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @trigger
+MurkwoodKnightcast:
+  Conditions:
+  - variableEquals{var=caster.lunge;value=1}
+  Skills:
+  - leap{v=250} @target
+  - setvariable{var=caster.lunge;value=0}
+
+MurkwoodElf-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodElf-within}
+  - skill{s=MurkwoodElf-notwithin}
+  - skill{s=MurkwoodElf}
+MurkwoodElf-notwithin:
+  Conditions:
+  - playernotwithin 6
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodElf-within:
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodElf:
+  Conditions:
+  - varinrange{var=caster.cast;value=>5}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - setvariable{var=caster.cast;value=0}
+  - cast{skillName="Lunge";duration=20;onCast=MurkwoodElfcast;showCastBar=true} @self
+MurkwoodElfcast:
+  Skills:
+  - leap{v=250} @target
+
+MurkwoodGhoul-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodGhoul-within}
+  - skill{s=MurkwoodGhoul-notwithin}
+  - skill{s=MurkwoodGhoul}
+MurkwoodGhoul-notwithin:
+  Conditions:
+  - playernotwithin 6
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodGhoul-within:
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodGhoul:
+  Conditions:
+  - varinrange{var=caster.cast;value=>5}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=120;l=2;hasParticles=false} 
+  - cast{skillName="Fear";duration=60;onCast=MurkwoodGhoulcast;showCastBar=true} @self
+MurkwoodGhoulcast:
+  Skills:
+  - sound{s=entity.dragon_fireball.explode}
+  - sound{s=entity.snowball.throw}
+  - projectile{ot=MurkwoodGhoul-tick;oh=MurkwoodGhoul-hit;v=16;i=1;ho=60}
+  - projectile{ot=MurkwoodGhoul-tick;oh=MurkwoodGhoul-hit;v=16;i=1;ho=120}
+  - projectile{ot=MurkwoodGhoul-tick;oh=MurkwoodGhoul-hit;v=16;i=1;ho=180}
+  - projectile{ot=MurkwoodGhoul-tick;oh=MurkwoodGhoul-hit;v=16;i=1;ho=240}
+  - projectile{ot=MurkwoodGhoul-tick;oh=MurkwoodGhoul-hit;v=16;i=1;ho=300}
+  - projectile{ot=MurkwoodGhoul-tick;oh=MurkwoodGhoul-hit;v=16;i=1;ho=360}
+MurkwoodGhoul-tick:
+  Skills:
+  - effect:particles{p=reddust;color=#000000;a=1}
+MurkwoodGhoul-hit:
+  Skills:
+  - potion{t=SLOW;d=80;l=3}
+  - potion{t=BLINDNESS;d=80;l=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}
+
+MurkwoodVine-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodVine-within}
+  - skill{s=MurkwoodVine-notwithin}
+  - skill{s=MurkwoodVine}
+MurkwoodVine-notwithin:
+  Conditions:
+  - playernotwithin 4
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodVine-within:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodVine:
+  Conditions:
+  - varinrange{var=caster.cast;value=>5}
+  - playerwithin 32
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=160;l=1;hasParticles=false} 
+  - setvariable{var=caster.cast;value=0}
+  - cast{skillName="Thorns";duration=40;onCast=MurkwoodVinecast;showCastBar=true} @self
+MurkwoodVinecast:
+  Conditions:
+  - playerwithin 32
+  Skills:
+  - summon{t=MurkwoodVine-marker;r=2;a=3} @target
+MurkwoodVine-marker:
+  Skills:
+  - potion{t=SLOW;duration=10;l=10} @PIR{r=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=2}
+MurkwoodVine-marker2:
+  Skills:
+  - potion{t=SLOW;duration=40;l=10} @PIR{r=2}
+  - sound{s=block.grass.place} 
+  - delay 60
+  - remove
+
+MurkwoodGolem-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodGolem-within}
+  - skill{s=MurkwoodGolem-notwithin}
+  - skill{s=MurkwoodGolem}
+MurkwoodGolem-notwithin:
+  Conditions:
+  - playernotwithin 6
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodGolem-within:
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodGolem:
+  Conditions:
+  - varinrange{var=caster.cast;value=>5}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=40;l=2;hasParticles=false} 
+  - setvariable{var=caster.cast;value=0}
+  - cast{skillName="Shock";duration=40;onCast=MurkwoodGolemcast;showCastBar=true} @self
+MurkwoodGolemcast:
+  Skills:
+  - potion{t=SPEED;d=80;l=1;hasParticles=false} 
+  - sound{s=block.grass.break}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=4}
+  - pull{v=250} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=4}
+
+MurkwoodFlame-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodFlame-within}
+  - skill{s=MurkwoodFlame-notwithin}
+  - skill{s=MurkwoodFlame}
+MurkwoodFlame-notwithin:
+  Conditions:
+  - playernotwithin 6
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodFlame-within:
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodFlame:
+  Conditions:
+  - varinrange{var=caster.cast;value=>4}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=120;l=1;hasParticles=false} 
+  - setvariable{var=caster.cast;value=0}
+  - cast{skillName="Enflame";duration=40;onCast=MurkwoodFlamecast;showCastBar=true} @self
+MurkwoodFlamecast:
+  Skills:
+  - skill{s=MurkwoodFlamecast2}
+  - delay 20
+  - skill{s=MurkwoodFlamecast2}
+  - delay 20
+  - skill{s=MurkwoodFlamecast2}
+MurkwoodFlamecast2:
+  Skills:
+  - effect:particlesphere{p=reddust;color=#84D17B;a=16;r=5;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 12"} @PIR{r=5}
+  - delay 10
+  - effect:particlesphere{p=reddust;color=#84D17B;a=16;r=5;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 8"} @PIR{r=5}
+
+MurkwoodMage-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodMage-within}
+  - skill{s=MurkwoodMage-notwithin}
+  - skill{s=MurkwoodMage}
+MurkwoodMage-notwithin:
+  Conditions:
+  - playernotwithin 4
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodMage-within:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodMage:
+  Conditions:
+  - varinrange{var=caster.cast;value=>5}
+  - playerwithin 32
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=160;l=1;hasParticles=false} 
+  - setvariable{var=caster.cast;value=0}
+  - cast{skillName="Sea Green Mist";duration=40;onCast=MurkwoodMagecast;showCastBar=true} @self
+MurkwoodMagecast:
+  Conditions:
+  - playerwithin 32
+  Skills:
+  - summon{t=MurkwoodMage-marker} @target
+MurkwoodMage-marker:
+  Skills:
+  - skill{s=MurkwoodMage-visual}
+  - delay 20
+  - skill{s=MurkwoodMage-marker2}
+  - delay 80
+  - remove
+MurkwoodMage-marker2:
+  Skills:
+  - effect:particlesphere{p=reddust;color=#84D17B;a=12;r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 4"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - delay 5
+  - skill{s=MurkwoodMage-marker2}
+MurkwoodMage-visual:
+  Skills:
+  - effect:particlesphere{p=reddust;color=#84D17B;a=8;r=5}
+  - delay 5
+  - skill{s=MurkwoodMage-visual}
+
+MurkwoodVamp-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MurkwoodVamp-within}
+  - skill{s=MurkwoodVamp-notwithin}
+  - skill{s=MurkwoodVamp}
+MurkwoodVamp-sunlight:
+  Conditions:
+  - outside{}
+  - sunny{} true
+  Skills:
+  - heal{a=1}
+  - ignite{ticks=20}
+
+MurkwoodVamp-notwithin:
+  Conditions:
+  - playernotwithin 5
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.cast;amount=1}	 
+MurkwoodVamp-within:
+  Conditions:
+  - playerwithin 5
+  Skills:
+  - setvariable{var=caster.cast;value=0}
+MurkwoodVamp:
+  Conditions:
+  - varinrange{var=caster.cast;value=>5}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false} 
+  - setvariable{var=caster.cast;value=0}
+  - cast{skillName="Blood Orb";duration=60;onCast=MurkwoodVampcast;showCastBar=true} @self
+MurkwoodVampcast:
+  Skills:
+  - summon{t=MurkwoodVamp-marker} @Forward{f=0;y=8}
+
+MurkwoodVamp-proj:
+  Skills:
+  - projectile{onTick=BloodOrb-projtick;onHit=BloodOrb-projhit;i=1;v=20;mr=128} @NearestPlayer{r=64}
+  - delay 40
+  - skill{s=MurkwoodVamp-proj} 
+MurkwoodVamp-projtick:
+  Skills:
+  - effect:particles{p=reddust;amount=4} @Origin
+MurkwoodVamp-projhit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 20"}
+  - potion{t=SLOW;duration=40;l=2}
+MurkwoodVamp-aura:
+  Skills:
+  - effect:particlesphere{p=reddust;amount=16;radius=8;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=8}
+  - potion{t=SLOW;duration=20;l=1} @PIR{r=8}
+  - delay 4
+  - skill{s=MurkwoodVamp-aura}
+
+murkwood-drop:
+  Skills:
+  - randomskill{s=murkwood-standard-drop,murkwood-unique-drop}
+murkwood-unique-drop:
+  Skills:
+  - randomskill{s=murkwood-archer,murkwood-cleric,murkwood-mage,murkwood-rogue,murkwood-warrior}
+
+murkwood-standard-drop:
+  Skills:
+  - command{c="ri drop-range 28 31 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  
+murkwood-archer:
+  Skills:
+  - randomskill{s=murkwood-archer-boots,murkwood-archer-chestplate,murkwood-archer-leggings,murkwood-archer-helmet}
+murkwood-archer-boots:
+  Skills:
+  - command{c="ri drop murkwood-archer-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-archer-chestplate:
+  Skills:
+  - command{c="ri drop murkwood-archer-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-archer-leggings:
+  Skills:
+  - command{c="ri drop murkwood-archer-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-archer-helmet:
+  Skills:
+  - command{c="ri drop murkwood-archer-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+murkwood-cleric:
+  Skills:
+  - randomskill{s=murkwood-cleric-boots,murkwood-cleric-chestplate,murkwood-cleric-leggings,murkwood-cleric-helmet}
+murkwood-cleric-boots:
+  Skills:
+  - command{c="ri drop murkwood-cleric-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-cleric-chestplate:
+  Skills:
+  - command{c="ri drop murkwood-cleric-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-cleric-leggings:
+  Skills:
+  - command{c="ri drop murkwood-cleric-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-cleric-helmet:
+  Skills:
+  - command{c="ri drop murkwood-cleric-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+murkwood-mage:
+  Skills:
+  - randomskill{s=murkwood-mage-boots,murkwood-mage-chestplate,murkwood-mage-leggings,murkwood-mage-helmet}
+murkwood-mage-boots:
+  Skills:
+  - command{c="ri drop murkwood-mage-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-mage-chestplate:
+  Skills:
+  - command{c="ri drop murkwood-mage-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-mage-leggings:
+  Skills:
+  - command{c="ri drop murkwood-mage-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-mage-helmet:
+  Skills:
+  - command{c="ri drop murkwood-mage-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+murkwood-rogue:
+  Skills:
+  - randomskill{s=murkwood-rogue-boots,murkwood-rogue-chestplate,murkwood-rogue-leggings,murkwood-rogue-helmet}
+murkwood-rogue-boots:
+  Skills:
+  - command{c="ri drop murkwood-rogue-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-rogue-chestplate:
+  Skills:
+  - command{c="ri drop murkwood-rogue-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-rogue-leggings:
+  Skills:
+  - command{c="ri drop murkwood-rogue-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-rogue-helmet:
+  Skills:
+  - command{c="ri drop murkwood-rogue-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+murkwood-warrior:
+  Skills:
+  - randomskill{s=murkwood-warrior-boots,murkwood-warrior-chestplate,murkwood-warrior-leggings,murkwood-warrior-helmet}
+murkwood-warrior-boots:
+  Skills:
+  - command{c="ri drop murkwood-warrior-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-warrior-chestplate:
+  Skills:
+  - command{c="ri drop murkwood-warrior-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-warrior-leggings:
+  Skills:
+  - command{c="ri drop murkwood-warrior-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+murkwood-warrior-helmet:
+  Skills:
+  - command{c="ri drop murkwood-warrior-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}

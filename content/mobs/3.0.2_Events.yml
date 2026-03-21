@@ -1,0 +1,758 @@
+giant-event-start:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - remove @MIR{t=giant-event-boss,giant-event-boss-spawn-1,giant-event-boss-spawn-2-1,giant-event-boss-spawn-2-2,giant-event-boss-spawn-2-3,giant-event-boss-spawn-2-4,giant-event-boss-spawn-2-5,giant-event-cannon1,giant-event-cannon2,giant-event-cannon3,giant-event-cannon4,giant-event-cannon5,giant-event-start,giant-event-boss-spawn-1-convert,giant-event-cannonball,giant-event-cannonball2,giant-event-cannonball-faulty,giant-event-boss-spawn-3,giant-event-boss-spawn-4;r=256} ~onSpawn
+  - summon{t=giant-event-boss} @Location{c=2074.5,60,-2326.5} ~onSpawn
+  - summon{t=giant-event-cannon1} @Location{c=2104.5,82,-2311.5} ~onSpawn
+  - summon{t=giant-event-cannon2} @Location{c=2104.5,82,-2319.5} ~onSpawn
+  - summon{t=giant-event-cannon3} @Location{c=2104.5,82,-2340.5} ~onSpawn
+  - summon{t=giant-event-cannon4} @Location{c=2104.5,82,-2348.5} ~onSpawn
+  - summon{t=giant-event-cannon5} @Location{c=2103.5,80,-2330} ~onSpawn
+  - summon{t=giant-event-boss-spawn-1-convert} @Location{c=2130.5,67,-2328.5} ~onSpawn
+  - skill{s=giant-event-start-cannonball-spawn} @self ~onSpawn
+
+giant-event-boss:
+  Type: GIANT
+  Display: '&c&lThe Great Garglag'
+  Health: 2500000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  BossBar:
+    Enabled: true
+    Title: '&c&lThe Great Garglag'
+    Health: 2500000
+    Range: 128
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    Despawn: false
+    AlwaysShowName: true
+    MovementSpeed: 0.12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.teleport;value=1} @self ~onSpawn
+  - skill{s=giant-event-boss-teleport} @self ~onTimer:10
+  - skill{s=giant-event-boss-skill} @self ~onTimer:200 <80%
+  - summon{t=giant-event-boss-spawn-5-setup} @Location{c=2074.5,100,-2326.5} ~onTimer:400 <20%
+  - damage{a=5000;i=true} @self ~onSignal:damage
+  - summon{t=giant-event-boss-spawn-1;a=8;r=15;os=true} @self ~onTimer:400 <80%
+  - summon{t=giant-event-boss-spawn-2-5;a=4;r=12;os=true} @self ~onTimer:400 <60%
+  - summon{t=giant-event-boss-spawn-3;a=1;r=5;os=true} @self ~onTimer:400 <40%
+  - skill{s=giant-event-boss-wave} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: GIANT
+
+giant-event-boss-spawn-1:
+  Type: ZOMBIE
+  Display: '&cGarglag Servant'
+  Health: 2500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 2130,67,-2328
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=giant-event-boss-spawn-1-damage} @self ~onSignal:damage
+  #- potion{t=SLOW;d=80;l=1;hasParticles=false} @self ~onDamaged
+  - skill{s=giant-event-boss-spawn-1-convert} @self ~onSignal:convert
+
+giant-event-boss-spawn-1-convert:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=convert} @MIR{t=giant-event-boss-spawn-1;r=5} ~onTimer:20
+
+giant-event-boss-spawn-2-1:
+  Type: ZOMBIE
+  Display: '&cGarglag Servant'
+  Health: 500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - damage{a=2000;i=true} @self ~onSignal:damage
+giant-event-boss-spawn-2-2:
+  Type: ZOMBIE
+  Display: '&cGarglag Servant'
+  Health: 1000
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_HELMET HEAD
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - damage{a=500;i=true} @self ~onSignal:damage
+giant-event-boss-spawn-2-3:
+  Type: ZOMBIE
+  Display: '&cGarglag Servant'
+  Health: 1500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_HELMET HEAD
+  - IRON_BOOTS FEET
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - damage{a=500;i=true} @self ~onSignal:damage
+giant-event-boss-spawn-2-4:
+  Type: ZOMBIE
+  Display: '&cGarglag Servant'
+  Health: 2000
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_CHESTPLATE CHEST
+  - IRON_BOOTS FEET
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - damage{a=500;i=true} @self ~onSignal:damage
+giant-event-boss-spawn-2-5:
+  Type: ZOMBIE
+  Display: '&cGarglag Servant'
+  Health: 2500
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_CHESTPLATE CHEST
+  - IRON_LEGGINGS LEGS
+  - IRON_BOOTS FEET
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - damage{a=500;i=true} @self ~onSignal:damage
+
+giant-event-boss-spawn-3:
+  Type: ZOMBIE
+  Display: '&cGarglag Golem'
+  Health: 100000
+  Damage: 100
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - damage{a=10000;i=true} @self ~onSignal:damage
+  - skill{s=giant-event-boss-spawn-3} @self ~onTimer:400
+  Disguise: IRON_GOLEM
+
+giant-event-boss-spawn-4:
+  Type: GHAST
+  Display: '&cGarglag Amalgamation'
+  Health: 100000
+  Damage: 50
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lGarglag Amalgamation'
+    Health: 100000
+    Range: 128
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - skill{s=giant-event-boss-spawn-4} @self ~onSpawn
+  - leap{v=250} @Location{c=2130.5,90,-2328.5} ~onTimer:40
+  #- message{m="&cA Garglag Monster is wreaking havoc at the cannonball supply!"} @PIR{r=128} ~onSpawn
+
+giant-event-boss-spawn-4-proj-dmg:
+  Type: armor_stand
+  Options:
+    Despawn: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=giant-event-boss-spawn-4-proj-dmg} @self ~onSpawn
+
+giant-event-boss-spawn-5:
+  Type: CHICKEN
+  Display: '' #'&cGarglag Gloop'
+  Health: 250
+  Damage: 50
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=giant-event-boss-spawn-5} @self ~onTimer:20
+  Disguise: SLIME setSize 2
+
+giant-event-boss-spawn-5-setup:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{t=giant-event-boss-spawn-5;a=8;r=24} @self ~onSpawn
+  - remove @self ~onSpawn
+
+
+
+giant-event-cannon1:
+  Type: HORSE
+  Display: '&7Cannon'
+  Health: 10000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Saddled: true
+    HasGravity: false
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.cannon;value=1} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - heal{a=10000;i=true} @self ~onDamaged
+  - skill{s=giant-event-cannon-fire} @self ~onSignal:cannon
+  - skill{s=giant-event-cannon-fire2} @self ~onSignal:cannon2
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MINECART
+
+giant-event-cannon2:
+  Type: HORSE
+  Display: '&7Cannon'
+  Health: 10000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Saddled: true
+    HasGravity: false
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.cannon;value=2} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - heal{a=10000;i=true} @self ~onDamaged
+  - skill{s=giant-event-cannon-fire} @self ~onSignal:cannon
+  - skill{s=giant-event-cannon-fire2} @self ~onSignal:cannon2
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MINECART
+
+giant-event-cannon3:
+  Type: HORSE
+  Display: '&7Cannon'
+  Health: 10000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Saddled: true
+    HasGravity: false
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.cannon;value=3} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - heal{a=10000;i=true} @self ~onDamaged
+  - skill{s=giant-event-cannon-fire} @self ~onSignal:cannon
+  - skill{s=giant-event-cannon-fire2} @self ~onSignal:cannon2
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MINECART
+
+giant-event-cannon4:
+  Type: HORSE
+  Display: '&7Cannon'
+  Health: 10000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Saddled: true
+    HasGravity: false
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.cannon;value=4} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - heal{a=10000;i=true} @self ~onDamaged
+  - skill{s=giant-event-cannon-fire} @self ~onSignal:cannon
+  - skill{s=giant-event-cannon-fire2} @self ~onSignal:cannon2
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MINECART
+
+giant-event-cannon5:
+  Type: HORSE
+  Display: '&7Cannon'
+  Health: 10000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Saddled: true
+    HasGravity: false
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.cannon;value=5} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - heal{a=10000;i=true} @self ~onDamaged
+  - skill{s=giant-event-cannon-fire} @self ~onSignal:cannon
+  - skill{s=giant-event-cannon-fire2} @self ~onSignal:cannon2
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MINECART
+
+
+giant-event-cannonball-fire:
+  Type: ZOMBIE
+  Display: '&7Cannon Ball'
+  Health: 2500
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - heal{a=2500;i=true} @self ~onDamaged
+  - suicide @self ~onSignal:suicide
+  - leap{v=750} @MIR{t=giant-event-cannonball-marker;r=2} ~onSpawn
+  - remove @MIR{t=giant-event-cannonball-marker;r=2} ~onSpawn
+  - skill{s=giant-event-cannonball-fire-death} @self ~onTimer:5
+  - suicide{delay=240} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MAGMA_CUBE setSize 2
+
+giant-event-cannonball:
+  Type: ZOMBIE
+  Display: '&7Cannon Ball'
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - heal{a=1000;i=true} @self ~onDamaged
+  - signal{s=cannon} @MIR{t=giant-event-cannon1,giant-event-cannon2,giant-event-cannon3,giant-event-cannon4,giant-event-cannon5;r=3} ~onTimer:20
+  - skill{s=giant-event-cannonball} @self ~onInteract
+  - skill{s=giant-event-cannonball-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MAGMA_CUBE setSize 2
+
+giant-event-cannonball-faulty:
+  Type: ZOMBIE
+  Display: '&cFaulty Explosive'
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - heal{a=1000;i=true} @self ~onDamaged
+  - skill{s=giant-event-cannonball-faulty} @self ~onInteract
+  - skill{s=giant-event-cannonball-faulty-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MAGMA_CUBE setSize 2
+    
+giant-event-cannonball2:
+  Type: ZOMBIE
+  Display: '&7Cannon Ball'
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - heal{a=1000;i=true} @self ~onDamaged
+  - signal{s=cannon2} @MIR{t=giant-event-cannon1,giant-event-cannon2,giant-event-cannon3,giant-event-cannon4,giant-event-cannon5;r=3} ~onTimer:20
+  - skill{s=giant-event-cannonball2} @self ~onInteract
+  - skill{s=giant-event-cannonball-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MAGMA_CUBE setSize 3
+
+giant-event-cannonball3:
+  Type: ZOMBIE
+  Display: '&eLarge Cannon Ball'
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - heal{a=1000;i=true} @self ~onDamaged
+  - skill{s=giant-event-cannonball3} @self ~onInteract
+  - skill{s=giant-event-cannonball-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MAGMA_CUBE setSize 4
+
+giant-event-cannonball-spawn:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{t=giant-event-cannonball-setup} @Location{c=2126,69,-2324} ~onSpawn
+  - summon{t=giant-event-cannonball-setup} @Location{c=2141,70,-2347} ~onSpawn
+  - summon{t=giant-event-cannonball-setup} @Location{c=2135,69,-2302} ~onSpawn
+  - remove @self ~onSpawn
+
+giant-event-cannonball-setup:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  #- remove @MIR{t=giant-event-cannonball,giant-event-cannonball2;r=12} ~onSpawn
+  - summon{t=giant-event-cannonball2;a=1;r=8;os=true} @self ~onSpawn
+  - summon{t=giant-event-cannonball;a=3;r=8;os=true} @self ~onSpawn
+  - summon{t=giant-event-cannonball-faulty;a=2;r=8;os=true} @self ~onSpawn
+  - summon{t=giant-event-cannonball3;a=1;r=8;os=true} @self ~onSpawn .1
+  - remove @self ~onSpawn
+
+giant-event-cannonball-marker:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+
+giant-event-cannonball-damage:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - sound{s=entity.generic.explode;v=1} @self ~onSpawn
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1} @self ~onSpawn 
+  - signal{s=damage} @MIR{t=giant-event-boss,giant-event-boss-spawn-1,giant-event-boss-spawn-2-1,giant-event-boss-spawn-2-2,giant-event-boss-spawn-2-3,giant-event-boss-spawn-2-4,giant-event-boss-spawn-2-5,giant-event-boss-spawn-3;r=8} ~onSpawn
+  - remove @self ~onSpawn

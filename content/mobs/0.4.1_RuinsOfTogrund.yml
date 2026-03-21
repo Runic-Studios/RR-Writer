@@ -1,0 +1,282 @@
+BloodHarvester:
+  Type: CAVE_SPIDER
+  Display: '&4[☠] &cBlood Harvester'
+  Health: 10000
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&4&l[Field Boss] &r&c&lBlood Harvester'
+    Health: 10000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=BloodHarvester-drop} @trigger ~onDeath
+  - skill{s=BloodHarvester-jump} @self ~onTimer:40 .5
+  - skill{s=BloodHarvesterConsume} @self ~onTimer:20
+  - skill{s=BloodHarvester-lunge} @self ~onTimer:40 .5
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SPIDER
+
+BloodSpiderling:
+  Type: CAVE_SPIDER
+  Display: '&e[&630&e] &cBlood Spiderling'
+  Health: 250
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 7"} @trigger ~onDeath 1.0
+  - skill{s=BloodSpiderling-lunge} @self ~onTimer:40 .1
+  - remove{delay=1200} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+BloodSpiderling-elite:
+  Type: CAVE_SPIDER
+  Display: '&e[&630&e] &cBlood Crawler'
+  Health: 400
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 7"} @trigger ~onDeath 1.0
+  - skill{s=BloodSpiderling-lunge} @self ~onTimer:80 .25
+  - remove{delay=1200} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+BloodHarvesterNest:
+  Type: BABY_ZOMBIE
+  Display: '&cBlood Nest'
+  Health: 1000
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=BloodHarvesterNest;delay=360} @self ~onSpawn
+  - summon{t=BloodSpiderling;a=3;r=3;os=true} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK CLAY
+    
+BloodHarvesterGoo:
+  Type: armor_stand
+  Skills:
+  - skill{s=BloodHarvesterGoo} @self ~onTimer:20
+  - setAI{ai=false} @self ~onSpawn 
+  - remove{delay=400} @self ~onSpawn 
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBWEB
+    
+CatacombDweller:
+  Type: ZOMBIE
+  Display: '&e[&625&e] &cAbyssal Dweller'
+  Health: 485
+  Damage: 35
+  DamageModifiers:
+  - FALL 0  
+  Faction: Boss
+  Equipment:
+  - IRON_AXE HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 284 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-25} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise:
+    Type: WITHER_SKELETON
+
+UndeadBarbarian: #event
+  Type: ZOMBIE
+  Display: '&e[&617&e] &cUndead Barbarian'
+  Health: 290
+  Damage: 20
+  DamageModifiers:
+  - FALL 0  
+  Faction: Undead
+  Equipment:
+  - IRON_AXE HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.26
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 152 <mob.l.x> <mob.l.y> <mob.l.z> 17"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-17} @trigger ~onDeath
+  - command{c="ri drop undead-bread <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.2
+  - skill{S=UndeadBarbarian-spawn} @self ~onSpawn
+  - skill{s=UndeadBarbarian-skill} @self ~onTimer:20
+  - setvariable{var=caster.fire;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin henrik172 setCustomName "&e[&617&e] &cUndead Barbarian" setDynamicName true
+
+UndeadBarbarianEliterng:
+  Type: armor_stand
+  Skills:
+  - setvariable{var=target.rng;value=1} @MIR{t=UndeadBarbarian;r=256} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+BarbarianQuakeMarker:
+  Type: armor_stand
+  Skills:
+  - skill{s=BarbarianQuakeAOE} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+UndeadBarbarianDashMarker:   
+  Type: armor_stand
+  Skills:
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+Togrund:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cTogrund'
+  Health: 2000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 21
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lTogrund the Blighted'
+    Health: 2000
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - TogrundMace HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 20
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Togrund-drop} @trigger ~onDeath
+  #- skill{s=startSmite} ~onTimer:300
+  #- skill{s=BlightCast} ~onTimer:300
+  #- skill{s=ToxicWastelandTrigger} ~onTimer:300
+  - skill{s=TogrundTimer} ~onTimer:300
+  #- skill{s=TogrundHeal} @self ~onTimer:20
+  #- skill{s=TogrundStart} ~onEnterCombat
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin adrix013 setCustomName "&e[&6☠&e] &cTogrund" setDynamicName true
+TogrundTheBlightedMarker:   
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=ToxicWastelandTick2} @self ~onSpawn
+  - remove{delay=200} @self ~onSpawn

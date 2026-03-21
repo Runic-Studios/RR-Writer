@@ -1,0 +1,7 @@
+cooldown: 8
+distance: 2
+magic-damage: 10
+magic-damage-per-level: 2.5
+mana: 20
+shield: 50
+shield-per-level: 2

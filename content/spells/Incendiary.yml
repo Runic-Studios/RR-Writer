@@ -1,0 +1,7 @@
+magic-damage: 5
+magic-damage-per-level: 1.85
+distance: 8
+duration: 2 # seconds
+duration-of-damage: 4
+period: 2
+count: 5

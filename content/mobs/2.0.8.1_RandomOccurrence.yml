@@ -1,0 +1,208 @@
+underground-timer:
+  Type: armor_stand
+  Display: '&cActive in &e10<&co>00' #initial time
+  Skills:
+  - skill{s=underground-timer-start} @self ~onSpawn
+  - message{m="&4[BETA] &c&lUnderground Passage &e&lopened at <mob.l.x>, <mob.l.y>, <mob.l.z>"} @PlayersOnServer ~onSpawn
+  - message{m="&4[BETA] &e&lWill close if there are no players nearby"} @PIR{r=25} ~onSpawn
+  - message{m="&4[BETA] &c&lUnderground Passage &e&lhas closed"} @PlayersOnServer ~onDespawn
+  - skill{s=underground-timer-interact} @trigger ~onInteract
+  - skill{s=blank} @self ~onSignal:summon #interact
+  - setvariable{var=caster.minute;v=10} @self ~onSpawn #initial minute
+  - setvariable{var=caster.second;v=0} @self ~onSpawn #initial second
+  - setvariable{var=caster.minute;v=1} @self ~onSignal:minute #active minute
+  - setvariable{var=caster.second;v=1} @self ~onSignal:second #active second +1
+  - skill{s=timer-start} @self ~onSpawn #timer start
+  - skill{s=timer} @self ~onTimer:20 #timer
+  - skill{s=timer-interact} @self ~onInteract #interact
+  BossBar: #bossbar display
+    Enabled: true
+    Title: '&c&lRight Click<&co> &e&lEnter Underground'
+    Range: 10
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBBLED_DEEPSLATE_SLAB
+
+underground-timer-test:
+  Type: armor_stand
+  Display: '&cActive in &e0<&co>01' #initial time
+  Skills:
+  - skill{s=underground-timer-start} @self ~onSpawn
+  - message{m="&4[BETA] &c&lUnderground Passage &e&lopened at <mob.l.x>, <mob.l.y>, <mob.l.z>"} @PlayersOnServer ~onSpawn
+  - message{m="&4[BETA] &e&lWill close if there are no players nearby"} @PIR{r=25} ~onSpawn
+  - message{m="&4[BETA] &c&lUnderground Passage &e&lhas closed"} @PlayersOnServer ~onDespawn
+  - skill{s=underground-timer-interact} @trigger ~onInteract
+  - skill{s=blank} @self ~onSignal:summon #interact
+  - setvariable{var=caster.minute;v=0} @self ~onSpawn #initial minute
+  - setvariable{var=caster.second;v=1} @self ~onSpawn #initial second
+  - setvariable{var=caster.minute;v=1} @self ~onSignal:minute #active minute
+  - setvariable{var=caster.second;v=1} @self ~onSignal:second #active second +1
+  - skill{s=timer-start} @self ~onSpawn #timer start
+  - skill{s=timer} @self ~onTimer:20 #timer
+  - skill{s=timer-interact} @self ~onInteract #interact
+  BossBar: #bossbar display
+    Enabled: true
+    Title: '&c&lRight Click<&co> &e&lEnter Underground'
+    Range: 10
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBBLED_DEEPSLATE_SLAB
+
+
+
+
+
+#elite altar
+
+BanditAzana-elite-timer:
+  Type: armor_stand
+  Display: '&cActive in &e0<&co>10' #initial time
+  Skills:
+  - signal{s=remove} @MIR{t=BanditAzana-elite-timer,BanditAzana-elite;r=50} ~onSpawn #remove logic
+  - remove @MIR{t=BanditAzana-elite-timer;r=50} ~onSignal:remove #remove logic
+  - remove @self ~onSignal:elite-remove #remove logic
+  - message{m="&e[&6✸&e] &c&lElite Altar &e&lhas spawned!";delay=1} @PIR{r=32} ~onSpawn #spawn message
+  - summon{t=BanditAzana-elite} @self ~onSignal:summon #interact
+  - remove @self ~onSignal:summon #interact
+  - setvariable{var=caster.minute;v=0} @self ~onSpawn #initial minute
+  - setvariable{var=caster.second;v=10} @self ~onSpawn #initial second
+  - setvariable{var=caster.minute;v=1} @self ~onSignal:minute #active minute
+  - setvariable{var=caster.second;v=31} @self ~onSignal:second #active second +1
+  - skill{s=timer-start} @self ~onSpawn #timer start
+  - skill{s=timer} @self ~onTimer:20 #timer
+  - skill{s=timer-interact} @self ~onInteract #interact
+  BossBar: #bossbar display
+    Enabled: true
+    Title: '&c&lRight Click<&co> &e&lChallenge Elite'
+    Range: 5
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBBLED_DEEPSLATE_WALL
+
+WitheredElf-elite-timer:
+  Type: armor_stand
+  Display: '&cActive in &e0<&co>10' #initial time
+  Skills:
+  - signal{s=remove} @MIR{t=WitheredElf-elite-timer,WitheredElf-elite;r=50} ~onSpawn #remove logic
+  - remove @MIR{t=WitheredElf-elite-timer;r=50} ~onSignal:remove #remove logic
+  - remove @self ~onSignal:elite-remove #remove logic
+  - message{m="&e[&6✸&e] &c&lElite Altar &e&lhas spawned!";delay=1} @PIR{r=32} ~onSpawn #spawn message
+  - summon{t=WitheredElf-elite} @self ~onSignal:summon #interact
+  - remove @self ~onSignal:summon #interact
+  - setvariable{var=caster.minute;v=0} @self ~onSpawn #initial minute
+  - setvariable{var=caster.second;v=10} @self ~onSpawn #initial second
+  - setvariable{var=caster.minute;v=1} @self ~onSignal:minute #active minute
+  - setvariable{var=caster.second;v=31} @self ~onSignal:second #active second +1
+  - skill{s=timer-start} @self ~onSpawn #timer start
+  - skill{s=timer} @self ~onTimer:20 #timer
+  - skill{s=timer-interact} @self ~onInteract #interact
+  BossBar: #bossbar display
+    Enabled: true
+    Title: '&c&lRight Click<&co> &e&lChallenge Elite'
+    Range: 5
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBBLED_DEEPSLATE_WALL
+
+murkwood-elite-timer:
+  Type: armor_stand
+  Display: '&cActive in &e0<&co>10'
+  Skills:
+  - signal{s=remove} @MIR{t=murkwood-elite-timer,murkwood-elite;r=50} ~onSpawn
+  - remove @MIR{t=murkwood-elite-timer;r=50} ~onSignal:remove
+  - remove @self ~onSignal:elite-remove
+  - message{m="&e[&6✸&e] &c&lElite Altar &e&lhas spawned!";delay=1} @PIR{r=32} ~onSpawn
+  - summon{t=murkwood-elite} @self ~onSignal:summon
+  - remove @self ~onSignal:summon
+  - setvariable{var=caster.minute;v=0} @self ~onSpawn
+  - setvariable{var=caster.second;v=10} @self ~onSpawn
+  - setvariable{var=caster.minute;v=1} @self ~onSignal:minute
+  - setvariable{var=caster.second;v=31} @self ~onSignal:second
+  - skill{s=timer-start} @self ~onSpawn
+  - skill{s=timer} @self ~onTimer:20
+  - skill{s=timer-interact} @self ~onInteract
+  BossBar:
+    Enabled: true
+    Title: '&c&lRight Click<&co> &e&lChallenge Elite'
+    Range: 5
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBBLED_DEEPSLATE_WALL
+
+hightower-pawn-elite-timer:
+  Type: armor_stand
+  Display: '&cActive in &e0<&co>10'
+  Skills:
+  - signal{s=remove} @MIR{t=hightower-pawn-elite-timer,hightower-pawn-elite;r=50} ~onSpawn
+  - remove @MIR{t=hightower-pawn-elite-timer;r=50} ~onSignal:remove
+  - remove @self ~onSignal:elite-remove
+  - message{m="&e[&6✸&e] &c&lElite Altar &e&lhas spawned!";delay=1} @PIR{r=32} ~onSpawn
+  - summon{t=hightower-pawn-elite} @self ~onSignal:summon
+  - remove @self ~onSignal:summon
+  - setvariable{var=caster.minute;v=0} @self ~onSpawn
+  - setvariable{var=caster.second;v=10} @self ~onSpawn
+  - setvariable{var=caster.minute;v=1} @self ~onSignal:minute
+  - setvariable{var=caster.second;v=31} @self ~onSignal:second
+  - skill{s=timer-start} @self ~onSpawn
+  - skill{s=timer} @self ~onTimer:20
+  - skill{s=timer-interact} @self ~onInteract
+  BossBar:
+    Enabled: true
+    Title: '&c&lRight Click<&co> &e&lChallenge Elite'
+    Range: 5
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBBLED_DEEPSLATE_WALL
+
+Infernal-elite-timer:
+  Type: armor_stand
+  Display: '&cActive in &e0<&co>10'
+  Skills:
+  - signal{s=remove} @MIR{t=Infernal-elite-timer,Infernal-elite;r=50} ~onSpawn
+  - remove @MIR{t=Infernal-elite-timer;r=50} ~onSignal:remove
+  - remove @self ~onSignal:elite-remove
+  - message{m="&e[&6✸&e] &c&lElite Altar &e&lhas spawned!";delay=1} @PIR{r=32} ~onSpawn
+  - summon{t=Infernal-elite} @self ~onSignal:summon
+  - remove @self ~onSignal:summon
+  - setvariable{var=caster.minute;v=0} @self ~onSpawn
+  - setvariable{var=caster.second;v=10} @self ~onSpawn
+  - setvariable{var=caster.minute;v=1} @self ~onSignal:minute
+  - setvariable{var=caster.second;v=31} @self ~onSignal:second
+  - skill{s=timer-start} @self ~onSpawn
+  - skill{s=timer} @self ~onTimer:20
+  - skill{s=timer-interact} @self ~onInteract
+  BossBar:
+    Enabled: true
+    Title: '&c&lRight Click<&co> &e&lChallenge Elite'
+    Range: 5
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBBLED_DEEPSLATE_WALL

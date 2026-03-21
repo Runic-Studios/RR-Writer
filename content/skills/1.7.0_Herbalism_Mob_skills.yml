@@ -1,0 +1,284 @@
+#Zone 1
+ForestNymphPoof:
+  Skills:
+  - delay 20
+  - effect:particlesphere{particle=reddust;color=#86FF68;amount=50;radius=3} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=3}
+  - delay 20
+  - effect:particlesphere{particle=reddust;color=#86FF68;amount=50;radius=5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=5}
+  - delay 20
+  - effect:particlesphere{particle=reddust;color=#86FF68;amount=100;radius=8} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=8}
+  - remove
+ForestSlimePoof:
+  Skills:
+  - delay 20
+  - effect:particlesphere{particle=reddust;color=#86FF68;amount=50;radius=5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5}
+ForestGrumpPoof:
+  Skills:
+  - potion{type=SLOW;duration=40;level=1;hasParticles=false} 
+  - delay 40
+  - potion{type=SPEED;duration=40;level=1;hasParticles=false} 
+  - potion{type=INVISIBILITY;duration=40;level=1;hasParticles=false} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=5;hS=1;vS=1} @self
+  - effect:particles{particle=reddust;color=#89FE85;amount=5;hS=1;vS=1} @self
+  - effect:particles{particle=reddust;color=#FE8585;amount=5;hS=1;vS=1} @self
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=5;hS=1;vS=1} @self
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=5;hS=1;vS=1} @self
+  - effect:particles{particle=reddust;color=#89FE85;amount=5;hS=1;vS=1} @self
+  - effect:particles{particle=reddust;color=#FE8585;amount=5;hS=1;vS=1} @self
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=5;hS=1;vS=1} @self
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=5;hS=1;vS=1} @self
+  - effect:particles{particle=reddust;color=#89FE85;amount=5;hS=1;vS=1} @self
+  - effect:particles{particle=reddust;color=#FE8585;amount=5;hS=1;vS=1} @self
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=5;hS=1;vS=1} @self
+  - delay 10
+  - effect:particlesphere{particle=reddust;color=#85FEF9;amount=50;radius=5} @self
+  - effect:particlesphere{particle=reddust;color=#89FE85;amount=50;radius=5} @self
+  - effect:particlesphere{particle=reddust;color=#FE8585;amount=50;radius=5} @self
+  - effect:particlesphere{particle=reddust;color=#FFC8C8;amount=50;radius=5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5}
+  - potion{type=SLOW;duration=20;level=1} @PIR{r=5}
+  
+#Zone 2
+
+#Zone 3
+BloaterAOE:
+  Skills:
+  - skill{s=BloaterAOE_Laser}
+  - delay 30
+  - skill{s=BloaterAOE_Damage}
+BloaterAOE_Laser:
+  Skills: 
+  - projectile{onTick=BloaterAOE_LaserVisual;i=1;v=50;mr=30} @Target
+  - delay 10
+  - projectile{onTick=BloaterAOE_LaserVisual;i=1;v=50;mr=30} @Target
+  - delay 10
+  - projectile{onTick=BloaterAOE_LaserVisual;i=1;v=50;mr=30} @Target
+BloaterAOE_LaserVisual:
+  Skills:
+  - effect:particles{particle=smoke_normal;a=10} @Origin
+BloaterAOE_Damage:
+  Skills:
+  - jump{velocity=0.5} @Self
+  - setgravity{g=false} @Self
+  - effect:particles{particle=dragon_breath;a=50;hs=0.2;vs=1} @Self
+  - delay 5
+  - effect:particles{particle=dragon_breath;a=50;hs=0.2;vs=1} @Self
+  - delay 5
+  - effect:particles{particle=dragon_breath;a=50;hs=0.2;vs=1} @Self
+  - delay 5
+  - effect:particles{particle=dragon_breath;a=50;hs=0.2;vs=1} @Self
+  - delay 5
+  - projectile{onTick=BloaterAOE_Tick;onHit=BloaterAOE_Hit;onEnd=BloaterAOE_End;i=1;v=37;mr=250;sE=false} @PIR{r=20}
+  - delay 10
+  - setgravity{g=true} @Self
+BloaterAOE_Tick:
+  Skills:
+  - effect:particles{particle=portal;a=100;hs=0.3;vs=0.3;mr=30} @Origin
+  - effect:particles{particle=smoke_large;a=5;hs=0.3;vs=0.3;mr=30} @Origin
+  - effect:particles{particle=spell_witch;a=15;hs=0.3;vs=0.3;mr=30} @Origin
+BloaterAOE_Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 3"} @Target
+  - effect:particles{particle=damage_indicator;a=20;hs=0.5;vs=0.5;r=30} @Origin
+  - potion{type=BLINDNESS;duration=120}
+  - potion{type=CONFUSION;duration=120}
+  - sound{s=ambient.underwater.loop.additions.ultra_rare;v=4;p=2}
+  - sound{s=ambient.underwater.loop.additions.ultra_rare;v=4;p=0.01}
+BloaterAOE_End:
+  Skills:
+  - sound{s=ambient.underwater.enter;v=3}
+  - sound{s=ambient.underwater.exit;v=3}
+  - effect:particlering{particle=portal;a=5;y=0.1;s=0.1;r=2;points=32} @Origin
+  - effect:particlering{particle=smoke_large;a=1;y=0.1;s=0.1;r=2;points=32} @Origin
+  - effect:particlering{particle=spell_witch;a=3;y=0.1;s=0.1;r=2;points=32} @Origin
+  - delay 10
+  - effect:particlering{particle=portal;a=5;y=0.1;s=0.1;r=4;points=32} @Origin
+  - effect:particlering{particle=smoke_large;a=1;y=0.1;s=0.1;r=4;points=32} @Origin
+  - effect:particlering{particle=spell_witch;a=3;y=0.1;s=0.1;r=4;points=32} @Origin
+  - delay 10
+  - effect:particlering{particle=portal;a=5;y=0.1;s=0.1;r=6;points=32} @Origin
+  - effect:particlering{particle=smoke_large;a=1;y=0.1;s=0.1;r=6;points=32} @Origin
+  - effect:particlering{particle=spell_witch;a=3;y=0.1;s=0.1;r=6;points=32} @Origin
+  - delay 10
+  - effect:particlering{particle=portal;a=5;y=0.1;s=0.1;r=8;points=32} @Origin
+  - effect:particlering{particle=smoke_large;a=1;y=0.1;s=0.1;r=8;points=32} @Origin
+  - effect:particlering{particle=spell_witch;a=3;y=0.1;s=0.1;r=8;points=32} @Origin
+  - delay 10
+  - effect:particlering{particle=portal;a=5;y=0.1;s=0.1;r=10;points=32} @Origin
+  - effect:particlering{particle=smoke_large;a=1;y=0.1;s=0.1;r=10;points=32} @Origin
+  - effect:particlering{particle=spell_witch;a=3;y=0.1;s=0.1;r=10;points=32} @Origin
+  - delay 40
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PlayersNearOrigin{r=10}
+  - sound{s=entity.generic.explode;v=3}
+  - effect:particlesphere{particle=damage_indicator;a=30;r=10} @Origin
+  - effect:particles{particle=explosion_large;a=20;hs=1;vs=1;r=30} @Origin
+  - effect:particlering{particle=portal;a=5;y=0.1;s=0.1;r=10;points=32;hs=1;vs=1} @Origin
+  - effect:particlering{particle=smoke_large;a=1;y=0.1;s=0.1;r=10;points=32;hs=1;vs=1} @Origin
+  - effect:particlering{particle=spell_witch;a=3;y=0.1;s=0.1;r=10;points=32;hs=1;vs=1} @Origin
+
+ForestGruntCharge:
+  Skills:
+  - potion{type=SPEED;duration=40;level=1;hasParticles=false} 
+  - delay 40
+  - throw{vy=18} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5}
+  - delay 10
+  - leap{velocity=250} @target
+  - delay 10
+  - leap{velocity=150} @target
+  - throw{vy=5} @PIR{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=7}
+  - delay 10
+  - leap{velocity=150} @target
+  - throw{vy=5} @PIR{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=7}
+  - delay 10
+  - leap{velocity=150} @target
+  - throw{vy=5} @PIR{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=7}
+  - delay 10
+  - leap{velocity=150} @target
+  - throw{vy=5} @PIR{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=7}
+  - delay 10
+  - leap{velocity=150} @target
+  - throw{vy=5} @PIR{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=7}
+  - delay 10
+  - leap{velocity=150} @target
+  - throw{vy=5} @PIR{r=7}
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=7}
+  - delay 10
+ForestBlossomPoof:
+  Conditions: 
+  - incombat{}
+  Skills:
+  - potion{type=SLOW;duration=40;level=1;hasParticles=false} 
+  - delay 40
+  - potion{type=SLOW;duration=100;level=3;hasParticles=false} 
+  - potion{type=INVISIBILITY;duration=100;level=1;hasParticles=false} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=5;hS=1;vS=1}
+  - effect:particles{particle=reddust;color=#89FE85;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FE8585;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=5;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#89FE85;amount=5;hS=1;vS=1}
+  - effect:particles{particle=reddust;color=#FE8585;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=5;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#89FE85;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FE8585;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=5;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#89FE85;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FE8585;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=5;hS=1;vS=1} 
+  - randomskill{skills=ForestBlossomRedSpawn,ForestBlossomBlueSpawn,ForestBlossomGreenSpawn}
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#89FE85;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FE8585;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=5;hS=1;vS=1} 
+  - randomskill{skills=ForestBlossomRedSpawn,ForestBlossomBlueSpawn,ForestBlossomGreenSpawn}
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#89FE85;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FE8585;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=5;hS=1;vS=1} 
+  - randomskill{skills=ForestBlossomRedSpawn,ForestBlossomBlueSpawn,ForestBlossomGreenSpawn}
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#89FE85;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FE8585;amount=5;hS=1;vS=1} 
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=5;hS=1;vS=1} 
+  - randomskill{skills=ForestBlossomRedSpawn,ForestBlossomBlueSpawn,ForestBlossomGreenSpawn}
+  - delay 10
+ForestBlossomBlueSpawn:
+  Skills:
+  - summon{type=ForestBlossomBlue;amount=1;radius=3;os=true}
+ForestBlossomBlue:
+  Skills:
+  - potion{type=INVISIBILITY;duration=100;level=1;hasParticles=false} 
+  - effect:particles{particle=reddust;color=#85FEF9;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#85FEF9;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particlesphere{particle=reddust;color=#85FEF9;amount=50;radius=5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5}
+  - potion{type=SLOW;duration=20;level=1} @PIR{r=5}
+  - remove
+ForestBlossomRedSpawn:
+  Skills:
+  - summon{type=ForestBlossomRed;amount=1;radius=3;os=true}
+ForestBlossomRed:
+  Skills:
+  - potion{type=INVISIBILITY;duration=100;level=1;hasParticles=false} 
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=10;hS=1;vS=1}
+  - delay 10
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particlesphere{particle=reddust;color=#FFC8C8;amount=50;radius=5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5}
+  - potion{type=SLOW;duration=20;level=1} @PIR{r=5}
+  - remove
+ForestBlossomGreenSpawn:
+  Skills:
+  - summon{type=ForestBlossomGreen;amount=1;radius=3;os=true}
+ForestBlossomGreen:
+  Skills:
+  - potion{type=INVISIBILITY;duration=100;level=1;hasParticles=false} 
+  - effect:particles{particle=reddust;color=#89FE85;amount=10;hS=1;vS=1}
+  - delay 10
+  - effect:particles{particle=reddust;color=#89FE85;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#89FE85;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#89FE85;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particles{particle=reddust;color=#89FE85;amount=10;hS=1;vS=1}
+  - delay 10
+  - effect:particles{particle=reddust;color=#89FE85;amount=10;hS=1;vS=1}
+  - delay 10
+  - effect:particles{particle=reddust;color=#89FE85;amount=10;hS=1;vS=1}
+  - delay 10
+  - effect:particles{particle=reddust;color=#89FE85;amount=10;hS=1;vS=1} 
+  - delay 10
+  - effect:particlesphere{particle=reddust;color=#89FE85;amount=50;radius=5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=5}
+  - potion{type=SLOW;duration=20;level=1} @PIR{r=5}
+  - remove

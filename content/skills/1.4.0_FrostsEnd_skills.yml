@@ -1,0 +1,436 @@
+Koda-summon:
+  Skills:
+  - signal{s=suicide} @MIR{t=Nova;r=32}
+  - sound{s=entity.wolf.howl}
+  - delay 40
+  - summon{t=Nova} @Forward{f=-7;y=4}
+  - signal{s=summon} @MIR{t=Nova;r=32}
+Nova-summon:
+  Skills:
+  - look{headOnly=false;immediately=true} @MIR{t=Koda;r=32}
+  - leap{v=300} @Forward{f=5;y=1}
+  - delay 40
+  - leap{v=250} @target
+
+Koda-throw:
+  Conditions:
+  - incombat
+  - playerwithin 32
+  Skills:
+  - delay 80
+  - sound{s=entity.wolf.howl;v=2}
+  - delay 35
+  - summon{t=Koda-throw-marker;r=1} @target
+  - delay 10
+  - signal{s=throw} @MIR{t=Nova;r=32}
+Nova-throw:
+  Skills:
+  - leap{v=250} @Forward{f=-4;y=1}
+  - delay 10
+  - randomskill{skills=Nova-throw1,Nova-throw2}
+Koda-throw-marker:
+  Skills:
+  - effect:blockmask{m=packed_ice;r=3;d=10;n=.75}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=3}
+  - potion{t=SLOW;d=40;l=3} @PIR{r=3}
+  - throw{vy=12} @PIR{r=3}
+  - remove
+Nova-throw1:
+  Conditions:
+  - playerwithin 12
+  Skills:
+  - leap{v=300} @Forward{f=5;y=0}
+Nova-throw2:
+  Conditions:
+  - playernotwithin 12
+  Skills:
+  - leap{v=400} @Forward{f=5;y=0}
+
+
+Koda-hurt:
+  Conditions:
+  - health{h=>250}
+  Skills:
+  - damage{a=100;i=true}
+  - signal{s=heal} @MIR{t=Nova;r=32}
+Nova-hurt:
+  Conditions:
+  - health{h=<2400}
+  Skills:
+  - signal{s=hurt} @MIR{t=Koda;r=32}
+
+EldridSignalDialogue:
+  Skills:
+  - summon{t=EldridSignalWalk} @self
+  - delay 80
+  - message{m="&7[1/16] &7After that, she put her hand on my chest. &7And &7everything &7went &7numb &7in &7my &7body."}
+  - delay 80
+  - summon{t=EldridSignalFreeze} @self
+  - message{m="&7[2/16] &7I couldn't feel my legs, &7then my head was getting cold."}
+  - delay 40
+  - message{m="&7[3/16] &7I want to know... &7how can we fix this?"}
+  - delay 40
+  - message{m="&7[4/16] &7So many questions, &7yet I cannot do anything."}
+  - delay 80
+  - message{m="&7[5/16] &6???<&co> &bYour &bwishes, &bthey &bare &btoo &bdangerous. &bI &bpity &byou. &bIt &bdidn't &bhave &bto &bbe &bthis &bway, &bit's &bno &bone's &bfault. &bThis &bis &bfor &bthe &bboth &bof &bus. &bThese &bwishes, &bthey &bwill &bbe &bfrozen &bin &btime."}
+  - delay 120
+  - message{m="&7[6/16] &7Am I still in everyone's minds?"}
+  - delay 40
+  - message{m="&7[7/16] &7&6???<&co> &bThe &bpeople &byou &bthink &babout, &bthey &bare &balready &blong &bgone."}
+  - delay 80
+  - message{m="&7[8/16] &7Is this a curse I have to bear?"}
+  - delay 40
+  - message{m="&7[9/16] &6???<&co> &bIt's &bwhatever &byou &bwant &bit &bto &bbe."}
+  - delay 80
+  - message{m="&7[10/16] &7Did I do well?"}
+  - delay 20
+  - message{m="&7[11/16] &6???<&co> &bYes."}
+  - delay 40
+  - message{m="&7[12/16] &7That's when I realized, my efforts weren't &7in &7vain, &7I &7had &7accomplished &7what &7I &7wanted. &7And &7this &7curse &7is &7my &7reward &7for &7that."}
+  - delay 80
+  - message{m="&7[13/16] &7I'll lose my mind, my feelings and conscience. &7Everything &7will &7be &7frozen."}
+  - delay 80
+  - message{m="&7[14/16] &7So be it, I said."}
+  - delay 40
+  - message{m="&7[15/16] &6???<&co> &bThank you, your wishes will not vanish."}
+  - delay 40
+  - message{m="&7[16/16] &7And so, the journey ended."}
+  - summon{t=EldridSignalFrozen} @self
+  - delay 120
+  - summon{t=EldridQuestTeleport}
+  - remove @MIR{t=EldridQuest2;r=32}
+  - remove @MIR{t=ArcticDemonQuest2;r=32}
+  - remove @self
+EldridSignalFreeze:
+  Skills:
+  - sound{s=block.glass.break}
+  - effect:blockmask{m=packed_ice;r=1;d=800}
+  - delay 80
+  - sound{s=block.glass.break}
+  - effect:blockmask{m=packed_ice;r=2;d=800}
+  - delay 80
+  - sound{s=block.glass.break}
+  - effect:blockmask{m=packed_ice;r=3;d=800}
+  - delay 80
+  - sound{s=block.glass.break}
+  - effect:blockmask{m=packed_ice;r=4;d=800}
+EldridQuestTeleport:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - potion{t=SLOW;d=160;l=3;p=false;i=false} @PIR{r=4} 
+  - command{c="tp <target.name> 946.5 56 2612.5"}
+EldridQuestStun:
+  Skills:
+  - aura{auraName=EldridQuestStun;onTick=EldridQuestStun-Tick;interval=1;duration=1200} @self
+EldridQuestStun-Tick:
+  Skills:
+  - velocity{vx=0;vy=0;vz=0} @PIR{r=4}
+
+EldridQuestStunShort:
+  Skills:
+  - aura{auraName=EldridQuestStun;onTick=EldridQuestStun-Tick;interval=1;duration=200} @self
+
+EldridQuestStart2:
+  Cooldown: 1
+  Skills:
+  - delay 2
+  - skill{s=EldridQuestStart3}
+EldridQuestStart3:
+  Cooldown: 1
+  Skills:
+  - remove @MIR{t=EldridQuest2;r=32} 
+  - remove @MIR{t=ArcticDemonQuest2;r=32} 
+  - remove @MIR{t=EldridQuestStun;r=32} 
+  - summon{t=EldridQuest2} @Location{c=1483.5,24,2425.5} 
+  - summon{t=ArcticDemonQuest2} @Location{c=1483.5,24,2419.5} 
+  - summon{t=EldridQuestStun} @PIR{r=12} 
+  - remove
+
+RemembranceNote:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - suicide
+
+CryonicIceBlast:
+  Conditions:
+  - incombat{}
+  Skills:
+  - particlering{p=fireworks_spark;a=100;r=3;hs=1;y=0.5} @self
+  - potion{t=SLOW;d=20;l=1;p=false;i=false}
+  - delay 20
+  - particlering{p=fireworks_spark;a=100;r=3;hs=1;y=0.5} @self
+  - potion{t=SLOW;d=20;l=1;p=false;i=false}
+  - delay 20
+  - particlering{p=fireworks_spark;a=200;r=5;hs=1;y=0.5} @self
+  - skill{s=HealthDamageModifierLow}
+  - potion{t=SLOW;d=40;l=6;p=false;i=false}
+  - effect:particles{p=fireworks_spark;a=40;hs=0.5;vs=0.5}
+
+HealthDamageModifierLow:
+  TargetConditions:
+  - health{a=>600} castinstead HealthDamageModifierHigh
+  - health{a=>300} castinstead HealthDamageModifierMedium
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 120"}
+
+HealthDamageModifierMedium:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 220"}
+
+HealthDamageModifierHigh:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 320"}
+
+CryonicIcicle:
+  Conditions:
+  - incombat{}
+  Skills:
+  - projectile{ot=CryonicIcicle-Tick;oh=CryonicIcicle-Hit;v=20;hr=1;vr=1;i=1}
+
+CryonicIcicle-Tick:
+  Skills:
+  - effect:particles{p=fireworks_spark;a=8;hs=0.15;vs=0.15} @origin
+
+CryonicIcicle-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 140"}
+  - potion{t=SLOW;d=20;l=0;p=false;i=false}
+
+AddAttackCount:
+  Conditions:
+  - incombat{}
+  Skills:
+  - variableadd{var=caster.attackCounter;amount=1}
+
+ArcticCrystal:
+  Conditions:
+  - incombat{}
+  Skills:
+  - projectile{ot=ArcticCrystal-Tick;oh=ArcticCrystal-Hit;v=22;hr=1.2;vr=1.2;i=1;sb=false}
+  - effect:sound{s=block.snow.hit;v=2;p=0.2}
+
+ArcticMissile:
+  Conditions:
+  - incombat{}
+  Skills:
+  - missile{ot=ArcticMissile-Tick;oh=ArcticMissile-Hit;v=22;hr=1;vr=1;i=1;sb=false;in=0.5}
+  - effect:sound{s=block.snow.place;v=2;p=2}
+
+ArcticCrystal-Tick:
+  Skills:
+  - effect:particles{p=reddust;a=10;hs=0.3;vs=0.3;c=#00FFFF} @origin
+
+ArcticMissile-Tick:
+  Skills:
+  - effect:particles{p=reddust;a=4;hs=0.1;vs=0.1;c=#008080} @origin
+
+ArcticCrystal-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 85"}
+
+ArcticMissile-Hit:
+  Skills:
+  - skill{s=AddAttackCount} @self
+  - skill{s=ArcticDamageModifier1}
+
+ArcticDamageModifier1:
+  Conditions:
+  - varinrange{var=caster.attackCounter;value=>8} castinstead ArcticDamageModifier5
+  - varinrange{var=caster.attackCounter;value=>6} castinstead ArcticDamageModifier4
+  - varinrange{var=caster.attackCounter;value=>4} castinstead ArcticDamageModifier3
+  - varinrange{var=caster.attackCounter;value=>2} castinstead ArcticDamageModifier2
+  - varinrange{var=caster.attackCounter;value=>0}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}
+
+ArcticDamageModifier2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 70"}
+
+ArcticDamageModifier3:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}
+
+ArcticDamageModifier4:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 130"}
+
+ArcticDamageModifier5:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 160"}
+
+ApplyArcticThreat:
+  Conditions:
+  - varEquals{var=caster.threatInitiated;value="false"}
+  Skills:
+  - threat{a=1000}
+  - threat{a=1} @PIR{r=25}
+  - setvariable{var=caster.threatInitiated;type=STRING;value="true"}
+
+PassivelyLoseThreat:
+  Conditions:
+  - incombat{}
+  Skills:
+  - threat{a=-100}
+
+CommenceArcticExplosion:
+  Conditions:
+  - incombat{}
+  Skills:
+  - pull{v=10} @PlayersInRing{min=9;max=25}
+  - delay 20
+  - skill{s=ArcticExplosion} @self
+
+ArcticExplosion:
+  Skills:
+  - particlering{p=reddust;a=100;r=3;hs=1;y=0.1;c=#008080}
+  - potion{t=SLOW;d=20;l=1;p=false;i=false} @PIR{r=3}
+  - delay 20
+  - particlering{p=reddust;a=200;r=6;hs=1;y=0.1;c=#008080}
+  - potion{t=SLOW;d=20;l=1;p=false;i=false} @PIR{r=6}
+  - delay 20
+  - particlesphere{p=reddust;a=700;r=9;c=#008080}
+  - throw{v=20;vy=10} @PIR{r=9}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=9}
+  - effect:sound{s=block.glass.break;v=2;p=0.5} @self
+
+GetThemArchers:
+  Conditions:
+  - incombat{}
+  TargetConditions:
+  - distance{d=>25}
+  Skills:
+  - missile{ot=ArcticCrystal-Tick;oh=GetThemArchers-Hit;v=25;i=1;hr=1;vr=1;sb=false}
+
+GetThemArchers-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}
+
+DeathExplosion:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=5}
+  - effect:particlesphere{p=fireworks_spark;r=5;a=200}
+  - effect:sound{s=entity.firework_rocket.blast;v=2} @self
+
+JumpWave:
+  Conditions:
+  - incombat{}
+  Skills:
+  - runaigoalselector{goal=lookatplayers}
+  - potion{t=SLOW;d=60;l=100;p=false}
+  - skill{s=RunicStun}
+  - delay 1
+  - jump{v=2}
+  - effect:blockmask{m=ice;d=58;r=1;n=0;na=false}
+  - delay 1
+  - effect:blockmask{m=ice;d=57;r=1;n=0;na=false}
+  - delay 1
+  - effect:blockmask{m=ice;d=56;r=1;n=0;na=false}
+  - delay 1
+  - effect:blockmask{m=ice;d=55;r=1;n=0;na=false}
+  - delay 1
+  - velocity{vx=0;vy=0;vz=0}
+  - setgravity{g=false}
+  - delay 5
+  - projectile{ot=ArcticCrystal-Tick;oh=JumpWave-Hit;v=20;hr=1.1;vr=1.1;i=1;sb=false} @PIR{r=25}
+  - delay 50
+  - setgravity{g=true}
+  - runaigoalselector{goal=clear}
+  - runaigoalselector{goal=meleeattack}
+  - runaigoalselector{goal=float}
+  - delay 20
+  - effect:particles{p=item_snowball;a=10;y=0.1;hs=0.5;vs=0.5}
+
+JumpWave-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 80"}
+  - potion{t=SLOW;d=40;force=true;i=false;p=true;l=5}
+
+ArcticSkillRotation:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=JumpWave}
+  - delay 140
+  - skill{s=CommenceArcticExplosion}
+
+checkRangeRO:
+  Conditions:
+  - playernotwithin 6 castinstead changeFormRO1
+  - variableEquals{var=caster.RORange;value=1} true
+  Skills:
+  - setvariable{var=caster.RORange;value=0} @self
+  - equip{item=TogrundMace:0}
+  - runaigoalselector{goal=clear}
+  - runaigoalselector{goal=meleeattack}
+  
+changeFormRO1:
+  Skills:
+  - setvariable{var=caster.RORange;value=1} @self
+  - equip{item=IRON_AXE:0}
+  - runaigoalselector{goal=clear}
+  - runaigoalselector{goal=arrowattack}
+  
+axeThrowRO:
+  Conditions:
+  - variableEquals{var=caster.RORange;value=1}
+  Skills:
+  - projectile{bulletType=ITEM;material=IRON_AXE;onHit=axeThrowRO-Hit;v=23;i=1;hR=1;vR=15;yO=15;g=0.3;bulletSpin=0;tyo=1}
+  
+axeThrowRO-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"}
+  
+checkRangeGBM:
+  Conditions:
+  - playernotwithin 10 castinstead changeFormGBM1
+  - variableEquals{var=caster.GBMRange;value=1} true
+  Skills:
+  - setvariable{var=caster.GBMRange;value=0} @self
+  - equip{item=IRON_SWORD:0}
+  - runaigoalselector{goal=clear}
+  - runaigoalselector{goal=meleeattack}
+  
+changeFormGBM1:
+  Skills:
+  - setvariable{var=caster.GBMRange;value=1} @self
+  - equip{item=CROSSBOW:0}
+  - runaigoalselector{goal=clear}
+  - runaigoalselector{goal=meleeattack}
+  
+arrowStartShootGBM:
+  Conditions:
+  - variableEquals{var=caster.GBMRange;value=1} true
+  Skills:
+  - potion{type=SLOW;duration=60;level=2;hasParticles=false} @self
+  - sound{s=item.crossbow.loading_start;pitch=1} @self
+  - delay 10
+  - sound{s=item.crossbow.loading_middle;pitch=1} @self
+  - delay 10
+  - sound{s=item.crossbow.loading_end;pitch=1} @self
+  - delay 15
+  - equip{item=CROSSBOW:0}
+  - delay 5
+  - projectile{bulletType=ARROW;onHit=arrowGBM-Hit;v=22;i=1;hR=1;vR=1;yO=45;g=0.3;bulletSpin=0;tyo=+1.5;syo=+1.5}
+  - sound{s=item.crossbow.shoot;pitch=1} @self
+  - delay 5
+  - equip{item=IRON_SWORD:0}
+  
+arrowGBM-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 125"}
+
+startTextRO:
+  Skills:
+  - message{m="&7[1/2] &eRogue Orc: &6What fool are you to attack me?"} @PlayersInRadius{r=30}
+  - message{m="&7[2/2] &eRogue Orc: &6Matters not, have at thee!"} @PlayersInRadius{r=30}
+  
+endTextRO:
+  Skills:
+  - message{m="&7[1/2] &eRogue Orc: Bested but my loss matters not."} @PlayersInRadius{r=30}
+  - message{m="&7[2/2] &eRogue Orc: You may have won the battle but we will win the war!"} @PlayersInRadius{r=30}
+  
+

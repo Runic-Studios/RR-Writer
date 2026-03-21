@@ -1,0 +1,1370 @@
+ArcticBeauty: #event
+    Type: ZOMBIE
+    Display: '&e[&621&e] &cArctic Beauty'
+    Health: 350
+    Modules:
+        ThreatTable: true
+    Damage: 27
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.24
+        PreventOtherDrops: true
+        FollowRange: 15
+        MaxCombatDistance: 15
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 189 <mob.l.x> <mob.l.y> <mob.l.z> 21"} @trigger ~onDeath 1.0
+    - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+    - skill{s=drop-level-21} @trigger ~onDeath
+    - skill{s=ArcticBeautyFrostArea} @Self ~onTimer:40 0.1
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin RoseMyne setCustomName "&e[&621&e] &cArctic Beauty" setDynamicName true
+ArcticRose: #event
+    Type: ZOMBIE
+    Display: '&e[&619&e] &cArctic Rose'
+    Health: 320
+    Modules:
+        ThreatTable: true
+    Damage: 24
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.24
+        PreventOtherDrops: true
+        FollowRange: 15
+        MaxCombatDistance: 15
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 170 <mob.l.x> <mob.l.y> <mob.l.z> 19"} @trigger ~onDeath 1.0
+    - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+    - skill{s=drop-level-19} @trigger ~onDeath
+    - skill{s=ArcticRoseIceBolt} @Target ~onTimer:40 0.25
+    - skill{s=ArcticRosePassiveVisual} @Self ~onTimer:40
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin SnowOpalDestroy setCustomName "&e[&619&e] &cArctic Rose" setDynamicName true
+ArcticSpirit: #event
+    Type: ZOMBIE
+    Display: '&e[&620&e] &cArctic Yeti'
+    Health: 335
+    Modules:
+        ThreatTable: true
+    Damage: 25
+    DamageModifiers:
+    - FALL 0
+    Equipment:   
+    Options:
+        MovementSpeed: 0.28
+        PreventOtherDrops: true
+        FollowRange: 15
+        MaxCombatDistance: 15
+        NoDamageTicks: 0
+        PreventJockeyMounts: true
+        PreventRandomEquipment: true
+        Silent: true
+    Skills:
+    - command{c="runicgive exp <trigger.name> 180 <mob.l.x> <mob.l.y> <mob.l.z> 20"} @trigger ~onDeath 1.0
+    - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+    - skill{s=drop-level-20} @trigger ~onDeath
+    - skill{s=ArcticSpiritCharge} @self ~onTimer:40 .1
+    AIGoalSelectors:
+    - 0 clear
+    - 1 meleeattack
+    - 2 float
+    AITargetSelectors:
+    - 0 clear
+    - 1 players
+    - 2 hurtbytarget
+    Disguise: player Steve setSkin Morgason setCustomName "&e[&620&e] &cArctic Yeti" setDynamicName true
+
+nightmare-start:
+  Type: armor_stand
+  Skills:
+  - skill{s=nightmare-start-check} @self ~onTimer:5
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+nightmare-end:
+  Type: armor_stand
+  Skills:
+  - skill{s=nightmare-end} @self ~onSignal:pull
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+nightmare-jumpscare-5b:
+  Type: WITHER_SKELETON
+  Display: '&0Nightmare'
+  Health: 225
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=nightmare-jumpscare-5b} @self ~onTimer:20
+  - setAI{ai=false} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+nightmare-jumpscare-8b:
+  Type: WITHER_SKELETON
+  Display: '&0Nightmare'
+  Health: 225
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=nightmare-jumpscare-8b} @self ~onTimer:20
+  - setAI{ai=false} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+Pharindar:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cPharindar'
+  Health: 1250
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lPharindar'
+    Health: 1250
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - Permafrost HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=Pharindar-drop} @trigger ~onDeath 
+  - skill{s=Pharindar-startmessage} @PIR{r=7} ~onEnterCombat
+  - skill{s=Pharindar-deathmessage} @PIR{r=7} ~onDeath
+  - signal{s=vanish} @MIR{t=Pharindar-spawn5,Pharindar-spawn4,Pharindar-spawn3,Pharindar-spawn2,Pharindar-spawn;r=24} ~onDeath
+  - signal{s=vanish} @MIR{t=Pharindar-spawn5,Pharindar-spawn4,Pharindar-spawn2,Pharindar-spawn;r=24} ~onEnterCombat
+  - skill{s=Pharindar-skill} @self ~onTimer:20 .5
+  - skill{s=Pharindar-skill2} @self ~onTimer:20 <50%
+  - skill{s=Pharindar-skill3} @self ~onTimer:20 <25%
+  - skill{s=Pharindar-eskill} @self ~onTimer:40
+  - skill{s=Pharindar-sound} @self ~onSignal:sound
+  - skill{s=Pharindar-enrage} @self ~onSignal:enrage
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Drovastic setCustomName "&e[&6☠&e] &cPharindar" setDynamicName true
+
+Pharindar-spawn5:
+  Type: ZOMBIE
+  Display: '&e[&620&e] &cLiving Wisdom'
+  Health: 40
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - setvariable{var=caster.mobsNear;value=0} @self ~onSpawn
+  - skill{s=LivingWisdom-Knockup} @self ~onTimer:20
+  - skill{s=Pharindar-vanish2} @self ~onSignal:vanish
+  - skill{s=Pharindar-vanish2;delay=400} @self ~onSpawn
+  - skill{s=Pharindar-proj} @self ~onTimer:20
+  Disguise: player Steve setSkin PeBook setCustomName "&e[&620&e] &cLiving Wisdom" setDynamicName true
+
+Pharindar-spawn4:
+  Type: CHICKEN
+  Display: 'Scattered Pages'
+  Health: 10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=Pharindar-spawn} @self ~onSpawn
+  - remove @self ~onSignal:vanish
+  - remove{delay=240} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM PAPER
+    
+Pharindar-spawn3:
+  Type: ZOMBIE
+  Display: '&e[&620&e] &cPaper Golem'
+  Health: 250
+  Damage: 20
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lPaper Golem'
+    Health: 250
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - skill{s=Pharindar-vanish} @self ~onSignal:vanish
+  - skill{s=Pharindar-spawn3} @self ~onTimer:40
+  - skill{s=PaperGolem-Knockup} @self ~onTimer:20
+  - skill{s=Pharindar-sound} @self ~onSignal:sound
+  - potion{t=SLOW;d=40;l=2} @MIR{t=Pharindar;r=24} ~onTimer:20
+  - signal{s=enrage} @MIR{t=Pharindar;r=24} ~onDeath
+  - summon{t=Pharindar-spawn4;r=3;a=3} @self ~onDeath
+  Disguise: IRON_GOLEM
+
+Pharindar-spawn2:
+  Type: ZOMBIE
+  Display: '&e[&620&e] &cLost Wisdom'
+  Health: 40
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.12
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - setvariable{var=caster.mobsNear;value=0} @self ~onSpawn
+  - skill{s=NearbyLostWisdomMechanics} @self ~onTimer:60
+  - skill{s=Pharindar-vanish} @self ~onSignal:vanish
+  - skill{s=Pharindar-proj} @self ~onTimer:20
+  - skill{s=Pharindar-fabricate} @self ~onSignal:fabricate
+  - skill{s=Pharindar-personify} @self ~onSignal:personify
+  - skill{s=Pharindar-combust} @self ~onSignal:combust
+  Disguise: player Steve setSkin PeBook setCustomName "&e[&620&e] &cLost Wisdom" setDynamicName true
+
+Pharindar-spawn:
+  Type: CHICKEN
+  Display: ''
+  Health: 10
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    Silent: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=Pharindar-spawn} @self ~onSpawn
+  - remove @self ~onSignal:vanish
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM PAPER
+    
+WintervaleSheep:
+  Type: COW
+  Display: '&e[&65&e] &cSheep'
+  Health: 40
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    FollowRange: 35
+    NoDamageTicks: 5
+  Skills:
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @NearestPlayer ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+  Disguise: SHEEP
+
+DireBear:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cDire Polar Bear'
+  Health: 2000
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Damage: 44
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lDire Polar Bear'
+    Health: 2000
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.29
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=DireBear-drop} @trigger ~onDeath
+  - command{c="ri drop WolfMeat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - skill{s=DireBearSlow} @target ~onTimer:40 .4
+  - skill{s=DireBearCharge} @target ~onTimer:40 .6
+  - sound{s=entity.polar_bear.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: POLAR_BEAR
+
+DireBearSlow:
+  Type: armor_stand
+  Skills:
+  - sound{s=block.snow.place} @self ~onSpawn
+  - effect:blockmask{m=lapis_block;r=2;d=40} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+SpiritGolem:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cSpirit Golem'
+  Health: 1250
+  Faction: Boss
+  Equipment:
+  - IRON_SWORD HAND
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Damage: 20
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lSpirit Golem'
+    Health: 1250
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=SpiritGolem-drop} @trigger ~onDeath
+  - skill{s=SpiritGolem-Summon} @self ~onSignal:summon
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - setvariable{var=caster.broken;value=0} @self ~onSpawn
+  - setvariable{var=caster.gem;value=0} @self ~onSpawn
+  - skill{s=SpiritGolem-SoulSnatch} @self ~onTimer:60
+  - randomskill{s=SpiritGolem-SoulReap,SpiritGolem-SoulCluster} @self ~onTimer:160
+  - skill{s=SpiritGolemGemGive} @self ~onDeath
+  - skill{s=SpiritGolemGem} @self ~onTimer:2 <75%
+  - skill{s=SpiritGolemGemDamaged} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin klaud77 setCustomName "&e[&6☠&e] &cSpirit Golem" setDynamicName true
+SpiritGolemSoul:
+  Type: ZOMBIE
+  Display: '&e[&612&e] &aSpirit Fragment'
+  Health: 200
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.12
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - leap{v=10} @RLNTE{a=1;r=5;s=1;minr=3} @self ~onSignal:leap
+  - remove{delay=1200} @self ~onSpawn
+  - leap{v=250;delay=10} @MIR{t=SpiritGolem;r=128} ~onSpawn
+  - skill{s=SoulReap} @self ~onSignal:reap
+  - skill{s=SoulSweetRelease} @self ~onSignal:release
+  - skill{s=SoulCluster3} @self ~onSignal:cluster
+  Disguise: player Steve setSkin soulzie setCustomName "&e[&612&e] &aSpirit Fragment" setDynamicName true
+SpiritGolemSoul2:
+  Type: ZOMBIE
+  Display: '&e[&612&e] &aSpirit Fragment'
+  Health: 200
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.12
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - leap{v=10} @RLNTE{a=1;r=5;s=1;minr=3} @self ~onSignal:leap
+  - remove{delay=1200} @self ~onSpawn
+  - leap{v=400;delay=10} @MIR{t=SpiritGolem;r=128} ~onSpawn
+  - skill{s=SoulReap} @self ~onSignal:reap
+  - skill{s=SoulSweetRelease} @self ~onSignal:release
+  - skill{s=SoulCluster3} @self ~onSignal:cluster
+  Disguise: player Steve setSkin soulzie setCustomName "&e[&612&e] &aSpirit Fragment" setDynamicName true
+
+SpiritGolemSpawn:
+  Type: ZOMBIE
+  Display: '&e[&612&e] &aSpirit'
+  Health: 100
+  Damage: 20
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - skill{s=SoulSweetRelease2} @self ~onSignal:release
+  - potion{t=SLOW;d=40;l=1} @target ~onTimer:20
+  Disguise: player Steve setSkin soulzie setCustomName "&e[&612&e] &aSpirit" setDynamicName true
+
+SoulCluster:
+  Type: armor_stand
+  Skills:
+  - skill{s=SoulCluster} @self ~onTimer:4
+  - skill{s=SoulCluster2;delay=60} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+ValeCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+#  - remove @MIR{t=ValeCitizen,ValeCitizen2;r=128} ~onSpawn
+  - summon{type=ValeCitizen;amount=12;radius=80;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=ValeCitizen2;amount=12;radius=80;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=ValeCitizen;amount=1;radius=256;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=ValeCitizen2;amount=1;radius=256;yRadius=3;os=true} @self ~onSignal:respawn2
+ValeCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aVale Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aVale Citizen<&co> &fOur haven is the true power in the North.} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=ValeCSA} ~onDeath
+  Disguise: player Steve setSkin ElizabethEG setCustomName "&e[&61&e] &aVale Citizen" setDynamicName true
+ValeCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aVale Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aVale Citizen<&co> &fOur haven is the true power in the North.} @NearestPlayer ~onDamaged
+  - signal{s=respawn2} @MobsInRadius{r=320;t=ValeCSA} ~onDeath
+  Disguise: player Steve setSkin DrVillainous setCustomName "&e[&61&e] &aVale Citizen" setDynamicName true
+ValeGuard:
+  Type: ZOMBIE
+  Display: '&e[&650&e] &aVale Guard'
+  Health: 5000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -210,36,-511
+  - 2 lookatplayers
+  - 3 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aVale Guard<&co> &fOur soldiers are as rigid as the winds.} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin Vlot setCustomName "&e[&650&e] &aVale Guard" setDynamicName true
+ValeRabbit:
+  Type: Rabbit
+  Display: '&e[&61&e] &aPolar Rabbit'
+  Health: 25
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    RabbitType: White
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - command{c="ri drop UncookedRabbit <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .3
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 float
+SnowyOwl:
+  Type: bat
+  Display: '&e[&63&e] &aSnowy Owl'
+  Health: 20
+  Disguise: ZOMBIE setBaby true
+  Equipment:
+  - snowyowlhead HEAD
+  Skills:
+  - potion{t=INVISIBILITY;d=2147483647;l=1;hasParticles=false} @self ~onSpawn
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    Silent: true
+    PreventRenaming: false
+    MovementSpeed: 0.05
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+SnowmanGrunt:
+  Type: ZOMBIE
+  Display: '&bMagical Snowman'
+  Health: 100
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - Snowball HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.21
+    PreventOtherDrops: true
+    FollowRange: 15
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+    Angry: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 35 <mob.l.x> <mob.l.y> <mob.l.z> 20"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=SnowmanAttack} @target ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SNOWMAN
+
+SnowmanGruntPhar:
+  Type: ZOMBIE
+  Display: '&bMagical Snowman'
+  Health: 200
+  Damage: 10
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - Snowball HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.21
+    PreventOtherDrops: true
+    FollowRange: 15
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+    Angry: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 35 <mob.l.x> <mob.l.y> <mob.l.z> 20"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=SnowmanAttack2} @target ~onTimer:50
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SNOWMAN
+
+SnowgolemWintervale:
+  Type: zombie
+  Display: '&e[&622&e] &cSnow Golem'
+  Health: 365
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - Snowball HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 15
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+    Angry: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 199 <mob.l.x> <mob.l.y> <mob.l.z> 22"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - randomskill{s=ms1,ms2,ms3} @trigger ~onDeath .6
+  - command{c="ri drop SnowmanCore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.15
+  - skill{s=drop-level-22} @trigger ~onDeath
+  - skill{s=SnowmanAttack} @target ~onTimer:50
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SNOWMAN
+
+SnowgolemWintervaleElite:
+  Type: zombie
+  Display: '&e[&623&e] &c&lAngry Snow Golem'
+  Health: 400
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - Snowball HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.23
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 20
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+    Angry: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 250 <mob.l.x> <mob.l.y> <mob.l.z> 23"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-23} @trigger ~onDeath
+  - command{c="ri drop SnowmanCore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - skill{s=SnowmanAttackElite} @target ~onTimer:40
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SNOWMAN
+
+AngrySnowgolem:
+  Type: zombie
+  Display: '&e[&6✸&e] &cSol the Angry Snowman'
+  Health: 4000
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - Snowball HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 20
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+    Angry: true
+    Silent: true
+  Skills:
+  - effect:particles{p=explosion_huge;a=3} @selflocation ~onSpawn
+  - effect:sound{s=block.beacon.power_select;v=2} @selflocation ~onSpawn
+  - skill{s=AngrySnowgolemSetblocks} ~onSpawn
+  - remove @MIR{t=AngrySnowgolem;r=10} ~onSpawn
+  - skill{s=SnowmanAttackBoss} @target ~onTimer:45
+  - skill{s=SnowballBarrage} @target ~onTimer:200
+  - skill{s=SnowmanBurn} @self ~onTimer:10
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SNOWMAN
+
+Phantasm:
+  Type: phantom
+  Display: '&e[&624&e] &cAngry Phantasm'
+  Health: 80
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - Snowball HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.21
+    PreventOtherDrops: true
+    FollowRange: 25
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+    Angry: true
+    Silent: true
+    Size: 0.5
+  Skills:
+  - command{c="runicgive exp <trigger.name> 20 <mob.l.x> <mob.l.y> <mob.l.z> 24"} @trigger ~onDeath 1.0
+  - skill{s=WispAttack} @target ~onTimer:50
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+PhantasmPhar:
+  Type: phantom
+  Display: '&e[&624&e] &cAngry Phantasm'
+  Health: 200
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - Snowball HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.21
+    PreventOtherDrops: true
+    FollowRange: 25
+    MaxCombatDistance: 20
+    NoDamageTicks: 0
+    Angry: true
+    Silent: true
+    Size: 0.5
+  Skills:
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 24"} @trigger ~onDeath 1.0
+  - skill{s=WispAttack2} @target ~onTimer:50
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+
+Arzen:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &bArzen'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lArzen'
+    Health: 2500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - Permafrost HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 50
+    MaxCombatDistance: 60
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setstance{s=combat} ~onSpawn
+  #- skill{s=Relocate} @self ~onTimer:60
+  - skill{s=Frosticle} @target ~onTimer:30
+  - skill{s=Snowshield} @self ~onTimer:10 =70%-75%
+  - skill{s=SnowshieldCheck} @self =70%
+  - setvariable{var=caster.healed;type=STRING;value="false"} @self =55%
+  - skill{s=Snowshield} @self ~onTimer:10 =45%-50%
+  - skill{s=SnowshieldCheck} @self =45%
+  - setvariable{var=caster.healed;type=STRING;value="false"} @self =30%
+  - skill{s=Snowshield} @self ~onTimer:10 =20%-25%
+  - skill{s=SnowshieldCheck} @self =20%
+  #- skill{s=IceCageCast} @self ~onEnterCombat
+  - skill{s=SnowballFlurryCast} @self ~onTimer:400 #~onTimer:220
+  - setvariable{var=caster.healing;value=0} @self ~onEnterCombat
+  - setvariable{var=caster.healed;type=STRING;value="false"} @self ~onEnterCombat
+  - command{c="runicgive exp <trigger.name> 1500 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  #- command{c="givescroll <trigger.name> fire frostbolt <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.1
+  - command{c="givescroll <trigger.name> nature manawell <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.1
+  - command{c="givescroll <trigger.name> air blink <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.1
+  #- command{c="givescroll <trigger.name> water frostbite <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.1
+  - skill{s=IceCageEndTp} @PIR{r=15} ~onDeath
+  - skill{s=IceCageEndTp} @PIR{r=15} ~onDespawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  #- 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Skyfallin setCustomName "&e[&6☠&e] &bArzen" setDynamicName true
+
+ArzenTeleporter:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &bArzen'
+  Health: 2500
+  Faction: Boss
+  Damage: 10
+  BossBar:
+    Enabled: true
+    Title: '&c&lArzen'
+    Health: 2500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - Permafrost HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 50
+    MaxCombatDistance: 60
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=IceCageCast} @self ~onEnterCombat
+  AIGoalSelectors:
+  - 0 clear
+  #- 1 meleeattack
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Skyfallin setCustomName "&e[&6☠&e] &bArzen" setDynamicName true
+
+MomentumVex:
+  Type: BEE
+  Display: '&eWisp'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+    FollowRange: 10
+    MaxCombatDistance: 15
+    NoDamageTicks: 0
+    #NoAI: true
+    #NoGravity: true
+    Silent: true
+    #Invincible: true
+  AIGoalSelectors:
+  - 0 clear
+  #- 1 movetowardstarget
+  - 1 meleeattack
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Skills:
+  - throw{vy=15} @PIR{r=15} ~onDeath
+  - sound{s=entity.ender_dragon.flap} @trigger ~onDeath
+  Disguise: VEX
+
+BookshelfWintervale:
+  Type: BABY_ZOMBIE
+  Display: '&eBookshelf'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setAI{ai=false} @self ~onSpawn
+  - command{c="ri drop Trinity7 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK BOOKSHELF
+    
+OldStickGiver:
+  Type: BABY_ZOMBIE
+  Display: '&6Old Branch'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+    NoGravity: true
+  Skills:
+  - command{c="ri drop OldStick <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK SPRUCE_WOOD
+    
+PumpkinGiver:
+  Type: BABY_ZOMBIE
+  Display: '&6Pumpkin'
+  Health: 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - command{c="ri drop Pumpkin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK PUMPKIN
+    
+AngryPumpkin:
+  Type: BABY_ZOMBIE
+  Display: '&e[&6✸&e] &cAngry Pumpkin'
+  Health: 50
+  Damage: 2
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=AngryPumpkin} @self ~onTimer:10
+  - command{c="runicgive exp <trigger.name> 15 <mob.l.x> <mob.l.y> <mob.l.z> 22"} @trigger ~onDeath 1.0
+  - command{c="ri drop PumpkinHead <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.4
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK PUMPKIN
+    
+MagicalSnowman:
+  Type: ZOMBIE
+  Display: '&e[&5☠&e] &cMagical Snowman'
+  Health: 500
+  Damage: 50
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    PreventSnowFormation: true
+  Conditions:
+  - incombat{} true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 200 <mob.l.x> <mob.l.y> <mob.l.z> 16"} @trigger ~onDeath 1.0
+  - command{c="runicgive item <trigger.name> armor uncommon <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.04
+  - command{c="giveweapon <trigger.name> uncommon <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.04
+  - skill{s=SnowballThrowSpam} @target ~onTimer:20
+  - skill{s=MagicalMissile} @target ~onTimer:160
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SNOWMAN
+
+LivingFrost:
+  Type: ZOMBIE
+  Display: '&e[&618&e] &cLiving Frost'
+  Health: 200
+  Damage: 50
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    PreventSnowFormation: true
+  Conditions:
+  - incombat{} true
+  Skills:
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget  
+  Disguise: FALLING_BLOCK SNOW
+    
+ShreddedOwl:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cShredded Owl'
+  Health: 2000
+  Faction: Boss
+  Damage: 25
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lShredded Owl'
+    Health: 2000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Skills:
+  - skill{s=ShreddedOwl-drop} @trigger ~onDeath
+  - sound{s=entity.iron_golem.hurt} @self ~onDamaged
+  - randomskill{skills=DTOwlTrick,DTOwlPound,DTOwlChadism} @self ~onTimer:160
+  Disguise: IRON_GOLEM
+  
+DTOwlSpawn:
+  Type: BAT
+  Display: '&e[&63&e] &aSnowy Owl'
+  Health: 20
+  Disguise: ZOMBIE setBaby true
+  Equipment:
+  - snowyowlhead HEAD
+  Skills:
+  - potion{t=INVISIBILITY;d=2147483647;l=1;hasParticles=false} @self ~onSpawn
+  - randomskill{skills=remove60,remove65,remove70} @self ~onSpawn 
+  Options:
+    Silent: true
+    MovementSpeed: 0.05
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+DTOwlSpawnSound60:
+  Type: BAT
+  Display: '&e[&63&e] &aSnowy Owl'
+  Health: 20
+  Disguise: ZOMBIE setBaby true
+  Equipment:
+  - snowyowlhead HEAD
+  Skills:
+  - potion{t=INVISIBILITY;d=2147483647;l=1;hasParticles=false} @self ~onSpawn
+  - skill{s=DTOwlDespawn;delay=60} @self ~onSpawn
+  - sound{s=entity.generic.explode;v=3;delay=60} @self ~onSpawn
+  - remove{delay=60} @self ~onSpawn 
+  Options:
+    Silent: true
+    MovementSpeed: 0.05
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+DTOwlSpawnSound65:
+  Type: BAT
+  Display: '&e[&63&e] &aSnowy Owl'
+  Health: 20
+  Disguise: ZOMBIE setBaby true
+  Equipment:
+  - snowyowlhead HEAD
+  Skills:
+  - potion{t=INVISIBILITY;d=2147483647;l=1;hasParticles=false} @self ~onSpawn
+  - skill{s=DTOwlDespawn;delay=65} @self ~onSpawn
+  - sound{s=entity.generic.explode;v=3;delay=65} @self ~onSpawn
+  - remove{delay=65} @self ~onSpawn 
+  Options:
+    Silent: true
+    MovementSpeed: 0.05
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+DTOwlSpawnSound70:
+  Type: BAT
+  Display: '&e[&63&e] &aSnowy Owl'
+  Health: 20
+  Disguise: ZOMBIE setBaby true
+  Equipment:
+  - snowyowlhead HEAD
+  Skills:
+  - potion{t=INVISIBILITY;d=2147483647;l=1;hasParticles=false} @self ~onSpawn
+  - skill{s=DTOwlDespawn;delay=70} @self ~onSpawn
+  - sound{s=entity.generic.explode;v=3;delay=70} @self ~onSpawn
+  - remove{delay=70} @self ~onSpawn 
+  Options:
+    Silent: true
+    MovementSpeed: 0.05
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear

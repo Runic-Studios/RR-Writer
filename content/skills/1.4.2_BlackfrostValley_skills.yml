@@ -1,0 +1,1310 @@
+blackfrost-keeper-aoe:
+  Cooldown: 5
+  Skills:
+  - delay 80
+  - setvariable{var=caster.active;value=0}
+  - randomskill{s=blackfrost-keeper-aoe-near,blackfrost-keeper-aoe-far}
+  - delay 40
+  - setvariable{var=caster.active;value=1}
+blackfrost-keeper-aoe-cast:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - randomskill{s=blackfrost-keeper-aoe-cast-near,blackfrost-keeper-aoe-cast-far}
+
+blackfrost-keeper-aoe-near:
+  Conditions:
+  - variableEquals{var=caster.near;value=1}
+  Skills:
+  - blockmask{m=GREEN_STAINED_GLASS;d=40;r=5}
+  - setvariable{var=caster.near;value=0}
+blackfrost-keeper-aoe-far:
+  Conditions:
+  - variableEquals{var=caster.near;value=0}
+  Skills:
+  - blockmask{m=RED_STAINED_GLASS;d=40;r=5}
+  - setvariable{var=caster.near;value=1}
+
+blackfrost-keeper-aoe-cast-near:
+  Conditions:
+  - variableEquals{var=caster.near;value=1}
+  Skills:
+  - potion{t=SLOW;d=25;l=1} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=4;radius=1;yOffset=.5} @PIR{r=4} 
+blackfrost-keeper-aoe-cast-far:
+  Conditions:
+  - variableEquals{var=caster.near;value=0}
+  Skills:
+  - skill{s=blackfrost-keeper-aoe-cast-far-hurt} @PIR{r=22}
+blackfrost-keeper-aoe-cast-far-hurt:
+  TargetConditions:
+  - distance{d=>4}
+  Skills:
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=4;radius=1;yOffset=.5} 
+  - potion{t=SLOW;d=25;l=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+
+blackfrost-keeper-threat:
+  TargetConditions:
+  - distance{d=>20}
+  Skills:
+  - message{m="&7You have been freed from the Keeper's Curse"} @target
+  - remove @MIR{t=blackfrost-keeper-aoe,blackfrost-keeper-curse-add;r=128}
+  - signal{s=blackfrost-keeper-aoe} @MIR{t=blackfrost-keeper;r=32}
+  - remove @self
+
+blackfrost-keeper-teleport1:
+  Conditions:
+  - variableEquals{var=caster.curse;value=0}
+  Cooldown: 30
+  Skills:
+  - threat{a=100000} @trigger
+  - potion{t=DARKNESS;d=120;l=1;hasParticles=false}
+  - delay 80
+  - message{m="&7You have been cursed by the Bluefrost Keeper."}
+  - potion{t=SLOW;d=80;l=3}
+  - command{c="execute in overworld run tp <trigger.name> 2560.5 131 2286.5"}
+  - sound{s=entity.elder_guardian.curse} @self
+  - teleport @Location{c=2560.5,131,2286.5}
+  - summon{t=blackfrost-keeper-aoe} @Location{c=2560.5,131,2286.5}
+  #- potion{t=INVISIBILITY;d=40;l=1;hasParticles=false} @self
+  #- equip{i=AIR:HAND} @self
+  #- equip{i=AIR:OFFHAND} @self
+  - setAI{ai=false} @self
+  - delay 20
+  - equip{i=DIAMOND_SWORD:HAND} @self
+  - equip{i=DIAMOND_SWORD:OFFHAND} @self
+  - setAI{ai=true} @self
+  - setvariable{var=caster.curse;value=1}
+blackfrost-keeper-teleport2:
+  TargetConditions:
+  - distance{d=<32}
+  Cooldown: 9999
+  Skills:
+  - command{c="execute in overworld run tp <target.name> 2560.5 131 2286.5"}
+  - sound{s=entity.elder_guardian.curse} @self
+  - teleport @Location{c=2560.5,131,2286.5}
+
+blackfrost-keeper-curse:
+  TargetConditions:
+  - distance{d=<32}
+  - distance{d=>4}
+  Conditions:
+  - variableEquals{var=caster.curse;value=1}
+  Cooldown: 12
+  Skills:
+  - command{c="execute in overworld run tp <target.name> 2560.5 131 2286.5"}
+  - sound{s=entity.elder_guardian.curse} @self
+  - teleport @Location{c=2560.5,131,2286.5}
+
+blackfrost-keeper-summon-curse1:
+  Conditions:
+  - variableEquals{var=caster.curse;value=1}
+  - playerwithin 32
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - summon{t=blackfrost-keeper-curse-add;a=1;r=3;os=true} @Location{c=2560.5,136,2304.5}
+  - summon{t=blackfrost-keeper-curse-add;a=1;r=3;os=true} @Location{c=2560.5,136,2268.5}
+blackfrost-keeper-summon-curse2:
+  Conditions:
+  - variableEquals{var=caster.curse;value=1}
+  - playerwithin 32
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - skill{s=blackfrost-keeper-teleport2} @target
+  - summon{t=blackfrost-keeper-curse-add;a=1;r=3;os=true} @Location{c=2560.5,136,2304.5}
+  - summon{t=blackfrost-keeper-curse-add;a=1;r=3;os=true} @Location{c=2560.5,136,2268.5}
+
+blackfrost-keeper-curse-add:
+  Skills:
+  - delay 400
+  - sound{s=entity.wither.break_block}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=5}
+
+blackfrost-reaper-slash:
+  Conditions:
+  - playerwithin 4
+  Cooldown: 12
+  Skills:
+  - playanimation{a=0;audience=World}
+  - potion{t=SLOW;d=80;l=10;hasParticles=false}
+  - sound{s=entity.player.attack.sweep}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - delay 40
+  - sound{s=entity.wither.break_block}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=4}
+  - playanimation{a=0;audience=World}
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=4}
+
+blackfrost-reaper-hunt:
+  TargetConditions:
+  - distance{d=<32}
+  Cooldown: 15
+  Skills:
+  - playanimation{a=0;audience=World} @self
+  - summon{t=blackfrost-reaper-teleport-marker;r=1} @target
+  - delay 20
+  - playanimation{a=0;audience=World} @self
+  - summon{t=blackfrost-reaper-teleport-marker;r=1} @target
+  - delay 20
+  - playanimation{a=0;audience=World} @self
+  - summon{t=blackfrost-reaper-teleport-marker;r=1} @target
+
+blackfrost-reaper-teleport:
+  TargetConditions:
+  - distance{d=>8}
+  - distance{d=<32}
+  Cooldown: 4
+  Skills:
+  - playanimation{a=0;audience=World}
+  - summon{t=blackfrost-reaper-teleport-marker}
+blackfrost-reaper-teleport-marker:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=4;radius=1;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=3}
+  - sound{s=entity.ghast.ambient}
+  - delay 25
+  - effect:particlering{p=block_crack;material=redstone_block;a=1;points=24;vS=0.1;hS=0.1;radius=4}
+  - SudoSkill{s=blackfrost-reaper-teleport-cast} @PIR{r=4}
+  - remove
+blackfrost-reaper-teleport-cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=4;radius=1;yOffset=.5} @self
+  - teleport @MIR{t=blackfrost-reaper;r=32} 
+  - sound{s=entity.phantom.bite} @self
+
+blackfrost-devourer-altar-leash:
+  TargetConditions:
+  - distance{d=>20}
+  Cooldown: 20
+  Skills:
+  - signal{s=leash}
+
+blackfrost-devourer-leash:
+  Skills:
+  - sound{s=entity.warden.dig;v=4;p=0.5} @self
+  - delay 400
+  - teleport @Location{c=2496.5,96,2264}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128}
+
+blackfrost-devourer-water-leash:
+  Conditions:
+  - inblock WATER true
+  Skills:
+  - teleport @Location{c=2496.5,96,2264}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128}
+
+blackfrost-devourer-water:
+  TargetConditions:
+  - inblock WATER true
+  Skills:
+  #- message{m="Test 3"} @PIR{r=64}
+  - command{c="runicdamage <caster.uuid> <target.name> 20000"} #this damage must kill as it's part of an event, it's balanced trust. needs 2 people to complete
+
+#blackfrost-devourer-water-kill-check:
+#  Skills:
+#  - delay 320
+#  #- message{m="Test 1"} @self
+#  - message{m="Test 2"} @PIR{r=64}
+#  - skill{s=blackfrost-devourer-water} @PIR{r=64}
+
+blackfrost-devourer-ice-random:
+  Conditions:
+  - incombat{}
+  Cooldown: 30
+  Skills:
+  - skill{s=blackfrost-devourer-ice} @randomthreattarget 0.25
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128} 
+  - delay 1
+  - skill{s=blackfrost-devourer-ice} @target 0.75
+
+blackfrost-devourer-ice:
+  Conditions:
+  - incombat{}
+  #Cooldown: 30
+  Skills:
+  - sound{s=entity.warden.agitated;v=4} @self
+  - delay 40
+  #- summon{t=blackfrost-devourer-ice-up;r=7;os=true} @Location{c=2501.5,96,2264.5}
+  - summon{t=blackfrost-devourer-ice-up;r=7;os=true} @Location{c=2499,96,2264} #fixed bug causing ice to spawn high
+  - command{c="execute in overworld run tp <target.name> 2500.5 80 2258.5"} 
+  - sound{s=ambient.underwater.enter} 
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128}
+  - delay 320
+  - skill{s=blackfrost-devourer-water} @PIR{r=64}
+
+  #blackfrost-devourer-ice:
+  #Conditions:
+  #- incombat{}
+  #Cooldown: 30
+  #Skills:
+  #- sound{s=entity.warden.agitated;v=4} @self
+  #- delay 40
+  #- summon{t=blackfrost-devourer-ice-up;r=7;os=true} @Location{c=2501.5,96,2264.5}
+  #- command{c="execute in overworld run tp <target.name> 2500.5 80 2258.5"} @target
+  #- sound{s=ambient.underwater.enter} @target
+  #- skill{s=blackfrost-devourer-water-kill-check} @target #thought this would fix the gravestone bug but it doesn't
+  #- clearThreat{} @self
+  #- threat{a=1} @NearestPlayer{r=128}
+  #- delay 320
+  #- skill{s=blackfrost-devourer-water} @PIR{r=64}
+
+blackfrost-devourer-ice-remove:
+  Skills:
+  - delay 400
+  - sound{s=block.glass.break}
+  - remove
+blackfrost-devourer-ice-up:
+  Skills:
+  - sound{s=block.glass.hit}
+  - summon{t=blackfrost-devourer-ice-down} @Forward{f=0;y=-2} #@Location{c=2501.5,94.5,2264.5} #fixed bug causing players to not be able to ice down
+  - remove
+blackfrost-devourer-ice-down:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=ice;a=3;radius=1;yOffset=.5} @trigger
+  - sound{s=block.glass.break;p=0.5}
+  - command{c="execute in overworld run tp <trigger.name> 2501.5 96 2264.5"}
+  - remove
+
+blackfrost-devourer-summon-air1:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.warden.roar;v=4}
+  - summon{t=blackfrost-devourer-air} @Location{c=2619.5,169,2390.5}
+blackfrost-devourer-summon-air2:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.warden.roar;v=4}
+  - summon{t=blackfrost-devourer-air} @Location{c=2619.5,169,2390.5}
+blackfrost-devourer-summon-air3:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.warden.roar;v=4}
+  - summon{t=blackfrost-devourer-air} @Location{c=2619.5,169,2390.5}
+  
+blackfrost-devourer-air: #nerfing the amount spawned by half from 20 -> 10
+  Skills:
+  - delay 140
+  - sound{s=entity.ender_dragon.growl;v=8}
+  - delay 30
+  - summon{t=blackfrost-walker;r=2;a=2} @Forward{f=0;y=-2}
+  - delay 2
+  #- summon{t=blackfrost-walker;r=2;a=2} @Forward{f=0;y=-2}
+  - delay 2
+  - summon{t=blackfrost-walker;r=2;a=2} @Forward{f=0;y=-2}
+  - delay 2
+  #- summon{t=blackfrost-walker;r=2;a=2} @Forward{f=0;y=-2}
+  - delay 2
+  - summon{t=blackfrost-walker;r=2;a=2} @Forward{f=0;y=-2}
+  - delay 2
+  #- summon{t=blackfrost-walker;r=2;a=2} @Forward{f=0;y=-2}
+  - delay 2
+  - summon{t=blackfrost-walker;r=2;a=2} @Forward{f=0;y=-2}
+  - delay 2
+  #- summon{t=blackfrost-walker;r=2;a=2} @Forward{f=0;y=-2}
+  - delay 2
+  - summon{t=blackfrost-walker;r=2;a=2} @Forward{f=0;y=-2}
+  - delay 2
+  #- summon{t=blackfrost-walker;r=2;a=2} @Forward{f=0;y=-2}
+  - delay 40
+  - remove
+
+
+blackfrost-devourer-heartbeat-set:
+  Skills:
+  - randomskill{s=blackfrost-devourer-heartbeat-set1,blackfrost-devourer-heartbeat-set2}
+blackfrost-devourer-heartbeat-set1:
+  Conditions:
+  - variableEquals{var=caster.heart;value=1}
+  Cooldown: 15
+  Skills:
+  - setvariable{var=caster.heart;value=2}
+blackfrost-devourer-heartbeat-set2:
+  Conditions:
+  - variableEquals{var=caster.heart;value=2}
+  Cooldown: 8
+  Skills:
+  - setvariable{var=caster.heart;value=1}
+
+blackfrost-devourer-heartbeat1:
+  Conditions:
+  - variableEquals{var=caster.heart;value=1}
+  Skills:
+  - skill{s=blackfrost-devourer-heartbeat-effect}
+  - sound{s=entity.warden.heartbeat;p=1}
+  - delay 40
+  - randomskill{s=blackfrost-devourer-heartbeat1,blackfrost-devourer-heartbeat2}
+
+
+blackfrost-devourer-heartbeat2:
+  Conditions:
+  - variableEquals{var=caster.heart;value=2}
+  Skills:
+  - potion{t=SPEED;d=40;l=2;hasParticles=false}
+  - skill{s=blackfrost-devourer-heartbeat-effect}
+  - sound{s=entity.warden.heartbeat;p=1}
+  - delay 10
+  - skill{s=blackfrost-devourer-heartbeat-effect}
+  - sound{s=entity.warden.heartbeat;p=1}
+  - delay 10
+  - skill{s=blackfrost-devourer-heartbeat-effect}
+  - sound{s=entity.warden.heartbeat;p=1}
+  - delay 10
+  - skill{s=blackfrost-devourer-heartbeat-effect}
+  - sound{s=entity.warden.heartbeat;p=1}
+  - delay 10
+  - randomskill{s=blackfrost-devourer-heartbeat1,blackfrost-devourer-heartbeat2}
+
+blackfrost-devourer-heartbeat-effect:
+  Conditions:
+  - health{h=<30000} #10%
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - pull{v=2.5} @PIR{r=3}
+  - sound{s=entity.warden.heartbeat;p=1}
+
+blackfrost-devourer-sonar:
+  Conditions:
+  - incombat{}
+  - health{h=<75000} castinstead blackfrost-devourer-sonar3 #25% - remove blindness for the finish
+  - health{h=<150000} castinstead blackfrost-devourer-sonar2 #50% - reduce cooldown
+  - health{h=>150000} #50%
+  Cooldown: 25
+  Skills:
+  - sound{s=entity.warden.listening;v=4}
+  - delay 30
+  - potion{t=BLINDNESS;d=200;l=1;hasParticles=false} @randomthreattarget
+  - delay 10
+  - sound{s=entity.warden.sonic_boom;v=4;p=0.75}
+  - skill{s=blackfrost-devourer-sonar-stun} @PIR{r=64}
+  - summon{t=blackfrost-devourer-sonar-marker} @PIR{r=64}
+
+blackfrost-devourer-sonar2:
+  Conditions:
+  - incombat{}
+  Cooldown: 15 #added cooldown so players don't get one shot from bad luck
+  Skills:
+  - sound{s=entity.warden.listening;v=4}
+  - delay 30
+  - potion{t=BLINDNESS;d=200;l=1;hasParticles=false} @randomthreattarget
+  - delay 10
+  - sound{s=entity.warden.sonic_boom;v=4;p=0.75}
+  - skill{s=blackfrost-devourer-sonar-stun} @PIR{r=64}
+  - summon{t=blackfrost-devourer-sonar-marker} @PIR{r=64}
+  - delay 20
+  - sound{s=entity.warden.sonic_boom;v=4}
+  - skill{s=blackfrost-devourer-sonar-damage} @PIR{r=64}
+  - delay 20
+  - sound{s=entity.warden.sonic_boom;v=4}
+  - skill{s=blackfrost-devourer-sonar-damage} @PIR{r=64}
+
+blackfrost-devourer-sonar3:
+  Conditions:
+  - incombat{}
+  Cooldown: 15 #added cooldown so players don't get one shot from bad luck
+  Skills:
+  - sound{s=entity.warden.listening;v=4}
+  - delay 40
+  - sound{s=entity.warden.sonic_boom;v=4;p=0.75}
+  - skill{s=blackfrost-devourer-sonar-stun} @PIR{r=64}
+  - summon{t=blackfrost-devourer-sonar-marker} @PIR{r=64}
+  - delay 20
+  - sound{s=entity.warden.sonic_boom;v=4}
+  - skill{s=blackfrost-devourer-sonar-damage} @PIR{r=64}
+  - delay 20
+  - sound{s=entity.warden.sonic_boom;v=4}
+  - skill{s=blackfrost-devourer-sonar-damage} @PIR{r=64}
+
+blackfrost-devourer-sonar-marker-visual:
+  Skills:
+  - sound{s=block.sculk.break}
+  #- effect:particlesphere{p=damage_indicator;amount=15;radius=6;yOffset=0.5}
+  - effect:particlesphere{p=dragon_breath;amount=8;radius=6;yOffset=.5} #this is the correct one
+  #- effect:particles{p=dragon_breath;amount=5;hs=6;vs=0.5}
+  - delay 2
+  - skill{s=blackfrost-devourer-sonar-marker-visual}
+
+blackfrost-devourer-sonar-marker:
+  Skills:
+  - delay 25
+  - sound{s=block.sculk.break}
+  - blockmask{m=sculk;n=0;r=6;d=200} #changed blockmask to 0 randomness (n=0 instead of 0.8)
+  - effect:particlesphere{p=damage_indicator;amount=15;radius=6;yOffset=0.5} #adding effect as blockmask doesn't work on ice
+  - skill{s=blackfrost-devourer-sonar-marker-damage}
+  - delay 200
+  - remove
+blackfrost-devourer-sonar-marker-damage:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=6}
+  - delay 20
+  - skill{s=blackfrost-devourer-sonar-marker-damage}
+blackfrost-devourer-sonar-stun:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 375"}
+blackfrost-devourer-sonar-damage:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} #nerfing from 200 -> 150
+
+
+blackfrost-devourer-threat:
+  TargetConditions:
+  - distance{d=>20}
+  Cooldown: 12
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128}
+
+
+blackfrost-devourer-teleport:
+  TargetConditions:
+  - distance{d=>7}
+  Cooldown: 15
+  Skills:
+  - message{m="&4[☠] &cBlackfrost Devourer<&co> &4&lI WILL DEVOUR YOU."}
+  - potion{t=SLOW;d=80;l=10;hasParticles=false} @self
+  - sound{s=entity.zombie.attack_wooden_door;v=4} @self
+  - delay 40
+  - sound{s=entity.zombie.attack_wooden_door;v=4} @self
+  - potion{t=INVISIBILITY;d=40;l=10;hasParticles=false} @self
+  - delay 40
+  - skill{s=blackfrost-devourer-teleport-near}
+  - sound{s=entity.warden.emerge} @self
+  - sound{s=entity.horse.eat;v=4} @self
+  - sound{s=block.honey_block.break} @self
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 1000"} @PIR{r=3}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128}
+blackfrost-devourer-teleport-near:
+  TargetConditions:
+  - distance{d=<100}
+  Skills:
+  - teleport
+
+blackfrost-devourer-teleport-message:
+  TargetConditions:
+  - distance{d=>8}
+  Skills:
+  - sudoSkill{s=blackfrost-devourer-teleport-message-cast}
+blackfrost-devourer-teleport-message-cast:
+  Cooldown: 5
+  Skills:
+  - message{m="&4[☠] &cBlackfrost Devourer<&co> &4&lA PEST MUST BE DEVOURED."} @self
+
+
+blackfrost-devourer-altar:
+  Skills:
+  #- command{c="questtrigger player <target.name> blackfrostspiritdevourernear"} @PIR{r=20} #this quest trigger doesn't exist. What are they used for anyways?
+  #- message{m="Test"} @PIR{r=20}
+  - skill{s=blackfrost-devourer-altar-summon} 1 #buffing spawn chance from 0.005 (puzzle?) to 1 (consistent)
+  #- summon{t=frost-walker-altar;a=1;r=8;os=true} .25 #removing event summon
+frost-walker-altar:
+  Skills:
+  - delay 800
+  - effect:particlesphere{p=block_crack;material=ice;a=3;radius=3;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=3}
+  - sound{s=block.snow.break}
+  - remove
+blackfrost-walker-ground:
+  Conditions:
+  - onground{}
+  Cooldown: 100
+  Skills:
+  - sound{s=block.sculk.break}
+  - blockmask{m=sculk;n=0;r=4;d=20} #changed randomness to 0 from 0.8
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=4} #changed damage from 750 -> 200
+
+blackfrost-walker-cast:
+  Skills:
+  - potion{t=SPEED;d=20;l=2;hasParticles=false}
+  - skill{s=frost-walker-rogue-snow-greater} .4
+  - skill{s=frost-walker-rogue-lunge} @target 1
+  - skill{s=blackfrost-walker-rogue-vanish} @target .25
+blackfrost-walker-rogue-vanish:
+  Conditions:
+  - incombat{}
+  TargetConditions:
+  - distance{d=<64}
+  Cooldown: 15
+  Skills:
+  - effect:particlesphere{p=squid_ink;a=1;r=1;yOffset=.5} @self
+  - potion{t=INVISIBILITY;d=80;l=1;hasParticles=false} @self
+  - equip{i=AIR:HAND} @self
+  - equip{i=AIR:OFFHAND} @self
+  - equip{i=AIR:HEAD} @self
+  - equip{i=AIR:CHEST} @self
+  - equip{i=AIR:LEGS} @self
+  - equip{i=AIR:FEET} @self
+  - delay 80
+  #- teleport @target # this was teleporting to spawn
+  - skill{s=blackfrost-walker-teleport-check} @target
+  - equip{i=DIAMOND_SWORD:HAND} @self
+  - equip{i=DIAMOND_SWORD:OFFHAND} @self
+  - equip{i=LEATHER_HELMET:HEAD} @self
+  - equip{i=LEATHER_CHESTPLATE:CHEST} @self
+  - equip{i=LEATHER_LEGGINGS:LEGS} @self
+  - equip{i=LEATHER_BOOTS:FEET} @self
+  # - summon{t=blackfrost-walker-rogue-aoe-marker} #this was following players into death
+  - skill{s=blackfrost-marker-check} @target
+
+blackfrost-walker-teleport-check:
+  Conditions:
+  - incombat{}
+  TargetConditions:
+  - distance{d=<64}
+  Skills:
+  - teleport @target
+
+blackfrost-marker-check:
+  Conditions:
+  - incombat{}
+  TargetConditions:
+  - distance{d=<64}
+  Skills:
+  - summon{t=blackfrost-walker-rogue-aoe-marker}
+
+blackfrost-walker-rogue-aoe-marker:
+  Skills:
+  - sound{s=block.sculk.break}
+  - blockmask{m=sculk;n=0;r=4;d=80} #changed randomness to 0 from 0.8
+  - delay 10
+  - skill{s=blackfrost-walker-rogue-aoe-marker-cast}
+  - delay 70
+  - remove
+blackfrost-walker-rogue-aoe-marker-cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=4} #nerfed damage from 200 every 0.5 seconds -> 75
+  - delay 10
+  - skill{s=blackfrost-walker-rogue-aoe-marker-cast}
+
+
+blackfrost-devourer-altar-summon:
+  Cooldown: 30
+  Skills:
+  - message{m="&4[☠] &cBlackfrost Devourer<&co> &4&lI HUNGER."} @PIR{r=100}
+  - sound{s=entity.zombie.attack_wooden_door;v=4}
+  - delay 40
+  - sound{s=entity.zombie.attack_wooden_door;v=4}
+  - delay 40
+  - sound{s=entity.zombie.attack_wooden_door;v=4}
+  - delay 40
+  - sound{s=entity.zombie.attack_wooden_door;v=4}
+  - delay 40
+  - sound{s=entity.zombie.break_wooden_door;v=4}
+  - sound{s=entity.warden.emerge;v=4}
+  #- command{c="questtrigger player <target.name> blackfrostspiritdevourer"} @PIR{r=64}
+  - message{m="&4[☠] &cBlackfrost Devourer<&co> &4&lFEED ME."} @PIR{r=100}
+  - summon{t=blackfrost-devourer}
+
+
+blackfrost-spirit-feed:
+  Cooldown: 20
+  Skills:
+  - sound{s=entity.phantom.hurt}
+  - teleport @MIR{t=blackfrost-devourer;r=128}
+  - playanimation{a=1;audience=World}
+  - delay 10
+  - sound{s=entity.phantom.hurt}
+  - teleport @MIR{t=blackfrost-devourer;r=128}
+  - playanimation{a=1;audience=World}
+  - delay 10
+  - sound{s=entity.phantom.hurt}
+  - teleport @MIR{t=blackfrost-devourer;r=128}
+  - playanimation{a=1;audience=World}
+  - delay 10
+  - sound{s=entity.phantom.hurt}
+  - teleport @MIR{t=blackfrost-devourer;r=128}
+  - playanimation{a=1;audience=World}
+  - delay 10
+  - sound{s=entity.phantom.hurt}
+  - sound{s=entity.horse.eat;v=4}
+  - sound{s=block.honey_block.break}
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - remove
+
+blackfrost-spirit-spawn:
+  Skills:
+  #- command{c="questtrigger player <trigger.name> blackfrostspirit"}
+  #- message{m="Test"} @PIR{r=32}
+  - summon{t=blackfrost-spirit} @Forward{f=0;y=1.5}
+  - randomskill{s=frost-walker-spirit-message1,frost-walker-spirit-message2,frost-walker-spirit-message3,frost-walker-spirit-message4,frost-walker-spirit-message5}
+
+frost-walker-spirit-message1:
+  Skills:
+  - message{m="&e[&660&e] &cBlackfrost Spirit<&co> &bIs &lMother &r&bangry at us."} @trigger
+frost-walker-spirit-message2:
+  Skills:
+  - message{m="&e[&660&e] &cBlackfrost Spirit<&co> &bWe don't want to be eaten."} @trigger
+frost-walker-spirit-message3:
+  Skills:
+  - message{m="&e[&660&e] &cBlackfrost Spirit<&co> &b&lMother &r&bis frightening."} @trigger
+frost-walker-spirit-message4:
+  Skills:
+  - message{m="&e[&660&e] &cBlackfrost Spirit<&co> &b&lMother &r&blives below the ice."} @trigger
+frost-walker-spirit-message5:
+  Skills:
+  - message{m="&e[&660&e] &cBlackfrost Spirit<&co> &bStay away from &lMother."} @trigger
+
+blackfrost-spirit:
+  Cooldown: 1
+  Skills:
+  - randomskill{s=blackfrost-spirit-connect,blackfrost-spirit-disconnect}
+
+blackfrost-spirit-connect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=0}
+  Skills:
+  #- command{c="questtrigger player <trigger.name> blackfrostspiritfollow"} @trigger
+  - sound{s=block.fire.ambient}
+  - effect:particlesphere{p=soul_fire_flame;amount=3;radius=1}
+  - message{m="&bYou guide the lost spirit."} @trigger
+  - setvariable{var=caster.follow;value=1}
+blackfrost-spirit-disconnect:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - sound{s=block.fire.extinguish}
+  - message{m="&bYou abandon the lost spirit."} @trigger
+  - setvariable{var=caster.follow;value=0}
+
+blackfrost-spirit-unfollow:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  - playernotwithin 20
+  Skills:
+  - setvariable{var=caster.follow;value=0}
+
+blackfrost-spirit-follow:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Skills:
+  - skill{s=blackfrost-spirit-visual}
+  - skill{s=blackfrost-spirit-follow-leap}
+  - skill{s=blackfrost-spirit-summon}
+blackfrost-spirit-summon:
+  Cooldown: 10
+  Skills:
+  - signal{s=summon} @MIR{t=blackfrost-devourer-altar;r=20}
+blackfrost-spirit-follow-leap:
+  Conditions:
+  - playernotwithin 3
+  Skills:
+  - leap{v=75} @NearestPlayer{r=20}
+blackfrost-spirit-visual:
+  Cooldown: 1
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=1;radius=1}
+blackfrost-spirit-visual-altar-near:
+  Conditions:
+  - variableEquals{var=caster.follow;value=1}
+  Cooldown: 1
+  Skills:
+  - effect:particlesphere{p=falling_dripstone_water;amount=2;radius=1}
+
+frost-rider-cast:
+ Conditions:
+  - incombat{}
+  - playernotwithin 3
+ Cooldown: 12
+ Skills:
+ - potion{t=SLOW;d=19;l=3;hasParticles=false}
+ - cast{skillname="&aFrost Ride";duration=20;onCast=frost-rider;showcastbar=true;} 
+
+frost-rider-bomb:
+  Conditions:
+  - onground{} true
+  Skills:
+  - pull{v=5} @PIR{r=5}
+  - sound{s=block.bone_block.break}
+  - blockmask{m=bone_block;d=5;r=5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=5}
+  - remove
+
+frost-rider:
+  #Conditions:
+  #- incombat{}
+  #- playernotwithin 3
+  #Cooldown: 12 #removed cooldown as cast skill has one and other conditions
+  Skills:
+  - sound{s=entity.horse.breathe}
+  #- delay 25 #removed delay as we now have cast bar
+  - sound{s=entity.skeleton_horse.hurt}
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - clearThreat{} @self
+  - sound{s=entity.horse.gallop}
+  - jump{v=0.8}
+  - delay 5
+  - leap{v=200} @Forward{f=10;y=1}
+  - summon{t=frost-rider-bomb}
+  - delay 5
+  - setAI{ai=false}
+  - delay 1
+  - setAI{ai=true}
+  - clearThreat{} @self
+  - leap{v=200} @Forward{f=10;y=1}
+  - summon{t=frost-rider-bomb}
+  - delay 5
+  - setAI{ai=false}
+  - delay 1
+  - setAI{ai=true}
+  - clearThreat{} @self
+  - leap{v=200} @Forward{f=10;y=1}
+  - summon{t=frost-rider-bomb}
+  - delay 5
+  - setAI{ai=false}
+  - delay 1
+  - setAI{ai=true}
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=64}
+
+
+frost-walker-cast:
+  Skills:
+  - skill{s=frost-walker-rogue-cast-1}
+  - skill{s=frost-walker-rogue-cast-2}
+  - skill{s=frost-walker-rogue-cast-3}
+  - skill{s=frost-walker-mage-cast-1}
+  - skill{s=frost-walker-mage-cast-2}
+  - skill{s=frost-walker-mage-cast-3}
+
+frost-walker-rogue-cast-1:
+  Conditions:
+  - variableEquals{var=caster.rogue;value=1}
+  Skills:
+  - skill{s=frost-walker-rogue-snow} .25
+  - skill{s=frost-walker-rogue-lunge} @target .25
+frost-walker-rogue-cast-2:
+  Conditions:
+  - variableEquals{var=caster.rogue;value=2}
+  Skills:
+  - potion{t=SPEED;d=20;l=1;hasParticles=false}
+  - skill{s=frost-walker-rogue-snow} .25
+  - skill{s=frost-walker-rogue-lunge} @target .4
+frost-walker-rogue-cast-3:
+  Conditions:
+  - variableEquals{var=caster.rogue;value=3}
+  Skills:
+  - potion{t=SPEED;d=20;l=2;hasParticles=false}
+  - skill{s=frost-walker-rogue-snow-greater} .4
+  - skill{s=frost-walker-rogue-lunge} @target 1
+  - skill{s=frost-walker-rogue-vanish} @target .25
+
+frost-walker-rogue-lunge:
+  Conditions:
+  - incombat{}
+  Cooldown: 2
+  Skills:
+  - skill{s=frost-walker-rogue-lunge-near}
+  - skill{s=frost-walker-rogue-lunge-far}
+frost-walker-rogue-lunge-near:
+  TargetConditions:
+  - distance{d=<4}
+  Cooldown: 10
+  Skills:
+  - sound{s=entity.ender_dragon.flap;p=0.75}
+  - playanimation{a=0;audience=World} @self
+  - leap{v=200} @Forward{f=5;y=9}
+frost-walker-rogue-lunge-far:
+  TargetConditions:
+  - distance{d=>4}
+  Cooldown: 4
+  Skills:
+  - sound{s=entity.ender_dragon.flap;p=1}
+  - playanimation{a=0;audience=World} @self
+  - leap{v=325} @Forward{f=7;y=1}
+  
+frost-walker-rogue-vanish:
+  Conditions:
+  - incombat{}
+  TargetConditions:
+  - distance{d=<64}
+  Cooldown: 15
+  Skills:
+  - effect:particlesphere{p=squid_ink;a=1;r=1;yOffset=.5} @self
+  - potion{t=INVISIBILITY;d=80;l=1;hasParticles=false} @self
+  - equip{i=AIR:HAND} @self
+  - equip{i=AIR:OFFHAND} @self
+  - equip{i=AIR:HEAD} @self
+  - equip{i=AIR:CHEST} @self
+  - equip{i=AIR:LEGS} @self
+  - equip{i=AIR:FEET} @self
+  - delay 80
+  - teleport @target
+  - equip{i=DIAMOND_SWORD:HAND} @self
+  - equip{i=DIAMOND_SWORD:OFFHAND} @self
+  - equip{i=LEATHER_HELMET:HEAD} @self
+  - equip{i=LEATHER_CHESTPLATE:CHEST} @self
+  - equip{i=LEATHER_LEGGINGS:LEGS} @self
+  - equip{i=LEATHER_BOOTS:FEET} @self
+  - summon{t=frost-walker-rogue-aoe-marker}
+
+frost-walker-rogue-aoe-marker:
+  Skills:
+  - sound{s=block.glass.break}
+  - blockmask{m=ice;d=80;r=4} @self
+  - delay 10
+  - skill{s=frost-walker-rogue-aoe-marker-cast}
+  - delay 70
+  - remove
+frost-walker-rogue-aoe-marker-cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=4}  
+  - delay 10
+  - skill{s=frost-walker-rogue-aoe-marker-cast}
+
+frost-walker-rogue-snow:
+  Conditions:
+  - incombat{}
+  - onblock{m=SNOW_BLOCK} true
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=10;hasParticles=false}
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - sound{s=block.snow.break}
+  - equip{i=SNOWBALL:OFFHAND}
+  - delay 45
+  - sound{s=block.snow.hit;p=1.5}
+  - playanimation{a=3;audience=World} @self
+  - equip{i=AIR:OFFHAND}
+  - projectile{onTick=frost-walker-rogue-snow-tick;onHit=frost-walker-rogue-snow-hit;v=8;i=1;hR=1;vR=1;v=25} @target
+frost-walker-rogue-snow-tick:
+  Skills:
+  - effect:particles{p=snowballpoof;c=#A8FFFF;a=1;speed=0;hS=0.2;vS=0.2} @Origin
+frost-walker-rogue-snow-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}
+  - potion{t=SLOW;d=40;l=10}
+  - effect:blockmask{m=ice;r=1;d=20}
+
+frost-walker-rogue-snow-greater:
+  Conditions:
+  - incombat{}
+  - onblock{m=SNOW_BLOCK} true
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=10;hasParticles=false}
+  - effect:particlesphere{p=block_crack;material=snow_block;amount=2;radius=1;yOffset=.5} 
+  - sound{s=block.snow.break}
+  - equip{i=SNOWBALL:OFFHAND}
+  - delay 20
+  - playanimation{a=3;audience=World} @self
+  - sound{s=block.snow.hit;p=1.5}
+  - projectile{onTick=frost-walker-rogue-snow-tick-greater;onHit=frost-walker-rogue-snow-hit-greater;v=8;i=1;hR=1;vR=1;v=25} @target
+  - equip{i=AIR:OFFHAND}
+frost-walker-rogue-snow-tick-greater:
+  Skills:
+  - effect:particles{p=snowballpoof;c=#A8FFFF;a=1;speed=0;hS=0.2;vS=0.2} @Origin
+frost-walker-rogue-snow-hit-greater:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} #nerfing 175 -> 100
+  - potion{t=SLOW;d=80;l=10}
+  - effect:blockmask{m=ice;r=1;d=20}
+
+frost-walker-mage-cast-1:
+  Conditions:
+  - variableEquals{var=caster.mage;value=1}
+  Skills:
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - skill{s=frost-walker-mage-frost-bolt}
+  - skill{s=frost-walker-mage-evade} .25
+frost-walker-mage-cast-2:
+  Conditions:
+  - variableEquals{var=caster.mage;value=2}
+  Skills:
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - skill{s=frost-walker-mage-frost-bolt-greater}
+  - skill{s=frost-walker-mage-evade} .25
+frost-walker-mage-cast-3:
+  Conditions:
+  - variableEquals{var=caster.mage;value=3}
+  Skills:
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - skill{s=frost-walker-mage-frost-bolt-major}
+  - skill{s=frost-walker-mage-evade} .4
+  - skill{s=frost-walker-mage-aoe}
+
+frost-walker-mage-evade:
+  Conditions:
+  - playerwithin 3
+  Cooldown: 4
+  Skills:
+  - leap{v=250} @Forward{f=-5;l=1}
+  - sound{s=entity.ender_dragon.flap;p=1.25}
+
+frost-walker-mage-aoe:
+  Cooldown: 15
+  Conditions:
+  - incombat{}
+  - playerwithin 8
+  Skills:
+  - potion{t=SLOW;d=80;l=10;hasParticles=false}
+  - sound{s=block.glass.break;p=0.5}
+  - blockmask{m=ice;d=40;r=3} @self
+  - delay 40
+  - summon{t=frost-walker-mage-aoe-marker-lesser;a=1;r=3;os=true}
+  - delay 20
+  - summon{t=frost-walker-mage-aoe-marker-lesser;a=2;r=8;os=true}
+  - delay 20
+  - summon{t=frost-walker-mage-aoe-marker;a=5;r=15;os=true}
+frost-walker-mage-aoe-marker:
+  Skills:
+  - sound{s=block.glass.break}
+  - blockmask{m=ice;d=120;r=5} @self
+  - skill{s=frost-walker-mage-aoe-marker-cast}
+  - delay 120
+  - remove
+frost-walker-mage-aoe-marker-lesser:
+  Skills:
+  - sound{s=block.glass.break}
+  - blockmask{m=ice;d=20;r=5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - remove
+frost-walker-mage-aoe-marker-cast:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=5}  
+  - delay 20
+  - skill{s=frost-walker-mage-aoe-marker-cast}
+
+frost-walker-mage-frost-bolt:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  - playernotwithin 3
+  Skills:
+  - sound{s=entity.ender_dragon.flap}
+  - potion{t=SLOW;d=80;l=10}
+  - leap{v=200} @Forward{f=-5;l=1}
+  - delay 2
+  - playanimation{a=0;audience=World} @self
+  - skill{s=frost-walker-mage-frost-bolt-near} @target
+frost-walker-mage-frost-bolt-near:
+  TargetConditions:
+  - distance{d=>15} castinstead frost-walker-mage-frost-bolt-far
+  - distance{d=<15}
+  Skills:
+  - missile{ot=frost-walker-mage-frost-bolt-tick;oh=frost-walker-mage-frost-bolt-hit;oe=frost-walker-mage-frost-bolt-end;v=4;i=1;md=120;hnp=false;mr=60;sB=true;sE=true} @target
+frost-walker-mage-frost-bolt-far:
+  Skills:
+  - missile{ot=frost-walker-mage-frost-bolt-tick;oh=frost-walker-mage-frost-bolt-hit;oe=frost-walker-mage-frost-bolt-end;v=7;i=1;md=120;hnp=false;mr=60;sB=true;sE=true} @target
+
+frost-walker-mage-frost-bolt-tick:
+  Skills:
+  - effect:particles{p=block_crack;material=ice;a=1;speed=0;hS=0.2;vS=0.2} @Origin
+  - skill{s=frost-walker-mage-frost-bolt-tick-audio} @Origin
+frost-walker-mage-frost-bolt-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"}
+  - potion{t=SLOW;d=80;l=2}
+frost-walker-mage-frost-bolt-end:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=ice;radius=3;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=3}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=3}
+  - sound{s=block.snow.break}
+frost-walker-mage-frost-bolt-tick-audio:
+  Cooldown: 1
+  Skills:
+  - effect:particlesphere{p=block_crack;material=ice;radius=3;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=3}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=3}
+  - sound{s=block.snow.break}
+
+frost-walker-mage-frost-bolt-greater:
+  Cooldown: 8
+  Conditions:
+  - incombat{}
+  - playernotwithin 3
+  Skills:
+  - sound{s=entity.ender_dragon.flap}
+  - potion{t=SLOW;d=80;l=10}
+  - leap{v=200} @Forward{f=-5;l=1}
+  - delay 2
+  - playanimation{a=0;audience=World} @self
+  - skill{s=frost-walker-mage-frost-bolt-greater-near} @target
+frost-walker-mage-frost-bolt-greater-near:
+  TargetConditions:
+  - distance{d=>15} castinstead frost-walker-mage-frost-bolt-greater-far
+  - distance{d=<15}
+  Skills:
+  - missile{ot=frost-walker-mage-frost-bolt-tick-greater;oh=frost-walker-mage-frost-bolt-hit-greater;oe=frost-walker-mage-frost-bolt-end-greater;v=4;i=1;md=120;hnp=false;mr=60;sB=true;sE=true} @target
+frost-walker-mage-frost-bolt-greater-far:
+  Skills:
+  - missile{ot=frost-walker-mage-frost-bolt-tick-greater;oh=frost-walker-mage-frost-bolt-hit-greater;oe=frost-walker-mage-frost-bolt-end-greater;v=8;i=1;md=160;hnp=false;mr=60;sB=true;sE=true} @target
+
+frost-walker-mage-frost-bolt-tick-greater:
+  Skills:
+  - effect:particles{p=block_crack;material=ice;a=1;speed=0;hS=0.2;vS=0.2} @Origin
+  - skill{s=frost-walker-mage-frost-bolt-tick-audio-greater} @Origin
+frost-walker-mage-frost-bolt-hit-greater:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"}
+  - potion{t=SLOW;d=80;l=2}
+frost-walker-mage-frost-bolt-end-greater:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=ice;radius=3;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=3}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=3}
+  - sound{s=block.snow.break}
+frost-walker-mage-frost-bolt-tick-audio-greater:
+  Cooldown: 1
+  Skills:
+  - effect:particlesphere{p=block_crack;material=ice;radius=3;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=3}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=3}
+  - sound{s=block.snow.break}
+
+frost-walker-mage-frost-bolt-major:
+  Cooldown: 8
+  Conditions:
+  - incombat{}
+  - playernotwithin 3
+  Skills:
+  - sound{s=entity.ender_dragon.flap}
+  - potion{t=SLOW;d=80;l=10}
+  - leap{v=200} @Forward{f=-5;l=1}
+  - delay 2
+  - playanimation{a=0;audience=World} @self
+  - skill{s=frost-walker-mage-frost-bolt-major-near} @target
+frost-walker-mage-frost-bolt-major-near:
+  TargetConditions:
+  - distance{d=>15} castinstead frost-walker-mage-frost-bolt-major-far
+  - distance{d=<15}
+  Skills:
+  - missile{ot=frost-walker-mage-frost-bolt-tick-major;oh=frost-walker-mage-frost-bolt-hit-major;oe=frost-walker-mage-frost-bolt-end-major;v=4;i=1;md=160;hnp=false;mr=60;sB=true;sE=true} @target
+frost-walker-mage-frost-bolt-major-far:
+  Skills:
+  - missile{ot=frost-walker-mage-frost-bolt-tick-major;oh=frost-walker-mage-frost-bolt-hit-major;oe=frost-walker-mage-frost-bolt-end-major;v=8;i=1;md=200;hnp=false;mr=60;sB=true;sE=true} @target
+
+
+frost-walker-mage-frost-bolt-tick-major:
+  Skills:
+  - effect:particles{p=block_crack;material=ice;a=2;speed=0;hS=0.2;vS=0.2} @Origin
+  - skill{s=frost-walker-mage-frost-bolt-tick-audio-major} @Origin
+frost-walker-mage-frost-bolt-hit-major:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}
+  - potion{t=SLOW;d=80;l=2}
+frost-walker-mage-frost-bolt-end-major:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=ice;radius=3;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=3}
+  - sound{s=block.snow.break}
+frost-walker-mage-frost-bolt-tick-audio-major:
+  Cooldown: 1
+  Skills:
+  - effect:particlesphere{p=block_crack;material=ice;radius=3;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=3}
+  - sound{s=block.snow.break}
+
+
+frost-walker-death:
+  Conditions:
+  - variableEquals{var=caster.tier;value=2} castinstead frost-walker-death-tier-2
+  - variableEquals{var=caster.tier;value=3} castinstead frost-walker-death-tier-3
+  - variableEquals{var=caster.tier;value=1}
+  Skills:
+  - command{c="runicgive exp <trigger.name> 675 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger 1.0
+  #- command{c="ri drop frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger .08
+  #- command{c="ri drop frost-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger .5
+frost-walker-death-tier-2:
+  Skills:
+  - command{c="runicgive exp <trigger.name> 935 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger 1.0
+  #- command{c="ri drop frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger .12
+  #- command{c="ri drop frost-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger .75
+frost-walker-death-tier-3:
+  Skills:
+  - command{c="runicgive exp <trigger.name> 1275 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger 1.0
+  #- command{c="ri drop frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger .2
+  #- command{c="ri drop frost-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 1.0
+frost-walker-rogue-selection:
+  Skills:
+  - delay 5
+  - randomskill{s=frost-walker-rogue-select-1,frost-walker-rogue-select-1,frost-walker-rogue-selection-2}
+frost-walker-rogue-selection-2:
+  Skills:
+  - randomskill{s=frost-walker-rogue-select-2,frost-walker-rogue-select-2,frost-walker-rogue-select-2,frost-walker-rogue-select-2,frost-walker-rogue-select-3}
+
+frost-walker-mage-selection:
+  Skills:
+  - delay 5
+  - randomskill{s=frost-walker-mage-select-1,frost-walker-mage-select-1,frost-walker-mage-selection-2}
+frost-walker-mage-selection-2:
+  Skills:
+  - randomskill{s=frost-walker-mage-select-2,frost-walker-mage-select-2,frost-walker-mage-select-2,frost-walker-mage-select-2,frost-walker-mage-select-3}
+
+frost-walker-rogue-select-1:
+  Conditions:
+  Skills:
+  - equip{i=DIAMOND_SWORD:HAND}
+  - setvariable{var=caster.rogue;value=1}
+  - setvariable{var=caster.tier;value=1}
+  - randomskill{s=frost-walker-rogue-helm,frost-walker-rogue-chest,frost-walker-rogue-leggings,frost-walker-rogue-boots}
+  - randomskill{s=frost-walker-rogue-helm,frost-walker-rogue-chest,frost-walker-rogue-leggings,frost-walker-rogue-boots}
+frost-walker-rogue-select-2:
+  Conditions:
+  Skills:
+  - equip{i=DIAMOND_SWORD:HAND}
+  - setvariable{var=caster.rogue;value=2}
+  - setvariable{var=caster.tier;value=2}
+  - randomskill{s=frost-walker-rogue-helm,frost-walker-rogue-chest,frost-walker-rogue-leggings,frost-walker-rogue-boots}
+  - randomskill{s=frost-walker-rogue-helm,frost-walker-rogue-chest,frost-walker-rogue-leggings,frost-walker-rogue-boots}
+  - randomskill{s=frost-walker-rogue-helm,frost-walker-rogue-chest,frost-walker-rogue-leggings,frost-walker-rogue-boots}
+frost-walker-rogue-select-3:
+  Conditions:
+  Skills:
+  - equip{i=DIAMOND_SWORD:HAND}
+  - equip{i=DIAMOND_SWORD:OFFHAND}
+  - setvariable{var=caster.rogue;value=3}
+  - setvariable{var=caster.tier;value=3}
+  - randomskill{s=frost-walker-rogue-helm,frost-walker-rogue-chest,frost-walker-rogue-leggings,frost-walker-rogue-boots}
+  - randomskill{s=frost-walker-rogue-helm,frost-walker-rogue-chest,frost-walker-rogue-leggings,frost-walker-rogue-boots}
+  - randomskill{s=frost-walker-rogue-helm,frost-walker-rogue-chest,frost-walker-rogue-leggings,frost-walker-rogue-boots}
+  - randomskill{s=frost-walker-rogue-helm,frost-walker-rogue-chest,frost-walker-rogue-leggings,frost-walker-rogue-boots}
+
+frost-walker-mage-select-1:
+  Conditions:
+  Skills:
+  - equip{i=DIAMOND_SWORD:HAND}
+  - setvariable{var=caster.mage;value=1}
+  - setvariable{var=caster.tier;value=1}
+  - randomskill{s=frost-walker-mage-helm,frost-walker-mage-chest,frost-walker-mage-leggings,frost-walker-mage-boots}
+  - randomskill{s=frost-walker-mage-helm,frost-walker-mage-chest,frost-walker-mage-leggings,frost-walker-mage-boots}
+frost-walker-mage-select-2:
+  Conditions:
+  Skills:
+  - equip{i=DIAMOND_SWORD:HAND}
+  - setvariable{var=caster.mage;value=2}
+  - setvariable{var=caster.tier;value=2}
+  - randomskill{s=frost-walker-mage-helm,frost-walker-mage-chest,frost-walker-mage-leggings,frost-walker-mage-boots}
+  - randomskill{s=frost-walker-mage-helm,frost-walker-mage-chest,frost-walker-mage-leggings,frost-walker-mage-boots}
+  - randomskill{s=frost-walker-mage-helm,frost-walker-mage-chest,frost-walker-mage-leggings,frost-walker-mage-boots}
+frost-walker-mage-select-3:
+  Conditions:
+  Skills:
+  - equip{i=DIAMOND_SWORD:HAND}
+  - setvariable{var=caster.mage;value=3}
+  - setvariable{var=caster.tier;value=3}
+  - randomskill{s=frost-walker-mage-helm,frost-walker-mage-chest,frost-walker-mage-leggings,frost-walker-mage-boots}
+  - randomskill{s=frost-walker-mage-helm,frost-walker-mage-chest,frost-walker-mage-leggings,frost-walker-mage-boots}
+  - randomskill{s=frost-walker-mage-helm,frost-walker-mage-chest,frost-walker-mage-leggings,frost-walker-mage-boots}
+  - randomskill{s=frost-walker-mage-helm,frost-walker-mage-chest,frost-walker-mage-leggings,frost-walker-mage-boots}
+
+frost-walker-rogue-helm:
+  Cooldown: 20
+  Skills:
+  - equip{i=LEATHER_HELMET:HEAD}
+frost-walker-rogue-chest:
+  Cooldown: 20
+  Skills:
+  - equip{i=LEATHER_CHESTPLATE:CHEST}
+frost-walker-rogue-leggings:
+  Cooldown: 20
+  Skills:
+  - equip{i=LEATHER_LEGGINGS:LEGS}
+frost-walker-rogue-boots:
+  Cooldown: 20
+  Skills:
+  - equip{i=LEATHER_BOOTS:FEET}
+  
+frost-walker-mage-helm:
+  Cooldown: 20
+  Skills:
+  - equip{i=DIAMOND_HELMET:HEAD}
+frost-walker-mage-chest:
+  Cooldown: 20
+  Skills:
+  - equip{i=DIAMOND_CHESTPLATE:CHEST}
+frost-walker-mage-leggings:
+  Cooldown: 20
+  Skills:
+  - equip{i=DIAMOND_LEGGINGS:LEGS}
+frost-walker-mage-boots:
+  Cooldown: 20
+  Skills:
+  - equip{i=DIAMOND_BOOTS:FEET}
+
+frost-drop:
+  Skills:
+  - command{c="ri drop frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+blue-frost-drop:
+  Skills:
+  - command{c="ri drop blue-frost <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+
+
+
+
+
+  
+frost-stalker:
+  Conditions:
+  - variableEquals{var=caster.start;value=1}
+  Skills:
+  - randomskill{s=frost-stalker1,frost-stalker2}
+frost-stalker1:
+  Conditions:
+  - playerwithin 5
+  - variableEquals{var=caster.stalker;value=1}
+  Skills:  
+  - sound{s=block.snow.break;v=1}
+  - setvariable{var=caster.stalker;value=0}
+  - setvariable{var=caster.shoot;value=0}
+  - setAI{ai=true}
+  - disguise{d="STRAY"}
+  - setname{name='&e[&660&e] &cFrost Stalker';delay=1}
+frost-stalker2:
+  Conditions:
+  - playernotwithin 10
+  - onground{} true
+  - onblock{m=SNOW_BLOCK} true
+  - variableEquals{var=caster.stalker;value=0}
+  Skills:  
+  - sound{s=block.snow.break;v=1}
+  - setvariable{var=caster.stalker;value=1}
+  - setvariable{var=caster.shoot;value=1}
+  - setAI{ai=false}
+  - disguise{d="FALLING_BLOCK SNOW"}
+  - setname{name='';delay=1}
+frost-stalker-cast:
+  Conditions:
+  - variableEquals{var=caster.shoot;value=1}
+  Cooldown: 8
+  Skills:
+  - sound{s=item.crossbow.shoot;v=2} @self 
+  - effect:particlesphere{particle=soul_fire_flame;amount=1;radius=1;yOffset=0.5} @self 
+  - projectile{oh=frost-stalker-proj-hit;i=1;v=75;mr=32;sB=true} @NearestPlayer{r=32}
+frost-stalker-proj-hit:
+  Skills:
+  - potion{t=SLOW;d=40;l=10} 
+  - blockmask{m=ice;d=20;r=2} 
+  - sound{s=block.glass.break;p=0.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} 
+
+frost-stalker-hurt:
+  Conditions:
+  - variableEquals{var=caster.stalker;value=1}
+  Skills:
+  - setname{name='';delay=1}
+
+frost-stalker-start:
+  Conditions:
+  - playerwithin 15
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.start;value=1}
+frost-stalker-start-hurt:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.start;value=1}

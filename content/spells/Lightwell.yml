@@ -1,0 +1,5 @@
+blind-duration: 0
+duration: 4
+heal: 5
+heal-per-level: 0.25
+radius: 4

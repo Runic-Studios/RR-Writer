@@ -1,0 +1,5 @@
+attribute: Strength
+attribute-base-value: 20
+attribute-multiplier: 1
+percent: 0.25
+health-ceiling: 0.5

@@ -1,0 +1,211 @@
+UndeadMiner:
+  Type: ZOMBIE
+  Display: '&e[&68&e] &cUndead Miner'
+  Health: 155
+  Damage: 18
+  DamageModifiers:
+  - FALL 0
+  Faction: Undead
+  Equipment:
+  - IRON_PICKAXE HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 80 <mob.l.x> <mob.l.y> <mob.l.z> 8"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-8} @trigger ~onDeath
+  - command{c="ri drop undead-bread <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.2
+#  - message{m="<caster.var.tnt>"} @PIR{r=10} ~onTimer:20
+  - setvariable{var=caster.tnt;value=0} @self ~onSpawn
+  - skill{s=UndeadMinerTNTcheckwithin} @self ~onTimer:20
+  - skill{s=UndeadMinerTNTchecknotwithin} @self ~onTimer:20
+  - skill{s=UndeadMinerTNT} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin minecarr setDynamicName true
+    
+UndeadMinerTNT:
+  Type: BABY_ZOMBIE
+  Display: '&6Boom Boom Box'
+  Health: 1
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=UndeadMinerTNTIgnite} @self ~onSpawn
+  - skill{s=UndeadMinerTNTDeath} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK TNT
+    
+UndeadMinerEliteRoot:
+  Type: armor_stand
+  Skills:
+  - potion{t=SLOW;duration=20;l=2} @PIR{r=2} ~onTimer:2
+  - sound{s=block.grass.place} @self ~onSpawn
+  - sound{s=block.grass.break} @self ~onDespawn
+  - remove{delay=60} @self ~onSpawn
+  - remove @self ~onInteract
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK OAK_LEAVES
+        
+CursedMinecart:
+  Type: ZOMBIE
+  Display: '&e[&68&e] &cCursedMinecart'
+  Health: 200
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Drops:
+  Options:
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+#  - setAI{ai=false} @self ~onSpawn
+#  - setvariable{var=caster.cart;value=0} @self ~onSpawn 
+#  - skill{s=MoveThroughMinecart} @self ~onSpawn
+#  - skill{s=CursedMinecarton} @self ~onTimer:2
+  - skill{s=CursedMinecart} @self ~onTimer:2
+#  - skill{s=CursedMinecartcheckwithin}  @self ~onTimer:2
+#  - skill{s=CursedMinecartchecknotwithin} @self ~onTimer:2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 patrolroute -1789,60,16;-1801,60,1;-1789,60,16;-1801,60,1
+  - 2 lookatplayers
+  - 3 float
+  Disguise: MINECART
+    
+Vermin:
+  Type: SILVERFISH
+  Display: '&e[&66&e] &cRat'
+  Health: 10
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  - FALL 0
+  Faction: Vermin
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <target.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 6"} @target ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  #- 1 meleeattack
+  - 1 randomstroll
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+IronSoldier:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cIron Soldier'
+  Health: 500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 11
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lIron Soldier'
+    Health: 500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - DwarvenBattleaxe HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=IronSoldier-drop} @trigger ~onDeath
+#  - command{c="giveartifact <trigger.name> orsig's_favor <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.15
+#  - command{c="giveartifact <trigger.name> iron_hammer <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.15
+#  - command{c="giveartifact <trigger.name> maelstrom <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.15
+#  - command{c="giveartifact <trigger.name> dwarven_shortsword <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.15
+#  - command{c="giveartifact <trigger.name> dwarven_battleaxe <mob.l.x> <mob.l.y> <mob.l.z> <mob.uuid>"} @trigger ~onDeath 0.15
+  - randomskill{skills=bashWarn,bashMinor} @PIR{r=15} ~onTimer:200
+  - skill{s=CorruptVermin} @PIR{r=20} ~onDamaged =50%
+  - damage{a=30} @MIR{t=UndeadVermin;r=20} ~onDeath
+  #- skill{s=SoldierSummonsElites} @self ~onTimer:400
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin DoubleDark setDynamicName true
+
+UndeadVermin:
+  Type: SILVERFISH
+  Display: '&e[&68&e] &cUndead Rat'
+  Health: 12
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Faction: Vermin
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.42
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=VerminStatus} @PIR{r=3} ~onTimer:40
+  - command{c="runicgive exp <target.name> 4 <mob.l.x> <mob.l.y> <mob.l.z> 6"} @target ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget

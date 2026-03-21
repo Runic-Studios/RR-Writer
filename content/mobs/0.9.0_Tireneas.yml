@@ -1,0 +1,484 @@
+tireneas-skeleton:
+  Type: SKELETON
+  Display: '&e[&634&e] &cCave Lurker'
+  Health: 545
+  Modules:
+    ThreatTable: true
+  Damage: 38
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 330 <mob.l.x> <mob.l.y> <mob.l.z> 34"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-34} @trigger ~onDeath 
+  - setvariable{var=caster.within;value=0} @self ~onSpawn
+  - skill{s=tireneas-skeleton} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+tireneas-golem:
+  Type: ZOMBIE
+  Display: '&e[&634&e] &cGolem Troll'
+  Health: 545
+  Modules:
+    ThreatTable: true
+  Damage: 38
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 330 <mob.l.x> <mob.l.y> <mob.l.z> 34"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-34} @trigger ~onDeath  
+  - skill{s=tireneas-golem} @self ~onTimer:20 .1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin ItzTudor setCustomName "&e[&634&e] &cGolem Troll" setDynamicName true
+
+grassmimic:
+  Type: armor_stand
+  Skills:
+  - setAI{ai=false} @self ~onSpawn
+  - skill{s=grassmimic} @self ~onTimer:20
+  Options:
+    Invisible: false
+    Marker: true
+  Disguise: FALLING_BLOCK GRASS_BLOCK
+    
+grassmimic-spawn:
+  Type: ZOMBIE
+  Display: '&e[&635&e] &cGrass Mimic'
+  Health: 560
+  Modules:
+    ThreatTable: true
+  Damage: 38
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 352 <mob.l.x> <mob.l.y> <mob.l.z> 35"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-35} @trigger ~onDeath  
+  - skill{s=grassmimic-spawn} @self ~onSpawn
+  - skill{s=grassmimic-spawn-skill} @self ~onTimer:20 .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Her02NOone setCustomName "&e[&635&e] &cGrass Mimic" setDynamicName true
+
+ChargedGolem:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cCharged Golem'
+  Health: 4000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 30
+  Equipment:
+  - DeraStaff HAND
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lCharged Golem'
+    Health: 4000
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ChargedGolem-drop} @trigger ~onDeath
+  - skill{s=electrogolem-variables} @self ~onSpawn
+  - skill{s=electrogolem-weakness} @self ~onTimer:20
+  - randomskill{skills=electrogolem-melee,electrogolem-range} @self ~onTimer:40 .25
+  - skill{s=electrogolem-pool} @self ~onTimer:20 .25 <50%
+  - skill{s=electrogolem-summon} @self ~onTimer:20 <50%
+  - skill{s=electrogolem-heal} @self ~onSignal:heal
+  - skill{s=electrogolem-heal2} @self ~onSignal:heal2
+  - skill{s=electrogolem-special} @self ~onSignal:special
+  - skill{s=electrogolem-harm} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin yoshieggs911 setCustomName "&e[&6☠&e] &cCharged Golem" setDynamicName true
+
+electrogolem-spawn:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cCharge'
+  Health: 400
+  Modules:
+    ThreatTable: true
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=electrogolem-spawn-weakness} @self ~onTimer:20
+  - skill{s=electrogolem-spawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WOLF
+
+electrogolem-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=electrogolem-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+electrogolem-marker2:
+  Type: armor_stand
+  Skills:
+  - skill{s=electrogolem-marker2} @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+electrogolem-marker3:
+  Type: armor_stand
+  Skills:
+  - skill{s=electrogolem-marker3} @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+
+
+TireneasCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=TireneasCitizen;amount=4;radius=48;yRadius=4;os=true} @self ~onSpawn
+  - summon{type=TireneasCitizen2;amount=4;radius=48;yRadius=4;os=true} @self ~onSpawn
+  - summon{type=TireneasCitizen;amount=1;radius=48;yRadius=4;os=true} @self ~onSignal:respawn
+  - summon{type=TireneasCitizen2;amount=1;radius=48;yRadius=4;os=true} @self ~onSignal:respawn2
+TireneasCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aTireneas Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aTireneas Citizen<&co> &fOurs is the last homely home in the East.} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=TireneasCSA} ~onDeath
+  Disguise: player Steve setSkin ImConnor_ setCustomName "&e[&61&e] &aTireneas Citizen" setDynamicName true
+TireneasCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aTireneas Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aTireneas Citizen<&co> &fOurs is the last homely home in the East.} @NearestPlayer ~onDamaged
+  - signal{s=respawn2} @MobsInRadius{r=320;t=TireneasCSA} ~onDeath
+  Disguise: player Steve setSkin NeonicLily1 setCustomName "&e[&61&e] &aTireneas Citizen" setDynamicName true
+
+StoneGolemElite:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cStone Golem Elite'
+  Health: 240
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 100 <mob.l.x> <mob.l.y> <mob.l.z> 33"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin ParaDiceRaider setCustomName "&e[&6✸&e] &cStone Golem Elite" setDynamicName true
+
+TireneasGuard:
+  Type: IRON_GOLEM
+  Display: '&e[&650&e] &aTireneas Guard'
+  Health: 5000
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Guard
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 6
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 lookatplayers
+  - 3 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aTireneas Guard<&co> &fSo you have chosen death.} @trigger ~onDamaged
+  Disguise: player Steve setSkin Shades416 setCustomName "&e[&650&e] &aTireneas Guard" setDynamicName true
+
+TireneasRabbit:
+  Type: Rabbit
+  Display: '&e[&61&e] &aDark Rabbit'
+  Health: 30
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    RabbitType: Black
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 float
+  Skills:
+  - command{c="runicgive exp <trigger.name> 10 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  - command{c="ri drop UncookedRabbit <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.3
+GillweedGiver:
+  Type: BABY_ZOMBIE
+  Display: '&aGillweed'
+  Health: 1
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+#  - skill{s=EchinaceaGiver} @self ~onTimer:2
+  - sound{s=block.grass.break} @self ~onDeath
+  - command{c="ri drop Gillweed <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - remove @self ~onDeath
+  Disguise: FALLING_BLOCK SEAGRASS
+
+NiphredilGiver:
+  Type: BABY_ZOMBIE
+  Display: '&fNiphredil'
+  Health: 1
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+#  - skill{s=EchinaceaGiver} @self ~onTimer:2
+  - sound{s=block.grass.break} @self ~onDeath
+  - command{c="ri drop Niphredil <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - remove @self ~onDeath
+  Disguise: FALLING_BLOCK WHITE_TULIP
+    
+SmellyOrc:
+  Type: ZOMBIE
+  Display: '&e[&633&e] &cSmelly Orc'
+  Health: 500
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - OgreClub HAND
+  Modules:
+    ThreatTable: true
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&c&lSmelly Orc'
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.42
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - randommessage{m="<mob.name><&co> &4My pretty flower!!","<mob.name><&co> &4You die now!","<mob.name><&co> &4Pesky human!";} @PIR{r=8} ~onDamaged .15
+  - command{c="runicgive exp <trigger.name> 25 <mob.l.x> <mob.l.y> <mob.l.z> 33"} @trigger ~onDeath 1.0
+  - command{c="ri drop MythicalIngredient <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+  Disguise: player Steve setSkin husky12345 setCustomName "&e[&633&e] &cSmelly Orc" setDynamicName true
+TireneasSheep:
+  Type: COW
+  Display: '&e[&61&e] &aGrazing Sheep'
+  Health: 30
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 float
+  Skills:
+  - command{c="runicgive exp <trigger.name> 10 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  Disguise: SHEEP
+
+TireneasFox:
+  Type: Fox
+  Display: '&e[&61&e] &aWild Fox'
+  Health: 30
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 float
+  Skills:
+  - command{c="runicgive exp <trigger.name> 10 <mob.l.x> <mob.l.y> <mob.l.z> 33"} @trigger ~onDeath 1.0

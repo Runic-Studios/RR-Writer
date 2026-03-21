@@ -1,0 +1,896 @@
+underground-start:
+  Conditions:
+  - incombat{}
+  Skills:
+  - summon{t=underground-timer;os=true} @self .0001
+
+underground-passage-death-remove:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5}
+  - remove
+
+underground-wave-duration:
+  Skills:
+  - sethealth{a=1}
+  - delay 600
+  - sethealth{a=500}
+  - delay 600
+  - sethealth{a=1000}
+  - delay 600
+  - sethealth{a=1500}
+  - delay 600
+  - sethealth{a=2000}
+  - delay 600
+  - sethealth{a=2500}
+  - delay 600
+  - sethealth{a=3000}
+  - delay 600
+  - sethealth{a=3500}
+  - delay 600
+  - sethealth{a=4000}
+  - delay 600
+  - sethealth{a=4500}
+  - delay 600
+  - sethealth{a=5000}
+  - delay 600
+  - sethealth{a=5500}
+  - delay 600
+  - sethealth{a=6000}
+  - delay 600
+  - sethealth{a=6500}
+  - delay 600
+  - sethealth{a=7000}
+  - delay 600
+  - sethealth{a=7500}
+  - delay 600
+  - sethealth{a=8000}
+  - delay 600
+  - sethealth{a=8500}
+  - delay 600
+  - sethealth{a=9000}
+  - delay 600
+  - sethealth{a=9500}
+  - delay 600
+  - sethealth{a=10000}
+
+underground-passage-wither-skill:
+  Cooldown: 20
+  Skills:
+  - sound{s=entity.wither.break_block;v=5}
+  - teleport @Location{c=-198.5,103,0.5}
+  - setAI{ai=false}
+  - delay 20
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;sE=false;yOffset=1}
+  - delay 8
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=22.5;sE=false;yOffset=1}
+  - delay 8
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=45;sE=false;yOffset=1}
+  - delay 7
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=67.5;sE=false;yOffset=1}
+  - delay 7
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=90;sE=false;yOffset=1}
+  - delay 6
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=112.5;sE=false;yOffset=1}
+  - delay 6
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=135;sE=false;yOffset=1}
+  - delay 5
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=157.5;sE=false;yOffset=1}
+  - delay 5
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=180;sE=false;yOffset=1}
+  - delay 4
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=202.5;sE=false;yOffset=1}
+  - delay 4
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=225;sE=false;yOffset=1}
+  - delay 3
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=247.5;sE=false;yOffset=1}
+  - delay 3
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=270;sE=false;yOffset=1}
+  - delay 2
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=292.5;sE=false;yOffset=1}
+  - delay 2
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=315;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=337.5;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=360;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=22.5;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=45;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=67.5;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=90;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=112.5;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=135;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=157.5;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=180;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=202.5;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=225;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=247.5;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=270;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=292.5;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=315;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=337.5;sE=false;yOffset=1}
+  - delay 1
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=underground-passage-wither-skill-tick;oh=underground-passage-wither-skill-hit;v=10;i=1;ho=360;sE=false;yOffset=1}
+  - setAI{ai=true}
+  - potion{t=SLOW;d=40;l=2;hasParticles=false}
+  - delay 40
+  - sound{s=entity.blaze.shoot;v=5}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=6}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=7}
+  - effect:particlering{p=flame;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 750"} @PIR{r=8}
+  - ignite{d=80} @PIR{r=8}
+
+underground-passage-wither-skill-tick:
+  Skills:
+  #- effect:particles{p=dust_color_transition;a=1}
+underground-passage-wither-skill-hit:
+  Skills:
+  - potion{t=SLOW;d=80;l=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 500"}
+  
+underground-passage-slime-leap:
+  Conditions:
+  - incombat{}
+  TargetConditions:
+  - distance{d=>3}
+  Cooldown: 5
+  Skills:
+  - jump{v=0.2} @self
+  - delay 2
+  - leap{v=400} @target
+
+underground-passage-spider-goo:
+  Skills:
+  - summon{t=underground-passage-spider-goo-marker;r=3;a=1;os=true}
+underground-passage-spider-goo-marker:
+  Skills:
+  - potion{t=SLOW;d=10;l=10;repeat=24;repeatInterval=10} @PIR{r=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 250";repeat=24;repeatInterval=10} @PIR{r=1}
+  - delay 240 
+  - remove
+
+underground-passage-creeper-explosion:
+  Conditions:
+  - playerwithin 3
+  Cooldown: 10
+  Skills:
+  - effect:particlesphere{p=block_crack;material=moss_block;amount=2;radius=1;yOffset=.5}
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - sound{s=entity.creeper.primed}
+  - delay 40
+  - command{c="runicdamage <caster.uuid> <target.name> 750"} @PIR{r=7}
+  - suicide
+
+underground-passage-creeper-death:
+  Skills:
+  - sound{s=block.grass.break}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=4}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=5}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=6}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=7}
+  - pull{v=8} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 500"} @PIR{r=7}
+
+underground-wave:
+  Skills:
+  - delay 300
+  - skill{s=underground-passage-skeleton;repeat=100;repeatInterval=150}
+  - skill{s=underground-passage-skeleton;repeat=100;repeatInterval=150}
+  - delay 150
+  - skill{s=underground-passage-skeleton;repeat=100;repeatInterval=150}
+  - delay 150
+  - skill{s=underground-passage-skeleton;repeat=100;repeatInterval=150}
+  - skill{s=underground-passage-golem;repeat=100;repeatInterval=600}
+  - delay 300
+  - skill{s=underground-passage-creeper;repeat=100;repeatInterval=300}
+  - delay 300
+  - skill{s=underground-passage-skeleton;repeat=100;repeatInterval=150}
+  - skill{s=underground-passage-skeleton;repeat=100;repeatInterval=150}
+  - delay 300
+  - skill{s=underground-passage-golem;repeat=100;repeatInterval=600}
+  - skill{s=underground-passage-slime;repeat=100;repeatInterval=600}
+  - skill{s=underground-passage-slime;repeat=100;repeatInterval=600}
+  - skill{s=underground-passage-slime;repeat=100;repeatInterval=600}
+  - skill{s=underground-passage-slime;repeat=100;repeatInterval=600}
+  - delay 300
+  - skill{s=underground-passage-creeper;repeat=100;repeatInterval=300}
+  - skill{s=underground-passage-skeleton;repeat=100;repeatInterval=150}
+  - skill{s=underground-passage-spider;repeat=100;repeatInterval=1200}
+  - delay 600
+  - skill{s=underground-passage-golem;repeat=100;repeatInterval=600}
+  - skill{s=underground-passage-stray;repeat=100;repeatInterval=1200}
+  - delay 600
+  - skill{s=underground-passage-slime;repeat=100;repeatInterval=800}
+  - skill{s=underground-passage-slime;repeat=100;repeatInterval=800}
+  - skill{s=underground-passage-slime;repeat=100;repeatInterval=800}
+  - skill{s=underground-passage-slime;repeat=100;repeatInterval=800}
+  - skill{s=underground-passage-brute;repeat=100;repeatInterval=1200}
+  - skill{s=underground-passage-spider;repeat=100;repeatInterval=1200}
+  - delay 600
+  - skill{s=underground-passage-creeper;repeat=100;repeatInterval=300}
+  - skill{s=underground-passage-creeper;repeat=100;repeatInterval=300}
+  - delay 300
+  - skill{s=underground-passage-golem;repeat=100;repeatInterval=600}
+  - delay 2100
+  - summon{t=underground-passage-wither} @self
+  - delay 3000
+  - skill{s=underground-passage-spider;repeat=100;repeatInterval=1200}
+  - skill{s=underground-passage-spider;repeat=100;repeatInterval=1200}
+  - skill{s=underground-passage-brute;repeat=100;repeatInterval=1200}
+  - skill{s=underground-passage-stray;repeat=100;repeatInterval=1200}
+underground-passage-skeleton:
+  Skills: 
+  - randomskill{s=underground-passage-skeleton1,underground-passage-skeleton2,underground-passage-skeleton3} 
+underground-passage-skeleton1:
+  Skills:  
+  - summon{t=underground-passage-skeleton;r=2;os=true} @Location{c=-198.5,102,-13.5}
+underground-passage-skeleton2:
+  Skills:  
+  - summon{t=underground-passage-skeleton;r=2;os=true} @Location{c=-184.5,102,1.5}
+underground-passage-skeleton3:
+  Skills:  
+  - summon{t=underground-passage-skeleton;r=2;os=true} @Location{c=-200.5,102,15.5}
+
+underground-passage-golem:
+  Skills: 
+  - randomskill{s=underground-passage-golem1,underground-passage-golem2,underground-passage-golem3} 
+underground-passage-golem1:
+  Skills:  
+  - summon{t=underground-passage-golem;r=2;os=true} @Location{c=-198.5,102,-13.5}
+underground-passage-golem2:
+  Skills:  
+  - summon{t=underground-passage-golem;r=2;os=true} @Location{c=-184.5,102,1.5}
+underground-passage-golem3:
+  Skills:  
+  - summon{t=underground-passage-golem;r=2;os=true} @Location{c=-200.5,102,15.5}
+
+underground-passage-creeper:
+  Skills: 
+  - randomskill{s=underground-passage-creeper1,underground-passage-creeper2,underground-passage-creeper3} 
+underground-passage-creeper1:
+  Skills:  
+  - summon{t=underground-passage-creeper;r=2;os=true} @Location{c=-198.5,102,-13.5}
+underground-passage-creeper2:
+  Skills:  
+  - summon{t=underground-passage-creeper;r=2;os=true} @Location{c=-184.5,102,1.5}
+underground-passage-creeper3:
+  Skills:  
+  - summon{t=underground-passage-creeper;r=2;os=true} @Location{c=-200.5,102,15.5}
+
+underground-passage-spider:
+  Skills: 
+  - randomskill{s=underground-passage-spider1,underground-passage-spider2,underground-passage-spider3} 
+underground-passage-spider1:
+  Skills:  
+  - summon{t=underground-passage-spider;r=2;os=true} @Location{c=-198.5,102,-13.5}
+underground-passage-spider2:
+  Skills:  
+  - summon{t=underground-passage-spider;r=2;os=true} @Location{c=-184.5,102,1.5}
+underground-passage-spider3:
+  Skills:  
+  - summon{t=underground-passage-spider;r=2;os=true} @Location{c=-200.5,102,15.5}
+
+underground-passage-slime:
+  Skills: 
+  - randomskill{s=underground-passage-slime1,underground-passage-slime2,underground-passage-slime3} 
+underground-passage-slime1:
+  Skills:  
+  - summon{t=underground-passage-slime;r=2;os=true} @Location{c=-198.5,102,-13.5}
+underground-passage-slime2:
+  Skills:  
+  - summon{t=underground-passage-slime;r=2;os=true} @Location{c=-184.5,102,1.5}
+underground-passage-slime3:
+  Skills:  
+  - summon{t=underground-passage-slime;r=2;os=true} @Location{c=-200.5,102,15.5}
+
+underground-passage-stray:
+  Skills: 
+  - randomskill{s=underground-passage-stray1,underground-passage-stray2,underground-passage-stray3} 
+underground-passage-stray1:
+  Skills:  
+  - summon{t=underground-passage-stray;r=2;os=true} @Location{c=-198.5,102,-13.5}
+underground-passage-stray2:
+  Skills:  
+  - summon{t=underground-passage-stray;r=2;os=true} @Location{c=-184.5,102,1.5}
+underground-passage-stray3:
+  Skills:  
+  - summon{t=underground-passage-stray;r=2;os=true} @Location{c=-200.5,102,15.5}
+
+underground-passage-brute:
+  Skills: 
+  - randomskill{s=underground-passage-brute1,underground-passage-brute2,underground-passage-brute3} 
+underground-passage-brute1:
+  Skills:  
+  - summon{t=underground-passage-brute;r=2;os=true} @Location{c=-198.5,102,-13.5}
+underground-passage-brute2:
+  Skills:  
+  - summon{t=underground-passage-brute;r=2;os=true} @Location{c=-184.5,102,1.5}
+underground-passage-brute3:
+  Skills:  
+  - summon{t=underground-passage-brute;r=2;os=true} @Location{c=-200.5,102,15.5}
+
+
+
+underground-timer-wave:
+  Cooldown: 9999
+  Skills:
+  - sudoSkill{s=underground-timer-wave-start}
+
+underground-timer-wave-start:
+  Skills:
+  - remove @MIR{t=blessing;r=50}
+  - summon{t=blessing} @Location{c=-198.5,100,0.5}
+
+blessing-collection-display-remove:
+  Conditions:
+  - variableEquals{var=caster.collection;value=5}
+  Skills:
+  - remove @MIR{t=blessing-display;r=50}
+
+blessing-collection:
+  Skills:
+  - skill{s=blessing-collection-display-remove}
+  - skill{s=blessing-display-collection1} @Location{c=-211.5,101.05,2.5}
+  - skill{s=blessing-display-collection2} @Location{c=-211.5,101.05,1.5}
+  - skill{s=blessing-display-collection3} @Location{c=-211.5,101.05,0.5}
+  - skill{s=blessing-display-collection4} @Location{c=-211.5,101.05,-0.5}
+  - skill{s=blessing-display-collection5} @Location{c=-211.5,101.05,-1.5}
+blessing-display-collection1:
+  Conditions:
+  - variableEquals{var=caster.collection;value=1}
+  Skills:
+  - skill{s=blessing-display-collection}
+blessing-display-collection2:
+  Conditions:
+  - variableEquals{var=caster.collection;value=2}
+  Skills:
+  - skill{s=blessing-display-collection}
+blessing-display-collection3:
+  Conditions:
+  - variableEquals{var=caster.collection;value=3}
+  Skills:
+  - skill{s=blessing-display-collection}
+blessing-display-collection4:
+  Conditions:
+  - variableEquals{var=caster.collection;value=4}
+  Skills:
+  - skill{s=blessing-display-collection}
+blessing-display-collection5:
+  Conditions:
+  - variableEquals{var=caster.collection;value=5}
+  Skills:
+  - skill{s=blessing-display-collection}
+
+blessing-display-collection:
+  Skills:
+  - randomskill{s=blessing-display-collection-white,blessing-display-collection-gray,blessing-display-collection-light-gray,blessing-display-collection-black,blessing-display-collection-cyan,blessing-display-collection-green,blessing-display-collection-dark-green,blessing-display-collection-pink,blessing-display-collection-purple,blessing-display-collection-blue,blessing-display-collection-dark-blue,blessing-display-collection-red,blessing-display-collection-yellow,blessing-display-collection-orange,blessing-display-collection-magenta}
+blessing-display-collection-white:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=1}
+  Skills:
+  - summon{t=blessing-display-collection-white}
+blessing-display-collection-gray:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=2}
+  Skills:
+  - summon{t=blessing-display-collection-gray}
+blessing-display-collection-light-gray:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=3}
+  Skills:
+  - summon{t=blessing-display-collection-light-gray}
+blessing-display-collection-black:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=4}
+  Skills:
+  - summon{t=blessing-display-collection-black}
+blessing-display-collection-cyan:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=5}
+  Skills:
+  - summon{t=blessing-display-collection-cyan}
+blessing-display-collection-green:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=6}
+  Skills:
+  - summon{t=blessing-display-collection-green}
+blessing-display-collection-dark-green:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=7}
+  Skills:
+  - summon{t=blessing-display-collection-dark-green}
+blessing-display-collection-pink:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=8}
+  Skills:
+  - summon{t=blessing-display-collection-pink}
+blessing-display-collection-purple:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=9}
+  Skills:
+  - summon{t=blessing-display-collection-purple}
+blessing-display-collection-blue:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=10}
+  Skills:
+  - summon{t=blessing-display-collection-blue}
+blessing-display-collection-dark-blue:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=11}
+  Skills:
+  - summon{t=blessing-display-collection-dark-blue}
+blessing-display-collection-red:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=12}
+  Skills:
+  - summon{t=blessing-display-collection-red}
+blessing-display-collection-yellow:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=13}
+  Skills:
+  - summon{t=blessing-display-collection-yellow}
+blessing-display-collection-orange:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=14}
+  Skills:
+  - summon{t=blessing-display-collection-orange}
+blessing-display-collection-magenta:
+  Conditions:
+  - variableEquals{var=caster.collection-color;value=15}
+  Skills:
+  - summon{t=blessing-display-collection-magenta}
+
+
+
+blessing-start:
+  Skills:
+  - remove @MIR{t=blessing;r=50}
+  - remove @MIR{t=blessing-display;r=50}
+  - remove @MIR{t=blessing-display-collection-white,blessing-display-collection-gray,blessing-display-collection-light-gray,blessing-display-collection-black,blessing-display-collection-cyan,blessing-display-collection-green,blessing-display-collection-dark-green,blessing-display-collection-pink,blessing-display-collection-purple,blessing-display-collection-blue,blessing-display-collection-dark-blue,blessing-display-collection-red,blessing-display-collection-yellow,blessing-display-collection-orange,blessing-display-collection-magenta;r=50}
+  - remove @MIR{t=blessing-white,blessing-magenta,blessing-gray,blessing-light-gray,blessing-black,blessing-cyan,blessing-green,blessing-dark-green,blessing-pink,blessing-purple,blessing-blue,blessing-dark-blue,blessing-red,blessing-yellow,blessing-orange;r=50}
+  #availability
+  - setvariable{var=caster.available-white;v=1}
+  - setvariable{var=caster.available-gray;v=1}
+  - setvariable{var=caster.available-light-gray;v=1}
+  - setvariable{var=caster.available-black;v=1}
+  - setvariable{var=caster.available-cyan;v=1}
+  - setvariable{var=caster.available-green;v=1}
+  - setvariable{var=caster.available-dark-green;v=1}
+  - setvariable{var=caster.available-pink;v=1}
+  - setvariable{var=caster.available-purple;v=1}
+  - setvariable{var=caster.available-blue;v=1}
+  - setvariable{var=caster.available-dark-blue;v=1}
+  - setvariable{var=caster.available-red;v=1}
+  - setvariable{var=caster.available-yellow;v=1}
+  - setvariable{var=caster.available-orange;v=1}
+  - setvariable{var=caster.available-magenta;v=1}
+  #effects
+  - setvariable{var=caster.effect-white;v=0}
+  - setvariable{var=caster.effect-gray;v=0}
+  - setvariable{var=caster.effect-light-gray;v=0}
+  - setvariable{var=caster.effect-black;v=0}
+  - setvariable{var=caster.effect-cyan;v=0}
+  - setvariable{var=caster.effect-green;v=0}
+  - setvariable{var=caster.effect-dark-green;v=0}
+  - setvariable{var=caster.effect-pink;v=0}
+  - setvariable{var=caster.effect-purple;v=0}
+  - setvariable{var=caster.effect-blue;v=0}
+  - setvariable{var=caster.effect-dark-blue;v=0}
+  - setvariable{var=caster.effect-red;v=0}
+  - setvariable{var=caster.effect-yellow;v=0}
+  - setvariable{var=caster.effect-orange;v=0}
+  - setvariable{var=caster.effect-magenta;v=0}
+  #misc
+  - setvariable{var=caster.collection;v=0}
+  - setvariable{var=caster.collection-color;v=0}
+  - delay 12000 # x200 blessing cooldown
+  - message{m="&c&lThe Underground &e&lhas concluded"} @PIR{r=50}
+  - remove @MIR{t=blessing-display;r=50}
+  - remove @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray,underground-passage-wither;r=50}
+  - remove @MIR{t=blessing-display-collection-white,blessing-display-collection-gray,blessing-display-collection-light-gray,blessing-display-collection-black,blessing-display-collection-cyan,blessing-display-collection-green,blessing-display-collection-dark-green,blessing-display-collection-pink,blessing-display-collection-purple,blessing-display-collection-blue,blessing-display-collection-dark-blue,blessing-display-collection-red,blessing-display-collection-yellow,blessing-display-collection-orange,blessing-display-collection-magenta;r=50}
+  - remove @MIR{t=blessing-white,blessing-magenta,blessing-gray,blessing-light-gray,blessing-black,blessing-cyan,blessing-green,blessing-dark-green,blessing-pink,blessing-purple,blessing-blue,blessing-dark-blue,blessing-red,blessing-yellow,blessing-orange;r=50}
+  - remove @self
+
+blessing-effect:
+  Skills:
+  - skill{s=blessing-effect-white}
+  - skill{s=blessing-effect-magenta}
+  - skill{s=blessing-effect-gray}
+  - skill{s=blessing-effect-light-gray}
+  - skill{s=blessing-effect-black}
+  - skill{s=blessing-effect-cyan}
+  - skill{s=blessing-effect-green}
+  - skill{s=blessing-effect-dark-green}
+  - skill{s=blessing-effect-pink}
+  - skill{s=blessing-effect-purple}
+  - skill{s=blessing-effect-blue}
+  - skill{s=blessing-effect-dark-blue}
+  - skill{s=blessing-effect-red}
+  - skill{s=blessing-effect-yellow}
+  - skill{s=blessing-effect-orange}
+
+blessing-effect-white:
+  Conditions:
+  - variableEquals{var=caster.effect-white;value=1}
+  Skills:
+  - potion{t=SPEED;d=40;l=1;hasParticles=false} @PIR{r=50}
+
+blessing-effect-magenta:
+  Conditions:
+  - variableEquals{var=caster.effect-magenta;value=1}
+  Cooldown: 25
+  Skills:
+  - pull{v=5} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+  - delay 10
+  - pull{v=5} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+  - delay 10
+  - pull{v=5} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+  - delay 10
+  - pull{v=5} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+
+blessing-effect-gray:
+  Conditions:
+  - variableEquals{var=caster.effect-gray;value=1}
+  Skills:
+  - signal{s=begone} @MIR{t=underground-passage-skeleton,underground-passage-stray;r=50} #skeleton
+underground-passage-begone:
+  Cooldown: 9999
+  Skills:
+  - command{c="damage <target.uuid> 625";silent=true} @self
+  - skill{s=UpdateHealthBar;delay=1}
+underground-passage-stray-begone:
+  Cooldown: 9999
+  Skills:
+  - command{c="damage <target.uuid> 12500";silent=true} @self
+  - skill{s=UpdateHealthBar;delay=1}
+
+blessing-effect-light-gray:
+  Conditions:
+  - variableEquals{var=caster.effect-light-gray;value=1}
+  Skills:
+  - signal{s=cursed} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+underground-passage-cursed:
+  Cooldown: 9999
+  Skills:
+  - skill{s=underground-passage-cursed-cast} .1
+underground-passage-cursed-cast:
+  Skills:
+  - command{c="damage <caster.uuid> 2500";silent=true}
+  - skill{s=UpdateHealthBar;delay=1}
+
+blessing-effect-black:
+  Conditions:
+  - variableEquals{var=caster.effect-black;value=1}
+  Cooldown: 15
+  Skills:
+  - command{c="damage <target.uuid> 250"} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+  - signal{s=UpdateHealthBar} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+
+blessing-effect-cyan:
+  Conditions:
+  - variableEquals{var=caster.effect-cyan;value=1}
+  Cooldown: 20
+  Skills:
+  - potion{t=SPEED;d=160;l=4;hasParticles=false} @PIR{r=50}
+  - effect:particlesphere{p=falling_dripstone_water;amount=2;radius=1;yOffset=0.5} @PIR{r=50}
+
+blessing-effect-green:
+  Conditions:
+  - variableEquals{var=caster.effect-green;value=1}
+  Cooldown: 8
+  Skills:
+  - heal{a=100;i=true} @PIR{r=50}
+  - effect:particlesphere{p=heart;amount=2;radius=1;yOffset=0.5} @PIR{r=50}
+
+blessing-effect-dark-green:
+  Conditions:
+  - variableEquals{var=caster.effect-dark-green;value=1}
+  Cooldown: 75
+  Skills:
+  - heal{a=5000;i=true} @PIR{r=50}
+  - effect:particlesphere{p=heart;amount=2;radius=1;yOffset=0.5} @PIR{r=50}
+
+blessing-effect-pink:
+  Conditions:
+  - variableEquals{var=caster.effect-pink;value=1}
+  Skills:
+  - setvariable{var=target.loot;v=1} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+underground-passage-skeleton-loot:
+  Skills:
+  - randomskill{s=underground-passage-skeleton-loot1,underground-passage-skeleton-loot2}
+underground-passage-skeleton-loot1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .05
+underground-passage-skeleton-loot2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .055
+
+underground-passage-stray-loot:
+  Skills:
+  - randomskill{s=underground-passage-stray-loot1,underground-passage-stray-loot2}
+underground-passage-stray-loot1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"} 1
+underground-passage-stray-loot2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 2"} 1
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.2
+
+underground-passage-golem-loot:
+  Skills:
+  - randomskill{s=underground-passage-golem-loot1,underground-passage-golem-loot2}
+underground-passage-golem-loot1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 1
+underground-passage-golem-loot2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 1
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.1
+
+underground-passage-creeper-loot:
+  Skills:
+  - randomskill{s=underground-passage-creeper-loot1,underground-passage-creeper-loot2}
+underground-passage-creeper-loot1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .15
+underground-passage-creeper-loot2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .165
+
+underground-passage-wither-loot:
+  Skills:
+  - randomskill{s=underground-passage-wither-loot1,underground-passage-wither-loot2}
+underground-passage-wither-loot1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 10"}
+underground-passage-wither-loot2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="ri drop primordial-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 11"}
+
+blessing-effect-purple:
+  Conditions:
+  - variableEquals{var=caster.effect-purple;value=1}
+  Skills:
+  - setvariable{var=target.guru;v=1} @MIR{t=underground-passage-golem;r=50} #golem
+underground-passage-guru:
+  Conditions:
+  - variableEquals{var=caster.guru;value=1}
+  Skills:
+  - heal{a=250;i=true} @PIR{r=50} 
+  - effect:particlesphere{p=heart;amount=2;radius=1;yOffset=0.5} @PIR{r=50}
+
+blessing-effect-blue:
+  Conditions:
+  - variableEquals{var=caster.effect-blue;value=1}
+  Cooldown: 20
+  Skills:
+  - effect:particlesphere{p=block_crack;m=snow_block;amount=2;radius=1;yOffset=0.5} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+  - potion{t=SLOW;d=160;l=3;hasParticles=false} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+
+blessing-effect-dark-blue:
+  Conditions:
+  - variableEquals{var=caster.effect-dark-blue;value=1}
+  Cooldown: 7
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+
+blessing-effect-red:
+  Conditions:
+  - variableEquals{var=caster.effect-red;value=1}
+  Skills:
+  - setvariable{var=target.devourer;v=1} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+underground-passage-devourer:
+  Conditions:
+  - variableEquals{var=caster.devourer;value=1}
+  Skills:
+  - heal{a=50;i=true} @trigger
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} @trigger
+
+blessing-effect-yellow:
+  Conditions:
+  - variableEquals{var=caster.effect-yellow;value=1}
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=target.wolf;v=1} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=50} #all enemies
+underground-passage-wolf:
+  Conditions:
+  - variableEquals{var=caster.wolf;value=1}
+  Skills:
+  - heal{a=5;i=true} @PIR{r=50}
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=1;radius=1;yOffset=.5} @PIR{r=50}
+
+blessing-effect-orange:
+  Conditions:
+  - variableEquals{var=caster.effect-orange;value=1}
+  Skills:
+  - setvariable{var=target.explosive;v=1} @MIR{t=underground-passage-golem;r=50} #golem
+underground-passage-explosive:
+  Conditions:
+  - variableEquals{var=caster.explosive;value=1}
+  Skills:
+  - sound{s=block.stone.break;v=2} @self
+  - effect:particlesphere{p=block_crack;material=stone;amount=12;radius=3;yOffset=.75} @self
+  - command{c="damage <target.uuid> 750";silent=true} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=3} #all enemies
+  - signal{s=UpdateHealthBar} @MIR{t=underground-passage-skeleton,underground-passage-golem,underground-passage-creeper,underground-passage-slime,underground-passage-spider,underground-passage-brute,underground-passage-stray;r=3} #all enemies
+
+blessing-visual:
+  Skills:
+  - effect:particlesphere{p=enchantment_table;amount=2;radius=1;yOffset=.25}
+  
+blessing-reset:
+  Skills:
+  - sound{s=block.enchantment_table.use;v=2;p=0.5}
+  - setvariable{var=target.active;v=0} @MIR{t=blessing-display;r=50}
+  - signal{s=update} @MIR{t=blessing-display;r=50}
+  - signal{s=collection} @MIR{t=blessing;r=50}
+  - remove @MIR{t=blessing-white,blessing-magenta,blessing-gray,blessing-light-gray,blessing-black,blessing-cyan,blessing-green,blessing-dark-green,blessing-pink,blessing-purple,blessing-blue,blessing-dark-blue,blessing-red,blessing-yellow,blessing-orange;r=50}
+  - remove @self
+blessing-cast:
+  Skills:
+  - sound{s=block.enchantment_table.use;v=2;p=1}
+  - remove @MIR{t=blessing-display;r=50}
+  - summon{t=blessing-display} @Location{c=-213.5,105.5,0.5}
+  - variableadd{var=caster.collection;amount=1}
+  - remove @MIR{t=blessing-white,blessing-magenta,blessing-gray,blessing-light-gray,blessing-black,blessing-cyan,blessing-green,blessing-dark-green,blessing-pink,blessing-purple,blessing-blue,blessing-dark-blue,blessing-red,blessing-yellow,blessing-orange;r=50}
+  - randomskill{s=blessing-white,blessing-magenta,blessing-gray,blessing-light-gray,blessing-black,blessing-cyan,blessing-green,blessing-dark-green,blessing-pink,blessing-purple,blessing-blue,blessing-dark-blue,blessing-red,blessing-yellow,blessing-orange} @Location{c=-213.5,103,3.5}
+  - randomskill{s=blessing-white,blessing-magenta,blessing-gray,blessing-light-gray,blessing-black,blessing-cyan,blessing-green,blessing-dark-green,blessing-pink,blessing-purple,blessing-blue,blessing-dark-blue,blessing-red,blessing-yellow,blessing-orange} @Location{c=-214.5,103,0.5}
+  - randomskill{s=blessing-white,blessing-magenta,blessing-gray,blessing-light-gray,blessing-black,blessing-cyan,blessing-green,blessing-dark-green,blessing-pink,blessing-purple,blessing-blue,blessing-dark-blue,blessing-red,blessing-yellow,blessing-orange} @Location{c=-213.5,103,-2.5}
+
+blessing-white:
+  Conditions:
+  - variableEquals{var=caster.available-white;value=1}
+  Skills:
+  - summon{t=blessing-white}
+  - setvariable{var=caster.available-white;v=0} @self
+
+blessing-magenta:
+  Conditions:
+  - variableEquals{var=caster.available-magenta;value=1}
+  Skills:
+  - summon{t=blessing-magenta}
+  - setvariable{var=caster.available-magenta;v=0} @self
+  
+blessing-gray:
+  Conditions:
+  - variableEquals{var=caster.available-gray;value=1}
+  Skills:
+  - summon{t=blessing-gray}
+  - setvariable{var=caster.available-gray;v=0} @self
+
+blessing-light-gray:
+  Conditions:
+  - variableEquals{var=caster.available-light-gray;value=1}
+  Skills:
+  - summon{t=blessing-light-gray}
+  - setvariable{var=caster.available-light-gray;v=0} @self
+
+blessing-black:
+  Conditions:
+  - variableEquals{var=caster.available-black;value=1}
+  Skills:
+  - summon{t=blessing-black}
+  - setvariable{var=caster.available-black;v=0} @self
+
+blessing-cyan:
+  Conditions:
+  - variableEquals{var=caster.available-cyan;value=1}
+  Skills:
+  - summon{t=blessing-cyan}
+  - setvariable{var=caster.available-cyan;v=0} @self
+
+blessing-green:
+  Conditions:
+  - variableEquals{var=caster.available-green;value=1}
+  Skills:
+  - summon{t=blessing-green}
+  - setvariable{var=caster.available-green;v=0} @self
+
+blessing-dark-green:
+  Conditions:
+  - variableEquals{var=caster.available-dark-green;value=1}
+  Skills:
+  - summon{t=blessing-dark-green}
+  - setvariable{var=caster.available-dark-green;v=0} @self
+
+blessing-pink:
+  Conditions:
+  - variableEquals{var=caster.available-pink;value=1}
+  Skills:
+  - summon{t=blessing-pink}
+  - setvariable{var=caster.available-pink;v=0} @self
+
+blessing-purple:
+  Conditions:
+  - variableEquals{var=caster.available-purple;value=1}
+  Skills:
+  - summon{t=blessing-purple}
+  - setvariable{var=caster.available-purple;v=0} @self
+
+blessing-blue:
+  Conditions:
+  - variableEquals{var=caster.available-blue;value=1}
+  Skills:
+  - summon{t=blessing-blue}
+  - setvariable{var=caster.available-blue;v=0} @self
+
+blessing-dark-blue:
+  Conditions:
+  - variableEquals{var=caster.available-dark-blue;value=1}
+  Skills:
+  - summon{t=blessing-dark-blue}
+  - setvariable{var=caster.available-dark-blue;v=0} @self
+
+blessing-red:
+  Conditions:
+  - variableEquals{var=caster.available-red;value=1}
+  Skills:
+  - summon{t=blessing-red}
+  - setvariable{var=caster.available-red;v=0} @self
+
+blessing-yellow:
+  Conditions:
+  - variableEquals{var=caster.available-yellow;value=1}
+  Skills:
+  - summon{t=blessing-yellow}
+  - setvariable{var=caster.available-yellow;v=0} @self
+  
+blessing-orange:
+  Conditions:
+  - variableEquals{var=caster.available-orange;value=1}
+  Skills:
+  - summon{t=blessing-orange}
+  - setvariable{var=caster.available-orange;v=0} @self
+
+
+
+underground-threat:
+  TargetConditions:
+  - distance{d=>100}
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=50}

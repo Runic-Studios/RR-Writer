@@ -1,0 +1,245 @@
+Ecru-summon:
+  Conditions:
+  - incombat{}
+  Skills:
+  - summon{t=Ecru-spawn;r=8;os=true} 
+Ecru-spawn:
+  Skills:
+  - delay 200
+  - sound{s=block.sand.break}
+  - effect:particlesphere{p=blockcrack;m=sand;a=2;r=1;hs=0;vs=0}
+  - remove
+
+Sandstorm:
+  Conditions:
+  - incombat{}
+  Skills:
+  - effect:particlesphere{p=blockcrack;m=sand;a=200;r=10;hs=0;vs=0}
+  - potion{t=SLOW;l=2;p=false;i=false;d=10} @PIR{r=10}
+  - skill{s=Sandstorm-pull}
+Sandstorm-pull:
+  Conditions:
+  - playernotwithin 3
+  Cooldown: 1
+  Skills:
+  - sound{s=block.sand.break} 
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=10}
+  - pull{v=4} @PIR{r=10}
+
+MaskedFigure-smoke:
+  Cooldown: 10
+  Conditions:
+  - incombat
+  Skills:
+  - effect:sound{s=entity.snowball.throw}
+  - delay 5
+  - summon{type=MaskedFigureMarker;amount=1;radius=1} @target
+MaskedFigure-marker:
+  Skills:
+  - sound{s=block.glass.break}
+  - effect:particlesphere{particle=block_crack;material=sand;amount=20;radius=4;yOffset=.5}
+  - potion{type=SLOW;duration=60;level=2} @PIR{r=5}
+  - potion{type=BLINDNESS;duration=60;level=2} @PIR{r=5}
+  - remove
+MaskedFigure-dash:
+  Cooldown: 10
+  Conditions:
+  - incombat
+  Skills:  
+  - jump{velocity=0.4} 
+  - delay 5
+  - leap{velocity=200} @NearestPlayer{r=42}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2} 
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - sound{s=block.sand.break} 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=5;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+  - delay 10
+  - jump{velocity=0.4} 
+  - delay 5
+  - leap{velocity=200} @NearestPlayer{r=42}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2} 
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - sound{s=block.sand.break} 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=5;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+  - delay 10
+  - jump{velocity=0.4} 
+  - delay 5
+  - leap{velocity=200} @NearestPlayer{r=42}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2} 
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - sound{s=block.sand.break} 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=5;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+  - delay 10
+  - jump{velocity=0.4} 
+  - delay 5
+  - leap{velocity=200} @NearestPlayer{r=42}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2} 
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - sound{s=block.sand.break} 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=5;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+  - delay 10
+  - jump{velocity=0.4} 
+  - delay 5
+  - leap{velocity=200} @NearestPlayer{r=42}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2} 
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - delay 2
+  - sound{s=block.sand.break} 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=5;radius=1;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+MaskedFigure-clone:
+  Cooldown: 10
+  Conditions:
+  - incombat
+  Skills:  
+  - potion{type=SLOW;duration=20;level=1;hasParticles=false}
+  - delay 20
+  - potion{type=SLOW;duration=80;level=3;hasParticles=false}
+  - sound{s=block.sand.break} 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=40;radius=6;yOffset=.5}
+  - summon{t=MaskedFigureClone;a=1;os=true} @Ring{r=6;p=5}
+MaskedFigure-cloner:
+  Skills:
+  - delay 200
+  - sound{s=block.sand.break} 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=5;radius=1;yOffset=.5}
+  - remove
+
+Zenythwithin:
+  Cooldown: 1
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - variableadd{var=caster.spin;amount=1} 
+
+ZenythSpin:
+  Cooldown: 8
+  Conditions:
+  - varinrange{var=caster.spin;value=>5}
+  Skills:
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @Self
+  - cast{skillName="Spin Attack";duration=30;onCast=ZenythSpinCast;showCastBar=true} @target
+  - delay 80
+
+ZenythSpinCast:
+  Skills:
+  - effect:particlering{particle=crit;radius=4;points=32;amount=5;hS=1;vS=0} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=4}
+  - throw{velocity=7;velocityY=4} @PIR{r=4}
+  - delay 10
+  - setvariable{var=caster.spin;value=0}
+
+SunDamage:
+  Conditions:
+  - incombat{}
+  TargetConditions:
+  - outside{}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}
+  - ignite{ticks=20}
+  - skill{s=SunDamageMessage}
+
+SunDamageMessage:
+  Cooldown: 5
+  Skills:
+  - message{m="&eThe light burns"}
+
+SunHeal:
+  Conditions:
+  - outside{}
+  - incombat{}
+  Skills:
+  - heal{a=50}
+  - effect:particles{p=HAPPY_VILLAGER;amount=10;vSpread=1;hSpread=0.5;Speed=0;yOffset=1.5}
+
+SunBeam:
+  Conditions:
+  - incombat{}
+  Skills:
+  - effect:particleline{p=block_crack;m=gold_block;a=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}
+
+ArcherAmbush:
+  Cooldown: 24
+  Conditions:
+  - incombat{}
+  Skills:
+  - delay 80
+  - summon{t=ZenythArcher;a=2;r=12;ry=7;yu=true;itt=true;os=true}
+  - message{m="&cAmbush them!"} @PIR{r=15}
+
+VoidGrip:
+  Conditions:
+  - incombat{}
+  Skills:
+  - message{m="&0Let the darkness consume you"}
+  - potion{t=SLOW;d=112;p=false;l=5} @self
+  - effect:particles{p=reddust;c=#000000;a=40;hs=1;vs=0.3} @self
+  - aura{auraName=VoidGripChargeUp;onTick=VoidGripChargeUp-Tick;interval=1;duration=30}
+  - effect:sound{s=entity.ender_dragon.flap;v=2}
+  - delay 30
+  - velocity{vx=0;vy=2;vz=0}
+  #- effect:sound{s=entity.ender_dragon.flap;v=2}
+  - delay 2
+  - aura{auraName=VoidGrip;onTick=VoidGrip-Tick;interval=1;duration=80}
+  - effect:sound{s=entity.enderman.teleport;v=2}
+
+VoidGrip-Tick:
+  Skills:
+  - effect:particleline{p=reddust;c=#000000;a=1;y=0.6;tyo=-0.8}
+  #- effect:sound{s=entity.ender_eye.launch;v=2}
+  #- effect:sound{s=entity.enderman.teleport;v=2}
+  #- effect:particleorbital{p=reddust;c=#000000;a=10;r=1;points=32;}
+  - velocity{vx=0;vy=0;vz=0}
+
+VoidGripChargeUp-Tick:
+  Skills:
+  - effect:particlesphere{p=reddust;c=#000000;a=40;r=1;hs=0;vs=0} @self

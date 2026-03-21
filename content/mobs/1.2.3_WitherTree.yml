@@ -1,0 +1,368 @@
+Grommak:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cGrommak'
+  Health: 7500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lGrommak'
+    Health: 7500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Grommak-drop} @trigger ~onDeath
+  - remove @MIR{t=Grommak-add;r=20} ~onDeath
+  - skill{s=Grommak-skill} @self ~onTimer:240
+  - skill{s=Grommak-meteor-cast} @self ~onTimer:20
+  - summon{t=Grommak-add} @Location{c=2344.5,11,680.5} ~onTimer:400 <50%
+  - summon{t=Grommak-add} @Location{c=2346.5,11,678.5} ~onTimer:400 <50%
+  - summon{t=Grommak-add} @Location{c=2346.5,11,674.5} ~onTimer:400 <50%
+  - summon{t=Grommak-add} @Location{c=2344.5,11,672.5} ~onTimer:400 <50%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin gex1nator setCustomName "&e[&6☠&e] &cGrommak" setDynamicName true
+
+Grommak-fire-marker:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=Grommak-fire-marker} @self ~onSpawn
+
+Grommak-add:
+  Type: BABY_ZOMBIE
+  Display: '&e[&650&e] &cLiving Fire'
+  Health: 225
+  Modules:
+    ThreatTable: true
+  Damage: 45
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - jump{v=0.5} @self ~onTimer:40
+  - sound{s=entity.magma_cube.squish_small} @self ~onTimer:40
+  - remove{delay=400} @self ~onSpawn
+  - sound{s=entity.magma_cube.squish_small;delay=400} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: MAGMA_CUBE setSize 2
+
+Grommak-fire:
+  Type: bat
+  Display: ''
+  Health: 1000
+  Faction: Boss
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 64
+    NoDamageTicks: 0
+    Despawn: true
+  Skills:
+  - remove{delay=80} @self ~onSpawn
+  - potion{t=INVISIBILITY;d=9999;l=1;hasParticles=false} @self ~onSpawn
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=.5} @self ~onTimer:5
+  - skill{s=Grommak-fire} @self ~onTimer:20
+  - equip{i=WITHER_SKELETON_SKULL:4} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: ZOMBIE setBaby true
+
+withertree-risen:
+  Type: ZOMBIE
+  Display: '&4[☠] &cRisen Guardian'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 65
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&4&l[Conjured Boss] &c&lRisen Guardian'
+    Health: 20000
+    Range: 80
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=remove} @MIR{t=withertree-risen;r=128} ~onSpawn
+  - remove @MIR{t=withertree-risen;r=128} ~onSignal:remove
+  - skill{s=withertree-risen-drop} @trigger ~onDeath
+  - skill{s=withertree-risen-projectile} @self ~onTimer:20
+  - skill{s=withertree-risen-explode} @self ~onTimer:20 .25
+  - skill{s=withertree-risen-flight} @self ~onTimer:40 .25
+  - setvariable{var=caster.explode;value=0} @self ~onSpawn
+  - skill{s=withertree-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WITHER
+
+withertree-center-altar:
+  Type: armor_stand
+  Display: ''
+  Health: 100
+  BossBar:
+    Enabled: true
+    Title: '&7&lSolastria'
+    Health: 100
+    Range: 87
+    Color: WHITE
+    Style: SEGMENTED_10
+  Options:
+    Invisible: false
+    Marker: true
+  Skills:
+  #- message{m="<caster.var.summon>"} @PIR{r=512} ~onTimer:40
+  - setvariable{var=caster.summon;value=0} @self ~onSpawn
+  - sethealth{a=1} @self ~onSpawn
+  - skill{s=withertree-center-altar} @self ~onSignal:altar
+  - skill{s=withertree-center-altar-summon} @self ~onTimer:20
+
+withertree-north-altar:
+  Type: armor_stand
+  Health: 100
+  Display: ''
+  BossBar:
+    Enabled: true
+    Title: '&7&lNorth Altar'
+    Health: 100
+    Range: 36
+    Color: WHITE
+    Style: SEGMENTED_10
+  Options:
+    Invisible: false
+    Marker: true
+  Skills:
+  - skill{s=withertree-altar-reset} @self ~onSignal:reset
+  - skill{s=withertree-altar} @self ~onSignal:altar
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  Disguise: FALLING_BLOCK BEACON
+
+withertree-east-altar:
+  Type: armor_stand
+  Health: 100
+  Display: ''
+  BossBar:
+    Enabled: true
+    Title: '&7&lEast Altar'
+    Health: 100
+    Range: 36
+    Color: WHITE
+    Style: SEGMENTED_10
+  Options:
+    Invisible: false
+    Marker: true
+  Skills:
+  - skill{s=withertree-altar-reset} @self ~onSignal:reset
+  - skill{s=withertree-altar} @self ~onSignal:altar
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  Disguise: FALLING_BLOCK BEACON
+
+withertree-south-altar:
+  Type: armor_stand
+  Display: ''
+  Health: 100
+  BossBar:
+    Enabled: true
+    Title: '&7&lSouth Altar'
+    Health: 100
+    Range: 36
+    Color: WHITE
+    Style: SEGMENTED_10
+  Options:
+    Invisible: false
+    Marker: true
+  Skills:
+  - skill{s=withertree-altar-reset} @self ~onSignal:reset
+  - skill{s=withertree-altar} @self ~onSignal:altar
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  Disguise: FALLING_BLOCK BEACON
+
+withertree-west-altar:
+  Type: armor_stand
+  Display: ''
+  Health: 100
+  BossBar:
+    Enabled: true
+    Title: '&7&lWest Altar'
+    Health: 100
+    Range: 36
+    Color: WHITE
+    Style: SEGMENTED_10
+  Options:
+    Invisible: false
+    Marker: true
+  Skills:
+  - skill{s=withertree-altar-reset} @self ~onSignal:reset
+  - skill{s=withertree-altar} @self ~onSignal:altar
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  Disguise: FALLING_BLOCK BEACON
+    
+withertree-spirit:
+  Type: ZOMBIE
+  Display: '&7Guardian Spirit'
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=withertree-spirit} @self ~onTimer:20
+  - jump{v=0.25} @self ~onInteract
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 50"} @trigger ~onDeath 1.0
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=.5} @self ~onTimer:10
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK COAL_BLOCK
+    
+
+withertree-fallen:
+  Type: WITHER_SKELETON
+  Display: '&e[&650&e] &cFallen Guardian'
+  Health: 785
+  Modules:
+    ThreatTable: true
+  Damage: 65
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 534 <mob.l.x> <mob.l.y> <mob.l.z> 50"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-50} @trigger ~onDeath
+  - summon{t=withertree-fallen-elite} @self ~onDeath .05
+  - summon{t=withertree-spirit} @self ~onDeath .02
+  - skill{s=withertree-fallen-projectile} @self ~onTimer:20
+  - skill{s=withertree-fallen-explode} @self ~onTimer:20 .02
+  - setvariable{var=caster.explode;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+withertree-fallen-elite:
+  Type: WITHER_SKELETON
+  Display: '&e[&650&e] &cGreater Fallen Guardian'
+  Health: 2500
+  Modules:
+    ThreatTable: true
+  Damage: 65
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 50"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-50} @trigger ~onDeath
+  - summon{t=withertree-spirit} @self ~onDeath .25
+  - skill{s=withertree-fallen-elite-projectile} @self ~onTimer:20
+  - skill{s=withertree-fallen-elite-explode} @self ~onTimer:20 .05
+  - setvariable{var=caster.explode;value=0} @self ~onSpawn
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=.5} @self ~onTimer:10
+  - skill{s=withertree-elite-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget

@@ -1,0 +1,1538 @@
+BanditAzana-elite:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cOutlaw Duelist'
+  Health: 400
+  Damage: 15
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  - IRON_SWORD OFFHAND
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lElite&e&l] &c&lOutlaw Duelist'
+    Health: 400
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=elite-threat} @target ~onTimer:80
+  - signal{s=elite-remove} @MIR{t=BanditAzana-elite-timer;r=50} ~onSignal:remove
+  - skill{s=BanditAzana-elite} @self ~onSpawn
+  - skill{s=BanditAzana-elite-skill} @self ~onTimer:40
+  - command{c="runicgive exp <trigger.name> 800 <mob.l.x> <mob.l.y> <mob.l.z> 4"} @trigger ~onDeath 1.0
+  - command{c="ri drop-range 2 6 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 2 6 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 2 6 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 2 6 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin MrKedian setCustomName "&e[&6✸&e] &cOutlaw Duelist" setDynamicName true
+
+
+sweetdeliverance_horse:
+  Type: HORSE
+  Display: ''
+  Health: 200
+  Faction: Boss
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.08
+    PreventOtherDrops: true
+    HorseColor: brown
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - setname{name='';delay=1} @self ~onDamaged
+  - command{c="questtrigger player <target.name> sweetdeliverance"} @trigger ~onInteract
+  - heal{a=500} @self ~onDamaged
+
+RavenFallen:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cRaven Fallen'
+  Health: 400
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_HELMET HEAD
+  - IRON_CHESTPLATE CHEST
+  - IRON_LEGGINGS LEGS
+  - IRON_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lRaven Fallen'
+    Health: 400
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=RavenFallen-drop} @trigger ~onDeath
+  - skill{s=raven-boss-ground} @self ~onTimer:20 .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+
+raven-undead:
+  Type: ZOMBIE
+  Display: '&e[&65&e] &cRaven Undead'
+  Health: 110
+  Modules:
+    ThreatTable: true
+  Damage: 11
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 61 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-5} @trigger ~onDeath
+  - skill{s=raven-undead} @self ~onTimer:20 .15 
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+raven-skeleton:
+  Type: SKELETON
+  Display: '&e[&66&e] &cRaven Skeleton'
+  Health: 125
+  Modules:
+    ThreatTable: true
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 67 <mob.l.x> <mob.l.y> <mob.l.z> 6"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-6} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+raven-wielder:
+  Type: ZOMBIE
+  Display: '&e[&67&e] &cRaven Wielder'
+  Health: 140
+  Modules:
+    ThreatTable: true
+  Damage: 13
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 73 <mob.l.x> <mob.l.y> <mob.l.z> 7"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-7} @trigger ~onDeath
+  - setvariable{var=caster.leap;value=0} @self ~onSpawn
+  - skill{s=raven-wielder} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+dps_test3:
+  Type: ZOMBIE
+  Display: '&e[&625&e] &cTraining Dummy'
+  Health: 100000
+  Damage: 5
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.time;type=FLOAT;value=0} @self ~onSpawn
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.dps;type=FLOAT;value=0} @self ~onSpawn
+  - skill{s=dps_test_start} @self ~onDamaged
+  - skill{s=dps_test_end3} @self ~onDeath
+  #- skill{s=dps_test_reset} @self ~onInteract
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: player Steve setSkin dark_duck_kiss setCustomName "&e[&625&e] &cTraining Dummy" setDynamicName true
+
+dps_test2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cTraining Dummy'
+  Health: 10000
+  Damage: 5
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    Collidable: false
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - model{mid=dummy;nametag=head} @self ~onSpawn
+  - state{s=hit} @self ~onDamaged
+  - setvariable{var=caster.time;type=FLOAT;value=0} @self ~onSpawn
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.dps;type=FLOAT;value=0} @self ~onSpawn
+  - skill{s=dps_test_start} @self ~onDamaged
+  - skill{s=dps_test_end2} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+
+dps_test1:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &cTraining Dummy'
+  Health: 1000
+  Damage: 5
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    Collidable: false
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - model{mid=dummy;nametag=head} @self ~onSpawn
+  - state{s=hit} @self ~onDamaged
+  - setvariable{var=caster.time;type=FLOAT;value=0} @self ~onSpawn
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.dps;type=FLOAT;value=0} @self ~onSpawn
+  - skill{s=dps_test_start} @self ~onDamaged
+  - skill{s=dps_test_end1} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+
+CorruptedCreature:
+  Type: ZOMBIE
+  Display: '&e[&625&e] &cCorrupted Creature'
+  Health: 1000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 250 <mob.l.x> <mob.l.y> <mob.l.z> 25"} @trigger ~onDeath 1.0
+  - command{c="ri drop CoreofCorruption <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - skill{s=CorruptedCreature-start} @self ~onEnterCombat
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Undeadramdom setCustomName "&e[&625&e] &cCorrupted Creature" setDynamicName true
+CorruptedCreature-spawn:
+  Type: ZOMBIE
+  Display: '&e[&64&e] &cCorrupted Blade'
+  Health: 200
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Undeadramdom setCustomName "&e[&64&e] &cCorrupted Blade" setDynamicName true
+
+azana_goblin:
+  Type: BABY_ZOMBIE
+  Display: '&e[&62&e] &cGoblin'
+  Health: 40
+  Modules:
+    ThreatTable: true
+  Damage: 7
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=drop-level-1} @trigger ~onDeath
+  - skill{s=azana_goblin} @self ~onTimer:20 .15
+  - command{c="runicgive exp <trigger.name> 19 <mob.l.x> <mob.l.y> <mob.l.z> 2"} @trigger ~onDeath 1.0
+  - command{c="ri drop goblin-pelt <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.01
+  - randomskill{s=g1} @trigger ~onDeath .3
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+azana_rat:
+  Type: SILVERFISH
+  Display: '&e[&61&e] &cRat'
+  Health: 34
+  Modules:
+    ThreatTable: true
+  Damage: 8
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 8 <mob.l.x> <mob.l.y> <mob.l.z> 1"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+Buds:
+  Type: ZOMBIE
+  Display: '&e[&65&e] &cSweet Scented Buds'
+  Health: 80
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 24 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+  - sound{s=block.wood.hit} @self ~onDamaged
+  - skill{s=Buds-drop} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin kito_1205 setCustomName "&e[&65&e] &cSweet Scented Buds" setDynamicName true
+
+
+Skally:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cSkally'
+  Health: 250
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lSkally the Skeleton'
+    Health: 250
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Skally-drop} @trigger ~onDeath
+  - skill{s=Skally-start} @self ~onDamaged <95% .5
+  - skill{s=Skally-start2} @self ~onDamaged <25%
+  - remove @MIR{t=Skally-spawn;r=64} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Abeltje setCustomName "&e[&6☠&e] &cSkally" setDynamicName true
+
+Skally-spawn:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cRed Flower'
+  Health: 10
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setAI{ai=false} @self ~onSpawn
+  - skill{s=Skally-spawn} @self ~onTimer:10 .1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHERRACK
+
+Skally-spawn2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cFallen Fruit'
+  Health: 2
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=Skally-spawn2} @self ~onSpawn
+  - summon{t=Skally-spawn4} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHERRACK
+
+Skally-spawn3:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cRisen Rose'
+  Health: 4
+  Modules:
+    ThreatTable: true
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Skally-spawn3} @self ~onSpawn
+  - summon{t=Skally-spawn4} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin doriho2012 setCustomName "&e[&6☠&e] &cRisen Rose" setDynamicName true
+Skally-spawn4:
+  Type: armor_stand
+  Skills:
+  - skill{s=Skally-spawn4} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  
+AzanaEscapeCutscene1:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=RebelNurseLanaEscape1,RebelSergeantTrosfEscape1;r=32} ~onSpawn
+  - summon{t=RebelNurseLanaEscape1} @Location{c=-642.5,35,171.5} ~onSpawn
+  - summon{t=RebelSergeantTrosfEscape1} @Location{c=-642.5,35,171.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+RebelNurseLanaEscape1:
+  Type: ZOMBIE
+  Display: '&eRedbrand Nurse Lana'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.18
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -646,35,177
+  - 2 lookatplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eRedbrand Nurse Lana';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=320} @self ~onSpawn
+  Disguise: player Steve setSkin Celty setCustomName "&eRedbrand Nurse Lana" setDynamicName true
+RebelSergeantTrosfEscape1:
+  Type: ZOMBIE
+  Display: '&eRedbrand Sergeant Rian'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.18
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation -643,35,175
+  - 2 lookatplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eRedbrand Sergeant Rian';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - potion{t=SLOW;d=20;l=3} @self ~onSpawn
+  - remove{delay=320} @self ~onSpawn
+  Disguise: player Steve setSkin SniSnitch setCustomName "&eRedbrand Sergeant Rian" setDynamicName true
+
+AzanaEscapeCutscene2:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=RebelNurseLanaEscape2,RebelSergeantTrosfEscape2,AllasterFarseerEscape2;r=32} ~onSpawn
+  - remove @MIR{t=AzanianGuard;r=32} 
+  - summon{t=RebelNurseLanaEscape2} @Location{c=-557.5,31,150.5} ~onSpawn
+  - summon{t=RebelSergeantTrosfEscape2} @Location{c=-557.5,31,152.5} ~onSpawn
+  - summon{t=AllasterFarseerEscape2} @Location{c=-556.5,31,152.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+RebelNurseLanaEscape2:
+  Type: ZOMBIE
+  Display: '&eRedbrand Nurse Lana'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.18
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eRedbrand Nurse Lana';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=180} @self ~onSpawn
+  Disguise: player Steve setSkin Celty setCustomName "&eRedbrand Nurse Lana" setDynamicName true
+RebelSergeantTrosfEscape2:
+  Type: ZOMBIE
+  Display: '&eRedbrand Sergeant Rian'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.18
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eRedbrand Sergeant Rian';delay=1} @self ~onDamaged
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=180} @self ~onSpawn
+  Disguise: player Steve setSkin SniSnitch setCustomName "&eRedbrand Sergeant Rian" setDynamicName true
+AllasterFarseerEscape2:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setname{name='&eAllaster Farseer';delay=1} @self ~onDamaged
+  - sound{s=block.portal.travel} @self ~onSpawn
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=180} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+
+AzanianGuard:
+  Type: ZOMBIE
+  Display: '&e[&625&e] &cAzanian Guard'
+  Health: 500
+  Damage: 8
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 30
+    NoDamageTicks: 0
+    Silent: true
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - heal{a=410} @self ~onDamaged
+  - potion{type=SLOW;duration=20;level=10} @self ~onSpawn
+  - skill{s=AzanianGuard} @self ~onTimer:20
+  Disguise: player Steve setSkin 06chipsahoy setCustomName "&e[&625&e] &cAzanian Guard" setDynamicName true
+    
+AllasterFusRohDah:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=AllasterFusRohDah} @self ~onSpawn
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=920} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+
+HellFlame:
+  Type: BABY_ZOMBIE
+  Display: '&cHell Flame'
+  Health: 200
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=HellFlame} @self ~onSpawn
+  Disguise: MAGMA_CUBE setSize 2
+
+AllasterEminenceCutscene:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=720} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+
+AllasterReboundCutscene:
+  Type: ZOMBIE
+  Display: '&eAllaster Farseer'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=900} @self ~onSpawn
+  Disguise: player Steve setSkin TeenBatman setCustomName "&eAllaster Farseer" setDynamicName true
+
+ReboundCutscene1:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=AllasterReboundCutscene;r=32} ~onSpawn
+  - remove @MIR{t=Allaster1a;r=32} ~onSpawn
+  - summon{t=AllasterReboundCutscene} @Location{c=-554.5,31,143.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+ 
+ReboundCutscene2:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=AllasterFusRohDah;r=32} ~onSpawn
+  - remove @MIR{t=Allaster1a;r=32} ~onSpawn
+  - summon{t=AllasterFusRohDah} @Location{c=-602.5,35,173.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+   
+ReboundCutscene3:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=AzanianGuard;r=32} ~onSpawn
+  - summon{t=AzanianGuard} @Location{c=-612.5,32,156.5} ~onSpawn
+  - summon{t=AzanianGuard} @Location{c=-613.5,32,153.5} ~onSpawn
+  - summon{t=AzanianGuard} @Location{c=-605.5,32,155.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+EminenceCutscene1:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=AllasterEminenceCutscene;r=32} ~onSpawn
+  - remove @MIR{t=Allaster1a;r=32} ~onSpawn
+  - summon{t=AllasterEminenceCutscene} @Location{c=-764.5,35,215.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+EminenceCutscene2:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=AllasterEminenceCutscene;r=32} ~onSpawn
+  - remove @MIR{t=Allaster1a;r=32} ~onSpawn
+  - summon{t=AllasterEminenceCutscene} @Location{c=-613.5,241,628.5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+AzanaShanty:
+  Type: armor_stand
+  Skills:
+  - skill{s=AzanaShanty} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+BabyDragon:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cBaby Dragon'
+  Health: 200
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lBaby Dragon'
+    Health: 200
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=BabyDragon-drop} @trigger ~onDeath
+  - skill{s=BabyDragon} @self ~onTimer:200
+  - skill{s=BabyDragonFire} @target ~onTimer:5
+  - skill{s=BabyDragonFiretick2} @self ~onTimer:5
+  - setvariable{var=caster.fire;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Phaeryss setCustomName "&e[&6☠&e] &cBaby Dragon" setDynamicName true
+RatKing:
+  Type: SILVERFISH
+  Display: '&e[&6☠&e] &cRat King'
+  Health: 200
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lRat King'
+    Health: 200
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=RatKing-drop} @trigger ~onDeath
+  - skill{s=RatKing} @target ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+RatKingSpawn:
+  Type: SILVERFISH
+  Display: '&e[&63&e] &cRat'
+  Health: 5
+  Modules:
+    ThreatTable: true
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+PirateLackey:
+  Type: ZOMBIE
+  Display: '&e[&63&e] &cPirate Lackey'
+  Health: 80
+  Modules:
+    ThreatTable: true
+  Damage: 8
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 40 <mob.l.x> <mob.l.y> <mob.l.z> 3"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-3} @trigger ~onDeath
+  - randommessage{
+      m=
+      "&ePirate Lackey<&co> &6Stay right where yar are!",
+      "&ePirate Lackey<&co> &6Go back tah' sleep.",
+      "&ePirate Lackey<&co> &6Cursed runewielder!";
+      } @PIR{r=8} ~onDamaged 0.1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin VALIDUS_MAXIMUS setCustomName "&e[&63&e] &cPirate Lackey" setDynamicName true
+    
+ForestVessel:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cForest Vessel'
+  Health: 275
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lForest Vessel'
+    Health: 275
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestVessel-drop} @trigger ~onDeath
+  - skill{s=ForestVessel} @self ~onTimer:120
+  - skill{s=ForestVesselMissile} @self ~onTimer:40
+  - sound{s=block.wood.hit} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Grizzlimo setCustomName "&e[&6☠&e] &cForest Vessel" setDynamicName true
+ForestVesselSpawn:
+  Type: ZOMBIE
+  Display: '&e[&63&e] &cTree Fragment'
+  Health: 2
+  Modules:
+    ThreatTable: true
+  Damage: 4
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=ForestVesselSpawn;delay=400} @self ~onSpawn
+  - sound{s=block.wood.hit} @self ~onDespawn
+  - sound{s=block.wood.hit} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Mielija setCustomName "&e[&63&e] &cTree Fragment" setDynamicName true
+
+
+AzanianCaptain:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cAzanian Captain'
+  Health: 325
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  BossBar:
+    Enabled: true
+    Title: '&c&lAzanian Captain'
+    Health: 325
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=AzanianCaptain-drop} @trigger ~onDeath
+  - skill{s=AzanaCaptainTNT} @self ~onTimer:120
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin ZwettenOap setCustomName "&e[&6☠&e] &cAzanian Captain" setDynamicName true
+AzanianCaptainTNT:
+  Type: BABY_ZOMBIE
+  Display: '&6Boom Boom Box'
+  Health: 40
+  DamageModifiers:
+  - FALL 0
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=AzanianCaptainTNTIgnite} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK COAL_BLOCK
+    
+Scarecrow:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cScarecrow'
+  Health: 400
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lSpooky Scarecrow'
+    Health: 400
+    Range: 10
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=scarecrowfire} @self ~onTimer:4
+  - skill{s=Scarecrow-drop} @trigger ~onDeath
+  - skill{s=scarecrowwarning} @self ~onDamaged
+  - skill{s=scarecrowidle} @self ~onTimer:20
+  - skill{s=scarecrowactive} @self ~onDamaged
+  - skill{s=scarecrowleap} @self ~onTimer:20
+  - setvariable{var=caster.fire;value=0} @self ~onSpawn
+  - setvariable{var=caster.warning;value=0} @self ~onSpawn
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - sound{s=block.grass.break} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin AbnormalV setCustomName "&e[&6☠&e] &cScarecrow" setDynamicName true
+
+AzanaCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=AzanaCitizen;amount=5;radius=64;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=AzanaCitizen2;amount=5;radius=64;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=AzanaCitizen;amount=1;radius=64;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=AzanaCitizen2;amount=1;radius=64;yRadius=3;os=true} @self ~onSignal:respawn2
+AzanaCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aAzana Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - signal{s=respawn} @MobsInRadius{r=320;t=AzanaCSA} ~onDeath
+  Disguise: player Steve setSkin kookamooka setCustomName "&e[&61&e] &aAzana Citizen" setDynamicName true
+AzanaCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aAzana Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - signal{s=respawn2} @MobsInRadius{r=320;t=AzanaCSA} ~onDeath
+  Disguise: player Steve setSkin AniBee55 setCustomName "&e[&61&e] &aAzana Citizen" setDynamicName true
+AzanaGuard1:
+  Type: IRON_GOLEM
+  Display: '&e[&650&e] &aAzana Guard'
+  Health: 5000
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Guard
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+#  - 2 gotolocation -986,34,176
+  - 3 lookatplayers
+  - 4 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aAzana Guard<&co> &fWe are the watchers on the wall.} @trigger ~onDamaged
+  Disguise: player Steve setSkin Darksalvo setCustomName "&e[&650&e] &aAzana Guard" setDynamicName true
+AzanaGuard2:
+  Type: IRON_GOLEM
+  Display: '&e[&650&e] &aAzana Guard'
+  Health: 5000
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Guard
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+#  - 2 gotolocation -986,34,188
+  - 3 lookatplayers
+  - 4 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aAzana Guard<&co> &fWe are the watchers on the wall.} @trigger ~onDamaged
+  Disguise: player Steve setSkin Darksalvo setCustomName "&e[&650&e] &aAzana Guard" setDynamicName true
+AzanaGuard3:
+  Type: IRON_GOLEM
+  Display: '&e[&650&e] &aAzana Guard'
+  Health: 5000
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Guard
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+#  - 2 gotolocation -1428,39,180
+  - 3 lookatplayers
+  - 4 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aAzana Guard<&co> &fWe are the watchers on the wall.} @trigger ~onDamaged
+  Disguise: player Steve setSkin Darksalvo setCustomName "&e[&650&e] &aAzana Guard" setDynamicName true
+AzanaGuard4:
+  Type: IRON_GOLEM
+  Display: '&e[&650&e] &aAzana Guard'
+  Health: 5000
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Faction: Guard
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+#  - 2 gotolocation -1421,38,187
+  - 3 lookatplayers
+  - 4 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aAzana Guard<&co> &fWe are the watchers on the wall.} @trigger ~onDamaged
+  Disguise: player Steve setSkin Darksalvo setCustomName "&e[&650&e] &aAzana Guard" setDynamicName true
+BanditAzanaRookie:
+  Type: SKELETON
+  Display: '&e[&63&e] &cRookie Bandit'
+  Health: 80
+  Modules:
+    ThreatTable: true
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  Faction: Bandit
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - summon{t=BanditAzana-elite-timer;os=true} @self ~onDeath .01
+  - command{c="runicgive exp <trigger.name> 40 <mob.l.x> <mob.l.y> <mob.l.z> 3"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-3} @trigger ~onDeath
+  - command{c="ri drop bandit-apple <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.2
+  - setvariable{var=caster.eat;value=0} @self ~onSpawn
+  - setvariable{var=caster.within;value=0} @self ~onSpawn
+  - skill{s=BanditAzanaRookieA} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Ramus setCustomName "&e[&63&e] &cRookie Bandit" setDynamicName true
+BanditAzanaTough:
+  Type: ZOMBIE
+  Display: '&e[&64&e] &cTough Bandit'
+  Health: 100
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - WOODEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - summon{t=BanditAzana-elite-timer;os=true} @self ~onDeath .01
+  - command{c="runicgive exp <trigger.name> 50 <mob.l.x> <mob.l.y> <mob.l.z> 4"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-4} @trigger ~onDeath
+  - setvariable{var=caster.eat;value=0} @self ~onSpawn
+  - skill{s=BanditAzanaToughA} @self ~onTimer:20
+  - skill{s=BanditSpin} @target ~onTimer:20
+  - skill{s=BanditSpinwithin} @self ~onTimer:20
+  - skill{s=BanditSpinnotwithin} @self ~onTimer:20
+  - setvariable{var=caster.banditspin;value=0} @self ~onSpawn
+  - skill{s=BanditAzanaToughApple} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin ARABION setCustomName "&e[&64&e] &cTough Bandit" setDynamicName true
+
+BanditPig:
+  Type: Pig
+  Display: '&e[&61&e] &aStolen Pig'
+  Health: 15
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true

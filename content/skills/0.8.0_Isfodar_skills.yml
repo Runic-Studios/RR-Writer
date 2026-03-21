@@ -1,0 +1,915 @@
+isfodar-grave-elder-spawn-add:
+  Skills:
+  - setAI{ai=false}
+  - delay 10
+  - setAI{ai=true}
+  - effect:particlesphere{p=soul_fire_flame;amount=5;radius=2;yOffset=0.5}
+  - leap{v=250} @NearestPlayer{r=32}
+  - delay 40
+  - effect:particlesphere{p=soul_fire_flame;amount=3;radius=2;yOffset=0.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=2}
+  - delay 40
+  - effect:particlesphere{p=soul_fire_flame;amount=7;radius=3;yOffset=0.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=3}
+  - remove
+
+isfodar-grave-elder-spawn-skill2:
+  Conditions:
+  - incombat{}
+  Skills:
+  - summon{t=isfodar-grave-elder-spawn-add;r=12}
+
+isfodar-elemental-leap:
+  Conditions:
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - skill{s=isfodar-elemental-leap-back} 
+  - skill{s=isfodar-elemental-leap-jump}
+  - delay 20
+  - leap{v=300} @target
+  - effect:particlesphere{particle=flame;amount=20;radius=5} @self
+  - ignite{d=40} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=5}
+  - delay 5
+  - effect:particlesphere{particle=flame;amount=16;radius=4} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=4}
+  - ignite{d=40} @PIR{r=4}
+  - delay 5
+  - effect:particlesphere{particle=flame;amount=12;radius=3} @self 
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=3}
+  - ignite{d=80} @PIR{r=3}
+isfodar-elemental-leap-back:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - leap{v=175} @Forward{f=-4;y=2}
+isfodar-elemental-leap-jump:
+  Conditions:
+  - playernotwithin 4
+  Skills:
+  - jump{v=0.75}
+
+isfodar-grave-soul:
+  Skills:
+  - setAi{ai=false}
+  - delay 2
+  - setAI{ai=true}
+  - jump{v=2}
+  - delay 20
+  - remove
+
+isfodar-grave-false:
+  Conditions:
+  - variableEquals{var=caster.purify;value=1}
+  Skills:
+  - message{m="&e[!] &7This Grave has been recently purified"} 
+
+isfodar-elemental:
+  Skills:
+  - randomskill{s=isfodar-elemental1,isfodar-elemental2}
+
+isfodar-elemental1:
+  Conditions:
+  - health{h=>1000}
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - summon{t=isfodar-allaster-proj-marker}
+isfodar-elemental2:
+  Conditions:
+  - health{h=<1000}
+  Cooldown: 20
+  Skills:
+  - skill{s=isfodar-elemental-death}
+
+isfodar-elemental-death:
+  Skills:
+  - potion{t=SLOW;d=40;l=10;hasParticles=false}
+  - sound{s=block.glass.break;p=0.5}
+  - effect:particlesphere{p=block_crack;material=ice;radius=3;amount=25}
+  - effect:blockmask{m=packed_ice;r=3;d=40}
+  - projectile{ot=isfodar-elemental-death-tick;v=.5;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=8;g=1.5;sb=false}
+  - delay 10
+  - projectile{ot=isfodar-elemental-death-tick;v=.5;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=8;g=1.5;sb=false}
+  - delay 30
+  - sound{s=block.glass.break;p=0.5}
+  - effect:particlesphere{p=block_crack;material=ice;radius=5;amount=40}
+  - effect:blockmask{m=blue_ice;r=5;d=40}
+  - command{c="questtrigger player <target.name> isfodar-elemental-death"} @PIR{r=64}
+  - suicide
+
+isfodar-elemental-death-tick:
+  Skills:
+  - effect:particles{p=block_crack;material=ice;a=1;speed=0;hS=0.2;vS=0.2} @Origin
+  - sound{s=block.snow.break}
+
+isfodar-allaster-proj:
+  Skills:
+  - missile{ot=isfodar-allaster-proj-tick;v=15;i=1;hr=2;vr=2;md=200;hnp=false;mr=60;sB=false;sE=false} @MIR{t=isfodar-elemental;r=32}
+  - delay 20
+  - sound{s=block.glass.break}
+  - effect:particlesphere{p=block_crack;material=ice;radius=3;amount=15}
+  - effect:blockmask{m=ice;r=3;d=10} @MIR{t=isfodar-elemental;r=32}
+  - damage{a=50;i=true;na=true} @MIR{t=isfodar-elemental;r=32}
+  - potion{t=SLOW;d=40;l=1} @MIR{t=isfodar-elemental;r=32}
+  - remove
+isfodar-allaster-proj-tick:
+  Skills:
+  - effect:particles{p=block_crack;material=ice;a=1;speed=0;hS=0.2;vS=0.2} @Origin
+  - sound{s=block.snow.break}
+
+isfodar-grave-elder-spawn-skill1:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - sound{s=block.grass.break;v=2;p=0.5}
+  - jump{v=1.25}
+  - delay 30
+  - effect:blockmask{m=podzol;r=5;d=20}
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=5;amount=25}
+  - sound{s=block.grass.break;v=2}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=5}
+  - throw{vy=10} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - delay 20
+  - summon{t=isfodar-grave-elder-spawn-skill1-marker1} @Forward{f=6;y=0}
+  - delay 5
+  - summon{t=isfodar-grave-elder-spawn-skill1-marker2} @Forward{f=8;y=0}
+  - delay 5
+  - summon{t=isfodar-grave-elder-spawn-skill1-marker3} @Forward{f=12;y=0}
+  - delay 5
+  - summon{t=isfodar-grave-elder-spawn-skill1-marker4} @Forward{f=18;y=0}
+
+isfodar-grave-elder-spawn-skill1-marker1:
+  Skills:
+  - effect:blockmask{m=podzol;r=3;d=20}
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=3;amount=10}
+  - sound{s=block.grass.break;v=2}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=3}
+  - throw{vy=10} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=3}
+isfodar-grave-elder-spawn-skill1-marker2:
+  Skills:
+  - effect:blockmask{m=podzol;r=4;d=20}
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=4;amount=15}
+  - sound{s=block.grass.break;v=2}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - throw{vy=10} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=4}
+isfodar-grave-elder-spawn-skill1-marker3:
+  Skills:
+  - effect:blockmask{m=podzol;r=6;d=20}
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=6;amount=25}
+  - sound{s=block.grass.break;v=2}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=6}
+  - throw{vy=10} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=6}
+isfodar-grave-elder-spawn-skill1-marker4:
+  Skills:
+  - effect:blockmask{m=podzol;r=8;d=20}
+  - effect:particlesphere{particle=block_crack;material=dirt;radius=8;amount=40}
+  - sound{s=block.grass.break;v=2}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=8}
+  - throw{vy=10} @PIR{r=8}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=8}
+
+isfodar-grave-elder-spawn-despawn:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=2;yOffset=0.5}
+  - message{cooldown=60;m="&e[&6✸&e] &c&lElder Feldruid &e&lhas spawned!"} @PIR{r=32}
+  - cast{skillName="Despawn";duration=3000;onCast=isfodar-grave-elder-spawn-despawncast;showCastBar=true}
+isfodar-grave-elder-spawn-despawncast:
+  Skills:
+  - sound{s=entity.ghast.hurt}
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=2;yOffset=0.5}
+  - message{cooldown=60;m="&e[&6✸&e] &c&lElder Feldruid &e&lhas despawned!"} @PIR{r=32}
+  - remove
+
+isfodar-grave-elder:
+  Cooldown: 60
+  Skills:
+  - cast{skillName="Purifying";duration=40;showCastBar=true} @self
+  - delay 40
+  - summon{t=isfodar-grave-soul} @self
+  - command{c="questtrigger player <target.name> feldruideldertrigger"} @PIR{r=32}
+  - message{m="&e[!] &7Purified Elder Grave"} 
+  - sound{s=entity.ghast.hurt}
+  - summon{t=isfodar-grave-elder-spawn;a=1;os=true}
+  - setvariable{var=caster.purify;value=1} @self
+  - delay 3000
+  - setvariable{var=caster.purify;value=0} @self
+
+isfodar-grave-elder-visual:
+  Conditions:
+  - variableEquals{var=caster.purify;value=0}
+  Skills:
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5}
+
+
+isfodar-grave-spawn:
+  Conditions:
+  - incombat{}
+  - playernotwithin 4
+  Cooldown: 12
+  Skills:
+  - setvariable{var=caster.visual;value=1}
+  - delay 20
+  - jump{v=0.8}
+  - delay 10
+  - setAI{ai=false}
+  - delay 5
+  - setAI{ai=true}
+  - sound{s=entity.ghast.ambient}
+  - leap{v=250} @target
+  - delay 5
+  - setAI{ai=false}
+  - delay 5
+  - setAI{ai=true}
+  - jump{v=0.6}
+  - delay 5
+  - sound{s=entity.ghast.ambient}
+  - leap{v=150} @target
+  - delay 5
+  - setvariable{var=caster.visual;value=0}
+
+isfodar-grave-spawn-tick:
+  Conditions:
+  - variableEquals{var=caster.visual;value=1}
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;a=1;r=1;yOffset=.5} 
+
+isfodar-grave-spawn-remove:
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - setvariable{var=caster.visual;value=0}
+  - delay 1200
+  - effect:particlesphere{p=soul_fire_flame;a=3;r=1;yOffset=.5}
+  - sound{s=entity.ghast.scream;p=0.5}
+  - remove
+
+
+isfodar-grave1:
+  Cooldown: 60
+  Skills:
+  - cast{skillName="Purifying";duration=40;showCastBar=true} @self
+  - delay 40
+  - summon{t=isfodar-grave-soul} @self
+  - command{c="questtrigger player <target.name> feldruidtrigger1"} @PIR{r=20}
+  - message{m="&e[!] &7Purified Northern Grave"} 
+  - sound{s=entity.ghast.scream}
+  - summon{t=isfodar-grave-spawn-marker;a=1;os=true}
+  - setvariable{var=caster.purify;value=1} @self
+  - delay 1160
+  - setvariable{var=caster.purify;value=0} @self
+isfodar-grave2:
+  Cooldown: 60
+  Skills:
+  - cast{skillName="Purifying";duration=40;showCastBar=true} @self
+  - delay 40
+  - summon{t=isfodar-grave-soul} @self
+  - command{c="questtrigger player <target.name> feldruidtrigger2"} @PIR{r=20} 
+  - message{m="&e[!] &7Purified Eastern Grave"} 
+  - sound{s=entity.ghast.scream}
+  - summon{t=isfodar-grave-spawn-marker;a=1;os=true}
+  - setvariable{var=caster.purify;value=1} @self
+  - delay 1160
+  - setvariable{var=caster.purify;value=0} @self
+isfodar-grave3:
+  Cooldown: 60
+  Skills:
+  - cast{skillName="Purifying";duration=40;showCastBar=true} @self
+  - delay 40
+  - summon{t=isfodar-grave-soul} @self
+  - command{c="questtrigger player <target.name> feldruidtrigger3"} @PIR{r=20}  
+  - message{m="&e[!] &7Purified Southern Grave"} 
+  - sound{s=entity.ghast.scream}
+  - summon{t=isfodar-grave-spawn-marker;a=1;os=true}
+  - setvariable{var=caster.purify;value=1} @self
+  - delay 1160
+  - setvariable{var=caster.purify;value=0} @self
+isfodar-grave4:
+  Cooldown: 60
+  Skills:
+  - cast{skillName="Purifying";duration=40;showCastBar=true} @self
+  - delay 40
+  - summon{t=isfodar-grave-soul} @self
+  - command{c="questtrigger player <target.name> feldruidtrigger4"} @PIR{r=20}  
+  - message{m="&e[!] &7Purified Western Grave"} 
+  - sound{s=entity.ghast.scream}
+  - summon{t=isfodar-grave-spawn-marker;a=1;os=true}
+  - setvariable{var=caster.purify;value=1} @self
+  - delay 1160
+  - setvariable{var=caster.purify;value=0} @self
+
+isfodar-grave-visual:
+  Conditions:
+  - variableEquals{var=caster.purify;value=0}
+  Skills:
+  - effect:particlesphere{p=sneeze;a=1;r=1;yOffset=.5}
+
+isfodar-slime:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - jump{velocity=0.6}
+  - delay 25
+  - jump{velocity=0.6}
+  - delay 25
+  - jump{velocity=0.6}
+  - delay 25
+  - jump{velocity=0.6}
+  - delay 25
+  - sound{s=entity.slime.squish} 
+  - effect:particlesphere{particle=slime;amount=20;radius=5;yOffset=.5} 
+  - jump{velocity=1.2}
+  - delay 25
+  - sound{s=entity.slime.squish} 
+  - effect:particlesphere{particle=slime;amount=20;radius=5;yOffset=.5} 
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+
+isfodar-summoner-mount:
+  Conditions: 
+  - incombat
+  - playernotwithin 5
+  Cooldown: 16
+  Skills:
+  - mount{type=isfodar-summoner-mount}
+
+isfodar-summoner-summon:
+  Conditions: 
+  - incombat
+  - playerwithin 32
+  Cooldown: 24
+  Skills:
+  - potion{t=SLOW;d=40;l=10;hasParticles=false}
+  - potion{t=SLOW;d=40;l=10;hasParticles=false} @MIR{t=isfodar-summoner-mount;r=12}
+  - sound{s=entity.evoker.prepare_summon}
+  - summon{t=isfodar-summoner-spawn} @Forward{f=0;y=4}
+
+isfodar-summoner-mount-start:
+  Skills:
+  - sound{s=entity.ravager.roar}
+  - potion{t=SLOW;d=40;l=10;hasParticles=false}
+  - delay 240
+  - suicide
+
+isfodar-summoner-spawn-start:
+  Skills:
+  - setAI{ai=false}
+  - delay 40
+  - setAI{ai=true}
+  - leap{v=400} @NearestPlayer{r=32}
+  - delay 360
+  - suicide
+isfodar-summoner-spawn-ground:
+  Cooldown: 24
+  Conditions:
+  - onground{} true
+  Skills:
+  - throw{vy=10} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - blockmask{m=dirt;d=10;r=5;n=.25}
+  - sound{s=block.grass.break}
+  - blockmask{m=dirt;d=40;r=5}
+
+isfodar-summoner-spawn-stomp:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 12
+  Skills:
+  - delay 80
+  - potion{t=SLOW;d=40;l=2;hasParticles=false} 
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=5}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - blockmask{m=dirt;d=9;r=5;n=.25}
+  - sound{s=block.grass.break}
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=5}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - blockmask{m=dirt;d=9;r=5;n=.5}
+  - sound{s=block.grass.break}
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=5}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - blockmask{m=dirt;d=9;r=5;n=.75}
+  - sound{s=block.grass.break}
+  - delay 10
+  - throw{vy=10} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - blockmask{m=dirt;d=10;r=5;n=.25}
+  - sound{s=block.grass.break}
+  - blockmask{m=dirt;d=40;r=5}
+
+
+isfodar-beast-stomp:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=40;l=2;hasParticles=false} 
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=5}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - blockmask{m=dirt;d=9;r=5;n=.25}
+  - sound{s=block.grass.break}
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=5}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - blockmask{m=dirt;d=9;r=5;n=.5}
+  - sound{s=block.grass.break}
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=5}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=5}
+  - blockmask{m=dirt;d=9;r=5;n=.75}
+  - sound{s=block.grass.break}
+  - delay 10
+  - throw{vy=10} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - blockmask{m=dirt;d=10;r=5;n=.25}
+  - sound{s=block.grass.break}
+  - blockmask{m=dirt;d=40;r=5}
+
+isfodar-beast-charge:
+  Cooldown: 20
+  Conditions:
+  - incombat{}
+  - playernotwithin 8
+  Skills:
+  - potion{type=SLOW;duration=80;level=2;hasParticles=false} 
+  - sound{s=block.grass.break}
+  - delay 10
+  - sound{s=block.grass.break}
+  - delay 10
+  - sound{s=block.grass.break}
+  - delay 10
+  - jump{v=0.5}
+  - delay 2
+  - leap{velocity=1000} @target
+  - summon{t=isfodar-beast-marker;a=1;os=true} 
+  - delay 5
+  - summon{t=isfodar-beast-marker;a=1;os=true} 
+  - delay 5
+  - summon{t=isfodar-beast-marker;a=1;os=true} 
+  - delay 5
+  - summon{t=isfodar-beast-marker;a=1;os=true} 
+  - delay 5
+  - summon{t=isfodar-beast-marker;a=1;os=true} 
+  - delay 10
+  - throw{vy=8} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=5}
+  - blockmask{m=dirt;d=10;r=5;n=.25}
+  - sound{s=block.grass.break}
+  - blockmask{m=dirt;d=40;r=5}
+
+isfodar-beast-marker:
+  Skills:
+  - potion{t=SLOW;d=160;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=5}
+  - sound{s=block.grass.break;p=.5} 
+  - blockmask{m=dirt;d=40;r=5}
+  - remove
+
+CowMother-summon:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - summon{t=CowMother-spawn;r=3;os=true}
+  - delay 20
+  - summon{t=CowMother-spawn;r=3;os=true}
+  - delay 20
+  - summon{t=CowMother-spawn;r=3;os=true}
+CowMother-throw:
+  Conditions:
+  - incombat{}
+  - playerwithin 2
+  Cooldown: 8
+  Skills:
+  - sound{s=entity.cow.hurt;p=.5}
+  - throw{vy=10} @PIR{r=2}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=2}
+CowMother-leap:
+  Conditions:
+  - incombat{}
+  - playernotwithin 8
+  Cooldown: 12
+  Skills:
+  - jump{v=0.5}
+  - delay 2
+  - sound{s=entity.cow.hurt;p=.5}
+  - leap{v=400} @target
+
+CowMother-spawn:
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - delay 20
+  - skill{s=CowMother-spawn2}
+CowMother-spawn2:
+  Skills:
+  - delay 5
+  - skill{s=CowMother-spawn3}
+  - skill{s=CowMother-spawn2}
+CowMother-spawn3:
+  Conditions:
+  - playerwithin 3
+  Skills:
+  - throw{vy=10} @PIR{r=2}
+  - sound{s=entity.generic.explode}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}  
+  - blockmask{m=dirt;d=40;r=5}
+  - remove
+
+CowMother-onDeath:
+  Skills:
+  - throw{vy=10} @PIR{r=2}
+  - sound{s=entity.generic.explode}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}  
+  - blockmask{m=dirt;d=40;r=5}
+Cowmother-onSpawn:
+  Conditions:
+  - playernotwithin 12
+  Skills:
+  - delay 80
+  - leap{v=250} @target
+  - delay 10
+  - throw{vy=10} @PIR{r=2}
+  - sound{s=entity.generic.explode}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}  
+  - blockmask{m=dirt;d=40;r=5}
+  - remove
+
+MooCow-sound:
+  Cooldown: 2
+  Skills:
+  - sound{s=entity.cow.hurt}
+
+EchinaceaGiver:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - suicide
+
+CowMother-start:
+  Conditions:
+  - playernotwithin 8
+  Skills:
+  - leap{v=200} 
+CowMother-bite:
+  Conditions:
+  - incombat{}
+  Skills:
+  - leap{v=200} @target
+  - delay 10
+  - skill{s=CowMother-bite2}
+  - delay 30
+  - leap{v=200} @target
+CowMother-bite2:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - sound{s=entity.generic.explode}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - potion{t=BLINDNESS;d=80;l=1} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=5}
+CowMother-droplet:
+  Conditions:
+  - incombat{}
+  Skills:
+  - jump{v=0.6}
+  - delay 20
+  - summon{t=CowMother-spawn}
+
+CowMother-marker:
+  Skills:
+  - sound{s=entity.generic.explode}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - potion{t=SLOW;d=80;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}  
+  - blockmask{m=dirt;d=40;r=5} @self ~onSpawn
+  - remove{delay=40}
+  - delay 10
+  - skill{s=CowMother-marker2}
+CowMother-marker2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=5}  
+  - delay 10
+  - skill{s=CowMother-marker2}
+
+
+MooCow:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=MooCow-within}
+  - skill{s=MooCow-notwithin}
+  - skill{s=MooCow-stomp}
+  - skill{s=MooCow-stomp2}
+  - skill{s=MooCow-charge}
+  - skill{s=MooCow-charge2}
+MooCow-notwithin:
+  Conditions:
+  - playernotwithin 2
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.charge;amount=1}	 
+  - variablesubtract{var=caster.stomp;amount=1}
+MooCow-within:
+  Conditions:
+  - playerwithin 2
+  - incombat{}
+  Skills:
+  - variableadd{var=caster.stomp;amount=1}	 
+  - variablesubtract{var=caster.charge;amount=1}
+MooCow-charge:
+  Conditions:
+  - varinrange{var=caster.charge;value=>12}
+  - variableEquals{var=caster.active;value=0}
+  - incombat{}
+  Cooldown: 20
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - cast{skillName="Charge";duration=40;onCast=MooCow-chargecast;showCastBar=true} @self
+  - delay 200
+  - skill{s=MooCow-flight}
+MooCow-flight:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - setvariable{var=caster.active;value=0}
+  - cast{skillName="Flight";duration=40;onCast=MooCow-flightcast;showCastBar=true} @self
+MooCow-flightcast:
+  Skills:
+  - setvariable{var=caster.active;value=0}
+  - jump{v=1.6}
+  - delay 20
+  - setAI{ai=false}
+  - delay 20
+  - setAI{ai=true}
+  - leap{v=400} @NearestPlayer{r=32}
+  - delay 40
+  - throw{vy=8} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - sound{s=block.grass.break} 
+  - blockmask{m=dirt;d=40;r=5}
+  
+MooCow-chargecast:
+  Skills:
+  - sound{s=entity.cow.ambient;v=2} @self
+  - setvariable{var=caster.active;value=1}
+  - setvariable{var=caster.charge;value=0}
+  - setvariable{var=caster.stomp;value=0}
+MooCow-charge2:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - potion{t=SPEED;d=20;l=2;hasParticles=false} @self
+MooCow-stomp2:
+  Conditions:
+  - variableEquals{var=caster.active;value=8}
+  - playerwithin 4
+  Skills:
+  - setvariable{var=caster.active;value=0}
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - cast{skillName="Stomp";duration=40;onCast=MooCow-stompcast;showCastBar=true} @self
+  - setvariable{var=caster.charge;value=0}
+  - setvariable{var=caster.stomp;value=0}
+
+MooCow-stomp:
+  Conditions:
+  - varinrange{var=caster.stomp;value=>6}
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=120;l=2;hasParticles=false} 
+  - cast{skillName="Stomp";duration=40;onCast=MooCow-stompcast;showCastBar=true} @self
+MooCow-stompcast:
+  Skills:
+  - throw{vy=8} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - sound{s=block.grass.break} 
+  - blockmask{m=dirt;d=40;r=5}
+  - setvariable{var=caster.charge;value=0}
+  - setvariable{var=caster.stomp;value=0}
+
+FeldruidSapling:
+  Cooldown: 16
+  Conditions:
+  - incombat{}
+  Skills:
+  - delay 120
+  - cast{skillName="Nature's Blessings";duration=120;showCastBar=true} @self
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - delay 20
+  - potion{t=SLOW;d=40;l=10;hasParticles=false} 
+  - delay 20
+  - sound{s=block.grass.place}
+  - summon{t=FeldruidSapling;r=2} 
+  - delay 20
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - delay 20
+  - potion{t=SLOW;d=40;l=10;hasParticles=false} 
+  - delay 20
+  - sound{s=block.grass.place}
+  - summon{t=FeldruidSapling;r=2} 
+FeldruidSaplingonSpawn:
+  Skills:
+  - delay 120
+  - signal{s=heal} @MIR{r=6;t=Druid}
+  - summon{t=FeldruidSaplingDead}
+  - remove 
+FeldruidHeal:
+  Cooldown: 2
+  Skills:
+  - heal{a=40;i=true} 
+  - effect:particles{p=HAPPY_VILLAGER;amount=4;vSpread=1;hSpread=1;yOffset=0}
+  - sound{s=entity.experience_orb.pickup}
+FeldruidSaplingDeadonSpawn:
+  Skills:
+  - delay 80
+  - effect:particlesphere{p=reddust;c=#D18878;amount=8;radius=6;yOffset=.5} 
+  - effect:particlesphere{p=reddust;c=#E39484;amount=8;radius=6;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=6}
+  - remove 
+
+DruidShot:
+  Skills:
+  - effect:sound{s=entity.firework_rocket.launch;v=0.8;p=0.01} @self
+  - effect:particles{p=reddust;color=#458B00;amount=20;hSpread=1;vSpread=1;speed=0;so=0} @Self
+  - projectile{type=METEOR;onTick=DruidShot-Tick;onEnd=DruidShot-Hit;onHit=DruidShot-Hit;v=7;i=1;hR=1;vR=1;mr=100;g=1.5;hfs=20} @RLNTE{amount=1;radius=3;spacing=1;minradius=0}
+
+DruidShot3:
+  Skills:
+  - effect:sound{s=entity.firework_rocket.launch;v=0.8;p=0.01} @self
+  - effect:particles{p=reddust;color=#458B00;amount=20;hSpread=1;vSpread=1;speed=0;so=0} @Self
+  - projectile{type=METEOR;onTick=DruidShot-Tick;onEnd=DruidShot-Hit;onHit=DruidShot-Hit;v=7;i=1;hR=1;vR=1;mr=100;g=1.5;hfs=20} @RLNTE{amount=3;radius=5;spacing=1;minradius=0}
+
+DruidShot-Tick:
+  Skills:
+  - effect:particles{p=reddust;color=#458B00;amount=10;speed=0.00001;hS=0.1;vS=0.5} @origin
+
+DruidShot-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PlayersNearOrigin{r=2}
+  - effect:sound{s=entity.generic.explode;v=0.2;p=0}
+  - effect:particles{p=crit_magic;amount=15;speed=0.2;hS=0.1;vS=1} @origin
+  
+DeadlyGrip:
+  Skills:
+  - skill{skill=DeadlyGripA} @PIR{r=10}
+DeadlyGripA:
+  Skills:
+  - sendtitle{title="&4&kooo&r&l&cDeadly Grip&r&4&kooo";subtitle="&e&l3";d=20} @PlayersInRadius{r=21}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cDeadly Grip&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=21}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cDeadly Grip&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=21}
+  - effect:sound{s=block.comparator.click;volume=2;pitch=0.5} @self
+  - delay 20
+  - aura{oS=DeadlyGripStart;oT=DeadlyGripTick;oE=DeadlyGripEnd;duration=60;i=1}
+DeadlyGripStart:
+  Skills:
+  - potion{type=LEVITATION;level=2;duration=60;force=true;hasParticles=false}
+  - sound{s=block.beacon.ambient;repeat=1;repeatInterval=30;v=2;p=2}
+  - sound{s=block.beacon.ambient;repeat=1;repeatInterval=30;v=2;p=2}
+DeadlyGripTick:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#2f272f;a=10;r=1.30;y=0.5}
+  - effect:particlesphere{particle=reddust;color=#2f272f;a=10;r=1.30;y=0.5}
+DeadlyGripEnd:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 35"}
+  - delay 1
+  - command{c="runicdamage <caster.uuid> <target.name> 35"}
+  - delay 1
+  - command{c="runicdamage <caster.uuid> <target.name> 35"}
+  - delay 1
+  - command{c="runicdamage <caster.uuid> <target.name> 35"}
+  - delay 1
+  - command{c="runicdamage <caster.uuid> <target.name> 35"}
+  - delay 1
+  - throw{v=10;vy=1}
+  - effect:particles{particle=hugeexplosion;a=1}
+  - sound{s=entity.generic.explode;v=2}
+  
+SpherePull:
+  Conditions:
+  - playerwithin{d=10}
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=7} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 5"}  @PIR{r=6}
+  - effect:particlesphere{particle=reddust;color=#2f272f;amount=300;radius=6} @self
+  - effect:bloodyScreen{d=5} @PIR{r=6} 
+  - potion{t=SLOW;d=5;l=1;p=false;i=false} @PlayersInRadius{r=6}
+  - sound{s=block.beacon.deactivate;p=2} @Self
+  - sound{s=entity.player.attack.nodamage;p=2} @Self
+  - pull{v=6;to=false} @PIR{r=10}

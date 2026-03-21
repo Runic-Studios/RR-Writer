@@ -1,0 +1,286 @@
+naheen-fairy:
+  Type: CHICKEN
+  Display: '&e[&660&e] &bNimriel'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - heal{a=5000} @self ~onDamaged
+  - skill{s=naheen-fairy} @self ~onSpawn
+  - skill{s=naheen-fairy-start} @self ~onInteract
+  Disguise: player Steve setSkin SpaceCutlery setCustomName "&e[&660&e] &bNimriel" setDynamicName true
+
+naheen-center:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+    Despawn: true
+  Skills:
+  - setvariable{var=caster.fairy1;v=0} @self ~onSpawn
+  - setvariable{var=caster.fairy2;v=0} @self ~onSpawn
+  - setvariable{var=caster.fairy3;v=0} @self ~onSpawn
+  - skill{s=naheen-center} @self ~onTimer:20
+  - skill{s=naheen-center-fairy1} @self ~onSignal:fairy1
+  - skill{s=naheen-center-fairy2} @self ~onSignal:fairy2
+  - skill{s=naheen-center-fairy3} @self ~onSignal:fairy3
+
+naheen-statue-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+    Despawn: true
+  Skills:
+  - skill{s=naheen-statue-marker} @self ~onSpawn
+
+naheen-statue1:
+  Type: ZOMBIE
+  Display: ''
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=naheen-statue1-spawn} @self ~onSpawn
+  - heal{a=5000} @self ~onDamaged
+  - skill{s=naheen-statue-start} @self ~onInteract
+  - skill{s=naheen-statue1} @self ~onTimer:10
+  Disguise: FALLING_BLOCK BEACON
+
+naheen-statue2:
+  Type: ZOMBIE
+  Display: ''
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.01
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=naheen-statue2-spawn} @self ~onSpawn
+  - heal{a=5000} @self ~onDamaged
+  - skill{s=naheen-statue-start} @self ~onInteract
+  - skill{s=naheen-statue2} @self ~onTimer:10
+  Disguise: FALLING_BLOCK BEACON
+
+naheen-statue3:
+  Type: ZOMBIE
+  Display: ''
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=naheen-statue3-spawn} @self ~onSpawn
+  - heal{a=5000} @self ~onDamaged
+  - skill{s=naheen-statue-start} @self ~onInteract
+  - skill{s=naheen-statue3} @self ~onTimer:10
+  Disguise: FALLING_BLOCK BEACON
+    
+NaheenCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=NaheenCitizen;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=NaheenCitizen2;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=NaheenCitizen;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=NaheenCitizen2;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn2
+NaheenCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aNaheen Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aNaheen Citizen<&co> &fThe goddess looks upon us this day.} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=NaheenCSA} ~onDeath
+  Disguise: player Steve setSkin Sabrisalim setCustomName "&e[&61&e] &aNaheen Citizen" setDynamicName true
+NaheenCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aNaheen Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aNaheen Citizen<&co> &fThe goddess looks upon us this day.} @NearestPlayer ~onDamaged
+  - signal{s=respawn2} @MobsInRadius{r=320;t=NaheenCSA} ~onDeath
+  Disguise: player Steve setSkin pingpong1010 setCustomName "&e[&61&e] &aNaheen Citizen" setDynamicName true
+NaheenGuard:
+  Type: ZOMBIE
+  Display: '&e[&650&e] &aNaheen Guard'
+  Health: 5000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+#  - 1 gotolocation 1897,43,229
+  - 2 lookatplayers
+  - 3 randomlookaround
+  Skills:
+  - message{cooldown=4;m=&aNaheen Guard<&co> &fBlessings upon you, stranger.} @NearestPlayer ~onDamaged
+  Disguise: player Steve setSkin No_Name setDynamicName true
+
+Wallace:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cWallace<&cm> The Strong'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 60
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lWallace the Strong'
+    Health: 3000
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - AIR HAND #placeholder
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.36
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Wallace-drop} @trigger ~onDeath
+  - effect:sound{s=entity.ender_eye.death;volume=0.35;p=0.5} @PIR{r=35} ~onDamaged #put custom damage sound effect here
+  - skill{s=chooseSkill_sidequestWallace} @self ~onTimer:200
+  - skill{s=reinforcements} @self ~onTimer:440
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin ImWarrior setCustomName "&e[&6☠&e] &cWallace<&cm> The Strong" setDynamicName true
+
+wallaceLackey:
+  MobType: ZOMBIE
+  Display: '&e[&6✸&e] &cWallace<&sq>s Lackey'
+  Health: 250
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.38
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 30
+    NoDamageTicks: 0
+    Angry: true
+  Modules:
+    ThreatTable: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  - 2 players
+  Disguise: player Steve setSkin leandro121854 setCustomName "&e[&6✸&e] &cWallace<&sq>s Lackey" setDynamicName true
+  Equipment:
+  - AIR HAND
+  Skills:
+  - effect:sound{s=block.stone.break;volume=1;p=0.5} @trigger ~onDamaged #put custom damage sound effect here
+  - command{c="runicgive exp <trigger.name> 84 <caster.l.x> <caster.l.y> <caster.l.z> 42"} @trigger ~onDeath 1.0

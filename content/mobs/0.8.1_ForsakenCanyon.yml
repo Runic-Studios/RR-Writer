@@ -1,0 +1,239 @@
+GoatMother:
+  Type: BEE
+  Display: '&e[&6☠&e] &cGoat Mother'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lGoat Mother'
+    Health: 2500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 5
+    NoDamageTicks: 5
+  Skills:
+  - skill{s=GoatMother-start} @target ~onEnterCombat
+  - skill{s=GoatMother-drop} @trigger ~onDeath
+  - skill{s=GoatMother-droplet} @self ~onTimer:80 >40%
+  - skill{s=GoatMother-bite} @self ~onTimer:80 <40%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: GHAST
+
+GoatMother-spawn:
+  Type: COW
+  Display: '&fGoat'
+  Health: 5
+  Damage: 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - summon{t=GoatMother-marker} @self ~onDeath
+  - suicide{delay=20} @self ~onSpawn
+  Disguise: SHEEP
+GoatMother-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=GoatMother-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+Phoenix:
+  Type: BLAZE
+  Display: '&e[&634&e] &cBaby Phoenix'
+  Health: 400
+  Damage: 10
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - command{c="runicgive exp <trigger.name> 200 <mob.l.x> <mob.l.y> <mob.l.z> 34"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-34} @trigger ~onDeath
+  - command{c="ri drop PhoenixFeather <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - effect:particles{p=flame;a=10;hs=0.5;vs=0.5} @self ~onTimer:20
+  - skill{s=PhoenixFireball} @target ~onTimer:40
+  - skill{s=PhoenixAOE} @self ~onTimer:200
+
+Deserter:
+  Type: ZOMBIE
+  Display: '&e[&633&e] &cDeserter'
+  Health: 530
+  Damage: 33
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 320 <mob.l.x> <mob.l.y> <mob.l.z> 33"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-33} @trigger ~onDeath
+  - setvariable{var=caster.lunge;value=0} @self ~onSpawn
+  - skill{s=Deserter} @self ~onTimer:2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin scarhoe setCustomName "&e[&633&e] &cDeserter" setDynamicName true
+    
+GolemLord:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cGolem Lord'
+  Health: 2500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lGolem Lord'
+    Health: 2500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 5
+  Skills:
+  - skill{s=GolemLord-drop} @trigger ~onDeath
+  - skill{s=SummonGolems} @self ~onTimer:320
+  - skill{s=GolemMeteor} @PIR{r=40} ~onTimer:240
+  - skill{s=GolemMeteorTarget} @self ~onTimer:240
+  - skill{s=StoneFist} @target ~onTimer:100
+  - skill{s=GetThemArchers} @trigger ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+  Disguise: VINDICATOR
+
+FallingStone:
+  Type: BABY_ZOMBIE
+  Display: '&fStone Meteor'
+  Health: 10
+  Damage: 50
+  Modules:
+    ThreatTable: true
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=StoneHit} @PIR{r=2} ~onTimer:1
+  - skill{s=StoneDeath} @self ~onSpawn
+  Disguise: FALLING_BLOCK STONE
+    
+StoneGolemCanyon:
+  Type: ZOMBIE
+  Display: '&e[&630&e] &cStone Golem'
+  Health: 80
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 8
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 12 <mob.l.x> <mob.l.y> <mob.l.z> 30"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin ParaDiceRaider setCustomName "&e[&630&e] &cStone Golem" setDynamicName true

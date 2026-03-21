@@ -1,0 +1,4 @@
+cooldown: 8
+duration: 1
+hits-required: 3
+threshold: 3 

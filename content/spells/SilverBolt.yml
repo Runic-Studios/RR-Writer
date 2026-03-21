@@ -1,0 +1,8 @@
+cooldown: 8
+distance: 8
+duration: 3
+magic-damage: 2
+magic-damage-per-level: 0.3
+mana: 20
+physical-damage: 5
+physical-damage-per-level: 1

@@ -1,0 +1,1197 @@
+praetorium-melee:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cImperial Fighter'
+  Health: 935
+  Damage: 70
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 675 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath 1.0
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-60} @trigger ~onDeath
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.15
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.02
+  - skill{s=praetorium-melee-parry} @self ~onDamaged .25
+  - skill{s=praetorium-melee-throw} @self ~onTimer:20
+  - skill{s=praetorium-melee-shock} @self ~onTimer:20
+  - skill{s=praetorium-melee-parry-active} @self ~onDamaged
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin vuwarrior setCustomName "&e[&660&e] &cImperial Fighter" setDynamicName true
+
+praetorium-melee-shock-visual:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=praetorium-melee-shock-visual} @self ~onSpawn
+
+praetorium-altar:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: false
+    Marker: true
+  Skills:
+  #- message{m="<caster.var.altar>"} @PIR{r=32} ~onTimer:20
+  - remove @MIR{t=praetorium-altar-timer,praetorium-altar-archer,praetorium-altar-cleric,praetorium-altar-mage,praetorium-altar-rogue,praetorium-altar-warrior;r=256} ~onSpawn
+  - skill{s=praetorium-altar-completion} @self ~onTimer:20
+  - setvariable{var=caster.archer;value=0} @self ~onSpawn
+  - setvariable{var=caster.cleric;value=0} @self ~onSpawn
+  - setvariable{var=caster.mage;value=0} @self ~onSpawn
+  - setvariable{var=caster.rogue;value=0} @self ~onSpawn
+  - setvariable{var=caster.warrior;value=0} @self ~onSpawn
+  - setvariable{var=caster.archer;value=1} @self ~onSignal:archer
+  - setvariable{var=caster.cleric;value=1} @self ~onSignal:cleric
+  - setvariable{var=caster.mage;value=1} @self ~onSignal:mage
+  - setvariable{var=caster.rogue;value=1} @self ~onSignal:rogue
+  - setvariable{var=caster.warrior;value=1} @self ~onSignal:warrior
+  - message{m="&6Imperial &eArcher &r&6has been defeated."} @PIR{r=48} ~onSignal:archer
+  - message{m="&6Imperial &aCleric &r&6has been defeated."} @PIR{r=48} ~onSignal:cleric
+  - message{m="&6Imperial &9Mage &r&6has been defeated."} @PIR{r=48} ~onSignal:mage
+  - message{m="&6Imperial &cRogue &r&6has been defeated."} @PIR{r=48} ~onSignal:rogue
+  - message{m="&6Imperial &fWarrior &r&6has been defeated."} @PIR{r=48} ~onSignal:warrior
+  - setvariable{var=caster.forfeit;value=1} @self ~onSpawn
+  - setvariable{var=caster.altar;value=1} @self ~onSpawn
+  - skill{s=praetorium-altar} @self ~onInteract
+  - skill{s=praetorium-altar-active} @self ~onInteract
+  - skill{s=praetorium-altar-forfeit} @self ~onTimer:20
+  - setvariable{var=target.leash;value=0} @trigger ~onSignal:leash
+  Disguise: FALLING_BLOCK BOOKSHELF
+
+praetorium-altar-timer:
+  Type: armor_stand
+  Display: '&f300'
+  Health: 10
+  Options:
+    Invisible: true
+    Marker: true
+    AlwaysShowName: true
+  Skills:
+  - setname{name=<caster.var.time>} @self ~onTimer:20
+  - setvariable{var=target.time;value=300} @self ~onSpawn
+  - variablesubtract{var=caster.time;amount=1} @self ~onTimer:20
+  - damage{a=1;i=true} @self ~onTimer:20
+  - remove{delay=6000} @self ~onSpawn
+
+praetorium-archer:
+  Type: SKELETON
+  Display: '&e[&6☠&e] &cImperial Archer'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BOW HAND
+  - CHAINMAIL_HELMET HEAD
+  - CHAINMAIL_CHESTPLATE CHEST
+  - CHAINMAIL_LEGGINGS LEGS
+  - CHAINMAIL_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lImperial Archer'
+    Health: 12500
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop praetorium-archer-artifact <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.01
+  - command{c="ri drop praetorium-archer-skull <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop praetorium-archer-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-archer-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-archer-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-archer-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - skill{s=praetorium-archer-lunge} @self ~onTimer:20
+  - skill{s=praetorium-archer-explosive} @self ~onTimer:20
+  - skill{s=praetorium-archer-barrage} @self ~onTimer:20
+  - skill{s=praetorium-archer-roll} @self ~onDamaged
+  - skill{s=praetorium-cleric-buff} @self ~onSignal:buff
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin UgoFoscolo setCustomName "&e[&6☠&e] &cArcher" setDynamicName true
+
+praetorium-archer-explosive-proj-damage:
+  Type: armor_stand
+  Skills:
+  - skill{s=praetorium-archer-explosive-proj-damage} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+praetorium-cleric:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImperial Cleric'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - STONE_SHOVEL HAND
+  - GOLDEN_HELMET HEAD
+  - GOLDEN_CHESTPLATE CHEST
+  - GOLDEN_LEGGINGS LEGS
+  - GOLDEN_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lImperial Cleric'
+    Health: 12500
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop praetorium-cleric-artifact <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.01
+  - command{c="ri drop praetorium-cleric-skull <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop praetorium-cleric-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-cleric-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-cleric-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-cleric-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - skill{s=praetorium-cleric-jukebox} @self ~onTimer:20
+  - skill{s=praetorium-cleric-discord} @self ~onTimer:20
+  - skill{s=praetorium-cleric-spring} @target ~onTimer:20
+  - skill{s=praetorium-cleric-buff} @self ~onSignal:buff
+  - skill{s=praetorium-cleric-leap} @self ~onSignal:leap
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Mimimimo setCustomName "&e[&6☠&e] &cCleric" setDynamicName true
+
+praetorium-cleric-spring:
+  Type: armor_stand
+  Skills:
+  - skill{s=praetorium-cleric-springcast} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+praetorium-cleric-spawn:
+  Type: SKELETON
+  Display: '&e[&660&e] &cRisen Corpse'
+  Health: 750
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 25
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+  Skills:
+  - skill{s=praetorium-cleric-spawn-buff} @self ~onSignal:buff
+  - skill{s=praetorium-cleric-spawn-remove} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+praetorium-cleric-jukebox:
+  Type: ZOMBIE
+  Display: ''
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=praetorium-cleric-jukeboxcast} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK JUKEBOX
+
+
+praetorium-mage:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImperial Mage'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - WOODEN_HOE HAND
+  - STONE_HOE OFFHAND
+  - DIAMOND_HELMET HEAD
+  - DIAMOND_CHESTPLATE CHEST
+  - DIAMOND_LEGGINGS LEGS
+  - DIAMOND_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lImperial Mage'
+    Health: 12500
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop praetorium-mage-artifact <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.01
+  - command{c="ri drop praetorium-mage-skull <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop praetorium-mage-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-mage-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-mage-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-mage-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - skill{s=praetorium-mage-blink} @target ~onTimer:20
+  - skill{s=praetorium-mage-meteor-cast} @target ~onTimer:20
+  - skill{s=praetorium-mage-freeze-cast} @target ~onTimer:20
+  - skill{s=praetorium-cleric-buff} @self ~onSignal:buff
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Baas_B_ setCustomName "&e[&6☠&e] &cMage" setDynamicName true
+  
+praetorium-mage-meteor:
+  Type: armor_stand
+  Skills:
+  - skill{s=praetorium-mage-meteor} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+praetorium-mage-meteor-damage:
+  Type: armor_stand
+  Skills:
+  - skill{s=praetorium-mage-meteor-damage} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  
+praetorium-mage-freeze:
+  Type: armor_stand
+  Skills:
+  - skill{s=praetorium-mage-freeze} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  
+praetorium-rogue:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImperial Rogue'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_SWORD HAND
+  - STONE_SWORD OFFHAND
+  - LEATHER_HELMET HEAD
+  - LEATHER_CHESTPLATE CHEST
+  - LEATHER_LEGGINGS LEGS
+  - LEATHER_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lImperial Rogue'
+    Health: 12500
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop praetorium-rogue-artifact <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.01
+  - command{c="ri drop praetorium-rogue-skull <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop praetorium-rogue-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-rogue-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-rogue-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-rogue-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - skill{s=praetorium-rogue-assassinate} @self ~onTimer:20
+  - skill{s=praetorium-rogue-leap} @self ~onTimer:20
+  - skill{s=praetorium-rogue-stab} @self ~onTimer:20
+  - setvariable{var=caster.leap;value=1} @self ~onSpawn
+  - setvariable{var=caster.stab;value=1} @self ~onSpawn
+  - skill{s=praetorium-cleric-buff} @self ~onSignal:buff
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin TheRedRomanGames setCustomName "&e[&6☠&e] &cRogue" setDynamicName true
+
+praetorium-rogue-stab-minor-cast:
+  Type: armor_stand
+  Skills:
+  - skill{s=praetorium-rogue-stab-minor-cast} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+praetorium-rogue-stab-major-cast:
+  Type: armor_stand
+  Skills:
+  - skill{s=praetorium-rogue-stab-major-cast} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+praetorium-warrior:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImperial Warrior'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 60
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_AXE HAND
+  - SHIELD OFFHAND
+  - IRON_HELMET HEAD
+  - IRON_CHESTPLATE CHEST
+  - IRON_LEGGINGS LEGS
+  - IRON_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lImperial Warrior'
+    Health: 12500
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.slam;value=0} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop praetorium-warrior-artifact <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.01
+  - command{c="ri drop praetorium-warrior-skull <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop praetorium-warrior-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-warrior-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-warrior-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-warrior-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - skill{s=praetorium-warrior-slam} @self ~onTimer:20 >20%
+  - skill{s=praetorium-warrior-axe} @target ~onTimer:20 >20%
+  - skill{s=praetorium-warrior-quake} @self ~onTimer:20
+  - skill{s=praetorium-warrior-berserk} @self ~onTimer:20 <20%
+  - skill{s=praetorium-warrior-berserk-slam} @self ~onTimer:20 <20%
+  - skill{s=praetorium-warrior-berserk-axe} @self ~onTimer:20 <20%
+  - skill{s=praetorium-warrior-berserk-quake} @self ~onTimer:20 <20%
+  - skill{s=praetorium-cleric-buff} @self ~onSignal:buff
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin orzo41 setCustomName "&e[&6☠&e] &cWarrior" setDynamicName true
+
+praetorium-warrior-quake-damage:
+  Type: armor_stand
+  Skills:
+  - skill{s=praetorium-warrior-quake-damage} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+
+
+
+praetorium-altar-archer:
+  Type: SKELETON
+  Display: '&e[&6☠&e] &cImperial Archer'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BOW HAND
+  - CHAINMAIL_HELMET HEAD
+  - CHAINMAIL_CHESTPLATE CHEST
+  - CHAINMAIL_LEGGINGS LEGS
+  - CHAINMAIL_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lImperial Archer'
+    Health: 12500
+    Range: 10
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=archer} @MIR{t=praetorium-altar;r=128} ~onDeath
+  - skill{s=praetorium-threat} @target ~onTimer:20
+  - setvariable{var=caster.leash;value=0} @self ~onSpawn
+  - remove{delay=6000} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath
+  #- command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop praetorium-archer-artifact <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.20
+  - command{c="ri drop praetorium-archer-skull <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"} @trigger ~onDeath 1
+  #- command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop praetorium-archer-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-archer-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-archer-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-archer-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - skill{s=praetorium-archer-lunge} @self ~onTimer:20
+  - skill{s=praetorium-archer-explosive} @self ~onTimer:20
+  - skill{s=praetorium-archer-barrage} @self ~onTimer:20
+  - skill{s=praetorium-archer-roll} @self ~onDamaged
+  - skill{s=praetorium-cleric-buff} @self ~onSignal:buff
+  - skill{s=praetorium-altar-leash} @self ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin UgoFoscolo setCustomName "&e[&6☠&e] &cArcher" setDynamicName true
+
+praetorium-altar-cleric:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImperial Cleric'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - STONE_SHOVEL HAND
+  - GOLDEN_HELMET HEAD
+  - GOLDEN_CHESTPLATE CHEST
+  - GOLDEN_LEGGINGS LEGS
+  - GOLDEN_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lImperial Cleric'
+    Health: 12500
+    Range: 10
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=cleric} @MIR{t=praetorium-altar;r=128} ~onDeath
+  - skill{s=praetorium-threat} @target ~onTimer:20
+  - setvariable{var=caster.leash;value=0} @self ~onSpawn
+  - remove{delay=6000} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath
+  #- command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop praetorium-cleric-artifact <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.20
+  - command{c="ri drop praetorium-cleric-skull <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"} @trigger ~onDeath 1
+  #- command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop praetorium-cleric-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-cleric-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-cleric-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-cleric-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - skill{s=praetorium-cleric-jukebox} @self ~onTimer:20
+  - skill{s=praetorium-cleric-discord} @self ~onTimer:20
+  - skill{s=praetorium-cleric-spring} @target ~onTimer:20
+  - skill{s=praetorium-cleric-buff} @self ~onSignal:buff
+  - skill{s=praetorium-cleric-leap} @self ~onSignal:leap
+  - skill{s=praetorium-altar-leash} @self ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Mimimimo setCustomName "&e[&6☠&e] &cCleric" setDynamicName true
+
+praetorium-altar-mage:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImperial Mage'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - WOODEN_HOE HAND
+  - STONE_HOE OFFHAND
+  - DIAMOND_HELMET HEAD
+  - DIAMOND_CHESTPLATE CHEST
+  - DIAMOND_LEGGINGS LEGS
+  - DIAMOND_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lImperial Mage'
+    Health: 12500
+    Range: 10
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=mage} @MIR{t=praetorium-altar;r=128} ~onDeath
+  - skill{s=praetorium-threat} @target ~onTimer:20
+  - setvariable{var=caster.leash;value=0} @self ~onSpawn
+  - remove{delay=6000} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath
+  #- command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop praetorium-mage-artifact <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.20
+  - command{c="ri drop praetorium-mage-skull <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"} @trigger ~onDeath 1
+  #- command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop praetorium-mage-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-mage-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-mage-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-mage-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - skill{s=praetorium-mage-blink} @target ~onTimer:20
+  - skill{s=praetorium-mage-meteor-cast} @target ~onTimer:20
+  - skill{s=praetorium-mage-freeze-cast} @target ~onTimer:20
+  - skill{s=praetorium-cleric-buff} @self ~onSignal:buff
+  - skill{s=praetorium-altar-leash} @self ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Baas_B_ setCustomName "&e[&6☠&e] &cMage" setDynamicName true
+
+praetorium-altar-rogue:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImperial Rogue'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_SWORD HAND
+  - STONE_SWORD OFFHAND
+  - LEATHER_HELMET HEAD
+  - LEATHER_CHESTPLATE CHEST
+  - LEATHER_LEGGINGS LEGS
+  - LEATHER_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lImperial Rogue'
+    Health: 12500
+    Range: 10
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=rogue} @MIR{t=praetorium-altar;r=128} ~onDeath
+  - skill{s=praetorium-threat} @target ~onTimer:20
+  - setvariable{var=caster.leash;value=0} @self ~onSpawn
+  - remove{delay=6000} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath
+  #- command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop praetorium-rogue-artifact <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.20
+  - command{c="ri drop praetorium-rogue-skull <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"} @trigger ~onDeath 1
+  #- command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop praetorium-rogue-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-rogue-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-rogue-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-rogue-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - skill{s=praetorium-rogue-assassinate} @self ~onTimer:20
+  - skill{s=praetorium-rogue-leap} @self ~onTimer:20
+  - skill{s=praetorium-rogue-stab} @self ~onTimer:20
+  - setvariable{var=caster.leap;value=1} @self ~onSpawn
+  - setvariable{var=caster.stab;value=1} @self ~onSpawn
+  - skill{s=praetorium-cleric-buff} @self ~onSignal:buff
+  - skill{s=praetorium-altar-leash} @self ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin TheRedRomanGames setCustomName "&e[&6☠&e] &cRogue" setDynamicName true
+
+praetorium-altar-warrior:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImperial Warrior'
+  Health: 12500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 60
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_AXE HAND
+  - SHIELD OFFHAND
+  - IRON_HELMET HEAD
+  - IRON_CHESTPLATE CHEST
+  - IRON_LEGGINGS LEGS
+  - IRON_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lImperial Warrior'
+    Health: 12500
+    Range: 10
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.slam;value=0} @self ~onSpawn
+  - signal{s=warrior} @MIR{t=praetorium-altar;r=128} ~onDeath
+  - skill{s=praetorium-threat} @target ~onTimer:20
+  - setvariable{var=caster.leash;value=0} @self ~onSpawn
+  - remove{delay=6000} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 60"} @trigger ~onDeath
+  #- command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath
+  - command{c="ri drop praetorium-warrior-artifact <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.20
+  - command{c="ri drop praetorium-warrior-skull <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .025
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"} @trigger ~onDeath 1
+  #- command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - command{c="ri drop praetorium-warrior-helm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-warrior-chest <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-warrior-leggings <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop praetorium-warrior-boots <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.0025
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - skill{s=praetorium-warrior-slam} @self ~onTimer:20 >20%
+  - skill{s=praetorium-warrior-axe} @target ~onTimer:20 >20%
+  - skill{s=praetorium-warrior-quake} @self ~onTimer:20
+  - skill{s=praetorium-warrior-berserk} @self ~onTimer:20 <20%
+  - skill{s=praetorium-warrior-berserk-slam} @self ~onTimer:20 <20%
+  - skill{s=praetorium-warrior-berserk-axe} @self ~onTimer:20 <20%
+  - skill{s=praetorium-warrior-berserk-quake} @self ~onTimer:20 <20%
+  - skill{s=praetorium-cleric-buff} @self ~onSignal:buff
+  - skill{s=praetorium-altar-leash} @self ~onTimer:200
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin orzo41 setCustomName "&e[&6☠&e] &cWarrior" setDynamicName true
+
+
+
+PraetoriumLectern1:
+  Type: armor_stand
+  Display: '&aWar Lectern'
+  Health: 10
+  Damage: 0
+  Skills:
+  - skill{s=LecternTrigger1} ~onInteract
+  - skill{s=LecternAura} ~onTimer:100
+  Options:
+    Invisible: false
+    HasGravity: true
+    Marker: false
+    Invincible: true
+  Disguise: FALLING_BLOCK LECTERN
+PraetoriumLectern2:
+  Type: armor_stand
+  Display: '&aWar Lectern'
+  Health: 10
+  Damage: 0
+  Skills:
+  - skill{s=LecternTrigger2} ~onInteract
+  - skill{s=LecternAura} ~onTimer:100
+  Options:
+    Invisible: false
+    HasGravity: true
+    Marker: false
+    Invincible: true
+  Disguise: FALLING_BLOCK LECTERN
+PraetoriumLectern3:
+  Type: armor_stand
+  Display: '&aWar Lectern'
+  Health: 10
+  Damage: 0
+  Skills:
+  - skill{s=LecternTrigger3} ~onInteract
+  - skill{s=LecternAura} ~onTimer:100
+  Options:
+    Invisible: false
+    HasGravity: true
+    Marker: false
+    Invincible: true
+  Disguise: FALLING_BLOCK LECTERN
+PraetoriumLectern4:
+  Type: armor_stand
+  Display: '&aWar Lectern'
+  Health: 10
+  Damage: 0
+  Skills:
+  - skill{s=LecternTrigger4} ~onInteract
+  - skill{s=LecternAura} ~onTimer:100
+  Options:
+    Invisible: false
+    HasGravity: true
+    Marker: false
+    Invincible: true
+  Disguise: FALLING_BLOCK LECTERN
+PraetoriumLectern5:
+  Type: armor_stand
+  Display: '&aWar Lectern'
+  Health: 10
+  Damage: 0
+  Skills:
+  - skill{s=LecternTrigger5} ~onInteract
+  - skill{s=LecternAura} ~onTimer:100
+  Options:
+    Invisible: false
+    HasGravity: true
+    Marker: false
+    Invincible: true
+  Disguise: FALLING_BLOCK LECTERN
+PraetoriumLectern6:
+  Type: armor_stand
+  Display: '&aWar Lectern'
+  Health: 10
+  Damage: 0
+  Skills:
+  - skill{s=LecternTrigger6} ~onInteract
+  - skill{s=LecternAura} ~onTimer:100
+  Options:
+    Invisible: false
+    HasGravity: true
+    Marker: false
+    Invincible: true
+  Disguise: FALLING_BLOCK LECTERN
+
+PraetoriumTest:
+  Type: armor_stand
+  Display: '&aTest'
+  Health: 10
+  Damage: 0
+  Skills:
+  - skill{s=timerCheck} ~onInteract @self
+  - skill{s=timerStart} ~onSpawn @self
+  - setvariable{var=caster.count;value=0} @self ~onSpawn 
+  Options:
+    Invisible: false
+    HasGravity: true
+    #Marker: false
+    Invincible: true
+  Disguise: FALLING_BLOCK LECTERN
+
+MusicPlayer:
+  Type: armor_stand
+  Display: '&aPlayer'
+  Health: 10
+  Damage: 0
+  Skills:
+  - skill{s=startListen} ~onInteract @self
+  - setvariable{var=caster.tempValue;value="0"} @self ~onSpawn
+  - setvariable{var=caster.playing;value="0"} @self ~onSpawn
+  - skill{s=check1} ~onSignal:check1 @self
+  - skill{s=check2} ~onSignal:check2 @self
+  - skill{s=check3} ~onSignal:check3 @self
+  - remove @self ~onSignal:endMusic
+  Options:
+    Invisible: false
+    HasGravity: true
+    #Marker: false
+    Invincible: true
+  
+MusicBlock1:
+  Type: armor_stand
+  Display: '&a1'
+  Health: 10
+  Damage: 0
+  Skills:
+  - signal{s=check1} ~onInteract @EIR{r=10;target=armorstands}
+  - skill{s=playNote1} ~onSignal:play1 @self
+  - remove @self ~onSignal:endMusic
+  Options:
+    Invincible: true
+  Disguise: FALLING_BLOCK NOTE_BLOCK
+MusicBlock2:
+  Type: armor_stand
+  Display: '&a2'
+  Health: 10
+  Damage: 0
+  Skills:
+  - signal{s=check2} ~onInteract @EIR{r=10;target=armorstands}
+  - skill{s=playNote2} ~onSignal:play2 @self
+  - remove @self ~onSignal:endMusic
+  Options:
+    Invincible: true
+  Disguise: FALLING_BLOCK NOTE_BLOCK
+MusicBlock3:
+  Type: armor_stand
+  Display: '&a3'
+  Health: 10
+  Damage: 0
+  Skills:
+  - signal{s=check3} ~onInteract @EIR{r=10;target=armorstands}
+  - skill{s=playNote3} ~onSignal:play3 @self
+  - remove @self ~onSignal:endMusic
+  Options:
+    Invincible: true
+  Disguise: FALLING_BLOCK NOTE_BLOCK
+  
+Imperial-Bowman:
+  Type: SKELETON
+  Display: '&e[&660&e] &cImperial Bowman'
+  Health: 400
+  Modules:
+    ThreatTable: true
+  Damage: 45
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - randomskill{s=g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-60} @trigger ~onDeath
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.15
+  - command{c="ri drop imperial-flask <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.02
+  - skill{s=Imperial-Bowman} @self ~onTimer:5
+  - skill{s=Imperial-Bowman-speed} @self ~onTimer:5
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin vuwarrior setCustomName "&e[&660&e] &cImperial Bowman" setDynamicName true
+  
+naz''mora-warriorCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=naz''mora-warrior;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=naz''mora-warrior;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=naz''mora-warrior2;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=naz''mora-warrior2;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  
+  
+naz''mora-warrior:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aNaz''mora Warrior'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m="&aNaz''mora Warrior<&co> &eReady for war?"} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=naz''mora-warriorCSA} ~onDeath
+  Disguise: player Steve setSkin Originary setCustomName "&e[&61&e] &aNaz" setDynamicName true
+
+naz''mora-warrior2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aNaz''mora Warrior'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m="&aNaz''mora Warrior<&co> &eReady for War?"} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=naz''mora-warriorCSA} ~onDeath
+  Disguise: player Steve setSkin Originary setCustomName "&e[&61&e] &aNaz" setDynamicName true
+  
+  
+Imperial-Cavalry:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImperial Cavalry'
+  Health: 2500
+  Modules:
+    ThreatTable: true
+  Damage: 15
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 25 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+  - command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - randomskill{s=g3,g4} @trigger ~onDeath 1
+  - skill{s=drop-level-60} @trigger ~onDeath
+  - throw{velocity=5;velocityY=3} @PlayersInRadius{r=5} ~onAttack .2
+  - effect:particles{particle=wax_on;amount=7;vSpread=1;hSpread=1;Speed=.01;yOffset=1.5} @Self ~onTimer:30
+  - effect:particles{particle=largesmoke;amount=2;vSpread=0.5;hSpread=0.5;Speed=.01;yOffset=1.5} @Self ~onTimer:40
+  - summon{t=praetorium-melee;r=4;a=2} @self ~onEnterCombat
+  - mount{t=Imperial-Cavalry-Mount} ~onSpawn
+  - skill{s=Imperial-Bowman} @self ~onTimer:5
+  - remove @MIR{t=Imperial-Cavalry-Mount;r=3} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin vuwarrior setCustomName "&e[&6☠&e] &cBlack Rider" setDynamicName true
+  
+Imperial-Cavalry-Mount:
+  Type: SKELETON
+  Health: 2000
+  Modules:
+    ThreatTable: true
+  Damage: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Options:
+    Saddled: true
+    Tamed: true
+    Silent: true
+    MovementSpeed: 0.28
+    MaxCombatDistance: 25
+    PreventOtherDrops: true
+    PreventBlockInfection: true
+  Disguise: HORSE
+  
+
+
+
+  

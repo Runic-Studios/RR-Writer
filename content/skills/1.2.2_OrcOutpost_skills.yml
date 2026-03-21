@@ -1,0 +1,72 @@
+HobgoblinBeast-charge:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{type=SLOW;duration=60;level=2;hasParticles=false} 
+  - sound{s=block.grass.break}
+  - delay 10
+  - sound{s=block.grass.break}
+  - delay 10
+  - sound{s=block.grass.break}
+  - delay 10
+  - sound{s=block.grass.break}
+  - delay 10
+  - jump{v=0.5}
+  - delay 2
+  - leap{velocity=1000} @target
+  - summon{t=HobgoblinBeast-marker;a=1;os=true} 
+  - delay 2
+  - summon{t=HobgoblinBeast-marker;a=1;os=true} 
+  - delay 2
+  - summon{t=HobgoblinBeast-marker;a=1;os=true} 
+  - delay 2
+  - summon{t=HobgoblinBeast-marker;a=1;os=true} 
+  - delay 2
+  - summon{t=HobgoblinBeast-marker;a=1;os=true} 
+  - delay 2
+  - summon{t=HobgoblinBeast-marker;a=1;os=true} 
+
+HobgoblinBeast-marker:
+  Skills:
+  - potion{t=SLOW;d=160;l=1} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - sound{s=block.grass.break;p=1} 
+  - blockmask{m=dirt;d=40;r=5}
+  - delay 40
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=1}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=2}
+  - effect:particlering{p=block_crack;m=dirt;a=2;vs=0.5;hs=0.5;s=0;y=0;points=12;radius=3}
+  - sound{s=block.grass.break;p=.5} 
+  - potion{t=SLOW;d=160;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=5}
+  - remove
+
+hobSmashcheckwithin:
+  Conditions:
+  - playerwithin 6
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.hob;amount=1}	 
+hobSmashchecknotwithin:
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - setvariable{var=caster.hob;value=0}
+hobSmash:
+  Conditions:
+  - varinrange{var=caster.hob;value=>5}
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - setvariable{var=caster.tnt;value=0}
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - cast{skillName="Hob Smash";duration=40;onCast=hobSmashCast;showCastBar=true} @self
+hobSmashCast:
+  Skills:
+  - throw{vy=12} @PIR{r=5}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=5}
+  - sound{s=block.grass.break} 
+  - blockmask{m=dirt;d=40;r=5}

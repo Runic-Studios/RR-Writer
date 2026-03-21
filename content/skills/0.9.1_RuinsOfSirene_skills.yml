@@ -1,0 +1,313 @@
+WitheredElf-elite-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - sound{s=block.grass.break;v=2}
+  - randomskill{skills=WitheredElf-elite-skill-within,WitheredElf-elite-skill-notwithin}
+WitheredElf-elite-skill-within:
+  Conditions:
+  - playerwithin 12
+  Skills:
+  - summon{t=WitheredElf-elite-rose;r=8;a=12;os=true} 
+WitheredElf-elite-skill-notwithin:
+  Conditions:
+  - playernotwithin 12
+  - playerwithin 64
+  Skills:
+  - summon{t=WitheredElf-elite-rose;r=8;a=12;os=true} @target
+
+WitheredElf-elite:
+  Skills:
+  - sound{s=block.grass.break;v=3}
+  - effect:particlesphere{p=reddust;c=#505050;amount=4;radius=2;yOffset=.5} 
+  - message{cooldown=60;m="&e[&6✸&e] &c&lCorrupted Greater Elf &e&lhas been challenged!"} @PIR{r=32}
+  - cast{skillName="Despawn";duration=3000;onCast=WitheredElf-elite-despawn;showCastBar=true}
+WitheredElf-elite-despawn:
+  Skills:
+  - sound{s=block.grass.break;v=3}
+  - effect:particlesphere{p=reddust;c=#505050;amount=4;radius=2;yOffset=.5} 
+  - message{cooldown=60;m="&e[&6✸&e] &c&lCorrupted Greater Elf &e&lhas despawned!"} @PIR{r=32}
+  - remove
+
+WitheredElf-elite-rose:
+  Skills:
+  - delay 20
+  - skill{s=WitheredElf-elite-rose2}
+  - delay 300
+  - summon{t=WitheredElf-elite-spawn} .25
+  - remove
+WitheredElf-elite-rose2:
+  Skills:
+  - potion{t=SLOW;d=40;l=2} @PIR{r=4}
+  - effect:particlesphere{p=reddust;c=#505050;amount=3;radius=4;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - delay 20
+  - skill{s=WitheredElf-elite-rose2}
+
+Axel-onSpawn:
+  Skills:
+  - setvariable{var=caster.active;value=0} 
+  - setvariable{var=caster.rage;value=0} 
+
+Axel-ghoul:
+  Skills:
+  - skill{s=Axel-ghoul1} <100%
+  - skill{s=Axel-ghoul2} <66%
+  - skill{s=Axel-ghoul3} <33%
+
+Axel-ghoul1:
+  Cooldown: 9999
+  Skills:
+#  - message{m="&cAxel<&co> &eI shall not fall before my servants."} @PIR{r=12}
+  - summon{t=Axel-range;a=2;r=5;os=true}
+  - summon{t=Axel-melee;a=2;r=5;os=true}
+Axel-ghoul2:
+  Cooldown: 9999
+  Skills:
+#  - message{m="&cAxel<&co> &eI shall not fall before my servants."} @PIR{r=12}
+  - summon{t=Axel-range;a=1;r=5;os=true}
+  - summon{t=Axel-melee;a=2;r=5;os=true}
+Axel-ghoul3:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.active;value=1}
+#  - message{m="&cAxel<&co> &eI shall not fall before my servants."} @PIR{r=12}
+  - summon{t=Axel-melee;a=2;r=5;os=true}
+
+Axel-add:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - variableadd{var=caster.rage;amount=1}	  
+
+Axel-rage:
+  Conditions:
+  - varinrange{var=caster.rage;value=>1}
+  Cooldown: 9999
+  Skills:
+  - potion{t=SPEED;d=9999;l=2;hasParticles=false} 
+
+Axel-heal:
+  Cooldown: 2
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - heal{a=100;i=true}
+  - effect:sound{s=entity.experience_orb.pickup;pitch=0.5}
+  - effect:particles{p=HAPPY_VILLAGER;amount=3;vSpread=1;hSpread=.5;Speed=0;yOffset=0} @self
+
+Axel-wither2:
+  Conditions:
+  - incombat{}
+  - varinrange{var=caster.rage;value=>1}
+  Cooldown: 12
+  Skills: 
+  - potion{t=SLOW;d=140;l=10;hasParticles=false}
+  - cast{skillName="Withering Breath";duration=40;onCast=Axel-withercast;showCastBar=true}
+
+Axel-wither:
+  Skills:
+  - skill{s=Axel-wither1}
+  - skill{s=Axel-wither2}
+
+Axel-wither1:
+  Conditions:
+  - incombat{}
+  - varinrange{var=caster.rage;value=<2}
+  Cooldown: 16
+  Skills: 
+  - potion{t=SLOW;d=140;l=10;hasParticles=false}
+  - cast{skillName="Withering Breath";duration=40;onCast=Axel-withercast;showCastBar=true}
+Axel-withercast:
+  Skills:
+  - setAI{ai=false}
+  - summon{t=Axel-marker} @Forward{f=4;y=0}
+  - delay 100
+  - setAI{ai=true}
+Axel-marker:
+  Skills:
+  - effect:blockmask{m=coal_block;r=4;d=100} @self
+  - effect:particlesphere{p=reddust;c=#505050;amount=24;radius=4} 
+  - delay 20
+  - potion{t=SLOW;d=40;l=2} @PIR{r=4}
+  - effect:particlesphere{p=reddust;c=#505050;amount=24;radius=4} 
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - delay 20
+  - potion{t=SLOW;d=40;l=2} @PIR{r=4}
+  - effect:particlesphere{p=reddust;c=#505050;amount=24;radius=4} 
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - delay 20
+  - potion{t=SLOW;d=40;l=2} @PIR{r=4}
+  - effect:particlesphere{p=reddust;c=#505050;amount=24;radius=4} 
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - delay 20
+  - potion{t=SLOW;d=40;l=2} @PIR{r=4}
+  - effect:particlesphere{p=reddust;c=#505050;amount=24;radius=4} 
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  
+
+ElvenSpirit:
+  Conditions:
+  - playerwithin 4
+  Cooldown: 6
+  Skills:
+  - leap{v=200} @target
+  - sound{s=entity.enderman.scream}
+  - potion{t=BLINDNESS;duration=40;l=1} @PIR{r=4}
+  - potion{t=SLOW;duration=40;l=1} @PIR{r=4}
+
+WitheredElf:
+  Cooldown: 10
+  Skills:
+  - delay 80
+  - randomskill{s=WitheredElfPlant,WitheredElfToss} 
+WitheredElfPlant:
+  Conditions:
+  - playerwithin 6
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - cast{skillName="Withered Rose";duration=40;onCast=WitheredElfPlantCast;showCastBar=true}
+  - delay 20
+  - potion{t=SLOW;d=40;l=10;hasParticles=false} 
+WitheredElfPlantCast:
+  Skills:
+  - sound{s=block.grass.place}
+  - summon{t=WitheredElfRose;r=2} 
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - delay 20
+  - potion{t=SLOW;d=40;l=10;hasParticles=false} 
+  - delay 20
+  - sound{s=block.grass.place}
+  - summon{t=WitheredElfRose;r=2} 
+WitheredElfToss:
+  Conditions:
+  - playernotwithin 6
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - cast{skillName="Withered Rose";duration=40;onCast=WitheredElfTossCast;showCastBar=true}
+  - delay 20
+  - potion{t=SLOW;d=40;l=10;hasParticles=false} 
+WitheredElfTossCast:
+  Skills:  
+  - sound{s=block.grass.place}
+  - summon{t=WitheredElfRoseToss} 
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - delay 20
+  - potion{t=SLOW;d=60;l=10;hasParticles=false} 
+  - delay 20
+  - sound{s=block.grass.place}
+  - summon{t=WitheredElfRoseToss} 
+WitheredElfRose:
+  Skills:
+  - delay 20
+  - skill{s=WitheredElfRose2} 
+  - delay 80
+  - remove
+WitheredElfRose2:
+  Skills:
+  - potion{t=SLOW;d=40;l=2} @PIR{r=4}
+  - effect:particlesphere{p=reddust;c=#505050;amount=8;radius=4;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 12"} @PIR{r=4}
+  - delay 10
+  - skill{s=WitheredElfRose2}
+WitheredElfRoseToss:
+  Skills:
+  - delay 10
+  - jump{velocity=0.5} @self
+  - delay 10
+  - leap{velocity=350} @NearestPlayer{r=20}
+  - skill{s=WitheredElfRose2}
+  - delay 80
+  - remove
+
+EarthlyRoot:
+  Conditions:
+  - incombat{}
+  Skills:
+  - projectile{ot=EarthlyRoot-Tick;oh=EarthlyRoot-Hit;v=12;i=1;hr=1;vr=1;hs=true;hfs=0.5;syo=0.1}
+
+EarthlyRoot-Tick:
+  Skills:
+  - effect:particles{p=reddust;a=1;c=#A57419} @origin
+
+EarthlyRoot-Hit:
+  Cooldown: 20
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 30"}
+  - prison{m=LARGE_FERN;d=60} @PlayersNearOrigin{r=3}
+  - skill{s=RunicStun}
+  - effect:sound{s=block.bamboo.place}
+
+LogMeteor:
+  Conditions:
+  - incombat{}
+  Skills:
+  - effect:sound{s=entity.firework_rocket.launch;v=0.8;p=0.01}
+  - effect:particles{p=reddust;color=#458B00;amount=20;hSpread=1;vSpread=1;speed=0;so=0}
+  - projectile{type=METEOR;onTick=LogMeteor-Tick;onEnd=LogMeteor-Hit;onHit=LogMeteor-Hit;v=7;i=1;hR=1;vR=1;mr=100;g=1.5;hfs=20} @PIR{r=30}
+
+LogMeteor-Tick:
+  Skills:
+  - effect:sound{s=block.ladder.place;v=2} @origin
+  - effect:blockmask{m=oak_log;d=20;r=0;n=0;na=false} @origin
+
+LogMeteor-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 200"}
+
+FeldruidProjectile:
+  Conditions:
+  - incombat{}
+  Skills:
+  - projectile{ot=FeldruidProjectile-Tick;oh=FeldruidProjectile-Hit;v=22;hr=1;vr=1;i=1}
+
+FeldruidProjectile-Tick:
+  Skills:
+  - effect:particles{p=reddust;a=1;c=#228B22} @origin
+
+FeldruidProjectile-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 30"}
+  #- skill{s=Root1s}
+
+FeldruidLevitate:
+  Conditions:
+  - incombat{}
+  Skills:
+  - projectile{ot=FeldruidLevitate-Tick;oh=FeldruidLevitate-Hit;v=18;hr=1;vr=1;i=1}
+
+FeldruidLevitate-Tick:
+  Skills:
+  - effect:particles{p=reddust;a=1;c=#ffb6c1} @origin
+
+FeldruidLevitate-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+  - potion{t=LEVITATION;d=80;l=1;p=true;i=false}
+
+FeldruidDodge:
+  Cooldown: 2
+  Skills:
+  - leap{v=300} @RLNTE{a=1;r=5;s=1;minr=3}
+
+FeldruidConsume:
+  Conditions:
+  - incombat{}
+  Skills:
+  - setstance{s=consuming}
+  - aura{auraName=FeldruidConsume;onTick=FeldruidConsume-Tick;interval=5;duration=100}
+
+FeldruidConsume-Tick:
+  Skills:
+  - skill{s=FeldruidConsumeCheck}
+
+FeldruidConsumeCheck:
+  Conditions:
+  - stance consuming
+  Skills:
+  #- consume{dmg=0.1;h=0.1} @PIR{r=30}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=30}
+  - heal{a=20}
+  - effect:particleline{p=reddust;c=#ff0000;a=1} @PIR{r=30}

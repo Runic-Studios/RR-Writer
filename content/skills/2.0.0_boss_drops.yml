@@ -1,0 +1,906 @@
+bossdrop-sebath:
+  Skills:
+  - randomskill{s=sebath-drop1,sebath-drop2,sebath-drop3,sebath-drop4,sebath-drop5}
+sebath-drop1:
+  Skills:
+  - command{c="ri drop sanguine-longbow <trigger.l.w>,<trigger.l.x>,<trigger.l.y>,<trigger.l.z> 1"} @trigger
+sebath-drop2:
+  Skills:
+  - command{c="ri drop crimson-maul <trigger.l.w>,<trigger.l.x>,<trigger.l.y>,<trigger.l.z> 1"} @trigger
+sebath-drop3:
+  Skills:
+  - command{c="ri drop bloodmoon <trigger.l.w>,<trigger.l.x>,<trigger.l.y>,<trigger.l.z> 1"} @trigger
+sebath-drop4:
+  Skills:
+  - command{c="ri drop scarlet-rapier <trigger.l.w>,<trigger.l.x>,<trigger.l.y>,<trigger.l.z> 1"} @trigger
+sebath-drop5:
+  Skills:
+  - command{c="ri drop corruption <trigger.l.w>,<trigger.l.x>,<trigger.l.y>,<trigger.l.z> 1"} @trigger
+
+bossdrop-codex:
+  Skills:
+  - randomskill{s=codex-drop1,codex-drop2,codex-drop3,codex-drop4,codex-drop5}
+codex-drop1:
+  Skills:
+  - command{c="ri drop codex-bow <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+codex-drop2:
+  Skills:
+  - command{c="ri drop codex-mace <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+codex-drop3:
+  Skills:
+  - command{c="ri drop codex-staff <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+codex-drop4:
+  Skills:
+  - command{c="ri drop codex-sword <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+codex-drop5:
+  Skills:
+  - command{c="ri drop codex-axe <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+golem-conjured-drop:
+  Skills:
+  - command{c="runicgive exp <trigger.name> 25000 <mob.l.x> <mob.l.y> <mob.l.z> 60"} #1000000
+  - command{c="ri drop heart-of-the-colossus <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 1.0 #guaranteed drop
+  - command{c="ri drop heart-of-the-colossus-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.0 #remove
+  - command{c="ri drop fire-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 15"} .75
+  - command{c="ri drop water-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 15"} .75 
+  - command{c="ri drop earth-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 15"} .75 
+  - command{c="ri drop void-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 15"} .75   
+  - command{c="ri drop light-crystal-fragment <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 15"} .75 
+  - command{c="ri drop fire-crystal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .5
+  - command{c="ri drop water-crystal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .5 
+  - command{c="ri drop earth-crystal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .5 
+  - command{c="ri drop void-crystal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .5 
+  - command{c="ri drop light-crystal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} .5 
+
+
+
+
+aquatic-conjured-drop:
+  Skills:
+  - skill{s=aquatic-azurite-drop}
+  - command{c="runicgive exp <trigger.name> 25000 <mob.l.x> <mob.l.y> <mob.l.z> 50"} #10000
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g3,g4}
+
+withertree-risen-drop:
+  Skills:
+  - skill{s=withertree-skull-drop} .25
+  - command{c="runicgive exp <trigger.name> 25000 <mob.l.x> <mob.l.y> <mob.l.z> 55"} #20000
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g3,g4}
+
+
+Noman-drop:
+  Skills:
+  #- command{c="guildmod give partyscore <caster.uuid> 500"} @self
+  - command{c="guildboss distributescore 500 <caster.uuid>"} @self
+  - command{c="runicgive exp <trigger.name> 25000 <mob.l.x> <mob.l.y> <mob.l.z> 60"} #1000000
+  - randomskill{s=Noman-guarenteearcher,Noman-guarenteecleric,Noman-guarenteemage,Noman-guarenteerogue,Noman-guarenteewarrior}
+  - skill{s=Noman-archer} .1
+  - skill{s=Noman-cleric} .1
+  - skill{s=Noman-mage} .1
+  - skill{s=Noman-rogue} .1
+  - skill{s=Noman-warrior} .1
+  - command{c="ri drop black-matter <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - randomskill{s=crimson-core1,crimson-core2,crimson-core3} .75
+  - randomskill{s=sapphirine-shard1,sapphirine-shard2,sapphirine-shard3} .75
+  - randomskill{s=glacial-fragment1,glacial-fragment2,glacial-fragment3} .75
+  - randomskill{s=jade-gemstone1,jade-gemstone2,jade-gemstone3} .75
+  - randomskill{s=crystal-corpus1,crystal-corpus2,crystal-corpus3} .75
+  - randomskill{s=g3,g4}
+
+
+ForestGuardian-drop:
+  Skills:
+  #- command{c="guildmod give partyscore <caster.uuid> 10"} @self
+  - command{c="guildboss distributescore 10 <caster.uuid>"} @self
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 15"} #4000
+  - command{c="ri drop-range 13 17 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 13 17 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 13 17 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 13 17 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop living-log <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.25
+
+
+BloodHarvester-drop:
+  Skills:
+  #- command{c="guildmod give partyscore <caster.uuid> 25"} @self
+  - command{c="guildboss distributescore 25 <caster.uuid>"} @self
+  - command{c="runicgive exp <trigger.name> 10000 <mob.l.x> <mob.l.y> <mob.l.z> 30"} #10000
+  - command{c="ri drop-range 28 32 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 28 32 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 28 32 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 28 32 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop eye-of-the-harvester <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.25
+
+
+aquatic-fieldboss-drop:
+  Skills:
+  #- command{c="guildmod give partyscore <caster.uuid> 75"} @self
+  - command{c="guildboss distributescore 75 <caster.uuid>"} @self
+  - command{c="runicgive exp <trigger.name> 25000 <mob.l.x> <mob.l.y> <mob.l.z> 45"} #25000
+  - command{c="ri drop-range 43 47 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 43 47 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 43 47 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 43 47 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=as3,as4,as5}
+  - command{c="ri drop heart-of-the-storm <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.25
+  - command{c="ri drop aquatic-blood <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+GrandAncientGolem-drop:
+  Skills:
+  #- command{c="guildmod give partyscore <caster.uuid> 200"} @self
+  - command{c="guildboss distributescore 200 <caster.uuid>"} @self
+  - command{c="runicgive exp <trigger.name> 25000 <mob.l.x> <mob.l.y> <mob.l.z> 60"} #100000
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=am3,am4,am5,am6,am7}
+  - command{c="ri drop ancient-core <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 0.25
+
+
+Myrtle-drop:
+  Skills:
+  - randomskill{s=Myrtle-drop1,Myrtle-drop2} .01
+  - command{c="runicgive exp <trigger.name> 5000 <mob.l.x> <mob.l.y> <mob.l.z> 30"} #5000
+  - command{c="ri drop-range 28 32 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g3,g4}
+Myrtle-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Myrtle1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Myrtle-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Myrtle2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+HobgoblinBeast-drop:
+  Skills:
+  - randomskill{s=HobgoblinBeast-drop1,HobgoblinBeast-drop2} .01
+  - command{c="runicgive exp <trigger.name> 5000 <mob.l.x> <mob.l.y> <mob.l.z> 51"} #5000
+  - command{c="ri drop-range 49 53 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g3,g4}
+HobgoblinBeast-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-HobgoblinBeast1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+HobgoblinBeast-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-HobgoblinBeast2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+FrostfolkSpirit-drop:
+  Skills:
+  - randomskill{s=FrostfolkSpirit-drop1,FrostfolkSpirit-drop2} .01
+  - command{c="runicgive exp <trigger.name> 1000 <mob.l.x> <mob.l.y> <mob.l.z> 14"} #1000
+  - command{c="ri drop-range 12 16 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+FrostfolkSpirit-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-FrostfolkSpirit1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+FrostfolkSpirit-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-FrostfolkSpirit2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+CowMother-drop:
+  Skills:
+  - randomskill{s=CowMother-drop1,CowMother-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 32"} #2500
+  - command{c="ri drop-range 30 34 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+CowMother-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-CowMother1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+CowMother-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-CowMother2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+GoatMother-drop:
+  Skills:
+  - randomskill{s=GoatMother-drop1,GoatMother-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 32"} #2500
+  - command{c="ri drop-range 30 34 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+GoatMother-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-GoatMother1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+GoatMother-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-GoatMother2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Skally-drop:
+  Skills:
+  - randomskill{s=Skally-drop1,Skally-drop2} .01
+  - command{c="runicgive exp <trigger.name> 200 <mob.l.x> <mob.l.y> <mob.l.z> 2"} #200
+  - command{c="ri drop-range 1 4 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+Skally-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Skally1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Skally-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Skally2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Axel-drop:
+  Skills:
+  - randomskill{s=Axel-drop1,Axel-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 35"} #2000
+  - command{c="ri drop-range 33 37 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+Axel-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Axel1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Axel-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Axel2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Gravacks-drop:
+  Skills:
+  - randomskill{s=Gravacks-drop1,Gravacks-drop2} .01
+  - command{c="runicgive exp <trigger.name> 5000 <mob.l.x> <mob.l.y> <mob.l.z> 43"} #5000
+  - command{c="ri drop-range 41 45 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2,g3}
+Gravacks-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Gravacks1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Gravacks-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Gravacks2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+ColdsteelCommander-drop:
+  Skills:
+  - randomskill{s=ColdsteelCommander-drop1,ColdsteelCommander-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 19"} #2000
+  - command{c="ri drop-range 17 21 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2,g3}
+ColdsteelCommander-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-ColdsteelCommander1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+ColdsteelCommander-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-ColdsteelCommander2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+LomiElder-drop:
+  Skills:
+  - randomskill{s=LomiElder-drop1,LomiElder-drop2} .01
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 34"} #5000
+  - command{c="ri drop-range 32 36 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+LomiElder-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-LomiElder1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+LomiElder-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-LomiElder2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+BeastMaster-drop:
+  Skills:
+  - randomskill{s=BeastMaster-drop1,BeastMaster-drop2} .01
+  - command{c="runicgive exp <trigger.name> 6250 <mob.l.x> <mob.l.y> <mob.l.z> 34"} #4000
+  - command{c="ri drop-range 32 36 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+BeastMaster-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-BeastMaster1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+BeastMaster-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-BeastMaster2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Koda-drop:
+  Skills:
+  - randomskill{s=Koda-drop1,Koda-drop2} .01
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 52"} #7500
+  - command{c="ri drop-range 50 54 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+Koda-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Koda1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Koda-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Koda2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+ShreddedOwl-drop:
+  Skills:
+  - randomskill{s=ShreddedOwl-drop1,ShreddedOwl-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 20"} #2000
+  - command{c="ri drop-range 18 22 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2,g3}
+ShreddedOwl-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-ShreddedOwl1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+ShreddedOwl-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-ShreddedOwl2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Grommak-drop:
+  Skills:
+  - randomskill{s=Grommak-drop1,Grommak-drop2} .01
+  - command{c="runicgive exp <trigger.name> 6000 <mob.l.x> <mob.l.y> <mob.l.z> 51"} #7500
+  - command{c="ri drop-range 53 57 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+Grommak-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Grommak1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Grommak-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Grommak2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Ecru-drop:
+  Skills:
+  - randomskill{s=Ecru-drop1,Ecru-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2250 <mob.l.x> <mob.l.y> <mob.l.z> 37"} #2000
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+Ecru-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Ecru1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Ecru-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Ecru2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+BabyDragon-drop:
+  Skills:
+  - skill{s=BabyDragon-drop1} .1
+  - command{c="runicgive exp <trigger.name> 125 <mob.l.x> <mob.l.y> <mob.l.z> 6"} #275
+  - command{c="ri drop-range 2 4 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+BabyDragon-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-BabyDragon1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+ForestVessel-drop:
+  Skills:
+  - skill{s=ForestVessel-drop1} .1
+  - command{c="runicgive exp <trigger.name> 125 <mob.l.x> <mob.l.y> <mob.l.z> 6"} #275
+  - command{c="ri drop-range 2 4 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+ForestVessel-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-ForestVessel1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+AzanianCaptain-drop:
+  Skills:
+  - skill{s=AzanianCaptain-drop1} .1
+  - command{c="runicgive exp <trigger.name> 125 <mob.l.x> <mob.l.y> <mob.l.z> 6"} #325
+  - command{c="ri drop-range 2 4 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+AzanianCaptain-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-AzanianCaptain1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+MushyMushroom-drop:
+  Skills:
+  - skill{s=MushyMushroom-drop1} .1
+  - command{c="runicgive exp <trigger.name> 125 <mob.l.x> <mob.l.y> <mob.l.z> 6"} #200
+  - command{c="ri drop-range 2 4 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+MushyMushroom-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-MushyMushroom1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+CaveMother-drop:
+  Skills:
+  - skill{s=CaveMother-drop1} .1
+  - command{c="runicgive exp <trigger.name> 125 <mob.l.x> <mob.l.y> <mob.l.z> 6"} #250
+  - command{c="ri drop-range 2 4 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+CaveMother-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-CaveMother1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+RatKing-drop:
+  Skills:
+  - randomskill{s=RatKing-drop1,RatKing-drop2} .01
+  - command{c="runicgive exp <trigger.name> 200 <mob.l.x> <mob.l.y> <mob.l.z> 4"} #200
+  - command{c="ri drop-range 2 4 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+RatKing-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-RatKing1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+RatKing-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-RatKing2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+RavenFallen-drop:
+  Skills:
+  - randomskill{s=RavenFallen-drop1,RavenFallen-drop2} .01
+  - command{c="runicgive exp <trigger.name> 325 <mob.l.x> <mob.l.y> <mob.l.z> 7"} #400
+  - command{c="ri drop-range 5 9 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+RavenFallen-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-RavenFallen1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+RavenFallen-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-RavenFallen2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Scarecrow-drop:
+  Skills:
+  - randomskill{s=Scarecrow-drop1,Scarecrow-drop2} .01
+  - command{c="runicgive exp <trigger.name> 400 <mob.l.x> <mob.l.y> <mob.l.z> 5"} #400
+  - command{c="ri drop-range 3 7 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+Scarecrow-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Scarecrow1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Scarecrow-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Scarecrow2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+AngryStump-drop:
+  Skills:
+  - randomskill{s=AngryStump-drop1,AngryStump-drop2} .01
+  - command{c="runicgive exp <trigger.name> 400 <mob.l.x> <mob.l.y> <mob.l.z> 6"} #400
+  - command{c="ri drop-range 4 8 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+AngryStump-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-AngryStump1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+AngryStump-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-AngryStump2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Queen-drop:
+  Skills:
+  - randomskill{s=Queen-drop1,Queen-drop2} .01
+  - command{c="runicgive exp <trigger.name> 8000 <mob.l.x> <mob.l.y> <mob.l.z> 35"} #8000
+  - command{c="ri drop-range 33 37 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3,g4}
+Queen-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Queen1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Queen-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Queen2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+UndeadViking-drop:
+  Skills:
+  - randomskill{s=UndeadViking-drop1,UndeadViking-drop2} .01
+  - command{c="runicgive exp <trigger.name> 800 <mob.l.x> <mob.l.y> <mob.l.z> 12"} #800
+  - command{c="ri drop-range 10 14 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+UndeadViking-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-UndeadViking1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+UndeadViking-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-UndeadViking2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Togrund-drop:
+  Skills:
+  - randomskill{s=Togrund-drop1,Togrund-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 17"} #2000
+  - command{c="ri drop-range 15 19 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2,g3}
+Togrund-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Togrund1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Togrund-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Togrund2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Pharindar-drop:
+  Skills:
+  - randomskill{s=Pharindar-drop1,Pharindar-drop2} .01
+  - command{c="runicgive exp <trigger.name> 1250 <mob.l.x> <mob.l.y> <mob.l.z> 20"} #1250
+  - command{c="ri drop-range 18 22 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2,g3} 
+Pharindar-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Pharindar1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Pharindar-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Pharindar2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+SpiritGolem-drop:
+  Skills:
+  - randomskill{s=SpiritGolem-drop1,SpiritGolem-drop2} .01
+  - command{c="runicgive exp <trigger.name> 1250 <mob.l.x> <mob.l.y> <mob.l.z> 21"} #1000
+  - command{c="ri drop-range 19 23 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2,g3} 
+SpiritGolem-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-SpiritGolem1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+SpiritGolem-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-SpiritGolem2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+DireBear-drop:
+  Skills:
+  - randomskill{s=DireBear-drop1,DireBear-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2000 <mob.l.x> <mob.l.y> <mob.l.z> 21"} #2000
+  - command{c="ri drop-range 19 23 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2,g3} 
+DireBear-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-DireBear1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+DireBear-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-DireBear2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+GelatinousCube-drop:
+  Skills:
+  - randomskill{s=GelatinousCube-drop1,GelatinousCube-drop2} .01
+  - command{c="runicgive exp <trigger.name> 500 <mob.l.x> <mob.l.y> <mob.l.z> 10"} #500
+  - command{c="ri drop-range 8 12 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2} 
+GelatinousCube-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-GelatinousCube1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+GelatinousCube-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-GelatinousCube2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+AdmiralVex-drop:
+  Skills:
+  - randomskill{s=AdmiralVex-drop1,AdmiralVex-drop2} .01
+  - command{c="runicgive exp <trigger.name> 3000 <mob.l.x> <mob.l.y> <mob.l.z> 30"} #2250
+  - command{c="ri drop-range 28 32 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+AdmiralVex-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-AdmiralVex1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+AdmiralVex-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-AdmiralVex2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+HauntingNecromancer-drop:
+  Skills:
+  - randomskill{s=HauntingNecromancer-drop1,HauntingNecromancer-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2250 <mob.l.x> <mob.l.y> <mob.l.z> 29"} #2700
+  - command{c="ri drop-range 27 31 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+HauntingNecromancer-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-HauntingNecromancer1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+HauntingNecromancer-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-HauntingNecromancer2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+GolemLord-drop:
+  Skills:
+  - randomskill{s=GolemLord-drop1,GolemLord-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 32"} #2500
+  - command{c="ri drop-range 30 34 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3} 
+GolemLord-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-GolemLord1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+GolemLord-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-GolemLord2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+MaskedFigure-drop:
+  Skills:
+  - randomskill{s=MaskedFigure-drop1,MaskedFigure-drop2} .01
+  - command{c="runicgive exp <trigger.name> 1750 <mob.l.x> <mob.l.y> <mob.l.z> 37"} #2400
+  - command{c="ri drop-range 35 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+MaskedFigure-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-MaskedFigure1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+MaskedFigure-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-MaskedFigure2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+ZenythGeneral-drop:
+  Skills:
+  - randomskill{s=ZenythGeneral-drop1,ZenythGeneral-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 38"} #2500
+  - command{c="ri drop-range 36 40 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+ZenythGeneral-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-ZenythGeneral1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+ZenythGeneral-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-ZenythGeneral2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+SunPriest-drop:
+  Skills:
+  - randomskill{s=SunPriest-drop1,SunPriest-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2000 <mob.l.x> <mob.l.y> <mob.l.z> 38"} #2500
+  - command{c="ri drop-range 36 40 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+SunPriest-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-SunPriest1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+SunPriest-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-SunPriest2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+ChargedGolem-drop:
+  Skills:
+  - randomskill{s=ChargedGolem-drop1,ChargedGolem-drop2} .01
+  - command{c="runicgive exp <trigger.name> 6000 <mob.l.x> <mob.l.y> <mob.l.z> 40"} #4000
+  - command{c="ri drop-range 38 42 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+ChargedGolem-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-ChargedGolem1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+ChargedGolem-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-ChargedGolem2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Pyromancer-drop:
+  Skills:
+  - randomskill{s=Pyromancer-drop1,Pyromancer-drop2} .01
+  - command{c="runicgive exp <trigger.name> 7500 <mob.l.x> <mob.l.y> <mob.l.z> 50"} #8000
+  - command{c="ri drop-range 48 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g3,g4}
+Pyromancer-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Pyromancer1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Pyromancer-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Pyromancer2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+GuardianOfTheFruit-drop:
+  Skills:
+  - randomskill{s=GuardianOfTheFruit-drop1,GuardianOfTheFruit-drop2} .01
+  #- command{c="ri drop FruitOfMetamorphosis <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - command{c="runicgive exp <trigger.name> 2000 <mob.l.x> <mob.l.y> <mob.l.z> 39"} #2500
+  - command{c="ri drop-range 37 41 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3,g4}
+GuardianOfTheFruit-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-GuardianOfTheFruit1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+GuardianOfTheFruit-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-GuardianOfTheFruit2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Wallace-drop:
+  Skills:
+  - randomskill{s=Wallace-drop1,Wallace-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2000 <caster.l.x> <caster.l.y> <caster.l.z> 42"} #2500
+  - command{c="ri drop-range 40 44 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3,g4}
+Wallace-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Wallace1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Wallace-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Wallace2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Pontiac-drop:
+  Skills:
+  - randomskill{s=Pontiac-drop1,Pontiac-drop2} .01
+  - command{c="runicgive exp <trigger.name> 5000 <mob.l.x> <mob.l.y> <mob.l.z> 44"} #5000
+  - command{c="ri drop-range 42 46 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3,g4}
+Pontiac-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Pontiac1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Pontiac-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Pontiac2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+GrandToxicSlime-drop:
+  Skills:
+  - randomskill{s=GrandToxicSlime-drop1,GrandToxicSlime-drop2} .01
+  - command{c="runicgive exp <trigger.name> 8000 <mob.l.x> <mob.l.y> <mob.l.z> 49"} #8000
+  - command{c="ri drop-range 47 51 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3,g4}
+GrandToxicSlime-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-GrandToxicSlime1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+GrandToxicSlime-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-GrandToxicSlime2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+ArcticDemon-drop:
+  Skills:
+  - randomskill{s=ArcticDemon-drop1,ArcticDemon-drop2} .01
+  - command{c="runicgive exp <trigger.name> 20000 <mob.l.x> <mob.l.y> <mob.l.z> 55"} #10000
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  #- command{c="ri drop FrozenHeart <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} 
+  - randomskill{s=g3,g4} 
+  #- randomskill{s=ar1,ar2} 
+ArcticDemon-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-ArcticDemon1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+ArcticDemon-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-ArcticDemon2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+AzanianCommander-drop:
+  Skills:
+  - randomskill{s=AzanianCommander-drop1,AzanianCommander-drop2} .01 
+  - command{c="runicgive exp <trigger.name> 1000 <mob.l.x> <mob.l.y> <mob.l.z> 13"} #1000
+  - command{c="ri drop-range 11 15 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3} 
+AzanianCommander-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-AzanianCommander1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+AzanianCommander-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-AzanianCommander2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+NorthernBear-drop:
+  Skills:
+  - randomskill{s=NorthernBear-drop1,NorthernBear-drop2} .01
+  - command{c="runicgive exp <trigger.name> 425 <mob.l.x> <mob.l.y> <mob.l.z> 14"} #600
+  - command{c="ri drop-range 12 16 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2,g3}
+NorthernBear-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-NorthernBear1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+NorthernBear-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-NorthernBear2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+MasterFeldruid-drop:
+  Skills:
+  - randomskill{s=MasterFeldruid-drop1,MasterFeldruid-drop2} .01
+  - command{c="runicgive exp <trigger.name> 4000 <mob.l.x> <mob.l.y> <mob.l.z> 36"} #4000
+  - command{c="ri drop-range 34 38 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+MasterFeldruid-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-MasterFeldruid1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+MasterFeldruid-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-MasterFeldruid2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+IronSoldier-drop:
+  Skills:
+  - randomskill{s=IronSoldier-drop1,IronSoldier-drop2} .01
+  - command{c="runicgive exp <trigger.name> 500 <mob.l.x> <mob.l.y> <mob.l.z> 9"} #500
+  - command{c="ri drop-range 7 11 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+IronSoldier-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-IronSoldier1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+IronSoldier-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-IronSoldier2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+JackalCaptain-drop:
+  Skills:
+  - randomskill{s=JackalCaptain-drop1,JackalCaptain-drop2} .01
+  - command{c="runicgive exp <trigger.name> 1000 <mob.l.x> <mob.l.y> <mob.l.z> 11"} #1250
+  - command{c="ri drop-range 9 13 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+JackalCaptain-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-JackalCaptain1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+JackalCaptain-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-JackalCaptain2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+FlightlessFairy-drop:
+  Skills:
+  - randomskill{s=FlightlessFairy-drop1,FlightlessFairy-drop2} .01
+  - command{c="runicgive exp <trigger.name> 550 <mob.l.x> <mob.l.y> <mob.l.z> 12"} #750 
+  - command{c="ri drop-range 10 14 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+FlightlessFairy-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-FlightlessFairy1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+FlightlessFairy-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-FlightlessFairy2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+Monkey-drop:
+  Skills:
+  - randomskill{s=Monkey-drop1,Monkey-drop2} .01
+  - command{c="runicgive exp <trigger.name> 350 <mob.l.x> <mob.l.y> <mob.l.z> 8"} #500
+  - command{c="ri drop-range 6 10 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+Monkey-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-Monkey1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+Monkey-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-Monkey2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+LumiteNightmare-drop:
+  Skills:
+  - randomskill{s=LumiteNightmare-drop1,LumiteNightmare-drop2} .01
+  - command{c="runicgive exp <trigger.name> 2250 <mob.l.x> <mob.l.y> <mob.l.z> 15"} #2000
+  - command{c="ri drop-range 13 17 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+LumiteNightmare-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-LumiteNightmare1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+LumiteNightmare-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-LumiteNightmare2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+WhiteWarrior-drop:
+  Skills:
+  - randomskill{s=WhiteWarrior-drop1,WhiteWarrior-drop2} .01
+  - command{c="runicgive exp <trigger.name> 3000 <mob.l.x> <mob.l.y> <mob.l.z> 16"} #2000
+  - command{c="ri drop-range 14 18 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g1,g2}
+WhiteWarrior-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-WhiteWarrior1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+WhiteWarrior-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-WhiteWarrior2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+PileOfFlesh-drop:
+  Skills:
+  - randomskill{s=PileOfFlesh-drop1,PileOfFlesh-drop2} .01 
+  - command{c="runicgive exp <trigger.name> 3250 <mob.l.x> <mob.l.y> <mob.l.z> 40"} #2500
+  - command{c="ri drop-range 38 42 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+PileOfFlesh-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-PileOfFlesh1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+PileOfFlesh-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-PileOfFlesh2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+
+
+ForestBanditLord-drop:
+  Skills:
+  - randomskill{s=ForestBanditLord-drop1,ForestBanditLord-drop2} .01 
+  - command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 25"} #2000
+  - command{c="ri drop-range 23 27 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+  - randomskill{s=g2,g3}
+ForestBanditLord-drop1:
+  Skills:
+  - command{c="ri drop bossdrop-ForestBanditLord1 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}
+ForestBanditLord-drop2:
+  Skills:
+  - command{c="ri drop bossdrop-ForestBanditLord2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"}

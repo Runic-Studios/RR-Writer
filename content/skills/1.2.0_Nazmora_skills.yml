@@ -1,0 +1,331 @@
+Gravacks-skill2:
+  Conditions:
+  - variableEquals{var=caster.cutscene;value=0}  
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - cast{skillName="Quake";duration=30;showCastBar=true} @self
+  - delay 30
+  - skill{s=Gravacks-skill2cast} @PIR{r=8}
+Gravacks-skill2cast:
+  TargetConditions:
+  - onground true
+  Skills:
+  - potion{t=SLOW;d=80;l=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}
+
+Gravacks-skill:
+  Conditions:
+  - variableEquals{var=caster.cutscene;value=0}  
+  - incombat{}
+  Skills:
+  - setAI{ai=false}
+  - delay 10
+  - summon{t=Gravacks-skill-marker1} @Forward{f=2;y=0}
+  - sound{s=entity.blaze.shoot}
+  - delay 5
+  - summon{t=Gravacks-skill-marker2} @Forward{f=5;y=0}
+  - sound{s=entity.blaze.shoot}
+  - delay 5
+  - summon{t=Gravacks-skill-marker3} @Forward{f=8;y=0}
+  - sound{s=entity.blaze.shoot}
+  - delay 5
+  - setAI{ai=true}
+Gravacks-skill-marker1:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=2}
+  - ignite{d=80} @PIR{r=2}
+  - effect:blockmask{m=nether_bricks;r=2;d=10;n=0.75}
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5} @self 
+  - remove
+Gravacks-skill-marker2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=3}
+  - ignite{d=80} @PIR{r=3}
+  - effect:blockmask{m=nether_bricks;r=3;d=10;n=0.75}
+  - effect:particlesphere{p=flame;amount=4;radius=3;yOffset=.5} @self 
+  - remove
+Gravacks-skill-marker3:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=5}
+  - ignite{d=80} @PIR{r=5}
+  - effect:blockmask{m=nether_bricks;r=5;d=10;n=0.75}
+  - effect:particlesphere{p=flame;amount=8;radius=5;yOffset=.5} @self 
+  - remove
+
+Gravacks-quake:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.cutscene;value=1}
+  - potion{v=SLOW;d=80;l=10;hasParticles=false}
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=2;yOffset=.5} 
+  - sound{s=entity.enderman.teleport;v=2}
+  - summon{t=Gravacks-explosion1}
+  - teleport @Location{c=2387.5,3,900.5}
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=2;yOffset=.5} 
+  - delay 5
+  - summon{t=Gravacks-explosion-marke1}
+  - delay 10
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=2;yOffset=.5} 
+  - sound{s=entity.enderman.teleport;v=2}
+  - summon{t=Gravacks-explosion2}
+  - teleport @Location{c=2402.5,3,899.5}
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=2;yOffset=.5} 
+  - delay 5
+  - summon{t=Gravacks-explosion-marke2}
+  - delay 10
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=2;yOffset=.5} 
+  - sound{s=entity.enderman.teleport;v=2}
+  - summon{t=Gravacks-explosion3}
+  - teleport @Location{c=2389.5,3,892.5}
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=2;yOffset=.5} 
+  - delay 5
+  - summon{t=Gravacks-explosion-marker3}
+  - delay 10
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=2;yOffset=.5} 
+  - sound{s=entity.enderman.teleport;v=2}
+  - summon{t=Gravacks-explosion4}
+  - teleport @Location{c=2394.5,3,904.5}
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=2;yOffset=.5} 
+  - delay 5
+  - summon{t=Gravacks-explosion-marker4}
+  - delay 10
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=2;yOffset=.5} 
+  - sound{s=entity.enderman.teleport;v=2}
+  - summon{t=Gravacks-explosion5}
+  - teleport @Location{c=2398.5,3,894.5}
+  - effect:particlesphere{p=smoke_normal;amount=5;radius=2;yOffset=.5} 
+  - delay 5
+  - summon{t=Gravacks-explosion-marker5}
+  - delay 20
+  - message{m="&7Gravacks is weakened!"} @PIR{r=32}
+  - setvariable{var=caster.weak;value=1}
+  - skill{s=Gravacks-weak-slow}
+Gravacks-weak:
+  Conditions:
+  - variableEquals{var=caster.weak;value=1}  
+  Skills:
+  - command{c="questtrigger player <target.name> nazmoramainquest"} @trigger
+  - potion{t=SLOW;d=80;l=10;hasParticles=false}
+  - setvariable{var=caster.weak;value=0}
+  - delay 45
+  - skill{s=Gravacks-weak-damage-low}
+  - delay 5
+  - sound{s=entity.iron_golem.hurt;v=2}
+  - skill{s=Gravacks-weak-damage-high}
+  - delay 20
+  - setvariable{var=caster.cutscene;value=0}
+Gravacks-weak-damage-high:
+  Conditions:
+  - health{h=>500}
+  Skills:
+  - damage{a=250;i=true}
+Gravacks-weak-damage-low:
+  Conditions:
+  - health{h=>250}
+  Skills:
+  - damage{a=100;i=true}
+Gravacks-weak-slow:
+  Conditions:
+  - variableEquals{var=caster.weak;value=1}  
+  Skills:
+  - potion{t=SLOW;d=25;l=10;hasParticles=false}
+  - delay 20
+  - skill{s=Gravacks-weak-slow}
+
+Gravacks-explosion:
+  Skills:
+  - setAI{ai=false}
+  - potion{t=INVISIBILITY;d=9999;l=1;hasParticles=false}
+  - delay 10
+  - setAI{ai=true}
+  - skill{s=Gravacks-explosion-visual}
+  - delay 40
+  - remove
+Gravacks-explosion-visual:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=3}
+  - sound{s=entity.generic.explode;v=1}
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1}
+  - effect:blockmask{m=nether_bricks;r=2;d=10;n=0.5}
+  - delay 5
+  - skill{s=Gravacks-explosion-visual}
+  
+Gravacks-explosion-remove:
+  Skills:
+  - remove
+
+nazmora-cutscene-recruit:
+  Skills:
+  - delay 25
+  - leap{v=75} @MIR{t=Gravacks;r=24}
+  - delay 5
+  - leap{v=125} @MIR{t=Gravacks;r=24}
+  - delay 5
+  - leap{v=250} @MIR{t=Gravacks;r=24}
+  - delay 15
+  - leap{v=300} @Forward{f=-8;y=2}
+  - delay 15
+  - remove
+
+nazmora-armor-cutscene-recruit:
+  Skills:
+  - equip{i=AIR:HAND}
+  - equip{i=AIR:OFFHAND}
+  - equip{i=AIR:FEET}
+  - equip{i=AIR:LEGS}
+  - equip{i=AIR:CHEST}
+  - equip{i=IRON_BOOTS:HAND}
+  - delay 5
+  - equip{i=AIR:HAND}
+  - sound{s=item.armor.equip_iron}
+  - equip{i=IRON_BOOTS:FEET}
+  - delay 5
+  - equip{i=IRON_LEGGINGS:HAND}
+  - delay 5
+  - equip{i=AIR:HAND}
+  - sound{s=item.armor.equip_iron}
+  - equip{i=IRON_LEGGINGS:LEGS}
+  - delay 5
+  - equip{i=IRON_CHESTPLATE:HAND}
+  - delay 5
+  - equip{i=AIR:HAND}
+  - sound{s=item.armor.equip_iron}
+  - equip{i=IRON_CHESTPLATE:CHEST}
+  - delay 20
+  - equip{i=SHIELD:OFFHAND}
+  - sound{s=item.armor.equip_iron}
+  - delay 20
+  - equip{i=IRON_AXE:HAND}
+  - sound{s=item.armor.equip_iron}
+  - setvariable{var=caster.armor;value=1}
+
+nazmora-armor-cutscene-recruit-questtrigger:
+  Cooldown: 3
+  Skills:
+  - command{c="questtrigger player <target.name> nazmorarecruitarmor"} @trigger
+
+nazmora-armor-cutscene-recruit-remove:
+  Conditions:
+  - playernotwithin 12
+  - variableEquals{var=caster.armor;value=1}  
+  Skills:
+  - remove
+
+Pontiac-kickup:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=30;l=1;hasParticles=false}
+  - cast{skillName="Flying Kick";duration=20;onCast=Pontiac-kickupcast;showCastBar=true}
+Pontiac-kickup2:
+  Cooldown: 8
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=30;l=1;hasParticles=false}
+  - cast{skillName="&cFlying Kick";duration=20;onCast=Pontiac-kickupcast;showCastBar=true}
+Pontiac-kickupcast:
+  Skills:
+  - skill{s=Pontiac-kickupcheck1}
+  - skill{s=Pontiac-kickupcheck2}
+Pontiac-kickupcheck1:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - velocity{v=200} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=4}
+  - delay 5
+  - jump{v=0.6}
+  - delay 2
+  - summon{t=NazmoraFighter-marker;r=1;os=true}
+  - leap{v=200} @target
+  - delay 10
+  - skill{s=Pontiac-kickupcheck3}
+  - delay 40
+  - remove @MIR{t=NazmoraFighter-marker;r=24}
+Pontiac-kickupcheck2:
+  Conditions:
+  - playernotwithin 4
+  Skills:
+  - jump{v=0.6}
+  - delay 2
+  - leap{v=400} @target
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=4}
+  - delay 10
+  - summon{t=NazmoraFighter-marker;r=1;os=true}
+  - skill{s=Pontiac-kickupcheck4}
+  - delay 10
+  - skill{s=Pontiac-kickupcheck4}
+  - delay 30
+  - remove @MIR{t=NazmoraFighter-marker;r=24}
+Pontiac-kickupcheck3:
+  Conditions:
+  - playerwithin 5
+  Skills:
+  - signal{s=pull} @MIR{t=NazmoraFighter-marker;r=24}
+  - command{c="runicdamage <caster.uuid> <target.name> 60"} @target
+  - delay 10
+  - leap{v=250} @target
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 60"} @PIR{r=4}
+Pontiac-kickupcheck4:
+  Cooldown: 4
+  Conditions:
+  - playerwithin 5
+  Skills:
+  - jump{v=1}
+  - throw{vy=16} @PIR{r=5}
+  - delay 10
+  - signal{s=pull} @MIR{t=NazmoraFighter-marker;r=24}
+  - command{c="runicdamage <caster.uuid> <target.name> 60"} @target
+  - delay 10
+  - leap{v=250} @target
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 60"} @PIR{r=4}
+
+PontiacAxe:
+  Cooldown: 10
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=40;l=3;hasParticles=false} @self
+  - delay 10
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - equip{i=IRON_AXE:OFFHAND}
+  - delay 20
+  - equip{i=AIR:OFFHAND}
+  - projectile{ot=PontiacAxe-Tick;oh=PontiacAxe-Hit;v=10;hr=1;vr=1;i=1} @target
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+PontiacAxe-Tick:
+  Skills:
+  - effect:particles{particle=item_crack;material=iron_axe;a=1;d=5;v=0;yo=0} @origin
+PontiacAxe-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}
+  - potion{t=SLOW;d=40;l=10}
+  - effect:sound{s=item.axe.strip;v=2}
+
+PontiacAxe2:
+  Cooldown: 10
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=40;l=3;hasParticles=false} @self
+  - delay 10
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - equip{i=GOLDEN_AXE:OFFHAND}
+  - delay 30
+  - equip{i=AIR:OFFHAND}
+  - projectile{ot=PontiacAxe2-Tick;oh=PontiacAx2-Hit;v=10;hr=1;vr=1;i=1} @target
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+PontiacAxe2-Tick:
+  Skills:
+  - effect:particles{particle=item_crack;material=golden_axe;a=1;d=5;v=0;yo=0} @origin
+PontiacAxe2-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 60"}
+  - potion{t=SLOW;d=80;l=10}
+  - effect:sound{s=item.axe.strip;v=2}

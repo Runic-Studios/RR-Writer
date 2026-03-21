@@ -1,0 +1,6 @@
+cooldown: 15
+mana: 25
+radius: 3
+stun-duration: 2.0
+trap-duration: 4
+warmup: 1.5

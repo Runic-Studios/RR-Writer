@@ -1,0 +1,622 @@
+
+WrathMeteor1:
+  Conditions:
+  - hasAura{n=AxeToss} false
+  Cooldown:
+  Skills:
+  - aura{auraName=Meteor;duration=240} @self
+  - delay 5
+  - teleportto{location=2459,103,2538} @self
+  - setspeed{speed=0;type=walking} @self
+  - cast{skillName="Wrath's Meteor";duration=40;onCast=WrathMeteorCast1;showCastBar=true}
+  - delay 280
+  - setspeed{speed=2;type=walking} @self
+
+WrathMeteorCast1:
+  Conditions:
+  Cooldown:
+  Skills:
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - summon{type=WrathMeteorTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=6;r=10;s=3;minr=10}
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - summon{type=WrathMeteorTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=6;r=10;s=3;minr=10}
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - summon{type=WrathMeteorTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=6;r=10;s=3;minr=10}
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - summon{type=WrathMeteorTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=6;r=10;s=3;minr=10}
+
+WrathMeteor2:
+  Conditions:
+  - hasAura{n=AxeToss} false
+  Cooldown:
+  Skills:
+  - aura{auraName=Meteor;duration=240} @self
+  - delay 5
+  - teleportto{location=2459,103,2538} @self
+  - setspeed{speed=0;type=walking} @self
+  - cast{skillName="Wrath's Meteor";duration=40;onCast=WrathMeteorCast1;showCastBar=true}
+  - delay 400
+  - setspeed{speed=2.5;type=walking} @self
+
+WrathMeteorCast2:
+  Conditions:
+  Cooldown:
+  Skills:
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=9}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - summon{type=WrathMeteorTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=8;r=10;s=3;minr=10}
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=9}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - summon{type=WrathMeteorTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=8;r=10;s=3;minr=10}
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=9}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - summon{type=WrathMeteorTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=8;r=10;s=3;minr=10}
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=9}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - summon{type=WrathMeteorTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=8;r=10;s=3;minr=10}
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=9}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - summon{type=WrathMeteorTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=8;r=10;s=3;minr=10}
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=8}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - delay 20
+  - throw{velocity=15;velocityY=5} @PlayersInRadius{r=9}
+  - effect:particlering{particle=flame;radius=8;points=60;amount=1;hS=1;vS=0} @self
+  - summon{type=WrathMeteorTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=8;r=10;s=3;minr=10}
+
+WrathMeteorTotemSkill:
+  Conditions:
+  Cooldown:
+  Skills:
+  - effect:blockmask{m=nether_bricks;r=5;d=200} @self
+  - delay 1
+  - effect:blockmask{m=netherrack;r=1;d=100} @self
+  - delay 9
+  - effect:blockmask{m=netherrack;r=2;d=100} @self
+  - delay 10
+  - effect:blockmask{m=netherrack;r=3;d=100} @self
+  - delay 10
+  - effect:blockmask{m=netherrack;r=4;d=100} @self
+  - delay 10
+  - effect:blockmask{m=netherrack;r=5;d=100} @self
+  - projectile{onTick=WrathMeteorTotemSkill-Tick;onHit=WrathMeteorTotemSkill-Hit;v=8;i=1;hR=5;vR=1;hnp=false;type=meteor;g=1;hfs=6} @self
+  - delay 20
+  - remove @self
+WrathMeteorTotemSkill-Tick:
+  Skills:
+  - effect:particles{p=flame;amount=10;speed=0;hS=0.2;vS=0.2} @origin
+  - effect:particles{p=reddust;amount=10;speed=0;hS=0.2;vS=0.2} @origin
+WrathMeteorTotemSkill-Hit:
+  Skills:
+  - damage{a=1}
+  - potion{type=SLOW;duration=100;lvl=2}
+  - explosion{yield=1}
+  - effect:explosion
+
+WrathAxeToss:
+  Conditions:
+  - hasAura{n=Meteor} false
+  Skills:
+  - aura{auraName=AxeToss;duration=40} @self
+  - delay 5
+  - cast{skillName="Tossing Axe";duration=40;onCast=WrathAxeTossCast;showCastBar=true}
+
+WrathAxeTossCast:
+  Skills:
+  - playanimation{a=3;audience=world} @self
+  - delay 5
+  - equip{item=air:OFFHAND}
+  - projectile{bulletType=ITEM;material=wooden_axe;onHit=WrathAxeTossCast-Hit;v=15;i=1;hR=1;vR=1;hnp=false;rots=0,3,0} @target
+  - delay 30
+  - equip{item=wooden_axe:OFFHAND}
+
+WrathAxeTossCast-Hit:
+  Skills:
+  - damage{a=10}
+  - potion{type=SLOW;duration=100;lvl=2}
+  - throw{velocityY=5}
+
+SlothSlowAura:
+  Skills:
+  - potion{type=SLOW;duration=100;level=4} @PIR{r=10}
+  - potion{type=SLOW_DIGGING;duration=100;level=4} @PIR{r=10}
+
+SlothTridentPull:
+  Skills:
+  - cast{skillName="Throwing Trident";duration=40;onCast=SlothTridentPullCast;showCastBar=true}
+
+SlothTridentPullCast:
+  Skills:
+  - playanimation{a=0;audience=world} @self
+  - delay 5
+  - equip{item=air:HAND}
+  - projectile{bulletType=ITEM;material=TRIDENT;onHit=SlothTridentPullCast-Hit;v=5;i=1;hR=1;vR=1;hnp=false;rots=0,3,0;bounce=true;bv=1;yaw=90;pitch=130} @target
+  - delay 30
+  - equip{item=trident:HAND}
+
+SlothTridentPullCast-Hit:
+  Skills:
+  - damage{a=10}
+  - potion{type=CONFUSION;duration=100;lvl=2}
+  - throw{velocityY=10}
+  - pull{velocity=5}
+
+SlothTridentRing:
+  Skills:
+  - cast{skillName="Launching All Tridents";duration=80;onCast=SlothTridentRingCast;showCastBar=true}
+
+SlothTridentRingCast:
+  Skills:
+  - playanimation{a=0;audience=world} @self
+  - delay 5
+  - equip{item=air:HAND}
+  - projectile{bulletType=ITEM;material=TRIDENT;onHit=SlothTridentPullCast-Hit;v=4;i=1;hR=1;vR=1;hnp=false;rots=0,3,0;bounce=true;bv=1;yaw=90;pitch=130} @target
+  - projectile{bulletType=ITEM;material=TRIDENT;onHit=SlothTridentPullCast-Hit;v=4;i=1;hR=1;vR=1;hnp=false;rots=0,3,0;bounce=true;bv=1;yaw=90;pitch=130;hO=60} @target
+  - projectile{bulletType=ITEM;material=TRIDENT;onHit=SlothTridentPullCast-Hit;v=4;i=1;hR=1;vR=1;hnp=false;rots=0,3,0;bounce=true;bv=1;yaw=90;pitch=130;hO=120} @target
+  - projectile{bulletType=ITEM;material=TRIDENT;onHit=SlothTridentPullCast-Hit;v=4;i=1;hR=1;vR=1;hnp=false;rots=0,3,0;bounce=true;bv=1;yaw=90;pitch=130;hO=180} @target
+  - projectile{bulletType=ITEM;material=TRIDENT;onHit=SlothTridentPullCast-Hit;v=4;i=1;hR=1;vR=1;hnp=false;rots=0,3,0;bounce=true;bv=1;yaw=90;pitch=130;hO=240} @target
+  - projectile{bulletType=ITEM;material=TRIDENT;onHit=SlothTridentPullCast-Hit;v=4;i=1;hR=1;vR=1;hnp=false;rots=0,3,0;bounce=true;bv=1;yaw=90;pitch=130;hO=300} @target
+  - delay 30
+  - equip{item=trident:HAND}
+
+GreedGoldShower:
+  Conditions:
+  Cooldown:
+  Skills:
+  - aura{auraName=GreedShower;duration=425} @self
+  - delay 5
+  - teleportto{location=2515.5,107,2553.5} @self
+  - setspeed{speed=0;type=walking} @self
+  - prison{material=GOLD_BLOCK;duration=400;breakable=false} @self
+  - delay 20
+  - cast{skillName="Gold Shower";duration=60;onCast=GreedGoldShowerCast;showCastBar=true}
+  - delay 400
+  - setspeed{speed=2;type=walking} @self
+
+GreedGoldShowerCast:
+  Conditions:
+  Cooldown:
+  Skills:
+  - summon{type=GreedGoldShowerTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=2;r=5;s=1;minr=1}
+  - delay 20
+  - summon{type=GreedGoldShowerTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=2;r=5;s=1;minr=1}
+  - delay 20
+  - summon{type=GreedGoldShowerTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=2;r=5;s=1;minr=1}
+  - delay 20
+  - summon{type=GreedGoldShowerTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=2;r=5;s=1;minr=1}
+  - delay 20
+  - summon{type=GreedGoldShowerTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=2;r=5;s=1;minr=1}
+  - delay 20
+  - summon{type=GreedGoldShowerTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=3;r=5;s=1;minr=1}
+  - delay 20
+  - summon{type=GreedGoldShowerTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=3;r=5;s=1;minr=1}
+  - delay 20
+  - summon{type=GreedGoldShowerTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=3;r=5;s=1;minr=1}
+  - delay 20
+  - summon{type=GreedGoldShowerTotem;amount=1;radius=1} @RandomLocationsNearOrigin{a=4;r=5;s=1;minr=1}
+
+GreedGoldShowerTotemSkill:
+  Conditions:
+  Cooldown:
+  Skills:
+  - effect:blockmask{m=Gold_Block;r=2;d=200} @self
+  - delay 1
+  - effect:blockmask{m=Raw_Gold_Block;r=1;d=100} @self
+  - delay 29
+  - effect:blockmask{m=Raw_Gold_Block;r=1.5;d=100} @self
+  - delay 30
+  - effect:blockmask{m=Raw_Gold_Block;r=2;d=100} @self
+  - projectile{onTick=GreedGoldShowerTotemSkill-Tick;onHit=GreedGoldShowerTotemSkill-Hit;v=5;i=1;hR=2;vR=1;hnp=false;type=meteor;g=1;hfs=5} @self
+  - delay 20
+  - remove @self
+GreedGoldShowerTotemSkill-Tick:
+  Skills:
+  - effect:particles{p=block_crack;m=raw_gold_block;amount=5;speed=0;hS=0.2;vS=0.2} @origin
+  - effect:particles{p=block_crack;m=gold_block;amount=5;speed=0;hS=0.2;vS=0.2} @origin
+GreedGoldShowerTotemSkill-Hit:
+  Skills:
+  - damage{a=1}
+  - potion{type=SLOW;duration=100;lvl=2}
+
+GreedLungeSlash:
+  Conditions:
+  - hasaura{n=GreedShower} false
+  Cooldown: 6
+  Skills:
+  - cast{skillName="Lunging Slash";duration=20;onCast=GreedLungeSlashCast;showCastBar=true}
+
+GreedLungeSlashCast:
+  Conditions:
+  Cooldown:
+  Skills:
+  - effect:particles{particle=campfire_signal_smoke;amount=7;hS=1;vS=0;speed=1} @self
+  - leap{velocity=200} @target
+  - delay 7
+  - playanimation{a=0;audience=world} @self
+  - slash{y=1.2;foffset=1.5;FromOrigin=true;w=6;h=30;mpd=true;a=45;radius=2;
+      oP=[ - e:p{p=SPARK} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 125"} ];
+      roll=45;fo=5;duration=5} @self
+  - playanimation{a=3;audience=world} @self
+  - slash{y=1.2;foffset=1.5;FromOrigin=true;w=6;h=30;mpd=true;a=45;radius=2;
+      oP=[ - e:p{p=SPARK} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 125"} ];
+      roll=-45;fo=5;duration=5} @target{conditions=[  - crouching false ]}
+
+GluttonousSummonSacrifice:
+  Conditions:
+  Cooldown:
+  Skills:
+  - cast{skillName="Summoning Feast";duration=40;onCast=GluttonousSummonSacrificeCast;showCastBar=true}
+
+GluttonousSummonSacrificeCast:
+  Cooldown: 40
+  Conditions:
+  Skills:
+  - aura{auraName=GluttonousSummon;duration=425} @self
+  - delay 5
+  - teleportto{location=2501.5,109,2580.5} @self
+  - setspeed{speed=0;type=walking} @self
+  - prison{material=BARRIER;duration=600;breakable=false} @self
+  - skill{s=GluttonousSummonFeast} @self
+  - summon{type=GluttonousSacrifice;amount=1;radius=1} @Ring{radius=10;points=3}
+  - delay 100
+  - summon{type=GluttonousSacrifice;amount=1;radius=1} @Ring{radius=10;points=5}
+  - delay 100
+  - summon{type=GluttonousSacrifice;amount=1;radius=1} @Ring{radius=10;points=2}
+  - delay 100
+  - summon{type=GluttonousSacrifice;amount=1;radius=1} @Ring{radius=10;points=5}
+  - delay 100
+  - summon{type=GluttonousSacrifice;amount=1;radius=1} @Ring{radius=10;points=5}
+  - delay 50
+  - setspeed{speed=1.5;type=walking} @self
+  
+GluttonousSummonFeast:
+  Cooldown:
+  Conditions:
+  Skills:
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=3;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+  - damage{a=1000} @MIR{r=2;types=GluttonousSacrifice}
+  - effect:particlering{particle=landing_lava;radius=3;points=32;amount=3;hS=0.5;vS=0} @self
+  - delay 20
+
+GluttonousSacrificeDie:
+  TargetConditions:
+  Cooldown: 60
+  Skills:
+  - heal{a=20} @parent{conditions=[  - targetwithin{d=3} true ]}
+
+GluttonousMace:
+  Conditions:
+  Cooldown: 6
+  Skills:
+  - cast{skillName="Mace Toss";duration=30;onCast=GluttonousMaceCast;showCastBar=true} @target
+GluttonousMaceCast:
+  Skills:
+  - playanimation{a=3} @self
+  - delay 5
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - projectile{ot=GluttonousMace-Tick;oh=GluttonousMace-Hit;v=13;hr=1;vr=1;i=1;g=1;vO=1} @target
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - delay 20
+  
+GluttonousMace-Tick:
+  Skills:
+  - effect:particles{particle=item_crack;material=coal_block;a=1;d=5;v=0;yo=0} @origin
+  
+GluttonousMace-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 80"}
+  - throw{vy=2}
+  - delay 2
+  - pull{v=8} 
+  - potion{t=SLOW;d=40;l=3}
+  - effect:sound{s=entity.fishing_bobber.retrieve}
+
+LustBloodBoil:
+  Conditions:
+  Cooldown: 6
+  Skills:
+  - cast{skillName="Blood Boil";duration=30;onCast=LustBloodBoilCast;showCastBar=true}
+
+LustBloodBoilCast:
+  Conditions:
+  Cooldown:
+  Skills:
+  - summon{type=LustBloodBoilTotem;amount=1;radius=1} @target
+
+LustBloodBoilTotemSkill:
+  Conditions:
+  Cooldown:
+  Skills:
+  - cast{skillName="CROUCH";duration=120;onCast=Nothing;showCastBar=true}
+  - delay 20
+  - effect:particlering{particle=reddust;radius=2;points=15;amount=1;hS=0;vS=0} @self
+  - Atom{p=reddust;r=2;d=true;dr=true;dir=1,0,0;repeat=6;repeati=20} @self
+  - delay 20
+  - effect:particlering{particle=reddust;radius=7;points=15;amount=3;hS=0;vS=1} @self
+  - pull{velocity=10} @PIR{r=7;conditions=[
+                              - iscrouching false
+                              ]}
+  - delay 20
+  - effect:particlering{particle=reddust;radius=7;points=15;amount=3;hS=0;vS=1} @self
+  - pull{velocity=10} @PIR{r=7;conditions=[
+                              - iscrouching false
+                              ]}
+  - delay 20
+  - effect:particlering{particle=reddust;radius=7;points=15;amount=3;hS=0;vS=1} @self
+  - pull{velocity=10} @PIR{r=7;conditions=[
+                              - iscrouching false
+                              ]}
+  - delay 20
+  - effect:particlering{particle=reddust;radius=7;points=15;amount=3;hS=0;vS=1} @self
+  - pull{velocity=10} @PIR{r=7;conditions=[
+                              - iscrouching false
+                              ]}
+  - delay 20
+  - effect:particlering{particle=reddust;radius=7;points=15;amount=3;hS=0;vS=1} @self
+  - pull{velocity=10} @PIR{r=7;conditions=[
+                              - iscrouching false
+                              ]}
+  - delay 20
+  - remove @self
+
+LustFallenSoldierDie:
+  Conditions:
+  - mobsInRadius{types=RavennaTheLustful;amount=0;radius=7}
+  Cooldown: 100
+  Skills:
+  - effect:particles{particle=heart;amount=10;speed=1;hS=0.15;vS=2} @self
+  - delay 5
+  - remove @self
+
+LustFallenSoldierShieldBash:
+  Conditions:
+  Cooldown:
+  Skills:
+  - effect:particles{particle=heart;amount=10;speed=1;hS=0.15;vS=2} @self
+  - playanimation{a=3;audience=world} @self
+
+LustFallenSoldierSwordStrike:
+  Conditions:
+  Cooldown:
+  Skills:
+  - playanimation{a=0;audience=world} @self
+  - slash{y=1.2;foffset=1.5;FromOrigin=true;w=6;h=30;mpd=true;a=20;radius=2;
+      oP=[ - e:p{p=heart} ];
+      oH=[ - command{c="runicdamage <caster.uuid> <target.name> 40"} ];
+      roll=<random.-30to30>;fo=5;duration=5} @self
+
+LustFallenSoldierSpawn:
+  Conditions:
+  Cooldown:
+  Skills:
+  - cast{skillName="Summoning Soldiers";duration=60;onCast=LustFallenSoldierSpawnCast;showCastBar=true}
+
+LustFallenSoldierSpawnCast:
+  Conditions:
+  Cooldown:
+  Skills:
+  - summon{type=LustFallenSoldier;amount=3;radius=4} @self
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - delay 20
+  - effect:particlering{particle=heart;radius=7;points=32;amount=1;hS=0;vS=1} @self
+  - damage{a=1000} @MIR{r=50;types=LustFallenSoldier}
+
+EnvyKnowledgeTotem1Skill:
+  Conditions:
+  Cooldown:
+  Skills:
+  - projectile{onTick=EnvyKnowledgeTotem1Skill-Tick;onHit=EnvyKnowledgeTotem1Skill-Hit;v=8;i=1;hR=5;vR=1;hnp=true;sB=false;g=1;hfs=6} @parent
+  - delay 10
+  - remove @self
+EnvyKnowledgeTotem1Skill-Tick:
+  Skills:
+  - effect:particles{p=enchantment_table;amount=10;speed=0;hS=0.2;vS=0.2} @origin
+EnvyKnowledgeTotem1Skill-Hit:
+  Skills:
+  - heal{a=1}

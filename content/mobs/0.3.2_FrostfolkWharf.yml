@@ -1,0 +1,177 @@
+FrostfolkSpirit:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cFrostfolk Spirit'
+  Health: 1000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 14
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - LostRuneblade HAND
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lVaraya the Frostfolk Spirit'
+    Health: 1000
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=FrostfolkSpirit-drop} @trigger ~onDeath
+  - skill{s=Frostfolk} @self ~onTimer:40
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin soulzie setCustomName "&e[&6☠&e] &cFrostfolk Spirit" setDynamicName true
+
+Frostfolk-marker3:
+  Type: armor_stand
+  Skills:
+  - skill{s=Frostfolk-marker3} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+Frostfolk-marker4:
+  Type: armor_stand
+  Skills:
+  - skill{s=Frostfolk-marker4} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+Frostfolk-marker5:
+  Type: armor_stand
+  Skills:
+  - skill{s=Frostfolk-marker5} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+Frostfolk-marker6:
+  Type: armor_stand
+  Skills:
+  - skill{s=Frostfolk-marker6} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+Frostfolk-marker7:
+  Type: armor_stand
+  Skills:
+  - skill{s=Frostfolk-marker7} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+Frostfolk-marker8:
+  Type: armor_stand
+  Skills:
+  - skill{s=Frostfolk-marker8} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+FrostfolkFisherman: #event
+  Type: ZOMBIE
+  Display: '&e[&614&e] &cFrostfolk Fisherman'
+  Health: 245
+  Damage: 28
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FISHING_ROD HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 125 <mob.l.x> <mob.l.y> <mob.l.z> 14"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-14} @trigger ~onDeath
+  - command{c="ri drop FrozenFish <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=FrostfolkFisherman} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin TinyCookiez setCustomName "&e[&614&e] &cFrostfolk Fisherman" setDynamicName true
+Frostfolk-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=Frostfolk-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+FrostfolkMaiden: #event
+  Type: ZOMBIE
+  Display: '&e[&614&e] &cFrostfolk Maiden'
+  Health: 235
+  Damage: 28
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FISHING_ROD HAND
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 125 <mob.l.x> <mob.l.y> <mob.l.z> 14"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-14} @trigger ~onDeath
+  - command{c="ri drop FrozenFish <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - setvariable{var=caster.cast;value=0} @self ~onSpawn
+  - skill{s=FrostfolkMaiden} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Ethilion setCustomName "&e[&614&e] &cFrostfolk Maiden" setDynamicName true
+Frostfolk-marker2:
+  Type: armor_stand
+  Skills:
+  - skill{s=Frostfolk-marker2} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true

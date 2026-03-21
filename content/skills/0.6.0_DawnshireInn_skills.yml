@@ -1,0 +1,258 @@
+ForestBanditLordSpawn:
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - delay 40
+  - potion{t=SPEED;d=40;l=3;hasParticles=false}
+  - delay 20
+  - effect:particlesphere{particle=reddust;color=#FFC8C8;amount=12;radius=4;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - remove
+ForestBanditLordSpawn2:
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - delay 40
+  - potion{t=SPEED;d=40;l=3;hasParticles=false}
+  - delay 40
+  - effect:particlesphere{particle=reddust;color=#FFC8C8;amount=12;radius=4;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - remove
+
+ForestBanditDash:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - cast{skillName="Blade Dance";duration=20;onCast=ForestBanditDashcast;showCastBar=true} @target
+ForestBanditDashcast:
+  Skills:
+  - potion{t=INVISIBILITY;d=60;l=3;hasParticles=false}
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - delay 40
+  - jump{v=1.2}
+  - delay 2
+  - leap{v=400} @target
+  - skill{s=ForestBanditBladeDancecast3}
+  - delay 4
+  - skill{s=ForestBanditBladeDancecast3}
+  - delay 4
+  - skill{s=ForestBanditBladeDancecast3}
+  - delay 4
+  - skill{s=ForestBanditBladeDancecast3}
+  - delay 4
+  - skill{s=ForestBanditBladeDancecast3}
+
+ForestBanditSplit:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - cast{skillName="Shatter";duration=20;onCast=ForestBanditSplitcast;showCastBar=true} @target
+ForestBanditSplitcast:
+  Skills:
+  - randomskill{s=ForestBanditSplit1,ForestBanditSplit2}
+ForestBanditSplit1:
+  Cooldown: 16
+  Skills:
+  - potion{t=INVISIBILITY;d=40;l=3;hasParticles=false}
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - delay 40
+  - summon{t=ForestBanditLordSpawn;a=5;r=16;os=true}
+ForestBanditSplit2:
+  Cooldown: 16
+  Skills:
+  - potion{t=INVISIBILITY;d=60;l=3;hasParticles=false}
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - jump{v=1.2}
+  - delay 10
+  - setAI{ai=false}
+  - delay 30
+  - summon{t=ForestBanditLordSpawn2;a=1;r=3;os=true} @Ring{r=12;p=6}
+  - setAI{ai=true}
+ForestBanditLordAura:
+  Conditions:
+  - incombat{}
+  Skills:
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=2;hS=1;vS=1} @self
+ForestBanditBladeDance:
+  Cooldown: 12
+  Conditions:
+  - playernotwithin 6
+  - playerwithin 48
+  - incombat{}
+  Skills:
+  - potion{type=SLOW;duration=120;level=1;hasParticles=false} @Self
+  - randomskill{s=ForestBanditBladeDancemsg1,ForestBanditBladeDancemsg2,ForestBanditBladeDancemsg3} @target
+  - delay 40
+  - skill{s=ForestBanditBladeDancecast} @target
+ForestBanditBladeDancemsg1:
+  Cooldown: 8
+  Skills:
+  - message{m="&dCome at me or die!"}
+ForestBanditBladeDancemsg2:
+  Cooldown: 8
+  Skills:
+  - message{m="&dCome close or fall!"}
+ForestBanditBladeDancemsg3:
+  Cooldown: 8
+  Skills:
+  - message{m="&dCome near or perish!"}
+
+ForestBanditBladeDancecast:
+  Skills:
+  - skill{s=ForestBanditBladeDancecast1}
+  - delay 10
+  - skill{s=ForestBanditBladeDancecast1}
+  - delay 10
+  - skill{s=ForestBanditBladeDancecast1}
+  - delay 10
+  - skill{s=ForestBanditBladeDancecast1}
+  - delay 10
+  - skill{s=ForestBanditBladeDancecast2}
+
+ForestBanditBladeDancecast1:
+  Conditions:
+  - playernotwithin 4
+  - playerwithin 48
+  Skills:
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=4;hS=1;vS=1} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 4"} @target
+ForestBanditBladeDancecast2:
+  Conditions:
+  - playernotwithin 4
+  - playerwithin 48
+  Skills:
+  - effect:particles{particle=reddust;color=#FFC8C8;amount=4;hS=1;vS=1} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 60"} @target
+  - potion{t=SLOW;d=40;l=1} @target
+  - sound{s=entity.skeleton.hurt} @target
+ForestBanditBladeDancecast3:
+  Skills:
+  - effect:particlesphere{particle=reddust;color=#FFC8C8;amount=16;radius=4;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - skill{s=ForestBanditBladeDancecast4}
+ForestBanditBladeDancecast4:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - sound{s=entity.skeleton.hurt} @self  
+ForestBanditSpin:
+  Cooldown: 15
+  Conditions:
+  - varinrange{var=caster.banditspin;value=>6}
+  Skills:
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @Self
+  - cast{skillName="Spin Attack";duration=20;onCast=ForestBanditSpincast;showCastBar=true} @target
+  - effect:particlering{particle=crit;radius=4;points=16;amount=1;hS=1;vS=0} @self
+  - delay 10
+  - effect:particlering{particle=crit;radius=4;points=16;amount=1;hS=1;vS=0} @self
+
+ForestBanditLunge:
+  Cooldown: 15
+  Conditions:
+  - varinrange{var=caster.banditdash;value=>6}
+  Skills:
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @Self
+  - cast{skillName="Lunge";duration=20;onCast=ForestBanditLungecast;showCastBar=true} @target
+ForestBanditLungecast:
+  Skills:
+  - jump{v=1.2} @self
+  - delay 2
+  - leap{v=400} @target
+  - delay 20
+  - effect:particlering{particle=crit;radius=2;points=16;amount=5;hS=1;vS=0} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - throw{velocity=3;velocityY=2} @PIR{r=4}
+  - delay 10
+  - setvariable{var=caster.banditdash;value=0}
+  - setvariable{var=caster.banditspin;value=0}
+
+ForestBanditSpinwithin:
+  Cooldown: 1
+  Conditions:
+  - playerwithin 6
+  Skills:
+  - variableadd{var=caster.banditspin;amount=1} 
+  - variablesubtract{var=caster.banditdash;amount=1} 
+  
+ForestBanditSpinnotwithin:
+  Cooldown: 1
+  Conditions:
+  - playernotwithin 6
+  Skills:
+  - variableadd{var=caster.banditdash;amount=1} 
+  - variablesubtract{var=caster.banditspin;amount=1} 
+
+ForestBanditSpincast:
+  Skills:
+  - effect:particlering{particle=crit;radius=4;points=32;amount=5;hS=1;vS=0} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 60"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - throw{velocity=5;velocityY=3} @PIR{r=4}
+  - delay 10
+  - setvariable{var=caster.banditdash;value=0}
+  - setvariable{var=caster.banditspin;value=0}
+
+CheckLOS:
+  TargetConditions:
+  - fieldofview{angle=90} true
+  Skills:
+  - message{m="FOV"} @PIR{r=20}
+  - potion{type=SLOW;force=true;d=60;p=false} @self
+
+TargetSilverfish:
+  Skills:
+  - skill{s=CheckLOS} @MIR{t=ForestSilverfish;r=20}
+
+TestSudo:
+  Skills:
+  - message{m="Sudo"} @PIR{r=20}
+  - damage{a=10} @self
+  
+ArrowVolleyIgnite:
+  Skills:
+  - shoot{ontickskill=ArrowVolleyIgnite-Tick;onhitskill=ArrowVolleyIgnite-Hit;vs=1;hs=1;md=21;v=1.1} @target
+  
+ArrowVolleyIgnite-Tick:
+  Skills:
+  - effect:particles{p=lava;amount=10;speed=0;hS=0.2;vS=0.2} @origin
+  
+ArrowVolleyIgnite-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 18"}
+  - ignite{ticks=40} 
+  
+ArrowVolleyIgniteSpam:
+  Skills:
+  - sendtitle{title="&4&kooo&r&l&cArrow Burn&r&4&kooo";subtitle="&e&l3";d=20} @PlayersInRadius{r=21}
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cArrow Burn&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=21}
+  - delay 20
+  - sendtitle{title="&4&kooo&r&l&cArrow Burn&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=21}
+  - delay 20
+  - skill{s=ArrowVolleyIgnite}
+  - sound{s=item.crossbow.shoot} @self
+  - delay 5
+  - skill{s=ArrowVolleyIgnite}
+  - sound{s=item.crossbow.shoot} @self
+  - delay 5
+  - skill{s=ArrowVolleyIgnite}
+  - sound{s=item.crossbow.shoot} @self
+  - delay 5
+  - skill{s=ArrowVolleyIgnite}
+  - sound{s=item.crossbow.shoot} @self
+  - delay 5
+  - skill{s=ArrowVolleyIgnite}
+  - sound{s=item.crossbow.shoot} @self
+  - delay 5
+  - skill{s=ArrowVolleyIgnite}
+  - sound{s=item.crossbow.shoot} @self
+  
+ForestArcherSpawn2A:
+  Conditions:
+  - incombat{} true
+  Skills:
+  - summon{type=ForestArcher;amount=1;radius=1} @self  

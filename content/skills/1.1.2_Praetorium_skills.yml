@@ -1,0 +1,966 @@
+praetorium-altar-completion:
+  Conditions:
+  - variableEquals{var=caster.archer;value=1}
+  - variableEquals{var=caster.cleric;value=1}
+  - variableEquals{var=caster.mage;value=1}
+  - variableEquals{var=caster.rogue;value=1}
+  - variableEquals{var=caster.warrior;value=1}
+  Cooldown: 1
+  Skills:
+  #- message{m="&eCongratulations, your reward is on the center table."} @PIR{r=38}
+  #- command{c="ri drop praetorium-silver-medal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 20"} @Forward{f=0;y=2}
+  - message{m="&6Congratulations, you have felled all the generals!"} @PIR{r=38}
+  - setvariable{var=caster.archer;value=0}
+  - setvariable{var=caster.cleric;value=0}
+  - setvariable{var=caster.mage;value=0}
+  - setvariable{var=caster.rogue;value=0}
+  - setvariable{var=caster.warrior;value=0}
+
+praetorium-threat:
+  TargetConditions:
+  - distance{d=>15}
+  Cooldown: 5
+  Skills:
+  - clearThreat{} @self
+  - threat{a=1} @NearestPlayer{r=128}
+
+praetorium-melee-shock:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - summon{t=praetorium-melee-shock-visual;r=2} @Forward{f=0;y=18}
+  - delay 10
+  - summon{t=praetorium-melee-shock-visual;r=2} @Forward{f=0;y=15}
+  - delay 10
+  - summon{t=praetorium-melee-shock-visual;r=2} @Forward{f=0;y=12}
+  - delay 10
+  - summon{t=praetorium-melee-shock-visual;r=2} @Forward{f=0;y=9}
+  - delay 10
+  - summon{t=praetorium-melee-shock-visual;r=2} @Forward{f=0;y=6}
+  - delay 10
+  - summon{t=praetorium-melee-shock-visual;r=2} @Forward{f=0;y=3}
+  - delay 10
+  - sound{s=entity.lightning_bolt.impact}
+  - effect:particlesphere{p=spell_instant;amount=20;radius=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=3} @PIR{r=5}  
+
+praetorium-melee-shock-visual:
+  Skills:
+  #- sound{s=block.fire.extinguish;p=1.5}
+  - effect:particlesphere{p=bubble_column_up;amount=8;radius=4}
+  - remove
+
+praetorium-melee-throw:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  - playernotwithin 7
+  Skills:
+  - potion{t=SLOW;d=20;l=3;hasParticles=false}
+  - equip{i=TRIDENT:HAND}
+  - delay 20
+  - potion{t=SLOW;d=80;l=1;hasParticles=false}
+  - equip{i=AIR:HAND}  
+  - sound{s=item.trident.throw}
+  - projectile{onTick=praetorium-melee-throw-tick;onEnd=praetorium-melee-throw-end;onHit=praetorium-melee-throw-hit;i=1;v=25;mr=30;g=0.1} @target
+  - delay 40
+  - equip{i=IRON_SWORD:HAND}
+praetorium-melee-throw-tick:
+  Skills:
+  - sound{s=block.bubble_column.bubble_pop} @origin
+  - effect:particlesphere{p=bubble_pop;amount=1;radius=1} @origin
+praetorium-melee-throw-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 200"}
+praetorium-melee-throw-end:
+  Skills:
+  - jump{v=0.25}
+  - delay 2
+  - leap{v=400} @origin
+
+praetorium-melee-parry:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=30;l=1;hasParticles=false}
+  - delay 20
+  - sound{s=item.armor.equip_iron}
+  - equip{i=SHIELD:OFFHAND}
+  - delay 10
+  - setvariable{var=caster.active;value=1}
+  - skill{s=praetorium-melee-parry-active-visual}
+  - potion{t=SLOW;d=60;l=3;hasParticles=false}
+  - delay 40
+  - setvariable{var=caster.active;value=0}
+  - equip{i=AIR:OFFHAND}
+praetorium-melee-parry-active:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - setvariable{var=caster.active;value=0}
+  - equip{i=AIR:OFFHAND}
+  - sound{s=item.shield.block} @self
+  - pull{v=12} @trigger
+  - heal{a=200;i=true} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @trigger
+
+praetorium-melee-parry-active-visual:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - effect:particlesphere{p=crit;amount=1;radius=1} @Forward{f=0.1;y=0.5}  
+  - delay 2
+  - skill{s=praetorium-melee-parry-active-visual}
+
+praetorium-altar-leash:
+  Skills:
+  - signal{s=leash} @MIR{t=praetorium-altar;r=38}
+  - delay 20
+  - skill{s=praetorium-altar-leash-teleport}
+  - setvariable{var=caster.leash;value=1}
+praetorium-altar-leash-teleport:
+  Conditions:
+  - variableEquals{var=caster.leash;value=1}
+  Skills:
+  - clearThreat{} @self
+  - teleport @Location{c=2142.5,88,-419.5}
+  - setvariable{var=caster.leash;value=0}
+
+praetorium-altar-forfeit:
+  Conditions:
+  - playernotwithin 38
+  - varinrange{var=caster.altar;value=>2}
+  - variableEquals{var=caster.forfeit;value=0}
+  Skills:
+  - setvariable{var=caster.forfeit;value=1}
+  - message{m="&cYou have left the arena."} @PIR{r=48} 
+  - setvariable{var=caster.archer;value=0}
+  - setvariable{var=caster.cleric;value=0}
+  - setvariable{var=caster.mage;value=0}
+  - setvariable{var=caster.rogue;value=0}
+  - setvariable{var=caster.warrior;value=0}
+  - remove @MIR{t=praetorium-altar-archer,praetorium-altar-cleric,praetorium-altar-mage,praetorium-altar-rogue,praetorium-altar-warrior;r=256}
+  #- setvariable{var=caster.altar;value=1}
+
+praetorium-altar:
+  Conditions:
+  - playerwithin 8
+  Cooldown: 2
+  Skills:
+  - randomskill{skills=praetorium-altar1,praetorium-altar2}
+  - variableadd{var=caster.altar;amount=1}
+praetorium-altar1:
+  Conditions:
+  - variableEquals{var=caster.altar;value=1}
+  Skills:
+  - message{m="&eDo you wish to challenge all five Imperial Elites at once?"} @PIR{r=38}
+  - message{m="&eThe time limit is 5 minutes."} @PIR{r=38}
+  - message{m="&eYou could earn &7Silver Medals&e or even &6Legendary&e weapons."} @PIR{r=38}
+  - delay 200
+  - skill{s=praetorium-altar-reset}
+praetorium-altar2:
+  Conditions:
+  - variableEquals{var=caster.altar;value=2}
+  Skills:
+  - remove @MIR{t=praetorium-altar-archer,praetorium-altar-cleric,praetorium-altar-mage,praetorium-altar-rogue,praetorium-altar-warrior,praetorium-altar-timer;r=256}
+  - setvariable{var=caster.archer;value=0}
+  - setvariable{var=caster.cleric;value=0}
+  - setvariable{var=caster.mage;value=0}
+  - setvariable{var=caster.rogue;value=0}
+  - setvariable{var=caster.warrior;value=0}
+  - message{m="&eGood luck."} @PIR{r=38} 
+  - delay 20
+  - sound{s=block.comparator.click;v=3}
+  - message{m="&e3"} @PIR{r=38} 
+  - delay 20
+  - sound{s=block.comparator.click;v=3}
+  - message{m="&e2"} @PIR{r=38} 
+  - delay 20
+  - sound{s=block.comparator.click;v=3}
+  - message{m="&e1"} @PIR{r=38} 
+  - delay 20
+  - sound{s=entity.ender_dragon.growl;v=3}
+  - message{m="&eForfeit with everyone leaving the arena."} @PIR{r=38} 
+  - summon{t=praetorium-altar-timer} @Forward{f=0;y=1}
+  - summon{t=praetorium-altar-archer} @Location{c=2140,110,-421.3}
+  - summon{t=praetorium-altar-cleric} @Location{c=2140,110,-417.7}
+  - summon{t=praetorium-altar-mage} @Location{c=2143,110,-416.6}
+  - summon{t=praetorium-altar-rogue} @Location{c=2145,110,-419.5}
+  - summon{t=praetorium-altar-warrior} @Location{c=2143,110,-422.3}
+  - setvariable{var=caster.forfeit;value=0}
+  - delay 6000
+  - setvariable{var=caster.altar;value=1}
+
+praetorium-altar-reset:
+  Conditions:
+  - variableEquals{var=caster.altar;value=2}
+  Skills:
+  - setvariable{var=caster.altar;value=1}
+
+praetorium-altar-active:
+  Conditions:
+  - varinrange{var=caster.altar;value=>3}
+  Skills:
+  - message{m="&7Arena activation is on cooldown."} @trigger
+  - message{m="&7You are allowed to bypass the cooldown with creativity."} @trigger
+
+praetorium-archer-barrage:
+  Conditions:
+  - incombat{}
+  Cooldown: 15
+  Skills:
+  - equip{i=BOW:OFFHAND}
+  - potion{t=SLOW;d=20;l=10;hasParticles=false}
+  - delay 20
+  - sound{s=entity.arrow.shoot;p=1.5;v=2}
+  - projectile{onTick=praetorium-archer-barrage-tick;onHit=praetorium-archer-barrage-hit;i=1;v=15;mr=30;ac=.5} @target
+  - projectile{onTick=praetorium-archer-barrage-tick;onHit=praetorium-archer-barrage-hit;i=1;v=15;mr=30;ac=.5} @target
+  - projectile{onTick=praetorium-archer-barrage-tick;onHit=praetorium-archer-barrage-hit;i=1;v=15;mr=30;ac=.5} @target
+  - projectile{onTick=praetorium-archer-barrage-tick;onHit=praetorium-archer-barrage-hit;i=1;v=15;mr=30;ac=.5} @target
+  - projectile{onTick=praetorium-archer-barrage-tick;onHit=praetorium-archer-barrage-hit;i=1;v=15;mr=30;ac=.5} @target
+  - projectile{onTick=praetorium-archer-barrage-tick;onHit=praetorium-archer-barrage-hit;i=1;v=15;mr=30;ac=.5} @target
+  - equip{i=AIR:OFFHAND}
+praetorium-archer-barrage-tick:
+  Skills:
+  - effect:particles{particle=crit;a=1} @Origin
+praetorium-archer-barrage-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}
+
+praetorium-archer-lunge:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 12
+  Skills:
+  - sound{s=entity.ender_dragon.flap}
+  - leap{v=500} @Forward{f=-10;y=4}
+  - sound{s=entity.arrow.shoot;p=0.5;v=2}
+  - projectile{onTick=praetorium-archer-lunge-tick;onHit=praetorium-archer-lunge-hit;i=1;v=40;mr=30} @target
+  - delay 4
+  - sound{s=entity.arrow.shoot;p=0.5;v=2}
+  - projectile{onTick=praetorium-archer-lunge-tick;onHit=praetorium-archer-lunge-hit;i=1;v=40;mr=30} @target
+  - delay 4
+  - sound{s=entity.arrow.shoot;p=0.5;v=2}
+  - projectile{onTick=praetorium-archer-lunge-tick;onHit=praetorium-archer-lunge-hit;i=1;v=40;mr=30} @target
+  - delay 4
+  - sound{s=entity.arrow.shoot;p=0.5;v=2}
+  - projectile{onTick=praetorium-archer-lunge-tick;onHit=praetorium-archer-lunge-hit;i=1;v=40;mr=30} @target
+  - delay 4
+  - sound{s=entity.arrow.shoot;p=0.5;v=2}
+  - projectile{onTick=praetorium-archer-lunge-tick;onHit=praetorium-archer-lunge-hit;i=1;v=40;mr=30} @target
+praetorium-archer-lunge-tick:
+  Skills:
+  - effect:particles{particle=crit;a=1} @Origin
+praetorium-archer-lunge-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"}
+
+praetorium-archer-roll:
+  Cooldown: 8
+  Skills:
+  - leap{v=250} @RLNTE{a=1;r=5;s=1;minr=3}
+
+praetorium-archer-explosive:
+  Conditions:
+  - incombat{}
+  - playernotwithin 5
+  Cooldown: 12
+  Skills:
+  - sound{s=entity.tnt.primed;v=2}
+  - potion{d=SLOW;d=20;l=1;hasParticles=false}
+  - delay 15
+  - skill{s=praetorium-archer-explosive-proj} @target
+praetorium-archer-explosive-proj:
+  Skills:
+  - sound{s=entity.arrow.shoot}
+  - projectile{ot=praetorium-archer-explosive-proj-tick;oh=praetorium-archer-explosive-proj-hit;oe=praetorium-archer-explosive-proj-end;i=1;v=15;mr=30;g=.1}
+praetorium-archer-explosive-proj-tick:
+  Skills:
+  - effect:particles{particle=crit_magic;a=1} @Origin
+praetorium-archer-explosive-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}
+praetorium-archer-explosive-proj-end:
+  Skills:
+  - summon{t=praetorium-archer-explosive-proj-damage}
+
+praetorium-archer-explosive-proj-damage:
+  Skills:
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=10} @PIR{r=4}
+  - sound{s=entity.dragon_fireball.explode;p=0.5}
+  - remove
+
+praetorium-cleric-buff:
+  Skills:
+  - effect:sound{s=entity.experience_orb.pickup;volume=0.1;pitch=0.5} @self
+  - effect:particlesphere{p=heart;amount=2;radius=1;yOffset=.5} @self
+  - potion{t=SPEED;d=80;l=2;hasParticles=false}
+  - heal{a=400;i=true} 
+
+praetorium-cleric-spawn-buff:
+  Skills:
+  - effect:sound{s=entity.experience_orb.pickup;volume=0.1;pitch=0.5} @self
+  - effect:particlesphere{p=heart;amount=2;radius=1;yOffset=.5} @self
+  - potion{t=SPEED;d=80;l=2;hasParticles=false}
+  - heal{a=250;i=true} 
+
+praetorium-cleric-spawn-remove:
+  Skills:
+  - sound{s=entity.skeleton.hurt}
+  - delay 800
+  - remove
+
+praetorium-cleric-spring:
+  TargetConditions:
+  - distance{d=7to64}
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - summon{t=praetorium-cleric-spring;r=1;os=true} @target
+
+praetorium-cleric-springcast:
+  Skills:
+  - sound{s=block.glass.break}
+  - effect:particlering{p=fireworks_spark;a=1;y=0.1;s=0.1;r=5;points=32}
+  - signal{s=buff} @MIR{t=praetorium-altar-archer,praetorium-altar-cleric,praetorium-altar-mage,praetorium-altar-rogue,praetorium-altar-warrior,praetorium-archer,praetorium-cleric,praetorium-mage,praetorium-rogue,praetorium-warrior,praetorium-cleric-spawn;r=5}
+  - potion{t=SLOW;d=30;l=1} @PIR{r=5}
+  - delay 20
+  - effect:particlering{p=fireworks_spark;a=1;y=0.1;s=0.1;r=5;points=32}
+  - signal{s=buff} @MIR{t=praetorium-altar-archer,praetorium-altar-cleric,praetorium-altar-mage,praetorium-altar-rogue,praetorium-altar-warrior,praetorium-archer,praetorium-cleric,praetorium-mage,praetorium-rogue,praetorium-warrior,praetorium-cleric-spawn;r=5}
+  - potion{t=SLOW;d=30;l=1} @PIR{r=5}
+  - delay 20
+  - effect:particlering{p=fireworks_spark;a=1;y=0.1;s=0.1;r=5;points=32}
+  - signal{s=buff} @MIR{t=praetorium-altar-archer,praetorium-altar-cleric,praetorium-altar-mage,praetorium-altar-rogue,praetorium-altar-warrior,praetorium-archer,praetorium-cleric,praetorium-mage,praetorium-rogue,praetorium-warrior,praetorium-cleric-spawn;r=5}
+  - potion{t=SLOW;d=30;l=1} @PIR{r=5}
+  - summon{t=praetorium-cleric-spawn;r=4;os=true}
+  - delay 20
+  - effect:particlering{p=fireworks_spark;a=1;y=0.1;s=0.1;r=5;points=32}
+  - signal{s=buff} @MIR{t=praetorium-altar-archer,praetorium-altar-cleric,praetorium-altar-mage,praetorium-altar-rogue,praetorium-altar-warrior,praetorium-archer,praetorium-cleric,praetorium-mage,praetorium-rogue,praetorium-warrior,praetorium-cleric-spawn;r=5}
+  - potion{t=SLOW;d=30;l=1} @PIR{r=5}
+  - delay 20
+  - effect:particlering{p=fireworks_spark;a=1;y=0.1;s=0.1;r=5;points=32}
+  - signal{s=buff} @MIR{t=praetorium-altar-archer,praetorium-altar-cleric,praetorium-altar-mage,praetorium-altar-rogue,praetorium-altar-warrior,praetorium-archer,praetorium-cleric,praetorium-mage,praetorium-rogue,praetorium-warrior,praetorium-cleric-spawn;r=5}
+  - potion{t=SLOW;d=30;l=1} @PIR{r=5}
+  - remove
+
+praetorium-cleric-discord:
+  Conditions:
+  - incombat{}
+  - playerwithin 3
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - sound{s=entity.tnt.primed;v=2}
+  - delay 40
+  - potion{t=SLOW;d=80;l=10} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - sound{s=entity.dragon_fireball.explode;p=0.5}  
+
+praetorium-cleric-jukebox:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=100;l=2;hasParticles=false}
+  - summon{t=praetorium-cleric-jukebox;os=true}
+  - delay 90
+  - jump{v=0.5}
+
+praetorium-cleric-jukeboxcast:
+  Skills:
+  - setAI{ai=false}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=1}
+  - effect:particlesphere{p=note;radius=0;amount=1;yOffset=.75}
+  - effect:particlesphere{p=crit;radius=1;amount=1;yOffset=.5}
+  - sound{s=block.note_block.harp}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=2}
+  - effect:particlesphere{p=note;radius=0;amount=1;yOffset=.75}
+  - effect:particlesphere{p=crit;radius=2;amount=4}
+  - sound{s=block.note_block.harp}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=3}
+  - effect:particlesphere{p=note;radius=0;amount=1;yOffset=.75}
+  - effect:particlesphere{p=crit;radius=3;amount=9}
+  - sound{s=block.note_block.harp}
+  - delay 20
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=4}
+  - effect:particlesphere{p=note;radius=0;amount=1;yOffset=.75}
+  - effect:particlesphere{p=crit;radius=4;amount=16}
+  - sound{s=block.note_block.harp}
+  - delay 20
+  - signal{s=leap} @MIR{t=praetorium-cleric;r=5} 
+  - effect:particles{particle=explosion_large;a=1;hs=1;vs=1;r=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - effect:particlesphere{p=crit;radius=5;amount=25}
+  - sound{s=entity.dragon_fireball.explode;p=1}
+  - remove
+
+praetorium-cleric-leap:
+  Skills:
+  - leap{v=400} @target
+
+praetorium-mage-blink:
+  TargetConditions:
+  - distance{d=5to64}
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=40;l=2;hasParticles=false} @self
+  - summon{t=praetorium-mage-blink;r=3;os=true} @target
+  - delay 5
+  - sound{s=entity.enderman.teleport;v=2} @self 
+  - teleport @Forward{f=5;y=3} @self
+  - setAI{ai=false} @self
+  - delay 10
+  - setAI{ai=true} @self
+  - sound{s=entity.enderman.teleport;v=2} @self 
+  - teleport @target
+  - delay 25
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - sound{s=entity.dragon_fireball.explode;p=0.5} @self 
+
+praetorium-mage-freeze-cast:
+  TargetConditions:
+  - distance{d=<4}
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - setAI{ai=false} @self
+  - delay 20
+  - summon{t=praetorium-mage-freeze} @Forward{f=3;y=0}
+  - setAI{ai=true} @self
+praetorium-mage-freeze:
+  Skills:
+  - effect:particlesphere{p=block_crack;material=ice;radius=2;amount=10;yOffset=.5}
+  - sound{s=block.glass.break}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=2}
+  - potion{t=SLOW;d=40;l=10} @PIR{r=2}
+
+praetorium-mage-meteor-cast:
+  TargetConditions:
+  - distance{d=<64}
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - summon{t=praetorium-mage-meteor;r=2}
+
+praetorium-mage-meteor:
+  Skills:
+  - sound{s=entity.blaze.shoot}
+  - projectile{ot=praetorium-mage-meteor-tick;v=.5;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=20;g=2;sB=false}
+  - delay 20
+  - summon{t=praetorium-mage-meteor-damage}
+  - delay 20
+  - sound{s=entity.blaze.shoot}
+  - projectile{ot=praetorium-mage-meteor-tick;v=.5;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=20;g=2;sB=false}
+  - delay 20
+  - summon{t=praetorium-mage-meteor-damage}
+  - delay 20
+  - sound{s=entity.blaze.shoot}
+  - projectile{ot=praetorium-mage-meteor-tick;v=.5;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=20;g=2;sB=false}
+  - delay 20
+  - summon{t=praetorium-mage-meteor-damage}
+  - remove
+praetorium-mage-meteor-tick:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=1;radius=1;yOffset=.5} @origin
+
+praetorium-mage-meteor-damage:
+  Skills:
+  - sound{s=entity.dragon_fireball.explode} 
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - effect:particlesphere{p=soul_fire_flame;amount=25;radius=5;yOffset=.5}
+  - remove
+
+praetorium-rogue-assassinate:
+  Conditions:
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - setvariable{var=caster.stab;value=0}
+  - setvariable{var=caster.leap;value=0}
+  - potion{t=INVISIBILITY;d=10;l=1;hasParticles=false} 
+  - equip{i=AIR:HAND}
+  - equip{i=AIR:OFFHAND}
+  - equip{i=AIR:HEAD}
+  - equip{i=AIR:CHEST}
+  - equip{i=AIR:LEGS}
+  - equip{i=AIR:FEET}
+  - teleport @target
+  - setAI{ai=false}
+  - delay 10
+  - equip{i=IRON_SWORD:HAND}
+  - equip{i=STONE_SWORD:OFFHAND}
+  - equip{i=LEATHER_HELMET:HELMET}
+  - equip{i=LEATHER_CHESTPLATE:CHEST}
+  - equip{i=LEATHER_LEGGINGS:LEGS}
+  - equip{i=LEATHER_BOOTS:FEET}
+  - setAI{ai=true}
+  - sound{s=entity.player.attack.crit}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=2}
+  - potion{t=BLINDNESS;d=60;l=1} @PIR{r=2}
+  - delay 20
+  - setvariable{var=caster.stab;value=1}
+  - setvariable{var=caster.leap;value=1}
+   
+praetorium-rogue-leap:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  - variableEquals{var=caster.leap;value=1}  
+  Cooldown: 8
+  Skills:
+  - jump{v=0.5}
+  - delay 5
+  - sound{s=entity.ender_dragon.flap}
+  - leap{v=400} @target
+
+praetorium-rogue-stab:
+  Conditions:
+  - playerwithin 3
+  - incombat{}
+  - variableEquals{var=caster.stab;value=1}  
+  Cooldown: 10
+  Skills:
+  - potion{t=SLOW;d=20;l=2;hasParticles=false} 
+  - delay 5
+  - playanimation{a=0;audience=World}
+  - summon{t=praetorium-rogue-stab-minor-cast} @Forward{f=1;y=0}
+  - delay 20
+  - playanimation{a=0;audience=World}
+  - summon{t=praetorium-rogue-stab-major-cast} @Forward{f=1;y=0}
+
+praetorium-rogue-stab-minor-cast:
+  Skills:
+  - sound{s=entity.player.attack.weak}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=1}
+  - remove
+
+praetorium-rogue-stab-major-cast:
+  Skills:
+  - sound{s=entity.player.attack.sweep}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=2}
+  - remove
+
+praetorium-warrior-quake:
+  Conditions:
+  - incombat{}
+  Cooldown: 20
+  Skills:
+  - summon{t=praetorium-warrior-quake-damage} @Ring{p=8;r=12}
+  - delay 20
+  - summon{t=praetorium-warrior-quake-damage} @Ring{p=8;r=12}
+  - delay 20
+  - summon{t=praetorium-warrior-quake-damage} @Ring{p=8;r=12}
+  - delay 20
+  - summon{t=praetorium-warrior-quake-damage} @Ring{p=8;r=12}
+  - delay 20
+  - summon{t=praetorium-warrior-quake-damage} @Ring{p=8;r=12}
+  - delay 20
+  - summon{t=praetorium-warrior-quake-damage} @Ring{p=8;r=12}
+  - delay 20
+  - summon{t=praetorium-warrior-quake-damage} @Ring{p=8;r=12}
+  - delay 20
+  - summon{t=praetorium-warrior-quake-damage} @Ring{p=8;r=12}
+
+praetorium-warrior-berserk-quake:
+  Conditions:
+  - incombat{}
+  Skills:
+  - summon{t=praetorium-warrior-quake-damage;r=20;a=5;os=true}
+
+praetorium-warrior-quake-damage:
+  Skills:
+  - sound{s=block.sand.break}
+  - effect:particlesphere{p=block_crack;material=sand;radius=5;amount=10;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=5}
+  - remove
+
+praetorium-warrior-slam:
+  Conditions:
+  - incombat{}
+  - playerwithin 4
+  Cooldown: 10
+  Skills:
+  - leap{v=150} @Forward{f=2;y=5}
+  - delay 20
+  - effect:particlesphere{p=block_crack;material=sand;radius=4;amount=10;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - throw{vy=10} @PIR{r=4}
+  - sound{s=block.sand.break;v=2;p=0.5} 
+
+praetorium-warrior-berserk-slam:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 7
+  Skills:
+  - setvariable{var=caster.slam;value=1}
+  - leap{v=150} @Forward{f=2;y=5}
+  - delay 20
+  - effect:particlesphere{p=block_crack;material=sand;radius=4;amount=10;yOffset=.5}
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=4}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=4}
+  - throw{vy=10} @PIR{r=4}
+  - sound{s=block.sand.break;v=2;p=0.5} 
+  - delay 40
+  - setvariable{var=caster.slam;value=0}
+
+praetorium-warrior-berserk:
+  Skills:
+  - potion{t=SPEED;d=40;l=2;hasParticles=false}
+  - sound{s=block.honey_block.break}
+  - effect:particlesphere{p=block_crack;material=redstone_block;amount=2;radius=1;yOffset=.5} 
+
+praetorium-warrior-axe:
+  TargetConditions:
+  - distance{d=>5}
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.slam;value=0}    
+  Cooldown: 12
+  Skills:
+  - playanimation{a=3;audience=World} @self
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} @self
+  - equip{i=AIR:HAND} @self
+  - effect:sound{s=item.axe.strip;v=2;p=0.1} @self
+  - projectile{ot=praetorium-warrior-axe-tick;oh=praetorium-warrior-axe-hit;v=25;hr=1;vr=1;i=1;sb=false} @target
+  - delay 20
+  - equip{i=GOLDEN_AXE:HAND} @self
+  
+praetorium-warrior-berserk-axe:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.slam;value=0}    
+  Cooldown: 12
+  Skills:
+  - playanimation{a=3;audience=World}
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - equip{i=AIR:HAND}
+  - effect:sound{s=item.axe.strip;v=2;p=0.1}
+  - projectile{ot=praetorium-warrior-axe-tick;oh=praetorium-warrior-axe-hit;v=25;hr=1;vr=1;i=1;sb=false} @target
+  - delay 20
+  - equip{i=GOLDEN_AXE:HAND}
+
+praetorium-warrior-axe-tick:
+  Skills:
+  - effect:particles{particle=item_crack;material=coal_block;a=1;d=5;v=0;yo=0} @origin
+  
+praetorium-warrior-axe-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 250"}
+  - throw{vy=2}
+  - delay 2
+  - pull{v=8} 
+  - potion{t=SLOW;d=40;l=3}
+  - effect:sound{s=entity.fishing_bobber.retrieve}
+
+LecternTrigger1:
+  Cooldown: 2
+  Conditions:
+  Skills:
+  - command{c="questtrigger player <trigger.name> praetoriumlectern1"} @trigger
+  - message{m="&6It was said that the Imperial Archer could kill an enemy behind him by shooting an arrow around the globe."} @trigger
+  - aura{auraName=LecternOnCD;duration=40} @self
+LecternTrigger2:
+  Cooldown: 2
+  Conditions:
+  Skills:
+  - command{c="questtrigger player <trigger.name> praetoriumlectern2"} @trigger
+  - message{m="&6The Imperial Cleric was voted most handsome man in the world for 25 years in a row."} @trigger
+  - aura{auraName=LecternOnCD;duration=40} @self
+LecternTrigger3:
+  Cooldown: 2
+  Conditions:
+  Skills:
+  - command{c="questtrigger player <trigger.name> praetoriumlectern3"} @trigger
+  - message{m="&6Legend says The Imperial Mage once wiped out an army of 10,000 with a single fireball."} @trigger
+  - aura{auraName=LecternOnCD;duration=40} @self
+LecternTrigger4:
+  Cooldown: 2
+  Conditions:
+  Skills:
+  - command{c="questtrigger player <trigger.name> praetoriumlectern4"} @trigger
+  - message{m="&6The Imperial Rogue won the national swordfighting tournament with only a butterknife."} @trigger
+  - aura{auraName=LecternOnCD;duration=40} @self
+LecternTrigger5:
+  Cooldown: 2
+  Conditions:
+  Skills:
+  - command{c="questtrigger player <trigger.name> praetoriumlectern5"} @trigger
+  - message{m="&6It's said that the only person to ever land a hit on The Imperial Warrior was his mother."} @trigger
+  - aura{auraName=LecternOnCD;duration=40} @self
+LecternTrigger6:
+  Cooldown: 2
+  Conditions:
+  Skills:
+  - command{c="questtrigger player <trigger.name> praetoriumlectern6"} @trigger
+  - message{m="&6INSERT LECTERN6 TEXT"} @trigger
+  - aura{auraName=LecternOnCD;duration=40} @self
+
+LecternAura:
+  Conditions:
+  - hasAura{n=LecternOnCD} false
+  Skills:
+  - effect:particleorbital{r=2;points=16;t=100;i=1;particle=composter} @self
+
+timerStart:
+  Skills:
+  - barCreate{name="counter";display="Test";value=0;color=RED;style=SEGMENTED_10} @self ~onSpawn
+  - delay 20
+  - barSet{name="counter";display="test";value=0.1;color=RED;style=SEGMENTED_10} @self
+  - sound{s=entity.experience_orb.pickup;pitch=0.4;volume=3} @self
+  - delay 20
+  - barSet{name="counter";display="test";value=0.2;color=RED;style=SEGMENTED_10} @self
+  - sound{s=entity.experience_orb.pickup;pitch=0.6;volume=3} @self
+  - delay 18
+  - barSet{name="counter";display="test";value=0.3;color=RED;style=SEGMENTED_10} @self
+  - sound{s=entity.experience_orb.pickup;pitch=0.8;volume=3} @self
+  - delay 16
+  - barSet{name="counter";display="test";value=0.4;color=RED;style=SEGMENTED_10} @self
+  - sound{s=entity.experience_orb.pickup;pitch=1;volume=3} @self
+  - delay 14
+  - barSet{name="counter";display="test";value=0.5;color=RED;style=SEGMENTED_10} @self
+  - sound{s=entity.experience_orb.pickup;pitch=1.2;volume=3} @self
+  - delay 12
+  - barSet{name="counter";display="test";value=0.6;color=RED;style=SEGMENTED_10} @self
+  - sound{s=entity.experience_orb.pickup;pitch=1.4;volume=3} @self
+  - delay 10
+  - barSet{name="counter";display="test";value=0.7;color=RED;style=SEGMENTED_10} @self
+  - sound{s=entity.experience_orb.pickup;pitch=1.6;volume=3} @self
+  - delay 8
+  - barSet{name="counter";display="test";value=0.8;color=RED;style=SEGMENTED_10} @self
+  - sound{s=entity.experience_orb.pickup;pitch=1.8;volume=3} @self
+  - delay 6
+  - barSet{name="counter";display="test";value=0.9;color=RED;style=SEGMENTED_10} @self
+  - sound{s=entity.experience_orb.pickup;pitch=2;volume=3} @self
+  - delay 4
+  - barSet{name="counter";display="test";value=1;color=GREEN;style=SEGMENTED_10} @self
+  - sound{s=entity.experience_orb.pickup;pitch=2;volume=3} @self
+  - setvariable{var=caster.count;value=1} @self 
+  - delay 20
+  - skill{s=timerFail} @self
+timerCheck:
+  Conditions:
+  - varEquals{var=caster.count;value=1} castinstead timerComplete
+  Skills:
+  - skill{s=timerFail} @self
+timerComplete:
+  Skills:
+  - message{m="Correct"} @PIR{r=10}
+  - remove @self
+timerFail:
+  Skills:
+  - setvariable{var=caster.count;value=0} @self 
+  - barSet{name="counter";display="test";value=1;color=GREEN;style=SEGMENTED_10} @self
+  - message{m="Fail"} @PIR{r=10}
+  - command{c="runicdamage <caster.uuid> <target.name> 350"} @PIR{r=5} 
+  - throw{v=10;vy=1} @PIR{r=5}
+  - effect:particles{particle=explosion;hs=5;vs=5;a=25} @self
+  - effect:particles{particle=largeexplosion} @self
+  - sound{s=entity.lightning_bolt.thunder;pitch=2;volume=0.1} @self
+  - remove @self
+
+startListen:
+  Skills:
+  - summon{type=MusicBlock2;amount=1;radius=0;os=true} @Forward{f=3;uel=true;rot=0}
+  #- setrotation{relative=true;pitch=-45} @self
+  - summon{type=MusicBlock1;amount=1;radius=0;os=true} @Forward{f=3;uel=true;rot=-35} 
+  #- setrotation{relative=true;pitch=90} @self
+  - summon{type=MusicBlock3;amount=1;radius=0;os=true} @Forward{f=3;uel=true;rot=35}
+  - barCreate{name="musicBlock";display="&CLISTEN";value=1;color=RED;style=SEGMENTED_10} @self ~onSpawn
+  - delay 40
+  - randomskill{s=play1,play2,play3} 
+  - delay 10
+  - setvariable{var=caster.note1;value="<caster.var.tempValue>"} @self
+  - delay 10
+  - randomskill{s=play1,play2,play3} 
+  - delay 10
+  - setvariable{var=caster.note2;value="<caster.var.tempValue>"} @self
+  - delay 10
+  - randomskill{s=play1,play2,play3} 
+  - delay 10
+  - setvariable{var=caster.note3;value="<caster.var.tempValue>"} @self
+  - delay 10
+  - randomskill{s=play1,play2,play3} 
+  - delay 10
+  - setvariable{var=caster.note4;value="<caster.var.tempValue>"} @self
+  - delay 10
+  - randomskill{s=play1,play2,play3} 
+  - delay 10
+  - setvariable{var=caster.note5;value="<caster.var.tempValue>"} @self
+  - delay 10
+  - skill{s=playStart} @self
+  - message{m="<caster.var.note1> <caster.var.note2> <caster.var.note3> <caster.var.note4> <caster.var.note5>"} @PIR{r=10}
+play1:
+  Skills:
+  - signal{s=play1} @EIR{r=10;target=armorstands}
+  - setvariable{var=caster.tempValue;value="1"}
+play2:
+  Skills:
+  - signal{s=play2} @EIR{r=10;target=armorstands}
+  - setvariable{var=caster.tempValue;value="2"}
+play3:
+  Skills:
+  - signal{s=play3} @EIR{r=10;target=armorstands}
+  - setvariable{var=caster.tempValue;value="3"}
+  
+playNote1:
+  Skills:
+  - sound{s=block.note_block.guitar;pitch=0.5;volume=3} @self
+  - sound{s=block.note_block.bass;pitch=1.8;volume=3} @self
+  - sound{s=block.note_block.guitar;pitch=1.5;volume=3} @self
+  - potion{type=GLOWING;duration=19;level=1} @self
+playNote2:
+  Skills:
+  - sound{s=block.note_block.chime;pitch=0.1;volume=3} @self
+  - sound{s=block.note_block.basedrum;pitch=2;volume=3} @self
+  - sound{s=block.note_block.bell;pitch=0.1;volume=3} @self
+  - potion{type=GLOWING;duration=19;level=1} @self
+playNote3:
+  Skills:
+  - sound{s=block.note_block.harp;pitch=0.5;volume=3} @self
+  - sound{s=block.note_block.bit;pitch=2;volume=3} @self
+  - sound{s=block.note_block.flute;pitch=2;volume=3} @self
+  - potion{type=GLOWING;duration=19;level=1} @self
+
+playStart:
+  Skills:
+  - setvariable{var=caster.playCount;value=1} @self 
+  - delay 20
+  - barSet{name="musicBlock";display="&EPLAY";value=1;color=YELLOW;style=SEGMENTED_10} @self
+  - setvariable{var=caster.playing;value="1"} @self 
+  - delay 40
+  - barSet{name="musicBlock";display="&EPLAY";value=0.9;color=YELLOW;style=SEGMENTED_10} @self
+  - delay 40
+  - barSet{name="musicBlock";display="&EPLAY";value=0.8;color=YELLOW;style=SEGMENTED_10} @self
+  - delay 40
+  - barSet{name="musicBlock";display="&EPLAY";value=0.7;color=YELLOW;style=SEGMENTED_10} @self
+  - delay 40
+  - barSet{name="musicBlock";display="&EPLAY";value=0.6;color=YELLOW;style=SEGMENTED_10} @self
+  - delay 40
+  - barSet{name="musicBlock";display="&EPLAY";value=0.5;color=YELLOW;style=SEGMENTED_10} @self
+  - delay 40
+  - barSet{name="musicBlock";display="&EPLAY";value=0.4;color=YELLOW;style=SEGMENTED_10} @self
+  - delay 40
+  - barSet{name="musicBlock";display="&EPLAY";value=0.3;color=YELLOW;style=SEGMENTED_10} @self
+  - delay 40
+  - barSet{name="musicBlock";display="&EPLAY";value=0.2;color=YELLOW;style=SEGMENTED_10} @self
+  - delay 40
+  - barSet{name="musicBlock";display="&EPLAY";value=0.1;color=YELLOW;style=SEGMENTED_10} @self
+  - delay 40
+  - barSet{name="musicBlock";display="&EPLAY";value=0;color=YELLOW;style=SEGMENTED_10} @self
+  - delay 40
+  - skill{s=checkFail}
+check1:
+  Conditions:
+  - varEquals{var=caster.playing;value="1"} true
+  Skills:
+  - signal{s=play1} @EIR{r=10;target=armorstands}
+  - setvariable{var=caster.tempValue;value="1"}
+  - skill{s=checkValues} @self
+check2:
+  Conditions:
+  - varEquals{var=caster.playing;value="1"} true
+  Skills:
+  - signal{s=play2} @EIR{r=10;target=armorstands}
+  - setvariable{var=caster.tempValue;value="2"}
+  - skill{s=checkValues} @self
+check3:
+  Conditions:
+  - varEquals{var=caster.playing;value="1"} true
+  Skills:
+  - signal{s=play3} @EIR{r=10;target=armorstands}
+  - setvariable{var=caster.tempValue;value="3"}
+  - skill{s=checkValues} @self
+checkValues:
+  Conditions: 
+  - varEquals{var=caster.playCount;value=1} castinstead checkValue1
+  - varEquals{var=caster.playCount;value=2} castinstead checkValue2
+  - varEquals{var=caster.playCount;value=3} castinstead checkValue3
+  - varEquals{var=caster.playCount;value=4} castinstead checkValue4
+  - varEquals{var=caster.playCount;value=5} castinstead checkValue5
+  Skills:
+  - message{m="error"} @PIR{r=10}
+checkValue1:
+  Conditions:
+  - varEquals{var=caster.note1;value="<caster.var.tempValue>"} orElseCast checkFail
+  Skills:
+  - variableadd{var=caster.playCount;amount=1} @self
+checkValue2:
+  Conditions:
+  - varEquals{var=caster.note2;value="<caster.var.tempValue>"} orElseCast checkFail
+  Skills:
+  - variableadd{var=caster.playCount;amount=1} @self
+checkValue3:
+  Conditions:
+  - varEquals{var=caster.note3;value="<caster.var.tempValue>"} orElseCast checkFail
+  Skills:
+  - variableadd{var=caster.playCount;amount=1} @self
+checkValue4:
+  Conditions:
+  - varEquals{var=caster.note4;value="<caster.var.tempValue>"} orElseCast checkFail
+  Skills:
+  - variableadd{var=caster.playCount;amount=1} @self
+checkValue5:
+  Conditions:
+  - varEquals{var=caster.note5;value="<caster.var.tempValue>"} orElseCast checkFail
+  Skills:
+  - setvariable{var=caster.playing;value=0} @self 
+  - variableadd{var=caster.playCount;amount=1} @self
+  - barRemove{name="musicBlock"} @self
+  - barCreate{name="correct";display="&ACORRECT";value=1;color=GREEN;style=SEGMENTED_10} @self
+  - delay 45
+  - signal{s=endMusic} @EIR{r=10;target=armorstands}
+  - remove @self
+
+checkFail:
+  Conditions:
+  - varEquals{var=caster.playing;value="1"} true
+  Skills:
+  - setvariable{var=caster.playing;value=0} @self 
+  - barSet{name="musicBlock";display="&4INCORRECT";value=1;color=RED;style=SEGMENTED_10} @self
+  - setvariable{var=caster.playing;value="1"} @self
+  - sound{s=entity.villager.no;p=1;v=2}
+ 
+Imperial-Bowman:
+  Conditions:
+  - incombat{}
+  - playernotwithin 4
+  TargetConditions:
+  - distance{d=<25}
+  Cooldown: 2
+  Skills:
+  - playanimation{a=0;audience=World}
+  - sound{s=item.crossbow.shoot;v=1}
+  - projectile{oT=Imperial-Bowman-tick;oH=Imperial-Bowman-hit;i=1;v=20;mr=30;ac=.95;yOffset=0.75;fOffset=0.25} @target
+Imperial-Bowman-tick:
+  Skills:
+  - effect:particles{particle=crit;a=1} @Origin
+Imperial-Bowman-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 45"}
+
+Imperial-Bowman-speed:
+  Conditions:
+  - playerwithin 3
+  Cooldown: 8
+  Skills:
+  - potion{t=SPEED;d=40;l=2;hasParticles=false}
+

@@ -1,0 +1,438 @@
+Gravacks:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cGravacks'
+  Health: 5000
+  Damage: 40
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lGravacks'
+    Health: 4000
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+  Skills:
+  - skill{s=Gravacks-drop} @trigger ~onDeath
+  - skill{s=Gravacks-quake} @self ~onTimer:20 <50%
+  - skill{s=Gravacks-weak} @self ~onDamaged
+  - skill{s=Gravacks-weak} @self ~onInteract
+  - setvariable{var=caster.weak;value=0} @self ~onSpawn
+  - setvariable{var=caster.cutscene;value=0} @self ~onSpawn
+  - skill{s=Gravacks-skill} @self ~onTimer:240
+  - skill{s=Gravacks-skill2} @self ~onInteract #~onTimer:400
+  Disguise: player Steve setSkin SIRKANAL setCustomName "&e[&6☠&e] &cGravacks" setDynamicName true
+
+Gravacks-skill-marker1:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=Gravacks-skill-marker1} @self ~onSpawn
+Gravacks-skill-marker2:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=Gravacks-skill-marker2} @self ~onSpawn
+Gravacks-skill-marker3:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=Gravacks-skill-marker3} @self ~onSpawn
+
+
+
+Gravacks-explosion1-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=remove} @MIR{t=Gravacks-explosion1;r=2} ~onTimer:5
+  - remove @self ~onSignal:remove
+  - remove{delay=240} @self ~onSpawn
+Gravacks-explosion2-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=remove} @MIR{t=Gravacks-explosion2;r=2} ~onTimer:5
+  - remove @self ~onSignal:remove
+  - remove{delay=240} @self ~onSpawn
+Gravacks-explosion3-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=remove} @MIR{t=Gravacks-explosion3;r=2} ~onTimer:5
+  - remove @self ~onSignal:remove
+  - remove{delay=240} @self ~onSpawn
+Gravacks-explosion4-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=remove} @MIR{t=Gravacks-explosion4;r=2} ~onTimer:5
+  - remove @self ~onSignal:remove
+  - remove{delay=240} @self ~onSpawn
+Gravacks-explosion5-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=remove} @MIR{t=Gravacks-explosion5;r=2} ~onTimer:5
+  - remove @self ~onSignal:remove
+  - remove{delay=240} @self ~onSpawn
+
+Gravacks-explosion1:
+  Type: ZOMBIE
+  Display: ''
+  Health: 1000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.5
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 2383,3,900
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Gravacks-explosion} @self ~onSpawn
+  - skill{s=Gravacks-explosion-remove} @self ~onSignal:remove
+
+Gravacks-explosion2:
+  Type: ZOMBIE
+  Display: ''
+  Health: 1000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.5
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 2402,3,899
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Gravacks-explosion} @self ~onSpawn
+  - skill{s=Gravacks-explosion-remove} @self ~onSignal:remove
+
+Gravacks-explosion3:
+  Type: ZOMBIE
+  Display: ''
+  Health: 1000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.5
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 2389,3,892
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Gravacks-explosion} @self ~onSpawn
+  - skill{s=Gravacks-explosion-remove} @self ~onSignal:remove
+
+Gravacks-explosion4:
+  Type: ZOMBIE
+  Display: ''
+  Health: 1000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.5
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 2394,3,904
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Gravacks-explosion} @self ~onSpawn
+  - skill{s=Gravacks-explosion-remove} @self ~onSignal:remove
+
+Gravacks-explosion5:
+  Type: ZOMBIE
+  Display: ''
+  Health: 1000
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.5
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 2398,3,893
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Gravacks-explosion} @self ~onSpawn
+  - skill{s=Gravacks-explosion-remove} @self ~onSignal:remove
+
+nazmora-cutscene:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{t=nazmora-cutscene-recruit} @Location{c=2402.5,4,892.5} ~onSpawn
+  - summon{t=nazmora-cutscene-recruit} @Location{c=2400.5,4,905.5} ~onSpawn
+  - summon{t=nazmora-cutscene-recruit} @Location{c=2389.5,4,904.5} ~onSpawn
+  - remove @self ~onSpawn
+
+nazmora-cutscene-recruit:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aNaz''mora Recruit'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - IRON_CHESTPLATE CHEST
+  - IRON_LEGGINGS LEGS
+  - IRON_BOOTS FEET
+  - IRON_AXE HAND
+  - SHIELD OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.16
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 2394,3,897
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=nazmora-cutscene-recruit} @self ~onSpawn
+  Disguise: player Steve setSkin Lilyxxrose setCustomName "&e[&61&e] &aNaz" setDynamicName true
+  
+nazmora-armor-cutscene-recruit:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aNaz''mora Recruit'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.16
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 lookatplayers
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=nazmora-armor-cutscene-recruit-questtrigger} @trigger ~onInteract
+  - skill{s=nazmora-armor-cutscene-recruit} @self ~onSignal:armor
+  - skill{s=nazmora-armor-cutscene-recruit-remove} @self ~onTimer:20
+  - setvariable{var=caster.armor;value=0} @self ~onSpawn
+  Disguise: player Steve setSkin Lilyxxrose setCustomName "&e[&61&e] &aNaz" setDynamicName true
+nazmora-armor-cutscene:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=armor} @MIR{t=nazmora-armor-cutscene-recruit;r=32} ~onSpawn
+  - remove @self ~onSpawn
+
+NazmoraCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=NazmoraCitizen;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=NazmoraCitizen2;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=NazmoraCitizen;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=NazmoraCitizen2;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn2
+NazmoraCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aNaz''mora Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aNaz<&sq>mora Citizen<&co> &fOur kind never run from war.} @NearestPlayer ~onDamaged
+  - signal{s=respawn} @MobsInRadius{r=320;t=NazmoraCSA} ~onDeath
+  Disguise: player Steve setSkin Originary setCustomName "&e[&61&e] &aNaz" setDynamicName true
+NazmoraCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aNaz''mora Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - message{cooldown=4;m=&aNaz<&sq>mora Citizen<&co> &fOur kind never run from war.} @NearestPlayer ~onDamaged
+  - signal{s=respawn2} @MobsInRadius{r=320;t=NazmoraCSA} ~onDeath
+  Disguise: player Steve setSkin nassegrisen setCustomName "&e[&61&e] &aNaz" setDynamicName true
+
+Pontiac:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cPontiac the Old Chief'
+  Health: 5000
+  Damage: 40
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_AXE HAND
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lPontiac the Old Chief'
+    Health: 5000
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+  Skills:
+  - skill{s=Pontiac-drop} @trigger ~onDeath
+  - skill{s=Pontiac-kickup} @self ~onTimer:20 .4 >25%
+  - skill{s=Pontiac-kickup2} @self ~onTimer:20 .4 <25%
+  - skill{s=PontiacAxe} @target ~onTimer:20 .4 >40%
+  - skill{s=PontiacAxe2} @target ~onTimer:20 .4 <40%
+  Disguise: player Steve setSkin Gritzgore setCustomName "&e[&6☠&e] &cPontiac the Old Chief" setDynamicName true
+NazmoraFighter-marker:
+  Type: armor_stand
+  Skills:
+  - pull{v=200} @PIR{r=12} ~onSignal:pull
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true

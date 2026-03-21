@@ -1,0 +1,2444 @@
+pyromancer-iii:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cIgnaroth'
+  Health: 1000000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  BossBar:
+    Enabled: true
+    Title: '&c&lIgnaroth'
+    Health: 1000000
+    Range: 128
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20 
+  - skill{s=pyromancer-equip} @self ~onSpawn 
+  - variableadd{var=caster.hunger;amount=1} @self ~onSignal:feed
+  - remove @MIR{t=pyromancer-iii-clone1,pyromancer-iii-clone2,pyromancer-iii-clone3,pyromancer-iii-clone4,pyromancer-iii-clone5,pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5,pyromancer-hunger-visual1,pyromancer-hunger-visual2,pyromancer-hunger-visual3,pyromancer-rider,pyromancer-elemental,pyromancer-grunt,pyromancer-archer,pyromancer-lightning-bolt-add,pyromancer-portal,pyromancer-ii-portal-unbreakable;r=100} ~onSpawn
+  - remove @MIR{t=pyromancer-iii-clone1,pyromancer-iii-clone2,pyromancer-iii-clone3,pyromancer-iii-clone4,pyromancer-iii-clone5,pyromancer-iii-heart1,pyromancer-iii-heart2,pyromancer-iii-heart3,pyromancer-iii-heart4,pyromancer-iii-heart5,pyromancer-hunger-visual1,pyromancer-hunger-visual2,pyromancer-hunger-visual3,pyromancer-rider,pyromancer-elemental,pyromancer-grunt,pyromancer-archer,pyromancer-lightning-bolt-add,pyromancer-portal,pyromancer-ii-portal-unbreakable;r=100} ~onDeath
+  - setvariable{var=caster.hungry;value=0} @self ~onSpawn
+  - setvariable{var=caster.hunger;value=0} @self ~onSpawn
+  - setvariable{var=caster.far;value=0} @self ~onSpawn
+  - skill{s=pyromancer-iii-fireball-cast} @self ~onTimer:10 .1 
+  - skill{s=pyromancer-iii-portal-cast} @self ~onTimer:20
+  - skill{s=pyromancer-iii-portal-unbreakable-cast} @self ~onTimer:20 <50%
+  - skill{s=pyromancer-iii-feast} @self ~onTimer:20 
+  - skill{s=pyromancer-iii-hunger-cast} @self ~onTimer:10 .25 
+  - skill{s=pyromancer-iii-hunger} @self ~onTimer:20 .25 
+  - skill{s=pyromancer-iii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-iii-clone} @self ~onTimer:20 <75%
+  - skill{s=pyromancer-iii-clone2} @self ~onTimer:20 <25%
+  - skill{s=pyromancer-melee} @self ~onTimer:20
+  - skill{s=pyromancer-visual} @self ~onTimer:5
+  - skill{s=pyromancer-far} @self ~onTimer:5
+  - effect:particlesphere{p=end_rod;amount=5;radius=6;yOffset=0.5} @Location{c=10171.5,188,603.5} ~onTimer:2 
+  - skill{s=pyromancer-iii-lightning-bolt} @self ~onTimer:20 
+  # RESET PARTY
+  - skill{s=BossFirework} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cIgnaroth" setDynamicName true
+
+
+pyromancer-iii-clone1:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImmortal Bastion'
+  Health: 400000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cImmortal Bastion';delay=1} @self ~onDamaged
+  - heal{a=100000;i=true} @self ~onDamaged
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-iii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-iii-clone-melee} @self ~onTimer:20 .1
+  - skill{s=pyromancer-ii-clone-death} @self ~onSignal:death
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cImmortal Bastion" setDynamicName true
+pyromancer-iii-clone2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImmortal Bastion'
+  Health: 400000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cImmortal Bastion';delay=1} @self ~onDamaged
+  - heal{a=100000;i=true} @self ~onDamaged
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-iii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-iii-clone-melee} @self ~onTimer:20 .1
+  - skill{s=pyromancer-ii-clone-death} @self ~onSignal:death
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cImmortal Bastion" setDynamicName true
+pyromancer-iii-clone3:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImmortal Bastion'
+  Health: 400000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cImmortal Bastion';delay=1} @self ~onDamaged
+  - heal{a=100000;i=true} @self ~onDamaged
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-iii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-iii-clone-melee} @self ~onTimer:20 .1
+  - skill{s=pyromancer-ii-clone-death} @self ~onSignal:death
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cImmortal Bastion" setDynamicName true
+pyromancer-iii-clone4:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImmortal Bastion'
+  Health: 400000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cImmortal Bastion';delay=1} @self ~onDamaged
+  - heal{a=100000;i=true} @self ~onDamaged
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-iii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-iii-clone-melee} @self ~onTimer:20 .1
+  - skill{s=pyromancer-ii-clone-death} @self ~onSignal:death
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cImmortal Bastion" setDynamicName true
+pyromancer-iii-clone5:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImmortal Bastion'
+  Health: 400000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cImmortal Bastion';delay=1} @self ~onDamaged
+  - heal{a=100000;i=true} @self ~onDamaged
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-iii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-iii-clone-melee} @self ~onTimer:20 .1
+  - skill{s=pyromancer-ii-clone-death} @self ~onSignal:death
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cImmortal Bastion" setDynamicName true
+
+pyromancer-iii-heart1:
+  Type: ZOMBIE
+  Display: '&4Heart'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-iii-heart2;r=256} ~onDeath
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-iii-heart2;r=256} ~onDespawn
+  - skill{s=pyromancer-ii-heart} @self ~onTimer:10
+  - skill{s=pyromancer-ii-heart-hurt} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - signal{s=death} @MIR{t=pyromancer-iii-clone1;r=256} ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_WART_BLOCK
+pyromancer-iii-heart2:
+  Type: ZOMBIE
+  Display: '&4Heart'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-iii-heart3;r=256} ~onDeath
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-iii-heart3;r=256} ~onDespawn
+  - skill{s=pyromancer-ii-heart} @self ~onTimer:10
+  - skill{s=pyromancer-ii-heart-hurt} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - signal{s=death} @MIR{t=pyromancer-iii-clone2;r=256} ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_WART_BLOCK
+pyromancer-iii-heart3:
+  Type: ZOMBIE
+  Display: '&4Heart'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-iii-heart4;r=256} ~onDeath
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-iii-heart4;r=256} ~onDespawn
+  - skill{s=pyromancer-ii-heart} @self ~onTimer:10
+  - skill{s=pyromancer-ii-heart-hurt} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - signal{s=death} @MIR{t=pyromancer-iii-clone3;r=256} ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_WART_BLOCK
+pyromancer-iii-heart4:
+  Type: ZOMBIE
+  Display: '&4Heart'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-iii-heart5;r=256} ~onDeath
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-iii-heart5;r=256} ~onDespawn
+  - skill{s=pyromancer-ii-heart} @self ~onTimer:10
+  - skill{s=pyromancer-ii-heart-hurt} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - signal{s=death} @MIR{t=pyromancer-iii-clone4;r=256} ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_WART_BLOCK
+pyromancer-iii-heart5:
+  Type: ZOMBIE
+  Display: '&4Heart'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - skill{s=pyromancer-ii-heart} @self ~onTimer:10
+  - skill{s=pyromancer-ii-heart-hurt} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - signal{s=death} @MIR{t=pyromancer-iii-clone5;r=256} ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_WART_BLOCK
+
+pyromancer-iii-portal-marker:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=15;radius=13;yOffset=0.5} @self ~onTimer:5
+  - skill{s=pyromancer-iii-portal-marker} @self ~onTimer:5
+  - remove{delay=240} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-iii-portal-marker-center:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=25;radius=5;yOffset=0.5} @self ~onTimer:5
+  - skill{s=pyromancer-iii-portal-marker-center} @self ~onTimer:5
+  - remove{delay=80} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-iii-fireball:
+  Type: MAGMA_CUBE
+  Display: '&e[&660&e] &cInfernal Feast'
+  Health: 1
+  Damage: 1
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    Size: 4
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+    PreventSlimeSplit: true
+  Skills:
+  - leap{v=300} @Location{c=9931.5,120,603.5} ~onSpawn
+  - skill{s=pyromancer-iii-fireball} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+
+
+
+pyromancer-ii:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cIgnaroth'
+  Health: 500000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  BossBar:
+    Enabled: true
+    Title: '&c&lIgnaroth'
+    Health: 500000
+    Range: 128
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-equip} @self ~onSpawn
+  - variableadd{var=caster.hunger;amount=1} @self ~onSignal:feed
+  - remove @MIR{t=pyromancer-ii-clone1,pyromancer-ii-clone2,pyromancer-ii-clone3,pyromancer-ii-clone4,pyromancer-ii-clone5,pyromancer-ii-heart1,pyromancer-ii-heart2,pyromancer-ii-heart3,pyromancer-ii-heart4,pyromancer-ii-heart5,pyromancer-hunger-visual1,pyromancer-hunger-visual2,pyromancer-hunger-visual3,pyromancer-rider,pyromancer-elemental,pyromancer-grunt,pyromancer-archer,pyromancer-lightning-bolt-add,pyromancer-portal,pyromancer-ii-portal-unbreakable;r=100} ~onSpawn
+  - remove @MIR{t=pyromancer-ii-clone1,pyromancer-ii-clone2,pyromancer-ii-clone3,pyromancer-ii-clone4,pyromancer-ii-clone5,pyromancer-ii-heart1,pyromancer-ii-heart2,pyromancer-ii-heart3,pyromancer-ii-heart4,pyromancer-ii-heart5,pyromancer-hunger-visual1,pyromancer-hunger-visual2,pyromancer-hunger-visual3,pyromancer-rider,pyromancer-elemental,pyromancer-grunt,pyromancer-archer,pyromancer-lightning-bolt-add,pyromancer-portal,pyromancer-ii-portal-unbreakable;r=100} ~onDeath
+  - setvariable{var=caster.hungry;value=0} @self ~onSpawn
+  - setvariable{var=caster.hunger;value=0} @self ~onSpawn
+  - setvariable{var=caster.far;value=0} @self ~onSpawn
+  - skill{s=pyromancer-ii-fireball-cast} @self ~onTimer:10 .1
+  - skill{s=pyromancer-ii-portal-cast} @self ~onTimer:20
+  - skill{s=pyromancer-ii-portal-unbreakable-cast} @self ~onTimer:20 <25%
+  - skill{s=pyromancer-ii-feast} @self ~onTimer:20 
+  - skill{s=pyromancer-ii-hunger-cast} @self ~onTimer:10 .25 
+  - skill{s=pyromancer-ii-hunger} @self ~onTimer:20 .25 
+  - skill{s=pyromancer-ii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-ii-clone} @self ~onTimer:20 <50%
+  - skill{s=pyromancer-melee} @self ~onTimer:20
+  - skill{s=pyromancer-visual} @self ~onTimer:5
+  - skill{s=pyromancer-far} @self ~onTimer:5
+  - effect:particlesphere{p=end_rod;amount=5;radius=6;yOffset=0.5} @Location{c=10171.5,188,603.5} ~onTimer:2 
+  - skill{s=pyromancer-ii-lightning-bolt} @self ~onTimer:20 
+  # RESET PARTY
+  - skill{s=BossFirework} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cIgnaroth" setDynamicName true
+
+
+pyromancer-ii-clone1:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImmortal Bastion'
+  Health: 500000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cImmortal Bastion';delay=1} @self ~onDamaged
+  - heal{a=100000;i=true} @self ~onDamaged
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-ii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-ii-clone-melee} @self ~onTimer:20 .1
+  - skill{s=pyromancer-ii-clone-death} @self ~onSignal:death
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cImmortal Bastion" setDynamicName true
+pyromancer-ii-clone2:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImmortal Bastion'
+  Health: 500000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cImmortal Bastion';delay=1} @self ~onDamaged
+  - heal{a=100000;i=true} @self ~onDamaged
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-ii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-ii-clone-melee} @self ~onTimer:20 .1
+  - skill{s=pyromancer-ii-clone-death} @self ~onSignal:death
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cImmortal Bastion" setDynamicName true
+pyromancer-ii-clone3:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImmortal Bastion'
+  Health: 500000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cImmortal Bastion';delay=1} @self ~onDamaged
+  - heal{a=100000;i=true} @self ~onDamaged
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-ii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-ii-clone-melee} @self ~onTimer:20 .1
+  - skill{s=pyromancer-ii-clone-death} @self ~onSignal:death
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cImmortal Bastion" setDynamicName true
+pyromancer-ii-clone4:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImmortal Bastion'
+  Health: 500000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cImmortal Bastion';delay=1} @self ~onDamaged
+  - heal{a=100000;i=true} @self ~onDamaged
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-ii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-ii-clone-melee} @self ~onTimer:20 .1
+  - skill{s=pyromancer-ii-clone-death} @self ~onSignal:death
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cImmortal Bastion" setDynamicName true
+pyromancer-ii-clone5:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cImmortal Bastion'
+  Health: 500000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&e[&6☠&e] &cImmortal Bastion';delay=1} @self ~onDamaged
+  - heal{a=100000;i=true} @self ~onDamaged
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=pyromancer-ii-lava} @self ~onTimer:20
+  - skill{s=pyromancer-ii-clone-melee} @self ~onTimer:20 .1
+  - skill{s=pyromancer-ii-clone-death} @self ~onSignal:death
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cImmortal Bastion" setDynamicName true
+
+pyromancer-ii-heart1:
+  Type: ZOMBIE
+  Display: '&4Heart'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-ii-heart2;r=256} ~onDeath
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-ii-heart2;r=256} ~onDespawn
+  - skill{s=pyromancer-ii-heart} @self ~onTimer:10
+  - skill{s=pyromancer-ii-heart-hurt} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - signal{s=death} @MIR{t=pyromancer-ii-clone1;r=256} ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_WART_BLOCK
+pyromancer-ii-heart2:
+  Type: ZOMBIE
+  Display: '&4Heart'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-ii-heart3;r=256} ~onDeath
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-ii-heart3;r=256} ~onDespawn
+  - skill{s=pyromancer-ii-heart} @self ~onTimer:10
+  - skill{s=pyromancer-ii-heart-hurt} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - signal{s=death} @MIR{t=pyromancer-ii-clone2;r=256} ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_WART_BLOCK
+pyromancer-ii-heart3:
+  Type: ZOMBIE
+  Display: '&4Heart'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-ii-heart4;r=256} ~onDeath
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-ii-heart4;r=256} ~onDespawn
+  - skill{s=pyromancer-ii-heart} @self ~onTimer:10
+  - skill{s=pyromancer-ii-heart-hurt} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - signal{s=death} @MIR{t=pyromancer-ii-clone3;r=256} ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_WART_BLOCK
+pyromancer-ii-heart4:
+  Type: ZOMBIE
+  Display: '&4Heart'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-ii-heart5;r=256} ~onDeath
+  - setvariable{var=target.active;value=1} @MIR{t=pyromancer-ii-heart5;r=256} ~onDespawn
+  - skill{s=pyromancer-ii-heart} @self ~onTimer:10
+  - skill{s=pyromancer-ii-heart-hurt} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - signal{s=death} @MIR{t=pyromancer-ii-clone4;r=256} ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_WART_BLOCK
+pyromancer-ii-heart5:
+  Type: ZOMBIE
+  Display: '&4Heart'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - skill{s=pyromancer-ii-heart} @self ~onTimer:10
+  - skill{s=pyromancer-ii-heart-hurt} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - signal{s=death} @MIR{t=pyromancer-ii-clone5;r=256} ~onDeath
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK NETHER_WART_BLOCK
+
+pyromancer-ii-portal-marker:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=15;radius=13;yOffset=0.5} @self ~onTimer:5
+  - skill{s=pyromancer-ii-portal-marker} @self ~onTimer:5
+  - remove{delay=240} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-ii-portal-marker-center:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=25;radius=5;yOffset=0.5} @self ~onTimer:5
+  - skill{s=pyromancer-ii-portal-marker-center} @self ~onTimer:5
+  - remove{delay=80} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-ii-portal-unbreakable:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-ii-portal-unbreakable} @self ~onSpawn
+  - effect:particlering{p=block_crack;material=redstone_block;radius=7;points=40;amount=1;yOffset=0.1} @self ~onTimer:5
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-ii-fireball:
+  Type: MAGMA_CUBE
+  Display: '&e[&660&e] &cInfernal Feast'
+  Health: 1
+  Damage: 1
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    Size: 4
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+    PreventSlimeSplit: true
+  Skills:
+  - leap{v=300} @Location{c=9931.5,120,603.5} ~onSpawn
+  - skill{s=pyromancer-ii-fireball} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+pyromancer-i:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cIgnaroth'
+  Health: 400000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - FireSword HAND
+  - FireSword OFFHAND
+  BossBar:
+    Enabled: true
+    Title: '&c&lIgnaroth'
+    Health: 400000
+    Range: 128
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20 #reset threat if target runs too far away
+  - skill{s=pyromancer-equip} @self ~onSpawn #equip armour
+  - variableadd{var=caster.hunger;amount=1} @self ~onSignal:feed #gained from fireball-cast (increases hungER by 1)
+  - remove @MIR{t=pyromancer-hunger-visual1,pyromancer-hunger-visual2,pyromancer-hunger-visual3,pyromancer-rider,pyromancer-elemental,pyromancer-grunt,pyromancer-archer,pyromancer-lightning-bolt-add,pyromancer-portal;r=100} ~onSpawn
+  - remove @MIR{t=pyromancer-hunger-visual1,pyromancer-hunger-visual2,pyromancer-hunger-visual3,pyromancer-rider,pyromancer-elemental,pyromancer-grunt,pyromancer-archer,pyromancer-lightning-bolt-add,pyromancer-portal;r=100} ~onDeath
+  #- blockunmask{r=64} ~onDeath #causes server to lag
+  - setvariable{var=caster.hungry;value=0} @self ~onSpawn
+  - setvariable{var=caster.hunger;value=0} @self ~onSpawn
+  - setvariable{var=caster.far;value=0} @self ~onSpawn
+  - skill{s=pyromancer-fireball-cast} @self ~onTimer:10 .1 #casts magmas up into the air if hungER = 1, which you need to kill before they land or they send feed signal
+  - skill{s=pyromancer-portal-cast} @self ~onTimer:20 <75%
+  - skill{s=pyromancer-feast} @self ~onTimer:20 #Triggers if hungER > 2! instakill ability: same one as original cyrus. It's balanced.
+  - skill{s=pyromancer-hunger-cast} @self ~onTimer:10 #.25 #if hungRY = 1 then damages all players on barrier blocks for 400 every ~2 seconds
+  - skill{s=pyromancer-hunger} @self ~onTimer:20 1 <90% #if hungRY = 0 then sets to 1 and shows visuals then another spell removes visuals and sets hungRY to 0. set randomness to 1 from 0.25.
+  - skill{s=pyromancer-lava} @self ~onTimer:20 #if touches lava, heals and tps back
+  - skill{s=pyromancer-melee} @self ~onTimer:20 #3 AOE damaging effects, cooldown is halved if pyro moves away from barrier blocks
+  - skill{s=pyromancer-visual} @self ~onTimer:5 #gives pyro speed if he's not on barrier blocks 
+  - skill{s=pyromancer-far} @self ~onTimer:5 #updates visuals and variables if pyro not on barrier blocks
+  - effect:particlesphere{p=end_rod;amount=5;radius=6;yOffset=0.5} @Location{c=9931.5,188,603.5} ~onTimer:2 <50%
+  - skill{s=pyromancer-lightning-bolt} @self ~onTimer:20 <50% #summons lightning bolts around the side of the arena that empower mobs they hit, do damage to players, and spawn a miniboss
+  # RESET PARTY
+  - skill{s=BossFirework} @trigger ~onDeath
+  - message{m="&e[&6☠&e] &cIgnaroth<&co> How foolish you are to return. I<&sq>ll make this our last reunion."} @PIR{r=100} ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin D1M0nEL setCustomName "&e[&6☠&e] &cIgnaroth" setDynamicName true
+
+pyromancer-lightning-bolt-add:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cDescendent of Cyrus'
+  Health: 5000 #nerfed health from 10,000 -> 7,000 -> 5,000
+  Damage: 250 #nerfed damage from 750 -> 250
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=pyromancer-lightning-bolt-add-bite} @self ~onTimer:20 #12 sec cooldown to do damage in front of him and can eat minotaurs
+  - skill{s=pyromancer-add-lava} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WARDEN
+
+pyromancer-lightning-bolt:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-lightning-bolt-visual} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+pyromancer-lightning-bolt-visual:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=end_rod;amount=8;radius=2;yOffset=0.5} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+pyromancer-lightning-bolt-audio:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-lightning-bolt-audio} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+pyromancer-lightning-bolt-damage:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-lightning-bolt-damage} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+pyromancer-lightning-bolt-minor-damage:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-lightning-bolt-minor-damage} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-rupture1:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-rupture1} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-quake1:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-quake1} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-ripple1:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-ripple1} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+pyromancer-ripple2:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-ripple2} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+pyromancer-ripple3:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-ripple3} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-feast-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-feast-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-feast-conversion-death:
+  Type: armor_stand
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=4} ~onSpawn
+  - sound{s=block.wart_block.break} @self ~onSpawn
+  - effect:particlering{p=dragon_breath;r=1;a=50;hs=1;vs=1} @self ~onSpawn
+  - sudoSkill{s=pyromancer-feast-conversion-death1} @PIR{r=4} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-hunger-visual1:
+  Type: armor_stand
+  Skills:
+  Options:
+    Invisible: false
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK STRIPPED_WARPED_HYPHAE
+pyromancer-hunger-visual2:
+  Type: armor_stand
+  Skills:
+  Options:
+    Invisible: false
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK STRIPPED_WARPED_HYPHAE
+pyromancer-hunger-visual3:
+  Type: armor_stand
+  Skills:
+  Options:
+    Invisible: false
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK STRIPPED_WARPED_HYPHAE
+pyromancer-hunger-visual-new:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-hunger-visual-new} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-portal:
+  Type: armor_stand
+  Skills:
+  - skill{s=pyromancer-portal} @self ~onSpawn
+  #- effect:particlering{p=block_crack;material=redstone_block;radius=7;points=40;amount=1;yOffset=0.1} @self ~onTimer:5
+  - effect:particlering{p=soul;radius=7;amount=7;yOffset=0.1} @self ~onTimer:10
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+pyromancer-portal-marker:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=15;radius=13;yOffset=0.5} @self ~onTimer:5
+  - skill{s=pyromancer-portal-marker} @self ~onTimer:5
+  - remove{delay=240} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+pyromancer-fireball:
+  Type: MAGMA_CUBE
+  Display: '&e[&660&e] &cInfernal Feast'
+  Health: 1
+  Damage: 1
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    Size: 4
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+    PreventSlimeSplit: true
+  Skills:
+  - leap{v=300} @Location{c=9931.5,120,603.5} ~onSpawn
+  - skill{s=pyromancer-fireball} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+pyromancer-rider:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cInfernal Rider'
+  Health: 3000 #nerfed from 4000 -> 3000
+  Damage: 150 #buffed from 100 -> 150
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - setvariable{var=caster.convert;value=0} @self ~onSpawn
+  - skill{s=pyromancer-add-lava} @self ~onTimer:20 #dies if touches lava
+  - sound{s=entity.enderman.teleport;v=2} @self ~onSpawn
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=0.5} @self ~onSpawn
+  - sound{s=entity.skeleton.hurt} @self ~onDamaged
+  - skill{s=pyromancer-rider} @self ~onTimer:5 #shows fire particles around itself
+  - skill{s=pyromancer-rider-bolt} @self ~onTimer:5 #shows fire particles and speed 1
+  - skill{s=pyromancer-rider-convert} @self ~onSignal:convert
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SKELETON_HORSE
+
+pyromancer-elemental:
+  Type: BLAZE
+  Display: '&e[&654&e] &cInfernal Elemental'
+  Health: 4000 #nerfed from 8,000 -> 4,000
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - setvariable{var=caster.convert;value=0} @self ~onSpawn
+  - skill{s=pyromancer-add-lava} @self ~onTimer:20
+  - sound{s=entity.enderman.teleport;v=2} @self ~onSpawn
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=0.5} @self ~onSpawn
+  - skill{s=pyromancer-elemental} @target ~onTimer:40
+  - skill{s=pyromancer-elemental-bolt} @target ~onTimer:40
+  - skill{s=pyromancer-elemental-convert} @self ~onSignal:convert
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+pyromancer-grunt:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cInfernal Grunt'
+  Health: 3000 #nerfed from 10,000 -> 5,000 -> 3000
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - FireSword HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20 
+  - setvariable{var=caster.convert;value=0} @self ~onSpawn
+  - skill{s=pyromancer-add-lava} @self ~onTimer:20 #dies if hits lava
+  - sound{s=entity.enderman.teleport;v=2} @self ~onSpawn
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=0.5} @self ~onSpawn
+  - skill{s=pyromancer-grunt} @self ~onTimer:20 #aoe damage attack every 4 seconds if convert = 0
+  - skill{s=pyromancer-grunt-bolt} @self ~onTimer:20 #bigger aoe doing more damage every 4 seconds if convert = 1
+  - skill{s=pyromancer-grunt-convert} @self ~onSignal:convert #pyro sends signal to convert when pyro below 50%hp
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin 0mah setCustomName "&e[&652&e] &cInfernal Grunt" setDynamicName true
+pyromancer-archer:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cInfernal Archer'
+  Health: 2000 #nerfed from 4000 -> 3000 -> 2000
+  Damage: 150 #nerfed from 250 -> 150
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - FireBow HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20 #change threat if target runs too far away
+  - setvariable{var=caster.convert;value=0} @self ~onSpawn
+  - skill{s=pyromancer-add-lava} @self ~onTimer:20 #die if touch lava
+  - sound{s=entity.enderman.teleport;v=2} @self ~onSpawn
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=0.5} @self ~onSpawn
+  - skill{s=pyromancer-archer} @target ~onTimer:20 #does ranged attack if player far, equips sword if near (does default damage). Only if convert = 0
+  - skill{s=pyromancer-archer-bolt} @target ~onTimer:20 #does higher damage ranged attack if player far, equips sword if near. Only if convert = 1
+  - skill{s=pyromancer-archer-convert} @self ~onSignal:convert #set convert to 1 (triggered by pyro when hes below 50%hp)
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin umuYuyu setCustomName "&e[&653&e] &cInfernal Archer" setDynamicName true
+
+cyrus:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cCyrus'
+  Health: 200000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lCyrus the Overseer'
+    Health: 200000
+    Range: 128
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  #- message{m="<caster.var.eye>"} @PIR{r=128} ~onTimer:20
+  - setvariable{var=caster.eye;value=0} @self ~onSpawn
+  - skill{s=cyrus-stasis-field} @self ~onTimer:40 #this is the 75% and 25% hp event
+  - skill{s=cyrus-lava} @self ~onTimer:20 #checks if cyrus fell into lava, heals and tps him back
+  - skill{s=cyrus-target-lava} @PIR{r=200} ~onTimer:20 #checks if player fell into lava -> kills them
+  - setvariable{var=caster.berserk;value=0} @self ~onSpawn
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20 #resets aggro if player goes too far
+  #- command{c="ri drop cyrus-vessel <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} @trigger ~onDeath 1
+  - skill{s=cyrus-bite} @self ~onTimer:20 #does damage and eats a minotaur if one is near
+  - skill{s=cyrus-missile-cast} @self ~onTimer:20 .25 <95% #normal attack but also causes the player massive hp reduction + abduction mechanic
+  - skill{s=cyrus-devour} @self ~onSignal:devour #heals cyrus if he eats a minotaur
+  - skill{s=BossFirework} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Salmon_47 setCustomName "&e[&6☠&e] &cCyrus" setDynamicName true
+
+cyrus-eye-shattered:
+  Type: armor_stand
+  Health: 1000
+  Skills:
+  - sethealth{a=1} @self ~onSpawn
+  - skill{s=cyrus-eye-shattered} @self ~onTimer:20
+  BossBar:
+    Enabled: true
+    Title: '&a&lShattered Eye'
+    Range: 128
+    Color: GREEN
+    Style: SEGMENTED_10
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+cyrus-eye:
+  Type: armor_stand
+  Skills:
+  - skill{s=cyrus-eye} @self ~onSpawn
+  BossBar:
+    Enabled: true
+    Title: '&a&lWatchful Eye'
+    Range: 128
+    Color: GREEN
+    Style: SEGMENTED_10
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+cyrus-eye-item:
+  Type: armor_stand
+  Display: '&a&lWatchful Eye'
+  Skills:
+  - sound{s=entity.ender_eye.launch;v=10} @self ~onSpawn
+  Options:
+    AlwaysShowName: true
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: DROPPED_ITEM ENDER_EYE
+
+cyrus-disc-item:
+  Type: armor_stand
+  Display: '&a&lEye Fragment'
+  Skills:
+  - skill{s=cyrus-disc-item} @self ~onTimer:5
+  Options:
+    AlwaysShowName: true
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: DROPPED_ITEM DISC_FRAGMENT_5
+
+cyrus-missile:
+  Type: MAGMA_CUBE
+  Display: '&e[&6☠&e] &cSpore'
+  Health: 4000
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Size: 2
+    PreventSlimeSplit: true
+  Skills:
+  - skill{s=cyrus-missile} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+cyrus-missile2:
+  Type: MAGMA_CUBE
+  Display: '&e[&6☠&e] &cSpore'
+  Health: 4000
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Size: 3
+    PreventSlimeSplit: true
+  Skills:
+  - skill{s=cyrus-missile2} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+cyrus-missile-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=cyrus-missile-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+cyrus-missile-marker2:
+  Type: armor_stand
+  Skills:
+  - skill{s=cyrus-missile-marker2} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+cyrus-minotaur-devour:
+  Type: armor_stand
+  Skills:
+  - signal{s=devour} @MIR{t=cyrus-minotaur;r=2} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+cyrus-conversion-death:
+  Type: armor_stand
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=4} ~onSpawn
+  - sound{s=block.wart_block.break} @self ~onSpawn
+  - effect:particlering{p=dragon_breath;r=1;a=50;hs=1;vs=1} @self ~onSpawn
+  - sudoSkill{s=cyrus-conversion-death1} @PIR{r=4} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+cyrus-conversion-minotaur:
+  Type: armor_stand
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=5} ~onSpawn
+  - sound{s=block.wart_block.break} @self ~onSpawn
+  - effect:particlering{p=dragon_breath;r=1;a=50;hs=1;vs=1} @self ~onSpawn
+  - sudoSkill{s=cyrus-conversion-minotaur1} @PIR{r=4} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+cyrus-minotaur:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cForsaken Minotaur'
+  Health: 2500 #nerfed from 10,000 -> 2,500
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLD_AXE HAND
+  - GOLD_AXE OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - skill{s=cyrus-minotaur-lava} @self ~onTimer:20
+  - skill{s=valmyra-maze-minotaur-roar} @self ~onTimer:20 <50%
+  - sound{s=entity.ravager.roar} @self ~onSpawn
+  - skill{s=valmyra-maze-minotaur} @self ~onTimer:20
+  - skill{s=cyrus-minotaur-devour} @self ~onSignal:devour
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Flamboghini setCustomName "&e[&660&e] &cMinotaur" setDynamicName true
+
+cyrus-brute:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cForsaken Brute'
+  Health: 2000
+  Modules:
+    ThreatTable: true
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLD_AXE HAND
+  - GOLD_AXE OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=cyrus-minotaur-lava} @self ~onTimer:20
+  - skill{s=valmyra-maze-brute} @self ~onTimer:5
+  - skill{s=valmyra-maze-brute-rage} @self ~onSignal:rage
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: PIGLIN_BRUTE
+
+cyrus-dweller:
+  Type: SKELETON
+  Display: '&e[&660&e] &cForsaken Dweller'
+  Health: 400
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - CROSSBOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=cyrus-minotaur-lava} @self ~onTimer:20
+  - skill{s=valmyra-maze-dweller} @self ~onTimer:5
+  - skill{s=valmyra-maze-dweller-speed} @self ~onTimer:5
+  AIGoalSelectors:
+  - 0 clear
+  - 1 fleeplayers
+  - 2 bowshoot
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: PIGLIN
+
+paimon:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cPaimon'
+  Health: 300000 #NOTE: skills paimon-equipment-cast and paimon-equipment have health dependency!
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lPaimon The Shackled'
+    Health: 300000
+    Range: 128
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20 #changes threat if player goes too far
+  - setvariable{var=caster.helm;value=0} @self ~onSpawn
+  - setvariable{var=caster.chest;value=0} @self ~onSpawn
+  - setvariable{var=caster.leggings;value=0} @self ~onSpawn
+  - setvariable{var=caster.boots;value=0} @self ~onSpawn
+  #- command{c="ri drop paimon-vessel <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 3"} @trigger ~onDeath 1 
+  #- message{m="&eHelmet <caster.var.helm>"} @PIR{r=128} ~onTimer:40
+  #- message{m="&6Chestplate <caster.var.chest>"} @PIR{r=128} ~onTimer:40
+  #- message{m="&eLeggings <caster.var.leggings>"} @PIR{r=128} ~onTimer:40
+  #- message{m="&6Boots <caster.var.boots>"} @PIR{r=128} ~onTimer:40
+  - skill{s=paimon-summon-air-cast} @self ~onTimer:20 #summons blazes on a 40sec cooldown. More are summoned when Paimon is below 50% hp.
+  - remove @MIR{t=paimon-explosive-add,paimon-teleport-add,paimon-air-add,paimon-air-add-active;r=256} ~onDeath
+  - remove @MIR{t=paimon-explosive-add,paimon-teleport-add,paimon-air-add,paimon-air-add-active;r=256} ~onSpawn
+  - skill{s=paimon-skill} @self ~onTimer:40 .25 #chooses between a projectile skill that slows, ignites, and does some damage and a cool kick.
+  - skill{s=paimon-summon-explosive} @self ~onTimer:400 <50% #places a marker of r=12 and gives players 8 secs to run before explosions occur for 8 secs and kill. Occurs every 20 secs in a new location.
+  - skill{s=paimon-summon-teleport} @self ~onTimer:20 #summons endermen in a circle at 80/60/40/20 % hp intervals
+  - skill{s=paimon-lava} @self ~onTimer:20 #teleports Paimon back if he falls into lava + heals him
+  - skill{s=paimon-target-lava} @PIR{r=200} ~onTimer:20 #kills player if they fall into lava
+  - skill{s=paimon-helm-signal} @self ~onSignal:helm #signal if a player stood on the helmet pad
+  - skill{s=paimon-chest-signal} @self ~onSignal:chest #signal if a player stood on the chestplate pad
+  - skill{s=paimon-leggings-signal} @self ~onSignal:leggings #signal if a player stood on the leggings pad
+  - skill{s=paimon-boots-signal} @self ~onSignal:boots #signal if a player stood on the boots pad
+  - skill{s=paimon-equipment} @self ~onTimer:20 #main trigger for all the equipment shenanigans -> now 70 sec cooldown with 15 sec activity + 10 sec punishment
+  - skill{s=paimon-start;delay=5} @self ~onSpawn #equips gear
+  - skill{s=BossFirework} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Sono_I0 setCustomName "&e[&6☠&e] &cPaimon" setDynamicName true
+
+paimon-proj-marker:
+  Type: armor_stand
+  Skills:
+  - remove{delay=80} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+paimon-proj-damage:
+  Type: armor_stand
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=5} ~onSpawn
+  - ignite{d=120} @PIR{r=5} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+paimon-explosive-add-marker:
+  Type: armor_stand
+  Skills:
+  #- effect:particlesphere{p=flame;amount=30;radius=12;yOffset=0.5} @self ~onTimer:5
+  - effect:particlesphere{p=dragon_breath;amount=30;radius=12;yOffset=.5} @self ~onTimer:5 #this is the correct one
+  - sound{s=entity.ghast.scream;v=4} @self ~onTimer:40
+  #- effect:blockmask{m=black_concrete;r=12;d=160} @self ~onSpawn
+  - remove{delay=160} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+paimon-explosive-add:
+  Type: WITHER_SKELETON
+  Display: ''
+  Health: 40000
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  #- potion{t=INVISIBILITY;d=200;l=1;hasParticles=false} @self ~onSpawn
+  - effect:particlesphere{p=flame;amount=20;radius=12;yOffset=0.5} @self ~onTimer:5
+  #- effect:particlesphere{p=dragon_breath;amount=30;radius=12;yOffset=.5} @self ~onTimer:5 #this is the correct one
+  #- effect:blockmask{m=red_concrete;r=12;oa=true;d=5} @self ~onTimer:5
+  - sound{s=entity.dragon_fireball.explode;v=2} @self ~onTimer:10
+  - ignite{d=40} @PIR{r=12} ~onTimer:5
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=12} ~onTimer:5 #nerfed from 3000 damage per sec to 1000 / nerfed r from 12->8->12
+  - remove{delay=160} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 10000,99,0
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  Disguise: GHAST
+
+paimon-summon-air-cast:
+  Type: armor_stand
+  Skills:
+  - summon{t=paimon-air-add;a=4;r=15} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+paimon-summon-air-cast2:
+  Type: armor_stand
+  Skills:
+  - summon{t=paimon-air-add;a=7;r=15} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+paimon-air-add:
+  Type: BLAZE
+  Display: '&e[&660&e] &cEthereal Flame'
+  Health: 400
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 5
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=paimon-air-add-lava} @self ~onTimer:20
+  - skill{s=paimon-air-add} @self ~onTimer:20
+  #- skill{s=paimon-air-add-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+paimon-air-add-active:
+  Type: BLAZE
+  Display: '&e[&660&e] &cEthereal Flame'
+  Health: 2500 #nerfed from 4000 -> 3000 -> 2000 -> 2500
+  Modules:
+    ThreatTable: true
+  Damage: 150 #nerfed from 250 -> 150
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 250
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=paimon-air-add-active} @self ~onTimer:20 .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+paimon-teleport-add:
+  Type: WITHER_SKELETON
+  Display: '&e[&660&e] &cEthereal Watcher'
+  Health: 6000 #nerfing from 10,000 -> 6,000
+  Modules:
+    ThreatTable: true
+  Damage: 250 #nerfing from 250 -> 150
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - sound{s=entity.enderman.teleport;v=2} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - setAI{ai=true} @self ~onSignal:awaken
+  - skill{s=paimon-teleport-add-lava} @self ~onTimer:20
+  #- skill{s=paimon-teleport-add-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: ENDERMAN
+
+paimon-add-helm:
+  Type: ZOMBIE
+  Display: ''
+  Health: 4000
+  Modules:
+    ThreatTable: true
+  Damage: 400
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - remove{delay=600} @self ~onSpawn
+  - potion{t=INVISIBILITY;d=640;l=1;hasParticles=false} @self ~onSpawn #changed duration from 20s to 32s to ensure perma invis
+  - equip{i=NETHERITE_HELMET:HEAD;delay=5} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+paimon-add-chest:
+  Type: ZOMBIE
+  Display: ''
+  Health: 4000
+  Modules:
+    ThreatTable: true
+  Damage: 400
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - remove{delay=600} @self ~onSpawn
+  - potion{t=INVISIBILITY;d=640;l=1;hasParticles=false} @self ~onSpawn #changed duration from 20s to 32s to ensure perma invis
+  - equip{i=NETHERITE_CHESTPLATE:CHEST;delay=5} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+paimon-add-leggings:
+  Type: ZOMBIE
+  Display: ''
+  Health: 4000
+  Modules:
+    ThreatTable: true
+  Damage: 400
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - remove{delay=600} @self ~onSpawn
+  - potion{t=INVISIBILITY;d=640;l=1;hasParticles=false} @self ~onSpawn #changed duration from 20s to 32s to ensure perma invis
+  - equip{i=NETHERITE_LEGGINGS:LEGS;delay=5} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+paimon-add-boots:
+  Type: ZOMBIE
+  Display: ''
+  Health: 4000
+  Modules:
+    ThreatTable: true
+  Damage: 400
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  Options:
+    AlwaysShowName: false
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - remove{delay=600} @self ~onSpawn
+  - potion{t=INVISIBILITY;d=640;l=1;hasParticles=false} @self ~onSpawn #changed duration from 20s to 32s to ensure perma invis
+  - equip{i=NETHERITE_BOOTS:FEET;delay=5} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+valmyra-teleport-pad-helm:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=5;yOffset=0.5} @self ~onTimer:5
+  - SudoSkill{s=valmyra-teleport-pad-helm} @PIR{r=5} ~onTimer:5
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+valmyra-teleport-pad-chest:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=5;yOffset=0.5} @self ~onTimer:5
+  - SudoSkill{s=valmyra-teleport-pad-chest} @PIR{r=5} ~onTimer:5
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+valmyra-teleport-pad-leggings:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=5;yOffset=0.5} @self ~onTimer:5
+  - SudoSkill{s=valmyra-teleport-pad-leggings} @PIR{r=5} ~onTimer:5
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+valmyra-teleport-pad-boots:
+  Type: armor_stand
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=4;radius=5;yOffset=0.5} @self ~onTimer:5
+  - SudoSkill{s=valmyra-teleport-pad-boots} @PIR{r=5} ~onTimer:5
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+valmyra-maze-minotaur:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cForsaken Minotaur'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLD_AXE HAND
+  - GOLD_AXE OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - command{c="ri drop forsaken-horn <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - skill{s=valmyra-maze-minotaur-roar} @self ~onTimer:20 <50%
+  - skill{s=valmyra-maze-minotaur} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Flamboghini setCustomName "&e[&660&e] &cMinotaur" setDynamicName true
+
+valmyra-maze-brute:
+  Type: ZOMBIE
+  Display: '&e[&660&e] &cForsaken Brute'
+  Health: 4000
+  Modules:
+    ThreatTable: true
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLD_AXE HAND
+  - GOLD_AXE OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - command{c="ri drop forsaken-horn <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .1
+  - skill{s=valmyra-maze-brute} @self ~onTimer:5
+  - skill{s=valmyra-maze-brute-rage} @self ~onSignal:rage
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: PIGLIN_BRUTE
+
+valmyra-maze-dweller:
+  Type: SKELETON
+  Display: '&e[&660&e] &cForsaken Dweller'
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - CROSSBOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - command{c="ri drop forsaken-horn <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .05
+  - skill{s=valmyra-maze-dweller} @self ~onTimer:5
+  - skill{s=valmyra-maze-dweller-speed} @self ~onTimer:5
+  AIGoalSelectors:
+  - 0 clear
+  - 1 fleeplayers
+  - 2 bowshoot
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: PIGLIN
+
+valmyra-bridge-trap-monster:
+  Type: WITHER_SKELETON
+  Display: '&e[&660&e] &cEthereal Watcher'
+  Health: 10000
+  Modules:
+    ThreatTable: true
+  Damage: 250
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: .75
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - command{c="ri drop ethereal-eye <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - skill{s=valmyra-bridge-trap-monster} @self ~onSpawn
+  - skill{s=valmyra-bridge-trap-monster-teleport} @target ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: ENDERMAN
+
+valmyra-bridge-trap:
+  Type: armor_stand
+  Skills:
+  - skill{s=valmyra-bridge-trap} @self ~onTimer:5
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+valmyra-parkour-monster:
+  Type: WITHER_SKELETON
+  Display: '&e[&660&e] &cCrystal Guardian'
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 5
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=valmyra-dungeon-threat} @target ~onTimer:20
+  - command{c="ri drop runic-shard <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.05
+  - summon{t=valmyra-parkour-cannonball} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+valmyra-parkour-crystal:
+  Type: BABY_ZOMBIE
+  Display: '&dRunic Crystal'
+  Health: 4000
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&dRunic Crystal';delay=1} @self ~onDamaged
+  - heal{a=10000} @self ~onDamaged
+  - skill{s=valmyra-parkour-crystal} @self ~onInteract
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK AMETHYST_CLUSTER
+
+valmyra-parkour-cannon:
+  Type: HORSE
+  Display: '&7Spirit Launcher'
+  Health: 4000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    Saddled: true
+    HasGravity: false
+  Skills:
+  - setname{name='&7Spirit Launcher';delay=1} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - heal{a=10000;i=true} @self ~onDamaged
+  - skill{s=valmyra-parkour-cannon-fire} @self ~onSignal:cannon
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: MINECART
+
+valmyra-parkour-cannonball-fire:
+  Type: BABY_ZOMBIE
+  Display: '&7Guardian Spirit'
+  Health: 4000
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&7Guardian Spirit';delay=1} @self ~onDamaged
+  - heal{a=10000;i=true} @self ~onDamaged
+  - leap{v=750} @MIR{t=valmyra-parkour-cannonball-marker;r=2} ~onSpawn
+  - leap{v=750} @MIR{t=valmyra-parkour-cannonball-marker;r=2;delay=1} ~onSpawn
+  - remove @MIR{t=valmyra-parkour-cannonball-marker;r=2} ~onSpawn
+  - skill{s=valmyra-parkour-cannonball-fire} @self ~onTimer:1
+  - skill{s=valmyra-parkour-cannonball-fire-despawn} @self ~onSpawn
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=0.25} @self ~onTimer:5
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK COAL_BLOCK
+
+valmyra-parkour-cannonball:
+  Type: BABY_ZOMBIE
+  Display: '&7Guardian Spirit'
+  Health: 4000
+  Modules:
+    ThreatTable: true
+  Damage: 10
+  DamageModifiers:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='&7Guardian Spirit';delay=1} @self ~onDamaged
+  - skill{s=valmyra-parkour-cannonball-jump} @self ~onInteract
+  - heal{a=10000;i=true} @self ~onDamaged
+  - signal{s=cannon} @MIR{t=valmyra-parkour-cannon,valmyra-parkour-cannon2;r=2} ~onTimer:5
+  - skill{s=valmyra-parkour-cannonball-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK COAL_BLOCK
+
+valmyra-parkour-cannonball-marker:
+  Type: armor_stand
+  Display: ''
+  Health: 0
+  Damage: 0
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+
+valmyra-parkour-platform:
+  Type: BABY_ZOMBIE
+  Display: ''
+  Health: 4000
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - setname{name='';delay=1} @self ~onDamaged
+  - effect:particlering{p=block_crack;material=basalt;a=1;y=0.1;s=0.1;r=5;points=32} @self ~onTimer:20
+  - heal{a=10000;i=true} @self ~onDamaged
+  - setAI{ai=false} @self ~onSpawn
+  - throw{vy=12} @PIR{r=5} ~onTimer:1
+  - sudoSkill{s=valmyra-parkour-platform-jump} @PIR{r=5} ~onTimer:1
+  - skill{s=valmyra-parkour-platform-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK COAL_BLOCK
+
+valmyra-dungeon-damage-1000:
+  Type: armor_stand
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 1000"} @PIR{r=128} ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true

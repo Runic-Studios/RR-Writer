@@ -1,0 +1,127 @@
+JackalCaptain:
+  Conditions:
+  - incombat{}
+  Skills:
+  - randomskill{s=JackalCaptainCrew,JackalCaptainTNT}
+
+JackalCaptainCrew:
+  Cooldown: 20
+  Conditions:
+  - variableEquals{var=caster.crew;value=0}
+  - incombat{}
+  Skills:
+  - setvariable{var=caster.crew;value=1} 
+  - equip{i=AIR:0}
+  - potion{t=SLOW;d=80;l=3;hasParticles=false} 
+  - delay 10
+  - cast{skillName="Captain Crew";duration=40;onCast=JackalCaptainCrewCast;showCastBar=true} @self
+  - delay 10
+  - equip{i=IRON_SWORD:0}
+JackalCaptainCrewCast:
+  Skills:
+  - summon{t=JackalCaptainCrew;r=4;a=2;os=true}
+
+JackalCaptainTNT:
+  Cooldown: 12
+  Conditions:
+  - incombat{}
+  Skills:
+  - equip{i=AIR:0}
+  - potion{t=SLOW;d=100;l=3;hasParticles=false} 
+  - delay 10
+  - cast{skillName="Cannon Fire";duration=20;onCast=JackalCaptainTNTCast;showCastBar=true} @self
+  - delay 75
+  - equip{i=IRON_SWORD:0}
+JackalCaptainTNTCast:
+  Skills:
+  - summon{t=JackalCaptainTNT}
+  - delay 10
+  - summon{t=JackalCaptainTNT}
+  - delay 10
+  - summon{t=JackalCaptainTNT}
+JackalCaptainTNTIgnite:
+  Skills:
+  - sound{s=entity.tnt.primed;v=2} 
+  - delay 10
+  - jump{v=0.4}
+  - delay 5
+  - sound{s=entity.dragon_fireball.explode;v=2}
+  - randomskill{s=JackalCaptainTNTIgnite1,JackalCaptainTNTIgnite2}
+  - delay 10
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30}
+  - throw{vy=6} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=4}
+  - remove
+
+JackalCaptainTNTIgnite1:
+  Conditions:
+  - playerwithin 8
+  Skills:
+  - randomskill{s=JackalCaptainTNTIgnite1a,JackalCaptainTNTIgnite1b}
+JackalCaptainTNTIgnite1a:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - leap{v=100} @NearestPlayer{r=24}  
+JackalCaptainTNTIgnite1b:
+  Conditions:
+  - playernotwithin 4
+  Skills:
+  - leap{v=250} @NearestPlayer{r=24}  
+JackalCaptainTNTIgnite2:
+  Conditions:
+  - playernotwithin 8
+  Skills:
+  - leap{v=400} @NearestPlayer{r=24}
+
+JackalPirateProjchecknotwithin:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.proj;amount=1}	 
+JackalPirateProjcheckwithin:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - setvariable{var=caster.proj;value=0}
+
+JackalPirateProj:
+  Conditions:
+  - varinrange{var=caster.proj;value=>4}
+  - incombat{}
+  Skills:
+  - setvariable{var=caster.proj;value=0}
+  - potion{t=SLOW;d=20;l=2;hasParticles=false}
+  - delay 20
+  - equip{item=stone_button:0}
+  - potion{t=SLOW;d=40;l=10;hasParticles=false}
+  - delay 20
+  - sound{s=entity.dragon_fireball.explode}
+  - projectile{onTick=JackalPirateProjTick;onHit=JackalPirateProjHit;i=1;v=30;mr=30} @target
+  - delay 20
+  - equip{item=iron_sword:0}
+JackalPirateProjTick:
+  Skills:
+  - effect:particles{particle=smoke_normal;a=5} @Origin
+JackalPirateProjHit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 6"}
+
+ShellGiverSelfDestruct:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - suicide
+
+DisplacedSpirit:
+  Conditions:
+  - playerwithin 4
+  Cooldown: 6
+  Skills:
+  - potion{t=BLINDNESS;duration=40;l=1} @target
+  - potion{t=SLOW;duration=40;l=1} @target
+  - leap{v=200} @target
+  - sound{s=entity.enderman.scream}

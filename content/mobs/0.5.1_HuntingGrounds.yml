@@ -1,0 +1,38 @@
+Direwolf: #event
+  Type: ZOMBIE
+  Display: '&e[&620&e] &cDirewolf'
+  Health: 300
+  Damage: 28
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 180 <mob.l.x> <mob.l.y> <mob.l.z> 20"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2,g3} @trigger ~onDeath .3
+  - command{c="ri drop wolf-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.15
+  - skill{s=drop-level-20} @trigger ~onDeath
+#  - message{m="<caster.var.howl>"} @PIR{r=24} ~onTimer:20
+  - setvariable{var=target.howl;value=0} @self ~onSpawn
+  - skill{s=DirewolfHowl} @self ~onTimer:20
+  - skill{s=DirewolfHarm} @self ~onDamaged
+  - skill{s=DirewolfWill} @self ~onTimer:20
+#  - sound{s=entity.wolf.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: WOLF

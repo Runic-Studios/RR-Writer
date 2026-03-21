@@ -1,0 +1,426 @@
+herbalism-event:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0} 
+  Skills:
+  - skill{s=herbalism-event-rise-cast} .004
+herbalism-event-rise-cast:
+  Skills:
+  - summon{t=herbalism-event-rise-timer} @self  
+herbalism-event-rise-timer-cast:
+  Skills:
+  - message{m="&6[EVENT] &eThe flowers grew legs and are &etrying &eto &eescape!"} @PIR{r=50}
+  - message{m="&eFlowers with legs are &brare &eand worth &bfive times &emore!"} @PIR{r=50}
+  - sound{s=block.grass.break;v=2} @self
+  - signal{s=rise} @MIR{t=ValerianGiver,ComfreyGiver,BoswelliaGiver,TurmericGiver,ChamomileGiver,SnowdropGiver,HibiscusGiver,WintercressGiver,PsylliumGiver,ArugulaGiver,LavenderGiver,PetuniaGiver;r=100}
+  - delay 300
+  - sound{s=block.grass.break;v=2} @self
+  - signal{s=rise2} @MIR{t=ValerianGiver,ComfreyGiver,BoswelliaGiver,TurmericGiver,ChamomileGiver,SnowdropGiver,HibiscusGiver,WintercressGiver,PsylliumGiver,ArugulaGiver,LavenderGiver,PetuniaGiver;r=100}
+  - delay 20
+  - setvariable{var=caster.active;value=0} @self
+
+herbalism-event-remove:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  Skills:
+  - setvariable{var=caster.remove;value=1}
+  - signal{s=check} @MIR{t=ValerianGiver,ComfreyGiver,BoswelliaGiver,TurmericGiver,ChamomileGiver,SnowdropGiver,HibiscusGiver,WintercressGiver,PsylliumGiver,ArugulaGiver,LavenderGiver,PetuniaGiver;r=100}
+  - delay 10
+  - skill{s=herbalism-event-remove-cast}
+herbalism-event-remove-cast:
+  Conditions:
+  - variableEquals{var=caster.remove;value=1}
+  Skills:
+  - message{m="&6[Event] &e&lFlower Escape! &r&ehas concluded with no flowers remaining!"} @PIR{r=50}
+  - remove
+
+herbalism-event-rise:
+  Cooldown: 60
+  Skills:
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.5}
+  - jump{v=0.4}
+  #- potion{t=GLOWING;c=WHITE;d=400;l=1;hasParticles=false}
+  - setvariable{var=caster.loot;value=1}
+  - skill{s=herbalism-event-rise-visual}
+  - setAI{ai=true}
+  - delay 25
+  - setAI{ai=true}
+  - delay 175
+  - potion{t=SPEED;d=100;l=1;hasParticles=false}
+  - delay 200
+  - potion{t=SPEED;d=100;l=2;hasParticles=false}
+  - delay 200
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.5}
+  - remove 
+
+herbalism-event-rise2:
+  Cooldown: 60
+  Skills:
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.5}
+  - jump{v=0.4}
+  #- potion{t=GLOWING;c=WHITE;d=400;l=1;hasParticles=false}
+  - setvariable{var=caster.loot;value=1}
+  - skill{s=herbalism-event-rise-visual}
+  - setAI{ai=true}
+  - delay 25
+  - setAI{ai=true}
+  - delay 175
+  - potion{t=SPEED;d=100;l=1;hasParticles=false}
+  - delay 100
+  - remove 
+
+herbalism-event-rise-visual:
+  Skills:
+  - effect:particlesphere{p=spell_instant;amount=2;radius=1;yOffset=0.25}
+  - delay 20
+  - skill{s=herbalism-event-rise-visual}
+herbalism-spawn:
+  Skills:
+  - setvariable{var=caster.loot;value=0}
+  - skill{s=herbalism-event-rise2} .025
+  - potion{t=SLOW;d=20;l=10;hasParticles=false}
+  - delay 20
+  - setAI{ai=false}
+
+
+ValerianGiver-drop:
+  Skills:
+  - randomskill{s=ValerianGiver-drop1,ValerianGiver-drop2}
+ValerianGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 67"} 
+  - command{c="ri give <target.name> valerian"} 
+ValerianGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 335"} 
+  - command{c="ri give <target.name> valerian 5"} 
+
+
+ComfreyGiver-drop:
+  Skills:
+  - randomskill{s=ComfreyGiver-drop1,ComfreyGiver-drop2}
+ComfreyGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 26"}
+  - command{c="ri give <target.name> comfrey"}
+ComfreyGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 130"} 
+  - command{c="ri give <target.name> comfrey 5"} 
+
+
+BoswelliaGiver-drop:
+  Skills:
+  - randomskill{s=BoswelliaGiver-drop1,BoswelliaGiver-drop2}
+BoswelliaGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 202"}
+  - command{c="ri give <target.name> boswellia"}
+BoswelliaGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 1010"} 
+  - command{c="ri give <target.name> boswellia 5"} 
+
+
+TurmericGiver-drop:
+  Skills:
+  - randomskill{s=TurmericGiver-drop1,TurmericGiver-drop2}
+TurmericGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 26"}
+  - command{c="ri give <target.name> turmeric"}
+TurmericGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 130"} 
+  - command{c="ri give <target.name> turmeric 5"} 
+
+
+ChamomileGiver-drop:
+  Skills:
+  - randomskill{s=ChamomileGiver-drop1,ChamomileGiver-drop2}
+ChamomileGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 90"}
+  - command{c="ri give <target.name> chamomile"}
+ChamomileGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 450"} 
+  - command{c="ri give <target.name> chamomile 5"} 
+
+
+SnowdropGiver-drop:
+  Skills:
+  - randomskill{s=SnowdropGiver-drop1,SnowdropGiver-drop2}
+SnowdropGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 67"} 
+  - command{c="ri give <target.name> snowdrop"} 
+SnowdropGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 335"} 
+  - command{c="ri give <target.name> snowdrop 5"} 
+
+
+HibiscusGiver-drop:
+  Skills:
+  - randomskill{s=HibiscusGiver-drop1,HibiscusGiver-drop2}
+HibiscusGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 142"}
+  - command{c="ri give <target.name> hibiscus"}
+HibiscusGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 710"} 
+  - command{c="ri give <target.name> hibiscus 5"} 
+
+
+WintercressGiver-drop:
+  Skills:
+  - randomskill{s=WintercressGiver-drop1,WintercressGiver-drop2}
+WintercressGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 90"}
+  - command{c="ri give <target.name> wintercress"}
+WintercressGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 450"} 
+  - command{c="ri give <target.name> wintercress 5"} 
+
+
+PsylliumGiver-drop:
+  Skills:
+  - randomskill{s=PsylliumGiver-drop1,PsylliumGiver-drop2}
+PsylliumGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 30"}
+  - command{c="ri give <target.name> psyllium"}
+PsylliumGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 150"} 
+  - command{c="ri give <target.name> psyllium 5"} 
+
+
+ArugulaGiver-drop:
+  Skills:
+  - randomskill{s=ArugulaGiver-drop1,ArugulaGiver-drop2}
+ArugulaGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 202"}
+  - command{c="ri give <target.name> arugula"}
+ArugulaGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 1010"} 
+  - command{c="ri give <target.name> arugula 5"} 
+
+
+LavenderGiver-drop:
+  Skills:
+  - randomskill{s=LavenderGiver-drop1,LavenderGiver-drop2}
+LavenderGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 142"}
+  - command{c="ri give <target.name> lavender"}
+LavenderGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 710"} 
+  - command{c="ri give <target.name> lavender 5"} 
+
+
+PetuniaGiver-drop:
+  Skills:
+  - randomskill{s=PetuniaGiver-drop1,PetuniaGiver-drop2}
+PetuniaGiver-drop1:
+  Conditions:
+  - variableEquals{var=caster.loot;value=0}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 30"}
+  - command{c="ri give <target.name> petunia"}
+PetuniaGiver-drop2:
+  Conditions:
+  - variableEquals{var=caster.loot;value=1}
+  Skills:
+  - command{c="profgive gatheringexp <trigger.name> harvesting 150"} 
+  - command{c="ri give <target.name> petunia 5"} 
+
+
+
+herbalism-event-timer:
+  Skills:
+  - sethealth{a=10000}
+  - delay 20
+  - sethealth{a=9666}
+  - delay 20
+  - sethealth{a=9333}
+  - delay 20
+  - sethealth{a=9000}
+  - delay 20
+  - sethealth{a=8666}
+  - delay 20
+  - sethealth{a=8333}
+  - delay 20
+  - sethealth{a=8000}
+  - delay 20
+  - sethealth{a=7666}
+  - delay 20
+  - sethealth{a=7333}
+  - delay 20
+  - sethealth{a=7000}
+  - delay 20
+  - sethealth{a=6666}
+  - delay 20
+  - sethealth{a=6333}
+  - delay 20
+  - sethealth{a=6000}
+  - delay 20
+  - sethealth{a=5666}
+  - delay 20
+  - sethealth{a=5333}
+  - delay 20
+  - sethealth{a=5000}
+  - delay 20
+  - sethealth{a=4666}
+  - delay 20
+  - sethealth{a=4333}
+  - delay 20
+  - sethealth{a=4000}
+  - delay 20
+  - sethealth{a=3666}
+  - delay 20
+  - sethealth{a=3333}
+  - delay 20
+  - sethealth{a=3000}
+  - delay 20
+  - sethealth{a=2666}
+  - delay 20
+  - sethealth{a=2333}
+  - delay 20
+  - sethealth{a=2000}
+  - delay 20
+  - sethealth{a=1666}
+  - delay 20
+  - sethealth{a=1333}
+  - delay 20
+  - sethealth{a=1000}
+  - delay 20
+  - sethealth{a=666}
+  - delay 20
+  - sethealth{a=333}
+  - delay 20
+  - sethealth{a=1} 
+  - sudoskill{s=herbalism-event-ambush} @PIR{r=50} .05
+  - message{m="&6[Event] &e&lFlower Escape! &r&ehas concluded, a few flowers managed to escape!"} @PIR{r=50}
+  - remove
+
+herbalism-event-ambush:
+  Cooldown: 1200
+  Skills:
+  - delay 24000
+  - potion{t=BLINDNESS;d=40;l=1;hasParticles=false} @self 
+  - potion{t=SLOW;d=40;l=2;hasParticles=false} @self
+  - sound{s=block.grass.break} @self
+  - message{m="&7[1/3] &6Flower Escapee<&co> &eWe have come to avenge our fallen comrades!"} @self
+  - randomskill{s=ValerianGiver-ambush,ComfreyGiver-ambush,BoswelliaGiver-ambush,TurmericGiver-ambush,ChamomileGiver-ambush,SnowdropGiver-ambush,HibiscusGiver-ambush,WintercressGiver-ambush,PsylliumGiver-ambush,ArugulaGiver-ambush,PetuniaGiver-ambush}  @self
+  - delay 5
+  - randomskill{s=ValerianGiver-ambush,ComfreyGiver-ambush,BoswelliaGiver-ambush,TurmericGiver-ambush,ChamomileGiver-ambush,SnowdropGiver-ambush,HibiscusGiver-ambush,WintercressGiver-ambush,PsylliumGiver-ambush,ArugulaGiver-ambush,PetuniaGiver-ambush}  @self
+  - delay 5
+  - randomskill{s=ValerianGiver-ambush,ComfreyGiver-ambush,BoswelliaGiver-ambush,TurmericGiver-ambush,ChamomileGiver-ambush,SnowdropGiver-ambush,HibiscusGiver-ambush,WintercressGiver-ambush,PsylliumGiver-ambush,ArugulaGiver-ambush,PetuniaGiver-ambush}  @self
+  - delay 5
+  - randomskill{s=ValerianGiver-ambush,ComfreyGiver-ambush,BoswelliaGiver-ambush,TurmericGiver-ambush,ChamomileGiver-ambush,SnowdropGiver-ambush,HibiscusGiver-ambush,WintercressGiver-ambush,PsylliumGiver-ambush,ArugulaGiver-ambush,PetuniaGiver-ambush}  @self
+  - delay 5
+  - randomskill{s=ValerianGiver-ambush,ComfreyGiver-ambush,BoswelliaGiver-ambush,TurmericGiver-ambush,ChamomileGiver-ambush,SnowdropGiver-ambush,HibiscusGiver-ambush,WintercressGiver-ambush,PsylliumGiver-ambush,ArugulaGiver-ambush,PetuniaGiver-ambush}  @self
+  - delay 100
+  - message{m="&7[2/3] &6Flower Escapee<&co> &eWe're no match! Run away!"} @self
+  - delay 40
+  - message{m="&7[3/3] &6Flower Escapee<&co> &eDarn our frail fragile bodies!"} @self
+
+ValerianGiver-ambush:
+  Skills:
+  - summon{t=ValerianGiver-ambush;r=5;os=true}
+ComfreyGiver-ambush:
+  Skills:
+  - summon{t=ComfreyGiver-ambush;r=5;os=true}
+BoswelliaGiver-ambush:
+  Skills:
+  - summon{t=BoswelliaGiver-ambush;r=5;os=true}
+TurmericGiver-ambush:
+  Skills:
+  - summon{t=TurmericGiver-ambush;r=5;os=true}
+ChamomileGiver-ambush:
+  Skills:
+  - summon{t=ChamomileGiver-ambush;r=5;os=true}
+SnowdropGiver-ambush:
+  Skills:
+  - summon{t=SnowdropGiver-ambush;r=5;os=true}
+HibiscusGiver-ambush:
+  Skills:
+  - summon{t=HibiscusGiver-ambush;r=5;os=true}
+WintercressGiver-ambush:
+  Skills:
+  - summon{t=WintercressGiver-ambush;r=5;os=true}
+PsylliumGiver-ambush:
+  Skills:
+  - summon{t=PsylliumGiver-ambush;r=5;os=true}
+ArugulaGiver-ambush:
+  Skills:
+  - summon{t=ArugulaGiver-ambush;r=5;os=true}
+LavenderGiver-ambush:
+  Skills:
+  - summon{t=LavenderGiver-ambush;r=5;os=true}
+PetuniaGiver-ambush:
+  Skills:
+  - summon{t=PetuniaGiver-ambush;r=5;os=true}
+
+herbalism-event-ambush-remove:
+  Skills:
+  - skill{s=herbalism-event-rise-visual} @self
+  - sound{s=block.grass.break} @self
+  - delay 120
+  - runaigoalselector{goal=clear} @self
+  - runaigoalselector{goal=fleeplayers} @self
+  - delay 40
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.5} @self
+  - sound{s=block.grass.break} @self
+  - remove 

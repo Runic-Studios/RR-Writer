@@ -1,0 +1,555 @@
+ConditionalSuicide:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - suicide
+
+geblastcheckwithin:
+  Conditions:
+  - playerwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.within;amount=1}	 
+  - variablesubtract{var=caster.notwithin;amount=1}
+geblastchecknotwithin:
+  Conditions:
+  - playernotwithin 4
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.notwithin;amount=1}	
+  - variablesubtract{var=caster.within;amount=1}
+geblast:
+  Conditions:
+  - varinrange{var=caster.within;value=>5}
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - setvariable{var=caster.within;value=0}
+  - setvariable{var=caster.notwithin;value=0}
+  - potion{type=SLOW;duration=40;level=1;hasParticles=false} 
+  - cast{skillName="&kBlast";duration=40;onCast=geblastCast;showCastBar=true} @self
+geblastCast:
+  Skills:
+  - sound{s=block.glass.break}
+  - throw{v=15;vy=5} @PIR{r=5}
+  - effect:particlesphere{particle=block_crack;material=ice;amount=40;radius=5;yOffset=.5}
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=5}
+geblast2:
+  Conditions:
+  - varinrange{var=caster.notwithin;value=>5}
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - setvariable{var=caster.within;value=0}
+  - setvariable{var=caster.notwithin;value=0}
+  - potion{type=SLOW;duration=40;level=1;hasParticles=false} 
+  - cast{skillName="&kBlast";duration=40;onCast=geblastCast2;showCastBar=true} @self  
+geblastCast2:
+  Skills:
+  - summon{t=geblast;r=2} @PIR{r=64}
+geblastmarker:
+  Skills:
+  - sound{s=block.glass.break}
+  - throw{v=15;vy=5} @PIR{r=4}
+  - effect:particlesphere{particle=block_crack;material=ice;amount=25;radius=4;yOffset=.5}
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=4}
+  - delay 20
+  - remove
+geshockwavestart:
+  Cooldown: 9999
+  Skills:
+  - skill{s=geshockwave} 
+geshockwave:
+  Conditions:
+  - incombat{}
+  Skills:
+  - sendtitle{title="&7&kShockwave";subtitle="&7&l3";d=20} @PlayersInRadius{r=50}
+  - delay 20
+  - sendtitle{title="&7&kShockwave";subtitle="&7&l2";d=20} @PlayersInRadius{r=50}
+  - delay 20
+  - sendtitle{title="&7&kShockwave";subtitle="&7&l1";d=20} @PlayersInRadius{r=50}
+  - delay 20
+  - skill{s=geshockwave;delay=240}
+  - randomskill{skills=geshockwavecast1,geshockwavecast2,geshockwavecast3} 
+geshockwavecast1:
+  Conditions:
+  - variableEquals{var=caster.shockwave;value=1}
+  Skills:
+  - summon{t=gemarker} @Location{c=1184,108,-298}
+  - delay 10
+  - summon{t=gemarker} @Location{c=1191,108,-288}
+  - delay 10
+  - summon{t=gemarker} @Location{c=1200,107,-284}
+  - delay 10
+  - summon{t=gemarker} @Location{c=1210,108,-291}
+  - setvariable{var=caster.shockwave;value=2}
+geshockwavecast2:
+  Conditions:
+  - variableEquals{var=caster.shockwave;value=2}
+  Skills:
+  - summon{t=gemarker} @Location{c=1210,108,-291}
+  - delay 10
+  - summon{t=gemarker} @Location{c=1200,107,-284}
+  - delay 10
+  - summon{t=gemarker} @Location{c=1191,108,-288}
+  - delay 10
+  - summon{t=gemarker} @Location{c=1184,108,-298}
+  - setvariable{var=caster.shockwave;value=3}
+geshockwavecast3:
+  Conditions:
+  - variableEquals{var=caster.shockwave;value=3}
+  Skills:
+  - summon{t=gemarker} @Location{c=1210,108,-291}
+  - summon{t=gemarker} @Location{c=1184,108,-298}
+  - delay 20
+  - summon{t=gemarker} @Location{c=1191,108,-288}
+  - summon{t=gemarker} @Location{c=1200,107,-284}
+  - setvariable{var=caster.shockwave;value=1}
+gevariableset:
+  Skills:
+  - setvariable{var=caster.shockwave;value=1}
+  - setvariable{var=caster.summon;value=1}
+  - setvariable{var=caster.cast;value=1}
+  - setvariable{var=caster.within;value=0}
+  - setvariable{var=caster.notwithin;value=0}
+gemarker:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=12}
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=12}
+  - delay 4
+  - skill{s=gemarker}
+gemarker2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 1"} @PIR{r=4}
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=4}
+  - delay 4
+  - skill{s=gemarker2}
+getearstart:
+  Cooldown: 9999
+  Skills:
+  - skill{s=getear} 
+getear:
+  Conditions:
+  - incombat{}
+  Skills:
+  - teleport @Location{c=1194.5,115,-308.5}
+  - setAI{ai=false} 
+  - delay 40
+  - potion{type=BLINDNESS;duration=80;level=3} @PIR{r=64}
+  - skill{s=gesummon} 
+gesummon:
+  Conditions:
+  - varinrange{var=caster.summon;value=>5} castinstead gesummonstop
+  - varinrange{var=caster.cast;value=>20} castinstead gesummonstop
+  Skills:
+  - setvariable{var=caster.within;value=0}
+  - setvariable{var=caster.notwithin;value=0}
+  - variableadd{var=caster.cast;amount=1}
+  - sound{s=entity.enderman.scream;v=4} .2
+  - summon{t=GlitchedSpawn;r=3}
+  - delay 20
+  - skill{s=gesummon} 
+gesummonstop:
+  Skills:
+  - setAI{ai=true}
+  - setvariable{var=caster.summon;value=0}  
+  - setvariable{var=caster.cast;value=0}  
+  - skill{s=getear;delay=600}
+gespawn:
+  Skills:
+  - potion{type=SLOW;duration=10;level=3;hasParticles=false}
+  - delay 10
+  - potion{type=BLINDNESS;duration=40;level=3} @PIR{r=5}
+  - potion{type=SLOW;duration=40;level=3} @PIR{r=5}  
+
+ElementalCrystalHint:
+  Cooldown: 24
+  Skills:
+  - message{m="&7The energy disperse reveals the true location &7of &7the &7crystal."} @PIR{r=32}
+ElementalCrystalvuln:
+  Conditions:
+  - variableEquals{var=caster.vuln;value=1}
+  Skills:
+  - sound{s=block.glass.break}
+ElementalCrystal:
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.shot;value=0}
+  - setAI{ai=true} 
+  - skill{s=ElementalCrystalStart}
+
+ElementalCrystalStart:
+  Conditions:
+  - variableEquals{var=caster.shot;value=0}
+  Skills:
+  - setvariable{var=caster.rapid;value=0}
+  - setAI{ai=true}
+  - delay 80
+  - setvariable{var=caster.vuln;value=0}
+  - jump{v=1.2}
+  - delay 10
+  - setAI{ai=false}
+  - delay 40
+  - skill{s=ElementalRapid} 
+ElementalStart:
+  Conditions:
+  - variableEquals{var=caster.shot;value=0}
+  Skills:
+  - setvariable{var=caster.rapid;value=0}
+  - setAI{ai=true}
+  - delay 120
+  - setvariable{var=caster.vuln;value=0}
+  - jump{v=1.2}
+  - delay 10
+  - setAI{ai=false}
+  - delay 40
+  - skill{s=ElementalRapid} 
+ElementalRapid:
+  Conditions:
+  - varinrange{var=caster.rapid;value=>11} castinstead ElementalStart3
+  Skills:
+  - variableadd{var=caster.rapid;amount=1}
+  - summon{t=ElementalEnergyr;r=4}
+  - delay 10
+  - skill{s=ElementalRapid} 
+ElementalStart2:
+  Conditions:
+  - variableEquals{var=caster.shot;value=1}
+  Skills:
+  - setvariable{var=caster.quad;value=0}
+  - setAI{ai=true}
+  - delay 120
+  - setvariable{var=caster.vuln;value=0}
+  - jump{v=1.2}
+  - delay 10
+  - setAI{ai=false}
+  - delay 40
+  - skill{s=ElementalQuad}   
+ElementalQuad:
+  Conditions:
+  - varinrange{var=caster.quad;value=>2} castinstead ElementalStart3  
+  Skills:
+  - variableadd{var=caster.quad;amount=1}
+  - summon{t=ElementalEnergyq;r=4;a=2}	 
+  - delay 10
+  - summon{t=ElementalEnergyq;r=4;a=2}	 
+  - delay 10
+  - signal{s=fire} @MIR{t=ElementalEnergyq;r=8}	
+  - delay 20
+  - skill{s=ElementalQuad} 
+
+ElementalStart3:
+  Skills:
+  - setAI{ai=true}
+  - delay 40
+  - skill{s=ElementalClone} 
+
+ElementalClone:
+  Cooldown: 8
+  Skills:
+  - setAI{ai=true}
+  - delay 120
+  - jump{v=1.2}
+  - delay 10
+  - teleport @Location{c=1220,95,-136}
+  - setvariable{var=caster.energy;value=1}
+  - skill{s=ElementalCrystalEnergy}
+  - message{m="&7The Crystal creates mirror images of himself!"} @PIR{r=32}
+  - randomskill{skills=ElementalClone1,ElementalClone2,ElementalClone3,ElementalClone4}
+ElementalCrystalEnergy:
+  Conditions:
+  - variableEquals{var=caster.energy;value=1}
+  Skills:
+  - summon{t=ElementalCrystalEnergy;r=20;a=2;os=true}
+  - delay 120
+  - skill{s=ElementalCrystalEnergy}
+Elementalsetshot0:
+  Conditions:
+  - variableEquals{var=caster.shot;value=1}
+  Skills:
+  - setvariable{var=caster.shot;value=0}
+Elementalsetshot1:
+  Conditions:
+  - variableEquals{var=caster.shot;value=0}
+  Skills:  
+  - setvariable{var=caster.shot;value=1}
+
+ElementalCrystalEnergystop:
+  Skills:
+  - setvariable{var=caster.vuln;value=1}
+  - teleport @Location{c=1236.5,97,-131.5}
+  - setvariable{var=caster.energy;value=0}
+  - delay 80
+  - randomskill{skills=Elementalsetshot0,Elementalsetshot1}
+  - randomskill{skills=ElementalStart,ElementalStart2}
+ElementalClone1:
+  Skills:
+  - summon{t=ElementalCrystaltrue} @Location{c=1229.5,98,-141.5} 
+  - summon{t=ElementalCrystalfalse} @Location{c=1217.5,98,-122.5}
+  - summon{t=ElementalCrystalfalse} @Location{c=1209.5,98,-136.5}
+  - summon{t=ElementalCrystalfalse} @Location{c=1219.5,103,-135.5} 
+ElementalClone2:
+  Skills:
+  - summon{t=ElementalCrystalfalse} @Location{c=1229.5,98,-141.5} 
+  - summon{t=ElementalCrystaltrue} @Location{c=1217.5,98,-122.5}
+  - summon{t=ElementalCrystalfalse} @Location{c=1209.5,98,-136.5}
+  - summon{t=ElementalCrystalfalse} @Location{c=1219.5,103,-135.5} 
+ElementalClone3:
+  Skills:
+  - summon{t=ElementalCrystalfalse} @Location{c=1229.5,98,-141.5} 
+  - summon{t=ElementalCrystalfalse} @Location{c=1217.5,98,-122.5}
+  - summon{t=ElementalCrystaltrue} @Location{c=1209.5,98,-136.5}
+  - summon{t=ElementalCrystalfalse} @Location{c=1219.5,103,-135.5} 
+ElementalClone4:
+  Skills:
+  - summon{t=ElementalCrystalfalse} @Location{c=1229.5,98,-141.5} 
+  - summon{t=ElementalCrystalfalse} @Location{c=1217.5,98,-122.5}
+  - summon{t=ElementalCrystalfalse} @Location{c=1209.5,98,-136.5}
+  - summon{t=ElementalCrystaltrue} @Location{c=1219.5,103,-135.5} 
+
+ElementalBurst:
+  Skills:
+  - skill{s=ElementalEnergyCreate}
+  - potion{type=SLOW;duration=80;level=3} @PIR{r=3}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=3}
+  - sound{s=block.glass.break} 
+ElementalEnergyCreate:
+  Conditions:
+  - playerwithin 3
+  Skills:
+  - summon{t=ElementalEnergyCreate} 
+ElementalEnergyr:
+  Skills:
+  - setAI{ai=false}
+  - delay 20
+  - setAI{ai=true}
+  - leap{v=1000} @NearestPlayer{r=48}
+  - delay 10 
+  - suicide
+ElementalEnergyq:
+  Skills:
+  - setAI{ai=false}
+ElementalEnergyqr:
+  Skills:
+  - setAI{ai=true}
+  - leap{v=1000} @NearestPlayer{r=48}
+  - delay 10 
+  - suicide
+
+ElementalCrystalOverload:
+  Conditions:
+  - varinrange{var=caster.energy;value=>9}
+  Skills:
+  - effect:particlesphere{p=reddust;c=#FF8888;amount=20;radius=4;yOffset=.5}
+  - effect:particlesphere{p=reddust;c=#FF4545;amount=20;radius=4;yOffset=.5}
+ElementalCrystalEnergyDeath:
+  Skills:
+  - effect:particlesphere{p=reddust;c=#FF8888;amount=20;radius=4;yOffset=.5}
+  - effect:particlesphere{p=reddust;c=#FF4545;amount=20;radius=4;yOffset=.5}
+  - variableadd{var=target.energy;amount=1}
+
+Icecreamwithin:
+  Conditions:
+  - playerwithin 12
+  Skills:
+  - setAI{ai=true}
+Icecreamnotwithin:
+  Conditions:
+  - playernotwithin 12
+  Skills:
+  - setAI{ai=false}
+
+IcecreamConeaoe:
+  Conditions:
+  - incombat{}
+  - playerwithin 8
+  Cooldown: 8
+  Skills:
+  - delay 20
+  - sound{s=block.glass.break}
+  - effect:particlesphere{particle=reddust;color=#A8FFFF;amount=24;radius=5;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=5}
+  - potion{type=SLOW;duration=80;level=2} @PIR{r=5}
+  
+IcecreamConemelt:
+  Conditions:
+  - varinrange{var=caster.melt;value=>4}
+  Skills:
+  - sound{s=entity.player.splash}
+  - command{c="ri drop IcyCore <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+  - remove
+
+SkeletonOverlordDefense:
+  Cooldown: 18
+  Condition: 
+  Skills:
+  - delay 80
+  - cast{skillName="&6Bone Plating";duration=120;onCast=SkeletonOverlordErupt;showCastBar=true} @self  
+  - setvariable{var=caster.defense;value=1}
+  - potion{type=SLOW;duration=120;level=3;hasParticles=false} 
+  - delay 120
+  - setvariable{var=caster.defense;value=0}
+SkeletonOverlordArmorcheck:
+  Skills:
+  - skill{s=SkeletonOverlordArmor}
+  - skill{s=SkeletonOverlordnoArmor}
+SkeletonOverlordArmor:
+  Conditions:
+  - variableEquals{var=caster.defense;value=1}  
+  Skills:
+  - sound{s=entity.iron_golem.hurt}
+  - skill{s=SkeletonOverlordHeal}
+  - variableadd{var=caster.armor;amount=1}
+SkeletonOverlordHeal:
+  Cooldown: 1
+  Skills:
+  - heal{a=20}
+SkeletonOverlordnoArmor:
+  Conditions:
+  - variableEquals{var=caster.defense;value=0}  
+  Skills:
+  - sound{s=entity.skeleton.hurt}
+SkeletonOverlordErupt:
+  Conditions:
+  - varinrange{var=caster.armor;value=>7} castinstead SkeletonOverlordErupt4
+  - varinrange{var=caster.armor;value=>5} castinstead SkeletonOverlordErupt3
+  - varinrange{var=caster.armor;value=>3} castinstead SkeletonOverlordErupt2
+  Skills:
+  - sound{s=entity.skeleton.hurt}
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=4}
+  - effect:particlesphere{particle=block_crack;material=bone_block;amount=20;radius=4;yOffset=.5}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - setvariable{var=caster.armor;value=0}
+SkeletonOverlordErupt2:
+  Skills:
+  - sound{s=entity.skeleton.hurt}
+  - throw{v=5;vy=5} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - effect:particlesphere{particle=block_crack;material=bone_block;amount=50;radius=4;yOffset=.5}
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4}
+  - setvariable{var=caster.armor;value=0}
+SkeletonOverlordErupt3:
+  Skills:
+  - sound{s=entity.skeleton.hurt}
+  - throw{v=5;vy=5} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=5}
+  - effect:particlesphere{particle=block_crack;material=bone_block;amount=80;radius=5;yOffset=.5}
+  - potion{type=SLOW;duration=80;level=1} @PIR{r=5}
+  - setvariable{var=caster.armor;value=0}
+SkeletonOverlordErupt4:
+  Skills:
+  - sound{s=entity.skeleton.hurt}
+  - throw{v=5;vy=5} @PIR{r=6}
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=6}
+  - effect:particlesphere{particle=block_crack;material=bone_block;amount=200;radius=6;yOffset=.5}
+  - potion{type=SLOW;duration=80;level=3} @PIR{r=6}
+  - setvariable{var=caster.armor;value=0}
+
+SkeletonOverlordTrap:
+  Skills:
+  - summon{t=SkeletonOverlorMarker} 
+  - summon{t=SkeletonOverlordMinion;r=8;a=10}
+  - sound{s=block.stone.hit}
+  - remove
+SkeletonOverlorMarkerCheck:
+  Conditions:
+  - varinrange{var=caster.check;value=>3}
+  Skills:
+  - jump{v=.8} @MIR{r=128;t=SkeletonOverlordMinion}
+  - delay 2
+  - pull{v=24} @MIR{r=128;t=SkeletonOverlordMinion}
+  - delay 5
+  - skill{s=SkeletonOverlorMarkerPull} @MIR{r=128;t=SkeletonOverlordMinion}
+  - delay 60
+  - summon{t=SkeletonOverlord} 
+  - remove @MIR{r=128;t=SkeletonOverlordMinion}
+  - remove
+SkeletonOverlorMarkerPull:
+  Skills:
+  - signal{s=dmg}
+  - pull{v=12}
+  - delay 5
+  - skill{s=SkeletonOverlorMarkerPull} @MIR{r=128;t=SkeletonOverlordMinion}
+
+SkeletonOverlordBoneSpawn:
+  Cooldown: 4
+  Skills:
+  - jump{v=0.2} 
+  - sound{s=block.glass.break}
+  - summon{type=SkeletonOverlordBone;amount=3;radius=3;os=true}
+SkeletonOverlordBone:
+  Skills:
+  - jump{v=0.3}
+  - throw{v=20} 
+  - delay 20
+  - skill{s=SkeletonOverlordBoneCheck} 
+SkeletonOverlordBoneCheck:
+  Skills:
+  - delay 2
+  - skill{s=SkeletonOverlordBonePassive} 
+  - skill{s=SkeletonOverlordBoneCheck} 
+SkeletonOverlordBonePassive:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - potion{type=SLOW;duration=80;level=3} @PIR{r=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=2}
+  - sound{s=random.pop}
+  - delay 2
+  - suicide
+
+SkeletonOverlordKnockup:
+  Conditions:
+  - playerwithin 2
+  - incombat{}
+  Cooldown: 6
+  Skills:
+  - throw{vy=10} @target
+  - sound{s=entity.iron_golem.attack}
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @target
+
+CrystalCavernPK:
+  Conditions:
+  - playerwithin 16
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - potion{type=SLOW;duration=50;level=1;hasParticles=false} @self
+  - cast{skillName="Charm";duration=40;onCast=CrystalCavernCharm;showCastBar=true} @NearestPlayer{r=16}
+  - delay 20
+  
+CrystalCavernCharm:
+  Skills:
+  - projectile{ot=CrystalCavernCharm-Tick;oh=CrystalCavernCharm-Hit;v=20;hr=1;vr=1;i=1} @NearestPlayer{r=16}
+  
+CrystalCavernCharm-Tick:
+  Skills:
+  - effect:particles{particle=heart;amount=1}
+  
+CrystalCavernCharm-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+  - throw{vy=1} @NearestPlayer{r=16}
+  - delay 2
+  - pull{v=3} @NearestPlayer{r=16}
+  - delay 2
+  - throw{vy=1} @NearestPlayer{r=16}
+  - delay 2
+  - pull{v=3} @NearestPlayer{r=16}
+  - delay 2
+  - throw{vy=1} @NearestPlayer{r=16}
+  - delay 2
+  - pull{v=3} @NearestPlayer{r=16}
+  - delay 2
+  - throw{vy=1} @NearestPlayer{r=16}
+  - delay 2
+  - pull{v=3} @NearestPlayer{r=16}
+  - delay 2
+  - throw{vy=1} @NearestPlayer{r=16}
+  - delay 2
+  - pull{v=3} @NearestPlayer{r=16}
+  - delay 2

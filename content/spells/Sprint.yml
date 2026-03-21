@@ -1,0 +1,6 @@
+cooldown: 12
+duration: 4
+level: 3 # Speed I, II, or III
+physical-damage: 5
+physical-damage-per-level: 0.5
+mana: 15

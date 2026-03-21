@@ -1,0 +1,7 @@
+cooldown: 12
+distance: 15
+mana: 35
+physical-damage: 20
+physical-damage-per-level: 2
+radius: 4
+warmup: 1.25

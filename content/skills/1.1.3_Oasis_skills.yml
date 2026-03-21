@@ -1,0 +1,234 @@
+naheen-turtle:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=naheen-turtle-slam}
+  - skill{s=naheen-turtle-water} @target
+naheen-turtle-slam:
+  Cooldown: 8
+  Skills:
+  - jump{v=1.25}
+  - delay 25
+  - sound{s=ambient.underwater.enter}
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=4}  
+  - summon{t=naheen-turtle-slam-dmg;os=true} @self
+  - delay 40
+  - sound{s=ambient.underwater.enter}
+  - summon{t=naheen-turtle-slam-dmg;r=1;os=true} @PIR{r=20}
+  
+naheen-turtle-water:
+  Conditions:
+  - inblock WATER true
+  TargetConditions:
+  - distance{d=<64}
+  Cooldown: 1
+  Skills:
+  - teleport @target
+  - sound{s=ambient.underwater.exit} @self
+  - throw{vy=8} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=4}  
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=4}
+
+naheen-turtle-slam-dmg:
+  Skills:
+  - potion{t=SLOW;d=40;l=2} @PIR{r=4}  
+  - effect:particlering{p=drip_water;a=1;points=40;vS=0;hS=0;radius=4}
+  - delay 20
+  - throw{vy=5} @PIR{r=4}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=4}
+  - delay 20
+  - throw{vy=8} @PIR{r=4}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=4}  
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @PIR{r=4}
+  - remove  
+
+
+
+naheen-cat:
+  Conditions:
+  - incombat{}
+  Skills:
+  - randomskill{s=naheen-cat-near,naheen-cat-far}
+  - randomskill{s=naheen-cat-near-true,naheen-cat-near-false}
+  - skill{s=naheen-cat-water}
+
+naheen-cat-drop:
+  Conditions:
+  - variableEquals{var=caster.drown;value=0}
+  Skills:
+  - command{c="runicgive exp <trigger.name> 380 <mob.l.x> <mob.l.y> <mob.l.z> 40"} 1.0
+  - randomskill{s=g2,g3,g4} .3
+  - skill{s=drop-level-40}
+  
+naheen-cat-water:
+  Conditions:
+  - inblock WATER true
+  Cooldown: 1
+  Skills:
+  - setvariable{var=caster.drown;value=1}
+  - delay 20
+  - damage{a=1}
+  - sound{s=entity.ocelot.hurt;p=1.25}
+  - delay 10
+  - damage{a=1}
+  - sound{s=entity.ocelot.hurt;p=1.25}
+  - delay 10
+  - sound{s=entity.ocelot.hurt;p=1.25}
+  - suicide
+
+naheen-cat-near-true:
+  Conditions:
+  - variableEquals{var=caster.near;value=0}
+  - playerwithin 5
+  Skills:
+  - setvariable{var=caster.near;value=1}
+  - leap{v=300} @target
+  - sound{s=entity.ocelot.hurt}
+naheen-cat-near-false:
+  Conditions:
+  - variableEquals{var=caster.near;value=1}
+  - playernotwithin 6
+  Skills:
+  - setvariable{var=caster.near;value=0}
+  - sound{s=block.grass.step}
+  - effect:particlesphere{p=block_crack;material=grass;amount=2;radius=1;yOffset=.25}
+
+naheen-cat-near:
+  Conditions:
+  - playerwithin 6
+  - playernotwithin 3
+  Cooldown: 8
+  Skills:
+  #- leap{v=200} @target
+  #- sound{s=entity.ocelot.hurt}
+
+naheen-cat-far:
+  Conditions:
+  - playernotwithin 6
+  - variableEquals{var=caster.drown;value=0}
+  Skills:
+  - effect:particlesphere{p=block_crack;material=grass;amount=2;radius=1;yOffset=.25}
+  - potion{t=INVISIBILITY;d=21;l=1;hasParticles=false}
+  - potion{t=SPEED;d=21;l=1;hasParticles=false}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FleshSummon:
+  Cooldown: 4
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - delay 20
+  - summon{t=PileofFleshSpawn} 
+FleshSpawn:
+  Skills:
+  - leap{v=300} @RLNTE{a=1;r=5;s=1;minr=3}
+FleshSpawn2:
+  Skills:
+  - leap{v=500} @RLNTE{a=1;r=5;s=1;minr=3}
+
+FleshSpawn2Skill:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 6"} @PIR{r=4}
+  - effect:particlesphere{particle=reddust;amount=2;radius=4;yOffset=.5}
+
+FleshGutSkill:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 3"} @PIR{r=2}
+  - effect:particlesphere{particle=reddust;amount=1;radius=2;yOffset=.5}
+
+FleshSummon2:
+  Cooldown: 16
+  Skills:
+  - potion{t=SLOW;d=120;l=3;hasParticles=false}
+  - delay 20
+  - cast{skillName="Rupture";duration=40;onCast=FleshSummon2Cast;showCastBar=true} @target
+FleshSummon2Cast:
+  Skills:
+  - randomskill{s=FleshGuts1,FleshGuts2,FleshGuts3}
+  - delay 8
+  - randomskill{s=FleshGuts1,FleshGuts2,FleshGuts3}
+  - delay 8
+  - randomskill{s=FleshGuts1,FleshGuts2,FleshGuts3}
+  - delay 16
+  - randomskill{s=FleshGuts1,FleshGuts2,FleshGuts3}
+  - delay 8
+  - randomskill{s=FleshGuts1,FleshGuts2,FleshGuts3}
+  - delay 8
+  - randomskill{s=FleshGuts1,FleshGuts2,FleshGuts3}
+  - delay 16
+  - randomskill{s=FleshGuts1,FleshGuts2,FleshGuts3}
+  - delay 8
+  - randomskill{s=FleshGuts1,FleshGuts2,FleshGuts3}
+  - delay 8
+  - randomskill{s=FleshGuts1,FleshGuts2,FleshGuts3}
+
+FleshGuts1:
+  Skills:
+  - summon{t=FleshGut1}
+FleshGuts2:
+  Skills:
+  - summon{t=FleshGut2}
+FleshGuts3:
+  Skills:
+  - summon{t=FleshGut3}
+  
+FleshUnstable:
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false}
+  - sound{s=block.sand.break}
+  - effect:particlesphere{particle=block_crack;material=sand;amount=2;radius=3;yOffset=.5} 
+  - delay 10
+  - sound{s=block.sand.break}
+  - effect:particlesphere{particle=block_crack;material=sand;amount=2;radius=3;yOffset=.5} 
+  - delay 10
+  - setvariable{var=caster.stable;value=0}
+  - cast{skillName="Unstable";duration=40;onCast=FleshUnstableCast2;showCastBar=true} @target
+  - delay 40
+  - setvariable{var=caster.stable;value=1}
+FleshUnstableCast:
+  Conditions:
+  - variableEquals{var=caster.stable;value=0}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 120"} @PIR{r=5}
+  - potion{t=SLOW;d=60;l=2} @PIR{r=5}
+  - sound{s=entity.generic.explode;v=2}
+  - effect:particles{particle=explosion_large;a=3;hs=1;vs=1;r=30} @self
+  - summon{t=FleshGuts1;r=5;a=1}
+  - summon{t=FleshGuts2;r=5;a=1}
+  - summon{t=FleshGuts3;r=5;a=1}
+  - effect:particlesphere{particle=reddust;amount=5;radius=5;yOffset=.5}
+  - effect:particlesphere{particle=reddust;amount=5;radius=4;yOffset=.5}
+  - effect:particlesphere{particle=reddust;amount=5;radius=3;yOffset=.5}
+  - effect:particlesphere{particle=reddust;amount=5;radius=2;yOffset=.5}
+  - effect:particlesphere{particle=reddust;amount=5;radius=1;yOffset=.5}
+  - remove
+FleshUnstableCast2:
+  Skills:
+  - potion{t=SPEED;d=60;l=1;hasParticles=false}

@@ -1,0 +1,124 @@
+HauntingNecromancer-start:
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - summon{t=HauntingNecromancer-ghost;a=3;r=2;os=true} 
+  - sound{s=entity.ghast.hurt}
+  - delay 60
+  - sound{s=entity.enderman.scream}
+HauntingNecromancer-ghost:
+  Skills:
+  - jump{v=0.4}
+  - delay 10
+  - leap{v=250} @NearestPlayer{r=12}
+  - delay 55
+  - leap{v=400} @NearestPlayer{r=12}
+  - delay 2
+  - potion{t=BLINDNESS;d=80;l=1} @PIR{r=8}
+  - delay 20
+  - remove
+RaiseCorpses:
+  Cooldown: 30
+  Conditions:
+  - incombat{} true
+  Skills:
+  - remove @MIR{t=RisenCorpseSpecial;r=30}
+  - delay 1
+  - message{m="&eHaunting Necromancer<&co> &6Arise my Minions!"} @PIR{r=20}
+  - effect:particlering{p=dragon_breath;r=7;a=70;hs=1;vs=1}
+  - effect:sound{s=entity.zombie_villager.converted;v=2} @self
+  - summon{t=RisenCorpseSpecial;a=3;r=2;itt=false}
+DamageShield:
+  Conditions:
+  - incombat{} true
+  - playerwithin{d=4} false
+  Skills:
+  - particlering{p=heart;r=4;a=8;hs=0;y=1}
+  - heal{a=50}
+RisenCorpseSpecial-marker:
+  Skills:
+  - effect:blockmask{m=bone_block;r=3;d=80}
+  - delay 10
+  - skill{s=RisenCorpseSpecial-marker2}
+  - delay 70
+  - remove
+RisenCorpseSpecial-marker2:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=3}
+  - delay 20
+  - skill{s=RisenCorpseSpecial-marker2} 
+  
+RaiseHaunted:
+  Conditions:
+  - incombat{} true
+  Cooldown: 9999
+  Skills:
+  - message{m="&eHaunting Necromancer<&co> &6Protect me you Fools!"} @PIR{r=20}
+  - effect:particlering{p=dragon_breath;a=100;r=7;hs=3;vs=0.5}
+  - effect:sound{s=entity.zombie_villager.converted;v=2} @self
+  - summon{t=HauntingGhoulWeak;a=7;r=2;itt=false}
+
+
+Crawler:
+  Conditions:
+  - incombat{}
+  Skills:
+  - skill{s=CrawlerLunge-within}
+  - skill{s=CrawlerLunge-notwithin}
+  - skill{s=CrawlerLunge-far}
+  - skill{s=CrawlerLunge}
+CrawlerLunge-notwithin:
+  Conditions:
+  - playernotwithin 2
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.lunge;amount=1}	 
+CrawlerLunge-within:
+  Conditions:
+  - playerwithin 2
+  Skills:
+  - setvariable{var=caster.lunge;value=0}
+CrawlerLunge:
+  Conditions:
+  - varinrange{var=caster.lunge;value=>5}
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - cast{skillName="Lunge";duration=20;onCast=CrawlerLunge2;showCastBar=true} @self
+CrawlerLunge2:
+  Skills:
+  - jump{velocity=0.4}
+  - delay 5
+  - effect:particles{particle=reddust;color=#FFFFFF;amount=5;hS=1;vS=1}
+  - summon{type=CrawlerGoo;amount=3;radius=3;os=true} 
+  - leap{velocity=225} @target
+  - setvariable{var=caster.lunge;value=0}
+CrawlerLunge-far:
+  Conditions:
+  - varinrange{var=caster.lunge;value=>6}
+  - playernotwithin 8
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false} 
+  - cast{skillName="Lunge";duration=20;onCast=CrawlerLunge-far2;showCastBar=true} @self
+CrawlerLunge-far2:
+  Skills:
+  - jump{velocity=0.4}
+  - delay 5
+  - effect:particles{particle=reddust;color=#FFFFFF;amount=5;hS=1;vS=1}
+  - summon{type=CrawlerGoo;amount=4;radius=3;os=true} 
+  - leap{velocity=275} @target
+  - setvariable{var=caster.lunge;value=0}
+CrawlerConsume:
+  Conditions:
+  - playerwithin 1
+  Cooldown: 8
+  Skills:
+  - sound{s=entity.cat.eat}
+  - heal{amount=16}
+  - command{c="runicdamage <caster.uuid> <target.name> 16"} @PIR{r=1}
+  - effect:particles{particle=reddust;color=#E30303;amount=5;hS=1;vS=1}
+CrawlerGoo:
+  Skills:
+  - potion{type=SLOW;duration=10;level=1} @PIR{r=3}

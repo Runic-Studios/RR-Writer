@@ -1,0 +1,80 @@
+Bug-elite:
+  Type: ZOMBIE
+  Display: '&e[&6✸&e] &cToxic Queen Wasp'
+  Health: 5000
+  Damage: 80
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lElite&e&l] &c&lToxic Queen Wasp'
+    Health: 5000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Bug-elite} @self ~onSpawn
+  - skill{s=Bug-elite-skill} @self ~onTimer:80
+  - command{c="runicgive exp <trigger.name> 10000 <mob.l.x> <mob.l.y> <mob.l.z> 42"} @trigger ~onDeath 1.0
+  - command{c="ri drop-range 40 44 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 40 44 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 40 44 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - command{c="ri drop-range 40 44 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Wasp setCustomName "&e[&6✸&e] &cToxic Queen Wasp" setDynamicName true
+    
+Bug:
+  Type: ZOMBIE
+  Display: '&e[&640&e] &cToxic Wasp'
+  Health: 635
+  Modules:
+    ThreatTable: true
+  Damage: 54
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Sting} @target ~onTimer:20
+  - skill{s=Burst} @self ~onTimer:20
+  - skill{s=Bugcheckwithin} @self ~onTimer:20
+  - skill{s=Bugchecknotwithin} @self ~onTimer:20
+  - setvariable{var=caster.sting;value=0} @self ~onSpawn
+  - setvariable{var=caster.burst;value=0} @self ~onSpawn
+  - command{c="runicgive exp <trigger.name> 380 <mob.l.x> <mob.l.y> <mob.l.z> 40"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-40} @trigger ~onDeath
+  #- summon{t=Bug-elite} @self ~onDeath .01
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Lacaille setCustomName "&e[&640&e] &cToxic Wasp" setDynamicName true

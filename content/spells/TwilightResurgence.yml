@@ -1,0 +1,6 @@
+blind-duration: 2.0
+duration: 1.0 # to reduce cooldowns by
+effect-cooldown: 0.5
+magic-damage: 10
+magic-damage-per-level: 1.5
+radius: 3

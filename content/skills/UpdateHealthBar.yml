@@ -1,0 +1,47 @@
+UpdateHealthBar:
+  Skills:
+  - skill{s=UpdateHealthBar_0} >0%
+  - skill{s=UpdateHealthBar_1} >10%
+  - skill{s=UpdateHealthBar_2} >20%
+  - skill{s=UpdateHealthBar_3} >30%
+  - skill{s=UpdateHealthBar_4} >40%
+  - skill{s=UpdateHealthBar_5} >50%
+  - skill{s=UpdateHealthBar_6} >60%
+  - skill{s=UpdateHealthBar_7} >70%
+  - skill{s=UpdateHealthBar_8} >80%
+  - skill{s=UpdateHealthBar_9} >90%
+  - skill{s=UpdateHealthBar_10} >100%
+  
+UpdateHealthBar_10:
+  Skills:
+  - setname{name='&e[&a|||||&f<caster.hp>&a|||||&e]'} @self
+UpdateHealthBar_9:
+  Skills:
+  - setname{name='&e[&a|||||&f<caster.hp>&a||||&8|&e]'} @self
+UpdateHealthBar_8:
+  Skills:
+  - setname{name='&e[&a|||||&f<caster.hp>&a|||&8||&e]'} @self
+UpdateHealthBar_7:
+  Skills:
+  - setname{name='&e[&e|||||&f<caster.hp>&e||&8|||&e]'} @self
+UpdateHealthBar_6:
+  Skills:
+  - setname{name='&e[&e|||||&f<caster.hp>&e|&8||||&e]'} @self
+UpdateHealthBar_5:
+  Skills:
+  - setname{name='&e[&e|||||&f<caster.hp>&8|||||&e]'} @self
+UpdateHealthBar_4:
+  Skills:
+  - setname{name='&e[&e||||&8|&f<caster.hp>&8|||||&e]'} @self
+UpdateHealthBar_3:
+  Skills:
+  - setname{name='&e[&c|||&8||&f<caster.hp>&8|||||&e]'} @self
+UpdateHealthBar_2:
+  Skills:
+  - setname{name='&e[&c||&8|||&f<caster.hp>&8|||||&e]'} @self
+UpdateHealthBar_1:
+  Skills:
+  - setname{name='&e[&c|&8||||&f<caster.hp>&8|||||&e]'} @self
+UpdateHealthBar_0:
+  Skills:
+  - setname{name='&e[&8|||||&f<caster.hp>&8|||||&e]'} @self

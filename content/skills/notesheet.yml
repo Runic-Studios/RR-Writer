@@ -1,0 +1,190 @@
+tutorial-bassc:
+  Skills:
+  - sound{s=block.note_block.bass;p=0.706} # c  
+tutorial-bassd:
+  Skills:
+  - sound{s=block.note_block.bass;p=0.794} # d  
+tutorial-basse:
+  Skills:
+  - sound{s=block.note_block.bass;p=0.9} # e 
+tutorial-bassf:
+  Skills:
+  - sound{s=block.note_block.bass;p=0.952} # f  
+tutorial-bassg:
+  Skills:
+  - sound{s=block.note_block.bass;p=1.054} # g
+  
+
+ab:
+  Skills: 
+  - sound{s=block.note_block.flute;p=0.56} # ab
+
+a:
+  Skills:
+  - sound{s=block.note_block.flute;p=0.594} # a
+
+b:
+  Skills:
+  - sound{s=block.note_block.flute;p=0.666} # b
+
+c:
+  Skills:
+  - sound{s=block.note_block.flute;p=0.706} # c
+
+db:
+  Skills: 
+  - sound{s=block.note_block.flute;p=0.752} # db
+
+d:
+  Skills:
+  - sound{s=block.note_block.flute;p=0.794} # d
+
+eb:
+  Skills:
+  - sound{s=block.note_block.flute;p=0.843} # eb
+
+e:
+  Skills:
+  - sound{s=block.note_block.flute;p=0.9} # e
+
+f:
+  Skills:
+  - sound{s=block.note_block.flute;p=0.952} # f
+
+fsh:
+  Skills:
+  - sound{s=block.note_block.flute;p=0.992} # f#
+
+g:
+  Skills:
+  - sound{s=block.note_block.flute;p=1.054} # g
+
+a^b:
+  Skills:
+  - sound{s=block.note_block.flute;p=1.122} # ab
+
+a^:
+  Skills:
+  - sound{s=block.note_block.flute;p=1.188} # a
+
+b^b:
+  Skills:
+  - sound{s=block.note_block.flute;p=1.266} # bb
+
+b^:
+  Skills:
+  - sound{s=block.note_block.flute;p=1.339} # b
+
+woodbassa:
+  Skills:
+  - sound{s=block.note_block.bass;p=0.594} # a
+woodbassc:
+  Skills:
+  - sound{s=block.note_block.bass;p=0.706} # c
+woodbassd:
+  Skills:
+  - sound{s=block.note_block.bass;p=0.794} # d
+woodbassf:
+  Skills:
+  - sound{s=block.note_block.bass;p=0.952} # f
+woodbassa^:
+  Skills:
+  - sound{s=block.note_block.bass;p=1.188} # a
+woodbassg:
+  Skills:
+  - sound{s=block.note_block.bass;p=1.054} # g
+woodbassb^:
+  Skills:
+  - sound{s=block.note_block.bass;p=1.339} # b
+
+shantyflutea:
+  Skills:
+  - jump{v=0.15}
+  - sound{s=block.note_block.flute;p=0.594} # a
+shantyfluteb:
+  Skills:
+  - jump{v=0.2}
+  - sound{s=block.note_block.flute;p=0.666} # b
+shantyflutec:
+  Skills:
+  - jump{v=0.25}
+  - sound{s=block.note_block.flute;p=0.706} # c
+shantyfluted:
+  Skills:
+  - jump{v=0.3}
+  - sound{s=block.note_block.flute;p=0.794} # d
+shantyflutee:
+  Skills:
+  - jump{v=0.35}
+  - sound{s=block.note_block.flute;p=0.9} # e
+
+shantybassc:
+  Skills:
+  - jump{v=0.15}
+  - sound{s=block.note_block.bass;p=0.706} # c
+shantybassg:
+  Skills:
+  - jump{v=0.2}
+  - sound{s=block.note_block.bass;p=1.054} # g
+shantybassf:
+  Skills:
+  - jump{v=0.25}
+  - sound{s=block.note_block.bass;p=0.952} # f
+shantybassa^:
+  Skills:
+  - jump{v=0.3}
+  - sound{s=block.note_block.bass;p=1.188} # a
+
+shantyharpa:
+  Skills:
+  - jump{v=0.15}
+  - sound{s=block.note_block.harp;p=0.594} # a
+shantyharpc:
+  Skills:
+  - jump{v=0.2}
+  - sound{s=block.note_block.harp;p=0.706} # c
+shantyharpe:
+  Skills:
+  - jump{v=0.25}
+  - sound{s=block.note_block.harp;p=0.9} # e
+shantyharpg:
+  Skills:
+  - jump{v=0.3}
+  - sound{s=block.note_block.harp;p=1.054} # g
+shantyharpb^:
+  Skills:
+  - jump{v=0.35}
+  - sound{s=block.note_block.harp;p=1.339} # b
+
+
+
+
+basse:
+  Skills:
+  - sound{s=block.note_block.harp;p=0.9}
+
+bassab:
+  Skills:
+  - sound{s=block.note_block.harp;p=1.122}  
+
+bassfsh:
+  Skills:
+  - sound{s=block.note_block.harp;p=0.992}
+
+2basse:
+  Skills:
+  - sound{s=block.note_block.chime;p=0.9}
+
+2bassab:
+  Skills:
+  - sound{s=block.note_block.chime;p=1.122}  
+
+2bassfsh:
+  Skills:
+  - sound{s=block.note_block.chime;p=0.992}
+
+fhold:
+  Skills:
+  - sound{s=block.note_block.flute;p=0.952} # f
+  - delay 2
+  - skill{s=fhold} 

@@ -1,0 +1,330 @@
+naheen-fairy:
+  Skills:
+  - sound{s=entity.player.hurt_drown;v=4} 
+  - jump{v=1.25}
+  - delay 20
+  - effect:particlesphere{p=falling_nectar;amount=5;radius=3;yOffset=0.5}
+  - delay 20
+  - effect:particlesphere{p=falling_nectar;amount=5;radius=3;yOffset=0.5}
+  - delay 20
+  - effect:particlesphere{p=falling_nectar;amount=5;radius=3;yOffset=0.5}
+  - delay 1200
+  - remove
+naheen-fairy-start:
+  Skills:
+  - command{c="questtrigger player <target.name> naheenfairycutscene"} @PIR{r=64}
+  - delay 400
+  - remove
+naheen-center:
+  Skills:
+  - delay 20
+  - remove
+naheen-center-success:
+  Conditions:
+  - variableEquals{var=caster.fairy1;value=1}
+  - variableEquals{var=caster.fairy2;value=1}
+  - variableEquals{var=caster.fairy3;value=1}
+  Cooldown: 8
+  Skills:
+  - command{c="questtrigger player <target.name> naheenstatuepuzzle"} @PIR{r=64}
+  - delay 20
+  - remove @MIR{t=naheen-statue1,naheen-statue2,naheen-statue3,naheen-fairy;r=64}
+  - summon{t=naheen-fairy}
+
+naheen-center-fairy1:
+  Skills:
+  #- message{m="Fairy 1"} @PIR{r=32}
+  - setvariable{var=caster.fairy1;v=1}
+  - skill{s=naheen-center-success}
+naheen-center-fairy2:
+  Skills:
+  #- message{m="Fairy 2"} @PIR{r=32}
+  - setvariable{var=caster.fairy2;v=1}
+  - skill{s=naheen-center-success}
+naheen-center-fairy3:
+  Skills:
+  #- message{m="Fairy 3"} @PIR{r=32}
+  - setvariable{var=caster.fairy3;v=1}
+  - skill{s=naheen-center-success}
+
+naheen-statue1-spawn:
+  Skills:
+  - setAI{ai=false}
+  - setvariable{var=caster.light;v=1}
+  - setvariable{var=caster.on;v=0}
+naheen-statue2-spawn:
+  Skills:
+  - setAI{ai=false}
+  - setvariable{var=caster.light;v=2}
+  - setvariable{var=caster.on;v=0}
+naheen-statue3-spawn:
+  Skills:
+  - setAI{ai=false}
+  - setvariable{var=caster.light;v=3}
+  - setvariable{var=caster.on;v=0}
+
+naheen-statue-marker:
+  Skills:
+  - effect:particlesphere{p=end_rod;amount=1;radius=1;yOffset=0.5}
+  - remove
+naheen-statue-start:
+  Conditions:
+  Cooldown: 2
+  Skills:
+  - sound{s=block.beacon.activate}
+  - setvariable{var=caster.on;v=1}
+  - randomskill{skills=naheen-statue-interact1,naheen-statue-interact2,naheen-statue-interact3}
+naheen-statue-interact1:
+  Conditions:
+  - variableEquals{var=caster.light;value=1}
+  Skills:
+  - setvariable{var=caster.light;v=2}
+naheen-statue-interact2:
+  Conditions:
+  - variableEquals{var=caster.light;value=2}
+  Skills:
+  - setvariable{var=caster.light;v=3}
+naheen-statue-interact3:
+  Conditions:
+  - variableEquals{var=caster.light;value=3}
+  Skills:
+  - setvariable{var=caster.light;v=1}
+
+naheen-statue1:
+  Skills:
+  - randomskill{skills=naheen-statue1-cast1,naheen-statue1-cast2,naheen-statue1-cast3}
+
+naheen-statue1-cast1:
+  Conditions:
+  - variableEquals{var=caster.light;value=1}  
+  - variableEquals{var=caster.on;value=1}
+  Skills:
+  - signal{s=fairy1} @MIR{t=naheen-center;r=48}
+  - summon{t=naheen-statue-marker} @Location{c=1806.5,44,267.5} #true
+  - summon{t=naheen-statue-marker} @Location{c=1808.5,44,266.5}
+  - summon{t=naheen-statue-marker} @Location{c=1810.5,44,265.5}
+naheen-statue1-cast2:
+  Conditions:
+  - variableEquals{var=caster.light;value=2}  
+  - variableEquals{var=caster.on;value=1}
+  Skills:
+  - summon{t=naheen-statue-marker} @Location{c=1804.5,44,270.5}
+  - summon{t=naheen-statue-marker} @Location{c=1804,44,272.5}
+  - summon{t=naheen-statue-marker} @Location{c=1803.5,44,274.5}
+naheen-statue1-cast3:
+  Conditions:
+  - variableEquals{var=caster.light;value=3}  
+  - variableEquals{var=caster.on;value=1}
+  Skills:
+  - summon{t=naheen-statue-marker} @Location{c=1802.5,44,267.5}
+  - summon{t=naheen-statue-marker} @Location{c=1800.5,44,266.5}
+  - summon{t=naheen-statue-marker} @Location{c=1798.5,44,265.5}
+
+
+naheen-statue2:
+  Skills:
+  - randomskill{skills=naheen-statue2-cast1,naheen-statue2-cast2,naheen-statue2-cast3}
+
+naheen-statue2-cast1:
+  Conditions:
+  - variableEquals{var=caster.light;value=1}  
+  - variableEquals{var=caster.on;value=1}
+  Skills:
+  - signal{s=fairy2} @MIR{t=naheen-center;r=36}
+  - summon{t=naheen-statue-marker} @Location{c=1825.5,43,251.5} #true
+  - summon{t=naheen-statue-marker} @Location{c=1825,43,253.5}
+  - summon{t=naheen-statue-marker} @Location{c=1824.5,43,255.5}
+naheen-statue2-cast2:
+  Conditions:
+  - variableEquals{var=caster.light;value=2}  
+  - variableEquals{var=caster.on;value=1}
+  Skills:
+  - summon{t=naheen-statue-marker} @Location{c=1823.5,43,248.5}
+  - summon{t=naheen-statue-marker} @Location{c=1821.5,43,247}
+  - summon{t=naheen-statue-marker} @Location{c=1819.5,43,245.5}
+naheen-statue2-cast3:
+  Conditions:
+  - variableEquals{var=caster.light;value=3}  
+  - variableEquals{var=caster.on;value=1}
+  Skills:
+  - summon{t=naheen-statue-marker} @Location{c=1827.5,43,247.5}
+  - summon{t=naheen-statue-marker} @Location{c=1829.5,43,245.5}
+  - summon{t=naheen-statue-marker} @Location{c=1831.5,43,243.5}
+
+naheen-statue3:
+  Skills:
+  - randomskill{skills=naheen-statue3-cast1,naheen-statue3-cast2,naheen-statue3-cast3}
+
+naheen-statue3-cast1:
+  Conditions:
+  - variableEquals{var=caster.light;value=1}  
+  - variableEquals{var=caster.on;value=1}
+  Skills:
+  - signal{s=fairy3} @MIR{t=naheen-center;r=42}
+  - summon{t=naheen-statue-marker} @Location{c=1835.5,42,275.5} #true
+  - summon{t=naheen-statue-marker} @Location{c=1833.5,42,273.5}
+  - summon{t=naheen-statue-marker} @Location{c=1831.5,42,271.5}
+naheen-statue3-cast2:
+  Conditions:
+  - variableEquals{var=caster.light;value=2}  
+  - variableEquals{var=caster.on;value=1}
+  Skills:
+  - summon{t=naheen-statue-marker} @Location{c=1839.5,42,277.5}
+  - summon{t=naheen-statue-marker} @Location{c=1841.5,42,277}
+  - summon{t=naheen-statue-marker} @Location{c=1843.5,42,276.5}
+naheen-statue3-cast3:
+  Conditions:
+  - variableEquals{var=caster.light;value=3}  
+  - variableEquals{var=caster.on;value=1}
+  Skills:
+  - summon{t=naheen-statue-marker} @Location{c=1836.5,42,279.5}
+  - summon{t=naheen-statue-marker} @Location{c=1835.5,42,281.5}
+  - summon{t=naheen-statue-marker} @Location{c=1834.5,42,283.5}
+
+
+DesertHuskSandcheckwithin:
+  Conditions:
+  - playerwithin 3
+  - incombat{}
+  Cooldown: 1
+  Skills:
+  - variableadd{var=caster.sand;amount=1}	 
+DesertHuskSandchecknotwithin:
+  Conditions:
+  - playernotwithin 4
+  Skills:
+  - setvariable{var=caster.sand;value=0}
+DesertHuskSand:
+  Conditions:
+  - varinrange{var=caster.sand;value=>6}
+  - incombat{}
+  Cooldown: 16
+  Skills:
+  - potion{type=SLOW;duration=40;level=1;hasParticles=false} @self
+  - cast{skillName="Quicksand";duration=40;onCast=SandCast;showCastBar=true} @target
+  - delay 40
+  - potion{type=SLOW;duration=80;level=2;hasParticles=false} @self
+  
+SandCast:
+  Skills:
+  - pull{v=6} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @target 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=8;radius=5;yOffset=.5} @self
+  - delay 2
+  - throw{vy=1} @target
+  - delay 2
+  - pull{v=4} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @target 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=8;radius=5;yOffset=.5} @self
+  - delay 2
+  - pull{v=6} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @target 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=8;radius=5;yOffset=.5} @self
+  - delay 2
+  - throw{vy=1} @target
+  - delay 2
+  - pull{v=4} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @target 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=8;radius=5;yOffset=.5} @self
+  - delay 2
+  - pull{v=6} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @target 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=8;radius=5;yOffset=.5} @self
+  - delay 2
+  - throw{vy=1} @target
+  - delay 2
+  - pull{v=4} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @target 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=8;radius=5;yOffset=.5} @self
+  - delay 2
+  - pull{v=6} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @target 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=8;radius=5;yOffset=.5} @self
+  - delay 2
+  - throw{vy=1} @target
+  - delay 2
+  - pull{v=4} @target
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @target 
+  - effect:particlesphere{particle=block_crack;material=sand;amount=8;radius=5;yOffset=.5} @self
+
+
+
+boomerExplosion: #make the trigger a "~onTimer:20" or something (because the ability is passive)
+ Conditions:
+ - playerwithin{d=2} true
+ - incombat{} true
+ Skills:
+ - remove @self
+ - effect:explosion @self
+ - effect:particle{p=explosion_huge} @self
+ - command{c="runicdamage <caster.uuid> <target.name> 80"} @LivingEntitiesInRadius{r=8} #use "@LivingEntitiesInRadius{r=6}" if you want ALL entities (including all mobs)
+
+unstableSlimePoison: #make the trigger a "~onTimer:10" or something (because the ability is passive and should have faster response)
+ Skills:
+ - effect:particles{particle=happy_villager;amount=3;hS=.5;vS=1;speed=1} @self
+ - potion{type=POISON;duration=60;level=4} @PIR{r=5}
+
+unstableSlimeDeath: #make the trigger a "~onDeath"
+ Skills:
+ - effect:explosion @self
+ - command{c="runicdamage <caster.uuid> <target.name> 30"} @LivingEntitiesInRadius{r=4} #use "@LivingEntitiesInRadius{r=4}" if you want ALL entities (including all mobs)
+
+chooseSkill_sidequestWallace:
+ Conditions:
+ - incombat{} true
+ Skills:
+ - randomskill{skills=UppercutCast,Assassinate} @self
+
+reinforcements:
+ Conditions:
+ - incombat{} true
+ #- mobsinchunk{a<=10} true
+ Skills:
+ - sendtitle{title="&4&kooo&r&l&cReinforcements&r&4&kooo";subtitle="&e&l3";d=20} @PlayersInRadius{r=20}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+ - delay 20
+ - sendtitle{title="&4&kooo&r&l&cReinforcements&r&4&kooo";subtitle="&e&l2";d=20} @PlayersInRadius{r=20}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+ - delay 20
+ - sendtitle{title="&4&kooo&r&l&cReinforcements&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=20}
+ - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+ - delay 20
+ - remove @MIR{r=60;t=wallaceLackey}
+ - summon{type=wallaceLackey;amount=3;yr=0;os=true;radius=4} @self
+ - effect:sound{s=block.fire.extinguish;volume=1.0;pitch=0.5} @self #custom sound for when the minions spawn
+
+UppercutCast:
+  Skills:
+  - cast{skillName="Uppercut";duration=30;onCast=UppercutPlayer;onStart=Uppercut-Start;onInterrupted=Uppercut-Start}
+
+UppercutPlayer:
+  Skills:
+  - leap{v=200} @target
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=3;sort=NEAREST}
+  - throw{velocity=1;velocityY=10} @PIR{r=3;sort=nearest}
+  - effect:sound{s=block.bamboo.break} @self
+
+Uppercut-Start:
+  Skills:
+  - effect:smokeswirl{d=3;i=5} @self
+  - effect:sound{s=mob.endermen.scream} @self
+
+Assassinate:
+  Skills:
+  - sendtitle{title="&4&kooo&r&l&cAssassinate&r&4&kooo";subtitle="&e&l1";d=20} @PlayersInRadius{r=10}
+  - effect:sound{s=block.comparator.click;volume=1.0;pitch=0.5} @self
+  - delay 20
+  - skill{s=AssassinateTarget}
+
+AssassinateTarget:
+  Conditions:
+  - targetwithin{d=3} castinstead CompleteAssassination
+  Skills:
+  - leap{v=200} @target
+
+CompleteAssassination:
+  Skills:
+  - teleport{sh=0;sv=0} @PIR{r=3;sort=nearest}
+  - delay 1
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=2;sort=nearest}

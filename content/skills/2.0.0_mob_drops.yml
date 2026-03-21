@@ -1,0 +1,240 @@
+drop-level-1:
+  Skills:
+  - command{c="ri drop-range 1 2 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-2:
+  Skills:
+  - command{c="ri drop-range 1 3 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-3:
+  Skills:
+  - command{c="ri drop-range 1 4 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-4:
+  Skills:
+  - command{c="ri drop-range 2 5 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-5:
+  Skills:
+  - command{c="ri drop-range 3 6 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-6:
+  Skills:
+  - command{c="ri drop-range 4 7 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-7:
+  Skills:
+  - command{c="ri drop-range 5 8 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-8:
+  Skills:
+  - command{c="ri drop-range 6 9 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-9:
+  Skills:
+  - command{c="ri drop-range 7 10 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-10:
+  Skills:
+  - command{c="ri drop-range 8 11 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-11:
+  Skills:
+  - command{c="ri drop-range 9 12 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-12:
+  Skills:
+  - command{c="ri drop-range 10 13 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-13:
+  Skills:
+  - command{c="ri drop-range 11 14 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-14:
+  Skills:
+  - command{c="ri drop-range 12 15 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-15:
+  Skills:
+  - command{c="ri drop-range 13 16 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-16:
+  Skills:
+  - command{c="ri drop-range 14 17 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-17:
+  Skills:
+  - command{c="ri drop-range 15 18 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-18:
+  Skills:
+  - command{c="ri drop-range 16 19 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-19:
+  Skills:
+  - command{c="ri drop-range 17 20 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-20:
+  Skills:
+  - command{c="ri drop-range 18 21 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-21:
+  Skills:
+  - command{c="ri drop-range 19 22 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-22:
+  Skills:
+  - command{c="ri drop-range 20 23 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-23:
+  Skills:
+  - command{c="ri drop-range 21 24 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-24:
+  Skills:
+  - command{c="ri drop-range 22 25 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-25:
+  Skills:
+  - command{c="ri drop-range 23 26 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-26:
+  Skills:
+  - command{c="ri drop-range 24 27 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-27:
+  Skills:
+  - command{c="ri drop-range 25 28 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-28:
+  Skills:
+  - command{c="ri drop-range 26 29 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-29:
+  Skills:
+  - command{c="ri drop-range 27 30 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-30:
+  Skills:
+  - command{c="ri drop-range 28 31 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-31:
+  Skills:
+  - command{c="ri drop-range 29 32 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-32:
+  Skills:
+  - command{c="ri drop-range 30 33 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-33:
+  Skills:
+  - command{c="ri drop-range 31 34 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-34:
+  Skills:
+  - command{c="ri drop-range 32 35 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-35:
+  Skills:
+  - command{c="ri drop-range 33 36 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-36:
+  Skills:
+  - command{c="ri drop-range 34 37 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-37:
+  Skills:
+  - command{c="ri drop-range 35 38 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-38:
+  Skills:
+  - command{c="ri drop-range 36 39 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-39:
+  Skills:
+  - command{c="ri drop-range 37 40 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-40:
+  Skills:
+  - command{c="ri drop-range 38 41 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-41:
+  Skills:
+  - command{c="ri drop-range 39 42 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-42:
+  Skills:
+  - command{c="ri drop-range 40 43 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-43:
+  Skills:
+  - command{c="ri drop-range 41 44 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-44:
+  Skills:
+  - command{c="ri drop-range 42 45 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-45:
+  Skills:
+  - command{c="ri drop-range 43 46 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-46:
+  Skills:
+  - command{c="ri drop-range 44 47 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-47:
+  Skills:
+  - command{c="ri drop-range 45 48 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-48:
+  Skills:
+  - command{c="ri drop-range 46 49 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-49:
+  Skills:
+  - command{c="ri drop-range 47 50 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-50:
+  Skills:
+  - command{c="ri drop-range 48 51 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-51:
+  Skills:
+  - command{c="ri drop-range 49 52 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-52:
+  Skills:
+  - command{c="ri drop-range 50 53 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-53:
+  Skills:
+  - command{c="ri drop-range 51 54 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-54:
+  Skills:
+  - command{c="ri drop-range 52 55 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-55:
+  Skills:
+  - command{c="ri drop-range 53 56 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-56:
+  Skills:
+  - command{c="ri drop-range 54 57 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-57:
+  Skills:
+  - command{c="ri drop-range 55 58 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-58:
+  Skills:
+  - command{c="ri drop-range 56 59 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-59:
+  Skills:
+  - command{c="ri drop-range 57 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}
+drop-level-60:
+  Skills:
+  - command{c="ri drop-range 58 60 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger 0.08
+  - skill{s=underground-start}

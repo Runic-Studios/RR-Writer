@@ -1,0 +1,460 @@
+goldengladevillager-cutscene:
+  Type: armor_stand
+  Skills:
+  - remove @MIR{t=goldengladevillager-cutscene-firn,goldengladevillager-cutscene-lorna,goldengladevillager-cutscene-mother;r=32} ~onSpawn
+  - summon{t=goldengladevillager-cutscene-firn} @Location{c=75.5,56,860.5} ~onSpawn
+  - summon{t=goldengladevillager-cutscene-lorna} @Location{c=76.5,56,859.5} ~onSpawn
+  - summon{t=goldengladevillager-cutscene-mommy} @Location{c=64.5,55,835.5} ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+goldengladevillager-cutscene-firn:
+  Type: ZOMBIE
+  Display: '&eFirn'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 64,55,835
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=goldengladevillager-cutscene} @self ~onSpawn
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=160} @self ~onSpawn
+  Disguise: player Steve setSkin Viggohbbs setCustomName "&eFirn" setDynamicName true
+goldengladevillager-cutscene-lorna:
+  Type: ZOMBIE
+  Display: '&eLorna'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 64,55,835
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=goldengladevillager-cutscene} @self ~onSpawn
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=160} @self ~onSpawn
+  Disguise: player Steve setSkin demontree666 setCustomName "&eLorna" setDynamicName true
+goldengladevillager-cutscene-mommy:
+  Type: ZOMBIE
+  Display: '&eMommy'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=goldengladevillager-cutscene;delay=5} @self ~onSpawn
+  - heal{a=5000} @self ~onDamaged
+  - remove{delay=160} @self ~onSpawn
+  Disguise: player Steve setSkin Shotsura setCustomName "&eMommy" setDynamicName true
+
+
+gladeMockingbird:
+  Type: PHANTOM
+  Display: '&e[&644&e] &aMockingbird'
+  Health: 340
+  Damage: 58
+  Disguise: PARROT
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - command{c="runicgive exp <trigger.name> 163 <mob.l.x> <mob.l.y> <mob.l.z> 44"} @trigger ~onDeath 1.0
+  - command{c="ri drop golden-glade-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.12
+  - sound{s=entity.parrot.hurt;volume=1} @self ~onDamaged
+  - sound{s=entity.parrot.fly;volume=1} @self ~onTimer:20
+  - sound{s=entity.parrot.ambient;p=1.7;volume=1} @self ~onTimer:80
+
+gladeBird:
+  Type: PARROT
+  Display: '&e[&643&e] &aBaby Bird'
+  Health: 175
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - command{c="runicgive exp <trigger.name> 82 <mob.l.x> <mob.l.y> <mob.l.z> 43"} @trigger ~onDeath 1.0
+  - command{c="ri drop golden-glade-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.08
+  - sound{s=entity.parrot.hurt;volume=1} @self ~onDamaged
+  - sound{s=entity.parrot.fly;volume=1} @self ~onTimer:20
+  - sound{s=entity.parrot.ambient;p=1.7;volume=1} @self ~onTimer:80
+  
+GladeBull:
+  Type: WiTHER_SKELETON
+  Display: '&e[&644&e] &cGlade Bull'
+  Health: 1390
+  Damage: 65
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+  Disguise: COW
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - command{c="runicgive exp <trigger.name> 917 <mob.l.x> <mob.l.y> <mob.l.z> 44"} @trigger ~onDeath 1.0
+  - command{c="ri drop golden-glade-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.2
+  - skill{s=gladeBullHurt} ~onDamaged
+  - sound{s=entity.cow.death;volume=1;p=0.1} @self ~onDeath
+  - sound{s=entity.cow.ambient;p=0.1;volume=1} @self ~onTimer:600
+  - skill{s=gladeBullChargeStart} ~onTimer:200
+  - throw{velocity=15;velocityY=2} @PlayersInRadius{r=2} ~onAttack
+
+GladeCow:
+  Type: COW
+  Display: '&e[&643&e] &aGlade Cow'
+  Health: 680
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+    Silent: True
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - command{c="runicgive exp <trigger.name> 326 <mob.l.x> <mob.l.y> <mob.l.z> 43"} @trigger ~onDeath 1.0
+  - command{c="ri drop golden-glade-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.12
+  - skill{s=gladeBullHurt} ~onDamaged
+  - sound{s=entity.cow.death;volume=1;p=0.1} @self ~onDeath
+  - sound{s=entity.cow.ambient;p=0.1;volume=1} @self ~onTimer:600
+
+GladeBunny:
+  Type: RABBIT
+  Display: '&e[&643&e] &aGlade Bunny'
+  Health: 170
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 randomlookaround
+  - 4 float
+  Skills:
+  - command{c="runicgive exp <trigger.name> 82 <mob.l.x> <mob.l.y> <mob.l.z> 43"} @trigger ~onDeath 1.0
+  - command{c="ri drop golden-glade-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.08
+  - setvariable{var=caster.Burrowed;value=0;type=INTEGER} @self
+  - skill{s=gladeRabbitBurrow} ~onTimer:500
+  - skill{s=gladeRabbitDamage;sync=true} ~onDamaged
+
+gladeBanditRider:
+  Type: PILLAGER
+  Display: '&e[&645&e] &cBandit Rider'
+  Health: 710
+  Damage: 59
+  Skills:
+  - signal{s=start} @MIR{t=gladeBandit-quest;r=32} ~onDeath
+  - signal{s=alive} @MIR{t=gladeBandit-quest;r=32} ~onSignal:alive
+  - command{c="runicgive exp <trigger.name> 467 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-45} @trigger ~onDeath 
+  - mount{type=gladeMercMount} ~onSpawn
+  - skill{s=crossbowStart} ~onTimer:80
+  - equip{item=iron_sword:0} ~onSignal:mountDead
+  - signal{s=riderDead} @Children ~onDeath
+  Equipment:
+  - KingsCrown HEAD
+  - Crossbow HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.23
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+ 
+gladeMercMount:
+  Type: RAVAGER
+  Health: 710
+  Damage: 59
+  Skills:
+  - skill{s=riderIsDead} ~onSignal:riderDead
+  - signal{s=mountDead} @Parent ~onDeath
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    KnockBackResistance: 1
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+gladeBandit-quest:
+  Type: armor_stand
+  Skills:
+  - setvariable{var=caster.alive;value=1} @self ~onSpawn
+  - skill{s=gladeBandit-quest} @self ~onSignal:start
+  - skill{s=gladeBandit-quest-alive} @self ~onSignal:alive
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+gladeBandit:
+  Type: PILLAGER
+  Display: '&e[&644&e] &cGlade Bandit'
+  Health: 695
+  Damage: 58
+  Skills:
+  - signal{s=start} @MIR{t=gladeBandit-quest;r=32} ~onDeath
+  - signal{s=alive} @MIR{t=gladeBandit-quest;r=32} ~onSignal:alive
+  - command{c="runicgive exp <trigger.name> 454 <mob.l.x> <mob.l.y> <mob.l.z> 44"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-44} @trigger ~onDeath 
+  - cast{
+        skillName="&aExplosive Shot";
+        duration=40;
+        onCast=gladeCrossbowStart;
+        cancelOnMove=false;
+        showCastBar=true
+      } @target ~onTimer:400
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  
+gladeZombie:
+  Type: ZOMBIE
+  Display: '&e[&644&e] &cPossesed Corpse' 
+  Health: 695
+  Damage: 58
+  Skills:
+  - skill{s=gladecheckNight} ~onTimer:100 @self
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-44} @trigger ~onDeath 
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    KnockBackResistance: 0.9
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+gladeZombieKnight:
+  Type: ZOMBIE
+  Display: '&e[&644&e] &cFallen Knight' 
+  Health: 695
+  Damage: 58
+  Skills:
+  - command{c="runicgive exp <trigger.name> 454 <mob.l.x> <mob.l.y> <mob.l.z> 44"} @trigger ~onDeath 1.0
+  - skill{s=drop-level-44} @trigger ~onDeath  
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=gladecheckNight2} ~onTimer:100 @self
+  Equipment:
+  - IRON_HELMET HEAD
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.25
+    KnockBackResistance: 0.9
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+gladeZombieMount:
+  Type: SPIDER
+  Health: 710
+  Disguise: ZOMBIE_HORSE
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+gladeCryptsCheck:
+  Type: ARMOR_STAND
+  Display: ''
+  Options:
+    NoGravity: true
+    Marker: true
+  Skills:
+  - skill{s=checkDoorGlade} @self ~onTimer:20
+
+gladeVillagerTemp:
+  Type: ARMOR_STAND
+  Display: '&eVillager'
+  Options:
+    AlwaysShowName: true
+    Marker: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=StartWalking1} ~onInteract
+  Disguise: player Steve setSkin Wulet setCustomName "&eVillager" setDynamicName true
+
+gladeVillager:
+  Type: ZOMBIE
+  Display: '&eVillager'
+  Health: 5000
+  Damage: 0
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.35
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    KnockBackResistance: 1
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 patrol 90,56,859;78,56,860;71,56,853;70,55,842;58,54,830;30,49,828
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=2000} @self ~onSpawn
+  - leap{velocity=100} @Forward{f=3} ~onTimer:40
+  - summon{type=gladeVillageCheck;amount=1;radius=0} @location{c=34,49,828} ~onSpawn
+  - skill{s=villageDmgCheck;sync=true} @self ~onDamaged
+  #- skill{s=StartWalking1} ~onInteract
+  Disguise: player Steve setSkin Wulet setCustomName "&eVillager" setDynamicName true
+gladeVillageCheck:
+  Type: ARMOR_STAND
+  Options:
+    NoGravity: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=gladeVillageCheck} @self ~onTimer:20 
+  

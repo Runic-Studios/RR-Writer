@@ -1,0 +1,157 @@
+wisperwood-boss-summon-marker:
+  Conditions:
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - summon{t=wisperwood-boss-marker;r=8;os=true}
+wisperwood-boss-marker:
+  Skills:
+  - sound{s=block.stone.place}
+  - blockmask{m=blackstone;r=5;d=60}
+  - delay 60
+  - sound{s=block.stone.break}
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=5}
+  - throw{vy=12} @PIR{r=5}
+  - remove
+wisperwood-boss-leap:
+  Conditions:
+  - incombat{}
+  Cooldown: 4
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+  - leap{v=400} @RLNTE{a=1;r=5;s=1;minr=3}
+  - delay 20
+  - skill{s=wisperwood-boss-proj}
+
+wisperwood-boss-proj:
+  Conditions:
+  - incombat{}
+  Skills:
+  - potion{t=SLOW;d=20;l=3;hasParticles=false}
+  - delay 10
+  - projectile{ot=wisperwood-boss-proj-tick;oh=wisperwood-boss-proj-hit;v=8;i=1;hR=1;vR=1;v=25} @target
+wisperwood-boss-proj-tick:
+  Skills:
+  - effect:particles{p=reddust;r=1;c=#000000;a=5;speed=0;hS=0.2;vS=0.2} @Origin
+wisperwood-boss-proj-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PlayersNearOrigin{r=2}
+  - potion{type=SLOW;duration=60;lvl=2} @PlayersNearOrigin{r=5}
+  - effect:particlesphere{p=reddust;r=2;c=#000000;a=25;hs=0.1;vs=0.1} @Origin
+  - effect:blockmask{m=blackstone;r=2;d=20} @PlayersNearOrigin{r=2}
+
+
+wisperwood-boss-passive:
+  Skills:
+  - randomskill{s=wisperwood-boss-passive-within,wisperwood-boss-passive-notwithin}
+wisperwood-boss-passive-within:
+  Conditions:
+  - variableEquals{var=caster.passive;value=1}  
+  - playerwithin 8
+  Skills:
+  - skill{s=wisperwood-boss-passive-within-message}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=16}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=16}
+  - setvariable{var=caster.passive;v=0}
+wisperwood-boss-passive-notwithin:
+  Conditions:
+  - variableEquals{var=caster.passive;value=0}
+  - playernotwithin 8
+  Skills:
+  - skill{s=wisperwood-boss-passive-notwithin-message}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PIR{r=16}
+  - potion{t=SLOW;d=80;l=2} @PIR{r=16}
+  - setvariable{var=caster.passive;v=1}
+wisperwood-boss-passive-within-message:
+  Cooldown: 2
+  Skills:
+  - message{m="&7[1/2] &cLomi Elder<&co> &eYou dare enter MY Domain?!"} @PIR{r=8}
+wisperwood-boss-passive-notwithin-message:
+  Cooldown: 2
+  Skills:
+  - message{m="&7[2/2] &cLomi Elder<&co> &eHow dare you leave MY Domain after entering?!"} @PIR{r=12}
+
+wisperwood-warrior-night:
+  Conditions:
+  - night{} true
+  Skills:
+  - potion{t=SPEED;d=25;l=2;hasParticles=false} 
+
+wisperwood-mage-night:
+  Conditions:
+  - incombat{}
+  - playernotwithin 4
+  Cooldown: 8
+  Skills:
+  - potion{t=SLOW;d=20;l=3;hasParticles=false}
+  - delay 10
+  - projectile{ot=wisperwood-mage-night-tick;oh=wisperwood-mage-night-hit;v=8;i=1;hR=1;vR=1;v=15} @target
+wisperwood-mage-night-tick:
+  Skills:
+  - effect:particles{p=reddust;r=1;c=#000000;a=2;speed=0;hS=0.2;vS=0.2} @Origin
+wisperwood-mage-night-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PlayersNearOrigin{r=2}
+  - potion{type=SLOW;duration=60;lvl=2} @PlayersNearOrigin{r=5}
+  - particlesphere{p=reddust;r=2;c=#000000;a=25;hs=0.1;vs=0.1} @Origin
+  - blockmask{m=blackstone;r=2;d=20} @PlayersNearOrigin{r=2}
+
+wisperwood-mage:
+  Conditions:
+  - incombat{}
+  - playernotwithin 4
+  Cooldown: 4
+  Skills:
+  - potion{t=SLOW;d=20;l=3;hasParticles=false}
+  - delay 10
+  - projectile{ot=wisperwood-mage-tick;oh=wisperwood-mage-hit;v=8;i=1;hR=1;vR=1;v=25} @target
+wisperwood-mage-tick:
+  Skills:
+  - effect:particles{p=reddust;r=1;c=#000000;a=5;speed=0;hS=0.2;vS=0.2} @Origin
+wisperwood-mage-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PlayersNearOrigin{r=2}
+  - potion{type=SLOW;duration=60;lvl=2} @PlayersNearOrigin{r=5}
+  - effect:particlesphere{p=reddust;r=2;c=#000000;a=25;hs=0.1;vs=0.1} @Origin
+  - effect:blockmask{m=blackstone;r=2;d=20} @PlayersNearOrigin{r=2}
+wisperwood-mage-notwithin:
+  Conditions:
+  - playernotwithin 4
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false}
+
+wisperwood-rogue-night:
+  Conditions:
+  - night{} true
+  Skills:
+  - potion{t=SPEED;d=25;l=2;hasParticles=false} 
+wisperwood-rogue:
+  Conditions:
+  - incombat{}
+  Cooldown: 8
+  Skills:
+  - jump{v=0.2}
+  - delay 2
+  - skill{s=wisperwood-rogue-leap} @target
+  - delay 5
+  - effect:particlesphere{p=squid_ink;a=1;r=1;yOffset=.5} 
+  - potion{t=INVISIBILITY;d=15;l=1;hasParticles=false}
+  - equip{i=AIR:0}
+  - equip{i=AIR:OFFHAND}
+  - delay 15
+  - effect:particlesphere{p=squid_ink;a=5;r=1;yOffset=.5} 
+  - equip{i=IRON_SWORD:0}
+  - equip{i=IRON_SWORD:OFFHAND}
+wisperwood-rogue-leap:
+  Skills:
+  - randomskill{s=wisperwood-rogue-leap1,wisperwood-rogue-leap2}
+wisperwood-rogue-leap1:
+  Conditions:
+  - playerwithin 8
+  Skills:
+  - leap{v=250}
+wisperwood-rogue-leap2:  
+  Conditions:
+  - playernotwithin 8
+  Skills:
+  - leap{v=400}

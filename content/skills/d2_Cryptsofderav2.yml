@@ -1,0 +1,1071 @@
+#ads 
+startWorshipper:
+  Conditions:
+  - incombat false
+  Skills:
+  - setAI{ai=true} @self
+  
+summonSoul:
+  Conditions:
+  - mobsInRadius{types=corruptedDeraWorshiper;amount=12to100;radius=100} castinstead testSummon
+  - incombat true
+  Cooldown: 11
+  Skills:
+  - summon{type=corruptedDeraWorshiper;amount=2;radius=12;os=true} @self
+  - summon{type=corruptedDeraWorshiper;amount=1;radius=12;os=true} @self 0.5
+  - summon{type=corruptedDeraWorshiper;amount=1;radius=12;os=true} @self 0.25
+  
+testSummon:
+  Skills:
+  #- message{m="L ;) HAHAH"} @PlayerByName{name="DoubleAwesome12"}
+
+WorshipperSwarm1:
+  Conditions:
+  - mobsInRadius{types=corruptedDeraWorshiper;amount=4to100;radius=10} castinstead WorshipperSwarm2
+  Skills:
+  - runaigoalselector{goal=clear} @self
+  - runaigoalselector{goal=fleeplayers} @self
+  - delay 20
+  - runaigoalselector{goal=meleeattack} @self
+#  - message{m="<caster.var.mobsNear> HAHAH"} @PIR{r=10}
+  
+WorshipperSwarm2:
+  Skills:
+  - runaigoalselector{goal=clear} @self
+  - runaigoalselector{goal=spiderattack} @self
+  - runaigoalselector{goal=leapattarget} @self
+  
+WorshipperSwarm3:
+  Conditions:
+  - mobsInRadius{types=corruptedDeraWorshiper;amount=8to100;radius=10} true
+  Skills:
+  - potion{type=SPEED;duration=20;level=2} @MIR{t=corruptedDeraWorshiper;r=25}
+  - leap{velocity=200} @target
+  
+ResetWorshipperCount:
+  Skills:
+  - setvariable{var=caster.mobsNear;value=0} @self
+AddWorshipperCount:
+  Skills:
+  - variableadd{var=caster.mobsNear;amount=1} @self
+NearbyWorshipperMechanics:
+  Skills:
+  - skill{s=ResetWorshipperCount} @self
+  - skill{s=AddWorshipperCount} @MIR{t=corruptedDeraWorshiper;r=100}
+
+#BOSS 3
+summonMobsPhar:
+  Conditions:
+  - varEquals{var=caster.typePhar;value="2"} castinstead summonMobsPharFire
+  - varEquals{var=caster.typePhar;value="3"} castinstead summonMobsPharDeath 
+  Skills:
+  - skill{s=summonMobsPharEarth}
+
+summonMobsPharFire:
+  Cooldown: 999999
+  Skills:
+  - skill{s=pharoTowersSpawn} ~onSpawn
+  
+summonMobsPharDeath:
+  Cooldown: 999999
+  Skills:
+  - skill{s=pharoSoulsSpawn;repeat=15;repeatInterval=3} @self ~onSpawn
+  
+summonMobsPharEarth:
+  Cooldown: 999999
+  Skills:
+  - summon{type=corruptedDeraWorshiperTank2;amount=3;radius=50;os=true;delay=500} @self
+
+abilityPhar:
+  Cooldown: 20
+  Conditions:
+  - varEquals{var=caster.typePhar;value="2"} castinstead abilityPharFire
+  - varEquals{var=caster.typePhar;value="3"} castinstead abilityPharDeath 
+  Skills:
+  - skill{s=abilityPharEarth}
+
+abilityPharFire:
+  Skills:
+  - skill{s=fireBlade} @Ring{p=8;r=12} 
+  - summon{type=Fireblock;amount=20;radius=12;os=true} @PIR{r=50}
+  
+abilityPharDeath:
+  Skills:
+  - summon{type=deathPharoAbilityAnchor;amount=1;radius=0;os=true} @ring{r=5;p=2}
+  
+abilityPharEarth:
+  Skills:
+  - skill{s=abilityPharEarthMeteor;repeat=4;repeatInterval=60} @PIR{r=100;limit=1;sort=random}
+# Ability chosen ^^
+autoAttackPhar:
+  Conditions:
+  - varEquals{var=caster.typePhar;value="2"} castinstead autoAttackPharFire
+  - varEquals{var=caster.typePhar;value="3"} castinstead autoAttackPharDeath 
+  Skills:
+  - projectile{bulletType=MOB;mob=earthPharSandProjectileEffect;onTick=abilityPharEarthMeteor-Tick;onHit=abilityPharEarthMeteor-Hit;onEnd=abilityPharEarthMeteor-End;type=METEOR;hfs=12;i=1;g=0.6;repeat=3;repeatInterval=15} @PlayersInRadius{r=30;limit=2;sort=FURTHEST}
+ 
+autoAttackPharFire:
+  Skills:
+  - potion{t=SLOW;d=80;l=1;hasParticles=false} @self
+  - skill{s=fireBlade} @PlayersInRadius{r=30;limit=3;sort=FURTHEST}
+  
+autoAttackPharDeath:
+  Skills:
+  - potion{t=SLOW;d=60;l=1;hasParticles=false}
+  - projectile{bulletType=ITEM;material=BLACKSTONE;onTick=autoAttackPharDeath-Tick;onHit=autoAttackPharDeath-Hit;onEnd=autoAttackPharDeath-End;v=18;i=1;hR=1;vO=1;g=1;repeat=2;repeatInterval=20} @PlayersInRadius{r=50;limit=2;sort=RANDOM}
+  - delay 20
+  - projectile{bulletType=ITEM;material=BLACKSTONE;onTick=autoAttackPharDeath-Tick;onHit=autoAttackPharDeath-Hit;onEnd=autoAttackPharDeath-End;v=18;i=1;hR=1;vO=1;g=0.6;repeat=2;repeatInterval=20} @PlayersInRadius{r=50;limit=2;sort=RANDOM}
+  - delay 40
+  - projectile{bulletType=ITEM;material=BLACKSTONE;onTick=autoAttackPharDeath-Tick;onHit=autoAttackPharDeath-Hit;onEnd=autoAttackPharDeath-End;v=18;i=1;hR=1;vO=1;g=0.4;repeat=2;repeatInterval=20} @PlayersInRadius{r=50;limit=2;sort=RANDOM}
+autoAttackPharDeath-Tick:
+  Skills:
+  - effect:particles{p=reddust;color=#000000;amount=1;speed=0.5;hS=1;vS=0.5} @origin
+autoAttackPharDeath-Hit:
+  Skills:
+  - effect:particlesphere{particle=largeexplosion;amount=4;radius=1}
+  - effect:particlesphere{p=reddust;color=#000000;amount=4;radius=1}
+  #- command{c="runicdamage <caster.uuid> <target.name> 100"} @PlayersNearOrigin{r=3}     
+autoAttackPharDeath-End:
+  Skills:
+  - effect:particlesphere{particle=largeexplosion;amount=4;radius=1} 
+  - effect:particlesphere{p=reddust;color=#000000;amount=4;radius=1}
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PlayersNearOrigin{r=5}
+
+# Attack chosen ^^
+ 
+abilityPharDeathMobPull:
+  Skills:
+  - projectile{bulletType=MOB;mob=deathPharoPrject;v=20;i=1;hR=1;vR=1;hnp=false;repeat=20;repeatInterval=10;d=20;syo=+2;tyo=+1.5} 
+  - delay 20
+  - pull{v=5;to=false}
+  - potion{type=SLOW;duration=60;level=252}
+  - summon{type=deathPharoPrject;amount=3;radius=0}
+  - delay 40
+  - skill{s=abilityPharDeathMobPull} 
+  
+abilityPharDeathMobDeathTimer:
+  Skills:
+  - delay 360
+  - remove @self
+  
+abilityPharDeathMobDeathClicks:
+  Skills:
+  - sound{s=minecraft:block.chain.break} @self
+  - remove @self
+
+chainProjecAI:
+  Skills:
+  - threat{amount=10000} @PlayersInRadius{r=5;limit=1;sort=NEAREST}
+  - leap{velocity=80;repeat=60;repeatInterval=5;n=30} @target
+  - teleport{spreadh=5;spreadv=0;repeat=60;repeatInterval=5} @target
+  - delay 60
+  - remove @self
+
+abilityPharEarthMeteor:
+  Skills:
+  - projectile{bulletType=MOB;mob=earthPharSandProjectileEffect;onTick=abilityPharEarthMeteor-Tick;onHit=abilityPharEarthMeteor-Hit;onEnd=abilityPharEarthMeteor-End;type=METEOR;hfs=19;i=1;g=0.5} @RLNTE{a=13;r=20;s=3}
+ 
+abilityPharEarthMeteor-Tick:
+  Skills:
+  - effect:particles{particle=block_crack;m=DIRT;amount=2;hS=0.1;vS=0.1;speed=3} @origin
+
+abilityPharEarthMeteor-Hit:
+  Skills:
+  - effect:particlesphere{p=block_crack;m=SANDSTONE;amount=50;radius=4} @origin
+  - command{c="runicdamage <caster.uuid> <target.name> 175"}
+  - potion{type=SLOW;duration=120;level=3} @PlayersNearOrigin{r=3} 
+  
+abilityPharEarthMeteor-End:
+  Skills:
+  - effect:particlesphere{p=block_crack;m=SANDSTONE;amount=20;radius=5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 75"} @PlayersNearOrigin{r=5} 
+  - potion{type=SLOW;duration=120;level=2} @PlayersNearOrigin{r=5} 
+  - effect:sound{s=block.stone.break;volume=1;p=0.1} @self 
+  
+# Abilities   
+chooseTypePhar:
+  Skills:
+  - setvariable{var=caster.typePhar;value=<random.1>} =66%-100%
+  - setvariable{var=caster.typePhar;value=<random.2>} =33%-65%
+  - setvariable{var=caster.typePhar;value=<random.3>} =1%-32%
+  - delay 20
+  - skill{s=chooseTypePharEarth}
+  
+chooseTypePharEarth:
+  Conditions:
+  - varEquals{var=caster.typePhar;value="2"} castinstead chooseTypePharFire
+  - varEquals{var=caster.typePhar;value="3"} castinstead chooseTypePharDeath 
+  Skills:
+  - equip{item=PharaohChestEarth:3}
+  - effect:sound{s=item.armor.equip_diamond;volume=2.0;pitch=0.5}
+  - skill{s=chooseTypePharEarth-Message} 
+  - delay 500
+  - skill{s=chooseTypePhar} @self
+  
+chooseTypePharEarth-Message:
+  Cooldown: 1000
+  Skills:
+  - message{m="&f<mob.name><&co> &6&LThe sands will bury your legacy!"} @PlayersInRadius{r=44} 
+
+
+chooseTypePharFire:
+  Cooldown: 1000
+  Skills:
+  - equip{item=PharaohChestFire:3}
+  - effect:sound{s=item.armor.equip_diamond;volume=2.0;pitch=0.5}
+  - message{m="&f<mob.name><&co> &C&LI will burn away any &C&Ldefiance &C&Lleft &C&Lin &C&Lyou!"} @PlayersInRadius{r=40}
+  - delay 500
+  - skill{s=chooseTypePhar} @self
+
+chooseTypePharDeath:
+  Cooldown: 1000
+  Skills:
+  - equip{item=PharaohChestDeath:3}
+  - effect:sound{s=item.armor.equip_diamond;volume=2.0;pitch=0.5}
+  - message{m="&f<mob.name><&co> &8&LRun if you wish... but &8&Lyou &8&Lcannot &8&Lescape &8&Ldeath!"} @PlayersInRadius{r=40}
+  - delay 500
+  - skill{s=chooseTypePhar} @self
+
+fireBladeProjectile:
+  Skills:
+   - potion{type=INVISIBILITY;duration=9999;level=1} @self
+   - orbital{onTick=firebladeP-Tick;onHit=firebladeP-Hit;points=16;interval=1;oy=0.5;duration=200;repeat=3;repeatInterval=20}
+    
+firebladeP-Tick:
+  Skills:
+  - pull{v=4;to=true} @PlayersNearOrigin{r=3}
+  - effect:particles{p=reddust;color=#ff8e00;amount=5;speed=4;hS=0.2;vS=0.2} @origin
+  - effect:particles{p=reddust;color=#da0000;amount=3;speed=4;hS=0.1;vS=0.1} @origin
+
+firebladeP-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 65"}
+  - pull{v=3;to=false}
+  
+
+fireBlade:
+  Skills:
+  - projectile{bulletType=MOB;mob=fireBladeProjectile;onHit=fireBlade-Hit;v=5;i=1;hR=2;vR=2;sE=false;hnp=false;hfs=2}
+  
+fireBlade-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+  - throw{velocity=35;velocityY=-1.5} 
+
+
+pharoSandProjec:
+  Skills:
+  - threat{amount=10000} @PlayersInRadius{r=1;limit=1;sort=RANDOM}
+  - effect:particles{particle=block_crack;m=sandstone;amount=100;hS=0.5;vS=0.5;speed=8} @self
+  - projectile{bulletType=ITEM;material=SANDSTONE;v=5;i=1;hR=1;vO=1;g=0.4} @RLNTE{a=5;r=5;s=2}
+  - delay 10
+  - skill{s=pharoSandProjec}
+
+pharoSoulsSpawn:
+  Skills:
+  - summon{type=corruptedDeraWorshiper;amount=1;radius=3;os=true}
+  - throw{velocity=25;velocityY=2} @MIR{r=5;type=corruptedDeraWorshiper}
+
+pharoTowersSpawn:
+  Skills:
+  - summon{type=csTowerPlaceholder;amount=1;radius=0;os=true} @Location{c=298.5,87,402.5}
+  - summon{type=csTowerPlaceholder;amount=1;radius=0;os=true} @Location{c=298.5,87,450.5}
+  - summon{type=csTowerPlaceholder;amount=1;radius=0;os=true} @Location{c=274.5,87,426.5}
+  - summon{type=csTowerPlaceholder;amount=1;radius=0;os=true} @Location{c=322.5,87,426.5}
+  
+pharoSandShoot-Hit:
+  Conditions:
+  - playernotwithin{d=2} castinstead pharoSandShoot-noHit
+  Skills:
+  - setAI{ai=false} @self
+  - delay 15
+  - potion{type=SLOW;duration=240;level=3} @PIR{r=1]
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PlayersInRadius{r=1] 
+  - throw{velocityY=20} @PlayersInRadius{r=1]
+  - effect:particles{particle=block_crack;m=sandstone;amount=2000;hS=1;vS=5;y=2;speed=2} @self
+  - effect:particles{particle=block_crack;m=sand;amount=1000;hS=1;vS=5;y=2;speed=2} @self
+  - remove @self
+  
+pharoSandShoot-noHit:
+  Skills:
+  - delay 2
+  - skill{s=pharoSandShoot-Hit} 
+  
+pharoPassiveCheckStart:
+  Skills:
+  - setvariable{var=caster.PassiveCount;value=0} @self
+  - delay 17
+  - sudoskill{s=pharoPassiveCheckCount;setcasterastrigger=false} @PIR{r=8}
+  
+pharoPassiveCheckCount:
+  Skills:
+  - signal{s=pharoPassiveCheckAdd} @MobsInRadius{r=10;types=armorstands}
+  
+pharoPassiveCheckCountAddCheck:
+  Skills:
+  - variableadd{var=caster.PassiveCount;amount=1} @self
+  #- message{m="<caster.var.PassiveCount> HAHAH"} @PIR{r=10}
+  - skill{s=pharoPassiveCheckSignal}
+  
+pharoPassiveCheckSignal:
+  Conditions:
+  - varEquals{var=caster.PassiveCount;value=3} true
+  - varEquals{var=caster.PassiveCount;value=4} true
+  - varEquals{var=caster.PassiveCount;value=5} true
+  Skills:
+  - signal{s=pharoPassiveLeapYouBitch} @MobsInRadius{r=100;type=sandGuy}
+
+pharoPassiveAttack:
+  Cooldown: 30
+  Skills:
+  - jump{velocity=120}
+  #- message{m="passive Test "} @PlayersInRadius{r=40}
+  - delay 20
+  - leap{velocity=2000} @trigger
+  - delay 20
+  - jump{velocity=-100}
+  - command{c="runicdamage <caster.uuid> <target.name> 150"} @PIR{r=8}
+  - throw{velocityY=12} @PlayersInRadius{r=10}
+  - effect:explosion{hSpread=12} @self
+  - effect:particles{p=block_crack;m=sandston;amount=1000;hSpread=12;ySpread=1;speed=0;yOFfset=0.5}
+#BOSS 2
+cryptsLookAlike-damaged:
+  Cooldown: 2
+  Skills:
+  - skill{s=cryptsLookAlike-damaged-trigger} @trigger
+  - setvariable{var=caster.damaged;value=1} @self
+  - delay 40
+  - setname{name='&e[&6☠&e] &4Fake!'} @self
+cryptsLookAlike-damaged-trigger:
+  Conditions:
+  - varEquals{var=caster.damaged;value=1}
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 125"} @trigger
+  - message{m="&4Dera<&sq>s Vizier<&co> &cFool!"} @trigger
+  - sound{s=entity.chicken.death;p=1.5} @self
+  - suicide @self
+  - remove @self
+
+
+vizierEnd:
+  Skills:
+  - remove @MIR{r=100;type=vizierMobPlaceholder}
+elementsOfChaos:
+  Skills:
+  - delay 40
+  - delay 20 0.30
+  - delay 20 0.30
+  - delay 20 0.25
+  - delay 20 0.25
+  - delay 20 0.20
+  - delay 20 0.10
+  - sound{s=block.bell.resonate;pitch=0.1} @self
+  - setname{name='&e[&6☠&e] &cDera<&sq>s Vizier'}
+  - summon{type=cryptsLookAlike1;amount=1;radius=0;os=true} @self 
+  - skill{s=eocTeleportAway}
+  #- teleport{spreadh=12;spreadv=3} @MobsInRadius{r=100;types=vizier_test_elements_of_chaos_markers;limit=1;sort=RANDOM}
+  - summon{type=cryptsLookAlike2;amount=1;radius=0;os=true} @self
+  - summon{type=cryptsLookAlike3;amount=1;radius=0;os=true} @self 
+  - delay 1 
+  - skill{s=vizierLightningAttackStart} 0.5
+  - skill{s=elementsOfChaos}
+
+eocTeleportAway:
+  Conditions:
+  - varEquals{var=caster.vizierAI;value=1} castinstead eocTeleportAt
+  Skills:
+  - teleport{spreadh=12;spreadv=3} @MobsInRadius{r=100;types=vizier_test_elements_of_chaos_markers;limit=1;sort=RANDOM}
+  
+eocTeleportAt:
+  Conditions:
+  - varEquals{var=caster.vizierAI;value=0} castinstead eocTeleportAway
+  Skills:
+  - teleport{spreadh=1;spreadv=1} @NearestPlayer{r=25}
+  
+vizierFight:
+  Conditions:
+  - varEquals{var=caster.vizierAI;value=1} castinstead vizierRun
+  Skills: 
+  - setname{name='&e[&6☠&e] &cDera<&sq>s Vizier'}
+  - setvariable{var=caster.vizierAI;value=1} @self
+  - runaigoalselector{goal=clear}
+  - runaigoalselector{goal=meleeattack}
+  - setspeed{speed=1.8;type=walking} @self
+  
+vizierRun:
+  Conditions:
+  - varEquals{var=caster.vizierAI;value=0} castinstead vizierFight
+  Skills: 
+  - setname{name='&e[&6☠&e] &cDera<&sq>s Vizier'}
+  - setvariable{var=caster.vizierAI;value=0} @self
+  - runaigoalselector{goal=clear}
+  - runaigoalselector{goal=fleeplayers}
+  - setspeed{speed=1.5;type=walking} @self
+
+cryptsLookAlike:
+  Skills:
+  - delay 400
+  - suicide
+  - remove
+
+vizierLightningAttackStart:
+  Skills:
+  - summon{type=vizierLightningMarker;amount=1;radius=0;os=true} @MobsInRadius{r=100;types=vizier_test_elements_of_chaos_markers;limit=1;sort=RANDOM}
+  - summon{type=vizierLightningMarker;amount=1;radius=0;os=true} @PIR{r=30;limit=1;sort=RANDOM}
+vizierLightningAttack:
+  Skills:
+  - sound{s=block.portal.trigger;pitch=2;v=1} @self
+  - delay 45
+  - effect:lightning @self
+  - command{c="runicdamage <caster.uuid> <target.name> 200"} @PIR{r=2}
+  - delay 5
+  - remove @self
+elementsOfChaosVolly:
+  Skills:
+  - projectile{bulletType=ITEM;material=GLOWSTONE;onTick=elementsOfChaosEarth-Tick;onHit=elementsOfChaosEarth-Hit;onEnd=elementsOfChaosEarth-End;v=18;i=2;hR=1.5;vO=1;g=1.5} @MobsInRadius{r=100;types=vizier_test_elements_of_chaos_markers;limit=1;sort=RANDOM}
+  - delay 10
+  - teleport{spreadh=12;spreadv=3} @MobsInRadius{r=100;types=vizier_test_elements_of_chaos_markers;limit=1;sort=RANDOM}
+  - delay 25
+  - projectile{bulletType=ITEM;material=GLOWSTONE;onTick=elementsOfChaosEarth-Tick;onHit=elementsOfChaosEarth-Hit;onEnd=elementsOfChaosEarth-End;v=18;i=2;hR=1.5;vO=1;g=1.5} @MobsInRadius{r=100;types=vizier_test_elements_of_chaos_markers;limit=1;sort=RANDOM} 
+  - projectile{bulletType=ITEM;material=GLOWSTONE;onTick=elementsOfChaosEarth-Tick;onHit=elementsOfChaosEarth-Hit;onEnd=elementsOfChaosEarth-End;v=18;i=2;hR=1.5;vO=1;g=1.5;repeat=9;repeatInterval=15} @RLNTE{a=1;r=20;s=8;minr=4;}
+     
+#Earth---------------
+elementsOfChaosProjectileEarth:
+  Skills:
+   - projectile{bulletType=ITEM;material=GLOWSTONE;onTick=elementsOfChaosEarth-Tick;onHit=elementsOfChaosEarth-Hit;onEnd=elementsOfChaosEarth-End;v=18;i=2;hR=1.5;vO=1;g=1.5} @MobsInRadius{r=100;types=vizier_test_elements_of_chaos_markers;limit=1;sort=RANDOM}
+
+elementsOfChaosEarth-Tick:
+  Skills:
+  - effect:particles{p=flame;amount=1;speed=0;hS=0.2;vS=0.2} @origin
+
+elementsOfChaosEarth-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PlayersNearOrigin{r=3}
+
+elementsOfChaosEarth-End:
+  Skills:
+  - summon{type=vizierTestElementsOfChaosMarker-Fire;amount=1;radius=0} @origin
+  - sound{s=entity.experience_orb.pickup;pitch=2} @self
+#Fire----------
+elementsOfChaosProjectileFire:
+  Skills:
+   - projectile{bulletType=ITEM;material=GLOWSTONE;onTick=elementsOfChaosFire-Tick;onHit=elementsOfChaosFire-Hit;onEnd=elementsOfChaosFire-End;v=18;i=1;hR=1.5;vO=1;g=1} @RLNTE{a=2;r=20;s=8;minr=4;}
+elementsOfChaosFire-Tick:
+  Skills:
+  - effect:particles{p=flame;amount=5;speed=0;hS=0.2;vS=0.2} @origin
+
+elementsOfChaosFire-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PlayersNearOrigin{r=3}
+elementsOfChaosFire-End:
+  Skills:
+  - summon{type=vizierTestElementsOfChaosMarker-Death;amount=1;radius=0} @origin
+  - sound{s=entity.experience_orb.pickup;pitch=2} @self
+#Death-------------------------
+elementsOfChaosProjectileDeath:
+  Skills:
+   - projectile{bulletType=ITEM;material=GLOWSTONE;onTick=elementsOfChaosDeath-Tick;onHit=elementsOfChaosDeath-Hit;onEnd=elementsOfChaosDeath-End;v=20;i=1;hR=1.5;vO=1;g=0.8} @RLNTE{a=2;r=20;s=8;minr=4;}
+
+elementsOfChaosDeath-Tick:
+  Skills:
+  - effect:particles{p=flame;amount=5;speed=0;hS=0.2;vS=0.2} @origin
+
+elementsOfChaosDeath-Hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 100"}
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PlayersNearOrigin{r=3}
+
+elementsOfChaosDeath-End:
+  Skills:
+  - sound{s=entity.experience_orb.pickup;pitch=2} @self
+   
+   
+elementsOfChaoMarkersSpawn:
+  Skills:
+  - summon{type=vizier_test_elements_of_chaos_markers;amount=1;radius=0} @Location{c=298,89,315}
+  - summon{type=vizier_test_elements_of_chaos_markers;amount=1;radius=0} @Location{c=298,89,338}
+
+vizierLavaPlume:
+  Skills:
+  - effect:particles{p=lava;amount=10;speed=0;hS=0.5;vS=2} @self
+  - projectile{bulletType=ITEM;material=MAGMA_BLOCK;v=4;i=1;hR=1;vO=1;g=0.5} @RLNTE{a=5;r=5;s=2}
+  - delay 15
+  - skill{s=vizierLavaPlume}
+
+vizierLavaPlume-onHit:
+  Skills:
+  - effect:particles{p=lava;amount=3;speed=0;hS=0.1;vS=0.1} @origin
+
+virLavaSpawn:
+  Skills:
+  - summon{type=vizierLavaPlume;amount=1;radius=10;os=true} @PlayersInRadius{r=50;limit=3;sort=RANDOM}
+  
+vizierLavaPlumet-Hit:
+  Conditions:
+  - playernotwithin{d=2} castinstead vizierLavaPlumet-noHit
+  Skills:
+  - setAI{ai=false} @self
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 650"} @PIR{r=3}
+  - throw{velocityY=10} @PlayersInRadius{r=2}
+  - effect:particles{p=lava;amount=5;speed=0;hS=1;vS=3} @self
+  - effect:particles{p=flame;amount=15;speed=0;hS=1;vS=5} @self
+  - projectile{bulletType=ITEM;material=MAGMA_BLOCK;v=2;i=1;hR=1;vO=1;g=0.3} @RLNTE{a=8;r=5;s=2}
+  - remove @self
+  
+vizierLavaPlumet-noHit:
+  Skills:
+  - delay 2
+  - skill{s=vizierLavaPlumet-Hit} 
+
+#BOSS 1
+crystalSarcophagus-golem-speed:
+  Cooldown: 15
+  Skills:
+  - sound{s=block.enchantment_table.use;v=2} @self
+  - effect:particlesphere{p=block_crack;m=SANDSTONE;amount=8;radius=2;yOffset=0.75} @self
+  - signal{s=speed} @MIR{t=mummieCS-zombie,mummieCS-husk,mummieCS-skeleton;r=50}
+  
+  
+crystalSarcophagus-heal:
+  Skills:
+  - variableadd{var=caster.csEND;amount=3} @self  
+  - effect:sound{s=entity.experience_orb.pickup;volume=8.0;pitch=0.5} @self
+  - message{m="&2Defeating the Ancient Gaurdian restored &a3 &2lives."} @PlayersInRadius{r=30}
+  - message{m="&a<caster.var.csEND> &2lives remaining."} @PlayersInRadius{r=30}  
+
+crystalSarcophagus-golem:
+  Skills:
+  - skill{s=crystalSarcophagus-golem1} <80%
+  - skill{s=crystalSarcophagus-golem2} <60%
+  - skill{s=crystalSarcophagus-golem3} <40%
+  - skill{s=crystalSarcophagus-golem4} <20%
+crystalSarcophagus-golem1:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.iron_golem.death} @MIR{t=crystalSarcophagus-golem;r=50}
+  - effect:particlesphere{particle=block_crack;m=iron;amount=2;radius=1;yOffset=0.5} @MIR{t=crystalSarcophagus-golem;r=50}
+  - remove @MIR{t=crystalSarcophagus-golem;r=50}
+  - sound{s=entity.iron_golem.attack;v=2;p=1}
+  - summon{t=crystalSarcophagus-golem;r=4;os=true}
+crystalSarcophagus-golem2:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.iron_golem.death} @MIR{t=crystalSarcophagus-golem;r=50}
+  - effect:particlesphere{particle=block_crack;m=iron;amount=2;radius=1;yOffset=0.5} @MIR{t=crystalSarcophagus-golem;r=50}
+  - remove @MIR{t=crystalSarcophagus-golem;r=50}
+  - sound{s=entity.iron_golem.attack;v=2;p=1}
+  - summon{t=crystalSarcophagus-golem;r=4;os=true}
+crystalSarcophagus-golem3:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.iron_golem.death} @MIR{t=crystalSarcophagus-golem;r=50}
+  - effect:particlesphere{particle=block_crack;m=iron;amount=2;radius=1;yOffset=0.5} @MIR{t=crystalSarcophagus-golem;r=50}
+  - remove @MIR{t=crystalSarcophagus-golem;r=50}
+  - sound{s=entity.iron_golem.attack;v=2;p=1}
+  - summon{t=crystalSarcophagus-golem;r=4;os=true}
+crystalSarcophagus-golem4:
+  Cooldown: 9999
+  Skills:
+  - sound{s=entity.iron_golem.death} @MIR{t=crystalSarcophagus-golem;r=50}
+  - effect:particlesphere{particle=block_crack;m=iron;amount=2;radius=1;yOffset=0.5} @MIR{t=crystalSarcophagus-golem;r=50}
+  - remove @MIR{t=crystalSarcophagus-golem;r=50}
+  - sound{s=entity.iron_golem.attack;v=2;p=1}
+  - summon{t=crystalSarcophagus-golem;r=4;os=true}
+
+
+csEndCheck:
+  Skills:
+  - variablesubtract{var=caster.csEND;amount=1} @self
+  - skill{s=csEndCheck-message} 
+  - skill{s=csENDING}
+  #- message{m="<caster.var.csEND> count"} @PlayersInRadius{r=30}
+csEndCheck2:
+  Skills:
+  - variablesubtract{var=caster.csEND;amount=3} @self
+  - skill{s=csEndCheck-message} 
+  - skill{s=csENDING}
+  #- message{m="<caster.var.csEND> count"} @PlayersInRadius{r=30}
+csEndCheck-message:
+  Cooldown: 4
+  Skills:
+  - message{m="&4Lives lost."} @PlayersInRadius{r=30}
+  - sound{s=entity.zombie.death;v=2}
+  - delay 79
+  - message{m="&c<caster.var.csEND> &4lives remaining."} @PlayersInRadius{r=30}
+
+csCleanR:
+  Conditions:
+  - mobsInRadius{types=crystalSarcophagus;amount=1;radius=150} false
+  - varEquals{var=caster.csStart;value=1} true
+  Skills:
+  - remove @EIR{t=mummieCS;r=100} @EIR{r=100;t=mummieCS-zombie,mummieCS-husk,mummieCS-skeleton}
+  - remove @MobsInRadius{t=crystalSarcophagus-golem,crystalSarcophagus-stray;r=100}
+  - remove @EIR{r=100;t=csTowerPlaceholder-coreS,csTowerPlaceholder-fence,csTowerPlaceholder,csTowerPlaceholder-fenceE,csTowerPlaceholder-core}
+  - remove @EIR{r=100;target=armorstands}
+  - remove @EIR{r=100;t=crystalSarcophagus}
+  - remove @self
+
+csENDING:
+  Conditions:
+  - variableInRange{var=caster.csEND;value=<1}
+  Cooldown: 1
+  Skills:
+  - remove @MobsInRadius{r=100;t=mummieCS-zombie,mummieCS-husk,mummieCS-skeleton}
+  - remove @MobsInRadius{t=crystalSarcophagus-golem,crystalSarcophagus-stray;r=100}
+  - remove @MobsInRadius{r=100;t=csTowerPlaceholder-coreS,csTowerPlaceholder-fence,csTowerPlaceholder,csTowerPlaceholder-fenceE,csTowerPlaceholder-core}
+  - remove @MobsInRadius{r=100;t=csMobPlaceholder,csMobPlaceholder-slab,csMobPlaceholder-n,csMobPlaceholder-wall,csMobPlaceholder-center}
+  - remove @EIR{r=100;target=armorstands}
+  - message{m="&c0 &4lives remaining."} @PlayersInRadius{r=30}
+  - message{m="&4The &cAncient Sarcophagus &4has been sealed by the &cDera Worshippers&4."} @PlayersInRadius{r=30}
+  - remove @self
+
+csDEATH:
+  Skills:
+  - message{m="&2The &aAncient Sarcophagus &2has been destroyed!"} @PIR{r=30}
+  - remove @MobsInRadius{r=100;t=mummieCS-zombie,mummieCS-husk,mummieCS-skeleton}
+  - remove @MobsInRadius{t=crystalSarcophagus-golem,crystalSarcophagus-stray;r=100}
+  - remove @MobsInRadius{r=100;t=csTowerPlaceholder-coreS,csTowerPlaceholder-fence,csTowerPlaceholder,csTowerPlaceholder-fenceE,csTowerPlaceholder-core}
+  - remove @MobsInRadius{r=100;t=csMobPlaceholder,csMobPlaceholder-slab,csMobPlaceholder-n,csMobPlaceholder-wall,csMobPlaceholder-center}
+  - remove @EIR{r=100;target=armorstands}
+  - remove @self
+
+vizierPlaceholders:
+  Skills:
+  - remove @MobsInRadius{r=10;t=ARMOR_STAND}
+  - delay 1
+  - summon{type=vizierPlaceholder-b;amount=1;radius=0} @Location{c=298.5,87,347.5}
+  - summon{type=vizierPlaceholder-cs;amount=1;radius=0} @Location{c=299.5,87,347.5}
+  - summon{type=vizierPlaceholder-cs;amount=1;radius=0} @Location{c=297.5,87,347.5}
+  
+  - summon{type=vizierPlaceholder-wall;amount=1;radius=0} @Location{c=297.5,88,347.5}
+  - summon{type=vizierPlaceholder-wall;amount=1;radius=0} @Location{c=299.5,88,347.5}
+  
+  - summon{type=vizierPlaceholder-b;amount=1;radius=0} @Location{c=298.5,89,347.5}
+  - summon{type=vizierPlaceholder-b;amount=1;radius=0} @Location{c=299.5,89,347.5}
+  - summon{type=vizierPlaceholder-b;amount=1;radius=0} @Location{c=297.5,89,347.5}
+
+  - summon{type=vizierPlaceholder-head;amount=1;radius=0} @Location{c=298.5,88.5,347.5}
+
+vizierSpawnStart:
+  Conditions:
+  - varEquals{var=caster.vzStart;value=0} true
+  Cooldown: 9999
+  Skills:
+  - setvariable{var=caster.vzStart;value=1} @self
+  - effect:spin{duration=25;velocity=5} @MIR{r=5;type=vizierPlaceholder-head}
+  - delay 15
+  - effect:spin{duration=25;velocity=10} @MIR{r=5;type=vizierPlaceholder-head}
+  - delay 15
+  - effect:spin{duration=50;velocity=20} @MIR{r=5;type=vizierPlaceholder-head}
+  - delay 30
+  - effect:spin{duration=50;velocity=25} @MIR{r=5;type=vizierPlaceholder-head}
+  - delay 30
+  - effect:spin{duration=120;velocity=50} @MIR{r=5;type=vizierPlaceholder-head}
+  - delay 80
+  - effect:explosion @MIR{r=5;type=vizierPlaceholder-head}
+  - effect:particles{particle=explode;amount=20;hS=1;vS=1;speed=0} @MIR{r=5;type=vizierPlaceholder-head}
+  - remove @MIR{r=5;type=vizierPlaceholder-head}
+  - delay 100
+  - effect:explosion @self
+  - effect:particles{particle=largeexplosion;amount=100;hS=3;vS=3;speed=0.1} @self
+  - effect:particles{particle=explode;amount=25;hS=3;vS=3;speed=0.1} @self
+  - remove @MIR{r=10;type=vizierPlaceholder-wall,vizierPlaceholder-b,vizierPlaceholder-cs}
+  #- remove @self
+  - summon{type=vizierCrypts;amount=1;radius=0} @self
+  - delay 1
+  - teleport{} @Location{c=298.5,105,347.5}
+  - potionclear{} @self
+  
+pharohSpawnStart:
+  Conditions:
+  - varEquals{var=caster.vzStart;value=0} true
+  Skills:
+  - setvariable{var=caster.vzStart;value=1} @self
+  - effect:explosion @self
+  - effect:particles{particle=largeexplosion;amount=15;hS=3;vS=3;speed=0.1} @self
+  - effect:particles{particle=block_crack;m=glass;amount=100;hS=3;vS=3;speed=8} @self
+  - summon{type=sandGuy;amount=1;radius=0} @self
+  - delay 2
+  - potion{type=INVISIBILITY;duration=9999;level=1} @self
+  - teleport{} @Location{c=298.5,80,426.5}
+  - potionclear{} @self
+
+  
+crystalSarcophagus-stray-despawn:
+  Skills:
+  - delay 600
+  - effect:particlesphere{particle=block_crack;m=bone_block;amount=2;radius=1;yOffset=0.5}
+  - sound{s=block.bone_block.break}
+  - suicide
+
+crystalSarcophagus-stray:
+  Cooldown: 30
+  Skills:
+  - skill{s=crystalSarcophagus-stray2}
+
+crystalSarcophagus-stray2:
+  Conditions:
+  - health{h=<10000} castinstead crystalSarcophagus-stray3
+  - health{h=<17500}
+  Skills:
+  - sound{s=entity.zombie.infect;v=2} @self
+  - summon{t=crystalSarcophagus-stray;a=1;r=2;os=true} @Ring{r=7;p=3}
+
+crystalSarcophagus-stray3:
+  Skills:  
+  - sound{s=entity.zombie.infect;v=2} @self
+  - summon{t=crystalSarcophagus-stray;a=1;r=2;os=true} @Ring{r=7;p=5}  
+
+SpawnCSnMobs:
+  Cooldown: 25
+  Skills:
+  - skill{s=SpawnCSnMobs-2}
+  
+SpawnCSnMobs-2:
+  Conditions:
+  - health{h=<7500} castinstead SpawnCSnMobs-4
+  - health{h=<17500} castinstead SpawnCSnMobs-3
+  - health{h=<25001}
+  Skills:
+  - sound{s=entity.zombie.attack_wooden_door;v=2;p=1} @self
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+
+SpawnCSnMobs-3:
+  Skills:
+  - sound{s=entity.zombie.attack_wooden_door;v=2;p=0.75} @self
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+
+SpawnCSnMobs-4:
+  Skills:
+  - sound{s=entity.zombie.attack_wooden_door;v=2;p=0.5} @self
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+  - randomskill{s=SpawnCSnMobs-cast1,SpawnCSnMobs-cast2,SpawnCSnMobs-cast3,SpawnCSnMobs-cast4,SpawnCSnMobs-cast5,SpawnCSnMobs-cast6}
+
+SpawnCSnMobs-cast1:
+  Cooldown: 2
+  Skills:
+  - summon{type=mummieCS-zombie;amount=3;radius=4;os=true} @Location{c=279,86,281}
+SpawnCSnMobs-cast2:
+  Cooldown: 2
+  Skills:
+  - randomskill{s=SpawnCSnMobs-cast-zombie,SpawnCSnMobs-cast-husk,SpawnCSnMobs-cast-skeleton} @Location{c=272,86,261}
+SpawnCSnMobs-cast3:
+  Cooldown: 2
+  Skills:
+  - randomskill{s=SpawnCSnMobs-cast-zombie,SpawnCSnMobs-cast-husk,SpawnCSnMobs-cast-skeleton} @Location{c=279,86,241}
+SpawnCSnMobs-cast4:
+  Cooldown: 2
+  Skills:
+  - randomskill{s=SpawnCSnMobs-cast-zombie,SpawnCSnMobs-cast-husk,SpawnCSnMobs-cast-skeleton} @Location{c=317,86,281}
+SpawnCSnMobs-cast5:
+  Cooldown: 2
+  Skills:
+  - randomskill{s=SpawnCSnMobs-cast-zombie,SpawnCSnMobs-cast-husk,SpawnCSnMobs-cast-skeleton} @Location{c=325,86,261}
+SpawnCSnMobs-cast6:
+  Cooldown: 2
+  Skills:
+  - randomskill{s=SpawnCSnMobs-cast-zombie,SpawnCSnMobs-cast-husk,SpawnCSnMobs-cast-skeleton} @Location{c=317,86,241}
+
+SpawnCSnMobs-cast-zombie:
+  Skills:
+  - summon{type=mummieCS-zombie;amount=3;radius=4;os=true}
+SpawnCSnMobs-cast-husk:
+  Skills:
+  - summon{type=mummieCS-husk;amount=1;radius=2;os=true}
+SpawnCSnMobs-cast-skeleton:
+  Skills:
+  - summon{type=mummieCS-skeleton;amount=2;radius=3;os=true}
+
+chooseTypeCS:
+  Skills:
+  - setvariable{var=caster.typeCS;value=1}
+  
+checkMummieCS:
+  Conditions:
+  - mobsInRadius{types=crystalSarcophagus;amount=1;radius=3} true
+  Skills:
+  - skill{s=givePowerCSEarth} 
+  - signal{s=csEndCheck} @MobsInRadius{r=10;t=crystalSarcophagus}
+  - remove @self
+checkMummieCS2:
+  Conditions:
+  - mobsInRadius{types=crystalSarcophagus;amount=1;radius=3} true
+  Skills:
+  - skill{s=givePowerCSEarth} 
+  - signal{s=csEndCheck2} @MobsInRadius{r=10;t=crystalSarcophagus}
+  - remove @self
+
+givePowerCSEarth:
+  Conditions:
+  - varEquals{var=caster.typeCS;value="1"} castinstead givePowerCSDeath
+  Skills:
+  - suicide
+  - signal{s=givePowerCSDeath} @MobsInRadius{r=10;t=crystalSarcophagus}
+#givePOWER (note for me)
+
+DeathblockMarker-visual:
+  Skills:
+  - delay 180
+  - skill{s=DeathblockMarker-visual-check}
+DeathblockMarker-visual-check:
+  Conditions:
+  - varEquals{var=caster.active;value=0}
+  Skills:
+  - disguise{d="FALLING_BLOCK RED_GLAZED_TERRACOTTA"}
+
+DeathAttackCS:
+  Cooldown: 11
+  Skills:
+  #- message{m="<caster.var.deathBlockCS> used skill should be 0"} @PlayersInRadius{r=30}
+  - summon{type=Deathblock;amount=3;radius=8;os=true} @ring{r=8;points=4} 
+
+EarthCSAttack-cast:
+  Conditions:
+  - incombat{}
+  Skills:
+  - cast{
+        skillName="&aProtection of the Sands";
+        duration=40;
+        onCast=EarthCSAttack;
+        cancelOnMove=false;
+        showCastBar=true
+      }
+EarthCSAttack:
+  Skills:
+  - summon{type=Earthblock;amount=1;radius=0;os=true} @ring{r=3;points=9}
+  - potion{type=SLOW;duration=120;level=255} @PIR{r=10} 
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=10}
+  - throw{v=15;vy=5} @PIR{r=10}
+startDeathBlockCS:
+  Conditions:
+  - offgcd
+  Skills:
+  - delay 10
+  - summon{type=DeathblockMarker;amount=1;radius=0;os=false} @self
+  - skill{s=DeathBlockCS}
+DeathBlockCS:
+  Skills:
+  - delay 30
+  - effect:particles{p=reddust;color=#000000;hSpread=3;a=25} @self
+  - sound{s=particle.soul_escape;pitch=0.1} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 50"} @PIR{r=5}   
+  - sudoskill{s=DeathblockPlayerSkill;setcasterastrigger=false} @PIR{r=5}
+  - skill{s=DeathBlockCS}
+  
+  
+DeathblockPlayerSkill:
+  Skills:
+  - signal{s=deathBlockCounter} @MobsInRadius{r=100;types=crystalSarcophagus}
+  - heal{a=250} @MobsInRadius{r=100;types=crystalSarcophagus}
+
+deathSkillCSattackcount:
+  Skills:
+  - variableadd{var=caster.deathBlockCS;amount=1} @self
+  - skill{s=deathSkillCSattack} 
+
+deathSkillCSattack:
+  Conditions:
+  - varEquals{var=caster.deathBlockCS;value=10} true
+  Skills: 
+  - signal{s=deathBlockActive} @MobsInRadius{r=100;types=DeathblockMarker}
+  - sound{s=entity.enderman.scream;pitch=0.7;volume=2} @self
+  - delay 45
+  - sound{s=entity.enderman.scream;pitch=0.4;volume=2} @self
+  - delay 15
+  - sound{s=entity.enderman.scream;pitch=0.1;volume=2} @self
+  - sound{s=entity.generic.explode;pitch=0.6;volume=3} @self
+  - setvariable{var=caster.deathBlockCS;value=0} @self
+  #- message{m="<caster.var.deathBlockCS> used skill should be 0"} @PlayersInRadius{r=30}
+
+  
+deathBlockActiveA:
+  Skills:
+  - setvariable{var=caster.active;value=1} @self
+  - disguise{d="FALLING_BLOCK MAGMA_BLOCK"} @self
+  - delay 60
+  - effect:particlesphere{p=reddust;color=#000000;amount=50;radius=5} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=6}
+  #- message{m="<caster.var.deathBlockCS> made it to the end!!!"} @PlayersInRadius{r=30}
+  - remove @self
+  
+EarthCsAttackEffectStart:
+  Skills:
+  - setvariable{var=caster.EarthCSNumber;value=<random.1-4>}
+  - skill{s=EarthCsAttackEffect1}
+
+EarthCsAttackEffect1:
+  Conditions:
+  - varEquals{var=caster.EarthCSNumber;value=2} castinstead EarthCsAttackEffect2 
+  - varEquals{var=caster.EarthCSNumber;value=3} castinstead EarthCsAttackEffect3 
+  - varEquals{var=caster.EarthCSNumber;value=4} castinstead EarthCsAttackEffect4 
+  Skills:
+  - skill{s=EarthCsAttackEffect} @Origin{yoffset=4}
+   
+EarthCsAttackEffect2:
+  Skills:
+  - skill{s=EarthCsAttackEffect} @Origin{yoffset=5}
+  
+EarthCsAttackEffect3:
+  Skills:
+  - skill{s=EarthCsAttackEffect} @Origin{yoffset=6}
+  
+EarthCsAttackEffect4:
+  Skills:
+  - skill{s=EarthCsAttackEffect} @Origin{yoffset=7}
+  
+EarthCsAttackEffect:
+  Skills:
+  - effect:blockmask{m=sandstone;r=0;d=50;shape=cube;na=false} @Line{radius=1;fromorigin=true}
+  - potion{type=SLOW;duration=100;level=3} @PIR{r=3} 
+  - command{c="runicdamage <caster.uuid> <target.name> 60"} @PIR{r=3}
+  - throw{v=25;vy=3} @PIR{r=3}
+  - delay 40
+  - remove @self
+
+  
+FireCsAttackEffect:
+  Skills:
+  - effect:blockmask{m=red_terracotta;r=0;d=25;shape=cube;na=false} @Origin{yoffset=-1}
+  - delay 10
+  - effect:blockmask{m=red_concrete;r=0;d=20;shape=cube;na=false} @Origin{yoffset=-1}
+  - delay 10
+  - effect:blockmask{m=netherrack;r=0;d=15;shape=cube;na=false} @Origin{yoffset=-1}
+  - delay 5
+  - effect:blockmask{m=magma_block;r=0;d=215;shape=cube;na=false} @Origin{yoffset=-1}
+  - delay 5
+  - ignite{ticks=200} @self
+  - delay 5
+  - command{c="runicdamage <caster.uuid> <target.name> 15";repeat=19;repeatInterval=10} @PIR{r=3}
+  - potion{type=SLOW;duration=10;level=3;repeat=19;repeatInterval=10} @PIR{r=3}
+  - potion{type=SPEED;duration=10;level=2;repeat=19;repeatInterval=10} @MobsNearOrigin{r=100;t=mummieCS}  
+  - delay 200
+  - remove @self
+
+csSummonTowers:
+  Skills:
+  - summon{type=csTowerPlaceholder;amount=1;radius=0} @Location{c=329.5,93,253.5}
+  - summon{type=csTowerPlaceholder;amount=1;radius=0} @Location{c=329.5,93,269.5}
+  - summon{type=csTowerPlaceholder;amount=1;radius=0} @Location{c=267.5,93,253.5}
+  - summon{type=csTowerPlaceholder;amount=1;radius=0} @Location{c=267.5,93,269.5}
+
+
+csTowerLightningStrikeS:
+  Skills:
+  - summon{type=csTowerShootM;amount=1;radius=0;os=true} @PIR{r=35;sort=FURTHEST;limit=1}
+
+csTowerLightningStrike:
+  Skills:
+  - effect:particleline{particle=enchantmenttable;amount=2;fromOrigin=false;yt=1.5;repeat=4;repeatInterval=10} @Parent
+  - effect:particleline{particle=magicCrit;amount=1;fromOrigin=false;yt=1.5;repeat=8;repeatInterval=5} @Parent
+  - delay 39
+  - summon{t=csTowerLightningStrike-audio} @self
+  - delay 1
+  - effect:particles{particle=explosion;hs=1;vs=1;a=50} @self
+  - effect:particles{particle=largeexplosion} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 350"} @PIR{r=3} 
+  - delay 10
+  - remove @self
+  
+csTowerLightningStrike-audio:
+  Skills:
+  - delay 1
+  - sound{s=entity.lightning_bolt.thunder;pitch=2;volume=1} @self
+
+csTowerPlaceholderS:
+  Skills:
+  - summon{type=csTowerPlaceholder-fenceE;amount=1;radius=0} @Forward{f=0;y=1.0}
+  - summon{type=csTowerPlaceholder-core;amount=1;radius=0} @Forward{f=0;y=0.1}
+  - summon{type=csTowerPlaceholder-coreS;amount=1;radius=0} @Forward{f=0;y=1.1}
+  - setrotation{relative=false;yaw=90} @self
+  - summon{type=csTowerPlaceholder-fence;amount=1;radius=0} @Forward{f=+4;y=+6.2}
+  - setrotation{relative=false;yaw=180} @self
+  - summon{type=csTowerPlaceholder-fence;amount=1;radius=0} @Forward{f=+4;y=+6.2}
+  - setrotation{relative=false;yaw=270} @self
+  - summon{type=csTowerPlaceholder-fence;amount=1;radius=0} @Forward{f=+4;y=+6.2}
+  - setrotation{relative=false;yaw=360} @self
+  - summon{type=csTowerPlaceholder-fence;amount=1;radius=0} @Forward{f=+4;y=+6.2}
+
+csTowerCoreDeath:
+  Skills:   
+  - sound{s=block.conduit.deactivate;pitch=2} @self   
+  - setAI{ai=true} @self 
+  - delay 18
+  - remove @self
+
+csPlaceholderEffect:
+  Conditions:
+  - varEquals{var=caster.csStart;value=0} true
+  - varEquals{var=caster.vzStart;value=0} true
+  Skills:
+  - effect:particles{p=enchantmenttable;amount=30;speed=0;hS=0.6;vS=0.6} @self
+  - effect:particles{p=magicCrit;amount=15;speed=0;hS=0.6;vS=0.6} @self
+  
+csStartFight:
+  Conditions:
+  - varEquals{var=caster.csStart;value=0} true
+  Cooldown: 9999
+  Skills:
+  - message{m="&4Destroy the &cAncient Sarcophagus &4before the &cDera Worshippers &4seal it!"} @PlayersInRadius{r=30}
+  - message{m="&a5 &2lives remaining."} @PlayersInRadius{r=30}
+  - setvariable{var=caster.csStart;value=1} @self
+  - summon{type=crystalSarcophagus;amount=1;radius=0} @Location{c=298.5,86,261.5}
+  - signal{s=csNT} @MIR{t=csMobPlaceholderNT;r=10}
+  - potionclear{} @self
+  
+csStartFightNT:
+  Skills:
+  - setname{name=§0} @self
+  - delay 20
+  - setname{name=§0§kSealed Sarcophagus} @self
+  - delay 5
+  - setname{name=§0} @self
+  - delay 20
+  - setname{name=§0§kSealed Sarcophagus} @self
+  - delay 10
+  - setname{name=§0§kSeaophagus} @self
+  - delay 10
+  - setname{name=§0§kSealed Sarcophagus} @self
+  - delay 10
+  - setname{name=§0} @self
+  - delay 10
+  - setname{name=§0§kSealed Sarcophagus} @self
+  - delay 20
+  - setname{name=&c&lAncient Sarcophagus} @self
+  
+
+csMobPlaceholderS:
+  Skills:
+  - remove @EIR{t=mummieCS;r=100} @EIR{r=100;t=mummieCS-zombie,mummieCS-husk,mummieCS-skeleton}
+  - remove @MobsInRadius{t=crystalSarcophagus-golem,crystalSarcophagus-stray;r=100}
+  - remove @EIR{r=100;t=csTowerPlaceholder-coreS,csTowerPlaceholder-fence,csTowerPlaceholder,csTowerPlaceholder-fenceE,csTowerPlaceholder-core}
+  - remove @EIR{r=100;target=armorstands}
+  - remove @EIR{r=100;t=crystalSarcophagus}
+  - delay 1
+  - summon{type=csMobPlaceholderNT;amount=1;radius=0} @Location{c=298.5,88,260.5}
+  - summon{type=csMobPlaceholder-slab;amount=1;radius=0} @Location{c=298.5,87,262.5}
+  - summon{type=csMobPlaceholder-center;amount=1;radius=0} @Location{c=298.5,86.75,261.5}
+  - summon{type=csMobPlaceholder-slab;amount=1;radius=0} @Location{c=298.5,87,260.5}
+
+  - summon{type=csMobPlaceholder-wall;amount=1;radius=0} @Location{c=299.5,86,260.5}
+  - summon{type=csMobPlaceholder-wall;amount=1;radius=0} @Location{c=299.5,86,262.5}
+  - summon{type=csMobPlaceholder-wall;amount=1;radius=0} @Location{c=297.5,86,262.5}
+  - summon{type=csMobPlaceholder-wall;amount=1;radius=0} @Location{c=297.5,86,260.5}
+  
+  - summon{type=csMobPlaceholder-n;amount=1;radius=0} @Location{c=297.5,86,261.5}
+  - summon{type=csMobPlaceholder-n;amount=1;radius=0} @Location{c=299.5,86,261.5}
+  - summon{type=csMobPlaceholder-n;amount=1;radius=0} @Location{c=298.5,86,262.5}
+
+RemoveSelf:
+  Skills:
+  - remove @self
+  - message{m="count"} @PlayersInRadius{r=30}

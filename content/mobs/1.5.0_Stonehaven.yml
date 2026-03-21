@@ -1,0 +1,450 @@
+stonehaven-maze-minor:
+  Type: ZOMBIE
+  Display: '&e[&645&e] &fMinor Anima'
+  Health: 750
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  BossBar:
+    Enabled: true
+    Title: '&f&lMinor Anima'
+    Health: 750
+    Range: 10
+    Color: WHITE
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 188 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin kergpwer setCustomName "&e[&645&e] &fMinor Anima" setDynamicName true
+
+stonehaven-maze-major:
+  Type: ZOMBIE
+  Display: '&e[&645&e] &eMajor Anima'
+  Health: 1000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  BossBar:
+    Enabled: true
+    Title: '&e&lMajor Anima'
+    Health: 1000
+    Range: 10
+    Color: YELLOW
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 250 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin kergpwer setCustomName "&e[&645&e] &eMajor Anima" setDynamicName true
+
+stonehaven-maze-greater:
+  Type: ZOMBIE
+  Display: '&e[&645&e] &cGreater Anima'
+  Health: 1250
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  BossBar:
+    Enabled: true
+    Title: '&c&lGreater Anima'
+    Health: 1250
+    Range: 10
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 312 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin kergpwer setCustomName "&e[&645&e] &cGreater Anima" setDynamicName true
+
+stonehaven-anvil:
+  Type: ZOMBIE
+  Health: 100
+  BossBar:
+    Enabled: true
+    Title: '&c&lThe Living Forge'
+    Health: 100
+    Range: 40
+    Color: RED
+    Style: SEGMENTED_10
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - sethealth{a=1} @self ~onSpawn
+  - skill{s=stonehaven-anvil-variable} @self ~onSpawn
+  - skill{s=stonehaven-anvil-switch} @self ~onSignal:switch
+  - skill{s=stonehaven-anvil-start} @self ~onSignal:start
+  - skill{s=stonehaven-anvil-meter-check} @self ~onTimer:20
+  - skill{s=stonehaven-anvil-temp} @self ~onTimer:20
+  - skill{s=stonehaven-anvil-death} @self ~onDeath
+  - skill{s=stonehaven-anvil-add} @self ~onSignal:add
+  - skill{s=stonehaven-anvil-sub} @self ~onSignal:sub
+  - skill{s=stonehaven-anvil-meter-fail-low} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK ANVIL
+    
+stonehaven-anvil-add:
+  Type: IRON_GOLEM
+  Health: 1
+  Display: '&6Living Fire Anima'
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - sound{s=entity.iron_golem.hurt;v=3} @self ~onSpawn
+  - potion{t=SLOW;d=20;l=1} @self ~onSpawn
+  - signal{s=add} @MIR{t=stonehaven-anvil-temperature;r=6} ~onTimer:5
+  - remove{delay=800} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 5016,88,15142
+  AITargetSelectors:
+  - 0 clear
+stonehaven-anvil-sub:
+  Type: IRON_GOLEM
+  Health: 1
+  Display: '&3Heat-Seeking Anima'
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - sound{s=entity.iron_golem.hurt;v=3} @self ~onSpawn
+  - potion{t=SLOW;d=20;l=1} @self ~onSpawn
+  - signal{s=sub} @MIR{t=stonehaven-anvil-temperature;r=6} ~onTimer:5
+  - remove{delay=800} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 5016,88,15142
+  AITargetSelectors:
+  - 0 clear
+
+stonehaven-anvil-temperature:
+  Type: armor_stand
+  Skills:
+  - signal{s=switch} @MIR{t=stonehaven-anvil;r=32} ~onInteract
+  - signal{s=start} @MIR{t=stonehaven-anvil;r=32} ~onInteract
+  - signal{s=add} @MIR{t=stonehaven-anvil;r=40} ~onSignal:add
+  - signal{s=sub} @MIR{t=stonehaven-anvil;r=40} ~onSignal:sub
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true  
+  Disguise: FALLING_BLOCK BLAST_FURNACE
+    
+stonehaven-anvil-meter:
+  Type: armor_stand
+  Health: 100
+  BossBar:
+    Enabled: true
+    Title: '&a&lProgress'
+    Health: 100
+    Range: 40
+    Color: GREEN
+    Style: SEGMENTED_10
+  Skills:
+  - sethealth{a=1} @self ~onSpawn
+  - skill{s=stonehaven-anvil-threat} @self ~onTimer:20
+  - skill{s=stonehaven-anvil-meter-increase} @self ~onSignal:success
+  - skill{s=stonehaven-anvil-meter-minor-increase} @self ~onSignal:minor-success
+  - skill{s=stonehaven-anvil-meter-complete} @self ~onTimer:20
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+stonehaven-lava:
+  Type: ZOMBIE
+  Display: '&cLava'
+  Health: 40
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+#  - message{m="&c<caster.var.active>"} @PIR{r=32} ~onTimer:5
+  - signal{s=lava} @MIR{t=stonehaven-water;r=1} ~onTimer:5
+  - skill{s=stonehaven-lava-spawn} @self ~onSpawn
+  - setvariable{var=caster.active;v=0} @self ~onSignal:active
+  - ignite{d=40} @trigger ~onDamaged
+  - ignite{d=40} @PIR{r=1} ~onTimer:5
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK REDSTONE_BLOCK
+
+stonehaven-lava-marker:
+  Type: armor_stand
+  Skills:
+  - signal{s=active} @MIR{t=stonehaven-lava;r=8} ~onSignal:active
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+stonehaven-water:
+  Type: ZOMBIE
+  Display: '&bWater'
+  Health: 40
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+#  - message{m="&b<caster.var.active>"} @PIR{r=32} ~onTimer:5
+  - skill{s=stonehaven-water} @self ~onSignal:lava 
+  - skill{s=stonehaven-water-spawn} @self ~onSpawn
+  - setvariable{var=caster.active;v=0} @self ~onSignal:active
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK LAPIS_BLOCK
+
+stonehaven-water-marker:
+  Type: armor_stand
+  Skills:
+  - signal{s=active} @MIR{t=stonehaven-water;r=8} ~onSignal:active
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+stonehaven-obsidian:
+  Type: ZOMBIE
+  Display: '&5Obsidian'
+  Health: 2500
+  Modules:
+    ThreatTable: true
+  Faction: Boss
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=stonehaven-obsidian} @trigger ~onDeath
+  - suicide{delay=400} @self ~onSpawn
+  - skill{s=stonehaven-obsidian-break} @self ~onTimer:5
+  - sound{s=block.stone.break} @self ~onDamaged
+  - damage{a=250;i=true} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK OBSIDIAN
+    
+stonehaven-pirate:
+  Type: ZOMBIE
+  Display: '&e[&647&e] &cPirate'
+  Health: 200
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.26
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - skill{s=stonehaven-pirate-leap} @self ~onSpawn
+  - skill{s=stonehaven-pirate-death} @self ~onDeath .4
+  - skill{s=stonehaven-pirate-water} @self ~onTimer:20
+  #- command{c="runicgive exp <trigger.name> 500 <mob.l.x> <mob.l.y> <mob.l.z> 47"} @trigger ~onDeath 1.0
+  #- randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  #- skill{s=drop-level-47} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Spegett setCustomName "&e[&647&e] &cPirate" setDynamicName true
+
+stonehaven-pirate-boss:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cPirate Leader'
+  Health: 2500
+  Damage: 25
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lPirate Leader'
+    Health: 2500
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.37
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  #- command{c="runicgive exp <trigger.name> 2500 <mob.l.x> <mob.l.y> <mob.l.z> 48"} @trigger ~onDeath 1.0
+  #- randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  #- skill{s=drop-level-48} @trigger ~onDeath
+  - command{c="questtrigger player <target.name> pirateboss"} @PIR{r=64} ~onDeath
+  - signal{s=remove} @MIR{t=stonehaven-pirate-boss;r=64} ~onSpawn
+  - remove @MIR{t=stonehaven-pirate-boss;r=64} ~onSignal:remove
+  - message{m="&ePirate Leader<&co> &6Yer ship is ours!";delay=20} @PIR{r=32} ~onSpawn
+  - skill{s=stonehaven-pirate-water} @self ~onTimer:20
+  - skill{s=stonehaven-pirate-boss-main} @target ~onTimer:60
+  - skill{s=stonehaven-pirate-boss-leap} @target ~onTimer:40
+  - skill{s=stonehaven-pirate-boss-pull-projectile} @target ~onTimer:20
+  Disguise: player Steve setSkin GrubbySock setCustomName "&e[&6☠&e] &cPirate Leader" setDynamicName true

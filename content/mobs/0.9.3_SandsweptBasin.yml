@@ -1,0 +1,486 @@
+aquatic-conjured:
+  Type: ZOMBIE
+  Display: '&4[☠] &cMaritrix'
+  Health: 20000
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  BossBar:
+    Enabled: true
+    Title: '&4&l[Conjured Boss] &c&lMaritrix, Tempestuous Guardian'
+    Health: 20000
+    Range: 80
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - signal{s=remove} @MIR{t=aquatic-conjured;r=128} ~onSpawn
+  - remove @MIR{t=aquatic-conjured;r=128} ~onSignal:remove
+  - skill{s=aquatic-conjured-drop} @trigger ~onDeath
+  - skill{s=aquatic-conjured-start} @self ~onSpawn
+  - skill{s=aquatic-conjured-harm} @self ~onDamaged
+  - skill{s=aquatic-conjured-jump} @self ~onTimer:20 .25
+  - skill{s=aquatic-conjured-bite} @self ~onTimer:20
+  - skill{s=aquatic-conjured-aoe} @self ~onTimer:20 .25
+  - skill{s=aquatic-conjured-trident-visual} @self ~onTimer:200
+  - skill{s=aquatic-despawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: DOLPHIN
+
+aquatic-conjured-trident-projectile:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=aquatic-conjured-trident-projectile} @self ~onSpawn
+aquatic-conjured-trident-projectile-marker:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=aquatic-conjured-trident-projectile-marker} @self ~onSpawn
+
+aquatic-blood-altar:
+  Type: armor_stand
+  Display: ''
+  Health: 100
+  BossBar:
+    Enabled: true
+    Title: '&c&lBlood Altar'
+    Health: 100
+    Range: 24
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    Invisible: false
+    Marker: true
+  Skills:
+  - sethealth{a=1} @self ~onSpawn
+  - skill{s=aquatic-blood-altar} @self ~onSignal:altar
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  Disguise: FALLING_BLOCK BEACON
+    
+aquatic-fieldboss-blood:
+  Type: ZOMBIE
+  Display: '&cMaelstrom Blood'
+  Health: 10000
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - command{c="ri drop sandswept-basin-blood <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1.0
+  - command{c="runicgive exp <trigger.name> 10000 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath 1.0
+  - skill{s=aquatic-fieldboss-blood} @self ~onTimer:20
+  - jump{v=0.25} @self ~onInteract
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK RED_WOOL
+    
+aquatic-fieldboss:
+  Type: ZOMBIE
+  Display: '&4[☠] &cMaelstrom'
+  Health: 25000
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&4&l[Field Boss] &r&c&lMaelstrom, Sirenna''s Avowed'
+    Health: 25000
+    Range: 32
+    Color: RED
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - skill{s=aquatic-fieldboss-drop} @trigger ~onDeath
+  - skill{s=aquatic-fieldboss-jump} @self ~onTimer:40 .25
+  - skill{s=aquatic-fieldboss-curse1} @self ~onTimer:20 <75%
+  - skill{s=aquatic-fieldboss-curse2} @self ~onTimer:20 <50%
+  - skill{s=aquatic-fieldboss-curse3} @self ~onTimer:20 <25%
+  - skill{s=aquatic-fieldboss} @self ~onTimer:20 >25%
+  - skill{s=aquatic-fieldboss2} @self ~onTimer:20 <25%
+  - skill{s=aquatic-fieldboss-sound} @self ~onDamaged
+  - summon{t=aquatic-fieldboss-blood} @self ~onDeath 0.25
+  - setvariable{var=caster.stun;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: ELDER_GUARDIAN
+
+aquatic-curse:
+  Type: ZOMBIE
+  Display: '&e[&642&e] &cTurbulent Droughtwyrm'
+  Health: 800
+  Damage: 55
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 224 <mob.l.x> <mob.l.y> <mob.l.z> 42"} @trigger ~onDeath 1.0
+  - skill{s=aquatic-curse} @self ~onTimer:20
+  - skill{s=aquatic-curse-sound} @self ~onDamaged
+  - skill{s=aquatic-curse-spawn} @self ~onSpawn
+  - setvariable{var=caster.stun;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: GUARDIAN
+
+aquatic-blight:
+  Type: ZOMBIE
+  Display: '&e[&642&e] &cAncient Aquanarid'
+  Health: 2000
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 782 <mob.l.x> <mob.l.y> <mob.l.z> 42"} @trigger ~onDeath 1.0
+  - skill{s=aquatic-monster} @self ~onTimer:20
+  - skill{s=aquatic-monster-sound} @self ~onDamaged
+  - setvariable{var=caster.stun;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: GUARDIAN
+
+aquatic-boss:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cEye of the Storm'
+  Health: 5000
+  Damage: 50
+  DamageModifiers:
+  - FALL 0
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  BossBar:
+     Enabled: true
+     Title: '&c&lEye of the Storm'
+     Health: 5000
+     Range: 20
+     Color: RED
+     Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 3750 <mob.l.x> <mob.l.y> <mob.l.z> 45"} @trigger ~onDeath 1.0
+  - command{c="ri drop azure-soul <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .25
+  - command{c="ri drop-range 43 47 <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - randomskill{s=g2,g3} @trigger ~onDeath
+  - skill{s=aquatic-boss-summon} @self ~onTimer:20 .25
+  - skill{s=aquatic-boss-goo1} @self ~onTimer:20 <66%
+  - skill{s=aquatic-boss-goo2} @self ~onTimer:20 <33%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: STRAY
+
+aquatic-boss-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=aquatic-boss-marker} @self ~onTimer:10
+  - skill{s=aquatic-boss-marker2} @self ~onSpawn
+
+aquatic-boss-spawn:
+  Type: ZOMBIE
+  Display: '&e[&642&e] &cCyclonite'
+  Health: 400
+  Damage: 42
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 40
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 82 <mob.l.x> <mob.l.y> <mob.l.z> 42"} @trigger ~onDeath 1.0
+  - randomskill{s=g1} @trigger ~onDeath .3
+  - skill{s=aquatic-boss-spawn} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: DROWNED
+
+aquatic-boss-spawn-marker:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=aquatic-boss-spawn-marker} @self ~onSpawn
+
+aquatic-squid:
+  Type: BEE
+  Display: '&e[&643&e] &cCloudswimmer'
+  Health: 680
+  Damage: 55
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 441 <mob.l.x> <mob.l.y> <mob.l.z> 43"} @trigger ~onDeath 1.0
+  - command{c="ri drop sandswept-basin-squid-noodles <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .25
+  - command{c="ri drop azure-coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .02
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-43} @trigger ~onDeath  
+  - skill{s=aquatic-squid} @self ~onTimer:20
+  - skill{s=aquatic-squid-spawn} @self ~onSpawn
+  - summon{t=aquatic-squid-ink} @self ~onDeath .4
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SQUID
+
+aquatic-squid-ink:
+  Type: ZOMBIE
+  Display: '&7Shimmering Ink'
+  Health: 500
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - heal{a=500;i=true} @self ~onDamaged
+  - effect:particlesphere{p=squid_ink;a=1;r=1;yOffset=.5} @self ~onTimer:10
+  - potion{t=INVISIBILITY;d=400;l=1;hasParticles=false} @self ~onSpawn
+  - remove{delay=400} @self ~onSpawn
+  - skill{s=aquatic-squid-ink} @self ~onInteract
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: SQUID
+
+
+aquatic-undead:
+  Type: ZOMBIE
+  Display: '&e[&642&e] &cCoral Revenant'
+  Health: 665
+  Damage: 52
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 429 <mob.l.x> <mob.l.y> <mob.l.z> 42"} @trigger ~onDeath 1.0
+  - command{c="ri drop azure-coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .02
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-42} @trigger ~onDeath  
+  - skill{s=aquatic-undead} @self ~onTimer:20 .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: DROWNED
+
+aquatic-monster:
+  Type: ZOMBIE
+  Display: '&e[&644&e] &cDroughtwyrm'
+  Health: 695
+  Damage: 55
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:
+  - command{c="runicgive exp <trigger.name> 454 <mob.l.x> <mob.l.y> <mob.l.z> 44"} @trigger ~onDeath 1.0
+  - command{c="ri drop sandswept-basin-monster-meat <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .25
+  - command{c="ri drop azure-coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath .02
+  - randomskill{s=g2,g3} @trigger ~onDeath .3
+  - skill{s=drop-level-44} @trigger ~onDeath  
+  - skill{s=aquatic-monster} @self ~onTimer:20
+  - skill{s=aquatic-monster-sound} @self ~onDamaged
+  - skill{s=aquatic-monster-projectile-chance} @self ~onTimer:20 <50%
+  - setvariable{var=caster.stun;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: GUARDIAN
+
+aquatic-monster-spine:
+  Type: ZOMBIE
+  Display: '&eDroughtwyrm Spike'
+  Health: 80
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+  - skill{s=aquatic-monster-spine} @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK END_ROD
+    

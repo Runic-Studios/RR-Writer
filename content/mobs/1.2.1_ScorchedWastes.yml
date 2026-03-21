@@ -1,0 +1,269 @@
+SkullHunter:
+  Type: PIGLIN_BRUTE
+  Display: '&e[&649&e] &cSkull Hunter'
+  Health: 770
+  Modules:
+    ThreatTable: true
+  Damage: 64
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 521 <mob.l.x> <mob.l.y> <mob.l.z> 49"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-49} @trigger ~onDeath
+  - setvariable{var=caster.bash;value=0} @self ~onSpawn
+  - setvariable{var=caster.axe;value=0} @self ~onSpawn
+  - skill{s=SkullHunter} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+SkullHunter-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=SkullHunter-marker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+SkullWalker:
+  Type: ZOMBIE
+  Display: '&e[&646&e] &cSkull Walker'
+  Health: 725
+  Modules:
+    ThreatTable: true
+  Damage: 60
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 481 <mob.l.x> <mob.l.y> <mob.l.z> 46"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-46} @trigger ~onDeath
+  - skill{s=SkullWalker} @self ~onDamaged 0.15
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: SKELETON
+
+SkullWalker-spawn:
+  Type: BABY_ZOMBIE
+  Display: '&fSkull Fragment'
+  Health: 72
+  Skills:
+  - skill{s=SkullWalker-spawn} @self ~onSpawn
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: DROPPED_ITEM BONE
+    
+Exile:
+  Type: ZOMBIE
+  Display: '&e[&641&e] &cExiled Orc'
+  Health: 650
+  Damage: 60
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 416 <mob.l.x> <mob.l.y> <mob.l.z> 41"} @trigger ~onDeath 1.0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Goblin setCustomName "&e[&641&e] &cExiled Orc" setDynamicName true
+LizardSoldier:
+  Type: ZOMBIE
+  Display: '&e[&647&e] &cLizard Soldier'
+  Health: 740
+  Modules:
+    ThreatTable: true
+  Damage: 60
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - OrcAxe HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 506 <mob.l.x> <mob.l.y> <mob.l.z> 47"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-47} @trigger ~onDeath
+  - setvariable{var=caster.dash;value=0} @self ~onSpawn
+  - setvariable{var=caster.smash;value=0} @self ~onSpawn
+  - skill{s=LizardSoldier} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin OneBehindTheHair setCustomName "&e[&647&e] &cLizard Soldier" setDynamicName true
+LizardArcher:
+  Type: ZOMBIE
+  Display: '&e[&648&e] &cLizard Archer'
+  Health: 720
+  Damage: 45
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - OrcBow HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.26
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 506 <mob.l.x> <mob.l.y> <mob.l.z> 48"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-48} @trigger ~onDeath
+  - skill{s=LizardArcherArrow} @NearestPlayer{r=40} ~onTimer:40
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin OneBehindTheHair setCustomName "&e[&648&e] &cLizard Archer" setDynamicName true
+
+ToxicSlime:
+  Type: ZOMBIE
+  Display: '&e[&648&e] &cToxic Slime'
+  Health: 755
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    FollowRange: 15
+    NoDamageTicks: 0
+    PreventSlimeSplit: true
+    Size: 3
+  Skills:
+  - skill{s=ToxicSlime-jump} @self ~onTimer:10
+  - command{c="runicgive exp <trigger.name> 507 <mob.l.x> <mob.l.y> <mob.l.z> 48"} @trigger ~onDeath 1.0
+  - randomskill{s=g2,g3,g4} @trigger ~onDeath .3
+  - skill{s=drop-level-48} @trigger ~onDeath
+  - skill{s=ShootSlimeball} @target ~onTimer:60
+  - skill{s=SlimePassiveAura} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: Slime SetSize 3
+
+GrandToxicSlime:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cGrand Toxic Slime'
+  Health: 4000
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lGrand Toxic Slime'
+    Health: 4000
+    Range: 40
+    Color: RED
+    Style: SEGMENTED_10
+  Faction: Boss
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 5
+    NoDamageTicks: 0
+    PreventSlimeSplit: true
+    Size: 10
+  Skills:
+  - jump{v=0.6} @self ~onTimer:40
+  - skill{s=GrandToxicSlime-drop} @trigger ~onDeath
+  - skill{s=ReflectSlimeball} @trigger ~onDamaged
+  - skill{s=GrandSlimePassiveAura} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: Slime SetSize 5

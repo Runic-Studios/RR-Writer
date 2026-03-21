@@ -1,0 +1,486 @@
+tireneas-golem:
+  Conditions:
+  - incombat{}
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - delay 40
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - sound{s=block.grass.break} 
+  - throw{vy=10} @PIR{r=5}
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+
+
+tireneas-skeleton:
+  Skills:
+  - skill{s=tireneas-skeleton-within} 
+  - skill{s=tireneas-skeleton-notwithin} 
+tireneas-skeleton-within:
+  Cooldown: 4
+  Conditions:
+  - variableEquals{var=caster.within;value=0}
+  - playerwithin 6
+  Skills:
+  - setvariable{var=caster.within;value=1}
+  - delay 20
+  - potion{type=SLOW;duration=20;level=1;hasParticles=false}
+  - delay 20
+  - equip{item=wooden_sword:0}
+tireneas-skeleton-notwithin:
+  Cooldown: 4
+  Conditions:
+  - variableEquals{var=caster.within;value=1}
+  - playernotwithin 6
+  Skills:
+  - setvariable{var=caster.within;value=0}
+  - delay 20
+  - potion{type=SLOW;duration=20;level=1;hasParticles=false}
+  - delay 20
+  - equip{item=bow:0} 
+
+grassmimic:
+  Conditions:
+  - playerwithin 5
+  Cooldown: 30
+  Skills:
+  - remove @MIR{t=grassmimic-spawn;r=24}
+  - summon{t=grassmimic-spawn}
+  - sound{s=block.grass.break}
+  - teleport @Forward{f=0;y=-1}
+  - delay 600
+  - teleport @Forward{f=0;y=1}
+
+grassmimic-spawn:
+  Skills:
+  - potion{t=SLOW;d=80;l=3} @PIR{r=8}
+  - potion{t=POISON;d=80;l=2} @PIR{r=8}
+  - delay 1
+  - jump{v=0.5}
+  - delay 600
+  - sound{s=block.grass.break}
+  - remove
+grassmimic-spawn-skill:
+  Conditions:
+  - playerwithin 24
+  Cooldown: 8
+  Skills:
+  - delay 80
+  - sound{s=entity.splash_potion.throw}
+  - delay 20
+  - sound{s=entity.splash_potion.break} @target
+  - randomskill{skills=grassmimic-spawn-skill1,grassmimic-spawn-skill2} @target
+grassmimic-spawn-skill1:
+  Skills:
+  - potion{t=POISON;d=80;l=1}
+grassmimic-spawn-skill2:
+  Skills:
+  - potion{t=SLOW;d=40;l=3}
+
+electrogolem-variables:
+  Skills:
+  - setvariable{var=caster.special;value=0} 
+  - setvariable{var=caster.harm;value=0} 
+  - setvariable{var=caster.vulnerable;value=0} 
+
+electrogolem-weakness:
+  Conditions:
+  - blocktype{type=water} true
+  Cooldown: 2
+  Skills:
+  - sound{s=entity.player.hurt_drown}
+  - skill{s=electrogolem-weakness-damage}
+electrogolem-weakness-damage:
+  Conditions:
+  - health{h=>500}
+  Skills:
+  - damage{a=10;i=true}
+
+electrogolem-spawn-weakness:
+  Conditions:
+  - blocktype{type=water} true
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.player.hurt_drown}
+  - damage{a=25;i=true}
+
+electrogolem-summon:
+  Conditions:
+  - incombat{}
+  Cooldown: 9999
+  Skills:
+  - potion{t=SLOW;d=300;l=1;hasParticles=false}
+  - sound{s=entity.lightning_bolt.impact;v=2}
+  - summon{t=electrogolem-spawn;r=8;a=4;os=true}
+  - delay 190
+  - setvariable{var=caster.special;value=1} 
+  - delay 100
+  - jump{v=1} @self
+  - delay 20
+  - sound{s=entity.blaze.hurt}
+  - blockmask{m=gold_block;d=40;r=5;n=.5} @self
+  - effect:particlesphere{p=end_rod;amount=20;radius=5;yOffset=0.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - potion{t=GLOWING;c=YELLOW;d=40;l=1} @PIR{r=5} 
+  - delay 175
+  - setvariable{var=caster.special;value=0} 
+electrogolem-spawn:
+  Skills:
+  - summon{t=electrogolem-marker} 
+  - skill{s=electrogolem-spawn-visual}
+  - delay 300
+  - leap{v=250} @RLNTE{a=1;r=5;s=1;minr=3}
+  - delay 10
+  - jump{v=1.25}
+  - delay 20
+  - leap{v=1000} @MIR{t=ChargedGolem;r=12}
+  - delay 5
+  - signal{s=special} @MIR{t=ChargedGolem;r=12}
+  - remove
+electrogolem-spawn-visual:
+  Skills:
+  - effect:particlesphere{p=end_rod;amount=1;radius=1;yOffset=0.5} 
+  - delay 10
+  - skill{s=electrogolem-spawn-visual}
+electrogolem-special:
+  Skills:
+  - skill{s=electrogolem-special-audio}
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - blockmask{m=gold_block;d=19;r=1;n=.1} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 5"} @PIR{r=1}
+  - effect:particlesphere{p=end_rod;amount=1;radius=1;yOffset=0.5} 
+  - delay 20
+  - blockmask{m=gold_block;d=19;r=2;n=.1} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 10"} @PIR{r=2}
+  - effect:particlesphere{p=end_rod;amount=2;radius=2;yOffset=0.5} 
+  - delay 20
+  - blockmask{m=gold_block;d=19;r=3;n=.1} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 15"} @PIR{r=3}
+  - effect:particlesphere{p=end_rod;amount=4;radius=3;yOffset=0.5} 
+  - delay 20
+  - blockmask{m=gold_block;d=19;r=4;n=.1} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=4}
+  - effect:particlesphere{p=end_rod;amount=8;radius=4;yOffset=0.5} 
+  - delay 20
+  - blockmask{m=gold_block;d=19;r=5;n=.1} @self
+  - command{c="runicdamage <caster.uuid> <target.name> 25"} @PIR{r=5}
+  - effect:particlesphere{p=end_rod;amount=16;radius=5;yOffset=0.5} 
+  - skill{s=electrogolem-special-audio2}
+  - skill{s=electrogolem-special-jump}
+  - potion{t=SLOW;d=200;l=10} @PIR{r=20}
+  - potion{t=GLOWING;c=YELLOW;d=200;l=1} @PIR{r=20} 
+  - summon{t=electrogolem-marker2;a=3;r=24;os=true}
+  - potion{t=SPEED;d=400;l=1;hasParticles=false}
+  - delay 15
+  - skill{s=electrogolem-special-audio3}
+  - randomskill{skills=electrogolem-ranged-projectile1-special,electrogolem-ranged-projectile2-special,electrogolem-ranged-projectile3-special} @PIR{r=32}
+  - delay 5
+  - skill{s=electrogolem-special-audio4}
+  - randomskill{skills=electrogolem-ranged-projectile1-special,electrogolem-ranged-projectile2-special,electrogolem-ranged-projectile3-special} @PIR{r=32}
+  - delay 5
+  - skill{s=electrogolem-special-audio5}
+  - randomskill{skills=electrogolem-ranged-projectile1-special,electrogolem-ranged-projectile2-special,electrogolem-ranged-projectile3-special} @PIR{r=32}
+electrogolem-special-audio:
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.donkey.eat;v=2}
+
+electrogolem-special-audio2:
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.lightning_bolt.impact;v=2}
+
+electrogolem-special-audio3:
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.shulker.shoot;v=4}
+electrogolem-special-audio4:
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.shulker.shoot;v=4}
+electrogolem-special-audio5:
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.shulker.shoot;v=4}
+
+electrogolem-special-jump:
+  Cooldown: 1
+  Skills:
+  - jump{v=2.5}
+
+electrogolem-melee:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  - variableEquals{var=caster.special;value=0}  
+  Cooldown: 16
+  Skills:
+  - setAI{ai=false}
+  - sound{s=block.fire.ambient}
+  - effect:particlesphere{p=end_rod;amount=3;radius=1;yOffset=3} 
+  - delay 10
+  - sound{s=block.fire.ambient}
+  - effect:particlesphere{p=end_rod;amount=3;radius=1;yOffset=2.25} 
+  - delay 10
+  - sound{s=block.fire.ambient}
+  - effect:particlesphere{p=end_rod;amount=3;radius=1;yOffset=1.5} 
+  - delay 10
+  - sound{s=block.fire.ambient}
+  - effect:particlesphere{p=end_rod;amount=3;radius=1;yOffset=0.75} 
+  - delay 10
+  - sound{s=block.fire.ambient}
+  - effect:particlesphere{p=end_rod;amount=3;radius=1} 
+  - delay 5
+  - sound{s=entity.blaze.hurt}
+  - blockmask{m=gold_block;d=20;r=5;n=.5} @self
+  - effect:particlesphere{p=end_rod;amount=20;radius=5;yOffset=0.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 40"} @PIR{r=5}
+  - potion{t=SLOW;d=40;l=1} @PIR{r=5}
+  - potion{t=GLOWING;c=YELLOW;d=40;l=1} @PIR{r=5} 
+  - delay 5
+  - setAI{ai=true}
+
+electrogolem-range:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.special;value=0}  
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - randomskill{skills=electrogolem-range-leap1,electrogolem-range-leap2}
+  - delay 10
+  - setvariable{var=caster.vulnerable;value=1} 
+  - skill{s=electrogolem-range-visual1} 
+  - delay 5
+  - skill{s=electrogolem-range-visual2} 
+  - delay 5
+  - skill{s=electrogolem-range-visual3}  
+  - delay 5
+  - skill{s=electrogolem-range-visual4}  
+  - delay 5
+  - skill{s=electrogolem-range-visual5} 
+  - skill{s=electrogolem-rangecast}
+  - setvariable{var=caster.harm;value=0} 
+  - setvariable{var=caster.vulnerable;value=0}  
+electrogolem-range-leap1:
+  Conditions:
+  - playerwithin 4
+  Skills:
+  - leap{v=400} @target
+electrogolem-range-leap2:
+  Conditions:
+  - playernotwithin 4
+  Skills:
+  - leap{v=400} @RLNTE{a=1;r=5;s=1;minr=3}
+
+electrogolem-range-visual1:
+  Conditions:
+  - variableEquals{var=caster.harm;value=0}  
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - effect:particlesphere{p=end_rod;amount=1;radius=1;yOffset=0.5}     
+electrogolem-range-visual2:
+  Conditions:
+  - variableEquals{var=caster.harm;value=0}  
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - effect:particlesphere{p=end_rod;amount=2;radius=1;yOffset=0.5}  
+electrogolem-range-visual3:
+  Conditions:
+  - variableEquals{var=caster.harm;value=0}  
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - effect:particlesphere{p=end_rod;amount=3;radius=1;yOffset=0.5}  
+electrogolem-range-visual4:
+  Conditions:
+  - variableEquals{var=caster.harm;value=0}  
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - effect:particlesphere{p=end_rod;amount=4;radius=1;yOffset=0.5}  
+electrogolem-range-visual5:
+  Conditions:
+  - variableEquals{var=caster.harm;value=0}  
+  Skills:
+  - potion{t=SLOW;d=20;l=1;hasParticles=false} 
+  - effect:particlesphere{p=end_rod;amount=5;radius=1;yOffset=0.5}  
+
+electrogolem-harm:
+  Conditions:
+  - variableEquals{var=caster.vulnerable;value=1}   
+  Skills:
+  - sound{s=block.fire.extinguish}
+  - setvariable{var=caster.harm;value=1} 
+  - setvariable{var=caster.vulnerable;value=0} 
+
+electrogolem-rangecast:
+  Conditions:
+  - variableEquals{var=caster.harm;value=0}   
+  Skills:
+  - randomskill{skills=electrogolem-ranged-projectile1,electrogolem-ranged-projectile2,electrogolem-ranged-projectile3} @target
+  - delay 5
+  - randomskill{skills=electrogolem-ranged-projectile1,electrogolem-ranged-projectile2,electrogolem-ranged-projectile3} @target
+  - delay 5
+  - randomskill{skills=electrogolem-ranged-projectile1,electrogolem-ranged-projectile2,electrogolem-ranged-projectile3} @target
+electrogolem-marker:
+  Skills:
+  - blockmask{m=gold_block;d=100;r=2;n=.5} @self
+  - delay 20
+  - skill{s=electrogolem-marker-effect}
+  - delay 80
+  - remove
+electrogolem-marker2:
+  Skills:
+  - blockmask{m=gold_block;d=420;r=3;n=.5} @self
+  - delay 20
+  - skill{s=electrogolem-marker2-effect}
+  - delay 400
+  - remove
+
+electrogolem-marker-effect:
+  Skills:  
+  - effect:particlesphere{p=end_rod;amount=2;radius=2;yOffset=0.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=2}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=2}
+  - ignite{d=20} @PIR{r=2} 
+  - delay 10
+  - skill{s=electrogolem-marker-effect}
+electrogolem-marker2-effect:
+  Skills:  
+  - effect:particlesphere{p=end_rod;amount=3;radius=3;yOffset=0.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=3}
+  - potion{t=SLOW;d=20;l=1} @PIR{r=3}
+  - ignite{d=20} @PIR{r=3} 
+  - delay 10
+  - skill{s=electrogolem-marker2-effect}
+
+electrogolem-ranged-projectile1:
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.shulker.shoot}
+  - projectile{ot=electrogolem-ranged-projectile-tick;oh=electrogolem-ranged-projectile-hit;oe=electrogolem-ranged-projectile-end;i=1;v=12;sso=3;g=.25}
+electrogolem-ranged-projectile2:
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.shulker.shoot}
+  - projectile{ot=electrogolem-ranged-projectile-tick;oh=electrogolem-ranged-projectile2-hit;oe=electrogolem-ranged-projectile-end;i=1;v=12;sso=-3;g=.25}
+electrogolem-ranged-projectile3:
+  Cooldown: 1
+  Skills:
+  - sound{s=entity.shulker.shoot}
+  - projectile{ot=electrogolem-ranged-projectile-tick;oh=electrogolem-ranged-projectile2-hit;oe=electrogolem-ranged-projectile-end;i=1;v=12;syo=5;g=.25}
+
+electrogolem-ranged-projectile1-special:
+  Skills:
+  - projectile{ot=electrogolem-ranged-projectile-tick;oh=electrogolem-ranged-projectile2-hit;oe=electrogolem-ranged-projectile-end;i=1;v=24;sso=3;ac=.5}
+electrogolem-ranged-projectile2-special:
+  Skills:
+  - projectile{ot=electrogolem-ranged-projectile-tick;oh=electrogolem-ranged-projectile2-hit;oe=electrogolem-ranged-projectile-end;i=1;v=24;sso=-3;ac=.5}
+electrogolem-ranged-projectile3-special:
+  Skills:
+  - projectile{ot=electrogolem-ranged-projectile-tick;oh=electrogolem-ranged-projectile2-hit;oe=electrogolem-ranged-projectile-end;i=1;v=24;syo=5;ac=.5}
+
+electrogolem-ranged-projectile-tick:
+  Skills:
+  - effect:particlesphere{p=end_rod;amount=1;radius=1}  @origin
+electrogolem-ranged-projectile-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 10"}
+  - potion{t=GLOWING;c=YELLOW;d=40;l=1}
+  - potion{t=SLOW;d=40;l=1}
+electrogolem-ranged-projectile-end:
+  Skills:
+  - summon{t=electrogolem-marker;os=true;r=1}
+electrogolem-ranged-projectile2-end:
+  Skills:
+  - summon{t=electrogolem-marker2;os=true;r=1}
+
+electrogolem-heal:
+  Skills:
+  - heal{a=50;i=true}
+  - effect:sound{s=entity.experience_orb.pickup;volume=1.0;pitch=0.5} 
+electrogolem-heal2:
+  Skills:
+  - heal{a=250;i=true}
+  - effect:sound{s=entity.experience_orb.pickup;volume=1.0;pitch=0.5} 
+
+electrogolem-pool:
+  Conditions:
+  - incombat{}
+  Cooldown: 24
+  Skills:
+  - setvariable{var=caster.special;value=1} 
+  - summon{t=electrogolem-marker3;r=5;os=true}
+  - delay 40
+  - setvariable{var=caster.special;value=0} 
+
+electrogolem-marker3:
+  Skills:
+  - blockmask{m=warped_nylium;d=80;r=5;n=.75} @self
+  - delay 20
+  - effect:particlesphere{p=end_rod;amount=8;radius=3;yOffset=6} 
+  - signal{s=heal} @MIR{t=ChargedGolem;r=5}
+  - delay 20
+  - effect:particlesphere{p=end_rod;amount=8;radius=3;yOffset=4} 
+  - signal{s=heal} @MIR{t=ChargedGolem;r=5}
+  - delay 20
+  - effect:particlesphere{p=end_rod;amount=8;radius=3;yOffset=2} 
+  - signal{s=heal} @MIR{t=ChargedGolem;r=5}
+  - delay 20
+  - effect:particlesphere{p=end_rod;amount=24;radius=5;yOffset=0} 
+  - signal{s=heal2} @MIR{t=ChargedGolem;r=5}
+  - remove
+
+
+GoblinCorpSwarm1:
+  Conditions:
+  - varinrange{var=caster.mobsNear;value=>3} castinstead GoblinSwarm2
+  Skills:
+  - runaigoalselector{goal=clear} @self
+  - runaigoalselector{goal=fleeplayers} @self
+  - delay 20
+  - runaigoalselector{goal=meleeattack} @self
+  
+GoblinCorpSwarm2:
+  Skills:
+  - runaigoalselector{goal=clear} @self
+  - runaigoalselector{goal=spiderattack} @self
+  - runaigoalselector{goal=leapattarget} @self
+  
+GoblinCorpSwarm3:
+  Conditions:
+  - varinrange{var=caster.mobsNear;value=>8} true
+  Skills:
+  - potion{type=SPEED;duration=20;level=2;hasParticles=false} @MIR{t=GoblinCorpFootSoldeir;r=25}
+  - leap{velocity=200} @target
+  
+ResetGoblinCorpCount:
+  Skills:
+  - setvariable{var=caster.mobsNear;value=0} @self
+AddGoblinCorpCount:
+  Skills:
+  - variableadd{var=caster.mobsNear;amount=1} @self
+NearbyGoblinCorpMechanics:
+  Skills:
+  - skill{s=ResetGoblinCorpCount}
+  - skill{s=AddGoblinCorpCount} @MIR{t=GoblinCorpFootSoldeir;r=25}
+    
+goblinTank_Start:
+  Conditions:
+  - playernotwithin 5 castinstead RockToss
+  Skills:
+  - effect:particles{particle=block_crack;m=dirt;amount=200;hS=5;vS=0.1;speed=1}
+  
+RockToss:
+  Skills:
+  - projectile{bulletType=ITEM;material=cobblestone;onTick=RockTossEffect;onHit=RockTossHit;v=20;i=1;hR=2;vR=2;vO=2;g=1}
+   
+RockTossEffect:
+  Skills:
+  - effect:particles{particle=block_crack;m=sandstone;amount=5;hS=0.06;vS=0.06;speed=1}
+
+RockTossHit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PlayersNearOrigin{r=3}
+  - potion{type=SLOW;duration=120;level=3} @PlayersNearOrigin{r=3}
+ 

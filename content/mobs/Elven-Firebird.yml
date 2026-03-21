@@ -1,0 +1,29 @@
+Elven-Firebird:
+  Type: PARROT
+  Display: '&4[☠] &cElven Firebird'
+  Health: 1000
+  Modules:
+    ThreatTable: true
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 100
+    NoDamageTicks: 0
+  Skills:
+  - model{mid=Elven-Firebird;n=false;step=1} @self ~onSpawn
+  - skill{s=Elven-Firebird-Fireball-cast} @target ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget

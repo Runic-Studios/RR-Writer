@@ -1,0 +1,419 @@
+test:
+  Type: armor_stand
+  Skills:
+  - skill{s=herbalism-event-rise-cast} @MIR{t=ValerianGiver,ComfreyGiver,BoswelliaGiver,TurmericGiver,ChamomileGiver,SnowdropGiver,HibiscusGiver,WintercressGiver,PsylliumGiver,ArugulaGiver,LavenderGiver,PetuniaGiver;r=100} ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+
+drifter-miniboss:
+  Type: ZOMBIE
+  Display: '&e[&645&e] &cThe Drifter'
+  Health: 9000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_SWORD HAND
+  - CHAINMAIL_CHESTPLATE CHEST
+  - CHAINMAIL_LEGGINGS LEGS
+  - CHAINMAIL_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lThe Drifter'
+    Health: 9000
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills: 
+  - skill{s=drifter-miniboss-smoke-bomb} @self ~onTimer:240
+  - skill{s=drifter-miniboss-assassinate} @self ~onTimer:60 <30% .5
+  - skill{s=drifter-miniboss-leap} @self ~onTimer:45
+  - skill{s=drifter-miniboss-stab} @self ~onTimer:10
+  - setvariable{var=caster.leap;value=1} @self ~onSpawn
+  - setvariable{var=caster.stab;value=1} @self ~onSpawn
+  - skill{s=drifter-miniboss-cocoon} @target ~onTimer:20 .4 
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Skrafty setCustomName "&e[&6☠&e] &cThe Drifter" setDynamicName true
+
+SmokeBomb1:
+  Type: BABY_ZOMBIE
+  Display: '&6Smoke Bomb'
+  Health: 50
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  - skill{s=smoke-bomb-damage} @self ~onTimer:4
+  - skill{s=smoke-bomb-spawn} @self ~onSpawn
+  Disguise: dropped_item cobblestone
+
+drifter-miniboss-stab-minor-cast:
+  Type: armor_stand
+  Skills:
+  - skill{s=drifter-miniboss-stab-minor-cast} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+drifter-miniboss-stab-major-cast:
+  Type: armor_stand
+  Skills:
+  - skill{s=drifter-miniboss-stab-major-cast} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+        #######################
+        #######################
+        #######DRIFTER#########
+        ########BOSS###########
+        #######################
+        #######################
+        
+drifter-boss:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cDrifter, Empowered'
+  Health: 6000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 100
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_SWORD HAND
+  - CHAINMAIL_CHESTPLATE CHEST
+  - CHAINMAIL_LEGGINGS LEGS
+  - CHAINMAIL_BOOTS FEET
+  BossBar:
+    Enabled: true
+    Title: '&e&lDrifter, Empowered'
+    Health: 6000
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=drifter-boss-smoke-bomb} @self ~onTimer:250
+  - skill{s=drifter-boss-assassinate-cast} @self ~onTimer:200 .5
+  - skill{s=drifter-boss-leap} @self ~onTimer:20
+  - skill{s=drifter-boss-shadow-spawn} @self ~onTimer:300 1 <75%
+  - skill{s=drifter-boss-shadow-strike} @Self ~onTimer:20 1 <75%
+  - setvariable{var=caster.shadows;value=0} @self ~onSpawn
+  - setvariable{var=caster.shadowspawn;value=1} @self ~onSpawn
+  - setvariable{var=caster.drifter-boss-skills;value=1}
+  - skill{s=drifter-boss-death} @Self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Skrafty setCustomName "&e[&6☠&e] &cThe Drifter" setDynamicName true
+
+SmokeBomb2:
+  Type: BABY_ZOMBIE
+  Display: '&6Smoke Bomb'
+  Health: 50
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  - skill{s=smoke-bomb-damage2} @self ~onTimer:4
+  - skill{s=smoke-bomb-spawn2} @self ~onSpawn
+  Disguise: dropped_item cobblestone 
+
+drifter-boss-shadow:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cDrifter, Empowered'
+  Health: 650
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - GOLDEN_SWORD HAND
+  - CHAINMAIL_CHESTPLATE CHEST
+  - CHAINMAIL_LEGGINGS LEGS
+  - CHAINMAIL_BOOTS FEET
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.38
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=drifter-boss-shadow-spawn-leap} @self ~onSpawn
+  - skill{s=drifter-boss-shadows-remove} @self ~onSpawn
+  - skill{s=drifter-boss-shadow-leap} @self ~onTimer:15 1
+  - skill{s=drifter-boss-shadow-spin} @self ~onTimer:25 1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Skrafty setCustomName "&e[&6☠&e] &cThe Drifter" setDynamicName true
+
+drifter-boss-archer:
+  Type: SKELETON
+  Display: '&e[&6☠&e] &cDrifter, the Precision'
+  Health: 6000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BOW HAND
+  BossBar:
+    Enabled: true
+    Title: '&e&lDrifter, the Precision'
+    Health: 6000
+    Range: 25
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    NoAI: false
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=drifter-boss-archer-spawn} @self ~onSpawn
+  - skill{s=drifter-archer-lunge} @self ~onTimer:200 .3
+  - skill{s=drifter-miniboss-cocoon} @target ~onTimer:20 .4 
+  - skill{s=drifter-archer-barrage} @self ~onTimer:100 .3
+  - skill{s=drifter-message1} @self ~onTimer:10 <80%
+  - skill{s=drifter-message2} @self ~onTimer:10 <65%
+  - skill{s=drifter-message3} @self ~onTimer:10 <35%
+  - skill{s=drifter-message4} @self ~onTimer:10 <20%
+  - skill{s=drifter-message5} @self ~onTimer:10 <5%
+  - skill{s=drifter-message6} @self ~onDeath
+  - skill{s=drifter-boss-archer-mirage-spawn1} @self ~onTimer:120 <45%
+  - skill{s=drifter-boss-archer-mirage-spawn2} @self ~onTimer:120 <25%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowattack{speed=1;amin=1;radius=10}
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Skrafty setCustomName "&e[&6☠&e] &cThe Drifter" setDynamicName true
+
+drifter-archer-explosive-proj-damage:
+  Type: armor_stand
+  Skills:
+  - skill{s=drifter-archer-explosive-proj-damage} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+drifter-boss-archer-mirage1:
+  Type: SKELETON
+  Display: '&e[&6☠&e] &cDrifter<&sq>s Mirage'
+  Health: 6000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BOW HAND
+  - BOW OFFHAND
+  Options:
+    NoAI: true
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=drifter-archer-mirage-box} @self ~onTimer:15
+  - skill{s=Spinning-test-cast-spawn} @self ~onTimer:20
+  - skill{s=drifter-archer-mirage-land-marker-spawn} @self ~onTimer:10
+  - skill{s=sneak-wave-projectile} @Self ~onTimer:80
+  Disguise: player Steve setSkin Skrafty setCustomName "&e[&6☠&e] &cThe Drifter" setDynamicName true
+
+drifter-boss-archer-mirage3:
+  Type: SKELETON
+  Display: '&e[&6☠&e] &cDrifter<&sq>s Mirage'
+  Health: 6000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - BOW HAND
+  - BOW OFFHAND
+  Options:
+    NoAI: true
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=drifter-archer-mirage-box} @self ~onTimer:15
+  - skill{s=Spinning-test-cast-spawn2} @self ~onTimer:20
+  - skill{s=drifter-archer-mirage-land-marker-spawn} @self ~onTimer:10
+  - skill{s=sneak-wave-projectile2} @Self ~onTimer:20
+  Disguise: player Steve setSkin Skrafty setCustomName "&e[&6☠&e] &cThe Drifter" setDynamicName true
+
+drifter-archer-mirage-land-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=drifter-archer-mirage-box-pull} @self ~onSpawn
+  - skill{s=drifter-archer-mirage-box-pull-remover} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+drifter-boss-archer-mirage2:
+  Type: SKELETON
+  Display: ''
+  Health: 6000
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - AIR HAND
+  Options:
+    NoAI: true
+    Invisible: true
+    AlwaysShowName: false
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Marker: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Spinning-test-cast} @Self ~onTimer:20
+  Disguise: player Steve setSkin Skrafty setCustomName "&e[&6☠&e] &cThe Drifter" setDynamicName true
+
+drifter-boss-archer-mirage4:
+  Type: SKELETON
+  Display: ''
+  Health: 6000
+  Modules:
+    ThreatTable: true
+  Damage: 75
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - AIR HAND
+  Options:
+    NoAI: true
+    Invisible: true
+    AlwaysShowName: false
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Marker: true
+    FollowRange: 25
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=Spinning-test-cast2} @Self ~onTimer:20
+  Disguise: player Steve setSkin Skrafty setCustomName "&e[&6☠&e] &cThe Drifter" setDynamicName true
+drifter-archer-mirage-projectile-marker:
+  Type: armor_stand
+  Skills:
+  - skill{s=sneak-wave-projectile} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+drifter-archer-mirage-projectile-marker2:
+  Type: armor_stand
+  Skills:
+  - skill{s=sneak-wave-projectile2} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+TheEnd:
+  Type: SKELETON
+  Display: '&eCLICK ME! Also, epic song'
+  Health: 100
+  Damage: 20
+  Options:
+      MovementSpeed: .001
+      PreventOtherDrops: true
+      PreventItemPickup: true
+      PreventRandomEquipment: true
+      Silent: true
+  Skills:
+  - skill{s=GrandEscape} @Self ~onInteract
+  - command{c="questtrigger player <target.name> drifter-boss"} @PIR{r=24} ~onInteract
+  #- message{cooldown=4;m="&7<&lb>1<&fs>1<&rb> &6Skrafty<&co> &cI hope you liked this, and hopefully no bugs appeared, happy birthday and Christmas my friend. <&nl> Still messing with stuff, even beyond the grave aren't I?"} @PIR{r=50} ~onInteract
+  Disguise: player Steve setSkin Skrafty setCustomName "&eSkrafty" setDynamicName true

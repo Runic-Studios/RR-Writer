@@ -1,0 +1,954 @@
+AzanianBandit: #event
+  Type: ZOMBIE
+  Display: '&e[&612&e] &cAzanian Bandit'
+  Health: 215
+  Damage: 19
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 109 <mob.l.x> <mob.l.y> <mob.l.z> 12"} @trigger ~onDeath 1.0
+  - skill{s=drop-level-12} @trigger ~onDeath
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=AzanianBandit-slash} @self ~onTimer:20 .15
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: VINDICATOR
+
+AzanianCommander:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cAzanian Commander'
+  Health: 1000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Damage: 25
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lAzanian Commander'
+    Health: 2000
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=AzanianCommander-drop} @trigger ~onDeath
+  - skill{s=AzanianCommander-message} @PIR{r=12} ~onEnterCombat
+  - skill{s=AzanianCommander-summon} @self ~onTimer:400
+  - skill{s=AzanianCommander-spin} @self ~onTimer:20 .25
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin GeorgeSLYY setCustomName "&e[&6☠&e] &cAzanian Commander" setDynamicName true
+AzanianCommander-spawn:
+  Type: ZOMBIE
+  Display: '&e[&612&e] &cAzanian Bandit'
+  Health: 114
+  Damage: 17
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 42 <mob.l.x> <mob.l.y> <mob.l.z> 12"} @trigger ~onDeath 1.0
+  - skill{s=AzanianCommander-spawn} @self ~onSpawn
+  - remove{delay=480} @self ~onSpawn
+  - randomskill{s=g1} @trigger ~onDeath .1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: VINDICATOR
+
+CrystalGuardian: #event
+  Type: ZOMBIE
+  Display: '&e[&612&e] &cCrystal Guardian'
+  Health: 215
+  Damage: 12
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 109 <mob.l.x> <mob.l.y> <mob.l.z> 12"} @trigger ~onDeath 1.0
+  - command{c="ri drop guardian-flesh <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.4
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-12} @trigger ~onDeath
+  - skill{s=CrystalGuardian} @self ~onTimer:20
+  - skill{s=CrystalGuardian-sound} @self ~onDamaged
+  - setvariable{var=caster.stun;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: GUARDIAN
+
+CrystalEgg:
+  Type: ZOMBIE
+  Display: '&aCrystal Egg'
+  Health: 1
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - command{c="ri drop guardian-egg <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK PRISMARINE
+    
+LumiteNightmare:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cLumite Nightmare'
+  Health: 2000
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Damage: 24
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lLumite Nightmare'
+    Health: 2000
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=LumiteNightmare-drop} @trigger ~onDeath
+  - command{c="ri drop lumite-steak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath 1
+  - command{c="ri drop lumite-coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 4"} @trigger ~onDeath
+  - sound{s=entity.skeleton.hurt} @self ~onDamaged
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - randomskill{s=LumiteNightmareSkeleton,LumiteNightmareWarrior,LumiteNightmareMage,LumiteNightmareBeast} @self ~onTimer:80 
+  - skill{s=LumiteNightmareWarriorActive} @self ~onDamaged
+  - skill{s=LumiteNightmareStart} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: WITHER_SKELETON
+NightmareIlluminos:
+  Type: ARMOR_STAND
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=NightmareIlluminos} @self ~onSpawn
+  - remove{delay=100} @self ~onSpawn
+
+LumiteSkeleton: #event
+  Type: ZOMBIE
+  Display: '&e[&614&e] &cLumite Skeleton'
+  Health: 227
+  Damage: 17
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  - IRON_SWORD OFFHAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 132 <mob.l.x> <mob.l.y> <mob.l.z> 14"} @trigger ~onDeath 1.0
+  - command{c="ri drop lumite-steak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .2
+  - command{c="ri drop lumite-coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-14} @trigger ~onDeath
+  - command{c="ri drop LumiteJournal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .005
+  - skill{s=LumiteSkeleton} @self ~onTimer:40 .4
+  - sound{s=entity.skeleton.hurt} @self ~onDamaged
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin mlok2121 setCustomName "&e[&614&e] &cLumite Skeleton" setDynamicName true
+
+LumiteWarrior: #event
+  Type: ZOMBIE
+  Display: '&e[&614&e] &cLumite Warrior'
+  Health: 253
+  Damage: 20
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 132 <mob.l.x> <mob.l.y> <mob.l.z> 14"} @trigger ~onDeath 1.0
+  - command{c="ri drop lumite-steak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .2
+  - command{c="ri drop lumite-coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-14} @trigger ~onDeath
+  - command{c="ri drop LumiteJournal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .005
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - skill{s=LumiteWarriorActive} @self ~onDamaged
+  - skill{s=LumiteWarrior} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin 9mmXD setCustomName "&e[&614&e] &cLumite Warrior" setDynamicName true
+
+LumiteMage: #event
+  Type: ZOMBIE
+  Display: '&e[&614&e] &cLumite Mage'
+  Health: 224
+  Damage: 14
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.22
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 132 <mob.l.x> <mob.l.y> <mob.l.z> 14"} @trigger ~onDeath 1.0
+  - command{c="ri drop lumite-steak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .2
+  - command{c="ri drop lumite-coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-14} @trigger ~onDeath
+  - command{c="ri drop LumiteJournal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .005
+  - skill{s=LumiteMage} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin nyxiinn setCustomName "&e[&614&e] &cLumite Mage" setDynamicName true
+Illuminos:
+  Type: ARMOR_STAND
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - skill{s=Illuminos} @self ~onSpawn
+  - remove{delay=100} @self ~onSpawn
+
+LumiteBeast: #event
+  Type: ZOMBIE
+  Display: '&e[&614&e] &cLumite Beast'
+  Health: 247
+  Damage: 22
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_AXE HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 132 <mob.l.x> <mob.l.y> <mob.l.z> 14"} @trigger ~onDeath 1.0
+  - command{c="ri drop lumite-steak <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .2
+  - command{c="ri drop lumite-coin <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 0.25
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-14} @trigger ~onDeath
+  - command{c="ri drop LumiteJournal <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z>"} @trigger ~onDeath .005
+  - skill{s=LumiteBeast} @self ~onTimer:20 
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Shawzyy setCustomName "&e[&614&e] &cLumite Beast" setDynamicName true
+
+ForestFairy:
+  Type: ZOMBIE
+  Display: '&e[&611&e] &cForest Fairy'
+  Health: 200
+  Damage: 18
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+#  - message{m="<caster.var.fairy>"} @PIR{r=200} ~onTimer:20
+  - command{c="runicgive exp <trigger.name> 101 <mob.l.x> <mob.l.y> <mob.l.z> 11"} @trigger ~onDeath 1.0
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-11} @trigger ~onDeath
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - setvariable{var=caster.fairy;value=0} @self ~onSpawn
+  - skill{s=ForestFairy} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Todlachen setDynamicName true
+
+FlightlessFairy:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cFlightless Fairy'
+  Health: 750
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 15
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lFlightless Fairy'
+    Health: 750
+    Range: 30
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=FlightlessFairy-drop} @trigger ~onDeath
+  - skill{s=LoneFairyAirstrike} @self ~onTimer:20
+  - skill{s=LoneFairyAssault} @self ~onTimer:40 .4
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin pppatu setCustomName "&e[&6☠&e] &cFlightless Fairy" setDynamicName true
+
+FairyOrb1:
+  Type: BABY_ZOMBIE
+  Display: '&cFairy Orb'
+  Health: 200
+  Damage: 1
+  Options:
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - potion{t=INVISIBILITY;d=9999;l=1} @self ~onSpawn
+  - randomskill{s=FairyOrbColor1,FairyOrbColor2,FairyOrbColor3,FairyOrbColor4,FairyOrbColor5} @self ~onSpawn
+  - skill{s=FairyOrb1} @self ~onSpawn
+  - remove{delay=240} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+FairyOrb2:
+  Type: BABY_ZOMBIE
+  Display: '&cFairy Orb'
+  Health: 200
+  Damage: 1
+  Options:
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.color;value=0} @self ~onSpawn
+  - potion{t=INVISIBILITY;d=9999;l=1} @self ~onSpawn
+  - potion{t=SLOW_FALL;d=9999;l=1} @self ~onSpawn
+  - randomskill{s=FairyOrbColor1,FairyOrbColor2,FairyOrbColor3,FairyOrbColor4,FairyOrbColor5} @self ~onSpawn
+  - skill{s=FairyOrb2} @self ~onTimer:4
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+
+WhaleGuts1:
+  Type: BABY_ZOMBIE
+  Display: '&6Whale Guts'
+  Health: 1
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+  Disguise: DROPPED_ITEM REDSTONE
+WhaleGuts2:
+  Type: BABY_ZOMBIE
+  Display: '&6Whale Guts'
+  Health: 1
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+  Disguise: DROPPED_ITEM RED_DYE
+
+WhaleGuts3:
+  Type: BABY_ZOMBIE
+  Display: '&6Whale Guts'
+  Health: 1
+  Options:
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - remove{delay=400} @self ~onSpawn
+  Disguise: DROPPED_ITEM RED_WOOL
+    
+WhaletownGod:
+  Type: ZOMBIE
+  Display: '&e[&612&e] &cDolphin'
+  Health: 100
+  Damage: 12
+  Modules:
+    ThreatTable: true
+  Equipment:
+#  - WOODEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - setgravity{g=false} @self ~onSpawn
+  - summon{t=WhaletownGodAmmunition;r=10} @self ~onTimer:2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: DOLPHIN
+
+WhaletownGod2:
+  Type: ZOMBIE
+  Display: '&e[&612&e] &cDolphin'
+  Health: 100
+  Damage: 12
+  Modules:
+    ThreatTable: true
+  Equipment:
+#  - WOODEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - setgravity{g=false} @self ~onSpawn
+  - summon{t=WhaletownGodAmmunition;r=10;a=10} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: DOLPHIN
+
+WhaletownGod3:
+  Type: ZOMBIE
+  Display: '&e[&612&e] &cDolphin'
+  Health: 100
+  Damage: 12
+  Modules:
+    ThreatTable: true
+  Equipment:
+#  - WOODEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - setgravity{g=false} @self ~onSpawn
+  - summon{t=WhaletownGodAmmunition;r=10;a=10} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: DOLPHIN
+
+WhaletownGodAmmunition:
+  Type: dolphin
+  Display: '&e[&612&e] &cDolphin'
+  Health: 1
+  Damage: 12
+  Modules:
+    ThreatTable: true
+  Equipment:
+#  - WOODEN_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.5
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=WhaletownGodAmmunition} @self ~onSpawn
+  - skill{s=WhaletownIceCombustDeath} @self ~onDeath
+  - leap{v=9999} @NearestPlayer{r=9999} ~onTimer:2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+AncientOwl:
+  Type: BAT
+  Display: '&e[&63&e] &aSnowy Owl'
+  Health: 20
+  Disguise: ZOMBIE setBaby true
+  Equipment:
+  - snowyowlhead HEAD
+  Skills:
+  - command{c="ri drop SnowyOwlFeather <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - setAI{ai=false} @self ~onSpawn
+  - potion{t=INVISIBILITY;d=2147483647;l=1;hasParticles=false} @self ~onSpawn
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    Silent: true
+    PreventRenaming: false
+    MovementSpeed: 0.02
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+WhaletownOwl:
+  Type: bat
+  Display: '&e[&63&e] &aSnowy Owl'
+  Health: 20
+  Disguise: ZOMBIE setBaby true
+  Equipment:
+  - snowyowlhead HEAD
+  Skills:
+  - potion{t=INVISIBILITY;d=2147483647;l=1;hasParticles=false} @self ~onSpawn
+  Options:
+    AlwaysShowName: true
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    Silent: true
+    PreventRenaming: false
+    MovementSpeed: 0.05
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+MaliciousSpirit:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cMalicious Spirit'
+  Health: 600
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 12
+  BossBar:
+    Enabled: true
+    Title: '&c&lMalicious Spirit'
+    Health: 600
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Equipment:
+  - STONE_SWORD HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.34
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+#  - message{m="<caster.var.number>"} @PIR{r=200} ~onTimer:20
+  - potion{type=SLOW;duration=25;level=2} @PIR{r=8} ~onTimer:20 <40%
+  - setvariable{var=caster.number;value=0} @self ~onSpawn
+  - skill{s=ArcticTrollGrasp} @target ~onTimer:20 >40%
+  - skill{s=ArcticTrollGraspLow} @target ~onTimer:20 <40%
+  - randomskill{skills=ArcticTrollCharge,ArcticTrollSlam} @self ~onTimer:320
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin CyanDog setDynamicName true
+
+WhaletownCSA:
+  Type: armor_stand
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - summon{type=WhaletownCitizen;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=WhaletownCitizen2;amount=4;radius=32;yRadius=3;os=true} @self ~onSpawn
+  - summon{type=WhaletownCitizen;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn
+  - summon{type=WhaletownCitizen2;amount=1;radius=32;yRadius=3;os=true} @self ~onSignal:respawn2
+  
+WhaletownCitizen:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aWhaletown Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - signal{s=respawn} @MobsInRadius{r=320;t=WhaletownCSA} ~onDeath
+  Disguise: player Steve setSkin IssaMeMino setCustomName "&e[&61&e] &aWhaletown Citizen" setDynamicName true
+WhaletownCitizen2:
+  Type: ZOMBIE
+  Display: '&e[&61&e] &aWhaletown Citizen'
+  Health: 100
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 lookatplayers
+  - 3 float
+  Skills:
+  - signal{s=respawn2} @MobsInRadius{r=320;t=WhaletownCSA} ~onDeath
+  Disguise: player Steve setSkin Allydragon7 setCustomName "&e[&61&e] &aWhaletown Citizen" setDynamicName true
+  
+UndeadViking:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cUndead Viking'
+  Health: 800
+  Equipment:
+  - iron_axe:0
+  Faction: Boss
+  Damage: 20
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lUndead Viking'
+    Health: 800
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    FollowRange: 50
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Skills:
+  - skill{s=UndeadViking-drop} @trigger ~onDeath
+  - skill{s=Undead_Viking_Slam} ~onTimer:360
+  - skill{s=Undead_Viking_AxeThrow} ~onTimer:600 @target
+  - skill{s=Undead_Viking_Passive_Start} ~onDamaged 0.1
+  Disguise: player Steve setSkin Justin4Fun setCustomName "&e[&6☠&e] &cUndead Viking" setDynamicName true
+    
+Undead_Viking_Bone_Chain:
+  Type: CHICKEN
+  Display: 'Bone Chain'
+  Options:
+    AlwaysShowName: true
+    Invincible: true
+    PreventOtherDrops: true
+    KnockbackResistance: 10
+    PreventSunburn: true
+    Collidable: false
+  AIGoalSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Undead_Viking_Chains} ~onSpawn
+  - skill{s=Undead_Viking_Chains_Break} ~onDeath
+  Disguise: DROPPED_ITEM BONE
+  
+Undead_Viking_Bone_Passive:
+  Type: CHICKEN
+  Display: 'Corrupt Bone'
+  Options:
+    AlwaysShowName: true
+    Invincible: true
+    PreventOtherDrops: true
+    KnockbackResistance: 10
+    PreventSunburn: true
+    Collidable: false
+  AIGoalSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=Undead_Viking_Passive_Summon} ~onSpawn
+  Disguise: DROPPED_ITEM BONE
+  
+Cursed_Skeleton:
+  Type: WITHER_SKELETON
+  Health: 35
+  Options:
+    AlwaysShowName: true
+    FollowRange: 50
+    PreventSunburn: true
+  Display: '&e[&6☠&e] &cCursed Skeleton'
+  Damage: 10
+  Skills:
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4} ~onTimer:20
+  - suicide{delay=400} @self ~onSpawn
+
+svenTheTravlingWarrior:
+  Type: ZOMBIE
+  Display: '&4[☠] &lSven The Traveling Warrior'
+  Health: 14000
+  Faction: Boss
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Damage: 60
+  BossBar:
+    Enabled: true
+    Title: '&4&lSven The Traveling Warrior'
+    Health: 500
+    Range: 40
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: false
+    FollowRange: 50
+    NoDamageTicks: 0
+  Skills:
+  - randomskill{
+    skills=
+    svenWarrior,
+    svenRogue,
+    svenMage,
+    svenCleric,
+    svenArcher
+    } ~onEnterCombat
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Zakkra setCustomName "&4[☠] &lSven The Traveling Warrior" setDynamicName true

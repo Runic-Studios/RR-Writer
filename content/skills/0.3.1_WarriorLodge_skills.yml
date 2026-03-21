@@ -1,0 +1,165 @@
+ValoranSpawnnotwithin:
+ Conditions:
+ - playernotwithin 16
+ - variableEquals{var=caster.valoran;value=1}
+ Skills:
+ - remove @MIR{r=128;t=Valoran,Gorm,Bjorn}
+ - summon{type=Valoran;amount=1;radius=0}
+ - message{m="&cYou have left the arena."} @PIR{r=28}
+ - setvariable{var=caster.valoran;value=0} @self
+ValoranSpawnremove:
+ Conditions:
+ - playernotwithin 32
+ Skills: 
+ - remove @self
+ - remove @MIR{r=128;t=Valoran,Gorm,Bjorn}
+
+Spin:
+ Skills:
+ - orbital{onTick=SpinTick;onHit=SpinHit;p=12;i=2;d=24;r=3;oy=1} @self
+
+SpinTick:
+ Skills:
+ - effect:particles{p=crit;a=10;hS=0.1;vS=0.1} @origin
+
+SpinHit:
+ Skills:
+ - command{c="runicdamage <caster.uuid> <target.name> 50"}
+ - throw{velocity=10;velocityY=2} @trigger
+
+CastingEffect:
+ Skills:
+ - effect:particles{p=damageIndicator;a=10;hS=0.2;vS=0.2;y=1} @self
+
+GormTimer:
+  Skills:
+  #- skill{s=AntiStrafe}
+  - skill{s=ArrowBomb}
+  - delay 120
+  - skill{s=BarrageArrows}
+
+VolleyArrows:
+  Skills:
+  - arrowvolley{a=5;s=50;v=15;rd=60;i=1} @target
+
+BarrageArrows:
+  Skills:
+  - shoot{t=arrow;d=15;v=1.5;i=1}
+  - delay 5
+  - shoot{t=arrow;d=15;v=1.5;i=1}
+  - delay 5
+  - shoot{t=arrow;d=15;v=1.5;i=1}
+  - delay 5
+  - shoot{t=arrow;d=15;v=1.5;i=1}
+  - delay 5
+  - shoot{t=arrow;d=15;v=1.5;i=1}
+
+ShootArrow:
+  Skills:
+  - projectile{ot=ShootArrowTick;oh=ShootArrowHit;v=20;i=1;hr=0.5;vr=0.5;syo=1.5}
+  - effect:sound{s=entity.arrow.shoot} @targetlocation
+ShootArrowTick:
+  Skills:
+  - effect:particles{p=spell_instant;a=1} @origin
+ShootArrowHit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 6"}
+
+Volley:
+  Skills:
+  - runaigoalselector{goal=clear}
+  - skill{s=ShootArrow}
+  - delay 5
+  - skill{s=ShootArrow}
+  - delay 5
+  - skill{s=ShootArrow}
+  - delay 5
+  - skill{s=ShootArrow}
+  - delay 5
+  - skill{s=ShootArrow}
+  - runaigoalselector{goal=bowshoot}
+
+AntiStrafe:
+  Skills:
+  - runaigoalselector{goal=clear}
+  - delay 5
+  - effect:sound{s=entity.arrow.shoot}
+  - effect:sound{s=entity.arrow.shoot}
+  - projectile{ot=ShootArrowTick;oh=AntiStrafeHit;v=20;i=1;hr=0.5;vr=0.5;syo=1.5;ho=10} #right
+  - projectile{ot=ShootArrowTick;oh=ShootArrowHit;v=20;i=1;hr=0.5;vr=0.5;syo=1.5;ho=350} #left
+  - delay 5
+  - runaigoalselector{goal=bowshoot}
+
+AntiStrafeHit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 36"}
+
+SeismicLeap:
+  Skills:
+  - velocity{m=set;vx=0;vy=1;vz=0} @self
+  - delay 20
+  - leap{v=200}
+  - delay 10
+  - command{c="runicdamage <caster.uuid> <target.name> 20"} @PIR{r=4}
+  - throw{v=1;vy=10} @PIR{r=4}
+  - delay 1
+  - effect:sound{s=entity.ghast.shoot} @self
+  - effect:sound{s=entity.dragon_fireball.explode} @self
+  - effect:blockwave{m=dirt;d=20;r=4;v=5;n=1} @selflocation
+
+SmokeCloud:
+  Skills:
+  - effect:particlesphere{p=explosion_huge;r=3;a=10;hs=2}
+  - potion{type=INVISIBILITY;d=60;f=true;p=false} @self
+  - potion{type=SPEED;d=60;f=true;p=false} @self
+  - potion{type=SLOW;d=60;f=true;p=false;i=false} @PIR{r=3}
+  - delay 10
+  - effect:particlesphere{p=explosion_huge;r=3;a=10;hs=2}
+  - delay 10
+  - effect:particlesphere{p=explosion_huge;r=3;a=10;hs=2}
+  - delay 10
+  - effect:particlesphere{p=explosion_huge;r=3;a=10;hs=2}
+  - delay 10
+  - effect:particlesphere{p=explosion_huge;r=3;a=10;hs=2}
+  - delay 10
+  - effect:particlesphere{p=explosion_huge;r=3;a=10;hs=2}
+  - delay 10
+  - effect:particlesphere{p=explosion_huge;r=3;a=10;hs=2}
+
+Poof:
+  Skills:
+  #- potion{type=SPEED;d=40;f=true;p=false} @self
+  #- delay 2
+  - effect:particlesphere{p=explosion_huge;r=5;a=20;hs=3} @selflocation
+  - potion{type=INVISIBILITY;d=4;f=true;p=false} @self
+  - leap{v=300} @RLNTE{a=1;r=3;s=0;minr=1}
+  - delay 4
+  - potion{type=SPEED;d=40;f=true;p=false} @self
+
+SpeedBoost:
+  Conditions:
+  - incombat{}
+  Skills:
+  #- effect:particlering{p=spell_instant;radius=1;points=12;amount=1;hS=0.2;vS=0.05;c=#00FF00}
+  #- effect:particlering{p=spell_instant;radius=1;points=12;amount=1;hS=0.2;vS=0.05;c=#FFFF00}
+  - effect:particlering{p=villager_happy;radius=1;points=12;amount=1;hS=0.2;vS=0.05;c=#FFFF00}
+  #- effect:particlering{p=spell;radius=1;points=12;amount=1;hS=0.2;vS=0.05;#00FF00}
+  - potion{type=SPEED;d=60;f=true;p=false;l=2}
+  - effect:sound{s=entity.firework_rocket.launch;v=2} @self
+
+ArrowBomb:
+  Skills:
+  - projectile{ot=ArrowBombTick;oe=ArrowBombEnd;v=25;i=1;hr=0.5;vr=0.5;syo=1.5}
+  - effect:sound{s=entity.arrow.shoot} @targetlocation
+ArrowBombTick:
+  Skills:
+  - effect:particles{p=crit;a=1} @origin
+ArrowBombEnd:
+  Skills:
+  - effect:particles{p=explosion_large;a=1}
+  - effect:sound{s=entity.generic.explode;v=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 30"} @PlayersNearOrigin{r=3}
+
+#CoolTick:
+  #Skills:
+  #- effect:particleline{p=spell_instant;a=1;fo=false} @origin

@@ -1,0 +1,364 @@
+withertree-despawn:
+  Skills:
+  - cast{skillName="Despawn";duration=6000;onCast=withertree-despawn-cast;showCastBar=true}
+withertree-despawn-cast:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=.5} 
+  - blockmask{m=BASALT;d=40;r=3}
+  - sound{s=entity.wither.break_block}
+  - remove
+withertree-elite-despawn:
+  Skills:
+  - cast{skillName="Despawn";duration=3000;onCast=withertree-elite-despawn-cast;showCastBar=true}
+withertree-elite-despawn-cast:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=.5} 
+  - blockmask{m=BASALT;d=40;r=3}
+  - sound{s=entity.wither.break_block}
+  - remove
+
+Grommak-skill:
+  Conditions:
+  - incombat{}
+  Skills:
+  - summon{t=Grommak-fire-marker} @Ring{p=6;r=6}
+Grommak-fire-marker:
+  Skills:
+  - sound{s=entity.blaze.shoot}
+  - projectile{ot=Grommak-fire-marker-tick;oh=Grommak-fire-marker-hit;v=.5;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=8;g=1.5}
+  - delay 15
+  - summon{t=Grommak-fire;a=3}
+  - remove
+Grommak-fire-marker-tick:
+  Skills:
+  - effect:particlesphere{p=flame;amount=1;radius=2;yOffset=.5} @origin
+Grommak-fire-marker-hit:
+  Skills:
+  - ignite{d=40} 
+  - command{c="runicdamage <caster.uuid> <target.name> 200"}
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5}
+  - sound{s=entity.blaze.burn}
+Grommak-fire:
+  Skills:
+  - ignite{d=40} @PIR{r=2}
+  - command{c="runicdamage <caster.uuid> <target.name> 80"} @PIR{r=2}
+  - effect:particlesphere{p=flame;amount=3;radius=2;yOffset=.5}
+Grommak-meteor-cast:
+  Conditions:
+  - incombat{}
+  - playernotwithin 5
+  Cooldown: 12
+  Skills:
+  - potion{t=SLOW;d=40;l=1;hasParticles=false}
+  - sound{s=entity.blaze.ambient;v=3}
+  - delay 40
+  - potion{t=SLOW;d=40;l=2;hasParticles=false}
+  - skill{s=Grommak-meteor-minor} @target
+  - delay 10
+  - skill{s=Grommak-meteor-minor} @target
+  - delay 20
+  - skill{s=Grommak-meteor-major} @target
+Grommak-meteor-minor:
+  Conditions:
+  - playerwithin 25
+  Skills:
+  - sound{s=entity.blaze.shoot}
+  - projectile{ot=Grommak-meteor-minor-tick;oh=Grommak-meteor-minor-hit;v=.5;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=6;g=1.5;sB=false}
+Grommak-meteor-minor-tick:
+  Skills:
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5} @origin
+
+Grommak-meteor-minor-hit:
+  Skills:
+  - ignite{d=40}
+  - command{c="runicdamage <caster.uuid> <target.name> 80"}
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5}
+  - sound{s=entity.blaze.burn}
+
+Grommak-meteor-major:
+  Conditions:
+  - playerwithin 25
+  Skills:
+  - sound{s=entity.blaze.shoot}
+  - projectile{ot=Grommak-meteor-major-tick;oh=Grommak-meteor-major-hit;v=.25;i=1;hr=1;vr=1;syo=2.5;type=meteor;hfs=4;g=1.5;sB=false}
+Grommak-meteor-major-tick:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=.5} @origin
+
+Grommak-meteor-major-hit:
+  Skills:
+  - ignite{d=40}
+  - command{c="runicdamage <caster.uuid> <target.name> 200"}
+  - effect:particlesphere{p=flame;amount=2;radius=1;yOffset=.5}
+  - sound{s=entity.blaze.burn}
+
+withertree-risen-projectile:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.explode;value=0} 
+  Cooldown: 5
+  Skills:
+  - sound{s=entity.wither.shoot}
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=withertree-risen-projectile-tick;oh=withertree-risen-projectile-hit;oe=withertree-risen-projectile-end;i=1;v=8;mr=30;sso=3;syo=1.25} @target
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=withertree-risen-projectile-tick;oh=withertree-risen-projectile-hit;oe=withertree-risen-projectile-end;i=1;v=8;mr=30;sso=-3;syo=1.25} @target
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=withertree-risen-projectile-tick;oh=withertree-risen-projectile-hit;oe=withertree-risen-projectile-end;i=1;v=8;mr=30;syo=5} @target
+withertree-risen-projectile-tick:
+  Skills:
+  - effect:particlesphere{p=flame;amount=1;radius=1;yOffset=.5} 
+withertree-risen-projectile-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 40"}
+withertree-risen-projectile-end:
+  Skills:
+  - blockmask{m=BASALT;d=20;r=1}
+withertree-risen-explode:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 12
+  Skills:
+  - setvariable{var=caster.explode;value=1}
+  - sound{s=entity.wither.ambient}
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - delay 40
+  - sound{s=entity.wither.break_block}
+  - potion{t=SLOW;d=80;l=10} @PIR{r=8}
+  - effect:particlesphere{p=block_crack;material=basalt;amount=32;radius=8;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 250"} @PIR{r=8}
+  - delay 40
+  - setvariable{var=caster.explode;value=0}
+withertree-risen-flight:
+  Conditions:
+  - incombat{}
+  - variableEquals{var=caster.explode;value=0}
+  - playernotwithin 5 
+  Cooldown: 4
+  Skills:
+  - jump{v=0.8}
+  - delay 10
+  - setAI{ai=false}
+  - delay 5
+  - setAI{ai=true}
+  - sound{s=entity.ender_dragon.flap}
+  - leap{v=400} @target
+  - delay 5
+  - setAI{ai=false}
+  - delay 5
+  - setAI{ai=true}
+  - jump{v=0.6}
+  - delay 5
+  - sound{s=entity.ender_dragon.flap}
+  - leap{v=250} @target
+  - delay 5
+
+withertree-fallen-projectile:
+  Conditions:
+  - incombat{}
+  - playernotwithin 5
+  - variableEquals{var=caster.explode;value=0} 
+  Cooldown: 8
+  Skills:
+  - sound{s=entity.wither.shoot}
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=withertree-fallen-projectile-tick;oh=withertree-fallen-projectile-hit;oe=withertree-fallen-projectile-end;i=1;v=8;mr=30;sso=3;syo=1.25} @target
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=withertree-fallen-projectile-tick;oh=withertree-fallen-projectile-hit;oe=withertree-fallen-projectile-end;i=1;v=8;mr=30;sso=-3;syo=1.25} @target
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=withertree-fallen-projectile-tick;oh=withertree-fallen-projectile-hit;oe=withertree-fallen-projectile-end;i=1;v=8;mr=30;syo=5} @target
+withertree-fallen-projectile-tick:
+  Skills:
+withertree-fallen-projectile-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 25"}
+withertree-fallen-projectile-end:
+  Skills:
+  - blockmask{m=BASALT;d=20;r=1}
+
+withertree-fallen-elite-projectile:
+  Conditions:
+  - incombat{}
+  - playernotwithin 5
+  - variableEquals{var=caster.explode;value=0} 
+  Cooldown: 4
+  Skills:
+  - sound{s=entity.wither.shoot}
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=withertree-fallen-elite-projectile-tick;oh=withertree-fallen-elite-projectile-hit;oe=withertree-fallen-elite-projectile-end;i=1;v=8;mr=30;sso=3;syo=1.25} @target
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=withertree-fallen-elite-projectile-tick;oh=withertree-fallen-elite-projectile-hit;oe=withertree-fallen-elite-projectile-end;i=1;v=8;mr=30;sso=-3;syo=1.25} @target
+  - projectile{bulletType=ITEM;material=WITHER_SKELETON_SKULL;ot=withertree-fallen-elite-projectile-tick;oh=withertree-fallen-elite-projectile-hit;oe=withertree-fallen-elite-projectile-end;i=1;v=8;mr=30;syo=5} @target
+withertree-fallen-elite-projectile-tick:
+  Skills:
+  - effect:particlesphere{p=soul_fire_flame;amount=1;radius=1;yOffset=.5} 
+withertree-fallen-elite-projectile-hit:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 75"}
+withertree-fallen-elite-projectile-end:
+  Skills:
+  - blockmask{m=BASALT;d=20;r=1}
+
+withertree-fallen-explode:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 12
+  Skills:
+  - setvariable{var=caster.explode;value=1}
+  - sound{s=entity.wither.ambient}
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - delay 40
+  - sound{s=entity.wither.break_block}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - effect:particlesphere{p=block_crack;material=basalt;amount=24;radius=5;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 100"} @PIR{r=5}
+  - delay 40
+  - setvariable{var=caster.explode;value=0}
+
+withertree-fallen-elite-explode:
+  Conditions:
+  - incombat{}
+  - playerwithin 5
+  Cooldown: 24
+  Skills:
+  - setvariable{var=caster.explode;value=1}
+  - sound{s=entity.wither.ambient}
+  - potion{t=SLOW;d=80;l=3;hasParticles=false}
+  - delay 40
+  - sound{s=entity.wither.break_block}
+  - potion{t=SLOW;d=80;l=3} @PIR{r=5}
+  - effect:particlesphere{p=block_crack;amount=24;radius=5;yOffset=.5} 
+  - command{c="runicdamage <caster.uuid> <target.name> 400"} @PIR{r=5}
+  - delay 40
+  - setvariable{var=caster.explode;value=0}
+
+withertree-spirit:
+  Skills:
+  - signal{s=altar} @MIR{t=withertree-north-altar,withertree-east-altar,withertree-south-altar,withertree-west-altar;r=3}
+withertree-altar:
+  Conditions:
+  - variableEquals{var=caster.active;value=0} 
+  Skills:
+  - remove @MIR{t=withertree-spirit;r=4}
+  - effect:particlesphere{p=soul_fire_flame;amount=2;radius=1;yOffset=.5} 
+  - setvariable{var=caster.active;value=1}
+  - sound{s=block.enchantment_table.use;v=2} 
+  - sethealth{a=1}
+  - signal{s=altar} @MIR{t=withertree-center-altar;r=64}
+withertree-altar-reset:
+  Skills:
+  - setvariable{var=caster.active;value=0}
+  - heal{a=100;i=true}
+withertree-center-altar:
+  Skills:
+  - heal{a=25;i=true}
+  - variableadd{var=caster.summon;amount=1} 
+
+withertree-center-altar-summon:
+  Conditions:
+  - variableEquals{var=caster.summon;value=4}
+  Cooldown: 60
+  Skills:
+  - sethealth{a=80} 
+  - sound{s=block.enchantment_table.use;v=4} 
+  - delay 40
+  - sethealth{a=60} 
+  - sound{s=block.enchantment_table.use;v=4} 
+  - delay 40
+  - sethealth{a=40} 
+  - sound{s=block.enchantment_table.use;v=4} 
+  - delay 40
+  - sethealth{a=20} 
+  - sound{s=block.enchantment_table.use;v=4} 
+  - delay 40
+  - sethealth{a=1} 
+  - delay 40
+  - sound{s=block.enchantment_table.use;v=4} 
+  - setvariable{var=caster.summon;value=0}
+  - signal{s=reset} @MIR{t=withertree-north-altar,withertree-east-altar,withertree-south-altar,withertree-west-altar;r=64}
+  - summon{t=withertree-risen} @Location{c=2468.5,37,507.5}
+  - message{m="&e[!] &7A Risen Guardian has rose near the West Altar"} @PIR{r=128}
+
+withertree-skull-drop:
+  Skills:
+  - skill{s=withertree-skull-chance1}
+
+withertree-skull-chance1:
+  Skills:
+  - randomskill{skills=withertree-skull-lesser,withertree-skull-lesser,withertree-skull-chance2}
+withertree-skull-chance2:
+  Skills:
+  - randomskill{skills=withertree-skull-minor,withertree-skull-minor,withertree-skull-minor,withertree-skull-chance3}
+withertree-skull-chance3:
+  Skills:
+  - randomskill{skills=withertree-skull-major,withertree-skull-major,withertree-skull-major,withertree-skull-major,withertree-skull-greater}
+
+withertree-skull-lesser:
+  Skills:
+  - randomskill{s=withertree-archer-skull-lesser,withertree-cleric-skull-lesser,withertree-mage-skull-lesser,withertree-warrior-skull-lesser,withertree-rogue-skull-lesser}
+withertree-archer-skull-lesser:
+  Skills:
+  - command{c="ri drop withertree-archer-skull-i <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-cleric-skull-lesser:
+  Skills:
+  - command{c="ri drop withertree-cleric-skull-i <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-mage-skull-lesser:
+  Skills:
+  - command{c="ri drop withertree-mage-skull-i <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-warrior-skull-lesser:
+  Skills:
+  - command{c="ri drop withertree-warrior-skull-i <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-rogue-skull-lesser:
+  Skills:
+  - command{c="ri drop withertree-rogue-skull-i <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+
+withertree-skull-minor:
+  Skills:
+  - randomskill{s=withertree-archer-skull-minor,withertree-cleric-skull-minor,withertree-mage-skull-minor,withertree-warrior-skull-minor,withertree-rogue-skull-minor}
+withertree-archer-skull-minor:
+  Skills:
+  - command{c="ri drop withertree-archer-skull-ii <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-cleric-skull-minor:
+  Skills:
+  - command{c="ri drop withertree-cleric-skull-ii <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-mage-skull-minor:
+  Skills:
+  - command{c="ri drop withertree-mage-skull-ii <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-warrior-skull-minor:
+  Skills:
+  - command{c="ri drop withertree-warrior-skull-ii <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-rogue-skull-minor:
+  Skills:
+  - command{c="ri drop withertree-rogue-skull-ii <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+
+withertree-skull-major:
+  Skills:
+  - randomskill{s=withertree-archer-skull-major,withertree-cleric-skull-major,withertree-mage-skull-major,withertree-warrior-skull-major,withertree-rogue-skull-major}
+withertree-archer-skull-major:
+  Skills:
+  - command{c="ri drop withertree-archer-skull-iii <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-cleric-skull-major:
+  Skills:
+  - command{c="ri drop withertree-cleric-skull-iii <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-mage-skull-major:
+  Skills:
+  - command{c="ri drop withertree-mage-skull-iii <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-warrior-skull-major:
+  Skills:
+  - command{c="ri drop withertree-warrior-skull-iii <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-rogue-skull-major:
+  Skills:
+  - command{c="ri drop withertree-rogue-skull-iii <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+
+withertree-skull-greater:
+  Skills:
+  - randomskill{s=withertree-archer-skull-greater,withertree-cleric-skull-greater,withertree-mage-skull-greater,withertree-warrior-skull-greater,withertree-rogue-skull-greater}
+withertree-archer-skull-greater:
+  Skills:
+  - command{c="ri drop withertree-archer-skull-iv <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-cleric-skull-greater:
+  Skills:
+  - command{c="ri drop withertree-cleric-skull-iv <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-mage-skull-greater:
+  Skills:
+  - command{c="ri drop withertree-mage-skull-iv <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-warrior-skull-greater:
+  Skills:
+  - command{c="ri drop withertree-warrior-skull-iv <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger
+withertree-rogue-skull-greater:
+  Skills:
+  - command{c="ri drop withertree-rogue-skull-iv <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger

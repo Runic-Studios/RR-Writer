@@ -1,0 +1,193 @@
+underground-timer-start:
+  Skills:
+  - sound{s=block.grass.break}
+  - blockmask{m=coarse_dirt;r=11;d=12000;n=.1}
+  - blockmask{m=coarse_dirt;r=10;d=12000;n=.5}
+  - blockmask{m=rooted_dirt;r=9;d=12000;n=0.1}
+  - blockmask{m=rooted_dirt;r=8;d=12000;n=0.75}
+  - blockmask{m=dirt;r=7;d=12000;n=0.1}
+  - blockmask{m=dirt;r=6;d=12000;n=0.75}
+  - blockmask{m=cobblestone;r=6;d=12000;n=0.1}
+  - blockmask{m=cobblestone;r=5;d=12000;n=0.6}
+  - blockmask{m=deepslate;r=5;d=12000;n=0.1}
+  - blockmask{m=deepslate;r=4;d=12000;n=0.6}
+  - blockmask{m=cobbled_deepslate;r=3;d=12000;n=0.1}
+  - blockmask{m=cobbled_deepslate;r=2;d=12000;n=0.85}
+
+underground-timer-interact:
+  Conditions:
+  - variableEquals{var=caster.open;value=1}
+  Skills:
+  - message{m="&4[BETA] &e&lNo items will be lost on death"}
+  - potion{t=BLINDNESS;d=40;l=1;hasParticles=false}
+  - potion{t=SLOW;d=40;l=3;hasParticles=false}
+  - command{c="execute in dungeons run tp <target.name> -198.5 102 0.5"}
+  - sound{s=block.grass.break}
+  - effect:particlesphere{p=block_crack;m=dirt;amount=2;radius=1;yOffset=0.5}
+  - skill{s=underground-timer-wave}
+
+blessing-display-update:
+  Skills:
+  - setname{name="&c&lNew Blessings in<&co> &e<caster.var.minute><&co><caster.var.second>"}
+
+blessing-display-timer:
+  Skills:
+  - skill{s=blessing-display-active-timer-cast}
+  - skill{s=blessing-display-inactive-timer-cast}
+  - skill{s=blessing-display-timer-close}
+
+blessing-display-active-timer-cast:
+  Conditions:
+  - variableEquals{var=caster.active;value=1}
+  Skills:
+  - skill{s=blessing-display-active-timer}
+blessing-display-inactive-timer-cast:
+  Conditions:
+  - variableEquals{var=caster.active;value=0}
+  Skills:
+  - skill{s=blessing-display-inactive-timer}
+
+blessing-display-active-timer:
+  Conditions:
+  - variableEquals{var=caster.second;value=0} castinstead blessing-display-active-timer-subtract
+  - varinrange{var=caster.second;value=<11} castinstead blessing-display-active-timer-subtract-zero
+  - varinrange{var=caster.second;value=>1}
+  Skills:
+  - variablesubtract{var=caster.second;amount=1}
+  - setname{name="&a&lBlessings of the Underground<&co> &e<caster.var.minute><&co><caster.var.second>"}
+
+blessing-display-active-timer-subtract:
+  Skills:
+  - variablesubtract{var=caster.minute;amount=1}
+  - setvariable{var=caster.second;v=59}
+  - setname{name="&a&lBlessings of the Underground<&co> &e<caster.var.minute><&co><caster.var.second>"}
+
+blessing-display-active-timer-subtract-zero:
+  Skills:
+  - variablesubtract{var=caster.second;amount=1}
+  - setname{name="&a&lBlessings of the Underground<&co> &e<caster.var.minute><&co>0<caster.var.second>"}
+
+
+blessing-display-inactive-timer:
+  Conditions:
+  - variableEquals{var=caster.second;value=0} castinstead blessing-display-inactive-timer-subtract
+  - varinrange{var=caster.second;value=<11} castinstead blessing-display-inactive-timer-subtract-zero
+  - varinrange{var=caster.second;value=>1}
+  Skills:
+  - variablesubtract{var=caster.second;amount=1}
+  - setname{name="&c&lNew Blessings in<&co> &e<caster.var.minute><&co><caster.var.second>"}
+
+blessing-display-inactive-timer-subtract:
+  Skills:
+  - variablesubtract{var=caster.minute;amount=1}
+  - setvariable{var=caster.second;v=59}
+  - setname{name="&c&lNew Blessings in<&co> &e<caster.var.minute><&co><caster.var.second>"}
+
+blessing-display-inactive-timer-subtract-zero:
+  Skills:
+  - variablesubtract{var=caster.second;amount=1}
+  - setname{name="&c&lNew Blessings in<&co> &e<caster.var.minute><&co>0<caster.var.second>"}
+
+blessing-display-timer-close:
+  Conditions:
+  - variableEquals{var=caster.minute;value=0}
+  - variableEquals{var=caster.second;value=1}
+  Skills:
+  - remove
+
+
+#timer
+
+timer-interact:
+  Conditions:
+  - variableEquals{var=caster.open;value=1}
+  Skills:
+  - signal{s=summon} @self
+
+timer-start:
+  Skills:
+  - setvariable{var=caster.open;v=0}
+
+timer:
+  Skills:
+  - skill{s=timer-switch}
+  - skill{s=timer-closed}
+  - skill{s=timer-opened}
+
+timer-switch:
+  Conditions:
+  - variableEquals{var=caster.minute;value=0}
+  - variableEquals{var=caster.second;value=1}
+  Skills:
+  - skill{s=timer-switch-close}
+  - skill{s=timer-switch-open}
+
+timer-switch-open:
+  Conditions:
+  - variableEquals{var=caster.open;value=0}
+  Skills:
+  - setvariable{var=caster.open;v=1}
+  - signal{s=minute} @self
+  - signal{s=second} @self
+
+timer-switch-close:
+  Conditions:
+  - variableEquals{var=caster.open;value=1}
+  Skills:
+  - remove
+
+
+timer-closed:
+  Conditions:
+  - variableEquals{var=caster.open;value=0}
+  Skills:
+  - skill{s=timer-closed-second-subtract}
+
+timer-opened:
+  Conditions:
+  - variableEquals{var=caster.open;value=1}
+  Skills:
+  - skill{s=timer-opened-second-subtract}
+
+timer-closed-second-subtract:
+  Conditions:
+  - variableEquals{var=caster.second;value=0} castinstead timer-closed-minute-subtract
+  - varinrange{var=caster.second;value=<11} castinstead timer-closed-second-subtract-zero
+  - varinrange{var=caster.second;value=>1}
+  Skills:
+  - variablesubtract{var=caster.second;amount=1}
+  - setname{name="&cActive in &e<caster.var.minute><&co><caster.var.second>"}
+
+timer-closed-minute-subtract:
+  Skills:
+  - variablesubtract{var=caster.minute;amount=1}
+  - setvariable{var=caster.second;v=59}
+  - setname{name="&cActive in &e<caster.var.minute><&co><caster.var.second>"}
+
+timer-closed-second-subtract-zero:
+  Skills:
+  - variablesubtract{var=caster.second;amount=1}
+  - setname{name="&cActive in &e<caster.var.minute><&co>0<caster.var.second>"}
+
+
+
+
+timer-opened-second-subtract:
+  Conditions:
+  - variableEquals{var=caster.second;value=0} castinstead timer-opened-minute-subtract
+  - varinrange{var=caster.second;value=<11} castinstead timer-opened-second-subtract-zero
+  - varinrange{var=caster.second;value=>1}
+  Skills:
+  - variablesubtract{var=caster.second;amount=1}
+  - setname{name="&aActive for &e<caster.var.minute><&co><caster.var.second>"}
+
+timer-opened-minute-subtract:
+  Skills:
+  - variablesubtract{var=caster.minute;amount=1}
+  - setvariable{var=caster.second;v=59}
+  - setname{name="&aActive for &e<caster.var.minute><&co><caster.var.second>"}
+
+timer-opened-second-subtract-zero:
+  Skills:
+  - variablesubtract{var=caster.second;amount=1}
+  - setname{name="&aActive for &e<caster.var.minute><&co>0<caster.var.second>"}

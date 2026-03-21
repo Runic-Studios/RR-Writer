@@ -1,0 +1,10 @@
+cooldown: 25
+duration: 6
+mana: 75
+mana-per-slash: 4
+max-allies: 3
+radius: 5
+shield: 20
+shield-per-level: 1.5
+shield-per-slash: 5.0
+shield-per-slash-per-level: 0.5

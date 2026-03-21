@@ -1,0 +1,931 @@
+angrybee:
+  Type: BEE
+  Display: '&e[&61&e] &cAngry Bee'
+  Health: 10
+  Modules:
+    ThreatTable: true
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=angrybee} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+WildChicken:
+  Type: CHICKEN
+  Display: '&e[&63&e] &aWild Chicken'
+  Health: 10
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.30
+    PreventOtherDrops: true
+    FollowRange: 35
+    NoDamageTicks: 5
+  Skills:
+  - command{c="runicgive exp <trigger.name> 1 <mob.l.x> <mob.l.y> <mob.l.z> 3"} @trigger ~onDeath 1.0
+  - command{c="ri drop RawChicken <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+Garlic:
+  Type: BABY_ZOMBIE
+  Display: '&F&lGarlic'
+  Health: 1
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - command{c="ri drop Garlic <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  - sound{s=block.grass.break} @self ~onDeath
+  - remove @self ~onDeath
+  Disguise: FALLING_BLOCK AZURE_BLUET
+
+BeeNest:
+  Type: ZOMBIE
+  Display: '&eHoney Hive'
+  Health: 10
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:   
+  - command{c="ri drop Honey <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onInteract 1
+  - sound{s=block.wood.hit} @self ~onInteract
+  - remove @self ~onInteract
+  - message{m="&7Carefully extract the honey by right-clicking it."} @trigger ~onDeath
+  - summon{t=angrybee;r=2} @self ~onDeath
+  - setAI{ai=false} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK SPONGE
+
+MushyMushroom:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cMushy Mushroom'
+  Health: 200
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lMushy Mushroom'
+    Health: 200
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Drops:
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=MushyMushroom-drop} @trigger ~onDeath
+  - skill{s=MushyMushroom} @self ~onDamaged
+  - skill{s=MushyMist} @self ~onTimer:120
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin Spookiebear setCustomName "&e[&6☠&e] &cMushy Mushroom" setDynamicName true
+MushyMushroomMarker:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=MushyMushroomMarker} @self ~onSpawn
+  - remove{delay=120} @self ~onSpawn
+  - sound{s=block.slime_block.break} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+CaveMother:
+  Type: CAVE_SPIDER
+  Display: '&e[&6☠&e] &cCave Mother'
+  Health: 250
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 3
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lCave Mother'
+    Health: 250
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 12
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=CaveMother-drop} @trigger ~onDeath
+  - skill{s=CaveMother} @self ~onTimer:120
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SPIDER
+SpiderNest:
+  Type: BABY_ZOMBIE
+  Display: '&7Spider Nest'
+  Health: 40
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - skill{s=SpiderNest} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK CLAY
+    
+CaveSpiderling:
+  Type: CAVE_SPIDER
+  Display: '&e[&67&e] &cCave Spiderling'
+  Health: 12
+  Modules:
+    ThreatTable: true
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    FollowRange: 35
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 4 <mob.l.x> <mob.l.y> <mob.l.z> 7"} @trigger ~onDeath 1.0
+  - randomskill{s=t1} @trigger ~onDeath .25
+  - remove{delay=400} @self ~onSpawn
+  - sound{s=entity.spider.death;delay=400} @self ~onSpawn
+#  - message{m="<caster.var.goo>"} @PIR{r=32} ~onTimer:20
+  - setvariable{var=caster.goo;value=0} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+AngryStump-fallen:
+  Display: '&e[&6☠&e] &7Fallen Stump'
+  Type: armor_stand
+  Skills:
+  - skill{s=HappyStump} @self ~onTimer:20
+  - skill{s=AngeryStumpHappy} @self ~onTimer:20
+  - setvariable{var=caster.happy;value=0} @self ~onSpawn
+  - setvariable{var=caster.active;value=0} @self ~onSpawn
+  - skill{s=HappyStumpBass} @self ~onSignal:bass
+  - skill{s=HappyStumpBassEnd2} @self ~onSignal:bass2
+  Options:
+    Invisible: false
+    HasGravity: false
+    Marker: true
+  Disguise: player Steve setSkin _TreeMC setCustomName "&e[&6☠&e] &cFallen Stump" setDynamicName true
+
+AngryStump:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cStump'
+  Health: 400
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 15
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&e&l[&6&lMini-boss&e&l] &c&lAngry Stump'
+    Health: 400
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - skill{s=AngryStump-drop} @trigger ~onDeath
+  - skill{s=AngeryStumpProj} @self ~onTimer:240
+  - skill{s=AngeryStumpRoot} @self ~onTimer:300
+  - summon{t=AngeryStumpMarker;r=16;a=2;os=true} @self ~onTimer:40 <25%
+  - potion{type=SLOW;duration=100;level=1} @self ~onTimer:40 <25%
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin _TreeMC setCustomName "&e[&6☠&e] &cStump" setDynamicName true
+
+AngeryStumpTuneBass:
+  Type: ZOMBIE
+  Display: '&aHappy Stump Snare'
+  Health: 100
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:   
+#  - command{c="ri drop HappyStumpTune <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onInteract
+#  - remove @self ~onInteract
+  - command{c="ri drop ShatteredMusicDisc <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - sound{s=block.glass.break} @self ~onDeath
+  - skill{s=AngeryStumpTuneBass} @self ~onSpawn
+  - skill{s=AngeryStumpTuneBassp2} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK JUKEBOX
+
+AngeryStumpTuneBassEnd:
+  Type: ZOMBIE
+  Display: '&aHappy Stump Bass'
+  Health: 100
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:   
+#  - command{c="ri drop HappyStumpTune <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onInteract
+#  - remove @self ~onInteract
+  - command{c="ri drop ShatteredMusicDisc <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - sound{s=block.glass.break} @self ~onDeath
+  - skill{s=AngeryStumpTuneBassEnd2} @self ~onSpawn
+  - skill{s=AngeryStumpTuneBassEnd} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK JUKEBOX
+
+HappyStumpTune:
+  Type: ZOMBIE
+  Display: '&aHappy Stump Tune'
+  Health: 100
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    Despawn: true
+  Skills:   
+#  - command{c="ri drop HappyStumpTune <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onInteract
+#  - remove @self ~onInteract
+  - command{c="ri drop ShatteredMusicDisc <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  - sound{s=block.glass.break} @self ~onDeath
+  - skill{s=AngeryStumpTune} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK JUKEBOX
+
+AngeryStumpMarker:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - skill{s=AngeryStumpMarker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+
+AngeryStumpBass:
+  Type: armor_stand
+  Display: '&0'
+  Health: 0
+  Damage: 0
+  Skills:
+  - sound{s=block.wood.break;v=2} @self ~onSpawn
+  - remove @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+AngeryStumpMarker2:
+  Type: ZOMBIE
+  Display: '&e[&68&e] &cFissure'
+  Health: 100
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  DamageModifiers:
+  - FALL 0
+  Equipment:   
+  Options:
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 30
+    MaxCombatDistance: 35
+    NoDamageTicks: 0
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+  Skills:   
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4} ~onTimer:20
+  - skill{s=AngeryStumpMarker2} @self ~onSpawn
+  - skill{s=AngeryStumpMarker2within} @self ~onTimer:2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin faerietoast setCustomName "&e[&68&e] &cFissure" setDynamicName true
+AngeryStumpRoot:
+  Type: armor_stand
+  Skills:
+  - skill{s=AngeryStumpMarker3} @self ~onSpawn
+  - potion{type=SLOW;duration=40;level=1} @PIR{r=4} ~onSpawn
+  - sound{s=block.grass.break} @self ~onInteract
+  - remove @self ~onInteract
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK OAK_LEAVES
+    
+AngeryStumpFlowerMarker:
+  Type: armor_stand
+  Skills:
+  - skill{s=AngeryStumpFlowerMarker} @self ~onSpawn
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  
+AngeryStumpFlower1:
+  Type: BABY_ZOMBIE
+  Display: '&6Valerian'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  Disguise: FALLING_BLOCK AZURE_BLUET
+
+AngeryStumpFlower2:
+  Type: BABY_ZOMBIE
+  Display: '&6Comfrey'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  Disguise: FALLING_BLOCK ALLIUM
+
+AngeryStumpFlower3:
+  Type: BABY_ZOMBIE
+  Display: '&6Turmeric'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  Disguise: FALLING_BLOCK ORANGE_TULIP
+
+AngeryStumpFlower4:
+  Type: BABY_ZOMBIE
+  Display: '&6Chamomile'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  Disguise: FALLING_BLOCK OXEYE_DAISY
+
+AngeryStumpFlower5:
+  Type: BABY_ZOMBIE
+  Display: '&6Snowdrop'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  Disguise: FALLING_BLOCK WHITE_TULIP
+
+AngeryStumpFlower6:
+  Type: BABY_ZOMBIE
+  Display: '&6Hibiscus'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  Disguise: FALLING_BLOCK RED_TULIP
+
+AngeryStumpFlower7:
+  Type: BABY_ZOMBIE
+  Display: '&6Wintercress'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  Disguise: FALLING_BLOCK BLUE_ORCHID
+
+AngeryStumpFlower8:
+  Type: BABY_ZOMBIE
+  Display: '&6Psyllium'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  Disguise: FALLING_BLOCK DANDELION
+
+AngeryStumpFlower9:
+  Type: BABY_ZOMBIE
+  Display: '&6Lavender'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  Disguise: FALLING_BLOCK PINK_TULIP
+
+AngeryStumpFlower10:
+  Type: BABY_ZOMBIE
+  Display: '&6Petunia'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - remove{delay=200} @self ~onSpawn
+  Disguise: FALLING_BLOCK POPPY
+
+TheBlackRider:
+  Type: ZOMBIE
+  Display: '&e[&6☠&e] &cBlack Rider'
+  Health: 250
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 15
+  DamageModifiers:
+  - FALL 0
+  Equipment:
+  - RiderSword HAND
+  BossBar:
+    Enabled: true
+    Title: '&c&lBlack Rider'
+    Health: 250
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.28
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 15
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 25 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+  - throw{velocity=5;velocityY=3} @PlayersInRadius{r=5} ~onAttack .2
+  - effect:particles{particle=smoke;amount=7;vSpread=1;hSpread=1;Speed=.01;yOffset=1.5} @Self ~onTimer:30
+  - effect:particles{particle=largesmoke;amount=2;vSpread=0.5;hSpread=0.5;Speed=.01;yOffset=1.5} @Self ~onTimer:40
+  - summon{t=BanditAzanaRookie-spawn;r=4;a=2} @self ~onEnterCombat
+  - skill{s=RiderEnrage} @self ~onDamaged <20%
+  - remove @MIR{t=BlackHorse,BanditAzanaRookie-spawn;r=32} ~onDeath
+  - remove @MIR{t=BanditAzanaRookie-spawn;r=32} ~onSpawn
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: player Steve setSkin TexHuK_ setCustomName "&e[&6☠&e] &cBlack Rider" setDynamicName true
+BanditAzanaRookie-spawn:
+  Type: SKELETON
+  Display: '&e[&63&e] &cRookie Bandit'
+  Health: 20
+  Modules:
+    ThreatTable: true
+  Damage: 2
+  DamageModifiers:
+  - FALL 0
+  Faction: Bandit
+  Equipment:
+  - BOW HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 20
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 20 <mob.l.x> <mob.l.y> <mob.l.z> 3"} @trigger ~onDeath 1.0
+  - setvariable{var=caster.within;value=0} @self ~onSpawn
+  - skill{s=BanditAzanaRookieA} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: player Steve setSkin Ramus setCustomName "&e[&63&e] &cRookie Bandit" setDynamicName true
+    
+InfectedBovine:
+  Type: MOOSHROOM
+  Display: '&e[&65&e] &cInfected Bovine'
+  Health: 40
+  Damage: 0
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.33
+    PreventOtherDrops: true
+    FollowRange: 35
+    NoDamageTicks: 5
+  Skills:
+  - command{c="runicgive exp <trigger.name> 2 <mob.l.x> <mob.l.y> <mob.l.z> 5"} @trigger ~onDeath 1.0
+  - command{c="ri drop RottenHide <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 fleeplayers
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 hurtbytarget
+
+ForestSpider:
+  Type: CAVE_SPIDER
+  Display: '&e[&66&e] &cForest Spider'
+  Health: 50
+  Modules:
+    ThreatTable: true
+  Damage: 9
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    FollowRange: 10
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 26 <mob.l.x> <mob.l.y> <mob.l.z> 6"} @trigger ~onDeath 1.0
+  - randomskill{s=t1,t2} @trigger ~onDeath .5
+  - randomskill{s=g1,g2} @trigger ~onDeath .3
+  - skill{s=drop-level-6} @trigger ~onDeath
+  - setvariable{var=caster.goo;value=0} @self ~onSpawn
+  - skill{s=ForestSpider} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+
+CaveCrawler:
+  Type: CAVE_SPIDER
+  Display: '&e[&6☠&e] &cCave Crawler'
+  Health: 250
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  Damage: 5
+  DamageModifiers:
+  - FALL 0
+  BossBar:
+    Enabled: true
+    Title: '&c&lCave Crawler'
+    Health: 250
+    Range: 15
+    Color: RED
+    Style: SEGMENTED_10
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.24
+    PreventOtherDrops: true
+    FollowRange: 12
+    NoDamageTicks: 0
+  Skills:
+  - command{c="runicgive exp <trigger.name> 25 <mob.l.x> <mob.l.y> <mob.l.z> 7"} @trigger ~onDeath 1.0
+  - skill{s=CocoonCast} @self ~onTimer:260
+  - skill{s=CaveMotherLunge} @self ~onTimer:20
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Disguise: SPIDER
+
+CaveMotherGoo:
+  Type: armor_stand
+  Skills:
+  - skill{s=CaveMotherGoo} @self ~onTimer:2
+  - setAI{ai=false} @self ~onSpawn 
+  - remove{delay=200} @self ~onSpawn 
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Disguise: FALLING_BLOCK COBWEB
+
+BlackHorse:
+  Type: Horse
+  #Display: '&cBlack Horse'
+  Health: 300
+  Damage: 1
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    FollowRange: 12
+    NoDamageTicks: 0
+    HorseColor: black
+  Skills:
+  - effect:smoke{c=#000000;d=4} @self ~onDeath

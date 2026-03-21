@@ -1,0 +1,873 @@
+herbalism-event-rise-timer:
+  Type: armor_stand
+  Health: 10000
+  BossBar:
+    Enabled: true
+    Title: '&6[EVENT] &e&lFlower Escape!'
+    Range: 50
+    Color: GREEN
+    Style: SEGMENTED_10
+  Skills:
+  - setvariable{var=caster.active;value=1} @self ~onSpawn
+  - signal{s=remove} @MIR{t=herbalism-event-rise-timer;r=100} ~onSpawn
+  - remove @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:remove
+  - skill{s=herbalism-event-remove} @self ~onTimer:20
+  - setvariable{var=caster.remove;value=0} @self ~onSpawn
+  - skill{s=herbalism-event-rise-timer-cast;delay=1} @self ~onSpawn
+  - skill{s=herbalism-event-timer} @self ~onSpawn
+  Options:
+    Invisible: true
+    Marker: true
+
+ValerianGiver:
+  Type: BABY_ZOMBIE
+  Display: '&eValerian'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=15} ~onSpawn
+  - skill{s=ValerianGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop valerian <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK AZURE_BLUET
+
+ComfreyGiver:
+  Type: BABY_ZOMBIE
+  Display: '&dComfrey'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=0} ~onSpawn
+  - skill{s=ComfreyGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop comfrey <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK ALLIUM
+
+BoswelliaGiver:
+  Type: BABY_ZOMBIE
+  Display: '&aBoswellia'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=40} ~onSpawn
+  - skill{s=BoswelliaGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop boswellia <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  Disguise: FALLING_BLOCK FERN
+
+TurmericGiver:
+  Type: BABY_ZOMBIE
+  Display: '&6Turmeric'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=5} ~onSpawn
+  - skill{s=TurmericGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop turmeric <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK ORANGE_TULIP
+
+ChamomileGiver:
+  Type: BABY_ZOMBIE
+  Display: '&eChamomile'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=20} ~onSpawn
+  - skill{s=ChamomileGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop chamomile <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK OXEYE_DAISY
+
+SnowdropGiver:
+  Type: BABY_ZOMBIE
+  Display: '&fSnowdrop'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=15} ~onSpawn
+  - skill{s=SnowdropGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop snowdrop <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK WHITE_TULIP
+
+HibiscusGiver:
+  Type: BABY_ZOMBIE
+  Display: '&cHibiscus'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=30} ~onSpawn
+  - skill{s=HibiscusGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop hibiscus <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK RED_TULIP
+
+WintercressGiver:
+  Type: BABY_ZOMBIE
+  Display: '&BWintercress'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=20} ~onSpawn
+  - skill{s=WintercressGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop wintercress <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK BLUE_ORCHID
+
+PsylliumGiver:
+  Type: BABY_ZOMBIE
+  Display: '&ePsyllium'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=5} ~onSpawn
+  - skill{s=PsylliumGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop psyllium <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK DANDELION
+
+ArugulaGiver:
+  Type: BABY_ZOMBIE
+  Display: '&aArugula'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=40} ~onSpawn
+  - skill{s=ArugulaGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop arugula <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK GRASS
+
+LavenderGiver:
+  Type: BABY_ZOMBIE
+  Display: '&dLavender'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=30} ~onSpawn
+  - skill{s=LavenderGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop lavender <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK PINK_TULIP
+
+PetuniaGiver:
+  Type: BABY_ZOMBIE
+  Display: '&cPetunia'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.09
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=target.remove;value=0} @MIR{t=herbalism-event-rise-timer;r=100} ~onSignal:check
+  - skill{s=herbalism-spawn} @self ~onSpawn
+  - skill{s=herbalism-event-rise} @self ~onSignal:rise
+  - skill{s=herbalism-event-rise2} @self ~onSignal:rise2
+  - skill{s=herbalism-event} @self ~onDeath
+  - setlevel{a=set;l=0} ~onSpawn
+  - skill{s=PetuniaGiver-drop} @trigger ~onDeath
+  - remove @self ~onDeath
+#  - command{c="ri drop petunia <mob.l.w>,<mob.l.x>,<mob.l.y>,<mob.l.z> 1"} @trigger ~onDeath 1
+  AIGoalSelectors:
+  - 0 fleeplayers
+  AITargetSelectors:
+  - 0 clear
+  Disguise: FALLING_BLOCK POPPY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ValerianGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&eValerian'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=15} ~onSpawn
+  - skill{s=ValerianGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK AZURE_BLUET
+
+ComfreyGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&dComfrey'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=0} ~onSpawn
+  - skill{s=ComfreyGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK ALLIUM
+
+BoswelliaGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&aBoswellia'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=40} ~onSpawn
+  - skill{s=BoswelliaGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  Disguise: FALLING_BLOCK FERN
+
+TurmericGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&6Turmeric'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=5} ~onSpawn
+  - skill{s=TurmericGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK ORANGE_TULIP
+
+ChamomileGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&eChamomile'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=20} ~onSpawn
+  - skill{s=ChamomileGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK OXEYE_DAISY
+
+SnowdropGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&fSnowdrop'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=15} ~onSpawn
+  - skill{s=SnowdropGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK WHITE_TULIP
+
+HibiscusGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&cHibiscus'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=30} ~onSpawn
+  - skill{s=HibiscusGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK RED_TULIP
+
+WintercressGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&BWintercress'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=20} ~onSpawn
+  - skill{s=WintercressGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK BLUE_ORCHID
+
+PsylliumGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&ePsyllium'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=5} ~onSpawn
+  - skill{s=PsylliumGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK DANDELION
+
+ArugulaGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&aArugula'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=40} ~onSpawn
+  - skill{s=ArugulaGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK GRASS
+
+LavenderGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&dLavender'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=30} ~onSpawn
+  - skill{s=LavenderGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK PINK_TULIP
+
+PetuniaGiver-ambush:
+  Type: BABY_ZOMBIE
+  Display: '&cPetunia'
+  Health: 1
+  Damage: 1
+  Faction: Herb
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    PreventJockeyMounts: true
+    MovementSpeed: 0.24
+    PreventRandomEquipment: true
+    PreventOtherDrops: true
+    FollowRange: 50
+    NoDamageTicks: 0
+    Silent: true
+  Skills:
+  - setvariable{var=caster.loot;value=1} @self ~onSpawn
+  - setlevel{a=set;l=0} ~onSpawn
+  - skill{s=PetuniaGiver-drop} @trigger ~onDeath
+  - skill{s=herbalism-event-ambush-remove} @self ~onSpawn
+  - remove @self ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Disguise: FALLING_BLOCK POPPY

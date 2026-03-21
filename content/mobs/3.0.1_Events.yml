@@ -1,0 +1,404 @@
+frost-event-start:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - remove @MIR{t=frost-event-enemy-2-marker,frost-event-timer,frost-event-countdown-timer,frost-event-enemy-1,frost-event-enemy-2,frost-event-enemy-3,frost-event-enemy-4,frost-event-enemy-5,frost-event-enemy-6;r=128} ~onSpawn
+  - summon{t=frost-event-timer} @Location{c=1564.5,23,-1147.5} ~onSpawn
+  - remove @self ~onSpawn
+frost-event-reset:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - remove @MIR{t=frost-event-enemy-2-marker,frost-event-timer,frost-event-countdown-timer,frost-event-enemy-1,frost-event-enemy-2,frost-event-enemy-3,frost-event-enemy-4,frost-event-enemy-5,,frost-event-enemy-6,,frost-event-enemy-7;r=128} ~onSpawn
+  - remove @self ~onSpawn
+frost-event-support-heal-minor:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - message{m="&aThe Crimson Chapel aids you with &lminor healing&r&a!"} @PIR{r=128} ~onSpawn
+  - heal{a=500;i=true} @PIR{r=128} ~onSpawn
+  - effect:particlesphere{p=heart;amount=2;radius=1;yOffset=.5} @self
+  - remove @self ~onSpawn
+frost-event-support-heal-greater:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - message{m="&aThe Crimson Chapel aids you with &lgreater healing&r&a!"} @PIR{r=128} ~onSpawn
+  - heal{a=2000;i=true} @PIR{r=128} ~onSpawn
+  - effect:particlesphere{p=heart;amount=3;radius=1;yOffset=.5} @self
+  - remove @self ~onSpawn
+
+frost-event-support-speed:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - message{m="&aThe Crimson Chapel aids you with &lspeed&r&a!"} @PIR{r=128} ~onSpawn
+  - potion{t=SPEED;d=400;l=1} @PIR{r=128} ~onSpawn
+  - remove @self ~onSpawn
+
+frost-event-wave-pause:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=pause} @MIR{t=frost-event-countdown-timer;r=128} ~onSpawn
+  - remove @self ~onSpawn
+frost-event-wave-unpause:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=unpause} @MIR{t=frost-event-countdown-timer;r=128} ~onSpawn
+  - remove @self ~onSpawn
+
+frost-event-wave-skip:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=skip} @MIR{t=frost-event-countdown-timer;r=128} ~onSpawn
+  - remove @self ~onSpawn
+frost-event-wave-clear-and-skip:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=clear-and-skip} @MIR{t=frost-event-countdown-timer;r=128} ~onSpawn
+  - remove @self ~onSpawn
+frost-event-wave-delay-10:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=delay-10} @MIR{t=frost-event-countdown-timer;r=128} ~onSpawn
+  - remove @self ~onSpawn
+frost-event-wave-delay-25:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=delay-25} @MIR{t=frost-event-countdown-timer;r=128} ~onSpawn
+  - remove @self ~onSpawn
+frost-event-wave-delay-60:
+  Type: armor_stand
+  Display: ''
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=delay-60} @MIR{t=frost-event-countdown-timer;r=128} ~onSpawn
+  - remove @self ~onSpawn
+
+frost-event-timer:
+  Type: armor_stand
+  Display: '&0'
+  Health: 30 #number of waves
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  BossBar:
+    Enabled: true
+    Title: '&c&lCrimson Chapel Defense'
+    Range: 64
+    Color: RED
+    Style: SEGMENTED_10
+  Skills:
+  - message{m="&cThe Crimson Chapel Defense has begun!"} @PIR{r=128}
+  - summon{t=frost-event-enemy-2-marker} @self ~onSpawn
+  - setvariable{var=caster.wave;value=0} @self ~onSpawn
+  - skill{s=frost-event-countdown-timer} @self ~onSpawn
+  - skill{s=frost-event-timer} @self ~onTimer:20
+  - skill{s=frost-event-countdown-timer} @self ~onSignal:countdown
+frost-event-enemy-2-marker:
+  Type: armor_stand
+  Display: '&0'
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  Skills:
+  - signal{s=boom} @MIR{t=frost-event-enemy-2;r=2} ~onTimer:20
+frost-event-countdown-timer:
+  Type: armor_stand
+  Display: '&0'
+  Health: 60 #duration of wave
+  Options:
+    Invisible: true
+    HasGravity: false
+    Marker: true
+  BossBar:
+    Enabled: true
+    Title: '&d&lWave Countdown'
+    Range: 64
+    Color: PINK
+    Style: SEGMENTED_10
+  Skills:
+  - setvariable{var=caster.pause;value=0} @self ~onSpawn
+  - skill{s=frost-event-countdown-timer-remove} @self ~onTimer:20
+  - skill{s=frost-event-countdown-wave-pause} @self ~onSignal:pause
+  - skill{s=frost-event-countdown-wave-unpause} @self ~onSignal:unpause
+  - skill{s=frost-event-countdown-wave-skip} @self ~onSignal:skip
+  - skill{s=frost-event-countdown-wave-clear-and-skip} @self ~onSignal:clear-and-skip
+  - skill{s=frost-event-countdown-wave-delay-10} @self ~onSignal:delay-10
+  - skill{s=frost-event-countdown-wave-delay-25} @self ~onSignal:delay-25
+  - skill{s=frost-event-countdown-wave-delay-60} @self ~onSignal:delay-60
+  - skill{s=frost-event-countdown-timer-damage} @self ~onTimer:20
+
+frost-event-enemy-1:
+  Type: ZOMBIE
+  Display: '&cCrimson Undead'
+  Health: 2000
+  Damage: 30
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  - 3 gotolocation 1564,23,-1148
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Skills:
+  - skill{s=frost-event-setup-enemy-1} @self ~onTimer:40
+
+frost-event-enemy-2:
+  Type: ZOMBIE
+  Display: '&cCrimson Creeper'
+  Health: 7500
+  Damage: 40
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.12
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 1564,23,-1148
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=frost-event-setup-enemy-2} @self ~onSignal:boom
+  Disguise: CREEPER
+
+frost-event-enemy-3:
+  Type: SKELETON
+  Display: '&cCrimson Skeleton'
+  Health: 1250
+  Damage: 25
+  Faction: Boss
+  Equipment:
+  - BOW HAND
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 bowshoot
+  - 2 meleeattack
+  - 3 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+
+frost-event-enemy-4:
+  Type: ZOMBIE
+  Display: '&cCrimson Golem'
+  Health: 10000
+  Damage: 75
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.32
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  Disguise: IRON_GOLEM
+
+frost-event-enemy-5:
+  Type: BLAZE
+  Display: '&cCrimson Inferno'
+  Health: 4000
+  Damage: 50
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.4
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  Skills:
+  - skill{s=frost-event-setup-enemy-5} @self ~onSpawn
+
+frost-event-enemy-5-proj-dmg:
+  Type: armor_stand
+  Options:
+    Despawn: true
+    Invisible: true
+    Marker: true
+  Skills:
+  - skill{s=frost-event-enemy-5-proj-dmg} @self ~onSpawn
+
+frost-event-enemy-6:
+  Type: ZOMBIE
+  Display: '&cCrimson Undead'
+  Health: 5000
+  Damage: 40
+  DamageModifiers:
+  - FALL 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - IRON_HELMET HEAD
+  - IRON_CHESTPLATE CHEST
+  - IRON_LEGGINGS LEGS
+  - IRON_BOOTS FEET
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.16
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 float
+  - 3 gotolocation 1564,23,-1148
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Skills:
+  - skill{s=frost-event-setup-enemy-6} @self ~onTimer:40
+
+frost-event-enemy-7:
+  Type: ZOMBIE
+  Display: '&cCrimson'
+  Health: 20000
+  Damage: 15
+  Faction: Boss
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - FALL 0
+  Options:
+    Size: 12
+    AlwaysShowName: true
+    MovementSpeed: 0.1
+    PreventOtherDrops: true
+    PreventJockeyMounts: true
+    PreventRandomEquipment: true
+    Silent: true
+    FollowRange: 40
+    NoDamageTicks: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 gotolocation 1564,23,-1148
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - skill{s=frost-event-enemy-7} @self ~onTimer:200
+  Disguise: MAGMA_CUBE setSize 12

@@ -1,0 +1,7 @@
+cooldown: 12
+duration: 3.0 # of fall immunity
+launch-multiplier: 2.00
+physical-damage: 25
+physical-damage-per-level: 1.5
+mana: 25
+vertical-power: 0.75

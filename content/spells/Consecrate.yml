@@ -1,0 +1,7 @@
+duration: 4
+heal: 5
+heal-per-level: 0.25
+magic-damage: 5
+magic-damage-per-level: 0.5
+radius: 4
+slow-duration: 2

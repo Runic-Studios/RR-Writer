@@ -1,0 +1,8 @@
+cooldown: 14
+duration: 4
+knockup-multiplier: 1.0
+magic-damage: 20
+magic-damage-per-level: 2
+max-health-damage: .05 // 5%
+mana: 25
+radius: 3

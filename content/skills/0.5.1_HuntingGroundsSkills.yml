@@ -1,0 +1,29 @@
+DirewolfHowl:
+  Conditions:
+  - incombat{}
+  Cooldown: 24
+  Skills:
+  - delay 120
+  - potion{type=SLOW;duration=20;level=1;hasParticles=false} 
+  - cast{skillName="Dire Howl";duration=20;onCast=DirewolfHowlCast;showCastBar=true} @self
+DirewolfHowlCast:
+  Skills:
+  - sound{s=entity.wolf.growl} 
+  - setvariable{var=target.howl;value=3} @MobsInRadius{r=8;t=Direwolf} 
+DirewolfHarm:
+  Skills:
+  - variablesubtract{var=caster.howl;amount=1}
+DirewolfWill:
+  Conditions:
+  - varinrange{var=caster.howl;value=>1}
+  Skills:
+  - potion{type=SPEED;duration=10;level=1;hasParticles=false} 
+  - skill{s=DirewolfThirst}
+  - skill{s=DirewolfWill2}
+DirewolfWill2:
+  Cooldown: 1
+  Skills:
+  - leap{v=125} @target
+DirewolfThirst:
+  Skills:
+  - command{c="runicdamage <caster.uuid> <target.name> 2"} @PIR{r=1}
